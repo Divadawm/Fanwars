@@ -1,0 +1,46 @@
+Player:
+	AlwaysVisible:
+	PlaceBuilding:
+	TechTree:
+	SupportPowerManager:
+	ConditionManager:
+	ScriptTriggers:
+	MissionObjectives:
+	ConquestVictoryConditions:
+	PowerManager:
+	AllyRepair:
+	PlayerResources:
+	DeveloperMode:
+	BaseAttackNotifier:
+	GrantConditionOnPrerequisiteManager:
+	Shroud:
+		ExploredMapCheckboxLocked: true
+		ExploredMapCheckboxEnabled: true
+		ExploredMapCheckboxVisible: false
+	FrozenActorLayer:
+	HarvesterAttackNotifier:
+	PlayerStatistics:
+	PlaceBeacon:
+	ProvidesRadar:
+	ProvidesTechPrerequisite@low:
+		Name: Low
+		Prerequisites: techlevel.infonly, techlevel.low
+		Id: low
+	ProvidesTechPrerequisite@medium:
+		Name: Medium
+		Prerequisites: techlevel.infonly, techlevel.low, techlevel.medium
+		Id: medium
+	ProvidesTechPrerequisite@high:
+		Name: No Superweapons
+		Prerequisites: techlevel.infonly, techlevel.low, techlevel.medium, techlevel.high
+		Id: nosuperweapons
+	ProvidesTechPrerequisite@unrestricted:
+		Name: Unrestricted
+		Prerequisites: techlevel.infonly, techlevel.low, techlevel.medium, techlevel.high, techlevel.unrestricted
+		Id: unrestricted
+	EnemyWatcher:
+	ResourceStorageWarning:
+	PlayerExperience:
+    
+EditorPlayer:
+	Inherits: Player

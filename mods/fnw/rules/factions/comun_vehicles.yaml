@@ -1,0 +1,39 @@
+Convoy.objective:
+	Inherits: ^VoxelVehicleHeavy
+	Valued:
+		Cost: 0
+	Tooltip:
+		Name: Convoy
+	Selectable:
+		Priority: 4
+		Bounds: 42,42
+	Health:
+		HP: 7500
+	Armor:
+		Type: ArmorTank
+	Mobile:
+		Speed: 80
+		TurnSpeed: 6
+		Crushes: gibs, infantry, husk
+		TerrainSpeeds:
+			wall: 65
+	RevealsShroud:
+		Range: 10c0
+	StoresResources:
+		PipCount: 0
+		Capacity: 2000000
+	MustBeDestroyed:
+        RequiredForShortGame: true
+    -AutoTarget:
+	RenderVoxels:
+        Image: refinery
+		Scale: 0.75
+	BaseBuilding:
+	Explodes:
+		Weapon: UnitExplodeSmall
+		EmptyWeapon: UnitExplodeSmall
+    RenderSprites:
+        Image: refinery
+	MustBeDestroyed:
+		RequiredForShortGame: true
+	HitShape:

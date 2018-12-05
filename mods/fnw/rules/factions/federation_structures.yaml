@@ -1,0 +1,322 @@
+fedcnst:
+	Inherits: ^Building
+	Inherits@2: ^4x4Shape
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Construction Yard
+		Description: Mobile construction vehicle\nCan be outfitted with tier 3 modules
+	Building:
+		Footprint: xxxx xxxx xxxx xxxx
+		Dimensions: 4,4
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 10000
+	Armor:
+		Type: Concrete
+	RevealsShroud@base:
+		Range: 12c0
+	Production:
+		Produces: Building.federation, Defence.federation
+		MoveIntoWorld: false
+	ProductionQueue@Building:
+		Type: Building.federation
+		Factions: federation
+		Group: Building
+		LowPowerSlowdown: 2
+		QueuedAudio: Building
+		ReadyAudio: BuildingReady
+	ProductionQueue@DEFENCE:
+		Type: Defence.federation
+		Factions: federation
+		Group: defence
+		LowPowerSlowdown: 2
+		QueuedAudio: Building
+		ReadyAudio: BuildingReady
+	BaseBuilding:
+	ProductionBar@Building:
+		ProductionType: Building.federation
+	ProductionBar@DEFENCE:
+		ProductionType: Defence.federation
+	Cargo:
+		Types: Infantry
+		MaxWeight: 8
+		PipCount: 8
+		EjectOnDeath: true
+	AttackGarrisoned@Fortress:
+		Armaments: garrisoned
+		PortOffsets: 384,0,128, 224,-341,128, -224,-341,128, -384,0,128, -224,341,128, 224,341,128
+		PortYaws: 0, 176, 341, 512, 682, 853
+		PortCones: 88, 90, 75, 60, 100, 80
+	BaseProvider:
+		Cooldown: 75
+		Range: 8c0
+	WithBuildingPlacedAnimation:
+	ProvidesRadar:
+	Power:
+		Amount: 40
+	ProvidesPrerequisite@buildingname:
+	RenderSprites:
+		Scale: 0.9
+	Exit:
+	HitShape:
+    
+fedpowr:
+	Inherits: ^Building
+	Inherits@2: ^3x2Shape
+	Inherits@Buried: ^BuriedStat
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: Building.federation
+		BuildPaletteOrder: 10
+		Description: Provides power for other structures
+		BuildDurationModifier: 5
+		Adjacent: 18
+        IconPalette: Federation.Icon
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Powerplant
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+		Adjacent: 10
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 3500
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	Power@Base:
+		Amount: 80
+	InfiltrateForPowerOutage:
+	WithIdleOverlay@Smoke1:
+		Offset: 500, 0, 20
+		Sequence: smoke
+		Palette: effect
+	ProvidesPrerequisite@buildingname:
+	AffectedByPowerOutage:
+	ScalePowerWithHealth:
+	RenderSprites:
+		Scale: 1.0
+	HitShape:
+    
+fedproc:
+	Inherits: ^Building
+	Inherits@2: ^3x3Shape
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: Building.federation
+		BuildPaletteOrder: 20
+		Description: Refines Diastim into credits
+		BuildDurationModifier: 20
+        IconPalette: Federation.Icon
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Diastim Refinery
+	Building:
+		Footprint: xxx xxx xx=
+		Dimensions: 3,3
+		Adjacent: 18
+		BuildSounds: deploy_order.aud
+	Targetable:
+		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 6c0
+	Refinery@base:
+		DockAngle: 164
+		DockOffset: 2,2
+		UseStorage: false
+	DrawLineToTarget:
+	CustomSellValue:
+		Value: 600
+	FreeActorWithDelivery:
+		Actor: t1_fedharv
+		SpawnOffset: 2,2
+		DeliveringActor: t1_hummingbird.reinforce
+		Facing: 64
+	InfiltrateForCash:
+		Percentage: 50
+		Minimum: 500
+		Notification: credit1.aud
+	Power:
+		Amount: -40
+	RenderSprites:
+		Scale: 1.0
+	Explodes:
+		Delay: 1
+	ProvidesPrerequisite@buildingname:
+	HitShape:
+    
+fedbarr:
+	Inherits: ^Building
+	Inherits@2: ^3x2Shape
+	Inherits@Buried: ^BuriedStat
+	Selectable:
+		Bounds: 72,50,0,12
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Barracks
+	Buildable:
+		BuildPaletteOrder: 30
+		Description: Produces infantry units
+		Queue: Building.federation
+		BuildDurationModifier: 5
+        IconPalette: Federation.Icon
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+		Adjacent: 18
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 3500
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 10c0
+	Production:
+		Produces: Infantry.federation
+	ProductionQueue@Infantry:
+		Type: Infantry.federation
+		Factions: federation
+		Group: Infantry
+		LowPowerSlowdown: 2
+	ProductionBar@Infantry:
+		ProductionType: Infantry.federation
+	RallyPoint:
+	Exit@1:
+		SpawnOffset: -850,900,0
+		ExitCell: 0,2
+	Exit@2:
+		SpawnOffset: -850,900,0
+		ExitCell: 0,3
+	Power:
+		Amount: -30
+	ProvidesPrerequisite@buildingname:
+	ConditionManager:
+	ProximityExternalCondition@HEAL:
+		Condition: HealInfantry
+		Range: 5c0
+		AffectsParent: true
+	RenderSprites:
+		Scale: 1.0
+	HitShape:
+    
+fedweap:
+	Inherits: ^Building
+	Inherits@2: ^4x3Shape
+	Inherits@Buried: ^BuriedStat
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: Building.federation
+		BuildPaletteOrder: 40
+		Prerequisites: fedpowr
+		Description: Produces vehicles
+		BuildDurationModifier: 25
+        IconPalette: Federation.Icon
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: War Factory
+	Building:
+		Footprint: xxxx xxxx xxx=
+		Dimensions: 4,3
+		BuildSounds: deploy_order.aud
+		Adjacent: 18
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	RallyPoint:
+		RallyPoint: 3,4
+	ProximityExternalCondition@BuildingRepair:
+		Condition: RepairVehicle
+		Range: 5c0
+		AffectsParent: true
+	WithProductionDoorOverlay:
+		Sequence: build-top
+	Exit@base:
+		SpawnOffset: -20,-20,0
+		ExitCell: 2,1
+	Production:
+		Produces: Vehicle.federation
+	ProductionQueue@Vehicle:
+		Type: Vehicle.federation
+		Factions: federation
+		Group: Vehicle
+		LowPowerSlowdown: 2
+	ProductionBar@Vehicle:
+		ProductionType: Vehicle.federation
+	ProvidesPrerequisite@buildingname:
+	Power:
+		Amount: -30
+	ConditionManager:
+	RenderSprites:
+		Scale: 1.0
+	HitShape:
+    
+fedheli:
+	Inherits: ^Building
+	Inherits@2: ^3x2Shape
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: Building.federation
+		BuildPaletteOrder: 80
+		Description: Produces aircraft
+		BuildDurationModifier: 30
+        IconPalette: Federation.Icon
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Heliport
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+		Adjacent: 18
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 5c0
+	Exit@1:
+		SpawnOffset: 0,-256,0
+		ExitCell: 0,0
+		MoveIntoWorld: false
+	Production:
+		Produces: Aircraft.federation
+	ProductionQueue@Aircraft:
+		Type: Aircraft.federation
+		Factions: federation
+		Group: Aircraft
+		LowPowerSlowdown: 2
+	ProductionBar@Aircraft:
+		ProductionType: Aircraft.federation
+	RallyPoint:
+	WithBuildingPlacedAnimation:
+	ProvidesPrerequisite@buildingname:
+	Power:
+		Amount: -30
+	Reservable:
+	ConditionManager:
+	ProximityExternalCondition@AMMOCRAFT:
+		Condition: Ammocraft
+		Range: 5c0
+		AffectsParent: true
+	RenderSprites:
+		Scale: 1.0
+	HitShape:

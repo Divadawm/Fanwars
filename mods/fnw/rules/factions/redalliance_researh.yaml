@@ -1,0 +1,355 @@
+^Global.Upgrade.Redalliance:
+
+^Infantry.Upgrade.Redalliance:
+	GrantConditionOnPrerequisite@Up.Inf.Speed:
+		Prerequisites: research.SpeedInfantry.Redalliance
+		Condition: upgrade.SpeedInfantry.Redalliance
+	SpeedMultiplier@SpeedInfantry.Upgrade:
+		RequiresCondition: upgrade.SpeedInfantry.Redalliance
+		Modifier: 120
+	GrantConditionOnPrerequisite@Up.Inf.Range:
+		Prerequisites: research.RangeInfantry.Redalliance
+		Condition: upgrade.RangeInfantry.Redalliance
+	RangeMultiplier@Up.Inf.Range:
+		Modifier: 120
+		RequiresCondition: upgrade.RangeInfantry.Redalliance
+	GrantConditionOnPrerequisite@research.SerumRage.Infantry:
+		Prerequisites: research.SerumRage.Infantry
+		Condition: Upgrade.SerumRage.Infantry
+	GrantConditionOnDamageState@SerumRage:
+		Condition: SerumRage.Activated
+		ValidDamageStates: Critical
+	FirepowerMultiplier@SerumRage:
+		RequiresCondition: Upgrade.SerumRage.Infantry && SerumRage.Activated
+		Modifier: 115
+	WithColoredOverlay@Rage:
+		RequiresCondition: Upgrade.SerumRage.Infantry && SerumRage.Activated
+		Palette: invuln
+
+^Vehicle.Upgrade.Redalliance:
+	GrantConditionOnPrerequisite@research.FusionSpeed.Vehicle:
+		Prerequisites: research.FusionSpeed.Vehicle
+		Condition: Upgrade.FusionSpeed.Vehicle
+	SpeedMultiplier@Engine Speed:
+		RequiresCondition: Upgrade.FusionSpeed.Vehicle
+		Modifier: 120
+
+^Tank.Upgrade.Redalliance:
+
+^Upgrade_nanoarmor_Tank:
+
+Upgrade.SpeedInfantry.Redalliance:
+	Inherits@Research: ^ResearchActor
+	AlwaysVisible:
+	Tooltip:
+		Name: Improved Joints
+	Buildable:
+		BuildPaletteOrder: 10
+		Queue: Research.RedAlliance
+		Prerequisites: ~!research.SpeedInfantry.Redalliance
+		Description: Improves infantry units’ moving speed by 20%
+		BuildDurationModifier: 60
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 800
+	RenderSprites:
+		Image: speedboosticon
+	ProvidesPrerequisite:
+		Prerequisite: research.SpeedInfantry.Redalliance
+
+Upgrade.RangeInfantry.Redalliance:
+	Inherits@Research: ^ResearchActor
+	AlwaysVisible:
+	Tooltip:
+		Name: Improved Rangefinder
+	Buildable:
+		BuildPaletteOrder: 20
+		Queue: Research.RedAlliance
+		Prerequisites: ~!research.RangeInfantry.Redalliance
+		Description: Improves infantry view range and weapon range by 10%
+		BuildDurationModifier: 80
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 1000
+	RenderSprites:
+		Image: rangeboosticon
+	ProvidesPrerequisite:
+		Prerequisite: research.RangeInfantry.Redalliance
+
+Upgrade.Supersonic.Redalliance.Aircraft:
+	Inherits@Research: ^ResearchActor
+	AlwaysVisible:
+	Tooltip:
+		Name: Overboost
+	Buildable:
+		BuildPaletteOrder: 30
+		Queue: Research.RedAlliance
+		Prerequisites: ~!research.Supersonic.Redalliance.Aircraft
+		Description: Wyverns accelerate when attacking, allowing them to avoid some types of projectiles
+		BuildDurationModifier: 120
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 1500
+	RenderSprites:
+		Image: upgrade_supersonic_redalliance_icon
+	ProvidesPrerequisite:
+		Prerequisite: research.Supersonic.Redalliance.Aircraft
+
+Upgrade.WeaponsFlamer.Redalliance:
+	Inherits@Research: ^ResearchActor
+	AlwaysVisible:
+	Tooltip:
+		Name: Residual Plasma
+	Buildable:
+		BuildPaletteOrder: 40
+		Queue: Research.RedAlliance
+		Prerequisites: ~!research.WeaponsFlamer.Redalliance, t2_command_relais
+		Description: Flame weaponry creates plasma as a result of their increased intense heat
+		BuildDurationModifier: 120
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 1000
+	RenderSprites:
+		Image: blueflameicon
+	ProvidesPrerequisite:
+		Prerequisite: research.WeaponsFlamer.Redalliance
+
+Upgrade.SerumRage.Infantry:
+	Inherits@Research: ^ResearchActor
+	AlwaysVisible:
+	Tooltip:
+		Name: Rage Serum
+	Buildable:
+		BuildPaletteOrder: 70
+		Queue: Research.RedAlliance
+		Prerequisites: ~!research.SerumRage.Infantry, t2_command_relais
+		Description: Infantry units’ attack and speed increased by 25% when their HP are at 25% or lower
+		BuildDurationModifier: 100
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 2000
+	RenderSprites:
+		Image: serumicon
+	ProvidesPrerequisite:
+		Prerequisite: research.SerumRage.Infantry
+
+Upgrade.FusionSpeed.Vehicle:
+	Inherits@Research: ^ResearchActor
+	AlwaysVisible:
+	Tooltip:
+		Name: Fusion Engine
+	Buildable:
+		BuildPaletteOrder: 80
+		Queue: Research.RedAlliance
+		Prerequisites: ~!research.FusionSpeed.Vehicle, t2_command_relais
+		Description: Improves ground vehicles’ mobility by 20%
+		BuildDurationModifier: 120
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: fusion_engineicon
+	ProvidesPrerequisite:
+		Prerequisite: research.FusionSpeed.Vehicle
+
+Upgrade.HE.Weapons.Redalliance:
+	Inherits@Research: ^ResearchActor
+	AlwaysVisible:
+	Tooltip:
+		Name: Miniaturized Nuclear Warheads
+	Buildable:
+		BuildPaletteOrder: 90
+		Queue: Research.RedAlliance
+		Prerequisites: ~!research.HE.Weapons.Redalliancee, t2_command_relais
+		Description: Slightly increases the overall damage inflicted by shell-based weaponry\nDrastically improves the effectiveness against infantry
+		BuildDurationModifier: 120
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 1000
+	RenderSprites:
+		Image: nukeammo_icon
+	ProvidesPrerequisite:
+		Prerequisite: research.HE.Weapons.Redalliancee
+
+Upgrade.Flak.Basilisk.Redalliance:
+	Inherits@Research: ^ResearchActor
+	AlwaysVisible:
+	Tooltip:
+		Name: Retrofits
+	Buildable:
+		BuildPaletteOrder: 100
+		Queue: Research.RedAlliance
+		Prerequisites: ~!research.Flak.Basilisk.Redalliance, t2_command_relais
+		Description: Provides additional firepower to existing vehicles\n> Basilisks get an additional pair of anti-air autocannons\n> Manticores get a close defense anti-vehicle turret\n> Hydras get incendiary rocket-launchers and can now switch between two modes
+		BuildDurationModifier: 120
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 1000
+	RenderSprites:
+		Image: arflakicon
+	ProvidesPrerequisite:
+		Prerequisite: research.Flak.Basilisk.Redalliance
+
+^BuildingGivePower.Alliance:
+	NukePower@FusionMissile:
+		OrderName: Judgment
+		PauseOnCondition: disabled
+		Cursor: nuke
+		Icon: fusionmissileicon
+		ChargeInterval: 8500
+		FlightVelocity: 1c128
+		FlightDelay: 280
+		Description: Judgment
+		LongDesc: Orders a missile strike at the selected location\nThe missile melts the terrain around the impact zone, constantly slowing and damaging ground units in the area
+		BeginChargeSpeechNotification:
+		EndChargeSpeechNotification:
+		SelectTargetSpeechNotification:
+		InsufficientPowerSpeechNotification:
+		IncomingSpeechNotification:
+		SkipAscent: true
+		MissileWeapon: Fusion.Missile
+		MissileDelay: 5
+		SpawnOffset: 1c0,427,0
+		DisplayTimerStances: Ally, Neutral, Enemy
+		DisplayBeacon: false
+		DisplayRadarPing: True
+		BeaconPoster: atomicon
+		CameraRange: 8c0
+
+Unlocked.droneSpawn.Redalliance:
+	Inherits@1: ^Select.Power.Limit
+	AlwaysVisible:
+	Tooltip:
+		Name: Spawn Drone View
+		Description: ...
+	Buildable:
+		BuildPaletteOrder: 70
+		Queue: nope.RedAlliance
+		Prerequisites: !Unlocked.droneSpawn.Redalliance, !Select.Power3
+	Valued:
+		Cost: 0
+	ProvidesPrerequisite:
+		Prerequisite: Unlocked.droneSpawn.Redalliance
+	ProvidesPrerequisite@SelectPower:
+		Prerequisite: Select.Power
+	RenderSprites:
+		Image: nukeammo_icon
+
+UnkownPlace.baneslayerVehicle30:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 30
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.baneslayerVehicle40:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 40
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.baneslayerVehicle50:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 50
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.baneslayerVehicle60:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 60
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.baneslayerVehicle90:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 90
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.baneslayerVehicle100:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 100
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.baneslayerVehicle110:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 110
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.baneslayerVehicle120:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 120
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.baneslayerVehicle140:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 140
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.baneslayerVehicle150:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 150
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.baneslayerVehicle160:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 160
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.baneslayerVehicle170:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 170
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.baneslayerVehicle180:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 180
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.redalliance10:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 10
+		Queue: Building.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.redalliance70:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 70
+		Queue: Building.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.redalliance100:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 100
+		Queue: Building.redalliance
+		Prerequisites: unkown
+
+UnkownPlace.redalliance110:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 110
+		Queue: Building.redalliance
+		Prerequisites: unkown

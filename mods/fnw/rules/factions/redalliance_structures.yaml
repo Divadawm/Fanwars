@@ -1,0 +1,808 @@
+aracnst:
+	Inherits@1: ^Building
+	Inherits@2: ^3x2Shape
+	Valued:
+		Cost: 2000
+	Selectable:
+		Bounds: 80,80,0,0
+	Tooltip:
+		Name: Construction Yard
+		Description: Builds structures
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+		BuildSounds: makebuild.wav
+	Health:
+		HP: 10000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 10c0
+	ProductionAirdrop:
+		Produces: Building.redalliance
+		ActorType: t0_transportship
+	Production:
+		Produces: Defence.redalliance
+	Transforms:
+		IntoActor: armcv
+		Offset: 1,1
+		Facing: 96
+	ProductionQueue@Building:
+		Type: Building.redalliance
+		Factions: redalliance
+		Group: Building
+		LowPowerSlowdown: 2
+		QueuedAudio: Building
+		ReadyAudio: BuildingReady
+	ProductionQueue@DEFENCE:
+		Type: Defence.redalliance
+		Factions: redalliance
+		Group: defence
+		LowPowerSlowdown: 2
+		QueuedAudio: Building
+		ReadyAudio: BuildingReady
+	Exit@1:
+		SpawnOffset: -850,900,0
+		ExitCell: 0,2
+	BaseBuilding:
+	ProductionBar@Building:
+		ProductionType: Building.redalliance
+	ProductionBar@Defence:
+		ProductionType: Defence.redalliance
+	BaseProvider:
+		Cooldown: 75
+		Range: 14c0
+	WithBuildingPlacedAnimation:
+	WithDeliveryAnimation:
+	ProvidesRadar:
+	RallyPoint:
+		RallyPoint: 3,4
+	ProvidesPrerequisite@buildingname:
+	HitShape:
+
+arpowr:
+	Inherits@1: ^Building
+	Inherits@2: ^3x2Shape
+	Buildable:
+		Queue: nope.redalliance
+		BuildPaletteOrder: 10
+		Prerequisite: aracnst
+		BuildDurationModifier: 5
+		Description: Provides power for other structures.
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Power Plant
+	Selectable:
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+		BuildSounds: makebuild.wav
+		Adjacent: 10
+	Health:
+		HP: 2000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	Power:
+		Amount: 100
+	InfiltrateForPowerOutage:
+	WithIdleOverlay@Smoke:
+		Offset: -545, 480, 1630
+		Sequence: smoke_cheminal
+		Palette: effect
+	AffectedByPowerOutage:
+	ScalePowerWithHealth:
+	HitShape:
+
+arhighpowr:
+	Inherits@1: ^Building
+	Inherits@2: ^5x4Shape
+	Buildable:
+		Queue: nope.redalliance
+		BuildPaletteOrder: 130
+		Prerequisites: BuildOrderBase.redalliance, Mobile.Orbital.Relay
+		BuildDurationModifier: 30
+		Description: Much more efficient than the regular power plant.
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Super Power Plant
+	Selectable:
+	Building:
+		Footprint: xxxxx xxxxx xxxxx
+		Dimensions: 5,3
+		Adjacent: 10
+		BuildSounds: makebuild.wav
+	Health:
+		HP: 3500
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	Power:
+		Amount: 350
+	InfiltrateForPowerOutage:
+	WithIdleOverlay@Smoke1:
+		Offset: 3000, -400, 0
+		Sequence: smoke_cheminal
+		Palette: effect
+	WithIdleOverlay@Smoke2:
+		Offset: 2000, 1900, 0
+		Sequence: smoke_cheminal
+		Palette: effect
+	WithIdleOverlay@Smoke3:
+		Offset: 600, -500, 0
+		Sequence: smoke_cheminal
+		Palette: effect
+	AffectedByPowerOutage:
+	ScalePowerWithHealth:
+	HitShape:
+
+arproc:
+	Inherits@1: ^Building
+	Inherits@2: ^3x3Shape
+	Buildable:
+		Queue: none.redalliance
+		BuildPaletteOrder: 80
+		Prerequisites: aracnst
+		BuildDurationModifier: 20
+		Description: Refines Diastim into credits
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: Diastim Refinery
+	Building:
+		Footprint: === xxx xx=
+		Dimensions: 3,3
+		BuildSounds: makebuild.wav
+		Adjacent: 10
+	Selectable:
+		Bounds: 72,50,0,12
+	SelectionDecorations:
+		VisualBounds: 72,70,0,-2
+	Targetable:
+		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 6c0
+	Refinery@1:
+		DockAngle: 164
+		DockOffset: 2,2
+		UseStorage: false
+	FreeActor:
+		Actor: t1_harvester
+		SpawnOffset: 1,2
+		Facing: 64
+	DrawLineToTarget:
+	CustomSellValue:
+		Value: 600
+	InfiltrateForCash:
+		Percentage: 50
+		Minimum: 500
+		Notification: credit1.aud
+	Transforms:
+		IntoActor: refinery.seconddeploy
+		Offset: 1,1
+		Facing: 32
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	ProvidesPrerequisite@buildingame:
+		Prerequisite: arproc
+	Power:
+		Amount: 0
+	WithDeathAnimation:
+	HitShape:
+
+arproc.seconddeploy:
+	Inherits@1: ^Building
+	Inherits@2: ^3x3Shape
+	Buildable:
+		Queue: none.redalliance
+		BuildPaletteOrder: 80
+		Prerequisites: aracnst
+		Description: Refines Diastim into credits
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Diastim Refinery
+	Building:
+		Footprint: === xxx xx=
+		Dimensions: 3,3
+		BuildSounds: makebuild.wav
+		Adjacent: 10
+	Selectable:
+		Bounds: 72,50,0,12
+	SelectionDecorations:
+		VisualBounds: 72,70,0,-2
+	Targetable:
+		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 6c0
+	Refinery@1:
+		DockAngle: 96
+		DockOffset: 2,2
+	StoresResources:
+		PipCount: 0
+		Capacity: 500000
+	DrawLineToTarget:
+	CustomSellValue:
+		Value: 600
+	InfiltrateForCash:
+		Percentage: 50
+		Minimum: 500
+		Notification: credit1.aud
+	Transforms:
+		IntoActor: refinery.seconddeploy
+		Offset: 1,1
+		Facing: 32
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	ProvidesPrerequisite@buildingame:
+		Prerequisite: arproc
+	Power:
+		Amount: 0
+	WithDeathAnimation:
+	RenderSprites:
+		Image: arproc
+	HitShape:
+
+arbarr:
+	Inherits@1: ^Building
+	Inherits@2: ^3x2Shape
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Barracks
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+		BuildSounds: makebuild.wav
+		BuildDurationModifier: 5
+		Description: Produces infantry units
+		Adjacent: 10
+	Health:
+		HP: 2500
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 6c0
+	Production:
+		Produces: Infantry.redalliance
+	ProductionQueue@Infantry:
+		Type: Infantry.redalliance
+		Factions: redalliance
+		Group: Infantry
+		LowPowerSlowdown: 2
+	ProductionBar@HeavyInfantry:
+		ProductionType: Infantry.redalliance
+	RallyPoint:
+	Transforms:
+		IntoActor: arnahand
+		Offset: 1,1
+		Facing: 96
+	Exit@1:
+		SpawnOffset: -850,900,0
+		ExitCell: 0,2
+	WithBuildingPlacedAnimation:
+	Power:
+		Amount: 0
+	ProximityExternalCondition@HEAL:
+		Condition: HealInfantry
+		Range: 5c0
+		AffectsParent: true
+	ProvidesPrerequisite@buildingame:
+		Prerequisite: arbarr
+	HitShape:
+
+arweap:
+	Inherits@1: ^Building
+	Inherits@2: ^4x3Shape
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: War Factory
+	ProvidesPrerequisite@buildingame:
+		Prerequisite: arweap
+	Building:
+		Footprint: xxxx xxxx xxx=
+		Dimensions: 4,3
+		BuildSounds: makebuild.wav
+		Adjacent: 10
+		Description: Produces ground vehicles
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	RallyPoint:
+		RallyPoint: 3,4
+	Exit:
+		SpawnOffset: -50,-50,0
+		ExitCell: 2,1
+	ProximityExternalCondition@BuildingRepair:
+		Condition: RepairVehicle
+		Range: 5c0
+		AffectsParent: true
+	WithProductionDoorOverlay:
+		Sequence: build-top
+	Production:
+		Produces: Vehicle.redalliance
+	ProductionQueue@Vehicle:
+		Type: Vehicle.redalliance
+		Factions: redalliance
+		Group: Vehicle
+		LowPowerSlowdown: 2
+	ProductionBar@Vehicle:
+		ProductionType: Vehicle.redalliance
+	Power:
+		Amount: 0
+	Transforms:
+		IntoActor: arnaweap
+		Offset: 2,1
+		Facing: 164
+	ConditionManager:
+	HitShape:
+
+artech:
+	Inherits@1: ^Building
+	Inherits@2: ^3x2Shape
+	Selectable:
+		Bounds: 100,100
+	Health:
+		HP: 5500
+	Armor:
+		Type: Concrete
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Orbital Relay
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+		Adjacent: 10
+		BuildSounds: makebuild.wav
+		Description: Unlocks tier 2 units, upgrades and structures
+	Production:
+		Produces: Research.RedAlliance
+		MoveIntoWorld: false
+	Transforms:
+		IntoActor: mobilerelay
+		Offset: 1,1
+		Facing: 164
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	RevealsShroud:
+		Range: 4c0
+	Exit:
+	ProductionQueue@Research:
+		Type: Research.RedAlliance
+		Factions: redalliance
+		Group: Research
+		BuildDurationModifier: 80
+		LowPowerSlowdown: 2
+		QueuedAudio: Research
+		ReadyAudio: ResearchReady
+	ProvidesPrerequisite@buildingame:
+		Prerequisite: artech
+	ProductionBar@Research.RedAlliance:
+		ProductionType: Research.RedAlliance
+	Power:
+		Amount: 0
+	WithDeliveryAnimation:
+		ActiveSequence: idle
+	HitShape:
+
+ardeftech:
+	Inherits@1: ^Building
+	Inherits@2: ^3x2Shape
+	Inherits@PowerBuilding: ^BuildingGivePower.Alliance
+	Selectable:
+		Bounds: 100,100
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Defence Outpost
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+		Adjacent: 10
+		BuildSounds: makebuild.wav
+	Transforms:
+		IntoActor: t1_defence_hq
+		Offset: 0,0
+		Facing: 164
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	RevealsShroud:
+		Range: 4c0
+	Exit:
+	BaseProvider:
+		Cooldown: 75
+		Range: 14c0
+	ProvidesPrerequisite:
+	Power:
+		Amount: 0
+	HitShape:
+
+t3_commandbuilding:
+	Inherits@1: ^Building
+	Inherits@2: ^3x2Shape
+	Selectable:
+		Bounds: 100,100
+	Health:
+		HP: 5500
+	Armor:
+		Type: Concrete
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Orbital Command Center
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+		Adjacent: 10
+		BuildSounds: makebuild.wav
+		Description: Unlocks tier 3 units, upgrades and structures
+	Production:
+		Produces: Research.RedAlliance
+		MoveIntoWorld: false
+	Transforms:
+		IntoActor: t2_command_relais
+		Offset: 1,1
+		Facing: 164
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	RevealsShroud:
+		Range: 4c0
+	ProvidesPrerequisite@buildingame:
+		Prerequisite: t2_command_relais
+	RenderSprites:
+		Scale: 1.04
+	Power:
+		Amount: 0
+	WithDeliveryAnimation:
+		ActiveSequence: idle
+	HitShape:
+
+droned:
+	Inherits@1: ^Building
+	Inherits@2: ^1x1Shape
+	Valued:
+		Cost: 0
+	Selectable:
+		Bounds: 24,24
+	Tooltip:
+		Name: Arachne Turret
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	RevealsShroud:
+		Range: 8c0
+	Health:
+		HP: 2000
+	Transforms:
+		IntoActor: ar_scarab
+		Offset: 0,0
+		Facing: 96
+	Cloak:
+		InitialDelay: 2
+		CloakDelay: 2
+		CloakSound:
+		UncloakSound:
+		IsPlayerPalette: true
+		CloakTypes: buried
+	Armor:
+		Type: LightVehicle
+	-MustBeDestroyed:
+	HitShape:
+
+t3_annihilator_deployed:
+	Inherits@1: ^Building
+	Inherits@2: ^1x1Shape
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Inherits@3: ^ConditioneffetGeneralsUnit
+	Inherits@4: ^ConditionGeneralBuildDefense
+	Valued:
+		Cost: 0
+	Selectable:
+		Bounds: 36,36
+	Tooltip:
+		Name: Deployed Annihilator
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	RevealsShroud:
+		Range: 7c0
+	Health:
+		HP: 6000
+	Transforms:
+		IntoActor: t3_annihilator
+		Offset: 0,0
+		Facing: 96
+	GrantConditionOnAttack@TargetRailgun:
+		ArmamentNames: primary
+		RevokeOnNewTarget: true
+		RequiredShotsPerInstance: 25
+		Condition: Target
+	Armament@gun:
+		Weapon: Ann.TargetBeam
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 2150,0,1280
+		RequiresCondition: !Target
+	Armament@railgun:
+		Weapon: RailgunAnn
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 2150,0,1280
+		RequiresCondition: Target
+	Armor:
+		Type: Heavy
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 4
+		RealignDelay: 20
+	RenderSprites:
+		Scale: 0.8
+	RenderVoxels:
+		Scale: 0.8
+		-WAngle:
+	WithVoxelTurret:
+		ShowShadow: false
+	WithVoxelBarrel:
+		ShowShadow: false
+	-MustBeDestroyed:
+	HitShape:
+
+t2_predator_deployed:
+	Inherits@1: ^Building
+	Inherits@2: ^1x1Shape
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Buildable:
+		Queue: Defence.redalliance
+		BuildPaletteOrder: 40
+		BuildDurationModifier: 10
+		Prerequisites: ardeftech
+		Description: Tier 1 defensive structure armed with a high-caliber autocannon\nRate-of-fire increased when deployed\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 800
+	Selectable:
+		Bounds: 28,28
+	Tooltip:
+		Name: Cyclops Turret
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+		Adjacent: 10
+	RevealsShroud:
+		Range: 7c0
+	Armor:
+		Type: Concrete
+	Health:
+		HP: 4000
+	Transforms:
+		IntoActor: t2_predator_mobile
+		Offset: 0,0
+		Facing: 96
+	Armament@gun:
+		Weapon: Predator.gun
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 150,0,200
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 4
+		RealignDelay: 20
+	RenderVoxels:
+		Scale: 1
+		-WAngle:
+	WithVoxelTurret:
+		ShowShadow: false
+	-MustBeDestroyed:
+	WithVoxelBarrel:
+		ShowShadow: false
+	HitShape:
+
+t2_tarantula_deployed:
+	Inherits@1: ^Building
+	Inherits@2: ^1x1Shape
+	Inherits@AUTOTARGET: ^AutoTargetAir
+	Buildable:
+		Queue: Defence.redalliance
+		BuildPaletteOrder: 40
+		BuildDurationModifier: 10
+		Prerequisites: ardeftech
+		Description: Tier 2 anti-air defensive structure\nRange increased when deployed\n> Strong vs Aircraft\n> Weak vs Infantry, Vehicles
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 600
+	Selectable:
+		Bounds: 28,28
+	Tooltip:
+		Name: Centaur Turret
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+		Adjacent: 10
+	RevealsShroud:
+		Range: 7c0
+	Health:
+		HP: 4000
+	Transforms:
+		IntoActor: t2_tarantula_mobile
+		Offset: 0,0
+		Facing: 96
+	Armament@gun:
+		Weapon: AP_Tarantula
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 150,50,850, 150,-50,850
+	DetectCloaked:
+		Range: 6c0
+		CloakTypes: Cloak, Buried
+	Armor:
+		Type: Concrete
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 4
+		RealignDelay: 20
+	RenderVoxels:
+		Scale: 1
+		-WAngle:
+	WithVoxelTurret:
+		ShowShadow: false
+	-MustBeDestroyed:
+	WithVoxelBarrel:
+		ShowShadow: false
+	HitShape:
+
+t3_doomtowerbuild:
+	Inherits@1: ^Building
+	Inherits@2: ^1x1Shape
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Inherits@EMPDisable: ^EmpDisable
+	Inherits@EMPSpeedDisable: ^EmpSpeedDisable
+	Buildable:
+		Queue: Defence.redalliance
+		BuildPaletteOrder: 40
+		BuildDurationModifier: 26
+		Prerequisites: ardeftech, t2_command_relais
+		Description: Tier 3 defensive structure fitted with a massive tesla coil\nDeals damage to all enemy ground units within a certain radius and resistance increased when deployed\n> Strong vs Infantry, Vehicles\n> Weak vs Aircraft
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 2600
+	Selectable:
+		Bounds: 28,28
+	Tooltip:
+		Name: Doom Tower
+	AttackTurreted:
+	Turreted:
+		TurnSpeed: 255
+		Offset: 128,128,384
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+		Adjacent: 10
+	ProximityExternalCondition@DoomForce:
+		Condition: DoomImpact
+		ValidStances: Enemy
+		Range: 9c0
+	DamageMultiplier@DoomShield:
+		Modifier: 8
+		RequiresCondition: !empdisable
+	Transforms:
+		IntoActor: t3_doomtower_mobile
+		Offset: 0,0
+		Facing: 164
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	RevealsShroud:
+		Range: 7c0
+	Health:
+		HP: 1000
+	WithIdleOverlay@Lightning:
+		Offset: 0,0,0
+		Sequence: doomtowerelectro
+		Palette: powereffect
+	WithIdleOverlay@Lightning2:
+		Offset: 0,0,0
+		Sequence: doomtowershield
+		Palette: powereffect
+		RequiresCondition: !empdisable
+	Armament@gun:
+		Weapon: DoomTower.Gun
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 0,0,1250
+	DetectCloaked:
+		Range: 6c0
+		CloakTypes: Cloak, Buried
+	Armor:
+		Type: Concrete
+	-MustBeDestroyed:
+	HitShape:
+
+arheli:
+	Inherits@1: ^Building
+	Inherits@2: ^3x2Shape
+	Buildable:
+		Queue: nope.redalliance
+		BuildPaletteOrder: 110
+		Prerequisites: BuildOrderBase.redalliance, Mobile.Orbital.Relay
+		BuildDurationModifier: 10
+		Description: Produces and repairs aircraft
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Airfield
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 5c0
+	Exit@1:
+		SpawnOffset: 0,-256,0
+		ExitCell: 0,0
+		MoveIntoWorld: false
+	ProximityExternalCondition@BuildingRepair:
+		Condition: RepairVehicle
+		Range: 5c0
+		AffectsParent: true
+	Production:
+		Produces: Aircraft.redalliance
+	ProductionQueue@Aircraft:
+		Type: Aircraft.redalliance
+		Factions: redalliance
+		Group: Aircraft
+		LowPowerSlowdown: 2
+	ProductionBar@Aircraft:
+		ProductionType: Aircraft.redalliance
+	RallyPoint:
+	WithBuildingPlacedAnimation:
+	ProvidesPrerequisite@buildingname:
+	Transforms:
+		IntoActor: t2_airfield
+		Offset: 1,1
+		Facing: 164
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	ProximityExternalCondition@REPAIRAIRCRAFT:
+		Condition: RepairAircraft
+		Range: 6c0
+		AffectsParent: true
+	Power:
+		Amount: 0
+	Reservable:
+	ConditionManager:
+	ProximityExternalCondition@AMMOCRAFT:
+		Condition: Ammocraft
+		Range: 5c0
+		AffectsParent: true
+	HitShape:

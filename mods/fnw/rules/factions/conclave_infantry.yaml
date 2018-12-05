@@ -1,0 +1,238 @@
+gardian:
+	Inherits@1: ^Infantry
+	Inherits@2: ^Global.Upgrade.Conclave
+	Inherits@3: ^Infantry.Upgrade.Conclave
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Vehicle.conclave
+		BuildPaletteOrder: 20
+		Description: Infantry armed with a laser rifle that has a three shots burst\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
+		BuildDurationModifier: 3
+		IconPalette: Conclave.Icon
+	Valued:
+		Cost: 100
+	Tooltip:
+		Name: Ranger
+	Health:
+		HP: 500
+	Mobile:
+		Crushes: gibs
+		Speed: 80
+	RevealsShroud:
+		Range: 6c0
+	AttackFrontal:
+	Armament@PRIMARY:
+		Weapon: Gardian.zap.Laser
+		LocalOffset: 0,0,260
+		MuzzleSequence: muzzle
+	WithInfantryBody:
+		IdleSequences: idle1
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: Gardian.zap.Laser
+		MuzzleSequence: garrison-muzzle
+	Armament@GARRISONEDFAFNIR:
+		Name: garrisoned.fafnir
+		Weapon: Gardian.zap.Laser.fafnir
+		MuzzleSequence: garrison-muzzle
+	ExternalCaptures:
+		CaptureTypes: TechBuilding
+		PlayerExperience: 20
+	HitShape:
+
+statis:
+	Inherits@1: ^Infantry
+	Inherits@2: ^Global.Upgrade.Conclave
+	Inherits@3: ^Infantry.Upgrade.Conclave
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Vehicle.conclave
+		BuildPaletteOrder: 30
+		Description: EMP laser equipped infantryman\nCan capture neutral structures\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
+		BuildDurationModifier: 4
+		IconPalette: Conclave.Icon
+	Valued:
+		Cost: 450
+	Tooltip:
+		Name: Statis
+	Health:
+		HP: 650
+	Mobile:
+		Crushes: gibs
+		Speed: 75
+	RevealsShroud:
+		Range: 6c0
+	AttackFrontal:
+	Armament@PRIMARY:
+		Weapon: Statis.emp.Laser
+		LocalOffset: 0,0,260
+		MuzzleSequence: muzzle
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: Statis.emp.Laser
+		MuzzleSequence: garrison-muzzle
+	Armament@GARRISONEDFAFNIR:
+		Name: garrisoned.fafnir
+		Weapon: Statis.emp.Laser.fafnir
+		MuzzleSequence: garrison-muzzle
+	WithInfantryBody:
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	HitShape:
+
+droneconclave:
+	Inherits@1: ^Infantry
+	Inherits@2: ^Global.Upgrade.Conclave
+	Inherits@3: ^Infantry.Upgrade.Conclave
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Vehicle.conclave
+		BuildPaletteOrder: 50
+		Description: Drone used for recon\nCan leap on infantry units\nCan explode violently when deployed\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
+		BuildDurationModifier: 5
+		IconPalette: Conclave.Icon
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Tracker
+	Health:
+		HP: 1000
+	Mobile:
+		Speed: 90
+	RevealsShroud:
+		Range: 6c0
+	AttackLeap:
+		Speed: 0c200
+	AttackMove:
+	GrantConditionOnDeploy:
+		DeployedCondition: Bipbipboum
+		DeploySound: bip.aud
+		CanUndeploy: false
+	KillsSelf:
+		RequiresCondition: Bipbipboum
+		Delay: 80
+	Explodes@Boum:
+		Weapon: bipboumexplode
+		RequiresCondition: Bipbipboum
+	Armament:
+		Weapon: DroneJaw
+	WithInfantryBody:
+		IdleSequences: idle1
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	SpawnActorOnDeath:
+		Actor: camera.scout.death
+		RequiresCondition: Bipbipboum
+	HitShape:
+
+t3_navigator:
+	Inherits@1: ^Infantry
+	Inherits@2: ^Global.Upgrade.Conclave
+	Inherits@3: ^Infantry.Upgrade.Conclave
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Vehicle.conclave
+		BuildPaletteOrder: 100
+		Prerequisites: tcholotech.navigator
+		Description: Infantry unit able to teleport and generate an energy beam affecting all enemies in its trajectory\n> Strong vs Infantry, Vehicles\n> Weak vs Aircraft
+		BuildDurationModifier: 10
+		IconPalette: Conclave.Icon
+	Valued:
+		Cost: 1050
+	Tooltip:
+		Name: Navigator
+	Health:
+		HP: 1000
+	Mobile:
+		Speed: 90
+		SharesCell: false
+		TerrainSpeeds:
+			Clear: 100
+			Road: 110
+			Rough: 90
+			Tree: 90
+			Beach: 90
+			Water: 90
+			Pilrock: 90
+			Diast: 90
+	RevealsShroud:
+		Range: 7c0
+	HiddenUnderFog:
+		Type: GroundPosition
+	PortableChrono:
+		ChargeDelay: 600
+		MaxDistance: 5
+	AttackFrontal:
+	-Crushable:
+	Armament@PRIMARY:
+		Weapon: Navigator.force
+		MuzzleSequence: muzzle
+	WithInfantryBody:
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	RenderSprites:
+		Scale: 0.95
+	HitShape:
+
+avatar:
+	Inherits@1: ^Infantry
+	Inherits@2: ^Global.Upgrade.Conclave
+	Inherits@3: ^Infantry.Upgrade.Conclave
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Nope.conclave
+		BuildPaletteOrder: 20
+		Description: Shock troop.
+		BuildDurationModifier: 4
+		IconPalette: Conclave.Icon
+	Valued:
+		Cost: 1050
+	Tooltip:
+		Name: Avatar
+	Health:
+		HP: 80000
+	DamageMultiplier:
+		Modifier: 0
+	Mobile:
+		Speed: 90
+		SharesCell: false
+		TerrainSpeeds:
+			Clear: 100
+			Road: 110
+			Rough: 90
+			Tree: 90
+			Beach: 90
+			Water: 90
+			Pilrock: 90
+			Diast: 90
+	RevealsShroud:
+		Range: 7c0
+	HiddenUnderFog:
+		Type: GroundPosition
+	AttackFrontal:
+	-Crushable:
+	Armament@PRIMARY:
+		Weapon: Avatar.Hallb
+		MuzzleSequence: muzzle
+	WithInfantryBody:
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	WithIdleOverlay@AURA:
+		Offset: 0, 0, 300
+		Sequence: AuraAvatar
+		Palette: powereffect60
+	WithIdleOverlay@LIGHT:
+		Offset: 0, 0, 950
+		Sequence: light
+		Palette: powereffect60
+	ProximityExternalCondition@AURA.UP:
+		Condition: avatar.up
+		Range: 6c0
+		AffectsParent: false
+	RenderSprites:
+		Scale: 1.25
+	KillsSelf:
+		Delay: 1100
+	HitShape:

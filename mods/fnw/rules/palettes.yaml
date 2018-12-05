@@ -1,0 +1,234 @@
+^Palettes:
+    PaletteFromFile@Olitrax:
+        Name: terrain
+        Tileset: OLITRAX
+        Filename: olitrax.pal
+	PaletteFromFile@player:
+		Name: player
+		Filename: unittem.pal
+		ShadowIndex: 1
+	PaletteFromFile@TerrainMat:
+		Name: TerrainMatPal
+		Filename: variante_terrainpal.pal
+		ShadowIndex: 1
+		AllowModifiers: false
+	PaletteFromFile@chrome:
+		Name: chrome
+		Filename: temperat.pal
+		ShadowIndex: 3
+		AllowModifiers: false
+	PaletteFromFile@Isotem:
+		Name: isotem
+		ShadowIndex: 255
+		Filename: isotem.pal
+		AllowModifiers: false
+	PaletteFromFile@effect:
+		Name: effect
+		Filename: temperat.pal
+		ShadowIndex: 1
+		AllowModifiers: false
+	PaletteFromFile@TerrainMat:
+		Name: TerrainMatPal
+		Filename: variante_terrainpal.pal
+		ShadowIndex: 1
+		AllowModifiers: false
+	PaletteFromFile@powereffect:
+		Name: powereffect
+		Filename: powereffect.pal
+		AllowModifiers: false
+	PaletteFromFile@colorpicker:
+		Name: colorpicker
+		Filename: unittem.pal
+		ShadowIndex: 1
+		AllowModifiers: false
+        
+	PaletteFromFile@RedAlliance.Icon:
+		Name: RedAlliance.Icon
+		Filename: palette_color_ar.pal
+        ShadowIndex: 1
+		AllowModifiers: false
+	PaletteFromFile@Conclave.Icon:
+		Name: Conclave.Icon
+		Filename: palette_color_conclave.pal
+        ShadowIndex: 1
+		AllowModifiers: false
+	PaletteFromFile@Federation.Icon:
+		Name: Federation.Icon
+		Filename: pallete_color_federation.pal
+        ShadowIndex: 1
+		AllowModifiers: false
+        
+	PaletteFromFile@light:
+		Name: light
+		Filename: light.pal
+		ShadowIndex: 0
+	PaletteFromFile@Greenlight:
+		Name: greenlight
+		Filename: greenlight.pal
+		ShadowIndex: 0
+	PaletteFromFile@Bluelight:
+		Name: bluelight
+		Filename: bluelight.pal
+		ShadowIndex: 0
+	PaletteFromFile@Cyanlight:
+		Name: cyanlight
+		Filename: cyanlight.pal
+		ShadowIndex: 0
+	PaletteFromFile@Redlight:
+		Name: redlight
+		Filename: redlight.pal
+		ShadowIndex: 0
+	PaletteFromFile@Purplelight:
+		Name: purplelight
+		Filename: purplelight.pal
+		ShadowIndex: 0
+	PaletteFromFile@Voidlight:
+		Name: voidlight
+		Filename: voidlight.pal
+		ShadowIndex: 0
+        
+	VoxelNormalsPalette@normals:
+		Name: normals
+		Filename: light.pal
+		ShadowIndex: 1
+        
+	PaletteFromRGBA@disabled:
+		Name: disabled
+		R: 0
+		G: 0
+		B: 0
+		A: 180
+        
+    PaletteFromRGBA@Upgrade_blue_effect:
+        BasePalette: effect
+		Name: Upgrade_blue_effect
+		R: 35
+		G: 35
+		B: 100
+		A: 255
+        
+    PaletteFromRGBA@red_effect:
+        BasePalette: effect
+		Name: Red_effect
+		R: 255
+		G: 35
+		B: 50
+		A: 255
+        
+	PaletteFromRGBA@shadow:
+		Name: shadow
+		R: 0
+		G: 0
+		B: 0
+		A: 110
+	PaletteFromRGBA@submerged:
+		Name: submerged
+		R: 0
+		G: 0
+		B: 0
+		A: 50
+	PaletteFromRGBA@highlight:
+		Name: highlight
+		R: 255
+		G: 255
+		B: 255
+		A: 128
+	PaletteFromRGBA@moveflash:
+		Name: moveflash
+		R: 255
+		G: 255
+		B: 255
+		A: 64
+	PaletteFromRGBA@invuln:
+		Name: invuln
+		R: 128
+		G: 0
+		B: 0
+		A: 128
+	PaletteFromRGBA@TargetRED:
+		Name: targetred
+		R: 98
+		G: 0
+		B: 0
+		A: 128
+	PaletteFromRGBA@palStun:
+		Name: palStun
+		R: 64
+		G: 64
+		B: 200
+		A: 160
+	PaletteFromRGBA@UnitShape:
+		Name: UnitShape
+		R: 0
+		G: 0
+		B: 0
+		A: 40
+	PaletteFromRGBA@damaged:
+		Name: damaged
+		R: 0
+		G: 0
+		B: 0
+		A: 80
+        
+	PaletteFromPaletteWithAlpha@Unitalpha60:
+		Name: unitalpha60
+		Alpha: 0.60
+		BasePalette: player
+        
+	PaletteFromPaletteWithAlpha@powereffect60:
+		Name: powereffect60
+		Alpha: 0.60
+		BasePalette: powereffect   
+        
+	PaletteFromPaletteWithAlpha@effectalpha75:
+		Name: effectalpha75
+		Alpha: 0.70
+		BasePalette: effect
+	PaletteFromPaletteWithAlpha@effectalpha45:
+		Name: effectalpha45
+		Alpha: 0.45
+		BasePalette: effect
+	PaletteFromPaletteWithAlpha@effectalpha30:
+		Name: effectalpha30
+		Alpha: 0.30
+		BasePalette: effect
+	PaletteFromPaletteWithAlpha@effectalpha55:
+		Name: effectalpha55
+		Alpha: 0.55
+		BasePalette: effect
+		Premultiply: false
+
+	ShroudPalette@shroud:
+		Name: shroud
+		Type: Shroud
+	ShroudPalette@fog:
+		Name: fog
+		Fog: true
+	PlayerColorPalette:
+		BasePalette: player
+		RemapIndex: 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+        Ramp: 0.25
+		ShadowIndex: 2
+	PaletteFromPaletteWithAlpha@effect50:
+		BasePalette: effect
+		Name: effect50
+		Alpha: 0.50
+	FixedColorPalette@diastgreen:
+		Base: player
+		Name: diastgreen
+		Color: d33efe
+		RemapIndex: 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+	FixedColorPalette@diastgold:
+		Base: player
+		Name: diastgold
+		Color: ffcc00
+		RemapIndex: 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+	PaletteFromPlayerPaletteWithAlpha@cloak:
+		BaseName: cloak
+		BasePalette: player
+		Alpha: 0.55
+	PlayerHighlightPalette:
+	MenuPaletteEffect:
+	ChronoshiftPaletteEffect:
+	FlashPaletteEffect@NUKE:
+		Type: Nuke

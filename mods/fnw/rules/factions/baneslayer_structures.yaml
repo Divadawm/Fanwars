@@ -1,0 +1,734 @@
+^BuriedStat:
+
+opcacnst:
+	Inherits: ^Building
+	Inherits@2: ^3x2Shape
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Construction Yard
+		Description: Mobile construction vehicle\nCan be outfitted with tier 3 modules
+	Building:
+		Footprint: xxxx xxxx xxxx
+		Dimensions: 4,3
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 10000
+	Armor:
+		Type: Concrete
+	RevealsShroud@base:
+		Range: 15c0
+		RequiresCondition: !Power.reveal.Baneslayer
+	RevealsShroud@radr:
+		Range: 25c0
+		RequiresCondition: Power.reveal.Baneslayer
+	Production:
+		Produces: Building.baneslayer, Defence.baneslayer
+		MoveIntoWorld: false
+	Transforms:
+		IntoActor: t2_yggdrasil
+		Offset: 1,1
+		Facing: 96
+		PauseOnCondition: Power.shield.Baneslayer  || Power.sword.Baneslayer  || Power.reveal.Baneslayer
+	ProductionQueue@Building:
+		Type: Building.baneslayer
+		Factions: baneslayer
+		Group: Building
+		LowPowerSlowdown: 2
+		QueuedAudio: Building
+		ReadyAudio: BuildingReady
+	ProductionQueue@DEFENCE:
+		Type: Defence.baneslayer
+		Factions: baneslayer
+		Group: defence
+		LowPowerSlowdown: 2
+		QueuedAudio: Building
+		ReadyAudio: BuildingReady
+	BaseBuilding:
+	ProductionBar@Building:
+		ProductionType: Building.baneslayer
+	ProductionBar@DEFENCE:
+		ProductionType: Defence.baneslayer
+	BaseProvider:
+		Cooldown: 75
+		Range: 15c0
+	WithBuildingPlacedAnimation:
+	ProvidesRadar:
+	Power:
+		Amount: 40
+	ProvidesPrerequisite@buildingname:
+	ProvidesPrerequisite@DoctreinesShield:
+		Prerequisite: Doctrine.Valkyr.baneslayer
+		RequiresCondition: Power.shield.Baneslayer
+	ProvidesPrerequisite@DoctreinesSword:
+		Prerequisite: Doctrine.Artemien.baneslayer
+		RequiresCondition: Power.sword.Baneslayer
+	ProvidesPrerequisite@UnlockDoctrine:
+		Prerequisite: Doctrine.unlocked.baneslayer
+		RequiresCondition: Power.sword.Baneslayer || Power.shield.Baneslayer
+	Pluggable@Radr:
+		Conditions:
+			plug.techradr: Power.reveal.Baneslayer
+	Pluggable@Doctrines:
+		Conditions:
+			plug.doctrineshield: Power.shield.Baneslayer
+			plug.doctrinesword: Power.sword.Baneslayer
+	WithIdleOverlay@plug1:
+		Offset: 0,0,0
+		Sequence: plug.moduleradr
+		RequiresCondition: Power.reveal.Baneslayer
+	WithIdleOverlay@plug2:
+		Offset: 0,0,0
+		Sequence: plug.modulesword
+		RequiresCondition: Power.sword.Baneslayer
+	WithIdleOverlay@plug3:
+		Offset: 0,0,0
+		Sequence: plug.moduleshield
+		RequiresCondition: Power.shield.Baneslayer
+	DetectCloaked@Plug:
+		Range: 20c0
+		CloakTypes: Cloak, Buried
+		RequiresCondition: Power.reveal.Baneslayer
+	RenderDetectionCircle:
+	RenderSprites:
+		Scale: 1.0
+	Exit:
+	HitShape:
+
+t1_ratatoskrbuild:
+	Inherits@1: ^Building
+	Inherits@2: ^1x1Shape
+	Valued:
+		Cost: 0
+	Selectable:
+		Bounds: 28,28
+	Tooltip:
+		Name: Deployed Ratatoskr
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	RevealsShroud:
+		Range: 12c0
+	Health:
+		HP: 2000
+	Transforms:
+		IntoActor: t1_ratatoskr
+		Offset: 0,0
+		Facing: 96
+		PauseOnCondition: plug.base
+	Armor:
+		Type: LightVehicle
+	-MustBeDestroyed:
+	Pluggable:
+		Conditions:
+			plug.base: plug.base
+	BaseProvider:
+		Cooldown: 75
+		Range: 4c0
+	GivesBuildableArea:
+		RequiresCondition: plug.base
+	WithIdleOverlay@plugbase:
+		Offset: 0,0,0
+		Sequence: idle.plug
+		RequiresCondition: plug.base
+	HitShape:
+
+doctrineshield.plug:
+	Inherits: ^BuildingPlugable
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Shield Protocol
+	Buildable:
+		Queue: Building.baneslayer
+		BuildPaletteOrder: 110
+		Prerequisites: optech, !Doctrine.Artemien.baneslayer, !Doctrine.Valkyr.baneslayer
+		Description: Only one protocol can be chosen\nGrants the authorization to create defensive and support-oriented units\n> Jötunn (heavy infantry) can be recruited\n> Dwarf (light support vehicle) can be created\n> Loki (experimental mobile ion cannon) can be created
+		BuildDurationModifier: 5
+	Plug:
+		Type: plug.doctrineshield
+
+doctrinesword.plug:
+	Inherits: ^BuildingPlugable
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Sword Protocol
+	Buildable:
+		Queue: Building.baneslayer
+		BuildPaletteOrder: 120
+		Prerequisites: optech, !Doctrine.Artemien.baneslayer, !Doctrine.Valkyr.baneslayer
+		Description: Only one protocol can be chosen\nGrants the authorization to create offensive-oriented units\n> Vanir (jumpjet infantry) can be recruited\n> Troll (self-propelled heavy mortar) can be created\n> Heimdall (heavy MLRS) can be created
+		BuildDurationModifier: 5
+	Plug:
+		Type: plug.doctrinesword
+
+opcacnst.plugradr:
+	Inherits: ^BuildingPlugable
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Advanced Radar Module
+	Buildable:
+		Queue: Building.baneslayer
+		BuildPaletteOrder: 100
+		Prerequisites: optech
+		Description: Provides a large line-of-sight around the construction yard\nCan detect stealthed units\nCan only be placed on a MCV\nMCV with modules cannot be redeployed anymore
+		BuildDurationModifier: 20
+	RevealsShroud:
+		Range: 18c0
+	Plug:
+		Type: plug.techradr
+	Power:
+		Amount: -35
+
+oppowr:
+	Inherits: ^Building
+	Inherits@2: ^3x2Shape
+	Inherits@Buried: ^BuriedStat
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: Building.baneslayer
+		BuildPaletteOrder: 10
+		Description: Provides power for other structures
+		BuildDurationModifier: 5
+		Adjacent: 18
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Powerplant
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+		Adjacent: 10
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 3500
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	Power@Base:
+		Amount: 80
+		RequiresCondition: !plug.powr
+	Power@Plug:
+		Amount: 140
+		RequiresCondition: plug.powr
+	InfiltrateForPowerOutage:
+	WithIdleOverlay@Smoke1:
+		Offset: 950, -120, 25
+		Sequence: smoke
+		Palette: effect
+	WithIdleOverlay@Smoke2:
+		Offset: 1250, 680, 25
+		Sequence: smoke
+		Palette: effect
+	ProvidesPrerequisite@buildingname:
+	AffectedByPowerOutage:
+	ScalePowerWithHealth:
+	Pluggable:
+		Conditions:
+			plug.powr: plug.powr
+	WithIdleOverlay@plugpowr:
+		Offset: 0,0,0
+		Sequence: plug.powr
+		RequiresCondition: plug.powr
+	HitShape:
+
+oppowr.plugpowr:
+	Inherits: ^BuildingPlugable
+	Valued:
+		Cost: 400
+	Tooltip:
+		Name: Plasma Reactor Module
+	Buildable:
+		Queue: Building.baneslayer
+		BuildPaletteOrder: 60
+		Prerequisites: optech
+		Description: Produces additional power\nCan only be placed on powerplants
+		BuildDurationModifier: 15
+	Plug:
+		Type: plug.powr
+	Power:
+		Amount: 50
+
+opproc:
+	Inherits: ^Building
+	Inherits@2: ^3x3Shape
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: Building.baneslayer
+		BuildPaletteOrder: 20
+		Description: Refines Diastim into credits
+		BuildDurationModifier: 20
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: Diastim Refinery
+	Building:
+		Footprint: xxx xxx xx=
+		Dimensions: 3,3
+		Adjacent: 18
+		BuildSounds: deploy_order.aud
+	Targetable:
+		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 6c0
+	Refinery@base:
+		DockAngle: 164
+		DockOffset: 2,2
+		UseStorage: false
+	DrawLineToTarget:
+	CustomSellValue:
+		Value: 600
+	FreeActor:
+		Actor: t1_dainn
+		SpawnOffset: 1,2
+		Facing: 64
+	InfiltrateForCash:
+		Percentage: 50
+		Minimum: 500
+		Notification: credit1.aud
+	Power:
+		Amount: -40
+	Explodes:
+		Delay: 1
+	ProvidesPrerequisite@buildingname:
+	HitShape:
+
+opbarr:
+	Inherits: ^Building
+	Inherits@2: ^3x2Shape
+	Inherits@Buried: ^BuriedStat
+	Selectable:
+		Bounds: 72,50,0,12
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Barracks
+	Buildable:
+		BuildPaletteOrder: 30
+		Description: Produces infantry units
+		Queue: Building.baneslayer
+		BuildDurationModifier: 5
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+		Adjacent: 18
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 3500
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 10c0
+	Production:
+		Produces: Infantry.baneslayer
+	ProductionQueue@Infantry:
+		Type: Infantry.baneslayer
+		Factions: baneslayer
+		Group: Infantry
+		LowPowerSlowdown: 2
+	ProductionBar@Infantry:
+		ProductionType: Infantry.baneslayer
+	RallyPoint:
+	Exit@1:
+		SpawnOffset: -850,900,0
+		ExitCell: 0,2
+	Exit@2:
+		SpawnOffset: -850,900,0
+		ExitCell: 0,3
+	Power:
+		Amount: -30
+	ProvidesPrerequisite@buildingname:
+	ConditionManager:
+	ProximityExternalCondition@HEAL:
+		Condition: HealInfantry
+		Range: 5c0
+		AffectsParent: true
+	HitShape:
+
+opweap:
+	Inherits: ^Building
+	Inherits@2: ^4x3Shape
+	Inherits@Buried: ^BuriedStat
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: Building.baneslayer
+		BuildPaletteOrder: 40
+		Prerequisites: opproc
+		Description: Produces vehicles
+		BuildDurationModifier: 25
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: War Factory
+	Building:
+		Footprint: xxxx xxxx xxx=
+		Dimensions: 4,3
+		BuildSounds: deploy_order.aud
+		Adjacent: 18
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	RallyPoint:
+		RallyPoint: 3,4
+	ProximityExternalCondition@BuildingRepair:
+		Condition: RepairVehicle
+		Range: 5c0
+		AffectsParent: true
+	WithProductionDoorOverlay:
+		Sequence: build-top
+	Exit:
+		SpawnOffset: -20,-20,0
+		ExitCell: 2,1
+	Production:
+		Produces: Vehicle.baneslayer
+	ProductionQueue@Vehicle:
+		Type: Vehicle.baneslayer
+		Factions: baneslayer
+		Group: Vehicle
+		LowPowerSlowdown: 2
+	ProductionBar@Vehicle:
+		ProductionType: Vehicle.baneslayer
+	ProductionBar:
+	ProvidesPrerequisite@buildingname:
+	Power:
+		Amount: -30
+	ConditionManager:
+	HitShape:
+
+optech:
+	Inherits: ^Building
+	Inherits@2: ^3x2Shape
+	Inherits@Buried: ^BuildingGivePower.Baneslayer
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: Building.baneslayer
+		BuildPaletteOrder: 50
+		Prerequisites: opweap
+		Description: Unlocks tier 2 units, upgrades and structures
+		BuildDurationModifier: 25
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Armory
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+		Adjacent: 18
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	Power:
+		Amount: -50
+	InfiltrateForPowerOutage:
+	ProvidesPrerequisite@tech:
+		Prerequisite: optech
+	Production:
+		Produces: Research.baneslayer
+		MoveIntoWorld: false
+	Exit:
+	ProductionQueue@Research:
+		Type: Research.baneslayer
+		Factions: baneslayer
+		Group: Research
+		LowPowerSlowdown: 2
+		QueuedAudio: Research
+		ReadyAudio: ResearchReady
+	ProductionBar@Research.Baneslayer:
+		ProductionType: Research.baneslayer
+	AffectedByPowerOutage:
+	ScalePowerWithHealth:
+
+optech2:
+	Inherits: ^Building
+	Inherits@2: ^3x2Shape
+	Buildable:
+		Queue: Building.baneslayer
+		BuildPaletteOrder: 90
+		Prerequisites: optech
+		Description: Unlocks tier 3 units, upgrades and structures
+		BuildDurationModifier: 25
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Advanced armory
+	Building:
+		Footprint: xxx xxx xxx
+		Dimensions: 3,3
+		Adjacent: 18
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 7000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	Power:
+		Amount: -50
+	InfiltrateForPowerOutage:
+	ProvidesPrerequisite@tech2:
+		Prerequisite: Research Module
+	AffectedByPowerOutage:
+	ScalePowerWithHealth:
+
+opavtech:
+	Inherits@1: ^Building
+	Inherits@2: ^3x2Shape
+	Inherits@PowerBuilding: ^BuildingGivePower.Baneslayer
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: nope.baneslayer
+		BuildPaletteOrder: 70
+		BuildDurationModifier: 20
+		Description: Unlocks the Order's defences and support powers
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Strategy Center
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+		Adjacent: 18
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	ProvidesPrerequisite:
+	Production:
+		Produces: Veteran.baneslayer
+		MoveIntoWorld: false
+	Exit:
+	ProductionQueue@Veteran:
+		Type: Veteran.baneslayer
+		Factions: baneslayer
+		Group: Veteran
+		LowPowerSlowdown: 2
+		QueuedAudio: Research
+		ReadyAudio: ResearchReady
+	ProductionBar@Veteran.baneslayer:
+		ProductionType: Veteran.baneslayer
+	Power:
+		Amount: -80
+	ScalePowerWithHealth:
+
+opheli:
+	Inherits: ^Building
+	Inherits@2: ^3x2Shape
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: Building.baneslayer
+		BuildPaletteOrder: 80
+		Prerequisites: optech
+		Description: Produces aircraft
+		BuildDurationModifier: 10
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Heliport
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+		Adjacent: 18
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 5c0
+	Exit@1:
+		SpawnOffset: 0,-256,0
+		ExitCell: 0,0
+		MoveIntoWorld: false
+	Production:
+		Produces: Aircraft.baneslayer
+	ProductionQueue@Aircraft:
+		Type: Aircraft.baneslayer
+		Factions: baneslayer
+		Group: Aircraft
+		LowPowerSlowdown: 2
+	ProductionBar@Aircraft:
+		ProductionType: Aircraft.baneslayer
+	RallyPoint:
+	WithBuildingPlacedAnimation:
+	ProvidesPrerequisite@buildingname:
+	Power:
+		Amount: -30
+	Reservable:
+	ConditionManager:
+	ProximityExternalCondition@AMMOCRAFT:
+		Condition: Ammocraft
+		Range: 5c0
+		AffectsParent: true
+	HitShape:
+
+t1_midgard:
+	Inherits@1: ^Building
+	Inherits@2: ^1x1Shape
+	Inherits@AUTOTARGET: ^AutoTargetAll
+	Buildable:
+		Queue: Defence.baneslayer
+		BuildPaletteOrder: 10
+		BuildDurationModifier: 10
+		Prerequisites: opbarr
+		Description: Tier 1 defensive structure armed with autocannons\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
+	Valued:
+		Cost: 600
+	Selectable:
+		Bounds: 28,28
+	Tooltip:
+		Name: Midgard
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+		Adjacent: 10
+	RevealsShroud:
+		Range: 7c0
+	Health:
+		HP: 6000
+	Armament@gun:
+		Weapon: Midgard.gun
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 15,650,850
+	DetectCloaked:
+		Range: 2c0
+		CloakTypes: Cloak, Buried
+	Armor:
+		Type: Heavy
+	AttackTurreted:
+	AutoTarget:
+	Turreted:
+		TurnSpeed: 4
+		RealignDelay: 20
+	Power:
+		Amount: -30
+	RenderVoxels:
+		Scale: 1.32
+		-WAngle:
+	WithVoxelTurret:
+		ShowShadow: false
+	WithVoxelBarrel:
+		ShowShadow: false
+	HitShape:
+
+t2_niflheim:
+	Inherits@1: ^Building
+	Inherits@2: ^1x1Shape
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Buildable:
+		Queue: Defence.baneslayer
+		BuildPaletteOrder: 20
+		BuildDurationModifier: 10
+		Prerequisites: opbarr
+		Description: Tier 2 defensive structure fitted with an EMP howitzer\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
+	Valued:
+		Cost: 700
+	Selectable:
+		Bounds: 28,28
+	Tooltip:
+		Name: Niflheim
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+		Adjacent: 10
+	RevealsShroud:
+		Range: 7c0
+	Health:
+		HP: 6500
+	Armament@gun:
+		Weapon: Niflheim.gun
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 15,650,850
+	DetectCloaked:
+		Range: 2c0
+		CloakTypes: Cloak, Buried
+	Armor:
+		Type: Heavy
+	AttackTurreted:
+	AutoTarget:
+	Turreted:
+		TurnSpeed: 4
+		RealignDelay: 20
+	RenderVoxels:
+		Scale: 1.1
+		-WAngle:
+	Power:
+		Amount: -30
+	WithVoxelTurret:
+		ShowShadow: false
+	WithVoxelBarrel:
+		ShowShadow: false
+	HitShape:
+
+t3_hel:
+	Inherits@1: ^Building
+	Inherits@2: ^1x1Shape
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Buildable:
+		Queue: Defence.baneslayer
+		BuildPaletteOrder: 30
+		BuildDurationModifier: 15
+		Prerequisites: Research Module
+		Description: Tier 3 defensive structure capable of launching hypersonic ATGM\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
+	Valued:
+		Cost: 900
+	Selectable:
+		Bounds: 28,28
+	Tooltip:
+		Name: Hel Turret
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+		Adjacent: 10
+	RevealsShroud:
+		Range: 7c0
+	Health:
+		HP: 10000
+	Armament@gun:
+		Weapon: Helgun
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 15,650,850
+	DetectCloaked:
+		Range: 2c0
+		CloakTypes: Cloak, Buried
+	Armor:
+		Type: Heavy
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	AutoTarget:
+	Turreted:
+		TurnSpeed: 4
+		RealignDelay: 20
+	Power:
+		Amount: -40
+	RenderVoxels:
+		Scale: 1.0
+		-WAngle:
+	WithVoxelTurret:
+		ShowShadow: false
+	HitShape:

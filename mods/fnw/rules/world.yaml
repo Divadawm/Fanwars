@@ -1,0 +1,325 @@
+^BaseWorld:
+	AlwaysVisible:
+	Inherits: ^Palettes
+	ScreenMap:
+	ActorMap:
+	MusicPlaylist:
+		VictoryMusic: score
+		DefeatMusic: score
+	TerrainGeometryOverlay:
+	ShroudRenderer:
+		FogVariants: shroud
+		Index: 255, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 20, 40, 56, 65, 97, 130, 148, 194, 24, 33, 66, 132, 28, 41, 67, 134, 1, 2, 4, 8, 3, 6, 12, 9, 7, 14, 13, 11, 5, 10, 15, 255
+		UseExtendedIndex: true
+	Faction@Random:
+		Name: Any
+		InternalName: Random
+		RandomFactionMembers: redalliance, baneslayer, conclave
+		Description: ...
+	Faction@Redalliance:
+		Name: Alliance
+		InternalName: redalliance
+		Description: ...
+	Faction@baneslayer:
+		Name: Order
+		InternalName: baneslayer
+		Description: ...
+	Faction@Conclave:
+		Name: Conclave
+		InternalName: conclave
+		Description: ...  
+	Faction@Federation:
+		Name: Federation
+		InternalName: federation
+		Description: ...  
+	ResourceType@Diast:
+		Image: resources
+		Type: Diast
+		Name: Diastime
+		ResourceType: 1
+		Palette: diastgreen
+		TerrainType: Diast
+		MaxDensity: 140
+		ValuePerUnit: 30
+		Sequences: diast01, diast02, diast03, diast04, diast05
+		PipColor: green
+		AllowedTerrainTypes: Clear,Road
+		AllowUnderActors: true
+	ResourceType@DiastGem:
+		Image: resources
+		Type: Diastgems
+		Name: Diastime
+		ResourceType: 2
+		Palette: diastgold
+		TerrainType: Diastgems
+		MaxDensity: 140
+		ValuePerUnit: 50
+		Sequences: diast01, diast02, diast03, diast04, diast05
+		PipColor: red
+		AllowedTerrainTypes: Clear,Road
+		AllowUnderActors: true
+	SubterraneanActorLayer:
+	Locomotor@FOOT:
+		Name: foot
+		Crushes: crate
+		SharesCell: true
+		TerrainSpeeds:
+			Clear: 100
+			Road: 100
+			Rough: 95
+			Tree: 95
+			Pilrock: 90
+			Diast: 90
+			Diastgems: 90
+	Locomotor@FLAMEGUY:
+		Name: flameguy
+		SharesCell: true
+		TerrainSpeeds:
+			Clear: 100
+			Road: 100
+			Rough: 100
+			Tree: 90
+			Pilrock: 90
+			Diast: 90
+			Diastgems: 90
+	JumpjetLocomotor@JUMPJET:
+		Name: jumpjet
+		Crushes: crate
+		SharesCell: true
+		JumpjetTransitionCost: 100
+		TerrainSpeeds:
+			Clear: 100
+			Road: 100
+			Rough: 100
+			Tree: 90
+			Pilrock: 90
+			Diast: 90
+			Diastgems: 90
+	Locomotor@WHEELED:
+		Name: wheeled
+		Crushes: crate
+		TerrainSpeeds:
+			Clear: 100
+			Road: 120
+			Rough: 90
+			Tree: 90
+			Pilrock: 80
+			Diast: 90
+			Diastgems: 90
+	Locomotor@HEAVYWHEELED:
+		Name: heavywheeled
+		Crushes: wall, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Road: 110
+			Rough: 85
+			Tree: 90
+			Pilrock: 80
+			Diast: 90
+			Diastgems: 90
+	Locomotor@TRACKED:
+		Name: tracked
+		Crushes: wall, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Road: 110
+			Rough: 85
+			Tree: 90
+			Pilrock: 75
+			Diast: 90
+			Diastgems: 90
+	Locomotor@AMPHIBIOUS:
+		Name: amphibious
+		Crushes: wall, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Road: 110
+			Rough: 90
+			Tree: 90
+            River: 90
+			Pilrock: 80
+			Diast: 90
+			Diastgems: 90
+			Water: 80
+	SubterraneanLocomotor@SUBTERRANEAN:
+		Name: subterranean
+		Crushes: wall, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Road: 110
+			Rough: 90
+			Tree: 90
+			Pilrock: 80
+			Diast: 90
+			Diastgems: 90
+			Subterranean: 120
+		SubterraneanTransitionTerrainTypes: Clear, Rough
+		SubterraneanTransitionCost: 120
+	Locomotor@HOVER:
+		Name: hover
+		Crushes: wall, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Road: 110
+			Rough: 90
+			Tree: 90
+			Pilrock: 80
+            River: 90
+			Diast: 90
+			Diastgems: 90
+			Water: 100
+	MapOptions:
+
+World:
+	Inherits: ^BaseWorld
+	ChatCommands:
+	DevCommands:
+	PlayerCommands:
+	HelpCommand:
+	ScreenShaker:
+	BuildingInfluence:
+	ProductionQueueFromSelection:
+		ProductionTabsWidget: PRODUCTION_TABS
+	DomainIndex:
+	WarheadDebugOverlay:
+	CustomTerrainDebugOverlay:
+	ResourceLayer:
+	ResourceClaimLayer:
+	SpawnMapActors:
+	CreateMPPlayers:
+	MapBuildRadius:
+		AllyBuildRadiusCheckboxDisplayOrder: 4
+		BuildRadiusCheckboxDisplayOrder: 5
+	MapOptions:
+		ShortGameCheckboxDisplayOrder: 2
+		TechLevelDropdownDisplayOrder: 2
+		GameSpeedDropdownDisplayOrder: 3
+	GlobalLightingPaletteEffect:
+		Red: 0.94
+		Green: 0.94
+		Blue: 0.94
+		Ambient: 0.85
+	MPStartUnits@redalliance:
+		Class: none
+		ClassName: Exploration unit
+		Factions: redalliance
+		BaseActor: aracnst
+		SupportActors: t1_bike
+		InnerSupportRadius: 2
+		OuterSupportRadius: 4
+	MPStartUnits@lightredalliance:
+		Class: light
+		ClassName: MCV only
+		Factions: redalliance
+		BaseActor: aracnst
+	MPStartUnits@heavyredalliance:
+		Class: heavy
+		ClassName: Small support
+		Factions: redalliance
+		BaseActor: aracnst
+		SupportActors: ar_scarab, t2_basilisk
+		InnerSupportRadius: 2
+		OuterSupportRadius: 4
+	MPStartUnits@baneslayer:
+		Class: none
+		ClassName: Exploration unit
+		Factions: baneslayer
+		BaseActor: opcacnst
+		SupportActors: t1_heidrun
+		InnerSupportRadius: 2
+		OuterSupportRadius: 4
+	MPStartUnits@lightbaneslayer:
+		Class: light
+		ClassName: MCV only
+		Factions: baneslayer
+		BaseActor: opcacnst
+	MPStartUnits@heavybaneslayer:
+		Class: heavy
+		ClassName: Small support
+		Factions: baneslayer
+		BaseActor: opcacnst
+		SupportActors: t1_ratatoskr, t2_garm
+		InnerSupportRadius: 2
+		OuterSupportRadius: 4
+	MPStartUnits@conclave:
+		Class: none
+		ClassName: Exploration unit
+		Factions: conclave
+		BaseActor: tccacnst
+		SupportActors: droneconclave
+		InnerSupportRadius: 2
+		OuterSupportRadius: 4
+	MPStartUnits@lightconclave:
+		Class: light
+		ClassName: MCV only
+		Factions: conclave
+		BaseActor: tccacnst
+	MPStartUnits@heavyconclave:
+		Class: heavy
+		ClassName: Small support
+		Factions: conclave
+		BaseActor: tccacnst
+		SupportActors: statis, t2_rodeur
+		InnerSupportRadius: 2
+		OuterSupportRadius: 4
+	MPStartUnits@federation:
+		Class: none
+		ClassName: Exploration unit
+		Factions: federation
+		BaseActor: fedcnst
+		SupportActors: t1_stalker
+		InnerSupportRadius: 2
+		OuterSupportRadius: 4
+	MPStartUnits@lightfederation:
+		Class: light
+		ClassName: MCV only
+		Factions: federation
+		BaseActor: fedcnst
+	MPStartUnits@heavyfederation:
+		Class: heavy
+		ClassName: Small support
+		Factions: federation
+		BaseActor: fedcnst
+		SupportActors: t1_stalker
+		InnerSupportRadius: 2
+		OuterSupportRadius: 4
+	MPStartLocations:
+	SpawnMPUnits:
+	PathFinder:
+	ValidateOrder:
+	DebugPauseState:
+	RadarPings:
+	StartGameNotification:
+	SmudgeLayer@CRATER:
+		Type: Crater
+		Sequence: craters
+		Palette: isotem
+		SmokePalette: player
+	SmudgeLayer@SCORCH:
+		Type: Scorch
+		Sequence: scorchs
+		SmokePercentage: 50
+		Palette: isotem
+		SmokePalette: player
+	SmudgeLayer@GHUSK:
+		Type: Ghusk
+		Sequence: ghusk
+		SmokePercentage: 50
+		Palette: effect
+		SmokePalette: player
+	SmudgeLayer@SCRAP:
+		Type: Scrap
+		Sequence: scrap
+		SmokePercentage: 50
+		Palette: player
+		SmokePalette: player
+	ObjectivesPanel:
+		PanelName: SKIRMISH_STATS
+	LoadWidgetAtGameStart:
+
+EditorWorld:
+	Inherits: ^BaseWorld
+	EditorActorLayer:
+	EditorResourceLayer:
+	EditorSelectionLayer:
+	LoadWidgetAtGameStart:

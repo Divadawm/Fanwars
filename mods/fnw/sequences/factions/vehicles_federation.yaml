@@ -1,0 +1,8 @@
+t2_mongoose:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+        Facings: 64
+    muzzle: muzzle_60mm
+        Length: *
+        BlendMode: Additive
+	icon: t2_mongooseicon

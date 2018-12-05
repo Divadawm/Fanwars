@@ -1,0 +1,2225 @@
+Gatling.tower:
+	Inherits@default.weapons: ^Gatling.Defense.Weapons.default
+	ReloadDelay: 2
+	Range: 8c256
+	Report: gatlinggun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 25
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 80
+			LightVehicle: 45
+			ArmorTank: 40
+			Lord: 50
+			LordTank: 60
+			harvester: 40
+			Concrete: 50
+
+^AntiGroundMissile:
+	ReloadDelay: 50
+	Range: 5c0
+	MinRange: 0c512
+	Report:
+	Projectile: Missile
+		Speed: 213
+		Arm: 2
+		Blockable: false
+		ContrailLength: 10
+		Inaccuracy: 128
+		Image: 120mm
+		Shadow: True
+		HorizontalRateOfTurn: 5
+		RangeLimit: 6c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 50
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Infantry: 10
+			ArmorInfantry: 75
+			LightVehicle: 35
+			ArmorTank: 75
+			Lord: 40
+			LordTank: 40
+			harvester: 50
+			Concrete: 50
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@3Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosions: shrap_exp
+		ExplosionPalette: effectalpha75
+		ImpactSounds: ap_warpact.wav
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosions: shrap_exp
+		ExplosionPalette: effectalpha75
+		ImpactSounds: ap_warpact.wav
+		ValidTargets: Water
+
+Raidergun:
+	ReloadDelay: 25
+	Burst: 4
+	BurstDelay: 4
+	Range: 6c256
+	Report: raider_gun.aud
+	ValidTargets: Ground
+	Projectile: Bullet
+		Speed: 1000
+		Image: minball_gun
+		Palette: effectalpha45
+		Inaccuracy: 137
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Ground
+		Spread: 5
+		Damage: 14
+		DeathType: 4
+		Versus:
+			Infantry: 130
+			ArmorInfantry: 60
+			LightVehicle: 20
+			ArmorTank: 20
+			Lord: 30
+			LordTank: 30
+			harvester: 80
+			Concrete: 30
+		DamageTypes: TriggerProne
+	Warhead@3Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3EffGround: CreateEffect
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground, Water, Air
+
+Autogun:
+	ReloadDelay: 41
+	Burst: 2
+	BurstDelay: 4
+	Range: 7c256
+	Report: autocannon.aud
+	ValidTargets: Ground
+	Projectile: Bullet
+		Speed: 1000
+		Image: obus_gun
+		Palette: effectalpha45
+		Inaccuracy: 200
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Ground
+		Spread: 65
+		Damage: 20
+		DeathType: 4
+		Versus:
+			Infantry: 120
+			ArmorInfantry: 70
+			LightVehicle: 75
+			ArmorTank: 35
+			Lord: 30
+			LordTank: 30
+			harvester: 80
+			Concrete: 38
+		DamageTypes: TriggerProne
+	Warhead@3Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3EffGround: CreateEffect
+		Explosions: shrap_exp
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground, Water, Air
+
+interceptor:
+	Inherits: ^AntiGroundMissile
+	ReloadDelay: 30
+	Range: 9c0
+	MinRange: 3c0
+	Report: artankfire
+	Burst: 2
+	BurstDelay: 7
+	Projectile: Missile
+		Speed: 256
+		Inaccuracy: 512
+		CruiseAltitude: 2c0
+		RangeLimit: 14c410
+	Warhead@1Dam: SpreadDamage
+		Damage: 70
+		Versus:
+			Infantry: 30
+			ArmorInfantry: 70
+			LightVehicle: 90
+			ArmorTank: 50
+			Lord: 40
+			LordTank: 40
+			harvester: 50
+			Concrete: 75
+
+Heal:
+	ReloadDelay: 8
+	Range: 5c0
+	Report: artankfire.aud
+	ValidTargets: Infantry
+	Projectile: Bullet
+		Speed: 1c682
+	Warhead@1Dam: SpreadDamage
+		Spread: 5
+		Damage: -2
+		ValidStances: Ally
+		ValidTargets: Infantry
+		DebugOverlayColor: 00FF00
+
+Repair:
+	Inherits: Heal
+	ValidTargets: Repair
+	Warhead@1Dam: SpreadDamage
+		Damage: -2
+		Spread: 500
+		ValidTargets: Repair
+		dis:
+
+minigun_airforce:
+	ReloadDelay: 70
+	Burst: 20
+	BurstDelay: 5
+	Range: 7c256
+	Report: 45mm_machinegun.aud
+	ValidTargets: Air, Ground
+	Projectile: Bullet
+		Speed: 1000
+		Image: minball_gun
+		Palette: effectalpha45
+		Inaccuracy: 1450
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Air, Ground
+		Spread: 20
+		Damage: 6
+		DeathType: 4
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 40
+			LightVehicle: 30
+			ArmorTank: 18
+			Lord: 30
+			LordTank: 20
+			harvester: 80
+			Concrete: 20
+		DamageTypes: ExplosionGore, TriggerProne
+	Warhead@3Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3EffGround: CreateEffect
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground, Water, Air
+
+Impulse_gun:
+	ReloadDelay: 45
+	Range: 8c256
+	Burst: 4
+	BurstDelay: -1
+	Report: thunder_hit.aud
+	Projectile: Bullet
+		Speed: 850
+		Image: 120mm
+		Inaccuracy: 880
+		TrailImage: smokey
+		ContrailLength: 15
+		ContrailWidth: 14
+		Color: 5F5F5F
+	Warhead@1Dam: SpreadDamage
+		Spread: 1208
+		Damage: 10
+		DeathType: 4
+		Versus:
+			Infantry: 75
+			ArmorInfantry: 75
+			LightVehicle: 75
+			ArmorTank: 75
+			Lord: 40
+			LordTank: 40
+			harvester: 80
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3EffGround: CreateEffect
+		Explosions: small_sismic_impact
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground
+
+AircraftExplode:
+	Warhead@2Eff: CreateEffect
+		Explosions: air_expl
+		ValidTargets: Ground, Water, Air
+	Warhead@Smu: LeaveSmudge
+		SmudgeType: Crater
+		InvalidTargets: Wall, Trees
+
+plasma_pulsar:
+	ReloadDelay: 135
+	Range: 7c0
+	Burst: 8
+	BurstDelay: 1
+	Report: plasma_pulse.aud
+	Projectile: Bullet
+		Speed: 230
+		Image: plasma_pulsemin
+		Inaccuracy: 1600
+		TrailInterval: 0
+	Warhead@1Dam: SpreadDamage
+		Spread: 650
+		Damage: 8
+		DeathType: 5
+		Versus:
+			Infantry: 200
+			ArmorInfantry: 100
+			LightVehicle: 25
+			ArmorTank: 25
+			Lord: 40
+			LordTank: 40
+			harvester: 80
+			Concrete: 120
+		DamageTypes: Burned,, TriggerProne
+	Warhead@3EffGround: CreateEffect
+		Falloff: 100, 58, 35, 50
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground, Water, Air
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: greenlight
+		ValidTargets: Ground, Water, Air
+
+psyblast:
+	ReloadDelay: 50
+	Range: 7c0
+	Burst: 40
+	BurstDelay: 1
+	Report: fireflam.aud
+	Projectile: Bullet
+		Speed: 280
+		ExplosionPalette: effectalpha75
+		DamageInterval: 25
+		Image: psyblast
+		Inaccuracy: 2000
+	Warhead@1Dam: SpreadDamage
+		Spread: 450
+		Damage: 25
+		DeathType: 5
+		RangeLimit: 7c204
+		Versus:
+			Infantry: 250
+			ArmorInfantry: 60
+			LightVehicle: 110
+			ArmorTank: 25
+			Lord: 40
+			LordTank: 40
+			harvester: 80
+			Concrete: 150
+		DamageTypes: Burned, TriggerProne
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3EffGround: CreateEffect
+		Explosions: burn_flam
+		ExplosionPalette: effectalpha75
+		ImpactSounds: flames01.aud
+		ValidTargets: Ground, Water, Air
+
+SmallBuildingExplode:
+	Warhead@2Eff: CreateEffect
+		Explosions: build_lagexpl, build_lagxlexpl, building
+		ExplosionPalette: effectalpha75
+		ImpactSounds: ap_warpact.wav
+		ValidTargets: Ground, Water, Air
+	Warhead@Smu: LeaveSmudge
+		SmudgeType: Crater
+		InvalidTargets: Wall, Trees
+	Warhead@8Light: CreateEffect
+		Explosions: mediumlight
+		ExplosionPalette: redlight
+		ValidTargets: Ground, Water
+
+PhaseGun:
+	ReloadDelay: 50
+	Burst: 2
+	Range: 7c0
+	Report: pulseblast.aud
+	ValidTargets: Ground, Water
+	Projectile: Missile
+		Speed: 380
+		Arm: 2
+		ContrailLength: 8
+		ContrailWidth: 14
+		Inaccuracy: 750
+		Image: 120mm
+		HorizontalRateOfTurn: 5
+		CruiseAltitude: 1c0
+		RangeLimit: 14c410
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 20
+		DeathType: 4
+		ValidTargets: Ground, Water, TriggerProne
+		Versus:
+			Infantry: 10
+			ArmorInfantry: 75
+			LightVehicle: 35
+			ArmorTank: 70
+			Lord: 40
+			LordTank: 40
+			harvester: 80
+			Concrete: 20
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosions: building
+		ImpactSound: expnew05.wav
+		ValidTargets: Ground, Water, Air
+
+artyf:
+	ReloadDelay: 85
+	Range: 45c0
+	Burst: 2
+	MinRange: 3c0
+	Report: TANK5.AUD
+	Projectile: Bullet
+		Speed: 400
+		High: true
+		Angle: 160
+		Inaccuracy: 3c682
+		Image: 120MM
+		ContrailLength: 8
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 20
+		DeathType: 3
+		Falloff: 100, 68, 35
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: artillery_explosion
+		ImpactSound: kaboom15.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: med_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+PulseGun:
+	ReloadDelay: 25
+	Range: 6c0
+	Burst: 6
+	Report: pulsargun.aud
+	Projectile: Bullet
+		Speed: 850
+		ContrailDelay: 1
+		ContrailLength: 20
+		TrailInterval: 1
+		Inaccuracy: 1600
+		TrailDelay: 1
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 3
+		DeathType: 2
+		Versus:
+			Wood: 25
+			Light: 30
+			Heavy: 10
+			Concrete: 10
+	Warhead@2Eff: CreateEffect
+		Explosion: piffs
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffWater: CreateEffect
+		Explosion: water_piffs
+		ValidTargets: Water
+
+melle_st:
+	ReloadDelay: 15
+	Range: 5c0
+	Report: ARTANKFIRE.AUD
+	Warhead@1Dam: SpreadDamage
+		Spread: 350
+		Damage: 10
+		DeathType: 1
+		ValidTargets: Infantry
+		ProneModifier: 100
+		Versus:
+			Wood: 25
+			Light: 30
+			Heavy: 10
+			Concrete: 10
+
+Laser_golem:
+	ReloadDelay: 20
+	Range: 7c512
+	Charges: true
+	Report: lasermechtc.aud
+	Projectile: LaserZap
+		Width: 1
+	Warhead@1Dam: SpreadDamage
+		Spread: 42
+		Damage: 150
+		DeathType: 5
+		Versus:
+			Wood: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
+
+Napalm:
+	ValidTargets: Ground, Water
+	ReloadDelay: 4
+	Range: 2c0
+	Burst: 1
+	BurstDelay: 1
+	Projectile: Bullet
+		Speed: 250
+		Inaccuracy: 8500
+	Warhead@1Dam: SpreadDamage
+		Spread: 500
+		Damage: 30
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 5
+		ValidTargets: Ground, Water
+		Versus:
+			None: 100
+			Wood: 100
+			Light: 100
+			Heavy: 80
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
+	Warhead@3Eff: CreateEffect
+		Explosion: bomb_air2
+		ImpactSound: exploppower.aud
+		ValidTargets: Ground, Water, Air
+
+Colt45:
+	ReloadDelay: 5
+	Range: 7c0
+	Report: GUN5.AUD
+	Projectile: Bullet
+		Speed: 1c682
+	Warhead@1Dam: SpreadDamage
+		Spread: 42
+		Damage: 50
+		DeathType: 2
+		Versus:
+			None: 100
+			Wood: 0
+			Light: 0
+			Heavy: 0
+			Concrete: 0
+	Warhead@2Eff: CreateEffect
+		Explosion: piff
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffWater: CreateEffect
+		Explosion: water_piff
+		ValidTargets: Water
+
+ZSU-23:
+	Burst: 2
+	BurstDelay: 5
+	ReloadDelay: 0
+	Range: 10c0
+	Report: AACANON3.AUD
+	ValidTargets: Air
+	Projectile: Bullet
+		Speed: 3c340
+		High: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 12
+		ValidTargets: Air
+		Versus:
+			None: 30
+			Wood: 75
+			Light: 75
+			Concrete: 50
+	Warhead@2Eff: CreateEffect
+		Explosion: small_explosion_air
+		ValidTargets: Ground, Water, Air
+
+Vulcan:
+	ReloadDelay: 30
+	Range: 6c0
+	Report: GUN13.AUD
+	Projectile: Bullet
+		Speed: 1c682
+	Warhead@1Dam_1: SpreadDamage
+		Spread: 128
+		Damage: 10
+		DeathType: 2
+		Versus:
+			Wood: 50
+			Light: 60
+			Heavy: 25
+			Concrete: 25
+	Warhead@2Eff_1: CreateEffect
+		Explosion: piffs
+		ValidTargets: Ground, Water, Air
+	Warhead@2Eff_1Water: CreateEffect
+		Explosion: water_piffs
+		ValidTargets: Water
+	Warhead@3Dam_2: SpreadDamage
+		Spread: 128
+		Damage: 10
+		DeathType: 2
+		Delay: 2
+		Versus:
+			Wood: 50
+			Light: 60
+			Heavy: 25
+			Concrete: 25
+	Warhead@4Eff_2: CreateEffect
+		Explosion: piffs
+		Delay: 2
+		ValidTargets: Ground, Water, Air
+	Warhead@4Eff_2Water: CreateEffect
+		Explosion: water_piffs
+		ValidTargets: Water
+		Delay: 2
+	Warhead@5Dam_3: SpreadDamage
+		Spread: 128
+		Damage: 10
+		DeathType: 2
+		Delay: 4
+		Versus:
+			Wood: 50
+			Light: 60
+			Heavy: 25
+			Concrete: 25
+	Warhead@6Eff_3: CreateEffect
+		Explosion: piffs
+		Delay: 4
+		ValidTargets: Ground, Water, Air
+	Warhead@6Eff_3Water: CreateEffect
+		Explosion: water_piffs
+		ValidTargets: Water
+		Delay: 4
+	Warhead@7Dam_4: SpreadDamage
+		Spread: 128
+		Damage: 10
+		DeathType: 2
+		Delay: 6
+		Versus:
+			Wood: 50
+			Light: 60
+			Heavy: 25
+			Concrete: 25
+	Warhead@8Eff_4: CreateEffect
+		Explosion: piffs
+		Delay: 6
+		ValidTargets: Ground, Water, Air
+	Warhead@8Eff_4Water: CreateEffect
+		Explosion: water_piffs
+		ValidTargets: Water
+		Delay: 6
+	Warhead@9Dam_5: SpreadDamage
+		Spread: 128
+		Damage: 10
+		DeathType: 2
+		Delay: 8
+		Versus:
+			Wood: 50
+			Light: 60
+			Heavy: 25
+			Concrete: 25
+	Warhead@10Eff_5: CreateEffect
+		Explosion: piffs
+		Delay: 8
+		ValidTargets: Ground, Water, Air
+	Warhead@10Eff_5Water: CreateEffect
+		Explosion: water_piffs
+		ValidTargets: Water
+		Delay: 8
+	Warhead@11Dam_6: SpreadDamage
+		Spread: 128
+		Damage: 10
+		DeathType: 2
+		Delay: 10
+		Versus:
+			Wood: 50
+			Light: 60
+			Heavy: 25
+			Concrete: 25
+	Warhead@12Eff_6: CreateEffect
+		Explosion: piffs
+		Delay: 10
+		ValidTargets: Ground, Water, Air
+	Warhead@12Eff_6Water: CreateEffect
+		Explosion: water_piffs
+		ValidTargets: Water
+		Delay: 10
+
+Maverick:
+	ReloadDelay: 30
+	Range: 9c0
+	MinRange: 3c0
+	Report: MISSILE7.AUD
+	Burst: 2
+	BurstDelay: 7
+	ValidTargets: Ground, Water
+	Projectile: Missile
+		Speed: 256
+		Arm: 2
+		High: true
+		ContrailLength: 10
+		Inaccuracy: 512
+		Image: DRAGON
+		ROT: 5
+		RangeLimit: 60
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 70
+		DeathType: 4
+		ValidTargets: Ground, Water
+		Versus:
+			None: 30
+			Wood: 75
+			Light: 75
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: med_explosion
+		ImpactSound: kaboom25.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: med_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+FireballLauncher:
+	ReloadDelay: 65
+	Range: 5c0
+	Burst: 2
+	BurstDelay: 20
+	Projectile: Bullet
+		Speed: 204
+		Trail: fb2
+		Image: FB1
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 150
+		DeathType: 5
+		Versus:
+			None: 90
+			Wood: 50
+			Light: 60
+			Heavy: 25
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
+	Warhead@3Eff: CreateEffect
+		Explosion: napalm
+		ImpactSound: firebl3.aud
+		ValidTargets: Ground, Water, Air
+
+ChainGun:
+	ReloadDelay: 10
+	Range: 5c0
+	MinRange: 1c0
+	Report: GUN13.AUD
+	Projectile: Bullet
+		Speed: 1c682
+		High: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 30
+		DeathType: 2
+		Versus:
+			None: 120
+			Wood: 50
+			Light: 60
+			Heavy: 25
+			Concrete: 25
+	Warhead@2Eff: CreateEffect
+		Explosion: piffs
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffWater: CreateEffect
+		Explosion: water_piffs
+		ValidTargets: Water
+
+ChainGun.Yak:
+	ReloadDelay: 3
+	Range: 5c0
+	MinRange: 3c0
+	Report: GUN13.AUD
+	Projectile: Bullet
+		Speed: 1c682
+		High: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 40
+		DeathType: 2
+		Versus:
+			Wood: 50
+			Light: 60
+			Heavy: 25
+			Concrete: 25
+	Warhead@2Eff: CreateEffect
+		Explosion: piffs
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffWater: CreateEffect
+		Explosion: water_piffs
+		ValidTargets: Water
+
+Pistol:
+	ReloadDelay: 7
+	Range: 3c0
+	Report: GUN27.AUD
+	Projectile: Bullet
+		Speed: 1c682
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 1
+		DeathType: 2
+		Versus:
+			Wood: 50
+			Light: 60
+			Heavy: 25
+			Concrete: 25
+	Warhead@2Eff: CreateEffect
+		Explosion: piff
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffWater: CreateEffect
+		Explosion: water_piff
+		ValidTargets: Water
+
+Dragon:
+	ReloadDelay: 50
+	Range: 5c0
+	Report: MISSILE6.AUD
+	ValidTargets: Ground, Water
+	Projectile: Missile
+		Speed: 213
+		Arm: 2
+		High: true
+		Trail: smokey
+		ContrailLength: 10
+		Inaccuracy: 128
+		Image: DRAGON
+		ROT: 5
+		RangeLimit: 35
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 50
+		DeathType: 4
+		ValidTargets: Ground, Water
+		Versus:
+			None: 10
+			Wood: 75
+			Light: 35
+			Concrete: 20
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: med_explosion
+		ImpactSound: kaboom25.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: med_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+HellfireAG:
+	ReloadDelay: 60
+	Range: 4c0
+	Report: MISSILE6.AUD
+	Burst: 2
+	BurstDelay: 10
+	ValidTargets: Ground, Water
+	Projectile: Missile
+		Speed: 256
+		Arm: 2
+		High: true
+		ContrailLength: 10
+		Inaccuracy: 128
+		Image: DRAGON
+		ROT: 10
+		RangeLimit: 20
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 60
+		DeathType: 4
+		ValidTargets: Ground, Water
+		Versus:
+			None: 30
+			Wood: 75
+			Light: 75
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: med_explosion
+		ImpactSound: kaboom25.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: med_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+HellfireAA:
+	ReloadDelay: 60
+	Range: 4c0
+	Report: MISSILE6.AUD
+	Burst: 2
+	BurstDelay: 10
+	ValidTargets: Air
+	Projectile: Missile
+		Speed: 384
+		Arm: 2
+		High: true
+		ContrailLength: 10
+		Inaccuracy: 128
+		Image: DRAGON
+		ROT: 10
+		RangeLimit: 20
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 40
+		DeathType: 4
+		ValidTargets: Air
+		Versus:
+			None: 30
+			Wood: 75
+			Light: 75
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: med_explosion_air
+		ImpactSound: kaboom25.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: med_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+Grenade:
+	ReloadDelay: 60
+	Range: 4c0
+	Report: grenade1.aud
+	Projectile: Bullet
+		Speed: 136
+		High: true
+		Angle: 62
+		Inaccuracy: 554
+		Image: BOMB
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 60
+		DeathType: 3
+		Versus:
+			None: 50
+			Wood: 100
+			Light: 25
+			Heavy: 5
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: med_explosion
+		ImpactSound: kaboom25.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: small_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+25mm:
+	ReloadDelay: 13
+	Range: 4c0
+	Report: CANNON2.AUD
+	Projectile: Bullet
+		Speed: 853
+		Image: 50CAL
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 16
+		DeathType: 4
+		Versus:
+			None: 30
+			Wood: 40
+			Heavy: 40
+			Concrete: 30
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3EffGround: CreateEffect
+		Explosion: small_explosion
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: small_splash
+		ValidTargets: Water
+
+90mm:
+	ReloadDelay: 50
+	Range: 4c768
+	Report: CANNON1.AUD
+	Projectile: Bullet
+		Speed: 682
+		Image: 120MM
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 40
+		DeathType: 4
+		Versus:
+			None: 20
+			Wood: 75
+			Light: 75
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3EffGround: CreateEffect
+		Explosion: small_explosion
+		ImpactSound: kaboom12.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: small_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+105mm:
+	ReloadDelay: 70
+	Range: 4c768
+	Report: CANNON1.AUD
+	Burst: 2
+	BurstDelay: 4
+	Projectile: Bullet
+		Speed: 682
+		Image: 120MM
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 40
+		DeathType: 4
+		Versus:
+			None: 20
+			Wood: 75
+			Light: 75
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3EffGround: CreateEffect
+		Explosion: small_explosion
+		ImpactSound: kaboom12.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: small_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+120mm:
+	ReloadDelay: 90
+	Range: 4c768
+	Report: CANNON1.AUD
+	Burst: 2
+	InvalidTargets: Air, Infantry
+	Projectile: Bullet
+		Speed: 682
+		Image: 120MM
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 60
+		DeathType: 4
+		InvalidTargets: Air, Infantry
+		Versus:
+			None: 20
+			Wood: 75
+			Light: 75
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3EffGround: CreateEffect
+		Explosion: small_explosion
+		ImpactSound: kaboom12.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: small_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+TurretGun:
+	ReloadDelay: 30
+	Range: 7c0
+	Report: TURRET1.AUD
+	Projectile: Bullet
+		Speed: 682
+		Image: 120MM
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 60
+		DeathType: 4
+		Versus:
+			None: 20
+			Wood: 50
+			Light: 75
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3EffGround: CreateEffect
+		Explosion: small_explosion
+		ImpactSound: kaboom12.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: small_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+MammothTusk:
+	ReloadDelay: 60
+	Range: 8c0
+	Report: MISSILE6.AUD
+	Burst: 2
+	ValidTargets: Air, Infantry
+	Projectile: Missile
+		Speed: 341
+		Arm: 2
+		High: true
+		ContrailLength: 10
+		Inaccuracy: 128
+		Image: DRAGON
+		ROT: 15
+		RangeLimit: 40
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 50
+		DeathType: 3
+		ValidTargets: Air, Infantry
+		Versus:
+			None: 100
+			Wood: 75
+			Light: 60
+			Heavy: 25
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3EffGround: CreateEffect
+		Explosion: med_explosion
+		ImpactSound: kaboom12.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: small_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+	Warhead@5EffAir: CreateEffect
+		Explosion: med_explosion_air
+		ImpactSound: kaboom25.aud
+		ValidTargets: Air
+
+155mm:
+	ReloadDelay: 85
+	Range: 14c0
+	MinRange: 3c0
+	Report: TANK5.AUD
+	Projectile: Bullet
+		Speed: 204
+		High: true
+		Angle: 62
+		Inaccuracy: 1c682
+		Image: 120MM
+		ContrailLength: 30
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 220
+		DeathType: 3
+		Falloff: 10000, 3680, 1350, 500, 180, 70, 0
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: artillery_explosion
+		ImpactSound: kaboom15.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: med_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+M60mg:
+	ReloadDelay: 30
+	Range: 4c0
+	Report: PILLBOX1.AUD
+	Burst: 5
+	Projectile: Bullet
+		Speed: 1c682
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 15
+		DeathType: 2
+		Versus:
+			Wood: 10
+			Light: 30
+			Heavy: 10
+			Concrete: 10
+	Warhead@2Eff: CreateEffect
+		Explosion: piffs
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffWater: CreateEffect
+		Explosion: water_piffs
+		ValidTargets: Water
+
+CrateNapalm:
+	Warhead@1Dam: SpreadDamage
+		Spread: 170
+		Damage: 60
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 5
+		Versus:
+			None: 90
+			Light: 60
+			Heavy: 25
+			Concrete: 50
+		AffectsParent: true
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
+	Warhead@3Eff: CreateEffect
+		Explosion: napalm
+		ImpactSound: firebl3.aud
+		ValidTargets: Ground, Water, Air
+
+CrateExplosion:
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 50
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 4
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+		AffectsParent: true
+	Warhead@2Eff: CreateEffect
+		Explosion: self_destruct
+		ImpactSound: kaboom15.aud
+		ValidTargets: Ground, Water, Air
+
+CrateNuke:
+	Warhead@1Dam_impact: SpreadDamage
+		Spread: 256
+		Damage: 100
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 5
+		Versus:
+			None: 90
+			Light: 60
+			Heavy: 25
+			Concrete: 50
+		AffectsParent: true
+	Warhead@2Res_impact: DestroyResource
+	Warhead@3Eff_impact: CreateEffect
+		Explosion: nuke
+		ImpactSound: kaboom1.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4Dam_areanuke: SpreadDamage
+		Size: 5
+		Damage: 250
+		DeathType: 5
+		Delay: 4
+		Versus:
+			None: 90
+			Light: 60
+			Heavy: 25
+			Concrete: 50
+		AffectsParent: true
+	Warhead@5Dam_areanuke: SpreadDamage
+		Damage: 250
+		DeathType: 5
+		Delay: 4
+		Versus:
+			None: 90
+			Light: 60
+			Heavy: 25
+			Concrete: 50
+		AffectsParent: true
+	Warhead@6Res_areanuke: DestroyResource
+		Size: 5,4
+		Delay: 4
+	Warhead@7Smu_areanuke: LeaveSmudge
+		SmudgeType: Scorch
+		Size: 5,4
+		Delay: 4
+	Warhead@8Eff_areanuke: CreateEffect
+		ImpactSound: kaboom22.aud
+		Delay: 4
+		ValidTargets: Ground, Water, Air
+
+TeslaZap:
+	ReloadDelay: 3
+	Charges: true
+	Range: 8c512
+	Report: TESLA1.AUD
+	Projectile: TeslaZap
+		Color: 0,200,188,120
+	Warhead@1Dam: SpreadDamage
+		Spread: 42
+		Damage: 100
+		DeathType: 6
+		Versus:
+			None: 1000
+			Wood: 60
+
+Nike:
+	ReloadDelay: 15
+	Range: 7c512
+	Report: MISSILE1.AUD
+	ValidTargets: Air
+	Projectile: Missile
+		Arm: 3
+		High: true
+		ContrailLength: 10
+		Image: MISSILE
+		ROT: 25
+		RangeLimit: 50
+		Speed: 341
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 50
+		DeathType: 3
+		ValidTargets: Air
+		Versus:
+			None: 90
+			Wood: 0
+			Light: 90
+			Heavy: 50
+			Concrete: 0
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: med_explosion_air
+		ImpactSound: kaboom25.aud
+		ValidTargets: Ground, Water, Air
+
+RedEye:
+	ReloadDelay: 50
+	Range: 7c512
+	Report: MISSILE1.AUD
+	ValidTargets: Air
+	Projectile: Missile
+		Arm: 3
+		High: true
+		ContrailLength: 10
+		Image: MISSILE
+		ROT: 20
+		RangeLimit: 30
+		Speed: 298
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 40
+		DeathType: 3
+		ValidTargets: Air
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: med_explosion_air
+		ImpactSound: kaboom25.aud
+		ValidTargets: Ground, Water, Air
+
+8Inch:
+	ReloadDelay: 250
+	Range: 16c0
+	Burst: 2
+	Report: TURRET1.AUD
+	Projectile: Bullet
+		Speed: 204
+		High: true
+		Angle: 62
+		Inaccuracy: 2c938
+		Image: 120MM
+		ContrailLength: 30
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 25
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 3
+		Versus:
+			None: 60
+			Wood: 75
+			Light: 60
+			Heavy: 25
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: artillery_explosion
+		ImpactSound: kaboom15.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: large_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+SubMissile:
+	ReloadDelay: 300
+	Range: 16c0
+	Burst: 2
+	Report: MISSILE6.AUD
+	Projectile: Bullet
+		Speed: 102
+		High: true
+		Angle: 165
+		Inaccuracy: 2c938
+		Image: MISSILE
+		Trail: smokey
+		ContrailLength: 30
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 30
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 3
+		Versus:
+			None: 40
+			Light: 30
+			Heavy: 30
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: artillery_explosion
+		ImpactSound: kaboom15.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: large_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+Stinger:
+	ReloadDelay: 60
+	Range: 9c0
+	Report: MISSILE6.AUD
+	Burst: 2
+	BurstDelay: 0
+	ValidTargets: Air, Ground, Water
+	Projectile: Missile
+		Arm: 3
+		High: true
+		ContrailLength: 10
+		Image: DRAGON
+		ROT: 20
+		RangeLimit: 50
+		TurboBoost: true
+		Speed: 170
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 30
+		DeathType: 4
+		ValidTargets: Air, Ground, Water
+		Versus:
+			None: 30
+			Wood: 75
+			Light: 75
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: med_explosion
+		ImpactSound: kaboom25.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@5EffAir: CreateEffect
+		Explosion: med_explosion_air
+		ImpactSound: kaboom25.aud
+		ValidTargets: Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: med_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+TorpTube:
+	ReloadDelay: 100
+	Range: 9c0
+	Report: TORPEDO1.AUD
+	ValidTargets: Water, Underwater, Bridge
+	Palette: shadow
+	Burst: 2
+	BurstDelay: 20
+	Projectile: Missile
+		Image: MISSILE
+		Arm: 3
+		Speed: 85
+		Trail: bubbles
+		ROT: 1
+		RangeLimit: 160
+		BoundToTerrainType: Water
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 180
+		DeathType: 4
+		ValidTargets: Water, Underwater, Bridge
+		Versus:
+			None: 30
+			Wood: 75
+			Light: 75
+			Concrete: 500
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: large_explosion
+		ImpactSound: kaboom15.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWaterHit: CreateEffect
+		Explosion: artillery_explosion
+		ImpactSound: kaboom15.aud
+		ValidTargets: Water
+	Warhead@5EffWater: CreateEffect
+		Explosion: large_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+2Inch:
+	ReloadDelay: 60
+	Range: 5c512
+	Report: CANNON2.AUD
+	Projectile: Bullet
+		Speed: 426
+		Image: 120MM
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 25
+		DeathType: 4
+		Versus:
+			None: 30
+			Wood: 75
+			Light: 75
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: small_explosion
+		ImpactSound: kaboom12.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: small_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+DepthCharge:
+	ReloadDelay: 60
+	Range: 5c0
+	ValidTargets: Underwater
+	Projectile: Bullet
+		Speed: 85
+		Image: BOMB
+		Angle: 62
+		High: true
+		Inaccuracy: 128
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 80
+		DeathType: 4
+		ValidTargets: Underwater
+		Versus:
+			None: 30
+			Wood: 75
+			Light: 75
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: large_splash
+		ImpactSound: h2obomb2.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffHit: CreateEffect
+		Explosion: small_explosion
+		ImpactSound: kaboom15.aud
+		ValidTargets: Water
+
+ParaBomb:
+	ReloadDelay: 10
+	Range: 3c0
+	Report: CHUTE1.AUD
+	Projectile: GravityBomb
+		Image: PARABOMB
+		Velocity: 0, 0, -86
+		Acceleration: 0, 0, 0
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 50
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 4
+		Versus:
+			None: 30
+			Wood: 75
+			Light: 75
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: artillery_explosion
+		ImpactSound: kaboom15.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: small_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+DogJaw:
+	ValidTargets: Infantry
+	ReloadDelay: 10
+	Range: 3c0
+	Report: DOGG5P.AUD
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 100
+		DeathType: 1
+		ValidTargets: Infantry
+		Versus:
+			Wood: 0
+			Light: 0
+			Heavy: 0
+			Concrete: 0
+
+SilencedPPK:
+	ReloadDelay: 80
+	Range: 2c512
+	Report: silppk.aud
+	Projectile: Bullet
+		Speed: 1c682
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 150
+		DeathType: 2
+		Versus:
+			Wood: 0
+			Light: 0
+			Heavy: 0
+			Concrete: 0
+	Warhead@2Eff: CreateEffect
+		Explosion: piffs
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffWater: CreateEffect
+		Explosion: water_piffs
+		ValidTargets: Water
+
+SCUD:
+	ReloadDelay: 240
+	Range: 10c0
+	MinRange: 3c0
+	Report: MISSILE1.AUD
+	Projectile: Bullet
+		Speed: 170
+		High: true
+		Shadow: false
+		Trail: smokey
+		TrailDelay: 5
+		Inaccuracy: 213
+		Image: V2
+		Angle: 62
+	Warhead@1Dam: SpreadDamage
+		Spread: 341
+		Damage: 45
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 3
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 70
+			Heavy: 40
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: napalm
+		ImpactSound: firebl3.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: large_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+Atomic:
+	ValidTargets: Ground, Water, Air
+	Warhead@1Dam_impact: SpreadDamage
+		Spread: 1c0
+		Damage: 150
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 5
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+	Warhead@2Res_impact: DestroyResource
+		Size: 1
+	Warhead@3Smu_impact: LeaveSmudge
+		SmudgeType: Scorch
+		Size: 1
+	Warhead@4Eff_impact: CreateEffect
+		Explosion: nuke
+		ImpactSound: kaboom1.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@5Dam_areanuke1: SpreadDamage
+		Spread: 2c0
+		Damage: 60
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 5
+		Delay: 5
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+	Warhead@6Res_areanuke1: DestroyResource
+		Size: 2
+		Delay: 5
+	Warhead@7Smu_areanuke1: LeaveSmudge
+		SmudgeType: Scorch
+		Size: 2
+		Delay: 5
+	Warhead@8Eff_areanuke1: CreateEffect
+		ImpactSound: kaboom22.aud
+		Delay: 5
+		ValidTargets: Ground, Water, Air
+	Warhead@9Dam_areanuke2: SpreadDamage
+		Spread: 3c0
+		Damage: 60
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 5
+		Delay: 10
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+	Warhead@10Res_areanuke2: DestroyResource
+		Size: 3
+		Delay: 10
+	Warhead@11Smu_areanuke2: LeaveSmudge
+		SmudgeType: Scorch
+		Size: 3
+		Delay: 10
+	Warhead@12Dam_areanuke3: SpreadDamage
+		Spread: 4c0
+		Damage: 60
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 5
+		Delay: 15
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+	Warhead@13Res_areanuke3: DestroyResource
+		Size: 4
+		Delay: 15
+	Warhead@14Smu_areanuke3: LeaveSmudge
+		SmudgeType: Scorch
+		Size: 4
+		Delay: 15
+	Warhead@15Dam_areanuke4: SpreadDamage
+		Spread: 5c0
+		Damage: 60
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 5
+		Delay: 20
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+	Warhead@16Res_areanuke4: DestroyResource
+		Size: 5
+		Delay: 20
+	Warhead@17Smu_areanuke4: LeaveSmudge
+		SmudgeType: Scorch
+		Size: 5
+		Delay: 20
+
+MiniNuke:
+	ValidTargets: Ground, Water, Air
+	Warhead@1Dam_impact: SpreadDamage
+		Spread: 1c0
+		Damage: 150
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 5
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+	Warhead@2Res_impact: DestroyResource
+		Size: 1
+	Warhead@3Eff_impact: CreateEffect
+		Explosion: nuke
+		ImpactSound: kaboom1.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4Dam_areanuke1: SpreadDamage
+		Spread: 2c0
+		Damage: 60
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 5
+		Delay: 5
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+	Warhead@5Res_areanuke1: DestroyResource
+		Size: 2
+		Delay: 5
+	Warhead@6Eff_areanuke1: CreateEffect
+		ImpactSound: kaboom22.aud
+		Delay: 5
+		ValidTargets: Ground, Water, Air
+	Warhead@7Dam_areanuke2: SpreadDamage
+		Spread: 3c0
+		Damage: 60
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 5
+		Delay: 10
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+	Warhead@8Res_areanuke2: DestroyResource
+		Size: 3
+		Delay: 10
+	Warhead@9Dam_areanuke3: SpreadDamage
+		Spread: 4c0
+		Damage: 60
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 5
+		Delay: 15
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+	Warhead@10Res_areanuke3: DestroyResource
+		Size: 4
+		Delay: 15
+	Warhead@11Smu_areanuke3: LeaveSmudge
+		SmudgeType: Scorch
+		Size: 4
+		Delay: 15
+
+UnitExplode:
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 50
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 4
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+	Warhead@2Eff: CreateEffect
+		Explosion: self_destruct
+		ImpactSound: kaboom22.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffWater: CreateEffect
+		Explosion: large_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+UnitExplodeShip:
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 50
+		DeathType: 4
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+	Warhead@2Eff: CreateEffect
+		Explosion: building
+		ImpactSound: kaboom25.aud
+		ValidTargets: Ground, Water, Air
+
+UnitExplodeSubmarine:
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 50
+		DeathType: 4
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+	Warhead@2Eff: CreateEffect
+		Explosion: large_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Ground, Water, Air
+
+UnitVehicleExplodeSmall:
+	Report: vehicle_deathexpl01.aud, vehicle_deathexpl02.aud, vehicle_deathexpl03.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 20
+		DeathType: 4
+		Versus:
+			None: 110
+			Wood: 75
+			Light: 60
+			Heavy: 25
+		DamageTypes: Scrap, TriggerProne
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: Scrap
+		InvalidTargets: Building, Wall
+	Warhead@2Eff: CreateEffect
+		Explosion: doomexpl75
+		ImpactSound: kaboom15.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffWater: CreateEffect
+		Explosion: large_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+UnitExplodeSmall:
+	Report: vehicle_deathexpl01.aud, vehicle_deathexpl02.aud, vehicle_deathexpl03.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 20
+		DeathType: 4
+		Versus:
+			None: 110
+			Wood: 75
+			Light: 60
+			Heavy: 25
+	Warhead@2Eff: CreateEffect
+		Explosion: doomexpl75
+		ImpactSound: kaboom15.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffWater: CreateEffect
+		Explosion: large_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+infexplode:
+	Warhead@1Dam: SpreadDamage
+		Spread: 50
+		Damage: -50
+		DeathType: 1
+		Versus:
+			None: 0
+			Wood: 0
+			Light: 0
+			Heavy: 0
+	Warhead@2Eff: CreateEffect
+		Explosion: large_explosion
+		ImpactSound: kaboom15.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffWater: CreateEffect
+		Explosion: large_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+BarrelExplode:
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 50
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		DeathType: 4
+		Delay: 5
+		Versus:
+			None: 120
+			Wood: 200
+			Light: 50
+			Heavy: 25
+			Concrete: 10
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
+		Size: 2,1
+		Delay: 5
+	Warhead@3Eff: CreateEffect
+		Explosion: napalm
+		ImpactSound: firebl3.aud
+		Delay: 5
+		ValidTargets: Ground, Water, Air
+
+Crush:
+	Warhead@1Dam: SpreadDamage
+		Damage: 100
+	Warhead@2Eff: CreateEffect
+		ImpactSound: squishy2.aud
+		ValidTargets: Ground, Water, Air
+
+ATMine:
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 400
+		AffectsParent: true
+	Warhead@2Eff: CreateEffect
+		Explosion: large_explosion
+		ImpactSound: mineblo1.aud
+		ValidTargets: Ground, Water, Air
+
+APMine:
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 400
+		AffectsParent: true
+		DeathType: 3
+	Warhead@2Eff: CreateEffect
+		Explosion: napalm
+		ImpactSound: mine1.aud
+		ValidTargets: Ground, Water, Air
+
+Demolish:
+	Warhead@1Dam: SpreadDamage
+	Warhead@2Eff: CreateEffect
+		Explosion: building
+		ImpactSound: kaboom25.aud
+		ValidTargets: Ground, Water, Air
+
+PortaTesla:
+	ReloadDelay: 70
+	Range: 3c512
+	Report: TESLA1.AUD
+	Charges: yes
+	Projectile: TeslaZap
+	Warhead@1Dam: SpreadDamage
+		Spread: 42
+		Damage: 45
+		DeathType: 6
+		Versus:
+			None: 1000
+
+TTankZap:
+	ReloadDelay: 120
+	Range: 7c0
+	Report: TESLA1.AUD
+	Charges: yes
+	Projectile: TeslaZap
+	Warhead@1Dam: SpreadDamage
+		Spread: 42
+		Damage: 100
+		DeathType: 6
+		Versus:
+			None: 1000
+
+FLAK-23:
+	ReloadDelay: 10
+	Range: 8c0
+	Report: AACANON3.AUD
+	ValidTargets: Air, Ground, Water
+	Projectile: Bullet
+		Speed: 1c682
+		High: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 20
+		ValidTargets: Air, Ground, Water
+		Versus:
+			None: 40
+			Wood: 10
+			Light: 60
+			Heavy: 10
+			Concrete: 20
+	Warhead@2Eff: CreateEffect
+		Explosion: small_explosion
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffAir: CreateEffect
+		Explosion: small_explosion_air
+		ValidTargets: Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: small_splash
+		ValidTargets: Water
+
+Sniper:
+	Report: GUN5.AUD
+	ReloadDelay: 70
+	Range: 10c0
+	Projectile: Bullet
+		Speed: 1c682
+	Warhead@1Dam: SpreadDamage
+		Spread: 42
+		Damage: 140
+		DeathType: 2
+		Versus:
+			None: 100
+			Wood: 0
+			Light: 0
+			Heavy: 0
+			Concrete: 0
+
+APTusk:
+	ReloadDelay: 60
+	Range: 6c0
+	Report: MISSILE6.AUD
+	ValidTargets: Ground, Water
+	Projectile: Missile
+		Speed: 298
+		Arm: 2
+		High: true
+		Trail: smokey
+		ContrailLength: 10
+		Inaccuracy: 128
+		Image: DRAGON
+		ROT: 10
+		RangeLimit: 22
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 30
+		DeathType: 4
+		ValidTargets: Ground, Water
+		Versus:
+			None: 25
+			Wood: 75
+			Light: 75
+			Concrete: 50
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosion: med_explosion
+		ImpactSound: kaboom25.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffWater: CreateEffect
+		Explosion: med_splash
+		ImpactSound: splash9.aud
+		ValidTargets: Water
+
+Claw:
+	ReloadDelay: 30
+	Range: 1c0
+	Projectile: Bullet
+		Speed: 1c682
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 33
+		DeathType: 1
+		Versus:
+			None: 90
+			Wood: 10
+			Light: 30
+			Heavy: 10
+			Concrete: 10
+
+Mandible:
+	ReloadDelay: 10
+	Range: 1c0
+	Projectile: Bullet
+		Speed: 1c682
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 60
+		DeathType: 1
+		Versus:
+			None: 90
+			Wood: 10
+			Light: 30
+			Heavy: 10
+			Concrete: 10
+
+MADTankThump:
+	InvalidTargets: MADTank
+	Warhead@1Dam: HealthPercentageDamage
+		Spread: 7c0
+		Damage: 1
+		InvalidTargets: MADTank
+		Versus:
+			None: 0
+
+MADTankDetonate:
+	InvalidTargets: MADTank
+	Warhead@1Dam: HealthPercentageDamage
+		Spread: 7c0
+		Damage: 19
+		InvalidTargets: MADTank
+		Versus:
+			None: 0
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		Size: 7,6
+	Warhead@3Eff: CreateEffect
+		Explosion: med_explosion
+		ImpactSound: mineblo1.aud
+		ValidTargets: Ground, Water, Air
+
+OreExplosion:
+	Warhead@1Dam: SpreadDamage
+		Spread: 9
+		Damage: 10
+		DeathType: 3
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+	Warhead@2Res: CreateResource
+		AddsResourceType: Ore
+		Size: 1,1
+	Warhead@3Eff: CreateEffect
+		Explosion: med_explosion
+		ImpactSound: kaboom25.aud
+		ValidTargets: Ground, Water, Air
+
+Warhead_Upgrade_BIKE:
+	Warhead@1Dam: SpreadDamage
+		Spread: 0
+		Damage: 0
+		AffectsParent: true
+	Warhead@3EffGround: CreateEffect
+		Explosions: small_sismic_impact
+		ImpactSounds: up_item.aud
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground, Water, Air
+	Warhead@stun: GrantExternalCondition
+		Range: 0c100
+		Duration: 0
+		Condition: boostSpeedACT
+
+Warhead_POWER_INFERNO_FLAME:
+	Warhead@1Dam: SpreadDamage
+		Spread: 0
+		Damage: 0
+		AffectsParent: true
+	Warhead@3EffGround: CreateEffect
+		Explosions: small_sismic_impact
+		ImpactSounds: up_item.aud
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground, Water, Air
+	Warhead@stun: GrantExternalCondition
+		Range: 5c100
+		Duration: 220
+		Condition: VETcarnage
+
+Warhead_TargetSpeedCaC:
+	Range: 7c0
+	Projectile: InstantHit
+	Warhead@1Dam: SpreadDamage
+		Spread: 0
+		Damage: 0
+		AffectsParent: true
+	Warhead@3EffGround: CreateEffect
+		Explosions: small_sismic_impact
+		ImpactSounds: up_item.aud
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground, Water, Air
+	Warhead@stun: GrantExternalCondition
+		Range: 0c100
+		Duration: 220
+		Condition: SpeedCac
+
+Warhead_POWER_INFERNO_GATLING:
+	Warhead@1Dam: SpreadDamage
+		Spread: 0
+		Damage: 0
+		AffectsParent: true
+	Warhead@3EffGround: CreateEffect
+		Explosions: small_sismic_impact
+		ImpactSounds: up_item.aud
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground, Water, Air
+	Warhead@stun: GrantExternalCondition
+		Range: 0c100
+		Duration: 0
+		Condition: VETgatlingInferno
+
+gunbladecomete:
+	ReloadDelay: 44
+	Range: 7c512
+	Report: cometegun.aud
+	Projectile: Bullet
+		Speed: 1000
+		Inaccuracy: 0
+		ContrailLength: 15
+		ContrailColor: 66ffff
+		ContrailWidth: 4
+		ContrailDelay: 0
+	Warhead@1Dam: SpreadDamage
+		Spread: 100
+		Damage: 25
+		Versus:
+			Infantry: 50
+			ArmorInfantry: 100
+			LightVehicle: 90
+			ArmorTank: 80
+			Lord: 40
+			LordTank: 40
+			harvester: 80
+			Concrete: 70
+		DamageTypes: Burned, TriggerProne
+	Warhead@3EffGround: CreateEffect
+		Explosions: plasma_expl
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground, Water, Air
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: bluelight
+		ValidTargets: Ground, Water, Air

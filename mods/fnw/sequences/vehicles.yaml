@@ -1,0 +1,238 @@
+t1_heidrun:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	idle:
+	icon: artemisicon
+
+t2_dwarf:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_autogun_medium
+		Length: *
+		BlendMode: Additive
+	idle:
+        Facings: 64
+	lightgun: minbaselightcub
+		Length: 4
+		BlendMode: Additive
+	icon: achilleicon
+
+t2_troll:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: trollplasmaball
+		Length: *
+		BlendMode: Additive
+	idle:
+        Facings: 64
+	icon: achilledoomicon
+
+t1_ratatoskr:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+		Facings: 64
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	icon: prometheeicon
+
+t2_garm:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_bluegun
+		Length: *
+		BlendMode: Additive
+	idle:
+		Facings: 64
+	turret: t2_garmtur
+		Facings: 64
+	icon: minauticon
+
+t2_warg:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	idle:
+	icon: wargicon
+
+t2_warg.husk:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+
+t2_yggdrasil:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+	icon: Yggdrasilicon
+
+t2_lindwyrm:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_balist_large
+		Length: *
+		BlendMode: Additive
+	idle:
+	icon: lindwyrnicon
+
+t2_lindwyrm.husk:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+
+t3_doomtower_mobile:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+
+t3_fafnir:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	idle:
+		Facings: 64
+	icon: fafniricon
+
+t3_loki:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+	icon: lokiicon
+
+t3_heimdall:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_balist_large
+		Length: *
+		BlendMode: Additive
+	idle:
+	icon: heimicon
+
+t4_odin:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+		Facings: 64
+	turret: t4_odintur
+		Facings: 64
+	turretmode: t4_odinturmode
+		Facings: 64
+	icon: odinicon
+
+t1_dainn:
+	Inherits@Stat: ^StatVehicleEffect
+	idle: null
+	harvest: harvest_anim
+		Length: *
+		BlendMode: Additive
+	dock: null
+	dock-loop: null
+	icon: opharvicon
+    
+# Federation Vehicle Sequences
+
+t1_fedharv:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+		Facings: 64
+	harvest: harvest_anim
+		Length: *
+		BlendMode: Additive
+	dock: t1_fedharv
+	dock-loop: t1_fedharv
+	icon: t1_tickicon
+    
+t1_stalker:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+		Facings: 64
+	icon: t1_tickicon
+
+t1_tick:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	idle:
+		Facings: 64
+	turret: t1_ticktur
+		Facings: 64
+	icon: t1_tickicon
+    
+t1_suricate:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	idle:
+		Facings: 64
+	turret: t1_suricatetur
+		Facings: 64
+	icon: t1_surricateicon
+    
+t2_cobra:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	idle:
+		Facings: 64
+	turret: t2_cobratur
+		Facings: 64
+	icon: t2_cobraicon
+    
+t2_lynx:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	idle:
+		Facings: 64
+	turret: t2_lynxtur
+		Facings: 64
+	icon: t2_lynxicon
+    
+t3_rhino:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	idle:
+		Facings: 64
+	turret: t3_rhinotur
+		Facings: 64
+	icon: t3_rhinoicon
+    
+t3_porcupine:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	idle:
+		Facings: 64
+	turret: t3_porcupinetur
+		Facings: 64
+	icon: t3_porcupineicon
+    
+t3_mantis:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	idle:
+		Facings: 64
+	empty-idle: t3_mantislaunch
+		Facings: 64
+	icon: t3_mantisicon
+
+t4_colossus:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	idle:
+		Facings: 64
+	turret: t4_colossustur
+		Facings: 64
+	icon: t4_colossusicon
+
+mechh:
+	idle:
+	icon: artnkicon
+
+railguntnk:
+	idle:
+	icon: artnkicon

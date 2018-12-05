@@ -1,0 +1,274 @@
+t2_comete:
+	Inherits: ^Helicoptershape
+	Inherits@Target: ^AutoTargetAll
+	Buildable:
+		Queue: Vehicle.conclave
+		BuildPaletteOrder: 70
+		Prerequisites: tcholotech.comete
+		BuildDurationModifier: 15
+		Description: Light aircraft equipped with laser spray guns\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
+		IconPalette: Conclave.Icon
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: Comet
+	Health:
+		HP: 900
+	Armor:
+		Type: LightVehicle
+	RevealsShroud:
+		Range: 12c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 10c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Weapon: Dual.Impuls.Catapult
+		LocalOffset: 0,-420,-85, 0,420,-85
+		RequiresCondition: !upgrade.Base.Comete.Conclave
+	Armament@PRIMARYALPHA:
+		Weapon: Dual.Impuls.Catapult.Alpha
+		LocalOffset: 0,-420,-85, 0,420,-85
+		RequiresCondition: upgrade.Alpha.Comete.Conclave
+	Armament@PRIMARYOMEGA:
+		Weapon: Dual.Impuls.Catapult.Omega
+		LocalOffset: 0,-420,-85, 0,420,-85
+		RequiresCondition: upgrade.Omega.Comete.Conclave
+	AttackHeli:
+		FacingTolerance: 20
+	Aircraft:
+		CruiseAltitude: 2500
+		InitialFacing: 192
+		TurnSpeed: 35
+		Speed: 180
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		LandWhenIdle: false
+		LandableTerrainTypes: Clear,Rough,Road,Beach
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
+	Selectable:
+		Bounds: 36,28
+	Cloak@AlphaStat:
+		UncloakOn: Attack, Unload, Infiltrate, Demolish, Dock, Move
+		CloakDelay: 20
+		IsPlayerPalette: true
+		RequiresCondition: upgrade.Omega.Comete.Conclave
+	DetectCloaked@Omega:
+		Range: 6c0
+		RequiresCondition: upgrade.Alpha.Comete.Conclave
+	RenderDetectionCircle:
+	GrantConditionOnPrerequisite@Base:
+		Prerequisites: research.Base.Comete.Conclave
+		Condition: upgrade.Base.Comete.Conclave
+	GrantConditionOnPrerequisite@Alpha:
+		Prerequisites: research.Alpha.Comete.Conclave
+		Condition: upgrade.Alpha.Comete.Conclave
+	GrantConditionOnPrerequisite@Omega:
+		Prerequisites: research.Omega.Comete.Conclave
+		Condition: upgrade.Omega.Comete.Conclave
+	SpawnActorOnDeath:
+		Actor: comete.husk
+	HitShape:
+
+comete.husk:
+	Inherits: ^AircraftHuskShape
+	Tooltip:
+		Name: comete
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 186
+	RenderSprites:
+		Image: t2_comete
+
+t2_zenith:
+	Inherits: ^Helicoptershape
+	Buildable:
+		Queue: Vehicle.conclave
+		BuildPaletteOrder: 90
+		Prerequisites: tcholotech.zenith
+		BuildDurationModifier: 10
+		Description: Unarmed transport aircraft\nCan transport all types of units\n> Strong vs None\n> Weak vs Everything
+		IconPalette: Conclave.Icon
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Zenith
+	Health:
+		HP: 1200
+	Armor:
+		Type: LightVehicle
+	RevealsShroud:
+		Range: 12c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 10c0
+		Type: GroundPosition
+	GrantConditionOnPrerequisite@Alpha:
+		Prerequisites: research.Alpha.Zenith.Conclave
+		Condition: upgrade.Alpha.Zenith.Conclave
+	GrantConditionOnPrerequisite@Omega:
+		Prerequisites: research.Omega.Zenith.Conclave
+		Condition: upgrade.Omega.Zenith.Conclave
+	ProximityExternalCondition@zenithHealthInfantry:
+		Condition: zenithHealthInfantry
+		Range: 6c0
+		AffectsParent: false
+		RequiresCondition: upgrade.Omega.Zenith.Conclave
+	ProximityExternalCondition@zenithRepairVehicle:
+		Condition: zenithRepairVehicle
+		Range: 6c0
+		AffectsParent: false
+		RequiresCondition: upgrade.Omega.Zenith.Conclave
+	ProximityExternalCondition@UPSPEED:
+		Condition: Speed.Zenith
+		Range: 6c0
+		AffectsParent: false
+		RequiresCondition: upgrade.Alpha.Zenith.Conclave
+	WithRangeCircle@Cloak:
+		Range: 4c0
+		Type: cloakgenerator
+	Aircraft:
+		CruiseAltitude: 2500
+		InitialFacing: 192
+		TurnSpeed: 35
+		Speed: 180
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		LandWhenIdle: true
+		LandableTerrainTypes: Clear,Rough,Road,Beach,tree
+	Cargo:
+		Types: Infantry, vehicle
+		MaxWeight: 10
+		PipCount: 5
+		PassengerFacing: -1
+		EjectOnDeath: true
+    WithFacingSpriteBody:
+        RequiresCondition: !EngineMove
+    WithFacingSpriteBody@Deploy:
+        Sequence: deployed
+        RequiresCondition: EngineMove
+	WithIdleOverlay@PhieAura:
+		Offset: 0,0,20
+		Sequence: aura_phie
+		Palette: powereffect60
+		RequiresCondition: upgrade.Alpha.Zenith.Conclave
+	WithIdleOverlay@OmegaAura:
+		Offset: 0,0,20
+		Sequence: aura_omega
+		Palette: powereffect60
+		RequiresCondition: upgrade.Omega.Zenith.Conclave
+	Selectable:
+		Bounds: 36,28
+	-AutoTarget:
+	GrantConditionOnMovement@EngineMove:
+		Condition: EngineMove
+	SpawnActorOnDeath:
+		Actor: t2_zenith.husk
+	HitShape:
+
+t2_zenith.husk:
+	Inherits: ^AircraftHuskShape
+	Tooltip:
+		Name: zenith
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 186
+	RenderSprites:
+		Image: t2_zenith
+
+t3_quasar:
+	Inherits: ^Helicoptershape
+	Inherits@Target: ^AutoTargetAir
+	Buildable:
+		Queue: Vehicle.conclave
+		BuildPaletteOrder: 120
+		Prerequisites: tcholotech.quasar
+		BuildDurationModifier: 20
+		Description: Anti-spaceship artillery\nCan make tactical jump\n> Strong vs Slow Moving Aircraft\n> Weak vs Infantry, Vehicles, Fast Moving Aircraft
+		IconPalette: Conclave.Icon
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Quasar
+	Health:
+		HP: 1800
+	Armor:
+		Type: ArmorTank
+	RevealsShroud:
+		Range: 10c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 11c0
+		Type: GroundPosition
+	GrantConditionOnAttack@TargetRailgun:
+		ArmamentNames: primary
+		RevokeOnNewTarget: true
+		RequiredShotsPerInstance: 10
+		Condition: Target
+	Armament@gun:
+		Weapon: ExconvectorCanonAA.TargetBeam
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 0,-213,0
+		RequiresCondition: !Target
+	Armament@railgun:
+		Weapon: Quasar.Canon
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 0,-213,0
+		RequiresCondition: Target && !upgrade.Alpha.Quasar.Conclave
+	Armament@railgun.Alpha:
+		Weapon: Quasar.Canon.Alpha
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 0,-213,0
+		RequiresCondition: Target && upgrade.Alpha.Quasar.Conclave
+	GrantConditionOnPrerequisite@Omega:
+		Prerequisites: research.Omega.Quasar.Conclave
+		Condition: upgrade.Omega.Quasar.Conclave
+	GrantConditionOnPrerequisite@Alpha:
+		Prerequisites: research.Alpha.Quasar.Conclave
+		Condition: upgrade.Alpha.Quasar.Conclave
+	DamageMultiplier@Armor.Alpha.Quasar.Conclave:
+		Modifier: 85
+		RequiresCondition: upgrade.Omega.Quasar.Conclave
+	AttackHeli:
+		FacingTolerance: 20
+	Aircraft:
+		CruiseAltitude: 2500
+		InitialFacing: 192
+		TurnSpeed: 2
+		Speed: 70
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		LandWhenIdle: false
+		LandableTerrainTypes: Clear,Rough,Road,Beach
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
+	Selectable:
+		Bounds: 36,28
+	GrantConditionOnMovement@EngineMove:
+		Condition: EngineMove
+	PortableChrono:
+		ChargeDelay: 900
+		MaxDistance: 10
+		ChronoshiftSound: quasar_warp.aud
+	SpawnActorOnDeath:
+		Actor: t3_quasar.husk
+	HitShape:
+
+t3_quasar.husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: quasar
+	Aircraft:
+		TurnSpeed: 0
+		Speed: 186
+	RenderSprites:
+		Image: t3_quasar

@@ -1,0 +1,672 @@
+Midgard.gun:
+	Inherits@weapons: ^Autogun
+	Report: midgard_gun.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 220
+		Versus:
+			Infantry: 70
+			ArmorInfantry: 70
+			LightVehicle: 70
+			ArmorTank: 70
+			Lord: 50
+			LordTank: 40
+			harvester: 80
+			Concrete: 30
+
+Niflheim.gun:
+	Inherits@default.weapons: ^niflheim.Weapons.default
+	ReloadDelay: 80
+	Range: 12c0
+	MinRange: 4c0
+	Report: mantis_fire.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 300
+		Versus:
+			Infantry: 40
+			ArmorInfantry: 50
+			LightVehicle: 100
+			ArmorTank: 100
+			Lord: 50
+			LordTank: 50
+			harvester: 80
+			Concrete: 100
+	Warhead@emp: GrantExternalCondition
+		Range: 1c128
+		Duration: 35
+		Condition: empdisable
+
+Helgun:
+	Inherits@weapons: ^Hel.Weapons.default
+	ReloadDelay: 75
+	Range: 10c0
+	Report: helrocket.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 1200
+		Versus:
+			Infantry: 70
+			ArmorInfantry: 55
+			LightVehicle: 75
+			ArmorTank: 60
+			Lord: 50
+			LordTank: 50
+			harvester: 70
+			Concrete: 35
+
+Helgun.Aircraft:
+	Inherits@weapons: ^Hel.Weapons.default
+	ReloadDelay: 70
+	Range: 9c0
+	Burst: 4
+	Report: helrocket.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 600
+		Versus:
+			Infantry: 70
+			ArmorInfantry: 60
+			LightVehicle: 75
+			ArmorTank: 70
+			Lord: 50
+			LordTank: 60
+			harvester: 70
+			Concrete: 45
+
+Einherjar.missile.Aircraft:
+	Inherits@default.weapons: ^Einherjar.Weapons.default
+	ReloadDelay: 97
+	Range: 18c0
+	Burst: 6
+	Report: roquettehe.aud
+	Projectile: Missile
+		Speed: 380
+		Inaccuracy: 1c256
+	Warhead@1Dam: SpreadDamage
+		Damage: 100
+		Versus:
+			Infantry: 40
+			ArmorInfantry: 70
+			LightVehicle: 100
+			ArmorTank: 80
+			Lord: 40
+			LordTank: 40
+			harvester: 70
+			Concrete: 55
+
+RagnarokCanonPlasma:
+	Inherits@default.weapons: ^Ragnarok.Weapons.default
+	ReloadDelay: 150
+	Range: 500c0
+	MinRange: 2c0
+	Burst: 6
+	BurstDelay: 4
+	Report: ragnarokfire.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 3c256
+		Damage: 1800
+		DeathType: 4
+		Versus:
+			Infantry: 80
+			ArmorInfantry: 80
+			LightVehicle: 80
+			ArmorTank: 70
+			Lord: 80
+			LordTank: 70
+			harvester: 70
+			Concrete: 130
+	Warhead@sismic: GrantExternalCondition
+		Range: 3c0
+		Duration: 80
+		Condition: disturbing
+
+M1Carbine:
+	Inherits@default.weapons: ^Carabine.Weapons.default
+	ReloadDelay: 28
+	Range: 6c0
+	Report: riflegun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 90
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 60
+			LightVehicle: 45
+			ArmorTank: 20
+			Lord: 30
+			LordTank: 20
+			harvester: 30
+			Concrete: 20
+
+M1Carbine.fafnir:
+	Inherits@default.weapons: M1Carbine
+	ReloadDelay: 20
+	Range: 7c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 100
+
+Einherjar.missile:
+	Inherits@default.weapons: ^Einherjar.Weapons.default
+	ReloadDelay: 97
+	Range: 6c0
+	Report: roquettehe.aud
+	Projectile: Missile
+		Speed: 380
+	Warhead@1Dam: SpreadDamage
+		Damage: 280
+		Versus:
+			Infantry: 40
+			ArmorInfantry: 70
+			LightVehicle: 100
+			ArmorTank: 80
+			Lord: 40
+			LordTank: 40
+			harvester: 70
+			Concrete: 55
+
+Einherjar.missile.fafnir:
+	Inherits@default.weapons: Einherjar.missile
+	ReloadDelay: 85
+	Range: 7c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 295
+
+Einherjar.missile.upgrade:
+	Inherits@default.weapons: ^Einherjar.Weapons.default
+	ReloadDelay: 97
+	Range: 6c0
+	Report: roquettehe.aud
+	Projectile: Missile
+		Speed: 380
+		ContrailColor: 54ff00
+	Warhead@1Dam: SpreadDamage
+		Damage: 295
+		Versus:
+			Infantry: 55
+			ArmorInfantry: 75
+			LightVehicle: 105
+			ArmorTank: 85
+			Lord: 40
+			LordTank: 40
+			harvester: 70
+			Concrete: 55
+
+Einherjar.missile.upgrade.fafnir:
+	Inherits@default.weapons: Einherjar.missile.upgrade
+	ReloadDelay: 85
+	Range: 7c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 300
+
+plasma.jotuun:
+	Inherits@default.weapons: ^jotuun.Weapons.default
+	ReloadDelay: 2
+	Range: 6c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 650
+		Damage: 35
+		Versus:
+			Infantry: 120
+			ArmorInfantry: 100
+			LightVehicle: 60
+			ArmorTank: 30
+			Lord: 70
+			LordTank: 30
+			harvester: 40
+			Concrete: 140
+
+plasma.jotuun.fafnir:
+	Inherits@default.weapons: plasma.jotuun
+	ReloadDelay: 2
+	Range: 7c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 38
+
+plasmamode2.jotuun:
+	Inherits@default.weapons: ^jotuunMode2.Weapons.default
+	ReloadDelay: 60
+	Range: 6c0
+	Report: jotuungun.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 125
+		Damage: 80
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 30
+			LightVehicle: 30
+			ArmorTank: 40
+			Lord: 20
+			LordTank: 40
+			harvester: 20
+			Concrete: 30
+	Warhead@sismic: GrantExternalCondition
+		Range: 0c125
+		Duration: 100
+		Condition: disturbing
+
+grenade.vanir:
+	Inherits@default.weapons: ^Vanir.Weapons.default
+	ReloadDelay: 20
+	Range: 6c256
+	Report: vanir_mortar.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 120
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 80
+			LightVehicle: 85
+			ArmorTank: 60
+			Lord: 50
+			LordTank: 50
+			harvester: 90
+			Concrete: 30
+
+Aesir.Mattergun:
+	Inherits@default.weapons: ^Aesir.Weapons.default
+	ReloadDelay: 130
+	Range: 10c512
+	Report: aesirfire.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 650
+		Versus:
+			Infantry: 110
+			ArmorInfantry: 50
+			LightVehicle: 48
+			ArmorTank: 40
+			Lord: 30
+			LordTank: 35
+			harvester: 60
+			Concrete: 30
+
+Aesir.Mattergun.fafnir:
+	Inherits@default.weapons: Aesir.Mattergun
+	ReloadDelay: 110
+	Warhead@1Dam: SpreadDamage
+		Damage: 750
+
+Minigun.matrice:
+	Inherits@default.weapons: ^Heidrun.Weapons.default
+	ReloadDelay: 55
+	Burst: 3
+	BurstDelays: 2
+	Range: 5c256
+	Report: heidrungun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 60
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 90
+			LightVehicle: 42
+			ArmorTank: 40
+			Lord: 60
+			LordTank: 40
+			harvester: 40
+			Concrete: 40
+
+Missile.matrice:
+	Inherits@default.weapons: ^Heidrun.WeaponsAA.default
+	ReloadDelay: 100
+	Burst: 2
+	Range: 6c512
+	Report: misl1.aud
+	Projectile: Missile
+		Speed: 380
+	Warhead@1Dam: SpreadDamage
+		Damage: 200
+		Versus:
+			Infantry: 40
+			ArmorInfantry: 70
+			LightVehicle: 100
+			ArmorTank: 80
+			Lord: 40
+			LordTank: 40
+			harvester: 70
+			Concrete: 55
+
+grenade.ratatoskr:
+	Inherits@default.weapons: ^ratatosk.Weapons.default
+	ReloadDelay: 45
+	Range: 7c256
+	Report: grenade_launcher.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 450
+		Versus:
+			Infantry: 95
+			ArmorInfantry: 75
+			LightVehicle: 40
+			ArmorTank: 20
+			Lord: 40
+			LordTank: 10
+			harvester: 45
+			Concrete: 45
+
+grenade.ratatoskr.upgrade:
+	Inherits@default.weapons: ^ratatosk.Weapons.default
+	ReloadDelay: 45
+	Range: 7c256
+	Report: grenade_launcher.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 650
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 75
+			LightVehicle: 80
+			ArmorTank: 50
+			Lord: 60
+			LordTank: 40
+			harvester: 75
+			Concrete: 60
+
+Garm.Railgun:
+	Inherits@default.weapons: ^Garm.Weapons.default
+	ReloadDelay: 82
+	Range: 8c512
+	Report: minautfire.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 0c010
+		Damage: 620
+		Versus:
+			Infantry: 120
+			ArmorInfantry: 80
+			LightVehicle: 100
+			ArmorTank: 90
+			Lord: 40
+			LordTank: 40
+			harvester: 80
+			Concrete: 60
+
+Garm.Railgun.Mode2:
+	Inherits@default.weapons: ^Garm.Weapons.default.mode
+	ReloadDelay: 90
+	Range: 8c512
+	Report: garmgunmode2fire.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 1c512
+		Damage: 420
+		Versus:
+			Infantry: 130
+			ArmorInfantry: 80
+			LightVehicle: 100
+			ArmorTank: 90
+			Lord: 40
+			LordTank: 40
+			harvester: 80
+			Concrete: 70
+
+plasma.volcano:
+	Inherits@default.weapons: ^Dwarf.Weapons.default
+	ReloadDelay: 40
+	Range: 10c0
+	Report: volcanogunmin.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 850
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 100
+			LightVehicle: 80
+			ArmorTank: 80
+			Lord: 100
+			LordTank: 80
+			harvester: 80
+			Concrete: 50
+
+plasma.volcanox2:
+	Inherits@default.weapons: ^Dwarf.Weapons.default
+	ReloadDelay: 25
+	Range: 10c0
+	Report: volcanogunmax.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 750
+		Versus:
+			Infantry: 110
+			ArmorInfantry: 110
+			LightVehicle: 80
+			ArmorTank: 80
+			Lord: 100
+			LordTank: 80
+			harvester: 80
+			Concrete: 50
+
+doom.target:
+	Inherits@default.weapons: ^Troll.Target.default
+	ReloadDelay: 6
+	Range: 8c256
+
+doom.gun:
+	Inherits@default.weapons: ^Troll.Weapons.default
+	ReloadDelay: 14
+	Range: 8c256
+	MinRange: 1c0
+	Report: trollgun.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 3c256
+		Damage: 450
+		DeathType: 4
+		Versus:
+			Infantry: 80
+			ArmorInfantry: 80
+			LightVehicle: 80
+			ArmorTank: 70
+			Lord: 80
+			LordTank: 70
+			harvester: 70
+			Concrete: 160
+	Warhead@sismic: GrantExternalCondition
+		Range: 5c0
+		Duration: 250
+		Condition: disturbing
+
+Warg_AA:
+	Inherits@default.weapons: ^Warg.Weapons.default
+	ReloadDelay: 6
+	Range: 7c512
+	BurstDelays: 6
+	Burst: 2
+	Report: 45mm_machinegun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 100
+		Versus:
+			Infantry: 80
+			ArmorInfantry: 80
+			LightVehicle: 100
+			ArmorTank: 85
+			Lord: 80
+			LordTank: 95
+			harvester: 50
+			Concrete: 80
+
+Sharest.Railgun:
+	Inherits@default.weapons: ^Loki.Weapons.default
+	ReloadDelay: 8
+	Range: 8c512
+	Report: lokigun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 110
+		Versus:
+			Infantry: 50
+			ArmorInfantry: 50
+			LightVehicle: 80
+			ArmorTank: 70
+			Lord: 40
+			LordTank: 40
+			harvester: 80
+			Concrete: 75
+
+120mm.lindwyrm:
+	Inherits@default.weapons: ^lindwyrm.Weapons.default
+	ReloadDelay: 65
+	Range: 14c0
+	MinRange: 4c0
+	Report: mantis_fire.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 650
+		Versus:
+			Infantry: 40
+			ArmorInfantry: 50
+			LightVehicle: 100
+			ArmorTank: 100
+			Lord: 50
+			LordTank: 50
+			harvester: 80
+			Concrete: 100
+
+Heimdall.Missile:
+	Inherits@default.weapons: ^Heimdall.Weapons.default
+	ReloadDelay: 180
+	Burst: 3
+	BurstDelays: 10
+	Range: 18c0
+	MinRange: 4c0
+	Report: hemdail_rocket.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 850
+		Versus:
+			Infantry: 110
+			ArmorInfantry: 85
+			LightVehicle: 95
+			ArmorTank: 80
+			Lord: 75
+			LordTank: 65
+			harvester: 80
+			Concrete: 100
+
+Dark.Matter:
+	Inherits@default.weapons: ^Odin.Weapons.default
+	ReloadDelay: 120
+	Range: 9c512
+	Burst: 2
+	Report: mattergun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 1900
+		Versus:
+			Infantry: 50
+			ArmorInfantry: 80
+			LightVehicle: 100
+			ArmorTank: 120
+			Lord: 40
+			LordTank: 40
+			harvester: 80
+			Concrete: 150
+
+Ion.Matter:
+	Inherits@default.weapons: ^Odin.Weapons2.default
+	Burst: 4
+	Range: 8c512
+	BurstDelay: 6
+	ReloadDelay: 45
+	Report: minautfire.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 800
+		Versus:
+			Infantry: 50
+			ArmorInfantry: 80
+			LightVehicle: 90
+			ArmorTank: 120
+			Lord: 40
+			LordTank: 40
+			harvester: 80
+			Concrete: 100
+
+Nidhogg.StunCannon:
+	Inherits@default.weapons: ^Nidhogg/Valkyrie.Weapons.default
+	ReloadDelay: 120
+	Range: 7c256
+	Report: iem_gun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 0
+		Versus:
+			Infantry: 10
+			ArmorInfantry: 10
+			LightVehicle: 10
+			ArmorTank: 10
+			Lord: 10
+			LordTank: 10
+			harvester: 10
+			Concrete: 10
+	Warhead@emp: GrantExternalCondition
+		Range: 0c780
+		Duration: 50
+		Condition: empdisable
+
+minigun.Nidhogg:
+	Inherits@default.weapons: ^Nidhogg.WeaponsAA.default
+	ReloadDelay: 70
+	Burst: 15
+	BurstDelays: 5
+	Range: 7c256
+	Report: 45mm_machinegun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 60
+		Versus:
+			Infantry: 70
+			ArmorInfantry: 70
+			LightVehicle: 80
+			ArmorTank: 60
+			Lord: 50
+			LordTank: 40
+			harvester: 80
+			Concrete: 30
+            
+Valkyrie.TargetBeam:
+	Inherits@default.weapons: ^Anhilihator.Target.default
+	ReloadDelay: 4
+	Range: 8c512
+	MinRange: 4c0
+
+Valkyrie.StunCannon:
+	Inherits@default.weapons: ^Nidhogg/Valkyrie.Weapons.default
+	ReloadDelay: 180
+	Range: 8c512
+	Report: iem_gun.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 1c128
+		Damage: 0
+		Versus:
+			Infantry: 0
+			ArmorInfantry: 0
+			LightVehicle: 0
+			ArmorTank: 0
+			Lord: 0
+			LordTank: 0
+			harvester: 0
+			Concrete: 0
+	Warhead@emp: GrantExternalCondition
+		Range: 2c512
+		Duration: 75
+		Condition: empdisable
+
+Thor.TwinRailgun:
+	Inherits@default.weapons: ^Thor.Weapons.default
+	ReloadDelay: 3
+	Range: 7c0
+	Report: thordulutgun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 80
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 90
+			LightVehicle: 80
+			ArmorTank: 80
+			Lord: 80
+			LordTank: 60
+			harvester: 70
+			Concrete: 75
+
+Thor.TwinRailgunMode2:
+	Inherits@default.weapons: ^Thor.Weapons.default
+	ReloadDelay: 4
+	Range: 7c0
+	Report: pilgrimlasergun.aud
+	Projectile: LaserZap
+		Inaccuracy: 1c728
+		Width: 6
+		SecondaryBeamWidth: 10
+	Warhead@1Dam: SpreadDamage
+		Spread: 728
+		Damage: 35
+		Versus:
+			Infantry: 180
+			ArmorInfantry: 75
+			LightVehicle: 45
+			ArmorTank: 35
+			Lord: 50
+			LordTank: 30
+			harvester: 30
+			Concrete: 20

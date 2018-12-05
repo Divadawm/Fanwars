@@ -1,0 +1,319 @@
+tree01:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree02:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree03:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree04:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree05:
+	Inherits: ^Tree
+	Building:
+		Footprint: x__ xxx xxx
+		Dimensions: 3,3
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree06:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree07:
+	Inherits: ^Tree
+	Building:
+		Footprint: xxx xxx xxx
+		Dimensions: 3,3
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree08:
+	Inherits: ^Tree
+	Building:
+		Footprint: x_x _x_ ___
+		Dimensions: 3,3
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree09:
+	Inherits: ^Tree
+	Building:
+		Footprint: xxx _x_ x_x
+		Dimensions: 3,3
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree10:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree11:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree12:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree13:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree14:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree15:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree16:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree17:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree18:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree19:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree20:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree21:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree22:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree23:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree24:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree25:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree26:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree27:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree28:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree29:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree30:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree31:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree32:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree33:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree34:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree35:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+tree36:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+        
+tree37:
+	Inherits: ^Tree
+	Building:
+		Footprint: xxx xxx xx_
+		Dimensions: 3,3
+	HitShape:
+		UseTargetableCellsOffsets: true
+        
+tree38:
+	Inherits: ^Tree
+	Building:
+		Footprint: xxx xxx x__
+		Dimensions: 3,3
+	HitShape:
+		UseTargetableCellsOffsets: true
+        
+tree39:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx_ xxx _xx
+		Dimensions: 3,3
+	HitShape:
+		UseTargetableCellsOffsets: true
+        
+tree40:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx_ ___ _xx
+		Dimensions: 3,3
+	HitShape:
+		UseTargetableCellsOffsets: true

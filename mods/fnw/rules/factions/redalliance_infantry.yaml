@@ -1,0 +1,220 @@
+t1_comrade:
+	Inherits@1: ^Infantry
+	Inherits@2: ^Global.Upgrade.Redalliance
+	Inherits@3: ^Infantry.Upgrade.Redalliance
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry.redalliance
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 10
+		Description: Resilient and well trained infantry unit armed with a laser rifle\n> Strong vs Infantry, Light Vehicles\n> Weak vs Heavy Vehicles, Aircraft
+		BuildDurationModifier: 3
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 150
+	Tooltip:
+		Name: Comrade
+	Health:
+		HP: 600
+	Mobile:
+		Crushes: gibs
+		Speed: 80
+	RevealsShroud:
+		Range: 6c0
+	AttackFrontal:
+	Armament@PRIMARY:
+		Weapon: Laser_cf
+		LocalOffset: 0,0,220
+		MuzzleSequence: muzzle
+	WithInfantryBody:
+		IdleSequences: idle1
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: Laser_cf
+		MuzzleSequence: garrison-muzzle
+	Armament@GARRISONEDFAFNIR:
+		Name: garrisoned.fafnir
+		Weapon: Laser_cf.fafnir
+		MuzzleSequence: garrison-muzzle
+	ExternalCaptures:
+		CaptureTypes: TechBuilding
+		PlayerExperience: 20
+	HitShape:
+
+t1_disciple:
+	Inherits@1: ^Infantry
+	Inherits@2: ^Global.Upgrade.Redalliance
+	Inherits@3: ^Infantry.Upgrade.Redalliance
+	Inherits@Target: ^AutoTargetAllAssaultMove
+	Buildable:
+		Queue: Infantry.redalliance
+		BuildPaletteOrder: 20
+		Description: Specialist infantryman equipped with a dual-purpose anti-air/anti-vehicle heavy rifle\n> Strong vs Vehicles, Aircraft\n> Weak vs Infantry
+		BuildDurationModifier: 4
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 300
+	Tooltip:
+		Name: Sentinel
+	Health:
+		HP: 500
+	Mobile:
+		Crushes: gibs
+		Speed: 80
+	RevealsShroud:
+		Range: 6c0
+	AttackFrontal:
+	Armament@PRIMARY:
+		Weapon: AP_Sentient
+		LocalOffset: 0,0,220
+	Armament@SECONDARY:
+		Weapon: AP_SentientAA
+		LocalOffset: 0,0,220
+	WithInfantryBody:
+		IdleSequences: idle1
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: AP_Sentient
+		MuzzleSequence: garrison-muzzle
+	Armament@GARRISONEDFAFNIR:
+		Name: garrisoned.fafnir
+		Weapon: AP_Sentient.fafnir
+		MuzzleSequence: garrison-muzzle
+	HitShape:
+
+t2_tesla:
+	Inherits@1: ^Infantry
+	Inherits@2: ^Global.Upgrade.Redalliance
+	Inherits@3: ^Infantry.Upgrade.Redalliance
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry.redalliance
+		BuildPaletteOrder: 70
+		Prerequisites: artech
+		Description: Heavy infantry armed with tesla weaponry\nCan temporarily disable vehicles and slow down aircrafts\n> Strong vs Infantry, Light Vehicles, Aircraft, Structures\n> Weak vs. Heavy Vehicles
+		BuildDurationModifier: 5
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 450
+	Tooltip:
+		Name: Devastator
+	Health:
+		HP: 750
+	Mobile:
+		Crushes: gibs
+		Speed: 70
+	RevealsShroud:
+		Range: 6c0
+	AttackFrontal:
+	GrantConditionOnPrerequisite@research.DisturbZap.TeslaTrooper.Redalliance:
+		Prerequisites: research.DisturbZap.TeslaTrooper.Redalliance
+		Condition: upgrade.DisturbZap.TeslaTrooper.Redalliance
+	Armament@PRIMARY:
+		Weapon: Volkit_gun
+		LocalOffset: 0,0,220
+	WithInfantryBody:
+		IdleSequences: idle1
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: Volkit_gun
+		MuzzleSequence: garrison-muzzle
+	Armament@GARRISONEDFAFNIR:
+		Name: garrisoned.fafnir
+		Weapon: Volkit_gun.fafnir
+		MuzzleSequence: garrison-muzzle
+	HitShape:
+
+t2_devastator:
+	Inherits@1: ^InfantryHeavy
+	Inherits@2: ^Global.Upgrade.Redalliance
+	Inherits@3: ^Infantry.Upgrade.Redalliance
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry.redalliance
+		BuildPaletteOrder: 80
+		Prerequisites: artech
+		Description: Heavy infantry equipped with a fusion cannon\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
+		BuildDurationModifier: 5
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Desolator
+	Health:
+		HP: 700
+	Mobile:
+		Crushes: gibs
+		Speed: 70
+	RevealsShroud:
+		Range: 6c0
+	AttackFrontal:
+	Armament@PRIMARY:
+		Weapon: Nukegun
+		LocalOffset: 0,0,220
+	WithInfantryBody:
+		IdleSequences: idle1
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: Nukegun
+		MuzzleSequence: garrison-muzzle
+	Armament@GARRISONEDFAFNIR:
+		Name: garrisoned.fafnir
+		Weapon: Nukegun.fafnir
+		MuzzleSequence: garrison-muzzle
+	TakeCover:
+		DamageModifiers:
+			Prone50Percent: 50
+		DamageTriggers: TriggerProne
+	HitShape:
+
+t3_eradicator:
+	Inherits@1: ^InfantryHeavy
+	Inherits@2: ^Global.Upgrade.Redalliance
+	Inherits@3: ^Infantry.Upgrade.Redalliance
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry.redalliance
+		BuildPaletteOrder: 130
+		Prerequisites: t2_command_relais
+		Description: Super heavy infantry unit armed with a powerful autocannon and a flamethrower\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 8
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Eradicator
+	Health:
+		HP: 1600
+	Mobile:
+		Crushes: gibs
+		Speed: 65
+	RevealsShroud:
+		Range: 6c0
+	AttackFrontal:
+	WithInfantryBody:
+		IdleSequences: idle1
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	Armament@PRIMARY:
+		Weapon: AP_Gatling_Era
+		LocalOffset: 0,0,220
+		MuzzleSequence: muzzle
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: AP_Gatling_Era
+		MuzzleSequence: garrison-muzzle
+	Armament@GARRISONEDFAFNIR:
+		Name: garrisoned.fafnir
+		Weapon: AP_Gatling_Era.fafnir
+		MuzzleSequence: garrison-muzzle
+	DamageMultiplier:
+		Modifier: 65
+	HitShape:

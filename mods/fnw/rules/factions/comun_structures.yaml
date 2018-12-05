@@ -1,0 +1,598 @@
+diastextractor:
+	Inherits: ^Building
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: Defence.baneslayer, Defence.conclave, Defence.redalliance, Defence.federation
+		BuildPaletteOrder: 20
+		Description: Provides power for other structures
+		BuildDurationModifier: 20
+		Adjacent: 18
+        IconPalette: Federation.Icon
+	Valued:
+		Cost: 1600
+	Tooltip:
+		Name: Diastime Extractor
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+		Adjacent: 10
+        TerrainTypes: Deposit
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 5000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	InfiltrateForPowerOutage:
+	WithIdleOverlay@Smoke1:
+		Offset: 0, 0, 800
+		Sequence: smoke
+		Palette: effect
+	AffectedByPowerOutage:
+	ScalePowerWithHealth:
+	Power:
+		Amount: 0
+    CashTrickler:
+        InitialDelay: 650
+		Interval: 650
+		Amount: 450
+	HitShape:
+
+DERRICK:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 8000
+	RevealsShroud:
+		Range: 3c0
+	ExternalCapturable:
+		Types: TechBuilding
+		CaptureCompleteTime: 20
+	ExternalCapturableBar:
+	EngineerRepairable:
+	CashTrickler:
+		Interval: 300
+		Amount: 100
+	Tooltip:
+		Name: Derrick
+	GivesCashOnCapture:
+		Amount: 200
+	HitShape:
+
+generatciv_01:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 6000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Generator
+	HitShape:
+
+reactor:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 6000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Reactor
+	ExternalCapturable:
+		Types: TechBuilding
+		CaptureCompleteTime: 40
+	StrategicPoint:
+	MustBeDestroyed:
+		RequiredForShortGame: True
+	ExternalCapturableBar:
+	DamageMultiplier:
+		Modifier: 0
+	HitShape:
+
+postpoint:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 5000
+	RevealsShroud:
+		Range: 5c0
+	Tooltip:
+		Name: Strategic Point
+	ExternalCapturable:
+		Types: TechBuilding
+		CaptureCompleteTime: 40
+	StrategicPoint:
+	Targetable@strategic.point:
+		TargetTypes: strategic.point
+	ExternalCapturableBar:
+	DamageMultiplier:
+		Modifier: 0
+	HitShape:
+
+avpost:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 7000
+	RevealsShroud:
+		Range: 12c0
+	Tooltip:
+		Name: observation post
+	ExternalCapturable:
+		Types: TechBuilding
+		CaptureCompleteTime: 25
+	ProximityExternalCondition@AVPOSTRANGE:
+		Condition: Avpost.Range
+		Range: 3c0
+	ExternalCapturableBar:
+	HitShape:
+
+opwall:
+	Inherits: ^Wall
+	Valued:
+		Cost: 50
+	CustomSellValue:
+		Value: 0
+	Tooltip:
+		Name: Wall
+	Health:
+		HP: 3500
+	Armor:
+		Type: Concrete
+	LineBuild:
+		Range: 10
+		NodeTypes: wall
+	LineBuildNode:
+		Types: wall
+	WithWallSpriteBody:
+		Type: wall
+
+towerdefenceap:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+    Inherits@AUTOTARGET: ^AutoTargetGround
+	Selectable:
+		Bounds: 36,36
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 6000
+	RevealsShroud:
+		Range: 7c0
+	ExternalCapturable:
+		Types: TechBuilding
+		CaptureCompleteTime: 20
+	ExternalCapturableBar:
+	EngineerRepairable:
+    WithSpriteTurret:
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 8
+		RealignDelay: 20
+		Offset: 0,0,1900
+	Armament@primary01:
+		Weapon: Gatling.tower
+		LocalOffset: 1050,100,50
+		MuzzleSequence: muzzle
+		Recoil: 85
+		RecoilRecovery: 25
+	Armament@primary02:
+		Weapon: Gatling.tower
+        FireDelay: 4
+		LocalOffset: 1050,-100,50
+		MuzzleSequence: muzzle
+		Recoil: 85
+		RecoilRecovery: 25
+	WithMuzzleOverlay:
+	Tooltip:
+		Name: Gatling Tower
+	BodyOrientation:
+		QuantizedFacings: 0
+	HitShape:
+
+towerdefenceac:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 36,36
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 5000
+	RevealsShroud:
+		Range: 5c0
+	ExternalCapturable:
+		Type: TechBuilding
+		CaptureCompleteTime: 30
+	ExternalCapturableBar:
+	EngineerRepairable:
+	Tooltip:
+		Name: defence
+	BodyOrientation:
+		QuantizedFacings: 0
+	HitShape:
+
+bunker:
+	Inherits: ^TechBuilding
+	Inherits@target: ^AutoTargetAll
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 36,36
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 7000
+	RevealsShroud:
+		Range: 5c0
+	ExternalCapturable:
+		Types: TechBuilding
+		CaptureCompleteTime: 10
+	Turreted:
+		TurnSpeed: 255
+	BodyOrientation:
+		QuantizedFacings: 8
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+		PipCount: 5
+	AttackGarrisoned:
+		Armaments: garrisoned
+		PortOffsets: 384,0,128, 224,-341,128, -224,-341,128, -384,0,128, -224,341,128, 224,341,128
+		PortYaws: 0, 176, 341, 512, 682, 853
+		PortCones: 88, 98, 108, 78, 68, 80
+	ExternalCapturableBar:
+	EngineerRepairable:
+	Tooltip:
+		Name: bunker
+	HitShape:
+
+bunker.husk:
+	Inherits: ^TechBuilding
+	Selectable:
+		Bounds: 36,36
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 800
+	RevealsShroud:
+		Range: 5c0
+	EngineerRepairable:
+	Capturable:
+		Type: huskBuilding
+		AllowAllies: true
+		CaptureThreshold: 100
+	TransformOnCapture:
+		ForceHealthPercentage: 25
+	Tooltip:
+		Name: bunker epave
+	TransformOnCapture:
+		IntoActor: bunker
+	HitShape:
+
+buildingdepot:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 5000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Dépot
+	HitShape:
+
+taudi_01:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Makeshift building
+	HitShape:
+
+taudi_02:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Makeshift building
+	HitShape:
+
+taudi_03:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Makeshift building
+	HitShape:
+
+taudi_04:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Makeshift building
+	HitShape:
+
+taudi_05:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3500
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Makeshift building
+	HitShape:
+
+taudi_06:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3500
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Drop Pod makeshift
+	HitShape:
+
+taudi_07:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3500
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Darnell Garage
+	HitShape:
+
+urbandecoy_01:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 2c0
+	Tooltip:
+		Name: Holographique-Signaletic !
+	WithIdleOverlay@SPOT:
+		Offset: 0,0,0
+		Sequence: Neon1
+		Palette: unitalpha60
+	HitShape:
+
+urbandecoy_01.variant01:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 2c0
+	RenderSprites:
+		Image: urbandecoy_01
+	Tooltip:
+		Name: Holographique-Signaletic !
+	WithIdleOverlay@SPOT:
+		Offset: 0,0,0
+		Sequence: Neon2
+		Palette: unitalpha60
+	HitShape:
+
+urbandecoy_02:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 2c0
+	Tooltip:
+		Name: Holographique-Signaletic !
+	WithIdleOverlay@SPOT:
+		Offset: 0,0,0
+		Sequence: Neon1
+		Palette: unitalpha60
+	HitShape:
+
+urbandecoy_02.variant01:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 2c0
+	RenderSprites:
+		Image: urbandecoy_02
+	Tooltip:
+		Name: Holographique-Signaletic !
+	WithIdleOverlay@SPOT:
+		Offset: 0,0,0
+		Sequence: Neon2
+		Palette: unitalpha60
+	HitShape:
+
+urbandecoy_03:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 2c0
+	Tooltip:
+		Name: The federation does not forget you!
+	HitShape:
+
+urbandecoy_03.decoy:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 3000
+	WithSpriteBody:
+		Sequence: idle2
+	RevealsShroud:
+		Range: 2c0
+	Tooltip:
+		Name: The federation does not forget you!
+	HitShape:
+
+techcivbuild_01:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 2c0
+	Tooltip:
+		Name: Tech Civilian Building
+	HitShape:
+
+techcivbuild_02:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 2c0
+	Tooltip:
+		Name: Tech Civilian Building
+	HitShape:
+
+techcivbuild_03:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 2c0
+	Tooltip:
+		Name: Tech Civilian Building test
+	HitShape:

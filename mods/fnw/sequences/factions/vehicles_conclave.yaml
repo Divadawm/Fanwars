@@ -1,0 +1,74 @@
+tcmcv:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+	icon: tcmcvicon
+
+prospecteur:
+	Inherits@Stat: ^StatVehicleEffect
+	idle: null
+	harvest: harvest_anim
+		Length: *
+		BlendMode: Additive
+	dock: null
+	dock-loop: null
+	icon: prospecticon
+
+arpenteur:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+	aura_phie: aura_phie
+		Length: *
+		BlendMode: Additive
+	aura_omega: aura_omega
+		Length: *
+		BlendMode: Additive
+	icon: arpenteuricon
+
+t3_surveyor:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+		Facings: 8
+	walk:
+        Start: 8
+		Facings: 8
+		Length: 6
+		Tick: 140
+	muzzle: muzzle_bluegun
+		Length: *
+		BlendMode: Additive
+	turret: t3_surveyortur
+		Facings: 64
+	aura_phie: aura_phie
+		Length: *
+		BlendMode: Additive
+	aura_omega: aura_omega
+		Length: *
+		BlendMode: Additive
+	icon: arpenteuricon
+
+t2_rodeur:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+		Facings: 8
+	walk:
+        Start: 8
+		Facings: 8
+		Length: 12
+		Tick: 20
+	turret: t2_rodeurtur
+		Facings: 64
+	muzzle: muzzle_bluegun
+		Length: *
+		BlendMode: Additive
+	icon: rebornicon
+
+t2_pilgrim:
+	Inherits@Stat: ^StatVehicleEffect
+	muzzle: muzzle_balist_medium
+		Length: *
+		BlendMode: Additive
+	idle:
+		Facings: 64
+	turret: t2_pilgrimtur
+		Facings: 64
+	icon: dcatnkicon

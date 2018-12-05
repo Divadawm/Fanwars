@@ -1,0 +1,448 @@
+Gardian.zap.Laser:
+	Inherits@default.weapons: ^Ranger.Weapons.default
+	ReloadDelay: 60
+	Burst: 3
+	BurstDelays: 8
+	Range: 5c128
+	Report: gardianriflefire.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 50
+		Versus:
+			Infantry: 110
+			ArmorInfantry: 80
+			LightVehicle: 50
+			ArmorTank: 40
+			Lord: 70
+			LordTank: 40
+			harvester: 50
+			Concrete: 40
+
+Gardian.zap.Laser.fafnir:
+	Inherits@default.weapons: Gardian.zap.Laser
+	ReloadDelay: 50
+	Burst: 3
+	BurstDelays: 3
+	Range: 6c128
+	Warhead@1Dam: SpreadDamage
+		Damage: 65
+
+Statis.emp.Laser:
+	Inherits@default.weapons: ^Statis.Weapons.default
+	ReloadDelay: 18
+	Range: 5c128
+	Warhead@1Dam: SpreadDamage
+		Damage: 0
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 100
+			LightVehicle: 100
+			ArmorTank: 100
+			Lord: 100
+			LordTank: 100
+			harvester: 100
+			Concrete: 100
+	Warhead@emp: GrantExternalCondition
+		Range: 0c128
+		Duration: 18
+		Condition: empdisable
+
+Statis.emp.Laser.fafnir:
+	Inherits@default.weapons: Statis.emp.Laser
+	ReloadDelay: 18
+	Range: 6c128
+	Warhead@emp: GrantExternalCondition
+		Range: 0c128
+		Duration: 18
+		Condition: empdisable
+
+DroneJaw:
+	ValidTargets: Infantry
+	ReloadDelay: 10
+	Range: 3c0
+	Report:
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: 1000
+		ValidTargets: Infantry
+		DamageTypes: TriggerProne
+
+bipboumexplode:
+	Inherits@default.weapons: ^Tracker.Weapons.default
+	Warhead@1Dam: SpreadDamage
+		Spread: 1024
+		Damage: 2000
+		Versus:
+			Infantry: 42
+			ArmorInfantry: 50
+			LightVehicle: 100
+			ArmorTank: 120
+			Lord: 40
+			LordTank: 40
+			harvester: 80
+			Concrete: 120
+
+ExconvectorGun.lateral:
+	Inherits@default.weapons: Surveyor.Weapons.default
+	Range: 8c0
+	ReloadDelay: 90
+	Report: pilgrimlasergun.aud
+	Warhead@2Dam: SpreadDamage
+		Damage: 0
+		Versus:
+			Infantry: 1
+			ArmorInfantry: 1
+			LightVehicle: 1
+			ArmorTank: 1
+			Lord: 1
+			LordTank: 1
+			harvester: 1
+			Concrete: 1
+	Warhead@1Dam: SpreadDamage
+		Damage: 100
+		ValidTargets: Ground, Water
+		Versus:
+			Concrete: 220
+            
+ExconvectorGun.primaris:
+	Inherits@default.weapons: Surveyor.Primaris.Weapons.default
+	Range: 8c0
+	ReloadDelay: 90
+	Report: surveyor_fireprimaris.aud
+	Warhead@2Dam: HealthPercentageDamage
+		Damage: 100
+		Versus:
+			Infantry: 15
+			ArmorInfantry: 15
+			LightVehicle: 15
+			ArmorTank: 15
+			Lord: 15
+			LordTank: 15
+			harvester: 15
+			Concrete: 15
+	Warhead@1Dam: SpreadDamage
+		Damage: 100
+		ValidTargets: Ground, Water
+		Versus:
+			Concrete: 220
+
+Photo_Missile:
+	Inherits@default.weapons: ^Pilgrim.Weapons.default
+	ReloadDelay: 97
+	MinRange: 5c0
+	Burst: 4
+	Range: 12c512
+	Report: pilgrim_fire.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 365
+		ValidTargets: Ground, Water
+		Versus:
+			Infantry: 60
+			ArmorInfantry: 70
+			LightVehicle: 80
+			ArmorTank: 70
+			Lord: 70
+			LordTank: 100
+			harvester: 80
+			Concrete: 50
+
+Photo_MissileAA:
+	Inherits@default.weapons: ^Pilgrim.Weapons.default
+	ReloadDelay: 97
+	MinRange: 2c0
+	Burst: 4
+	Range: 12c512
+	Report: pilgrim_fire.aud
+	ValidTargets: Air
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Air
+		Damage: 300
+		Versus:
+			Infantry: 60
+			ArmorInfantry: 70
+			LightVehicle: 80
+			ArmorTank: 100
+			Lord: 70
+			LordTank: 100
+			harvester: 80
+			Concrete: 100
+
+Rodeur.Dual.LightLaser:
+	Inherits@default.weapons: ^Rodeur.Weapons.default
+	ReloadDelay: 5
+	Range: 7c0
+	Report: rodeurgun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 37
+		Versus:
+			Infantry: 40
+			ArmorInfantry: 80
+			LightVehicle: 72
+			ArmorTank: 67
+			Lord: 70
+			LordTank: 60
+			harvester: 60
+			Concrete: 15
+
+Rodeur.Dual.LightLaserMODE:
+	Inherits@default.weapons: Rodeur.Dual.LightLaser
+	MinRange: 6c0
+
+Rodeur.Dual.LightLaser.Alpha:
+	Inherits@default.weapons: Rodeur.Dual.LightLaser
+	Range: 8c512
+	Projectile: LaserZap
+		Color: ffc000
+		SecondaryBeamColor: f08800
+	Warhead@1Dam: SpreadDamage
+		Damage: 37
+		Versus:
+			Infantry: 42
+			ArmorInfantry: 80
+			LightVehicle: 75
+			ArmorTank: 69
+			Lord: 75
+			LordTank: 65
+			harvester: 65
+			Concrete: 18
+
+Rodeur.Dual.LightLaser.AlphaMODE:
+	Inherits@default.weapons: Rodeur.Dual.LightLaser.Alpha
+	MinRange: 7c0
+
+Rodeur.Dual.LightLaser.Omega:
+	Inherits@default.weapons: Rodeur.Dual.LightLaser
+	Projectile: LaserZap
+		Color: ea37ff
+		SecondaryBeamColor: 891bce
+	Warhead@1Dam: SpreadDamage
+		Damage: 37
+		Versus:
+			Infantry: 42
+			ArmorInfantry: 80
+			LightVehicle: 75
+			ArmorTank: 69
+			Lord: 75
+			LordTank: 65
+			harvester: 65
+			Concrete: 18
+
+Rodeur.Dual.LightLaser.OmegaMODE:
+	Inherits@default.weapons: Rodeur.Dual.LightLaser.Omega
+	MinRange: 6c0
+
+Dual.Impuls.Catapult:
+	Inherits@default.weapons: ^Comete.Weapons.default
+	Burst: 2
+	ReloadDelay: 5
+	Range: 7c0
+	Report: laseguncomete.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 38
+		Versus:
+			Infantry: 35
+			ArmorInfantry: 80
+			LightVehicle: 60
+			ArmorTank: 75
+			Lord: 40
+			LordTank: 40
+			harvester: 60
+			Concrete: 30
+
+Dual.Impuls.Catapult.Alpha:
+	Inherits@weapons: Dual.Impuls.Catapult
+	Range: 8c0
+	Projectile: LaserZap
+		Color: ffc000
+		SecondaryBeamColor: f08800
+	Warhead@1Dam: SpreadDamage
+		Damage: 40
+
+Dual.Impuls.Catapult.Omega:
+	Inherits@weapons: Dual.Impuls.Catapult
+	Projectile: LaserZap
+		Color: 60fdff
+		SecondaryBeamColor: 891bce
+	Warhead@1Dam: SpreadDamage
+		Damage: 40
+	Warhead@disturb: GrantExternalCondition
+		ValidTargets: Ground, Rough, Tree
+		Range: 0c64
+		Duration: 10
+		Condition: disturbingspeed
+
+ExconvectorCanonAA.TargetBeam:
+	ReloadDelay: 4
+	Range: 16c0
+	MinRange: 2c0
+	Report:
+	ValidTargets: Air
+	Projectile: LaserZap
+		Width: 18
+		TrackTarget: true
+		Color: bfe2f8
+		SecondaryBeam: true
+		SecondaryBeamWidth: 45
+		SecondaryBeamColor: 70bef0
+	Warhead@1Dam: SpreadDamage
+		Spread: 0
+		Damage: 0
+		ValidTargets: Air
+		Versus:
+			Infantry: 10
+			ArmorInfantry: 10
+			LightVehicle: 10
+			ArmorTank: 10
+			Lord: 10
+			LordTank: 10
+			harvester: 10
+			Concrete: 10
+		DamageTypes: Burned, TriggerProne
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: bluelight
+		ValidTargets: Ground, Water, Air
+
+Quasar.Canon:
+	Inherits@weapons: ^Quasar.Weapons.default
+	ReloadDelay: 20
+	Range: 16c0
+	ValidTargets: Air
+	Report: cometegun.aud
+	Projectile: Railgun
+		DamageActorsInLine: true
+		HelixRadius: 128
+		HelixThickness: 45
+		BeamPlayerColor: true
+		HelixPlayerColor: true
+		HitAnim: quasarshotmin
+		HitAnimPalette: powereffect60
+		HelixRadiusDeltaPerTick: 6
+		HelixAngleDeltaPerTick: 32
+		Speed: 20c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 2000
+		Versus:
+			Infantry: 50
+			ArmorInfantry: 100
+			LightVehicle: 100
+			ArmorTank: 100
+			Lord: 40
+			LordTank: 40
+			harvester: 80
+			Concrete: 70
+
+Quasar.Canon.Alpha:
+	Inherits@weapons: Quasar.Canon
+	Projectile: Railgun
+		DamageActorsInLine: true
+		HelixRadius: 128
+		HelixThickness: 45
+		BeamWidth: 250
+		BeamPlayerColor: true
+		BeamRenderableShape: Flat
+		HitAnim: quasarshotmax
+		HitAnimPalette: powereffect60
+		HelixPlayerColor: true
+		HelixRadiusDeltaPerTick: 6
+		HelixAngleDeltaPerTick: 32
+		Speed: 20c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 1c0
+
+Navigator.force:
+	Inherits@weapons: ^navigator.Weapons.default
+	ReloadDelay: 6
+	Range: 8c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 10
+		Versus:
+			Infantry: 50
+			ArmorInfantry: 100
+			LightVehicle: 100
+			ArmorTank: 100
+			Lord: 40
+			LordTank: 40
+			harvester: 80
+			Concrete: 70
+
+Avatar.Hallb:
+	ReloadDelay: 50
+	Range: 2c128
+	Report: hallblade.aud
+	Projectile: Bullet
+		Speed: 1000
+		Inaccuracy: 0
+	Warhead@1Dam: SpreadDamage
+		Spread: 2c512
+		Damage: 900
+		DeathType: 4
+		Versus:
+			Infantry: 95
+			ArmorInfantry: 80
+			LightVehicle: 100
+			ArmorTank: 95
+			Lord: 40
+			LordTank: 40
+			harvester: 70
+			Concrete: 120
+		DamageTypes: ExplosionGore, TriggerProne
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3EffGround: CreateEffect
+		Explosions: small_sismic_impact
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground, Water, Air
+	Warhead@stun: GrantExternalCondition
+		Range: 1c750
+		Duration: 45
+		Condition: HammerEradicatorStun
+
+electro_defence:
+	Inherits@weapons: ^TeslaGunAlliance
+	Range: 8c0
+		ValidTargets: Ground, Water
+		InvalidTargets: Air
+	Warhead@1Dam: SpreadDamage
+		Spread: 16
+		Damage: 350
+		DeathType: 5
+		RangeLimit: 7c256
+		ValidTargets: Ground, Water
+		InvalidTargets: Air
+		Versus:
+			Infantry: 180
+			ArmorInfantry: 120
+			LightVehicle: 100
+			ArmorTank: 90
+			Lord: 60
+			LordTank: 50
+			harvester: 70
+			Concrete: 150
+		DamageTypes: Burned, TriggerProne
+
+electro_defenceAA:
+	Inherits@weapons: ^Autogun
+	ReloadDelay: 8
+	Range: 7c512
+	-Report:
+	ValidTargets: Air
+	InvalidTargets: Ground, Water
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Air
+		InvalidTargets: Ground, Water
+		Spread: 40
+		Damage: 80
+		Versus:
+			Infantry: 80
+			ArmorInfantry: 80
+			LightVehicle: 120
+			ArmorTank: 90
+			Lord: 80
+			LordTank: 80
+			harvester: 50
+			Concrete: 80
+		DamageTypes: ExplosionGore, TriggerProne
+	Warhead@3EffGround: CreateEffect
+		ExplosionPalette: effectalpha75
+		Explosions: small_sismic_impact
+		ValidTargets: Ground, Water, Air

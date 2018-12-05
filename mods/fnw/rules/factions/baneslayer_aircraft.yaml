@@ -1,0 +1,292 @@
+baneslayerattackaircraft:
+	Inherits: ^Aircraftshape
+	Interactable:
+	Tooltip:
+		Name: Bomber
+	Valued:
+		Cost: 2000
+	Aircraft:
+		TurnSpeed: 4
+		Speed: 520
+		Repulsable: False
+	AttackBomber:
+		Armaments: gun, bombs
+	DamageMultiplier@INVULNERABLE:
+		Modifier: 0
+	Health:
+		HP: 1500
+	Armament@GUNS:
+		Name: gun
+		Weapon: Einherjar.missile.Aircraft
+		LocalOffset: 1024,0,-85
+	Armament@GUNS2:
+		Name: gun
+		Weapon: Einherjar.missile.Aircraft
+		LocalOffset: 1024,0,-85
+	WithMuzzleOverlay:
+	Targetable:
+		TargetTypes: NoAircraftTarget
+		RequiresForceFire: true
+	RejectsOrders:
+	FlyAwayOnIdle:
+	-AutoTarget:
+	Armament@BOMBS:
+		Name: bombs
+		Weapon: Helgun.Aircraft
+		LocalOffset: 0,-256,-43, 0,256,-43
+	Buildable:
+		Description: Used to deliver air strikes.
+	HitShape:
+
+t2_nidhogg:
+	Inherits: ^Helicoptershape
+	Inherits@Target: ^AutoTargetAllAssaultMove
+	Inherits@Upgrade: ^Aircraft.Upgrade.baneslayer
+	Buildable:
+		Queue: Aircraft.baneslayer
+		BuildPaletteOrder: 40
+		Description: Multipurpose VTOL equipped with 2 autocannons and an EMP cannon\n> Strong vs Vehicles, Aircraft\n> Weak vs Infantry
+		BuildDurationModifier: 10
+	Valued:
+		Cost: 1300
+	Tooltip:
+		Name: Nidhogg
+	Health:
+		HP: 1100
+	Armor:
+		Type: LightVehicle
+	RevealsShroud:
+		Range: 12c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 10c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Weapon: minigun.Nidhogg
+		LocalOffset: 280,-260,20, 280,260,20
+		MuzzleSequence: muzzle
+	Armament@Secondary:
+		Weapon: Nidhogg.StunCannon
+		LocalOffset: 980,0,-30
+	WithMuzzleOverlay:
+	AttackHeli:
+		FacingTolerance: 20
+	Aircraft:
+		CruiseAltitude: 2500
+		InitialFacing: 192
+		TurnSpeed: 4
+		Speed: 180
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		LandWhenIdle: false
+		LandableTerrainTypes: Clear,Rough,Road,Beach
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
+	Selectable:
+		Bounds: 36,28
+	SpawnActorOnDeath:
+		Actor: t2_nidhogg.Husk
+	HitShape:
+
+t2_nidhogg.Husk:
+	Inherits: ^AircraftHuskShape
+	Tooltip:
+		Name: Nidhogg
+	Aircraft:
+		TurnSpeed: 10
+		Speed: 186
+	RenderSprites:
+		Image: t2_nidhogg
+
+t3_thor:
+	Inherits: ^Aircraftshape
+	Inherits@Target: ^AutoTargetGround
+	Inherits@Upgrade: ^Aircraft.Upgrade.baneslayer
+	Buildable:
+		Queue: Aircraft.baneslayer
+		BuildPaletteOrder: 50
+		Prerequisites: Research Module
+		Description: Experimental aircraft armed with a triple fast-firing ion cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 20
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Thor
+	Health:
+		HP: 1300
+	Armor:
+		Type: LightVehicle
+	RevealsShroud:
+		Range: 13c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 11c0
+		Type: GroundPosition
+	GrantConditionOnDeploy:
+		DeployedCondition: mode2
+		DeploySound: deploy_vehicle_mode.aud
+		UndeploySound: deploy_vehicle_mode.aud
+	GrantConditionOnPrerequisite@research.Thor.baneslayer:
+		Prerequisites: research.Thor.baneslayer
+		Condition: upgrade.Thor.baneslayer
+	Armament:
+		Weapon: Thor.TwinRailgun
+		LocalOffset: -110,-420,-40, -110,420,-80
+		LocalYaw: -40, -24
+		RequiresCondition: !mode2 && !upgrade.Thor.baneslayer
+		MuzzleSequence: muzzle
+	Armament@Base:
+		Weapon: Thor.TwinRailgun
+		LocalOffset: -110,-420,-10, -110,420,-10
+		LocalYaw: -40, -24
+		RequiresCondition: mode2 && !upgrade.Thor.baneslayer
+		MuzzleSequence: muzzle
+	Armament@BaseMode:
+		Weapon: Thor.TwinRailgun
+		LocalOffset: -110,-420,-10, -110,420,-10
+		LocalYaw: -40, -24
+		RequiresCondition: !mode2 && upgrade.Thor.baneslayer
+		MuzzleSequence: muzzle
+	Armament@SecondMode:
+		Weapon: Thor.TwinRailgunMode2
+		LocalOffset: -110,-420,-10
+		LocalYaw: -40, -24
+		RequiresCondition: mode2 && upgrade.Thor.baneslayer
+		MuzzleSequence: muzzle
+	Armament@SecondMode1:
+		Weapon: Thor.TwinRailgunMode2
+		LocalOffset: -110,420,-10
+		LocalYaw: -40, -24
+		RequiresCondition: mode2 && upgrade.Thor.baneslayer
+		MuzzleSequence: muzzle
+	WithMuzzleOverlay:
+	WithDecoration@MOD1:
+		Image: stat-effect
+		Sequence: Level21
+		Palette: effect
+		ReferencePoint: bottom, center
+		ZOffset: 100
+		RequiresCondition: !mode2 && upgrade.Thor.baneslayer
+	WithDecoration@MOD2:
+		Image: stat-effect
+		Sequence: Level22
+		Palette: effect
+		ReferencePoint: bottom, center
+		ZOffset: 100
+		RequiresCondition: mode2 && upgrade.Thor.baneslayer
+	AttackPlane:
+		FacingTolerance: 25
+	ReturnOnIdle:
+	Aircraft:
+		CruiseAltitude: 3400
+		InitialFacing: 192
+		TurnSpeed: 3
+		Speed: 220
+		Repulsable: true
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+	AutoTarget:
+		EnableStances: false
+		InitialStance: HoldFire
+	Selectable:
+		Bounds: 36,28
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+	SpawnActorOnDeath:
+		Actor: t3_thor.Husk
+	HitShape:
+
+t3_thor.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Thor
+	Aircraft:
+		TurnSpeed: 0
+		Speed: 186
+	RenderSprites:
+		Image: t3_thor
+
+t3_valkyrie:
+	Inherits: ^Helicoptershape
+	Inherits@Target: ^AutoTargetGround
+	Inherits@Upgrade: ^Aircraft.Upgrade.baneslayer
+	Buildable:
+		Queue: Aircraft.baneslayer
+		BuildPaletteOrder: 40
+		Prerequisites: Research Module
+		Description: Heavy repair platform capable of healing all mechanical units within its range\n> Strong vs None\n> Weak vs Everything
+		BuildDurationModifier: 15
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: Valkyrie
+	Health:
+		HP: 1400
+	Armor:
+		Type: LightVehicle
+	RevealsShroud:
+		Range: 12c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 10c0
+		Type: GroundPosition
+	Armament@Gun:
+		Weapon: Valkyrie.StunCannon
+		LocalOffset: 1500,0,-650
+	AttackTurreted:
+	Turreted:
+		TurnSpeed: 8
+		RealignDelay: 20
+		Offset: -80,0,0
+	Aircraft:
+		CruiseAltitude: 2500
+		InitialFacing: 192
+		TurnSpeed: 4
+		Speed: 140
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		LandWhenIdle: false
+		LandableTerrainTypes: Clear,Rough,Road,Beach
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
+	Selectable:
+		Bounds: 36,28
+	WithVoxelTurret:
+		ShowShadow: false
+	WithVoxelBarrel:
+		ShowShadow: false
+	GrantConditionOnMovement@EngineMove:
+		Condition: EngineMove
+	ProximityExternalCondition@valkyrieRepair:
+		Condition: valkyrieRepairVehicle
+		Range: 6c0
+		AffectsParent: true
+		RequiresCondition: !EngineMove
+	ProximityExternalCondition@REPAIRAIRCRAFT:
+		Condition: valkyrieRepairAircraft
+		Range: 6c0
+		AffectsParent: true
+		RequiresCondition: !EngineMove
+	RenderVoxels:
+		Scale: 1.08
+	RenderSprites:
+		Scale: 1.10
+	SpawnActorOnDeath:
+		Actor: t3_valkyrie.Husk
+	HitShape:
+
+t3_valkyrie.Husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: valkyrie
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 186
+	RenderSprites:
+		Image: t3_valkyrie

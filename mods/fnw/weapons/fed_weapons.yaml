@@ -1,0 +1,189 @@
+Surricate.M60:
+	Inherits@default.weapons: ^Federation.M60.Weapons.default
+	ReloadDelay: 50
+	Burst: 3
+	BurstDelays: 2
+	Range: 5c256
+	Report: surricate_fire.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 40
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 90
+			LightVehicle: 42
+			ArmorTank: 40
+			Lord: 60
+			LordTank: 40
+			harvester: 40
+			Concrete: 40
+
+Cobra_Dca:
+	Inherits@default.weapons: ^Cobra.Weapons.default
+	ReloadDelay: 6
+	Range: 8c0
+	Report: cobra_fire.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 40
+		Versus:
+			Infantry: 60
+			ArmorInfantry: 55
+			LightVehicle: 85
+			ArmorTank: 35
+			Lord: 40
+			LordTank: 40
+			harvester: 50
+			Concrete: 30
+            
+120mm.mongoose:
+	Inherits@default.weapons: ^Mongoose.Weapons.default
+	ReloadDelay: 65
+	Range: 10c0
+	MinRange: 2c0
+	Report: mongoose_fire.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 450
+		Versus:
+			Infantry: 40
+			ArmorInfantry: 50
+			LightVehicle: 110
+			ArmorTank: 100
+			Lord: 50
+			LordTank: 50
+			harvester: 80
+			Concrete: 100
+
+Lynx.M60:
+	Inherits@default.weapons: ^Federation.M60.Weapons.default
+	ReloadDelay: 50
+	Burst: 4
+	BurstDelays: 2
+	Range: 5c256
+	Report: lynx_fire.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 60
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 90
+			LightVehicle: 42
+			ArmorTank: 40
+			Lord: 60
+			LordTank: 40
+			harvester: 40
+			Concrete: 40
+
+Tick.gun:
+	Inherits@default.weapons: ^Tick.Weapons.default 
+	ReloadDelay: 35
+	Range: 7c512
+	Report: autogunhydra.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 200
+		Versus:
+			Infantry: 30
+			ArmorInfantry: 80
+			LightVehicle: 100
+			ArmorTank: 120
+			Lord: 50
+			LordTank: 70
+			harvester: 80
+			Concrete: 70     
+            
+Anaconda_gatling:
+	Inherits@default.weapons: ^Anaconda.Weapons.default
+    Burst: 20
+	ReloadDelay: 70
+	Range: 14c0
+	Report: anaconda_fire.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 80
+		Versus:
+			Infantry: 60
+			ArmorInfantry: 55
+			LightVehicle: 85
+			ArmorTank: 80
+			Lord: 40
+			LordTank: 40
+			harvester: 50
+			Concrete: 60
+            
+Anaconda.Target:
+	Inherits@default.weapons: ^Anaconda.Target.default
+	ReloadDelay: 6
+	Range: 14c512
+	MinRange: 2c0
+	Warhead@bitean: GrantExternalCondition
+		ValidTargets: Air
+		Range: 0c512
+		Duration: 6
+		Condition: Anaconda.Range.Modifier
+            
+Rhino_gun:
+	Inherits@default.weapons: ^Rhino.Weapons.default
+	ReloadDelay: 86
+	Range: 7c512
+	Report: rhino_fire.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 900
+		Versus:
+			Infantry: 30
+			ArmorInfantry: 80
+			LightVehicle: 100
+			ArmorTank: 120
+			Lord: 50
+			LordTank: 70
+			harvester: 80
+			Concrete: 30
+            
+Mantis.missile:
+	Inherits@default.weapons: ^Mantis.Weapons.default
+	ReloadDelay: 180
+	Range: 25c0
+	MinRange: 4c0
+	Report: mantis_launch.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 750
+		Versus:
+			Infantry: 40
+			ArmorInfantry: 50
+			LightVehicle: 110
+			ArmorTank: 100
+			Lord: 50
+			LordTank: 50
+			harvester: 80
+			Concrete: 100
+
+mosquito.autogun:
+	Inherits@default.weapons: ^Impuls.Weapons.default
+	ReloadDelay: 4
+	Range: 7c256
+	Report: impuls_autogun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 30
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 90
+			LightVehicle: 42
+			ArmorTank: 40
+			Lord: 60
+			LordTank: 40
+			harvester: 40
+			Concrete: 40
+            
+vulture.missile:
+	Inherits@default.weapons: ^Vulture.Weapons.default
+	ReloadDelay: 90
+	Burst: 6
+	Range: 6c0
+	Report: vultureroquette.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 260
+		Versus:
+			Infantry: 22
+			ArmorInfantry: 80
+			LightVehicle: 100
+			ArmorTank: 90
+			Lord: 50
+			LordTank: 100
+			harvester: 110
+			Concrete: 45

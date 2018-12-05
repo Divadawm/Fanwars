@@ -1,0 +1,235 @@
+# ////////////////////////////////////////////////////////////////////////////////////////////////////
+# ////////////////////////////////////////// Editor Actor Rules //////////////////////////////////////
+# ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+mpspawn:
+	AlwaysVisible:
+	Immobile:
+		OccupiesSpace: false
+	RenderSpritesEditorOnly:
+	WithSpriteBody:
+	BodyOrientation:
+		QuantizedFacings: 1
+	EditorTilesetFilter:
+		Categories: Actor
+
+waypoint:
+	AlwaysVisible:
+	Immobile:
+		OccupiesSpace: false
+	RenderSpritesEditorOnly:
+	WithSpriteBody:
+	BodyOrientation:
+		QuantizedFacings: 1
+	EditorTilesetFilter:
+		Categories: Actor
+
+# // Editor Color Picker Images //
+aracnst.colorpicker:
+	Inherits: aracnst
+	RenderSprites:
+		Image: aracnst
+		Palette: colorpicker
+        
+# ////////////////////////////////////////// Camera Actor Rules //////////////////////////////////////     
+CAMERA:
+	EditorOnlyTooltip:
+		Name: (reveals area to owner)
+	AlwaysVisible:
+	Interactable:
+	Immobile:
+		OccupiesSpace: false
+	RevealsShroud:
+		Range: 10c0
+		Type: CenterPosition
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+
+camera.scout.death:
+	Inherits: CAMERA
+	KillsSelf:
+		Delay: 50
+	RevealsShroud:
+		Range: 6c0
+		Type: CenterPosition
+
+camera.spy:
+	Inherits: CAMERA
+	EditorOnlyTooltip:
+		Name: (support power proxy camera)
+	DetectCloaked:
+		Range: 10c0
+		CloakTypes: Cloak, Hijacker, Buried
+	WithDecoration:
+		Image: revealradr
+		Sequence: idle
+		Palette: effectalpha75
+		ReferencePoint: bottom, left
+		ZOffset: 0
+
+camera.cloak:
+	Inherits: CAMERA
+	EditorOnlyTooltip:
+		Name: (support power proxy camera)
+	ProximityExternalCondition:
+		Condition: cloakgenerator
+		Range: 12c0
+		EnableSound: cloak5.aud
+		DisableSound: cloak5.aud
+		AffectsParent: true
+        
+# ////////////////////////////////////////// Sound Actor Rules //////////////////////////////////////
+
+soundambiance:
+	AlwaysVisible:
+	Interactable:
+	Immobile:
+		OccupiesSpace: false
+	WithSpriteBody:
+	BodyOrientation:
+		QuantizedFacings: 1
+	EditorTilesetFilter:
+		Categories: Actor
+
+wind01:
+	Inherits@1: soundambiance
+	Tooltip:
+		Name: Wind Sound 01
+	RenderSpritesEditorOnly:
+		Image: soundambiance
+	AmbientSound:
+		SoundFiles: wind_fan01.aud
+		Interval: 280, 340
+		Delay: 120
+
+wind02:
+	Inherits@1: soundambiance
+	Tooltip:
+		Name: Wind Sound 02
+	RenderSpritesEditorOnly:
+		Image: soundambiance
+	AmbientSound:
+		SoundFiles: wind_fan02.aud
+		Interval: 280, 340
+		Delay: 120
+
+wind03:
+	Inherits@1: soundambiance
+	Tooltip:
+		Name: Wind Sound 03
+	RenderSpritesEditorOnly:
+		Image: soundambiance
+	AmbientSound:
+		SoundFiles: wind_fan03.aud
+		Interval: 280, 340
+		Delay: 120
+
+^UnkownPlace:
+	AlwaysVisible:
+	Valued:
+		Cost: 0
+	Tooltip:
+		Name:
+	RenderSprites:
+		Image: null
+
+^LockedPlace:
+	AlwaysVisible:
+	Valued:
+		Cost: 0
+	Tooltip:
+		Name:
+	RenderSprites:
+		Image: lockedicon
+        
+# ////////////////////////////////////////////////////////////////////////////////////////////////////
+# ///////////////////////////////////// Ressource Spawn Actor Rules //////////////////////////////////
+# ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DiastMine:
+	Inherits@1: ^SpriteActor
+	HiddenUnderShroud:
+	Interactable:
+	Tooltip:
+		Name: Diast Ore
+	WithSpriteBody:
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	AppearsOnRadar:
+	RadarColorFromTerrain:
+		Terrain: Diast
+	SeedsResource:
+		ResourceType: Diast
+		Interval: 50
+	EditorTilesetFilter:
+		Categories: Resource spawn
+	RenderSprites:
+		Image: diastore
+		Palette: diastgreen
+
+DiastMine.Gold:
+	Inherits@1: ^SpriteActor
+	HiddenUnderShroud:
+	Interactable:
+	Tooltip:
+		Name: Diast Gems
+	WithSpriteBody:
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	AppearsOnRadar:
+	RadarColorFromTerrain:
+		Terrain: Diastgems
+	SeedsResource:
+		ResourceType: Diastgems
+		Interval: 50
+	EditorTilesetFilter:
+		Categories: Resource spawn
+	RenderSprites:
+		Image: diastore
+		Palette: diastgold
+        
+Gisement.Diast:
+	Inherits@1: ^SpriteActor
+	HiddenUnderShroud:
+	Interactable:
+	Tooltip:
+		Name: Gisement
+	WithSpriteBody:
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	AppearsOnRadar:
+	RadarColorFromTerrain:
+		Terrain: Diast
+	Targetable:
+		TargetTypes: gisement
+	EditorTilesetFilter:
+		Categories: Resource spawn
+	RenderSprites:
+		Image: gisement
+        
+# ////////////////////////////////////////////////////////////////////////////////////////////////////
+# //////////////////////////////////////////    Other Rules    ///////////////////////////////////////
+# ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Mine_Scar:
+	Inherits: ^Mine
+	RenderSprites:
+		Image: mine_weapon
+	Explodes:
+		Weapon: UnitExplodeSmall
+
+matlay01:
+	Inherits: ^terrain_mat
+	RenderSprites:
+		Image: lay_clear01
+
+matlay02:
+	Inherits: ^terrain_mat
+	RenderSprites:
+		Image: lay_clear02

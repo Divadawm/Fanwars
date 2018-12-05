@@ -1,0 +1,50 @@
+Speech:
+	Notifications:
+		Repairing: repair
+		BuildingCannotPlaceAudio: cannotplace
+		LowPower: lowpower
+		SilosNeeded:
+		PrimaryBuildingSelected:
+		NewOptions: newoption
+		Win: win
+		Lose: lose
+		BaseAttack:
+		HarvesterAttack: haverstattak
+		Leave:
+		StartGame:
+		UnitReady: uniteready
+		NoBuild: cannotoptionbuilding
+		NoRoom: NROOM
+		Training: training
+		OnHold: onhold
+		Cancelled: cancel
+		Building: construction
+		BuildingReady: construction_complete
+		OrderPlaced: ORDER
+		Reinforce: REINF
+		UnitLost: unitelost
+		BuildingLost: ENEMY
+		BuildingCaptured:
+		EnemyUnitsApproaching: ENEMY
+		EnemyUnitsDetected: ENEMY_DETECTED
+		UnitRepaired: GANEW
+		CannotDeploy: canotdeployere
+		Research: research
+        ResearchReady: researchcomplete
+
+Sounds:
+	Notifications:
+		RadarUp:
+		RadarDown:
+		DisablePower:
+		EnablePower:
+		CashTickUp: credup1
+		CashTickDown: creddwn1
+		LevelUp:
+		ChatLine: hover_btn
+		BuildPaletteOpen: BUTTON1
+		BuildPaletteClose: BUTTON1
+		TabClick: SIDEBAR1
+		ClickSound: click_btn
+		ClickDisabledSound: unclick_btn
+		Beacon: CHAT1

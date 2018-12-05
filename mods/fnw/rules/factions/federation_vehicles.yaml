@@ -1,0 +1,579 @@
+t1_fedharv:
+	Inherits: ^ShapeVehicleMedium
+	Buildable:
+		Queue: Vehicle.federation
+		BuildPaletteOrder: 10
+		InitialActivity: FindResources
+		Description: Harvester with average protection\n> Strong vs None\n Weak vs Everything
+		BuildDurationModifier: 10
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Harvester
+		GenericName: Harvester
+	Selectable:
+		Priority: 7
+		DecorationBounds: 42,42
+	Harvester:
+		PipCount: 8
+		Capacity: 20
+		Resources: Diast,Diastgems
+		BaleLoadDelay: 15
+		BaleUnloadDelay: 1
+		SearchFromProcRadius: 24
+		SearchFromOrderRadius: 12
+	WithHarvestOverlay:
+	Health:
+		HP: 4000
+	Armor:
+		Type: harvester
+	Mobile:
+		Speed: 95
+		TurnSpeed: 14
+		Crushes: gibs, infantry, mine, husk
+	RevealsShroud:
+		Range: 5c0
+	RenderSprites:
+		Scale: 0.9
+	-AutoTarget:
+	WithDockingAnimation:
+	HitShape:
+    
+t1_stalker:
+	Inherits: ^ShapeVehicleLight
+	Buildable:
+		Queue: Vehicle.federation
+		BuildPaletteOrder: 20
+		InitialActivity: FindResources
+		Description: Harvester with average protection\n> Strong vs None\n Weak vs Everything
+		BuildDurationModifier: 10
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Stalker
+	Selectable:
+		Priority: 7
+		DecorationBounds: 42,42
+	Health:
+		HP: 1000
+	Mobile:
+		Speed: 100
+		TurnSpeed: 14
+		Crushes: gibs, infantry, mine, husk
+	BaseProvider:
+		Cooldown: 120
+		Range: 5c0
+	RevealsShroud:
+		Range: 5c0
+	RenderSprites:
+		Scale: 0.9
+	-AutoTarget:
+	HitShape:
+
+t1_suricate:
+	Inherits: ^ShapeVehicleLight
+	Inherits@Target: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Suricate
+	Buildable:
+		Queue: Vehicle.federation
+		BuildPaletteOrder: 30
+		Description: Very light and fast recon vehicle armed with a light machine gun\nCan carry up to two infantry units\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
+		BuildDurationModifier: 5
+		IconPalette: Federation.Icon
+	Mobile:
+		Speed: 170
+		TurnSpeed: 12
+		Crushes: wall, mine, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 70
+			Road: 100
+			Beach: 70
+			Diast: 70
+	Selectable:
+		Bounds: 32,30
+	Health:
+		HP: 400
+	RevealsShroud:
+		Range: 7c0
+	DetectCloaked:
+		Range: 5c0
+		CloakTypes: Cloak, Buried
+	Cargo:
+		Types: Infantry
+		MaxWeight: 2
+		PipCount: 2
+	Armament@Gun:
+		Name: primary
+		Weapon: Surricate.M60
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 150,0,450
+		MuzzleSequence: muzzle
+	WithMuzzleOverlay:
+	Explodes:
+		Weapon: UnitExplodeSmall
+		EmptyWeapon: UnitExplodeSmall
+	AutoTarget:
+	RenderSprites:
+	WithSpriteTurret:
+	AttackTurreted:
+		Turrets: primary
+		Armaments: primary
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 12
+		RealignDelay: 20
+		Offset: -240,0,340
+	HitShape:
+
+
+t1_tick:
+	Inherits@1: ^ShapeVehicleMedium
+	Inherits@3: ^Tank.Upgrade.Redalliance
+	Inherits@Target: ^AutoTargetAllAssaultMove
+	Tooltip:
+		Name: Tick
+	Buildable:
+		Queue: Vehicle.federation
+		BuildPaletteOrder: 40
+		Prerequisites: fedweap
+		BuildDurationModifier: 4
+		Description: Cheap and easy to produce light tank armed with a short low-velocity gun\n> Strong vs Light Vehicles\n> Weak vs Infantry, Heavy Vehicles, Aircraft
+		IconPalette: Federation.Icon
+	Valued:
+		Cost: 350
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 700
+	Mobile:
+		Speed: 88
+		TurnSpeed: 12
+		WaitSpread: 12
+		Crushes: gibs, infantry, husk
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 70
+			Road: 100
+			Beach: 70
+			Diast: 70
+	AutoTarget:
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 12
+		RealignDelay: 20
+		Offset: -30,0,0
+	Armament@primary:
+		Weapon: Tick.gun
+		LocalOffset: 30,0,300
+		MuzzleSequence: muzzle
+		Recoil: 85
+		RecoilRecovery: 25
+		RequiresCondition: !upgrade.HE.Weapons.Redalliance
+	WithMuzzleOverlay:
+	RevealsShroud:
+		Range: 7c0
+	Explodes:
+		Weapon: UnitExplodeSmall
+		EmptyWeapon: UnitExplodeSmall
+	RenderSprites:
+		Scale: 1.0
+	WithSpriteTurret:
+	HitShape:
+        
+    
+t2_cobra:
+	Inherits: ^ShapeVehicleMedium
+	Inherits@Target: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Cobra
+	Buildable:
+		Queue: Vehicle.federation
+		BuildPaletteOrder: 70
+		Description: Lightly armored truck fitted with a high caliber autocannon\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
+		BuildDurationModifier: 8
+		IconPalette: Federation.Icon
+	Mobile:
+		Speed: 100
+		TurnSpeed: 12
+		Crushes: wall, mine, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 70
+			Road: 100
+			Beach: 70
+			Diast: 70
+	Selectable:
+		Bounds: 32,30
+	Health:
+		HP: 800
+	RevealsShroud:
+		Range: 7c0
+	Armament@PRIMARY:
+		Weapon: Cobra_Dca
+		Recoil: 400
+		RecoilRecovery: 400
+		LocalOffset: 280,0,600
+		MuzzleSequence: muzzle
+	WithMuzzleOverlay:
+	Explodes:
+		Weapon: UnitExplodeSmall
+		EmptyWeapon: UnitExplodeSmall
+	AutoTarget:
+	RenderSprites:
+	WithSpriteTurret:
+	AttackTurreted:
+		Turrets: primary
+		Armaments: primary
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 12
+		RealignDelay: 20
+		Offset: -380,0,180
+	HitShape:
+    
+t2_lynx:
+	Inherits: ^ShapeVehicleMedium
+	Inherits@Target: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 1100
+	Tooltip:
+		Name: Lynx
+	Buildable:
+		Queue: Vehicle.federation
+		BuildPaletteOrder: 50
+		Description: Armored field command vehicle fitted with a light machine gun\nCan detect stealthed units\n> Strong vs N.A\n> Weak vs Everything
+		BuildDurationModifier: 11
+		IconPalette: Federation.Icon
+	Mobile:
+		Speed: 100
+		TurnSpeed: 12
+		Crushes: wall, mine, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 70
+			Road: 100
+			Beach: 70
+			Diast: 70
+	Selectable:
+		Bounds: 32,30
+	Health:
+		HP: 800
+	RevealsShroud:
+		Range: 7c0
+	Armament@PRIMARY:
+		Weapon: Lynx.M60
+		Recoil: 400
+		RecoilRecovery: 400
+		LocalOffset: 100,0,100
+		MuzzleSequence: muzzle
+	Cargo:
+		Types: Infantry
+		MaxWeight: 8
+		PipCount: 8
+	WithMuzzleOverlay:
+	Explodes:
+		Weapon: UnitExplodeSmall
+		EmptyWeapon: UnitExplodeSmall
+	AutoTarget:
+	RenderSprites:
+		Scale: 0.8
+	WithSpriteTurret:
+	AttackTurreted:
+		Turrets: primary
+		Armaments: primary
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 12
+		RealignDelay: 20
+		Offset: 20,0,420
+	HitShape:
+
+t2_mongoose:
+	Inherits: ^ShapeVehicleLight
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 700
+	Buildable:
+		Queue: Vehicle.federation
+		BuildPaletteOrder: 60
+		Description: Self-propelled mortar that fires high-explosive fragmentation shells\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 8
+        IconPalette: Federation.Icon
+	Mobile:
+		Speed: 100
+		TurnSpeed: 14
+		WaitSpread: 12
+		Crushes: wall, mine, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 70
+			Road: 100
+			Beach: 70
+			Diast: 70
+	Tooltip:
+		Name: Mongoose
+	Selectable:
+		Bounds: 30,24
+	Health:
+		HP: 1200
+	RevealsShroud:
+		Range: 9c0
+	Armament@PRIMARY:
+		Weapon: 120mm.mongoose
+		Recoil: 200
+		RecoilRecovery: 100
+		LocalOffset: 140,0,380
+		MuzzleSequence: muzzle
+		RequiresCondition: !upgrade.roquette.federation
+	WithMuzzleOverlay:
+	Explodes:
+		Weapon: UnitExplodeSmall
+		EmptyWeapon: UnitExplodeSmall
+	AutoTarget:
+	RenderSprites:
+		Scale: 0.85
+	AttackFrontal:
+		RequiresCondition: !empdisable
+	HitShape:
+
+t3_rhino:
+	Inherits: ^ShapeVehicleMedium
+	Inherits@Target: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Cobra
+	Buildable:
+		Queue: Vehicle.federation
+		BuildPaletteOrder: 90
+		Description: Light recon vehicle armed with a heavy MG and an AA missile-launcher\n> Can detect stealthed units\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
+		BuildDurationModifier: 5
+		IconPalette: Federation.Icon
+	Mobile:
+		Speed: 110
+		TurnSpeed: 18
+		Crushes: wall, mine, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 70
+			Road: 100
+			Beach: 70
+			Diast: 70
+	Selectable:
+		Bounds: 32,30
+	Health:
+		HP: 1200
+	RevealsShroud:
+		Range: 7c0
+	Armament@PRIMARY:
+		Weapon: Rhino_gun
+		Recoil: 400
+		RecoilRecovery: 400
+		LocalOffset: 400,0,100
+		MuzzleSequence: muzzle
+	WithMuzzleOverlay:
+	Explodes:
+		Weapon: UnitExplodeSmall
+		EmptyWeapon: UnitExplodeSmall
+	AutoTarget:
+	RenderSprites:
+		Scale: 0.65
+	WithSpriteTurret:
+	AttackTurreted:
+		Turrets: primary
+		Armaments: primary
+		RequiresCondition: !empdisable
+	Cargo:
+		Types: Infantry
+		MaxWeight: 4
+		PipCount: 4
+	Cloak:
+		UncloakOn: Attack, Unload, Infiltrate, Demolish, Dock, Move
+		CloakDelay: 30
+		IsPlayerPalette: true
+	Turreted:
+		TurnSpeed: 12
+		RealignDelay: 20
+		Offset: -10,0,420
+	HitShape:
+
+t3_porcupine:
+	Inherits: ^ShapeVehicleMedium
+	Inherits@Target: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Anaconda
+	Buildable:
+		Queue: Vehicle.federation
+		BuildPaletteOrder: 100
+		Description: Light recon vehicle armed with a heavy MG and an AA missile-launcher\n> Can detect stealthed units\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
+		BuildDurationModifier: 5
+		IconPalette: Federation.Icon
+	Mobile:
+		Speed: 100
+		TurnSpeed: 12
+		Crushes: wall, mine, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 70
+			Road: 100
+			Beach: 70
+			Diast: 70
+	Selectable:
+		Bounds: 32,30
+	Health:
+		HP: 800
+	RevealsShroud:
+		Range: 7c0
+	Armament@PRIMARY:
+		Weapon: Anaconda_gatling
+		Recoil: 400
+		RecoilRecovery: 400
+		LocalOffset: 400,0,360
+		MuzzleSequence: muzzle
+	Armament@Secondary:
+		Weapon: Anaconda.Target
+		Recoil: 400
+		RecoilRecovery: 400
+		LocalOffset: 400,0,360
+		MuzzleSequence: muzzle
+	WithMuzzleOverlay:
+	DetectCloaked:
+		Range: 14c0
+		CloakTypes: Cloak, Buried
+	Explodes:
+		Weapon: UnitExplodeSmall
+		EmptyWeapon: UnitExplodeSmall
+	AutoTarget:
+	RenderSprites:
+		Scale: 0.8
+	WithSpriteTurret:
+	AttackTurreted:
+		Turrets: primary
+		Armaments: primary
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 12
+		RealignDelay: 20
+		Offset: -280,0,330
+	HitShape:
+
+t3_mantis:
+	Inherits: ^ShapeVehicleLight
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 700
+	Buildable:
+		Queue: Vehicle.federation
+		BuildPaletteOrder: 110
+		Description: Light support vehicle equipped with an EMP grenade launcher\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
+		BuildDurationModifier: 8
+        IconPalette: Federation.Icon
+	Mobile:
+		Speed: 120
+		TurnSpeed: 14
+		WaitSpread: 12
+		Crushes: wall, mine, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 70
+			Road: 100
+			Beach: 70
+			Diast: 70
+	Tooltip:
+		Name: Ratatoskr
+	Selectable:
+		Bounds: 30,24
+	Health:
+		HP: 1500
+	RevealsShroud:
+		Range: 9c0
+	Armament@PRIMARY:
+		Weapon: Mantis.missile
+		Recoil: 200
+		RecoilRecovery: 100
+		LocalOffset: 140,0,380
+		MuzzleSequence: muzzle
+		ReloadingCondition: reloading
+	WithFacingSpriteBody:
+		RequiresCondition: !reloading
+		Name: loaded
+	WithFacingSpriteBody@EMPTY:
+		RequiresCondition: reloading
+		Sequence: empty-idle
+		Name: reloading
+	WithMuzzleOverlay:
+	Explodes:
+		Weapon: UnitExplodeSmall
+		EmptyWeapon: UnitExplodeSmall
+	AutoTarget:
+	RenderSprites:
+		Scale: 1.0
+	AttackFrontal:
+		RequiresCondition: !empdisable
+	HitShape:
+
+t4_colossus:
+	Inherits: ^ShapeVehicleHeavy
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
+	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
+	Valued:
+		Cost: 5000
+	Tooltip:
+		Name: Odin
+	Buildable:
+		Queue: Vehicle.federation
+		BuildPaletteOrder: 120
+		Prerequisites: Research Module
+		Description: Experimental super-unit armed with 2 antimatter heavy cannons and 4 high-powered ion cannons\nCan switch between two modes\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 60
+		BuildLimit: 1
+        IconPalette: Federation.Icon
+	Mobile:
+		Speed: 60
+		TurnSpeed: 4
+		WaitSpread: 8
+		Crushes: wall, mine, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 70
+			Road: 100
+			Beach: 70
+	Health:
+		HP: 19000
+	RevealsShroud:
+		Range: 9c0
+	Armor:
+		Type: LordTank
+	Armament@MATTER:
+		Weapon: Dark.Matter
+		Recoil: 400
+		RecoilRecovery: 400
+		LocalOffset: 1250,250,720, 1250,-250,720
+		MuzzleSequence: muzzle
+		RequiresCondition: !mode2
+	Explodes:
+		Weapon: UnitExplodeSmall
+		EmptyWeapon: UnitExplodeSmall
+	AutoTarget:
+	RenderSprites:
+		Scale: 0.65
+	WithSpriteTurret:
+		Scale: 0.75
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 3
+		RealignDelay: 20
+		Offset: -30,0,0
+	HitShape:

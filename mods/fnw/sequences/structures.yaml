@@ -1,0 +1,1321 @@
+opwall:
+	idle:
+		Length: 16
+	icon: arwallicon
+
+arwall:
+	idle:
+		Length: 16
+	icon: arwallicon
+
+lay_clear01:
+	idle: lay_clear
+		Length: 16
+	icon: arwallicon
+
+lay_clear02:
+	idle: lay_clear
+		Start: 16
+		Length: 16
+	icon: arwallicon
+
+aracnst:
+	idle:
+		ShadowStart: 27
+	build:
+		Start: 1
+		Length: 11
+		Offset: 1, 0
+		ShadowStart: 27
+	damaged-idle:
+		Start: 13
+	damaged-build:
+		Start: 14
+		Length: 11
+	active:
+		Start: 1
+		Length: 11
+	damaged-active:
+		Start: 14
+		Length: 11
+	dead:
+	make: aracnstmk
+		Length: 24
+		Offset: 0, 25
+	icon: arbarricon
+
+arpowr:
+	idle:
+		Start: 0
+		Length: 14
+		Tick: 40
+		Offset: 0, -5
+	damaged-idle:
+		Start: 14
+		Tick: 14
+		Length: 9
+		Offset: 0, -5
+	dead:
+		Start: 9
+		Offset: 0, -5
+	make: arpowrmk
+		Length: 17
+		Offset: -3, -17
+	smoke_cheminal: smoke
+		Start: 0
+		Length: 19
+		Offset: -4, -32
+		BlendMode: Additive
+	icon: arpowricon
+
+arhighpowr:
+	idle: arhighpowr
+		Start: 0
+		Length: 14
+		Tick: 40
+		Offset: 0, 0
+	damaged-idle:
+		Start: 14
+		Tick: 14
+		Length: 9
+		Offset: 0, 0
+	dead: arhighpowr
+		Start: 25
+	smoke_cheminal: smoke_min
+		Start: 0
+		Length: 19
+		Offset: 0, -20
+		BlendMode: Additive
+	make: arhighpowrmk
+		Length: 29
+		Offset: -1, 28
+	icon: arhighpowricon
+
+arbarr:
+	idle:
+		Start: 0
+		Length: 9
+		Tick: 44
+		ShadowStart: 21
+	damaged-idle:
+		Start: 9
+		Tick: 44
+		Length: 9
+	dead:
+		Start: 10
+	make: arbarrmk
+		Length: 24
+	icon: arbarricon
+
+t3_commandbuilding:
+	idle:
+		Start: 0
+		Length: 4
+	damaged-idle:
+		Start: 4
+		Length: 4
+	dead:
+		Start: 4
+	make: t3_commandmk
+		Length: *
+
+arproc:
+	idle: arproc
+		Start: 0
+		Length: 10
+		ShadowStart: 22
+		Offset: 5, -10
+	damaged-idle:
+		Start: 11
+		Length: 10
+		Offset: 5, -10
+	dead: arproc
+		Start: 21
+		Offset: 5, -10
+	make: arprocmk
+		Length: 24
+		Offset: 5, -10
+	icon: arprocicon
+
+arweap:
+	idle: arweap
+		ShadowStart: 6
+		Offset: 10, 5
+	damaged-idle: arweap
+		Start: 2
+		Offset: 10, 5
+	idle-top: arweapbuild
+		Start: 0
+		Length: 12
+		Offset: 10, 5
+	build: arweap
+		Start: 0
+	build-top: arweapbuild
+		Start: 0
+		Length: 12
+		Offset: 10, 5
+	damaged-build: arweap
+		Start: 0
+		Offset: 10, 5
+	damaged-idle-top: arweap
+		Start: 3
+		Offset: 10, 5
+	bib: bib2
+		Length: *
+		Offset: 10, 5
+	dead: arweap
+		Start: 2
+		Offset: 10, 5
+	make: arweapmk
+		Length: 24
+		Offset: 10, 5
+	icon: arweapicon
+
+artech:
+	idle:
+		Start: 0
+		Length: 10
+		ShadowStart: 22
+		Offset: 0, -22
+	damaged-idle:
+		Start: 11
+		Length: 10
+		Offset: 0, -22
+	dead: artech
+		Start: 2
+		Offset: 0, -22
+	make: artechmk
+		Start: 0
+		Length: 20
+		Offset: 0, -22
+	icon: artechicon
+
+ardeftech:
+	idle:
+		Start: 0
+		Length: 12
+		ShadowStart: 25
+	damaged-idle:
+		Start: 12
+		Length: 12
+	dead:
+		Start: 12
+	make: artechmk
+		Start: 0
+		Length: 20
+	icon: ardeficon
+
+arheli:
+	idle: t2_airfielddeployed
+	damaged-idle: t2_airfielddeployed
+		Start: 1
+	critical-idle: t2_airfielddeployed
+		Start: 2
+	dead: t2_airfielddeployed
+		Start: 2
+	make: t2_airfielddeployedmk
+		Length: 7
+	icon: arheliicon
+
+droned:
+	idle: droned
+		ShadowStart: 3
+		Offset: 0, 0
+	damaged-idle: droned
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	critical-idle: droned
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	dead:
+		Start: 2
+	make: dronedmk
+		Length: 6
+		Tick: 6
+		Offset: 0, 0
+	icon: artechicon
+
+t1_ratatoskrbuild:
+	idle:
+		Offset: 0, 0
+	damaged-idle:
+		Start: 1
+		Offset: 0, 0
+	critical-idle:
+		Start: 2
+		Offset: 0, 0
+	idle.plug: t1_ratatoskrbuildplug
+		Offset: 0, 0
+	damaged-idle.plug: t1_ratatoskrbuildplug
+		Start: 1
+		Offset: 0, 0
+	critical-idle.plug: t1_ratatoskrbuildplug
+		Start: 2
+		Offset: 0, 0
+	dead:
+		Start: 2
+	make: t1_ratatoskrmk
+		Length: *
+		Offset: 0, 0
+
+t1_ratatoskrbuild.plug:
+	idle: null
+	icon: ratatosk_plugicon
+
+dcatnk_deployed:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+		Offset: 0, 0
+	damaged-idle:
+		Start: 1
+		Offset: 0, 0
+	critical-idle:
+		Start: 2
+		Offset: 0, 0
+    Shield: shiel_pilgrim
+        Length: *
+        Offset: 0, 0
+		BlendMode: Additive
+	turret: t2_pilgrimtur
+		Facings: 64
+	make: dcatnk_deployedmk
+		Length: 8
+		Tick: 30
+		Offset: 0, 0
+
+t3_annihilator_deployed:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+		ShadowStart: 3
+		Offset: 0, 0
+	damaged-idle:
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	critical-idle:
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	make: annhiliatormk
+		Length: 6
+		Tick: 30
+		Offset: 0, 0
+	icon: artechicon
+
+t2_predator_deployed:
+	idle:
+		ShadowStart: 3
+		Offset: 0, 0
+	damaged-idle:
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	critical-idle:
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	dead:
+		Start: 1
+	make: t2_predator_deployedmk
+		Length: 3
+		Offset: 0, 0
+	icon: predatoricon
+
+t2_tarantula_deployed:
+	idle:
+		ShadowStart: 3
+		Offset: 0, 0
+	damaged-idle:
+		Start: 1
+		ShadowStart: 4
+		Offset: 0, 0
+	critical-idle:
+		Start: 1
+		ShadowStart: 4
+		Offset: 0, 0
+	dead:
+		Start: 1
+	make: t2_tarantula_deployedmk
+		Length: 3
+		Offset: 0, 0
+	icon: tarantulaicon
+
+t3_doomtowerbuild:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+		Offset: 0, 0
+	damaged-idle:
+		Start: 1
+		Offset: 0, 0
+	critical-idle:
+		Start: 2
+		Offset: 0, 0
+	doomtowershield: doomtowershield
+		Length: *
+		Tick: 35
+		BlendMode: Additive
+	doomtowerelectro: doomtowerelectro
+		Length: *
+		Tick: 28
+		BlendMode: Additive
+	dead:
+		Start: 2
+	make: t3_doomtowerbuildmk
+		Length: *
+	icon: doomtowericon
+
+opcacnst:
+	idle: opcacnst
+		Start: 0
+		Length: 10
+		Offset: 0, 0
+	damaged-idle: opcacnst
+		Start: 9
+		Length: 10
+		Offset: 0, 0
+	build: opcacnst
+		Start: 0
+		Length: 10
+	critical-idle: opcacnst
+		Start: 9
+		Length: 10
+		Offset: 0, 0
+	dead:
+		Start: 9
+	make: opcacnstmk
+		Length: 10
+		Offset: 0, 0
+	plug.moduleshield: opcacnstshield
+		Offset: 0, 0
+	plug.modulesword: opcacnstsword
+		Offset: 0, 0
+	plug.moduleradr: opcacnstplugradr
+		Start: 0
+		Length: *
+		Tick: 6
+		Offset: 0, 0
+	turret: ragnarokcanon
+		Facings: 64
+		Offset: 34, -5
+	icon: opweapicon
+
+doctrinesword.plug:
+	idle: null
+	icon: upgrade_doctrine_valkyricon
+
+opcacnst.plugradr:
+	idle: null
+	icon: opcacnstplugradricon
+
+doctrineshield.plug:
+	idle: null
+	icon: upgrade_doctrine_artemienicon
+
+oppowr:
+	idle:
+		ShadowStart: 3
+		Offset: 0, 0
+	buried: oppowrbunk
+		Start: 0
+		Length: 24
+	bunk: oppowrmk
+		Start: 0
+		Offset: 0, 0
+	damaged-idle:
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	critical-idle:
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	smoke: smoke_min
+		Start: 0
+		Length: 19
+		Offset: 0, -20
+		BlendMode: Additive
+	plug.powr: oppowr_plug
+		Length: 9
+		Offset: 0, 0
+		BlendMode: Additive
+	dead:
+		Start: 2
+	make: oppowrmk
+		Length: 24
+		Offset: 0, 0
+	icon: oppowricon
+
+oppowr.plugpowr:
+	idle: null
+	icon: oppowr_plugicon
+
+opbunk:
+	idle:
+	damaged-idle:
+		Start: 0
+	critical-idle:
+		Start: 0
+	dead:
+		Start: 0
+
+opheli:
+	idle:
+		Start: 0
+		Length: 9
+		Offset: 0, -25
+	buried: ophelibunk
+		Start: 0
+		Length: 24
+	bunk: ophelimk
+		Start: 0
+		Offset: 0, -25
+	damaged-idle:
+		Start: 10
+		Length: 9
+		Offset: 0, -25
+	critical-idle:
+		Start: 10
+		Offset: 0, -25
+	dead:
+		Start: 2
+		Offset: 0, -25
+	make: ophelimk
+		Length: 24
+		Offset: 0, -25
+	icon: opheliicon
+
+opproc:
+	idle:
+		Start: 0
+		Length: 7
+		Offset: 5, -25
+	buried: opprocbunk
+		Start: 0
+		Offset: 5, -25
+		Length: 24
+	bunk: opprocmk
+		Start: 0
+		Offset: 5, -25
+	damaged-idle:
+		Start: 6
+		Length: 7
+		Offset: 5, -25
+	idle-top:
+		Offset: 5, -25
+	damaged-idle-top:
+		Start: 1
+		Offset: 5, -25
+	make: opprocmk
+		Length: 24
+		Offset: 5, -25
+	dead:
+		Start: 2
+		Offset: 5, -25
+	icon: opprocicon
+
+opbarr:
+	idle: opbarr
+		ShadowStart: 3
+		Offset: 0, -35
+	buried: opbarrbunk
+		Start: 0
+		Length: 24
+		Offset: 0, -35
+	bunk: opbarrmk
+		Start: 0
+		Offset: 0, -35
+	damaged-idle: opbarr
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, -35
+	critical-idle: opbarr
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, -35
+	dead:
+		Start: 2
+	make: opbarrmk
+		Length: 24
+		Offset: 0, -35
+	icon: opbarricon
+
+opweap:
+	idle:
+		Start: 0
+		Offset: -10, -15
+	damaged-idle:
+		Start: 1
+		Offset: -10, -15
+	build-top:
+		Start: 4
+		Length: 5
+		Offset: -10, -15
+	damaged-build-top:
+		Start: 9
+		Length: 5
+		Offset: -10, -15
+	dead:
+		Start: 2
+	make: opweapmk
+		Length: 24
+		Offset: -10, -15
+	bib: bib2
+		Length: *
+	icon: opweapicon
+
+optech:
+	idle: optech
+		Offset: 0, -25
+	buried: optechbunk
+		Start: 0
+		Length: 24
+	bunk: optechmk
+		Start: 0
+		Offset: 0, -25
+	damaged-idle: optech
+		Start: 1
+		Offset: 0, -25
+	critical-idle: optech
+		Start: 1
+		Offset: 0, -25
+	dead:
+		Start: 1
+	make: optechmk
+		Length: 24
+		Offset: 0, -25
+	icon: optechicon
+
+optech2:
+	idle:
+		Start: 0
+		Length: 10
+	damaged-idle:
+		Start: 9
+		Length: 10
+	critical-idle:
+		Start: 9
+		Length: 10
+	dead:
+		Start: 9
+	make: optech2mk
+		Length: 20
+	icon: optech3icon
+
+opavtech:
+	idle:
+		Offset: 0, 0
+	buried: opavtechbunk
+		Start: 0
+		Length: 24
+	bunk: opavtechmk
+		Start: 0
+		Offset: 0, 0
+	damaged-idle:
+		Start: 1
+		Offset: 0, 0
+	critical-idle:
+		Start: 1
+		Offset: 0, 0
+	dead:
+		Start: 1
+	make: opavtechmk
+		Length: 24
+		Offset: 0, 0
+	icon: optech2icon
+
+prometheed:
+	idle: prometheed
+		ShadowStart: 3
+		Offset: 0, 0
+	damaged-idle: prometheed
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	critical-idle: prometheed
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	make: prometheedmk
+		Length: 8
+		Offset: 0, 0
+	icon: artechicon
+
+t1_midgard:
+	idle: t1_midgardbase
+		Offset: 0, 0
+	damaged-idle: t1_midgardbase
+		Start: 1
+		Offset: 0, 0
+	critical-idle: t1_midgardbase
+		Start: 2
+		Offset: 0, 0
+	dead: t1_midgardbase
+		Start: 2
+	make: t1_midgardbase
+		Length: *
+		Offset: 0, 0
+	icon: midgardicon
+
+t2_niflheim:
+	idle: t2_niflheimbase
+		Offset: 0, 0
+	damaged-idle: t2_niflheimbase
+		Start: 1
+		Offset: 0, 0
+	critical-idle: t2_niflheimbase
+		Start: 2
+		Offset: 0, 0
+	dead: t2_niflheimbase
+		Start: 2
+	make: t2_niflheimbase
+		Length: *
+		Offset: 0, 0
+	icon: niflheimicon
+
+t3_hel:
+	idle: t3_helbase
+		Offset: 0, 0
+	damaged-idle: t3_helbase
+		Start: 1
+		Offset: 0, 0
+	critical-idle: t3_helbase
+		Start: 2
+		Offset: 0, 0
+	dead: t3_helbase
+		Start: 2
+	make: t3_helbase
+		Length: *
+		Offset: 0, 0
+	icon: helicon
+
+tccacnst:
+	idle: tccacnst
+		ShadowStart: 3
+	build: tccacnst
+		Start: 1
+		Length: *
+	damaged-idle: tccacnst
+		Start: 2
+	damaged-build: tccacnst
+		Start: 2
+		Length: 1
+	dead: tccacnst
+		Start: 3
+	make: tccacnstmk
+		Length: 24
+	icon: arweapicon
+
+tcpowr:
+	idle: tcpowr
+		Offset: 0, 0
+	damaged-idle: tcpowr
+		Start: 1
+		Offset: 0, 0
+	critical-idle: tcpowr
+		Start: 2
+		Offset: 0, 0
+	lightingrelais: tcpowr_anim
+		Start: 0
+		Length: 19
+		Tick: 28
+		BlendMode: Additive
+	plug.relaisdef: tcpodrelais
+		Start: 0
+		Length: 32
+		Tick: 40
+		Offset: 5, -20
+	plug.eyeplug: tceyeplug
+		Start: 0
+		Length: 17
+		Tick: 40
+		Offset: 5, -20
+	plug.tcrepairplug: tcrepairplug
+		Start: 0
+		Length: 17
+		Tick: 40
+		Offset: 5, -20
+	dead:
+		Start: 2
+	make: tcpowrmk
+		Length: 24
+		Offset: 0, 0
+	icon: tcpowricon
+
+relaisaiguille:
+	idle: null
+	icon: guardplugicon
+
+tceyeplug:
+	idle: null
+	icon: eyeplugicon
+
+repairplug:
+	idle: null
+	icon: tcrepairplugicon
+
+^tcholotech:
+	idle: tcholotech
+		Start: 0
+		Length: 4
+		Offset: 0, 0
+	damaged-idle: tcholotech
+		Start: 5
+		Length: 4
+		Offset: 0, 0
+	critical-idle: tcholotech
+		Start: 5
+		Length: 4
+		Offset: 0, 0
+	dead: tcholotech
+		Start: 5
+	make: tcholotechmk
+		Length: 20
+		Offset: 0, 0
+	icon: tcholotechicon
+
+tcholotech.rodeur:
+	Inherits: ^tcholotech
+	Holo.Anim: holorodeur
+		Start: 0
+		Length: *
+		BlendMode: Additive
+		Tick: 60
+		Offset: 0, 0
+	icon: holorodeuricon
+
+tcholotech.pelerin:
+	Inherits: ^tcholotech
+	Holo.Anim: holopelerin
+		Start: 0
+		Length: *
+		BlendMode: Additive
+		Tick: 60
+		Offset: 0, 0
+	icon: holopelerinicon
+
+tcholotech.arpenteur:
+	Inherits: ^tcholotech
+	Holo.Anim: holoarpenteur
+		Start: 0
+		Length: *
+		BlendMode: Additive
+		Tick: 60
+		Offset: 0, 0
+	icon: holoarpenteuricon
+
+tcholotech.comete:
+	Inherits: ^tcholotech
+	Holo.Anim: holocomete
+		Start: 0
+		Length: *
+		BlendMode: Additive
+		Tick: 60
+		Offset: 0, 0
+	icon: holocometeicon
+
+tcholotech.quasar:
+	Inherits: ^tcholotech
+	Holo.Anim: holoquasar
+		Start: 0
+		Length: *
+		BlendMode: Additive
+		Tick: 60
+		Offset: 0, 0
+	icon: holoquasaricon
+
+tcholotech.zenith:
+	Inherits: ^tcholotech
+	Holo.Anim: holozenith
+		Start: 0
+		Length: *
+		BlendMode: Additive
+		Tick: 60
+		Offset: 0, 0
+	icon: holozenithicon
+
+tcholotech.navigator:
+	Inherits: ^tcholotech
+	Holo.Anim: holonavigator
+		Start: 0
+		Length: *
+		BlendMode: Additive
+		Tick: 60
+		Offset: 0, 0
+	icon: holonavigatoricon
+
+tcproc:
+	idle:
+		Start: 0
+		Length: 7
+		Offset: 0, -35
+	damaged-idle:
+		Start: 6
+		Length: 7
+		Offset: 0, -35
+	dead:
+		Start: 6
+		Offset: 0, -35
+	make: tcprocmk
+		Length: 24
+		Offset: 0, -35
+	icon: tcprocicon
+
+tcbarr:
+	idle: tcbarr
+		ShadowStart: 3
+		Offset: 0, 0
+	damaged-idle: tcbarr
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	critical-idle: tcbarr
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	dead:
+		Start: 2
+	make: tcbarrmk
+		Length: 24
+		Offset: 0, 0
+	icon: tcbarricon
+
+tcweap:
+	idle: tcweap
+		ShadowStart: 3
+		Offset: 0, 0
+	damaged-idle: tcweap
+		Start: 1
+		ShadowStart: 4
+		Offset: 0, 0
+	make: tcweapmk
+		Length: 24
+		Offset: 0, 0
+	build: tcweap
+		Start: 1
+		Length: 1
+	damaged-build: tcweap
+		Length: 1
+	build-top:
+		Start: 1
+		Length: 1
+	idle-top: tcweap
+		Start: 0
+	damaged-idle-top: tcweap
+		Start: 4
+		Offset: 0, 0
+	dead:
+		Start: 2
+	icon: tcweapicon
+
+tcsuperweap:
+	idle:
+		Start: 0
+		Length: 10
+	damaged-idle:
+		Start: 9
+		Length: 10
+	make: tcsuperweapmk
+		Length: *
+	build:
+		Start: 0
+		Length: 10
+	damaged-build:
+		Start: 9
+		Length: 10
+	tcsuperweapplug: tcsuperweapplug
+		Length: *
+		BlendMode: Additive
+	dead:
+		Start: 9
+	icon: tcsuperweapicon
+
+tcsuperweap.plug:
+	idle: null
+	icon: tcsuperweapplugicon
+
+tcpodrelais:
+	idle:
+		Start: 0
+		Length: 32
+		Tick: 40
+		Offset: 5, -20
+	damaged-idle:
+		Start: 0
+		Length: 32
+		Tick: 40
+		Offset: 5, -20
+	dead:
+		Start: 31
+		Offset: 5, -20
+	make: tcpodrelais
+		Length: 24
+		Offset: 5, -20
+	icon: tcweapicon
+
+tctech:
+	idle: tctech
+		ShadowStart: 3
+		Offset: 0, 0
+	damaged-idle: tctech
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	critical-idle: tctech
+		Start: 2
+		ShadowStart: 4
+		Offset: 0, 0
+	dead:
+		Start: 2
+	make: tctechmk
+		Length: 24
+		Offset: 0, 0
+	icon: tctechicon
+    
+# Federation Buuilding Sequences:
+
+fedcnst:
+	idle:
+		Start: 0
+		Length: 10
+		Offset: 0, 0
+	build:
+		Start: 0
+		Length: 10
+		Offset: 0, 0
+	damaged-idle:
+		Start: 9
+		Length: 10
+	damaged-build:
+		Start: 9
+		Length: 10
+	active:
+		Start: 0
+		Length: 10
+	damaged-active:
+		Start: 9
+		Length: 10
+	dead:
+	make: aracnstmk
+		Length: 24
+		Offset: 0, 25
+	icon: arbarricon
+    
+fedpowr:
+	idle:
+		Offset: 0, 0
+	damaged-idle:
+		Start: 2
+		Offset: 0, 0
+	critical-idle:
+		Start: 2
+		Offset: 0, 0
+	smoke: smoke_min
+		Start: 0
+		Length: 19
+		Offset: 8, -45
+		BlendMode: Additive
+	dead:
+		Start: 2
+	make: fedpowrmk
+		Length: 120
+		Offset: -1 , -128
+	icon: fedpowricon
+    
+fedbarr:
+	idle:
+		Start: 0
+	damaged-idle:
+		Start: 1
+	critical-idle:
+		Start: 2
+	dead:
+		Start: 2
+	make: fedbarrmk
+		Length: 120
+		Offset: 0 , -126
+	icon: fedbarricon
+    
+fedweap:
+	idle:
+	damaged-idle:
+		Start: 2
+	idle-top:
+		Start: 1
+	build:
+		Start: 0
+	build-top:
+		Start: 1
+	damaged-build:
+		Start: 0
+	damaged-idle-top:
+		Start: 3
+	dead:
+		Start: 2
+	make: fedweapmk
+		Length: 120
+		Offset: 0 , -126
+	icon: fedweapicon
+    
+fedproc:
+	idle:
+		Start: 0
+		Length: 4
+	damaged-idle:
+		Start: 5
+		Length: 4
+	make: fedprocmk
+		Length: 120
+		Offset: 0 , -126
+	dead:
+		Start: 5
+	icon: fedprocicon
+    
+fedheli:
+	idle:
+		Offset: 0, 0
+        Length: 5
+	damaged-idle:
+		Start: 4
+        Length: 5
+		Offset: 0, 0
+	critical-idle:
+		Start: 4
+        Length: 5
+		Offset: 0, 0
+	dead:
+		Start: 4
+	make: fedhelimk
+		Length: 120
+		Offset: -1 , -128
+	icon: fedheliicon
+
+derrick:
+	idle:
+		Start: 0
+		Length: 5
+	damaged-idle:
+		Start: 5
+		Length: 5
+	critical-idle:
+		Start: 5
+	dead:
+
+reactor:
+	idle:
+		Start: 0
+		Length: 9
+	damaged-idle:
+		Start: 9
+		Length: 9
+	critical-idle:
+		Start: 16
+	dead:
+
+postpoint:
+	idle:
+		Start: 0
+		Length: 9
+	damaged-idle:
+		Start: 9
+		Length: 9
+	critical-idle:
+		Start: 16
+	dead:
+
+avpost:
+	idle:
+		Start: 0
+		Length: 10
+	damaged-idle:
+		Start: 10
+		Length: 10
+	critical-idle:
+		Start: 10
+	dead:
+
+generatciv_01:
+	idle:
+		Start: 0
+		Length: 9
+	damaged-idle:
+		Start: 9
+		Length: 9
+	critical-idle:
+		Start: 16
+	dead:
+
+bunker:
+	idle:
+		Start: 0
+	damaged-idle:
+		Start: 1
+	critical-idle:
+		Start: 2
+	dead:
+
+bunker.husk:
+	idle: bunker
+		Start: 2
+	damaged-idle: bunker
+		Start: 2
+	critical-idle: bunker
+		Start: 2
+	dead:
+
+towerdefenceap:
+	idle:
+		Start: 0
+		Length: 5
+		Offset: 0, 15
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+        Tick: 4
+	damaged-idle:
+		Start: 5
+		Length: 5
+		Offset: 0, 15
+	critical-idle:
+		Start: 5
+		Offset: 0, 15
+    turret: gatlingtur_tower
+        Facings: 64
+	dead:
+
+towerdefenceac:
+	idle:
+		Start: 0
+		Length: 5
+		Offset: 0, 15
+	damaged-idle:
+		Start: 5
+		Length: 5
+		Offset: 0, 15
+	critical-idle:
+		Start: 5
+		Offset: 0, 15
+	dead:
+
+buildingdepot:
+	idle:
+		ShadowStart: 3
+	damaged-idle:
+		Start: 2
+		ShadowStart: 4
+	critical-idle:
+		Start: 2
+		ShadowStart: 4
+	dead:
+
+taudi_01:
+	idle:
+		ShadowStart: 3
+	damaged-idle:
+		Start: 2
+		ShadowStart: 4
+	critical-idle:
+		Start: 2
+		ShadowStart: 4
+	dead:
+
+taudi_02:
+	idle:
+		ShadowStart: 3
+	damaged-idle:
+		Start: 2
+		ShadowStart: 4
+	critical-idle:
+		Start: 2
+		ShadowStart: 4
+	dead:
+
+taudi_03:
+	idle:
+		ShadowStart: 3
+	damaged-idle:
+		Start: 2
+		ShadowStart: 4
+	critical-idle:
+		Start: 2
+		ShadowStart: 4
+	dead:
+
+taudi_04:
+	idle:
+	damaged-idle:
+		Start: 2
+	critical-idle:
+		Start: 2
+	dead:
+
+taudi_05:
+	idle:
+	damaged-idle:
+		Start: 1
+	critical-idle:
+		Start: 2
+	dead:
+
+taudi_06:
+	idle:
+	damaged-idle:
+		Start: 1
+	critical-idle:
+		Start: 2
+	dead:
+
+taudi_07:
+	idle:
+	damaged-idle:
+		Start: 1
+	critical-idle:
+		Start: 2
+	dead:
+
+techcivbuild_01:
+	idle:
+	dead:
+	damaged-idle:
+		Start: 1
+
+techcivbuild_02:
+	idle:
+	dead:
+	damaged-idle:
+		Start: 1
+
+techcivbuild_03:
+	idle:
+	dead:
+	damaged-idle:
+		Start: 1
+
+mirador_ice:
+	idle:
+		ShadowStart: 3
+	damaged-idle:
+		Start: 1
+		ShadowStart: 4
+	critical-idle:
+		Start: 2
+		ShadowStart: 5
+	dead:
+
+diastextractor:
+	idle:
+	damaged-idle:
+		Start: 1
+	critical-idle:
+		Start: 1
+	smoke: smoke_min
+		Start: 0
+		Length: 19
+		Offset: 8, -45
+		BlendMode: Additive
+	dead:
+		Start: 2
+	make: diastextractor
+		Length: *
+	icon: fedextractoricon

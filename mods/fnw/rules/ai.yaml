@@ -1,0 +1,177 @@
+Player:
+	HackyAI@BaseAI:
+		Name: test AI
+		MinimumExcessPower: 10
+		MinBaseRadius: 2
+		MaxBaseRadius: 15
+		BuildingQueues: Building.redalliance, Building.baneslayer, Building.conclave, Building.federation, Defence.redalliance, Defence.baneslayer, Defence.conclave
+		UnitQueues: Infantry.redalliance, Vehicle.redalliance, Aircraft.redalliance, Research.redalliance, Infantry.baneslayer, Vehicle.baneslayer, Aircraft.baneslayer, Research.baneslayer Vehicle.conclave, Vehicle.federation
+		BuildingCommonNames:
+			ConstructionYard: aracnst, tccacnst, opcacnst, fedcnst
+			Refinery: arproc, tcproc, opproc, fedproc
+			Power: oppowr, tcpowr, fedpowr
+			Barracks: arbarr, opbarr, opweap,
+			VehiclesFactory: arweap, tcweap, opweap, fedweap
+			Production: arbarr, arweap, arheli, opbarr, opweap, tcweap, fedweap
+		UnitsCommonNames:
+			Mcv: armcv, tcmcv, t2_yggdrasil, arnaweap, arnahand, refinery, mobilerelay, t2_airfield, t2_command_relais, t4_cruiser
+            ExcludeFromSquads: t1_harvester, t1_dainn, prospecteur, t1_fedharv
+		SquadSize: 12
+		AssignRolesInterval: 18
+		RushInterval: 20
+		AttackForceInterval: 10
+		StructureProductionInactiveDelay: 8
+		StructureProductionActiveDelay: 8
+		BuildingLimits:
+			arproc: 1
+			arbarr: 2
+			arweap: 1
+			t2_airfield: 2
+			artech: 1
+			t2_command_relais: 1
+			ardeftech: 1
+			t4_cruiser: 1
+			oppowr: 3
+			opproc: 2
+			opbarr: 1
+			opheli: 2
+			opweap: 2
+			optech: 1
+			optech2: 1
+			opcacnst.plug: 1
+			tcpowr: 7
+			tcproc: 3
+			tcweap: 2
+			tcholotech.rodeur: 1
+			tcholotech.pelerin: 1
+			tcholotech.arpenteur: 1
+			tcholotech.comete: 1
+			tcholotech.zenith: 1
+			tcholotech.quasar: 1
+            fedpowr: 2
+            fedproc: 2
+            fedweap: 2
+            diastextractor: 2
+		BuildingFractions:
+			refinery: 8%
+			arnahand: 2%
+			arnaweap: 6%
+			t2_airfield: 6%
+			mobilerelay: 15%
+			t2_command_relais: 18%
+			ardeftech: 1%
+			t4_cruiser: 5%
+			opproc: 6%
+			oppowr: 3%
+			opbarr: 4%
+			opweap: 8%
+			optech: 15%
+			optech2: 8%
+			opheli: 8%
+			opcacnst.plug: 10%
+			tcpowr: 5%
+			tcbarr: 7%
+			tcweap: 10%
+			tcholotech.rodeur: 10%
+			tcholotech.pelerin: 10%
+			tcholotech.arpenteur: 10%
+			tcholotech.comete: 10%
+			tcholotech.zenith: 10%
+			tcholotech.quasar: 10%
+            fedpowr: 3%
+            fedproc: 8%
+            fedweap: 5%
+            diastextractor: 8%
+		UnitsToBuild:
+			t1_comrade: 1%
+			t2_tesla: 3%
+			bike: 5%
+			t2_basilisk: 10%
+			t2_manticore: 15%
+			t3_apocalypse: 8%
+			t3_purifier: 10%
+			t3_annihilator: 12%
+			t2_hydra: 25%
+			t1_harvester: 12%
+			t2_chimera: 20%
+			t3_archdemon: 25%
+			mobilerelay: 20%
+            armcv: 10%
+			t2_command_relais: 50%
+			t4_cruiser: 20%
+			soldierop: 5%
+			roquetteorderinf: 5%
+			vanir: 15%
+			t1_dainn: 20%
+			t1_heidrun: 10%
+			t2_achilledoom: 5%
+			t2_dwarf: 18%
+			t1_ratatoskr: 8%
+			t2_garm: 30%
+			t2_warg: 25%
+			t2_nidhogg: 10%
+			t3_thor: 9%
+			t3_valkyrie: 2%
+			t3_heimdall: 20%
+			t3_loki: 25%
+			t4_odin: 15%
+            t2_yggdrasil: 8%
+			prospecteur: 50%
+			droneip: 20%
+			t2_rodeur: 32%
+			arpenteur: 20%
+			dcatnk: 20%
+			comete: 30%
+			zenith: 2%
+			quasar: 12%
+			gardian: 5%
+			statis: 1%
+            t1_fedharv: 5%
+            t1_suricate: 5%
+            t1_tick: 5%
+            t2_cobra: 10%
+            t2_lynx: 10%
+            t2_mongoose: 10%
+            t3_rhino: 10%
+            t3_porcupine: 10%
+            t3_mantis: 10%
+		UnitLimits:
+			t1_harvester: 4
+			t1_dainn: 4
+			prospecteur: 4
+            t1_fedharv: 4
+            t2_yggdrasil: 1
+            armcv: 1
+		SupportPowerDecision@IonCannonPower:
+			OrderName: IonCannonPowerInfoOrder
+			MinimumAttractiveness: 1000
+			FineScanRadius: 25
+			Consideration@1:
+				Against: Enemy
+				Types: Air, Tank, Vehicle, Infantry, Water
+				Attractiveness: 2
+				TargetMetric: Value
+				CheckRadius: 2c0
+			Consideration@2:
+				Against: Enemy
+				Types: Structure
+				Attractiveness: 1
+				TargetMetric: Value
+				CheckRadius: 2c0
+			Consideration@3:
+				Against: Ally
+				Types: Ground, Water
+				Attractiveness: -10
+				TargetMetric: Value
+				CheckRadius: 3c0
+		SupportPowerDecision@AircraftBaneslayerPower:
+			OrderName: attack.baneslayer.module
+			MinimumAttractiveness: 1000
+			FineScanRadius: 30
+			Consideration@1:
+				Against: Enemy
+				Types: Air, Tank, Vehicle, Infantry, Water
+				Attractiveness: 2
+				TargetMetric: None
+				CheckRadius: 5c0
+		Type: BaseAI

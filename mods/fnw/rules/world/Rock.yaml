@@ -1,0 +1,23 @@
+rock_olitrax1:
+	Inherits: ^Rock
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+rock_olitrax2:
+	Inherits: ^Rock
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+rock_olitrax3:
+	Inherits: ^Rock
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	HitShape:
+		UseTargetableCellsOffsets: true

@@ -1,0 +1,475 @@
+t0_transportship:
+	Inherits: ^Aircraft
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Cargo
+	Health:
+		HP: 15000
+	DamageMultiplier@INVULNERABLE:
+		Modifier: 0
+	Armor:
+		Type: LightVehicle
+	RevealsShroud:
+		Range: 0c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 0c0
+		Type: GroundPosition
+	Aircraft:
+		CruiseAltitude: 4500
+		InitialFacing: 30
+		TurnSpeed: 3
+		Speed: 680
+		RepulsionSpeed: 95
+		MaximumPitch: 56
+	Targetable:
+		TargetTypes: NoAircraftTarget
+		RequiresForceFire: true
+	Selectable:
+		Bounds: 36,28
+	RejectsOrders:
+	FlyAwayOnIdle:
+	-AutoTarget:
+	-AttackMove:
+	HiddenUnderFog:
+		AlwaysVisibleStances: None
+		Type: CenterPosition
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+	RenderVoxels:
+		Scale: 1.0
+	GrantConditionOnMovement@EngineMove:
+		Condition: EngineMove
+	WithIdleOverlay@EngineSTAND:
+		Offset: -500,-605,0
+		Sequence: engine
+		Palette: bluelight
+		RequiresCondition: EngineMove || !SmokeCamoActivate
+	WithIdleOverlay@Engine2STAND:
+		Offset: -500,605,0
+		Sequence: engine
+		Palette: bluelight
+		RequiresCondition: EngineMove || !SmokeCamoActivate
+	WithVoxelBody:
+		ShowShadow: false
+	HitShape:
+
+t2_wyvern:
+	Inherits: ^Aircraftshape
+	Inherits@Target: ^AutoTargetAir
+	Buildable:
+		Queue: Aircraft.redalliance
+		BuildPaletteOrder: 10
+		Description: Extremely fast air superiority fighter armed with powerful revolver cannons\nDoes not appear on the minimap\nCan detect stealthed units\n> Strong vs Aircraft\n> Weak vs Infantry, Vehicles
+		BuildDurationModifier: 10
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 1100
+	Tooltip:
+		Name: Wyvern
+	Health:
+		HP: 1200
+	Armor:
+		Type: LightVehicle
+	RevealsShroud:
+		Range: 13c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	AppearsOnRadar:
+		UseLocation: False
+	RevealsShroud@GAPGEN:
+		Range: 11c0
+		Type: GroundPosition
+	Armament:
+		Weapon: AP_Wyvern
+		LocalOffset: 0,-640,0, 0,640,0
+		LocalYaw: -40, 24
+	DetectCloaked:
+		Range: 6c0
+	AmmoPool@initial:
+		Ammo: 4
+		PipCount: 2
+		ReloadCount: 250
+		ReloadDelay: 450
+		SelfReloads: true
+	AttackPlane:
+		FacingTolerance: 24
+		AttackTurnDelay: 15
+	ReturnOnIdle:
+	GrantConditionOnPrerequisite@Upgrade.Supersonic.Redalliance.Aircraft:
+		Prerequisites: research.Supersonic.Redalliance.Aircraft
+		Condition: upgrade.Supersonic.Redalliance.Aircraft
+	GrantConditionOnAttack:
+		Condition: Supersonic.Alliance
+		RevokeDelay: 70
+	SpeedMultiplier:
+		Modifier: 150
+		RequiresCondition: Supersonic.Alliance && upgrade.Supersonic.Redalliance.Aircraft
+	Aircraft:
+		CruiseAltitude: 3400
+		InitialFacing: 192
+		TurnSpeed: 8
+		Speed: 220
+		Repulsable: true
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
+	Selectable:
+		Bounds: 36,28
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+	SpawnActorOnDeath:
+		Actor: t2_wyvern.husk
+	HitShape:
+
+t2_wyvern.husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: wyvern
+	Aircraft:
+		TurnSpeed: 0
+		Speed: 186
+	RenderSprites:
+		Image: t2_wyvern
+	RenderVoxels:
+		Image: t2_wyvern
+
+t2_chimera:
+	Inherits: ^Helicoptershape
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Aircraft.redalliance
+		BuildPaletteOrder: 20
+		Prerequisites: artech
+		BuildDurationModifier: 15
+		Description: Heavily armored gunship equipped with 2 high caliber cannons\n> Strong vs Vehicles, Structures\n> Weak vs Infantry, Aircraft
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 1400
+	Tooltip:
+		Name: Chimera
+	Health:
+		HP: 1300
+	Armor:
+		Type: ArmorTank
+	RevealsShroud:
+		Range: 12c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 10c0
+		Type: GroundPosition
+	Armament@PRIMARY:
+		Weapon: AP_chimera
+		LocalOffset: 0,-213,-85
+		MuzzleSequence: muzzle
+	Armament@SECONDARY:
+		Weapon: AP_chimera
+		LocalOffset: 0,213,-85
+		MuzzleSequence: muzzle
+	WithMuzzleOverlay:
+	AttackHeli:
+		FacingTolerance: 20
+	Aircraft:
+		CruiseAltitude: 2500
+		InitialFacing: 192
+		TurnSpeed: 4
+		Speed: 180
+		RepulsionSpeed: 20
+		MaximumPitch: 45
+		LandWhenIdle: false
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
+	Selectable:
+		Bounds: 36,28
+	SpawnActorOnDeath:
+		Actor: t2_chimera.Husk
+	HitShape:
+
+t2_chimera.husk:
+	Inherits: ^AircraftHuskShape
+	Tooltip:
+		Name: chimera
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 186
+	RenderSprites:
+		Image: t2_chimera
+
+t3_archdemon:
+	Inherits: ^Aircraftshape
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Aircraft.redalliance
+		BuildAtProductionType: Aircraft
+		BuildPaletteOrder: 30
+		Prerequisites: t2_command_relais
+		BuildDurationModifier: 30
+		Description: Tactical bomber armed with nuclear bombs\nDoes not appear on the minimap\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 3000
+	Tooltip:
+		Name: Archdemon
+	Health:
+		HP: 1000
+	Armor:
+		Type: LightVehicle
+	AppearsOnRadar:
+		UseLocation: False
+	RevealsShroud:
+		Range: 13c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 11c0
+		Type: GroundPosition
+	Armament@LEFT:
+		Weapon: therombomb
+		AmmoPoolName: primary
+		LocalOffset: 0,-640,0, 0,640,0
+		LocalYaw: -40, 24
+	AttackPlane:
+		FacingTolerance: 20
+	Aircraft:
+		CruiseAltitude: 2560
+		InitialFacing: 192
+		TurnSpeed: 5
+		Speed: 190
+		Repulsable: true
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+	AmmoPool@initial:
+		Ammo: 1
+		PipCount: 1
+		ReloadCount: 500
+		ReloadDelay: 500
+		SelfReloads: true
+	ReturnOnIdle:
+	AutoTarget:
+		EnableStances: false
+		InitialStance: HoldFire
+	Selectable:
+		Bounds: 36,28
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+	SpawnActorOnDeath:
+		Actor: t3_archdemon.Husk
+	HitShape:
+
+t3_archdemon.husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: archdemon
+	Aircraft:
+		TurnSpeed: 0
+		Speed: 186
+	RenderSprites:
+		Image: t3_archdemon
+	RenderVoxels:
+		Image: t3_archdemon
+
+t2_command_relais:
+	Inherits: ^Helicopter
+	Buildable:
+		Queue: Building.redalliance
+		BuildPaletteOrder: 90
+		Prerequisites: artech
+		Description: Unlocks tier 3 units, upgrades, structures and the Astro-Cruiser epic unit
+		BuildDurationModifier: 50
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 2500
+	Tooltip:
+		Name: Mobile Orbital Command Center
+	Health:
+		HP: 2000
+	Armor:
+		Type: LightVehicle
+	RevealsShroud:
+		Range: 18c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	DetectCloaked:
+		Range: 10c0
+		CloakTypes: Cloak, Buried
+	Aircraft:
+		CruiseAltitude: 2600
+		InitialFacing: 192
+		TurnSpeed: 2
+		Speed: 60
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		LandWhenIdle: true
+		LandableTerrainTypes: Clear, Rough, Tree
+	-AutoTarget:
+	Transforms:
+		IntoActor: t3_commandbuilding
+		Offset: -1,-1
+		Facing: 164
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	RenderVoxels:
+		Scale: 1.4
+	Selectable:
+		Bounds: 36,28
+	GrantConditionOnMovement@EngineMove:
+		Condition: EngineMove
+	WithIdleOverlay@EngineSTAND:
+		Offset: 0,0,0
+		Sequence: engine
+		Palette: light
+		RequiresCondition: EngineMove || !SmokeCamoActivate
+	WithIdleOverlay@EngineSPOT:
+		Offset: 0,0,0
+		Sequence: spot
+		Palette: light
+	WithVoxelBody:
+		ShowShadow: false
+	SpawnActorOnDeath:
+		Actor: t2_command_relais.Husk
+	HitShape:
+
+t2_command_relais.husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: command relais
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 186
+	RenderSprites:
+		Image: t2_command_relais
+	RenderVoxels:
+		Image: t2_command_relais
+
+t4_cruiser:
+	Inherits: ^Helicoptershape
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Building.redalliance
+		BuildPaletteOrder: 120
+		Prerequisites: t2_command_relais
+		BuildDurationModifier: 60
+		Description: Aerial super-unit with an impressive array of weaponry\nAutomatically damage enemy aircrafts within a certain radius\nCan launch a tactical nuke every 5 minutes\nCan detect stealthed units\n> Strong vs Everything\n> Weak vs None
+		BuildLimit: 1
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 5000
+	Tooltip:
+		Name: Astro-Cruiser
+	Health:
+		HP: 15000
+	Armor:
+		Type: LordTank
+	RevealsShroud:
+		Range: 10c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	Armament@primary:
+		Turret: borde01
+		Weapon: cannon_cruiser
+		MuzzleSequence: muzzle
+		MuzzleSplitFacings: 8
+		LocalOffset: 840,900,200, 490,900,200, 140,900,200, -210,900,200, -560,900,200
+	Armament@secondary:
+		Turret: borde02
+		Weapon: cannon_cruiser
+		MuzzleSequence: muzzle
+		MuzzleSplitFacings: 8
+		LocalOffset: 840,-900,200, 490,-900,200, 140,-900,200, -210,-900,200, -560,-900,200
+	Armament@LASER:
+		Turret: laser_des
+		Weapon: laserdefence
+		MuzzleSequence: muzzle
+		MuzzleSplitFacings: 8
+		LocalOffset: 950,200,700, 950,-200,700
+	DetectCloaked:
+		Range: 6c0
+	AttackTurreted:
+		Turrets: borde01, borde02, laser_des
+	Turreted:
+		Turret: borde01
+		Offset: 750,1800,-50
+	Turreted@borde02:
+		Turret: borde02
+		Offset: 750,1500,-50
+	Turreted@borde02:
+		Turret: laser_des
+		Offset: 950,0,0
+	RenderSprites:
+		Scale: 1.05
+	Aircraft:
+		CruiseAltitude: 2500
+		InitialFacing: 192
+		TurnSpeed: 2
+		Speed: 60
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+		LandWhenIdle: false
+	ProximityExternalCondition@FlakBATTERY:
+		Condition: FlakCruiser
+		ValidStances: Enemy
+		Range: 9c0
+	AutoTarget:
+		InitialStance: HoldFire
+		InitialStanceAI: HoldFire
+	ProvidesPrerequisite:
+		Prerequisite: Orbital.Command.Relay
+	Selectable:
+		Bounds: 36,28
+	GrantConditionOnMovement@EngineMove:
+		Condition: EngineMove
+	WithIdleOverlay@EngineSTAND:
+		Offset: 0,0,0
+		Sequence: engine
+		Palette: light
+		RequiresCondition: EngineMove || !SmokeCamoActivate
+	WithIdleOverlay@EngineSPOT:
+		Offset: 0,0,0
+		Sequence: spot
+		Palette: light
+		RequiresCondition: !SmokeCamoActivate
+	HitShape:
+	SpawnActorOnDeath:
+		Actor: t4_cruiser.Husk
+	NukePower@NukeAllianceMissile:
+		OrderName: NukeAllianceMissile
+		PauseOnCondition: disabled
+		Cursor: nuke
+		Icon: nukeallianceicons
+		IconPalette: RedAlliance.Icon
+		ChargeInterval: 8500
+		Description: Wrath of God
+		LongDesc: Please select the section of the map you want to obliterate
+		BeginChargeSpeechNotification:
+		EndChargeSpeechNotification:
+		SelectTargetSpeechNotification:
+		InsufficientPowerSpeechNotification:
+		IncomingSpeechNotification:
+		MissileWeapon: nuke.alliance.missile
+		MissileDelay: 1
+		SpawnOffset: 1c0,427,0
+		DisplayTimerStances: Ally, Neutral, Enemy
+		DisplayBeacon: false
+		DisplayRadarPing: True
+		BeaconPoster: atomicon
+		CameraRange: 10c0
+	HitShape:
+
+t4_cruiser.husk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: cruiser
+	Aircraft:
+		TurnSpeed: 0
+		Speed: 186
+	RenderSprites:
+		Image: t4_cruiser

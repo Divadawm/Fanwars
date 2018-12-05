@@ -1,0 +1,282 @@
+Metadata:
+	Title: Fanwars
+	Version: Fnw {02-12-2018}
+
+Packages:
+	.
+	$fnw: fnw
+	./mods/common: common
+	fnw|bits
+	fnw|bits/icones_ingame/
+	fnw|bits/icones_ingame/build_upgrades_baneslayer
+	fnw|bits/icones_ingame/build_upgrades_conclave
+	fnw|bits/icones_ingame/build_upgrades_redalliances
+    fnw|bits/icones_ingame/build_upgrades_federation
+	fnw|bits/icones_ingame/unites_baneslayer
+	fnw|bits/icones_ingame/unites_conclave
+	fnw|bits/icones_ingame/unites_redalliance
+	fnw|bits/icones_ingame/unites_federation
+	fnw|bits/icones_ingame/Power_icons
+	fnw|bits/voxels
+	fnw|bits/palettes
+	fnw|bits/shp_factions
+	fnw|bits/shp_ingame
+	fnw|bits/shp_animations
+    fnw|bits/shp_civilianbuilding
+    fnw|bits/shp_unite
+    fnw|bits/shp_unite/aircraft
+    fnw|bits/shp_unite/infantry
+    fnw|bits/shp_unite/vehicle
+    fnw|bits/stat_effect
+    fnw|bits/decorations
+    fnw|bits/craters
+    fnw|bits/scorches
+    fnw|bits/scrap
+    fnw|bits/deadhusk
+	fnw|bits/voice_notification
+    # Sounds Files ///
+	fnw|bits/sounds/ambience_building
+	fnw|bits/sounds/ambience_unite
+	fnw|bits/sounds/ambience_world
+    fnw|bits/sounds/explosion
+    fnw|bits/sounds/fire_weapons
+    fnw|bits/sounds/hub
+    fnw|bits/sounds/impact_weapons
+    fnw|bits/sounds/interact_unite
+    fnw|bits/sounds/interact_power
+    fnw|bits/sounds/voice_unite
+	fnw|bits/sounds
+    fnw|bits/olitrax
+    fnw|bits/stationa
+	fnw|uibits
+	
+MapFolders:
+	fnw|maps: System
+	~^maps/fnw/playtest-20170304: User
+	
+Rules:
+	fnw|rules/misc.yaml
+	fnw|rules/ai.yaml
+	fnw|rules/player.yaml
+	fnw|rules/world.yaml
+	fnw|rules/palettes.yaml
+	fnw|rules/defaults.yaml
+	fnw|rules/husks.yaml
+    fnw|rules/world/trees.yaml
+    fnw|rules/world/rock.yaml
+    fnw|rules/mechanicus.yaml
+	
+	# Comuns
+	fnw|rules/factions/comun_structures.yaml
+	# fnw|rules/factions/comun_vehicles.yaml
+	# fnw|rules/factions/comun_infantry.yaml
+	# fnw|rules/factions/comun_aircraft.yaml
+	
+	# RedAlliance
+	fnw|rules/factions/redalliance_structures.yaml
+	fnw|rules/factions/redalliance_infantry.yaml
+	fnw|rules/factions/redalliance_vehicles.yaml
+	fnw|rules/factions/redalliance_aircraft.yaml
+    fnw|rules/factions/redalliance_researh.yaml
+	
+	# Baneslayer
+	fnw|rules/factions/baneslayer_structures.yaml
+	fnw|rules/factions/baneslayer_infantry.yaml
+	fnw|rules/factions/baneslayer_vehicles.yaml
+	fnw|rules/factions/baneslayer_aircraft.yaml
+    fnw|rules/factions/baneslayer_researh.yaml
+	
+	# Conclave
+	fnw|rules/factions/conclave_structures.yaml
+	fnw|rules/factions/conclave_infantry.yaml
+	fnw|rules/factions/conclave_vehicles.yaml
+	fnw|rules/factions/conclave_aircraft.yaml
+    fnw|rules/factions/conclave_researh.yaml
+
+	# Federation
+    fnw|rules/factions/federation_structures.yaml
+    # fnw|rules/factions/federation_infantry.yaml
+    fnw|rules/factions/federation_vehicles.yaml
+    fnw|rules/factions/federation_aircraft.yaml
+    # fnw|rules/factions/federation_researh.yaml
+	
+Sequences:
+	fnw|sequences/aircraft.yaml
+	fnw|sequences/vehicles.yaml
+	fnw|sequences/infantry.yaml
+	fnw|sequences/structures.yaml
+	fnw|sequences/misc.yaml
+    fnw|sequences/decorations.yaml
+    fnw|sequences/factions/vehicles_redalliance.yaml
+    fnw|sequences/factions/vehicles_conclave.yaml
+    fnw|sequences/factions/vehicles_federation.yaml
+
+ModelSequences:
+	fnw|sequences/voxels.yaml
+	
+Cursors:
+	fnw|cursors.yaml
+
+Chrome:
+	fnw|chrome.yaml
+
+Assemblies:
+	common|OpenRA.Mods.Common.dll
+	common|OpenRA.Mods.Cnc.dll
+	
+TileSets:
+    fnw|tilesets/olitrax.yaml
+    fnw|tilesets/stationa.yaml
+	
+
+ChromeLayout:
+	common|chrome/ingame.yaml
+	common|chrome/ingame-chat.yaml
+	common|chrome/ingame-fmvplayer.yaml
+	common|chrome/ingame-info.yaml
+	common|chrome/ingame-infoscripterror.yaml
+	common|chrome/ingame-infobriefing.yaml
+	common|chrome/ingame-infoobjectives.yaml
+	common|chrome/ingame-infostats.yaml
+	common|chrome/ingame-menu.yaml
+	fnw|chrome/ingame-observer.yaml
+	fnw|chrome/ingame-observerstats.yaml
+	fnw|chrome/ingame-player.yaml
+	common|chrome/ingame-perf.yaml
+	common|chrome/ingame-debug.yaml
+    common|chrome/ingame-infochat.yaml
+	common|chrome/mainmenu.yaml
+	common|chrome/settings.yaml
+	common|chrome/credits.yaml
+	common|chrome/lobby.yaml
+	common|chrome/lobby-mappreview.yaml
+	common|chrome/lobby-players.yaml
+	common|chrome/lobby-options.yaml
+	common|chrome/lobby-music.yaml
+	common|chrome/lobby-servers.yaml
+	common|chrome/lobby-kickdialogs.yaml
+	common|chrome/color-picker.yaml
+	common|chrome/map-chooser.yaml
+	common|chrome/multiplayer-browser.yaml
+	common|chrome/multiplayer-browserpanels.yaml
+	common|chrome/multiplayer-createserver.yaml
+	common|chrome/multiplayer-directconnect.yaml
+	common|chrome/connection.yaml
+	common|chrome/replaybrowser.yaml
+	common|chrome/dropdowns.yaml
+	common|chrome/musicplayer.yaml
+	common|chrome/tooltips.yaml
+	common|chrome/assetbrowser.yaml
+	common|chrome/missionbrowser.yaml
+	common|chrome/confirmation-dialogs.yaml
+	common|chrome/editor.yaml
+	common|chrome/playerprofile.yaml
+	
+Weapons:
+    fnw|weapons/base_weapons.yaml
+	fnw|weapons/weapons.yaml
+	fnw|weapons/ar_weapons.yaml
+    fnw|weapons/op_weapons.yaml
+    fnw|weapons/tc_weapons.yaml
+    fnw|weapons/fed_weapons.yaml
+	fnw|weapons/debris.yaml
+
+Voices:
+	fnw|audio/voices.yaml
+
+Notifications:
+	fnw|audio/notifications.yaml
+	
+Music:
+	fnw|audio/music.yaml
+
+Translations:
+	fnw|languages/english.yaml
+    fnw|languages/french.yaml
+    
+Hotkeys:
+	common|hotkeys/game.yaml
+	common|hotkeys/observer.yaml
+	common|hotkeys/production-common.yaml
+	common|hotkeys/production-peractor.yaml
+	common|hotkeys/supportpowers.yaml
+	common|hotkeys/viewport.yaml
+	fnw|hotkeys.yaml
+    
+LoadScreen: LogoStripeLoadScreen
+	Image: fnw|uibits/loadscreen.png
+	Text: (°Д°), (°X°), (°3°), (°U°), (°w°), (°_°), (°o°), (°O°),  (°*°), (Ô_õ), (°ɷ°), (-ɷ-), (-o"), (x_x), (=_=), ( ͡° ͜ʖ ͡°)
+
+ServerTraits:
+	LobbyCommands
+	PlayerPinger
+	MasterServerPinger
+	LobbySettingsNotification
+
+ChromeMetrics:
+	common|metrics.yaml
+	fnw|metrics.yaml
+
+Fonts:
+	Regular:
+		Font: common|FreeSans.ttf
+		Size:14
+	Bold:
+		Font: common|FreeSansBold.ttf
+		Size:14
+	Title:
+		Font: fnw|Dune2k.ttf
+		Size:32
+	MediumBold:
+		Font: common|FreeSansBold.ttf
+		Size:18
+	BigBold:
+		Font: common|FreeSansBold.ttf
+		Size:24
+	Small:
+		Font: common|FreeSans.ttf
+		Size:12
+	Tiny:
+		Font: common|FreeSans.ttf
+		Size:10
+	TinyBold:
+		Font: common|FreeSansBold.ttf
+		Size:10
+
+MapGrid:
+	TileSize: 28,28
+	Type: Rectangular
+	
+ColorValidator:
+
+SupportsMapsFrom: fnw, cnc, d2k
+
+SoundFormats: Aud, Wav
+
+SpriteFormats: ShpTD, TmpTD, ShpTS, TmpRA
+
+SpriteSequenceFormat: TilesetSpecificSpriteSequence
+	TilesetExtensions:
+		ARIDE: .ari
+        OLITRAX: .oli
+        STATIONE: .sta
+        
+ModelSequenceFormat: VoxelModelSequence
+
+GameSpeeds:
+	slower:
+		Name: Slower
+		Timestep: 50
+		OrderLatency: 3
+	default:
+		Name: Normal
+		Timestep: 40
+		OrderLatency: 3
+	faster:
+		Name: Faster
+		Timestep: 30
+		OrderLatency: 4
+	fastest:
+		Name: Fastest
+		Timestep: 20
+		OrderLatency: 6

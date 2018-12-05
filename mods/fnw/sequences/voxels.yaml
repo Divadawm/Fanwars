@@ -1,0 +1,154 @@
+towerdefenceap:
+	turret: railhover
+    
+towerdefenceac:
+	turret: Biggun
+
+#Red Alliance ////////
+
+armcv:
+	idle:
+	
+arnahand:
+	idle:
+    
+t2_airfield:
+	idle:
+    
+mobilerelay:
+	idle:
+    
+t1_defence_hq:
+	idle:
+    
+t3_doomtower_mobile:
+	idle:
+	
+arnaweap:
+	idle:
+
+ar_scarab:
+	idle:
+    
+t1_harvester:
+	idle:
+	unload: t1_harvester
+    turret: t1_harvestertur
+    
+t2_basilisk.husk:
+	idle: t2_basiliskhusk
+    turret: t2_basilisktur
+    
+t2_salamander:
+	idle:
+	turret: t2_salamandertur
+    
+t3_annihilator_deployed:
+	idle:
+	turret: t3_annihilator_deployedtur
+	barrel: t3_annihilator_deployedbarl
+    
+refinery:
+    idle:
+   
+# Defense RedAlliance
+   
+t2_predator_mobile:
+	idle:
+	turret: t2_predator_mobiletur
+	barrel: t2_predator_mobilebarl
+    
+t2_predator_deployed:
+	idle:
+	turret: T2_predator_Deployedtur
+	barrel: T2_predator_Deployedbarl
+
+t2_tarantula_mobile: 
+	idle:
+	turret: t2_tarantula_mobiletur
+	barrel: t2_tarantula_mobilebarl
+
+t2_tarantula_deployed:
+	idle:
+	turret: T2_tarantula_Deployedtur
+	barrel: T2_tarantula_Deployedbarl
+
+    
+# Aircraft RedAlliance
+
+t0_transportship:
+	idle:
+    
+t3_harbinger_mobile:
+	idle:
+    deployed: t3_harbinger_deployed
+    
+    
+t3_harbinger_deployed:
+	idle: 
+    
+# Vehicle Oder Inquisitorial ///////////////
+
+opmcv:
+	idle:
+
+t1_dainn:
+	idle:
+	unload: t1_dainn
+
+t1_heidrun:
+	idle:
+	turret: t1_heidruntur
+	barrel: t1_heidrunbarl
+    
+t3_heimdall:
+	idle: t3_heimdall_firing
+    deployed: t3_heimdall_firing
+        
+t2_warg:
+	idle:
+    amphibiemode: t2_wargamp
+	turret: t2_wargtur
+	barrel: t2_wargbarl
+    
+t2_yggdrasil:
+	idle:
+    
+t2_lindwyrm:
+	idle:
+	turret: t2_lindwyrmtur
+	barrel: t2_lindwyrmbarl
+	turret.plasma: t2_lindwyrmplasmatur
+	barrel.plasma: t2_lindwyrmplasmabarl
+    
+t3_loki:
+	idle:
+    
+t3_valkyrie:
+	turret: t3_valkyrietur
+	barrel: t3_valkyriebarl
+    
+t1_midgard:
+	idle:
+	turret: t1_midgardtur
+	barrel: t1_midgardbarl
+    
+t2_niflheim:
+	idle:
+	turret: t2_niflheimtur
+	barrel: t2_niflheimbarl
+    
+t3_hel:
+	idle:
+	turret: t3_heltur
+    
+tcmcv:
+	idle:
+	
+prospecteur:
+	idle:
+	unload: prospecteur
+    
+t2_command_relais:
+	idle:
+	

@@ -1,0 +1,265 @@
+^Debris:
+	Range: 5c0
+	Projectile: Bullet
+		Speed: 64, 128
+		LaunchAngle: 80, 192
+		Image: medium_debris
+		High: true
+		Inaccuracy: 125
+		TrailImage: smokeymin
+		TrailInterval: 4
+		ContrailLength: 10
+		ContrailWidth: 7
+		Shadow: true
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		Spread: 64
+		Damage: 10
+		Versus:
+			Infantry: 20
+			ArmorInfantry: 20
+			LightVehicle: 20
+			ArmorTank: 20
+			Lord: 20
+			LordTank: 20
+			harvester: 20
+			Concrete: 20
+		DamageTypes: TriggerProne, ExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: shrap_exp
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffWater: CreateEffect
+		Explosions: shrap_exp
+		ExplosionPalette: player
+		ImpactSounds:
+		ValidTargets: Water
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: SmallScorch
+		InvalidTargets: Vehicle, Building, Wall
+
+SmallDebris:
+	Inherits: ^Debris
+	Projectile: Bullet
+		TrailImage: smoke_husk
+		Image: medium_debris
+
+SmallDebris2:
+	Inherits: ^Debris
+	Projectile: Bullet
+		TrailImage: smokey
+		Image: medium_debris2
+
+SmallDebris3:
+	Inherits: ^Debris
+	Projectile: Bullet
+		TrailImage: smokeymin
+		Image: small_debris2
+	Warhead@3Eff: CreateEffect
+		Explosion: debrisexplode
+		ImpactSound: debrisexplode.aud
+		ValidTargets: Ground, Water, Air
+
+Debris:
+	ReloadDelay: 60
+	Range: 2c768
+	Projectile: Bullet
+		Speed: 32, 96
+		Blockable: false
+		Angle: 30, 90
+		Inaccuracy: 1c256
+		Image: shrapnel
+	Warhead@1Dam: SpreadDamage
+		Spread: 320
+		Falloff: 100, 60, 30, 15, 0
+		Damage: 150
+		Versus:
+			Infantry: 20
+			ArmorInfantry: 50
+			LightVehicle: 100
+			ArmorTank: 75
+			Lord: 40
+			LordTank: 40
+			harvester: 50
+			Concrete: 100
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: SandCrater
+	Warhead@3Eff: CreateEffect
+		Explosion: small_explosion
+		ImpactSound: EXPLLG5.WAV
+		ValidTargets: Ground, Water, Air
+
+Debris2:
+	ReloadDelay: 60
+	Range: 2c768
+	Projectile: Bullet
+		Speed: 32, 96
+		Blockable: false
+		Angle: 30, 90
+		Inaccuracy: 1c256
+		Image: shrapnel2
+		Trail: bazooka_trail
+		TrailPalette: effect75alpha
+		TrailInterval: 2
+	Warhead@1Dam: SpreadDamage
+		Spread: 320
+		Falloff: 100, 60, 30, 15, 0
+		Damage: 250
+		Versus:
+			none: 90
+			wall: 5
+			building: 65
+			wood: 50
+			light: 40
+			heavy: 30
+			concrete: 100
+			invulnerable: 0
+			cy: 20
+			harvester: 25
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: SandCrater
+	Warhead@3Eff: CreateEffect
+		Explosion: impact_balist_medium
+		ImpactSound: EXPLLG5.WAV
+		ValidTargets: Ground, Water, Air
+
+Debris3:
+	ReloadDelay: 60
+	Range: 5c768
+	Projectile: Bullet
+		Speed: 32, 96
+		Blockable: false
+		Angle: 30, 90
+		Inaccuracy: 1c256
+		Image: shrapnel3
+		Trail: large_trail
+		TrailPalette: effect75alpha
+		TrailInterval: 1
+	Warhead@1Dam: SpreadDamage
+		Spread: 10
+		Falloff: 100, 60, 30, 15, 0
+		Damage: 10
+		Versus:
+			none: 90
+			wall: 5
+			building: 65
+			wood: 50
+			light: 40
+			heavy: 30
+			concrete: 100
+			invulnerable: 0
+			cy: 20
+			harvester: 25
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: SandCrater
+	Warhead@3Eff: CreateEffect
+		Explosion: debrisexplode
+		ImpactSound: debrisexplode.aud
+		ValidTargets: Ground, Water, Air
+
+Debris4:
+	ReloadDelay: 60
+	Range: 2c768
+	Projectile: Bullet
+		Speed: 32, 96
+		Blockable: false
+		Angle: 30, 90
+		Inaccuracy: 1c256
+		Image: shrapnel4
+		Trail: large_trail
+		TrailPalette: effect75alpha
+		TrailInterval: 1
+	Warhead@1Dam: SpreadDamage
+		Spread: 320
+		Falloff: 100, 60, 30, 15, 0
+		Damage: 250
+		Versus:
+			none: 90
+			wall: 5
+			building: 65
+			wood: 50
+			light: 40
+			heavy: 30
+			concrete: 100
+			invulnerable: 0
+			cy: 20
+			harvester: 25
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: SandCrater
+	Warhead@3Eff: CreateEffect
+		Explosion: large_explosion
+		ImpactSound: EXPLLG5.WAV
+		ValidTargets: Ground, Water, Air
+
+HuskExplode:
+	Report: vehicle_deathexpl01.aud, vehicle_deathexpl02.aud, vehicle_deathexpl03.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 0
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+	Warhead@2Eff: CreateEffect
+		Explosion: smokehusk
+		ValidTargets: Ground, Water, Air
+        
+AircraftExplode:
+	Report: vehicle_deathexpl01.aud, vehicle_deathexpl02.aud, vehicle_deathexpl03.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 0
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+	Warhead@2Eff: CreateEffect
+		Explosion: uniteexplode
+		ValidTargets: Ground, Water, Air
+
+^gibs:
+	Range: 5c0
+	Projectile: Bullet
+		Speed: 64, 128
+		LaunchAngle: 80, 192
+		Image: gibs01
+		High: true
+		Inaccuracy: 125
+		TrailImage: gibs_smoke
+		TrailInterval: 2
+		TrailPalette: Red_effect
+		ContrailLength: 10
+		ContrailWidth: 7
+		Shadow: true
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		Spread: 64
+		Damage: 5
+		Versus:
+			Infantry: 20
+			ArmorInfantry: 20
+			LightVehicle: 20
+			ArmorTank: 20
+			Lord: 20
+			LordTank: 20
+			harvester: 20
+			Concrete: 20
+		DamageTypes: TriggerProne, ExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: expl_gibs01
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground, Water, Air
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: Ghusk
+		InvalidTargets: Vehicle, Building, Wall
+
+gibs_plok:
+	Inherits@gibs: ^gibs
+	Projectile: Bullet
+		Image: gibs01

@@ -1,0 +1,209 @@
+tree01:
+	Defaults:
+	idle:
+
+tree02:
+	Defaults:
+	idle:
+
+tree03:
+	Defaults:
+	idle:
+
+tree04:
+	Defaults:
+	idle:
+
+tree05:
+	Defaults:
+	idle:
+
+tree06:
+	Defaults:
+	idle:
+
+tree07:
+	Defaults:
+	idle:
+
+tree08:
+	Defaults:
+	idle:
+
+tree09:
+	Defaults:
+	idle:
+
+tree10:
+	Defaults:
+	idle:
+
+tree11:
+	Defaults:
+	idle:
+
+tree12:
+	Defaults:
+	idle:
+
+tree13:
+	Defaults:
+	idle:
+
+tree14:
+	Defaults:
+	idle:
+
+tree15:
+	Defaults:
+	idle:
+
+tree16:
+	Defaults:
+	idle:
+
+tree17:
+	Defaults:
+	idle:
+
+tree18:
+	Defaults:
+	idle:
+
+tree19:
+	Defaults:
+	idle:
+
+tree20:
+	Defaults:
+	idle:
+
+tree21:
+	Defaults:
+	idle:
+
+tree22:
+	Defaults:
+	idle:
+
+tree23:
+	Defaults:
+	idle:
+
+tree24:
+	Defaults:
+	idle:
+
+tree25:
+	Defaults:
+	idle:
+
+tree26:
+	Defaults:
+	idle:
+
+tree27:
+	Defaults:
+	idle:
+
+tree28:
+	Defaults:
+	idle:
+
+tree29:
+	Defaults:
+	idle:
+
+tree30:
+	Defaults:
+	idle:
+
+tree31:
+	Defaults:
+	idle:
+
+tree32:
+	Defaults:
+	idle:
+
+tree33:
+	Defaults:
+	idle:
+
+tree34:
+	Defaults:
+	idle:
+
+tree35:
+	Defaults:
+	idle:
+
+tree36:
+	Defaults:
+	idle:
+    
+tree37:
+	Defaults:
+	idle:
+    
+tree38:
+	Defaults:
+	idle:
+    
+tree39:
+	Defaults:
+	idle:
+    
+tree40:
+	Defaults:
+	idle:
+
+rock_olitrax1:
+	Defaults:
+	idle:
+
+rock_olitrax2:
+	Defaults:
+	idle:
+
+rock_olitrax3:
+	Defaults:
+	idle:
+
+urbandecoy_01:
+	Defaults:
+	idle:
+	damaged-idle:
+		Start: 1
+	Neon1:
+		Start: 2
+		Length: 2
+		BlendMode: Additive
+	Neon2:
+		Start: 5
+		Length: 2
+		BlendMode: Additive
+
+urbandecoy_02:
+	Defaults:
+	idle:
+	damaged-idle:
+		Start: 1
+	Neon1:
+		Start: 2
+		Length: 2
+		BlendMode: Additive
+	Neon2:
+		Start: 5
+		Length: 2
+		BlendMode: Additive
+
+urbandecoy_03:
+	Defaults:
+	idle:
+	damaged-idle:
+		Start: 1
+	idle2:
+		Start: 2
+	damaged-idle2:
+		Start: 3
