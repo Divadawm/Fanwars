@@ -1,32 +1,38 @@
 Player:
 	HackyAI@BaseAI:
 		Name: test AI
-		MinimumExcessPower: 10
 		MinBaseRadius: 2
 		MaxBaseRadius: 15
+        CheckForNewBasesDelay: 25000
 		BuildingQueues: Building.redalliance, Building.baneslayer, Building.conclave, Building.federation, Defence.redalliance, Defence.baneslayer, Defence.conclave
-		UnitQueues: Infantry.redalliance, Vehicle.redalliance, Aircraft.redalliance, Research.redalliance, Infantry.baneslayer, Vehicle.baneslayer, Aircraft.baneslayer, Research.baneslayer Vehicle.conclave, Vehicle.federation
+		UnitQueues: Infantry.redalliance, Vehicle.redalliance, Aircraft.redalliance, Research.redalliance, Infantry.baneslayer, Vehicle.baneslayer, Aircraft.baneslayer, Research.baneslayer, Vehicle.conclave, Vehicle.federation
 		BuildingCommonNames:
 			ConstructionYard: aracnst, tccacnst, opcacnst, fedcnst
 			Refinery: arproc, tcproc, opproc, fedproc
-			Power: oppowr, tcpowr, fedpowr
-			Barracks: arbarr, opbarr, opweap,
-			VehiclesFactory: arweap, tcweap, opweap, fedweap
-			Production: arbarr, arweap, arheli, opbarr, opweap, tcweap, fedweap
+			Power: oppowr, fedpowr
+			Barracks: arbarr, opbarr, opweap
+			VehiclesFactory: arweap, opweap, fedweap, tcweap
+			Production: arbarr, arweap, arheli, opbarr, opweap, tcweap, fedweap, tcpowr
 		UnitsCommonNames:
 			Mcv: armcv, tcmcv, t2_yggdrasil, arnaweap, arnahand, refinery, mobilerelay, t2_airfield, t2_command_relais, t4_cruiser
             ExcludeFromSquads: t1_harvester, t1_dainn, prospecteur, t1_fedharv
-		SquadSize: 12
-		AssignRolesInterval: 18
+            arBatInfanterie: arnahand, arbarr
+        CapturingActorTypes: soldierop, t1_comrade, statis
+        CapturableActorTypes: postpoint, avpost, DERRICK, towerdefenceap
+        MinimumCaptureDelay: 200
+        MaximumCaptureTargetOptions: 3
+        CheckCaptureTargetsForVisibility: false
+		SquadSize: 10
+		AssignRolesInterval: 13
 		RushInterval: 20
-		AttackForceInterval: 10
-		StructureProductionInactiveDelay: 8
-		StructureProductionActiveDelay: 8
+		AttackForceInterval: 15
+		StructureProductionInactiveDelay: 4
+		StructureProductionActiveDelay: 4
 		BuildingLimits:
-			arproc: 1
-			arbarr: 2
-			arweap: 1
-			t2_airfield: 2
+            refinery: 1
+			arnahand: 1
+			arnaweap: 1
+			t2_airfield: 1
 			artech: 1
 			t2_command_relais: 1
 			ardeftech: 1
@@ -39,9 +45,12 @@ Player:
 			optech: 1
 			optech2: 1
 			opcacnst.plug: 1
-			tcpowr: 7
-			tcproc: 3
+            tciontrap: 8
+			tcproc: 2
 			tcweap: 2
+            arextract: 3
+            opextract: 3
+            tcextract: 3
 			tcholotech.rodeur: 1
 			tcholotech.pelerin: 1
 			tcholotech.arpenteur: 1
@@ -50,38 +59,41 @@ Player:
 			tcholotech.quasar: 1
             fedpowr: 2
             fedproc: 2
-            fedweap: 2
+            fedweap: 3
             diastextractor: 2
 		BuildingFractions:
-			refinery: 8%
+			refinery: 28%
 			arnahand: 2%
-			arnaweap: 6%
-			t2_airfield: 6%
-			mobilerelay: 15%
-			t2_command_relais: 18%
+			arnaweap: 10%
+			t2_airfield: 10%
+			mobilerelay: 35%
+			t2_command_relais: 25%
 			ardeftech: 1%
 			t4_cruiser: 5%
 			opproc: 6%
 			oppowr: 3%
 			opbarr: 4%
-			opweap: 8%
+			opweap: 10%
 			optech: 15%
 			optech2: 8%
 			opheli: 8%
-			opcacnst.plug: 10%
-			tcpowr: 5%
-			tcbarr: 7%
-			tcweap: 10%
-			tcholotech.rodeur: 10%
-			tcholotech.pelerin: 10%
-			tcholotech.arpenteur: 10%
-			tcholotech.comete: 10%
-			tcholotech.zenith: 10%
-			tcholotech.quasar: 10%
+			opcacnst.plug: 40%
+			tcproc: 85%
+			tcweap: 24%
+			tciontrap: 95%
+			tcholotech.rodeur: 4%
+			tcholotech.pelerin: 4%
+			tcholotech.arpenteur: 4%
+			tcholotech.comete: 4%
+			tcholotech.zenith: 4%
+			tcholotech.quasar: 4%
+            arextract: 30%
+            opextract: 30%
+            tcextract: 30%
             fedpowr: 3%
             fedproc: 8%
             fedweap: 5%
-            diastextractor: 8%
+            diastextractor: 30%
 		UnitsToBuild:
 			t1_comrade: 1%
 			t2_tesla: 3%
@@ -96,35 +108,35 @@ Player:
 			t2_chimera: 20%
 			t3_archdemon: 25%
 			mobilerelay: 20%
-            armcv: 10%
+            armcv: 2%
 			t2_command_relais: 50%
 			t4_cruiser: 20%
 			soldierop: 5%
-			roquetteorderinf: 5%
+			roquetteorderinf: 8%
 			vanir: 15%
 			t1_dainn: 20%
-			t1_heidrun: 10%
+			t1_heidrun: 15%
 			t2_achilledoom: 5%
 			t2_dwarf: 18%
-			t1_ratatoskr: 8%
-			t2_garm: 30%
+			t1_ratatoskr: 10%
+			t2_garm: 40%
 			t2_warg: 25%
-			t2_nidhogg: 10%
-			t3_thor: 9%
-			t3_valkyrie: 2%
+			t2_nidhogg: 3%
+			t3_thor: 2%
+			t3_valkyrie: 1%
 			t3_heimdall: 20%
 			t3_loki: 25%
 			t4_odin: 15%
-            t2_yggdrasil: 8%
-			prospecteur: 50%
-			droneip: 20%
-			t2_rodeur: 32%
+            t2_yggdrasil: 2%
+			prospecteur: 30%
+			droneip: 10%
+			t2_rodeur: 35%
 			arpenteur: 20%
-			dcatnk: 20%
-			comete: 30%
-			zenith: 2%
+			dcatnk: 25%
+			comete: 50%
+			zenith: 30%
 			quasar: 12%
-			gardian: 5%
+			gardian: 8%
 			statis: 1%
             t1_fedharv: 5%
             t1_suricate: 5%
@@ -136,6 +148,9 @@ Player:
             t3_porcupine: 10%
             t3_mantis: 10%
 		UnitLimits:
+			refinery: 1
+			arnahand: 1
+			arnaweap: 1
 			t1_harvester: 4
 			t1_dainn: 4
 			prospecteur: 4

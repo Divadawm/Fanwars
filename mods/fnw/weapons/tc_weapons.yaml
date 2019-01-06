@@ -172,12 +172,12 @@ Rodeur.Dual.LightLaser:
 	Range: 7c0
 	Report: rodeurgun.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 37
+		Damage: 38
 		Versus:
 			Infantry: 40
 			ArmorInfantry: 80
-			LightVehicle: 72
-			ArmorTank: 67
+			LightVehicle: 74
+			ArmorTank: 68
 			Lord: 70
 			LordTank: 60
 			harvester: 60
@@ -194,12 +194,12 @@ Rodeur.Dual.LightLaser.Alpha:
 		Color: ffc000
 		SecondaryBeamColor: f08800
 	Warhead@1Dam: SpreadDamage
-		Damage: 37
+		Damage: 39
 		Versus:
 			Infantry: 42
 			ArmorInfantry: 80
 			LightVehicle: 75
-			ArmorTank: 69
+			ArmorTank: 70
 			Lord: 75
 			LordTank: 65
 			harvester: 65
@@ -215,12 +215,12 @@ Rodeur.Dual.LightLaser.Omega:
 		Color: ea37ff
 		SecondaryBeamColor: 891bce
 	Warhead@1Dam: SpreadDamage
-		Damage: 37
+		Damage: 39
 		Versus:
 			Infantry: 42
 			ArmorInfantry: 80
 			LightVehicle: 75
-			ArmorTank: 69
+			ArmorTank: 70
 			Lord: 75
 			LordTank: 65
 			harvester: 65
@@ -233,11 +233,11 @@ Rodeur.Dual.LightLaser.OmegaMODE:
 Dual.Impuls.Catapult:
 	Inherits@default.weapons: ^Comete.Weapons.default
 	Burst: 2
-	ReloadDelay: 5
+	ReloadDelay: 12
 	Range: 7c0
 	Report: laseguncomete.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 38
+		Damage: 76
 		Versus:
 			Infantry: 35
 			ArmorInfantry: 80
@@ -255,7 +255,7 @@ Dual.Impuls.Catapult.Alpha:
 		Color: ffc000
 		SecondaryBeamColor: f08800
 	Warhead@1Dam: SpreadDamage
-		Damage: 40
+		Damage: 80
 
 Dual.Impuls.Catapult.Omega:
 	Inherits@weapons: Dual.Impuls.Catapult
@@ -263,12 +263,7 @@ Dual.Impuls.Catapult.Omega:
 		Color: 60fdff
 		SecondaryBeamColor: 891bce
 	Warhead@1Dam: SpreadDamage
-		Damage: 40
-	Warhead@disturb: GrantExternalCondition
-		ValidTargets: Ground, Rough, Tree
-		Range: 0c64
-		Duration: 10
-		Condition: disturbingspeed
+		Damage: 80
 
 ExconvectorCanonAA.TargetBeam:
 	ReloadDelay: 4
@@ -330,6 +325,26 @@ Quasar.Canon:
 			LordTank: 40
 			harvester: 80
 			Concrete: 70
+            
+zenith.gun:
+	Inherits@default.weapons: ^Zenith.Weapons.default
+	ReloadDelay: 16
+	Range: 10c0
+	MinRange: 2c0
+	Report: zenithshot.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 1c512
+		Damage: 500
+		DeathType: 4
+		Versus:
+			Infantry: 100
+			ArmorInfantry: 80
+			LightVehicle: 100
+			ArmorTank: 80
+			Lord: 40
+			LordTank: 40
+			harvester: 70
+			Concrete: 80
 
 Quasar.Canon.Alpha:
 	Inherits@weapons: Quasar.Canon
@@ -354,9 +369,9 @@ Navigator.force:
 	ReloadDelay: 6
 	Range: 8c0
 	Warhead@1Dam: SpreadDamage
-		Damage: 10
+		Damage: 85
 		Versus:
-			Infantry: 50
+			Infantry: 60
 			ArmorInfantry: 100
 			LightVehicle: 100
 			ArmorTank: 100
@@ -385,7 +400,7 @@ Avatar.Hallb:
 			LordTank: 40
 			harvester: 70
 			Concrete: 120
-		DamageTypes: ExplosionGore, TriggerProne
+		DamageTypes: Gorehusk, TriggerProne
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
 	Warhead@3EffGround: CreateEffect
@@ -441,7 +456,7 @@ electro_defenceAA:
 			LordTank: 80
 			harvester: 50
 			Concrete: 80
-		DamageTypes: ExplosionGore, TriggerProne
+		DamageTypes: Gorehusk, TriggerProne
 	Warhead@3EffGround: CreateEffect
 		ExplosionPalette: effectalpha75
 		Explosions: small_sismic_impact

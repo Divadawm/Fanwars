@@ -225,16 +225,16 @@ Laser_cf:
 	Range: 5c0
 	Report: laser_inf.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 100
+		Damage: 120
 		Versus:
 			Infantry: 100
-			ArmorInfantry: 65
-			LightVehicle: 20
-			ArmorTank: 15
+			ArmorInfantry: 55
+			LightVehicle: 10
+			ArmorTank: 10
 			Lord: 70
-			LordTank: 30
-			harvester: 35
-			Concrete: 30
+			LordTank: 5
+			harvester: 20
+			Concrete: 20
 
 Laser_cf.fafnir:
 	Inherits@default.weapons: Laser_cf
@@ -301,7 +301,7 @@ Volkit_gun:
 	Warhead@1Dam: SpreadDamage
 		Damage: 180
 		Versus:
-			Infantry: 70
+			Infantry: 50
 			ArmorInfantry: 80
 			LightVehicle: 130
 			ArmorTank: 100
@@ -322,27 +322,30 @@ Volkit_gun.fafnir:
 	Warhead@1Dam: SpreadDamage
 		Damage: 180
 	Warhead@sismic: GrantExternalCondition
-		ValidTargets: Ground, Rough, Tree
-		Range: 0c512
-		Duration: 10
+		ValidTargets: Ground, Rough, Tree, Rock
+		Range: 0c258
+		Duration: 60
 		Condition: empdisable
 
 Nukegun:
-	Inherits@default.weapons: ^Desolator.Weapons.default
-	ReloadDelay: 60
-	Range: 5c512
-	Report: gluon_radiator.aud
+	Inherits@default.weapons: ^Desolator.Fusion.Weapons.default
+	ReloadDelay: 45
+	Range: 7c512
+	ValidTargets: Ground
+	Report: flameera.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 400
+		ValidTargets: Ground
+		Damage: 80
 		Versus:
-			Infantry: 250
-			ArmorInfantry: 100
-			LightVehicle: 30
-			ArmorTank: 15
-			Lord: 80
-			LordTank: 15
-			harvester: 15
-			Concrete: 40
+			Infantry: 450
+			ArmorInfantry: 50
+			LightVehicle: 20
+			ArmorTank: 20
+			Lord: 40
+			LordTank: 20
+			harvester: 30
+			Concrete: 50
+            
 
 Nukegun.fafnir:
 	Inherits@default.weapons: Nukegun
@@ -461,20 +464,20 @@ AP_Harvesterturret:
 
 AP_basilic:
 	Inherits@default.weapons: ^Basilisk.Weapons.default
-	ReloadDelay: 86
+	ReloadDelay: 88
 	Range: 7c512
-	Report: basiliskgun.aud
+	Report: basilisk_gun.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 700
+		Damage: 750
 		Versus:
 			Infantry: 15
-			ArmorInfantry: 80
-			LightVehicle: 100
-			ArmorTank: 120
-			Lord: 50
-			LordTank: 70
+			ArmorInfantry: 70
+			LightVehicle: 80
+			ArmorTank: 100
+			Lord: 30
+			LordTank: 60
 			harvester: 80
-			Concrete: 70
+			Concrete: 60
 
 AP_basilic_HE_UP:
 	Inherits@weapons: AP_basilic
@@ -778,9 +781,9 @@ therombomb:
 	ReloadDelay: 500
 	Range: 1c256
 	Warhead@1Dam: SpreadDamage
-		Damage: 3000
+		Damage: 3800
 		Versus:
-			Infantry: 180
+			Infantry: 120
 			ArmorInfantry: 90
 			LightVehicle: 100
 			ArmorTank: 90

@@ -198,6 +198,29 @@
 	Immobile:
 		OccupiesSpace: true
 	HitShape:
+    
+^baliseMine.system:
+	Inherits: ^SpriteActor
+	WithSpriteBody:
+	HiddenUnderFog:
+	RenderSprites:
+		Image: null
+	Tooltip:
+	Armor:
+		Type: Light
+	Mine:
+		CrushClasses: mine
+		DetonateClasses: mine
+		AvoidFriendly: false
+		BlockFriendly: true
+	Health:
+		HP: 500
+		NotifyAppliedDamage: false
+	Targetable:
+		TargetTypes: Ground
+	Immobile:
+		OccupiesSpace: true
+	HitShape:
 
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 #////////////////////////////////////// Infantry Default Rules ///////////////////////////////////////
@@ -235,7 +258,7 @@
 			SoundDeath: 2
 			SmallExplosionDeath: 3
 			BulletDeath: 4
-			ExplosionGore: 5
+			Gorehusk: 5
 			Burned: 6
 			MegaGoreExpl: 7
 			NukeDeath: 8
@@ -257,7 +280,7 @@
 		TerrainModifier:
 			Rough: 80
 	DeathSounds:
-		DeathTypes: ExplosionDeath, SoundDeath, SmallExplosionDeath, BulletDeath
+		DeathTypes: ExplosionDeath, Gorehusk, SoundDeath, SmallExplosionDeath, BulletDeath
 	AttackMove:
 	OwnerLostAction:
 		Action: Kill
@@ -269,15 +292,15 @@
 		CargoType: Infantry
 		PipType: Green
 		Voice: Move
+	Explodes@Gibs:
+		DeathTypes: Gorehusk
+		Weapon: gibs_plok
 	DeathSounds@GORE:
 		Voice: GoreExpl
-		DeathTypes: ExplosionGore
+		DeathTypes: Gorehusk
 	DeathSounds@BURN:
 		Voice: Infburn
 		DeathTypes: Burned
-	DeathSounds@MEGAGORE:
-		Voice: GoreExpl
-		DeathTypes: MegaGoreExpl
 	DeathSounds@IONS:
 		Voice: InfIonDeath
 		DeathTypes: IonDeath
@@ -475,13 +498,12 @@
 		Interval: 2
 	EditorTilesetFilter:
 		Categories: Vehicle
-	Explodes@Scrap:
-		DeathTypes: Scrap
-		Weapon: UnitVehicleExplodeSmall
-		EmptyWeapon: UnitVehicleExplodeSmall
 	Explodes:
 		Weapon: UnitVehicleExplodeSmall
 		EmptyWeapon: UnitVehicleExplodeSmall
+    WithShadow:
+        Offset: 320,-150, -100
+        ZOffset: -300
 
 ^Subterean.Vehicle.Option:
 	Mobile:
@@ -845,7 +867,7 @@
 	RenderSprites:
 		Scale: 0.85
 	Explodes:
-		Sequences: building, build_lagexpl, build_lagxlexpl
+		Sequences: building, ExplBuilding02, ExplBuilding03
 	CaptureNotification:
 	ShakeOnDeath:
 	WithDamageOverlay:
@@ -1145,6 +1167,9 @@
 	WithFacingSpriteBody:
 	EditorTilesetFilter:
 		Categories: Husk
+	WithShadow:
+		Offset: 43, 128, 0
+		ZOffset: -129
 	Explodes:
 		Weapon: UnitExplodeSmall
 		EmptyWeapon: UnitExplodeSmall
@@ -1172,6 +1197,9 @@
         Explosion: AircraftExplode
 	HitShape:
 	WithFacingSpriteBody:
+	WithShadow:
+		Offset: 43, 128, 0
+		ZOffset: -129
 	EditorTilesetFilter:
 		Categories: Husk
 	Explodes:
@@ -1196,6 +1224,8 @@
 		ShowOwnerRow: false
 	EditorTilesetFilter:
 		Categories: Tree
+	RadarColorFromTerrain:
+		Terrain: Tree
 	RenderSprites:
 		Palette: isotem
 	WithSpriteBody:
@@ -1208,7 +1238,7 @@
 	Armor:
 		Type: LightVehicle
 	Targetable:
-		TargetTypes: Trees
+		TargetTypes: Tree
 	HiddenUnderShroud:
 	ScriptTriggers:
 	RenderSprites:
@@ -1241,6 +1271,42 @@
 	RenderSprites:
 		Scale: 0.8
 	HitShape:
+    
+^BasicHusk:
+	Inherits@1: ^SpriteActor
+	Interactable:
+	Health:
+		HP: 2800
+	Armor:
+		Type: LightVehicle
+	HiddenUnderFog:
+		Type: CenterPosition
+	ScriptTriggers:
+	WithFacingSpriteBody:
+	WithIdleOverlay:
+		Offset: 0, 0, 20
+		Sequence: heat_flame
+		Palette: effect
+	HitShape:
+	EditorTilesetFilter:
+		Categories: Husk
+    
+^Husk:
+	Inherits: ^BasicHusk
+	Husk:
+		AllowedTerrain: Clear, Rough, Road, Ore, Gems, Beach
+	Burns:
+		Damage: 40
+	WithColoredOverlay@IDISABLE:
+		Palette: disabled
+	Targetable:
+		TargetTypes: Ground, Husk, NoAutoTarget
+		RequiresForceFire: true
+	Chronoshiftable:
+	Tooltip:
+		GenericName: Destroyed Vehicle
+	BodyOrientation:
+		UseClassicFacingFudge: True
     
 ^Mine:
 	Inherits: ^SpriteActor

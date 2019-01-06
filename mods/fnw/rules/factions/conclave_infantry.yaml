@@ -102,7 +102,7 @@ droneconclave:
 	Mobile:
 		Speed: 90
 	RevealsShroud:
-		Range: 6c0
+		Range: 8c0
 	AttackLeap:
 		Speed: 0c200
 	AttackMove:
@@ -127,6 +127,13 @@ droneconclave:
 		RequiresCondition: Bipbipboum
 	HitShape:
 
+UnkownPlace.Infantry.conclave100:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 100
+		Queue: Vehicle.conclave
+		Prerequisites: unkown
+    
 t3_navigator:
 	Inherits@1: ^Infantry
 	Inherits@2: ^Global.Upgrade.Conclave
@@ -135,7 +142,7 @@ t3_navigator:
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 100
-		Prerequisites: tcholotech.navigator
+		Prerequisites: lock.navigator
 		Description: Infantry unit able to teleport and generate an energy beam affecting all enemies in its trajectory\n> Strong vs Infantry, Vehicles\n> Weak vs Aircraft
 		BuildDurationModifier: 10
 		IconPalette: Conclave.Icon
@@ -158,7 +165,7 @@ t3_navigator:
 			Pilrock: 90
 			Diast: 90
 	RevealsShroud:
-		Range: 7c0
+		Range: 8c0
 	HiddenUnderFog:
 		Type: GroundPosition
 	PortableChrono:
@@ -173,7 +180,7 @@ t3_navigator:
 		StandSequences: stand
 		DefaultAttackSequence: shoot
 	RenderSprites:
-		Scale: 0.95
+		Scale: 0.78
 	HitShape:
 
 avatar:
@@ -208,7 +215,7 @@ avatar:
 			Pilrock: 90
 			Diast: 90
 	RevealsShroud:
-		Range: 7c0
+		Range: 8c0
 	HiddenUnderFog:
 		Type: GroundPosition
 	AttackFrontal:

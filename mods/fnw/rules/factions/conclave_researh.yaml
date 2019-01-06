@@ -35,7 +35,7 @@ Upgrade.Alpha.Rodeur.Conclave:
 		BuildPaletteOrder: 10
 		Queue: Research.conclave
 		Prerequisites: !research.Omega.Rodeur.Conclave, !research.Alpha.Rodeur.Conclave, tcholotech.rodeur
-		BuildDurationModifier: 60
+		BuildDurationModifier: 30
 		IconPalette: Conclave.Icon
 		Description: Increases the Prowler's damage and range
 	Valued:
@@ -56,7 +56,7 @@ Upgrade.Omega.Rodeur.Conclave:
 		BuildPaletteOrder: 20
 		Queue: Research.conclave
 		Prerequisites: !research.Omega.Rodeur.Conclave, !research.Alpha.Rodeur.Conclave, tcholotech.rodeur
-		BuildDurationModifier: 60
+		BuildDurationModifier: 30
 		IconPalette: Conclave.Icon
 		Description: Increases the Prowler's damage and HP
 	Valued:
@@ -77,7 +77,7 @@ Upgrade.Alpha.Pelerin.Conclave:
 		BuildPaletteOrder: 30
 		Queue: Research.conclave
 		Prerequisites: !research.Omega.Pelerin.Conclave, !research.Alpha.Pelerin.Conclave, tcholotech.pelerin
-        BuildDurationModifier: 120
+        BuildDurationModifier: 60
 		IconPalette: Conclave.Icon
 		Description: Increases the Pilgrim's damage\nCan attack ground units in its AA form
 	Valued:
@@ -96,7 +96,7 @@ Upgrade.Omega.Pelerin.Conclave:
 		BuildPaletteOrder: 40
 		Queue: Research.conclave
 		Prerequisites: !research.Omega.Pelerin.Conclave, !research.Alpha.Pelerin.Conclave, tcholotech.pelerin
-        BuildDurationModifier: 120
+        BuildDurationModifier: 60
 		IconPalette: Conclave.Icon
 		Description: Increases the damage of the pilgrim.\nHas a shield once deployed that can absorb 15% of the damage.
 	Valued:
@@ -115,7 +115,7 @@ Upgrade.Alpha.Comete.Conclave:
 		BuildPaletteOrder: 50
 		Queue: Research.conclave
 		Prerequisites: !research.Omega.Comete.Conclave, !research.Alpha.Comete.Conclave, tcholotech.comete
-		BuildDurationModifier: 120
+		BuildDurationModifier: 60
 		IconPalette: Conclave.Icon
 		Description: Increases the Comet's damage\nCan detect stealthed units
 	Valued:
@@ -136,7 +136,7 @@ Upgrade.Omega.Comete.Conclave:
 		BuildPaletteOrder: 60
 		Queue: Research.conclave
 		Prerequisites: !research.Omega.Comete.Conclave, !research.Alpha.Comete.Conclave, tcholotech.comete
-		BuildDurationModifier: 120
+		BuildDurationModifier: 60
 		IconPalette: Conclave.Icon
 		Description: Increases the Comet's damage\nBecomes stealthed while not moving
 	Valued:

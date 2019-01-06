@@ -114,6 +114,10 @@ t2_zenith:
 	aura_omega: aura_circle_omega
 		Length: *
 		BlendMode: Additive
+	muzzle: zenithball
+		Length: *
+        Tick: 15
+		BlendMode: Additive
 	icon: zenithicon
 
 t3_quasar:

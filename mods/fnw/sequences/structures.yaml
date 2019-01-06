@@ -18,6 +18,12 @@ lay_clear02:
 		Start: 16
 		Length: 16
 	icon: arwallicon
+    
+balise_medic:
+	idle:
+        Length: 5
+	damaged:
+		Length: 5
 
 aracnst:
 	idle:
@@ -122,19 +128,12 @@ t3_commandbuilding:
 arproc:
 	idle: arproc
 		Start: 0
-		Length: 10
-		ShadowStart: 22
-		Offset: 5, -10
 	damaged-idle:
-		Start: 11
-		Length: 10
-		Offset: 5, -10
+		Start: 1
 	dead: arproc
-		Start: 21
-		Offset: 5, -10
+		Start: 2
 	make: arprocmk
-		Length: 24
-		Offset: 5, -10
+        Length: 30
 	icon: arprocicon
 
 arweap:
@@ -848,18 +847,18 @@ tcholotech.navigator:
 tcproc:
 	idle:
 		Start: 0
-		Length: 7
-		Offset: 0, -35
+		Length: 8
+		Offset: 0, -0
 	damaged-idle:
-		Start: 6
-		Length: 7
-		Offset: 0, -35
+		Start: 8
+		Length: 8
+		Offset: 0, -0
 	dead:
 		Start: 6
-		Offset: 0, -35
+		Offset: 0, -0
 	make: tcprocmk
-		Length: 24
-		Offset: 0, -35
+		Length: 10
+		Offset: 0, -0
 	icon: tcprocicon
 
 tcbarr:
@@ -880,33 +879,56 @@ tcbarr:
 		Length: 24
 		Offset: 0, 0
 	icon: tcbarricon
+    
+opweap:
+	idle:
+		Start: 0
+		Offset: -10, -15
+	damaged-idle:
+		Start: 1
+		Offset: -10, -15
+	build-top:
+		Start: 4
+		Length: 5
+		Offset: -10, -15
+	damaged-build-top:
+		Start: 9
+		Length: 5
+		Offset: -10, -15
+	dead:
+		Start: 2
+	make: opweapmk
+		Length: 24
+		Offset: -10, -15
+	bib: bib2
+		Length: *
+	icon: opweapicon
 
 tcweap:
-	idle: tcweap
-		ShadowStart: 3
-		Offset: 0, 0
-	damaged-idle: tcweap
+	idle:
+		Start: 0
+		Offset: 0, 27
+	damaged-idle:
+		Start: 0
+		Offset: 0, 27
+	idle-top:
 		Start: 1
-		ShadowStart: 4
-		Offset: 0, 0
+		Offset: 0, 27
+	build-top: tcweapbuild
+		Length: 10
+		Offset: 0, 27
+	damaged-build-top: tcweapbuild
+		Length: 10
+		Offset: 0, 27
+	damaged-idle-top: tcweap
+		Start: 2
+		Offset: 0, 27
+	dead:
+		Start: 0
+		Offset: 0, 27
 	make: tcweapmk
 		Length: 24
 		Offset: 0, 0
-	build: tcweap
-		Start: 1
-		Length: 1
-	damaged-build: tcweap
-		Length: 1
-	build-top:
-		Start: 1
-		Length: 1
-	idle-top: tcweap
-		Start: 0
-	damaged-idle-top: tcweap
-		Start: 4
-		Offset: 0, 0
-	dead:
-		Start: 2
 	icon: tcweapicon
 
 tcsuperweap:
@@ -1183,6 +1205,21 @@ towerdefenceap:
     turret: gatlingtur_tower
         Facings: 64
 	dead:
+    
+plandefense:
+	idle:
+		Start: 0
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+        Tick: 4
+	damaged-idle:
+		Start: 1
+	critical-idle:
+		Start: 2
+    turret: plandefensetur
+        Facings: 64
+	dead:
 
 towerdefenceac:
 	idle:
@@ -1302,6 +1339,51 @@ mirador_ice:
 		Start: 2
 		ShadowStart: 5
 	dead:
+    
+#Extractor
+
+arextract:
+	idle:
+        Length: 7
+	damaged-idle:
+		Start: 7
+        Length: 7
+	critical-idle:
+		Start: 7
+        Length: 7
+	dead:
+		Start: 7
+        Length: 7
+	make: arextractmk
+		Length: *
+	icon: arextracticon
+
+opextract:
+	idle:
+        Length: 12
+	damaged-idle:
+		Start: 12
+        Length: 12
+	critical-idle:
+		Start: 12
+        Length: 12
+	dead:
+		Start: 12
+	make: opextractmk
+		Length: *
+	icon: opextracticon
+    
+tcextract:
+	idle:
+	damaged-idle:
+		Start: 1
+	critical-idle:
+		Start: 2
+	dead:
+		Start: 2
+	make: tcextract
+		Length: *
+	icon: tcextracticon
 
 diastextractor:
 	idle:

@@ -97,13 +97,37 @@ t2_zenith:
 	Tooltip:
 		Name: Zenith
 	Health:
-		HP: 1200
+		HP: 2500
 	Armor:
 		Type: LightVehicle
 	RevealsShroud:
 		Range: 12c0
 		Type: GroundPosition
 		RevealGeneratedShroud: False
+	AttackHeli:
+		FacingTolerance: 10
+	WithMuzzleOverlay:
+	GrantConditionOnAttack@TargetZenith:
+		ArmamentNames: primary
+		RevokeOnNewTarget: false
+		IsCyclic: true
+		RequiredShotsPerInstance: 6
+		Condition: Target
+	Armament@gun:
+		Weapon: doom.target
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 500,-100,250
+		RequiresCondition: !Target
+		MuzzleSequence: muzzle
+		MuzzlePalette: powereffect
+	Armament@railgun:
+		Name: secondary
+		Weapon: zenith.gun
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 500,-100,250
+		RequiresCondition: Target
 	RevealsShroud@GAPGEN:
 		Range: 10c0
 		Type: GroundPosition
@@ -138,14 +162,8 @@ t2_zenith:
 		Speed: 180
 		RepulsionSpeed: 40
 		MaximumPitch: 56
-		LandWhenIdle: true
+		LandWhenIdle: false
 		LandableTerrainTypes: Clear,Rough,Road,Beach,tree
-	Cargo:
-		Types: Infantry, vehicle
-		MaxWeight: 10
-		PipCount: 5
-		PassengerFacing: -1
-		EjectOnDeath: true
     WithFacingSpriteBody:
         RequiresCondition: !EngineMove
     WithFacingSpriteBody@Deploy:
@@ -166,6 +184,8 @@ t2_zenith:
 	-AutoTarget:
 	GrantConditionOnMovement@EngineMove:
 		Condition: EngineMove
+    RenderSprites:
+        Scale: 0.7
 	SpawnActorOnDeath:
 		Actor: t2_zenith.husk
 	HitShape:
@@ -178,6 +198,7 @@ t2_zenith.husk:
 		TurnSpeed: 5
 		Speed: 186
 	RenderSprites:
+        Scale: 0.7
 		Image: t2_zenith
 
 t3_quasar:
@@ -208,7 +229,7 @@ t3_quasar:
 	GrantConditionOnAttack@TargetRailgun:
 		ArmamentNames: primary
 		RevokeOnNewTarget: true
-		RequiredShotsPerInstance: 10
+		RequiredShotsPerInstance: 8
 		Condition: Target
 	Armament@gun:
 		Weapon: ExconvectorCanonAA.TargetBeam

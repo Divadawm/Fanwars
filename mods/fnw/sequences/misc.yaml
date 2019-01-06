@@ -56,10 +56,10 @@
 		Offset: 4, -4
 		ZOffset: -50
 		BlendMode: Subtractive
-	heat_flame: flametank
+	heat_flame: burn
 		Length: *
 		Tick: 20
-		ZOffset: 1
+		ZOffset: 100
 	shadow.medium: shadow_vehiclelarge
 		Offset: 4, -4
 		ZOffset: -50
@@ -212,54 +212,84 @@ explosion:
 	Defaults:
 		Length: *
 		ZOffset: 511
-		scale: 0.70
+		scale: 0.58
+	water_piffs: impact_water_small
+    #Building Explosion
+	ExplBuilding01: build_expl
+    ExplBuilding02: build_lagexpl
+    ExplBuilding03: build_lagxlexpl
+    ExplBuilding04: build_expl2
+    ExplBuilding05:
+    #Unite "Small" Impact
 	piff: piff
 		BlendMode: Additive
 	piffs: impact_balist_small
-	water_piffs: impact_water_small
-	chemball: chemball
-	small_napalm: napalm1
-	med_napalm: napalm2
-	big_napalm: napalm3
-	small_frag: veh-hit3
-	med_frag: frag1
-	big_frag: frag3
-	small_poof: veh-hit2
-	poof: art-exp1
-	small_building: build_expl
-	building: build_expl
-	build_lagexpl: build_lagexpl
+    #Unite "Medium" Impact
+	autogun_expl: autogun_expl
 		BlendMode: Additive
-	build_lagxlexpl: build_lagxlexpl
+	minigun_impact: minigun_impact
 		BlendMode: Additive
+    #Unite "Sabot" Impact
 	shrap_exp: shrap_exp
-		BlendMode: Additive
-	burnimpact: burnimpact
-	burn_flam: burn_flam
 		BlendMode: Additive
 	apo_expl: apo_expl
 		Offset: 0, -20
 		BlendMode: Additive
-	blast_expl: blast_expl
-	large_blast_expl: large_blast_expl
-	small_sismic_impact: small_sismic_impact
-	normal_sismic_impact: normal_sismic_impact
-	plasma_expl: plasma_expl
-	large_plasma_expl: large_plasma_expl
-	spark_therm: spark_therm
+	obus_ballexpl: obus_ballexpl
 		BlendMode: Additive
-	plasma_pulsemin: plasma_pulsemin
+	obus_expl: obus_expl
+		BlendMode: Additive
+    #Unite "ballistique" Explosion
+	blast_expl: blast_expl
+	frag_expl: frag_expl
+		BlendMode: Additive
 	thermoexpl: thermoexpl
 		Offset: 0, -30
 		BlendMode: Additive
-	fire_incinerator: fire_incinerator
+	doomexpl75: doomexpl75
+		BlendMode: Additive
+	grenade_expl: grenade_expl
+		BlendMode: Additive
+	impact_balist_medium: impact_balist_medium
+		BlendMode: Additive
+    # Note: ratatosk seulement
+	impact_balist_large: impact_balist_large
+		BlendMode: Additive
+    #Unite Flamme Impact
+	burnimpact: burnimpact
+	burn_flam: burn_flam
+		BlendMode: Additive
+    fire_incinerator: fire_incinerator
+	napalmhydraexpl: napalmhydraexpl
+		BlendMode: Additive
+    #Unite Electric Impact
+	small_sismic_impact: small_sismic_impact
+	normal_sismic_impact: normal_sismic_impact
+    #Unite Ion Impact
+	ion_expl: ion_expl
+	garm_impactgun: garm_impactgun
+		BlendMode: Additive
+    #Unite Plasma Impact
+	plasma_pulsemin: plasma_pulsemin
+	plasma_pulseminx2: plasma_pulseminx2
+		BlendMode: Additive
+	plasma_impact: plasma_impact
+		BlendMode: Additive
+    #Unite Conclave blue Effect Weapons
+	photo_expl: photo_expl
+		BlendMode: Additive
+	quasarshotmin: quasarshotmin
+		BlendMode: Additive
+	quasarshotmax: quasarshotmax
+		BlendMode: Additive
+    #Impact Air Weapons Balistic
 	air_expl: air_expl
 		Offset: 0, -30
 		BlendMode: Additive
 	air_impact: air_impact
 		Offset: 0, -30
 		BlendMode: Additive
-	bright_medium: bright_medium
+    #Light Effect Weapons
 	baselight: baselight
 		BlendMode: Additive
 	baselightcub: baselightcub
@@ -272,100 +302,70 @@ explosion:
 		BlendMode: Additive
 	light_projup: light_projup
 		BlendMode: Additive
-	doomexpl75: doomexpl75
-		BlendMode: Additive
-	photo_expl: photo_expl
-		BlendMode: Additive
-	grenade_expl: grenade_expl
-		BlendMode: Additive
+    #Smoke Effect Weapons
 	smokehusk: smokehusk
-		BlendMode: Additive
-	obus_ballexpl: obus_ballexpl
-		BlendMode: Additive
-	obus_expl: obus_expl
-		BlendMode: Additive
 	obus_smokeexpl: obus_smokeexpl
 		BlendMode: Additive
-		Tick: 4
-	obus_smokeexpl2: obus_smokeexpl2
-		BlendMode: Additive
 		Tick: 85
-	autogun_expl: autogun_expl
-		BlendMode: Additive
-	ragnarok_plasmaimpact: ragnarok_plasmaimpact
-		BlendMode: Additive
-	ragnarok_plasmaaura: ragnarok_plasmaaura
-		BlendMode: Additive
-	minigun_impact: minigun_impact
-		BlendMode: Additive
-	matter_expl: matter_expl
-		BlendMode: Additive
-		Tick: 50
-	emp_impact: emp_impact
-		BlendMode: Additive
-	impact_balist_small: impact_balist_small
-		BlendMode: Additive
-	impact_balist_medium: impact_balist_medium
-		BlendMode: Additive
-	impact_balist_large: impact_balist_large
-		BlendMode: Additive
-	impact_water_small: impact_water_small
-		BlendMode: Additive
-	impact_water_medium: impact_water_medium
-		BlendMode: Additive
-	impact_water_large: impact_water_large
-		BlendMode: Additive
-	expl_gibs01: expl_gibs01
-		BlendMode: Additive
-	matter_explmin: matter_explmin
-		BlendMode: Additive
 	ring_pulse: ring_pulse
 		BlendMode: Additive
 	ring_pulsemin: ring_pulsemin
 		BlendMode: Additive
 	ring_pulsemedium: ring_pulsemedium
 		BlendMode: Additive
-	nuke_impact: nuke_impact
-		BlendMode: Additive
-		Offset: 0, -200
-		Tick: 95
 	punch_massive: punch_massive
 		BlendMode: Additive
 		Offset: 0, -10
 		Tick: 85
+    #Superweapons Impact
+	ragnarok_plasmaimpact: ragnarok_plasmaimpact
+		BlendMode: Additive
+	ragnarok_plasmaaura: ragnarok_plasmaaura
+		BlendMode: Additive
+	nuke_impact: nuke_impact
+		BlendMode: Additive
+		Offset: 0, -200
+		Tick: 95
+    #Water Impact Weapons
+	impact_water_small: impact_water_small
+		BlendMode: Additive
+	impact_water_medium: impact_water_medium
+		BlendMode: Additive
+	impact_water_large: impact_water_large
+		BlendMode: Additive
+    #Other Weapons Impact
+	matter_expl: matter_expl
+		BlendMode: Additive
+		Tick: 50
+	matter_explmin: matter_explmin
+		BlendMode: Additive
+	emp_impact: emp_impact
+		BlendMode: Additive
+	expl_gibs01: expl_gibs01
+		BlendMode: Additive
 	mininuke_impact: mininuke_impact
 		BlendMode: Additive
 		Offset: 0, -40
 		Tick: 50
-	plasma_artyb: plasma_ball
-		BlendMode: Additive
-	plasma_impact: plasma_impact
-		BlendMode: Additive
-	garm_impactgun: garm_impactgun
-		BlendMode: Additive
 	doomtowershield: doomtowershield
 		BlendMode: Additive
 	doomtowerelectro: doomtowerelectro
 		BlendMode: Additive
-	napalmhydraexpl: napalmhydraexpl
-		BlendMode: Additive
 	emp_splash: emp_splash
 		BlendMode: Additive
-	quasarshotmin: quasarshotmin
-		BlendMode: Additive
-	quasarshotmax: quasarshotmax
-		BlendMode: Additive
+    #No classed
 	debrisexplode: debrisexplode
 		BlendMode: Additive
 	laserimpact: laserimpact
-		BlendMode: Additive
-	plasma_pulseminx2: plasma_pulseminx2
 		BlendMode: Additive
     mantis_explo: mantis_explo
         BlendMode: Additive
     eplosionfire01: eplosionfire01
     fusionimpactfire: fusionimpactfire
+		BlendMode: Additive
     uniteexplode: uniteexplode
+    zenithimpact: zenithimpact
+		BlendMode: Additive
 
 120mm:
 	Defaults:
@@ -431,6 +431,12 @@ volcanobullet:
 	idle:
 		Length: 17
 		Tick: 90
+		BlendMode: Additive
+        
+zenithball:
+	idle:
+		Length: *
+		Tick: 15
 		BlendMode: Additive
 
 plasma_ball:
@@ -552,12 +558,12 @@ smokecamo:
 litning:
 	bright: litning
 		Length: 4
-		ZOffset: 1023
+		ZOffset: 2048
 		BlendMode: Additive
 	dim: litning
 		Start: 4
 		Length: 4
-		ZOffset: 1023
+		ZOffset: 2048
 		BlendMode: Additive
   
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -582,24 +588,20 @@ minburning:
 fire:
 	1: smokehusk
 		Length: *
-		Offset: 0,0
+		Offset: 0,-30
 		ZOffset: 100
-		BlendMode: Additive
 	2: smokehusk
 		Length: *
-		Offset: 0,0
+		Offset: 0,-30
 		ZOffset: 100
-		BlendMode: Additive
 	3: smokehusk
 		Length: *
-		Offset: 0,0
+		Offset: 0,-30
 		ZOffset: 100
-		BlendMode: Additive
 	4: smokehusk
 		Length: *
-		Offset: 0,0
+		Offset: 0,-30
 		ZOffset: 100
-		BlendMode: Additive
 
 craters:
 	Defaults:
@@ -635,15 +637,6 @@ ghusk:
 	ghusk06: ghusk06
 	ghusk07: ghusk07
 	ghusk08: ghusk08
-
-scrap:
-	Defaults:
-	scrap_light01: scrap_light01
-	scrap_light02: scrap_light02
-	scrap_light03: scrap_light03
-	scrap_light04: scrap_light04
-	scrap_light05: scrap_light05
-	scrap_light06: scrap_light06
     
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 # //////////////////////////////////////// Smoke Effet Sequences /////////////////////////////////////
@@ -872,7 +865,7 @@ gisement:
 resources:
 	Defaults:
 		Length: *
-		BlendMode: Additive
+		BlendMode: Alpha
 	diast01: diast01
 	diast02: diast02
 	diast03: diast03
@@ -1010,6 +1003,10 @@ fusion_engineicon:
 nukeammo_icon:
 	idle: null
 	icon: nukeammoicon
+    
+repairtrainingicon:
+	idle: null
+	icon: repairtrainingicon
 
 serumicon:
 	idle: null

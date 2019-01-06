@@ -93,6 +93,7 @@
 		ShadowIndex: 1
         
 	PaletteFromRGBA@disabled:
+        AllowModifiers: false
 		Name: disabled
 		R: 0
 		G: 0
@@ -143,6 +144,12 @@
 		Name: invuln
 		R: 128
 		G: 0
+		B: 0
+		A: 128
+	PaletteFromRGBA@corossive:
+		Name: corossion
+		R: 255
+		G: 153
 		B: 0
 		A: 128
 	PaletteFromRGBA@TargetRED:

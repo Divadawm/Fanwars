@@ -4,14 +4,14 @@ diastextractor:
 	Selectable:
 		Bounds: 72,50,0,12
 	Buildable:
-		Queue: Defence.baneslayer, Defence.conclave, Defence.redalliance, Defence.federation
-		BuildPaletteOrder: 20
+		Queue: Defence.federation
+		BuildPaletteOrder: 10
 		Description: Provides power for other structures
-		BuildDurationModifier: 20
+		BuildDurationModifier: 30
 		Adjacent: 18
         IconPalette: Federation.Icon
 	Valued:
-		Cost: 1600
+		Cost: 1200
 	Tooltip:
 		Name: Diastime Extractor
 	Building:
@@ -36,9 +36,9 @@ diastextractor:
 	Power:
 		Amount: 0
     CashTrickler:
-        InitialDelay: 650
-		Interval: 650
-		Amount: 450
+        InitialDelay: 800
+		Interval: 700
+		Amount: 950
 	HitShape:
 
 DERRICK:
@@ -59,12 +59,12 @@ DERRICK:
 	ExternalCapturableBar:
 	EngineerRepairable:
 	CashTrickler:
-		Interval: 300
+		Interval: 250
 		Amount: 100
 	Tooltip:
 		Name: Derrick
 	GivesCashOnCapture:
-		Amount: 200
+		Amount: 300
 	HitShape:
 
 generatciv_01:
@@ -92,7 +92,7 @@ reactor:
 		Footprint: xx xx
 		Dimensions: 2,2
 	Health:
-		HP: 6000
+		HP: 25000
 	RevealsShroud:
 		Range: 3c0
 	Tooltip:
@@ -104,8 +104,6 @@ reactor:
 	MustBeDestroyed:
 		RequiredForShortGame: True
 	ExternalCapturableBar:
-	DamageMultiplier:
-		Modifier: 0
 	HitShape:
 
 postpoint:
@@ -126,7 +124,7 @@ postpoint:
 		Types: TechBuilding
 		CaptureCompleteTime: 40
 	StrategicPoint:
-	Targetable@strategic.point:
+	Targetable:
 		TargetTypes: strategic.point
 	ExternalCapturableBar:
 	DamageMultiplier:
@@ -175,6 +173,107 @@ opwall:
 		Types: wall
 	WithWallSpriteBody:
 		Type: wall
+        
+plandefense:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+    Inherits@AUTOTARGET: ^AutoTargetGround
+	Selectable:
+		Bounds: 36,36
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 10000
+	RevealsShroud:
+		Range: 7c0
+	ExternalCapturable:
+		Types: TechBuilding
+		CaptureCompleteTime: 25
+	ExternalCapturableBar:
+	EngineerRepairable:
+    WithSpriteTurret:
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 3
+		RealignDelay: 0
+		Offset: 0,0,1000
+	WithMuzzleOverlay:
+	GrantConditionOnAttack@TargetDefense:
+		ArmamentNames: primary
+		RevokeOnNewTarget: false
+		IsCyclic: true
+		RequiredShotsPerInstance: 30
+		Condition: Target
+	Armament@target00:
+		Weapon: fortress.targetpri
+		LocalOffset: 0,0,0
+		RequiresCondition: !Target
+	Armament@target001:
+		Weapon: fortress.targetpri
+		LocalOffset: 0,0,0
+		RequiresCondition: !Target
+	Armament@target002:
+		Weapon: fortress.targetpri
+		LocalOffset: 0,0,0
+		RequiresCondition: !Target
+	Armament@target01:
+		Weapon: fortress.target
+		LocalOffset: 1950,850,50
+		RequiresCondition: !Target
+		MuzzleSequence: muzzle
+	Armament@target02:
+		Weapon: fortress.target
+		LocalOffset: 1950,350,50
+		RequiresCondition: !Target
+		MuzzleSequence: muzzle
+	Armament@target02:
+		Weapon: fortress.target
+		LocalOffset: 1950,150,50
+		RequiresCondition: !Target
+		MuzzleSequence: muzzle
+	Armament@Fire01:
+        Name: secondary
+		Weapon: fortress.laser
+		LocalOffset: 1950,800,50
+		RequiresCondition: Target
+	Armament@Fire02:
+        Name: secondary
+		Weapon: fortress.laser
+		LocalOffset: 1950,500,50
+		RequiresCondition: Target
+	Armament@Fire03:
+        Name: secondary
+		Weapon: fortress.laser
+		LocalOffset: 1950,200,50
+		RequiresCondition: Target
+	Armament@Fire04:
+        Name: secondary
+		Weapon: fortress.laser
+		LocalOffset: 1950,-800,50
+		RequiresCondition: Target
+	Armament@Fire05:
+        Name: secondary
+		Weapon: fortress.laser
+		LocalOffset: 1950,-500,50
+		RequiresCondition: Target
+	Armament@Fire06:
+        Name: secondary
+		Weapon: fortress.laser
+		LocalOffset: 1950,-200,50
+		RequiresCondition: Target
+	AmbientSound:
+		RequiresCondition: charging
+		SoundFiles: trollgun.aud
+	WithMuzzleOverlay:
+	Tooltip:
+		Name: Fortress Defense
+	BodyOrientation:
+		QuantizedFacings: 0
+	HitShape:
+
+        
 
 towerdefenceap:
 	Inherits: ^TechBuilding

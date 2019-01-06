@@ -1,6 +1,6 @@
 Metadata:
-	Title: Fanwars
-	Version: Fnw {02-12-2018}
+	Title: Fractured Realms
+	Version: Fnw {02-01-2018}
 
 Packages:
 	.
@@ -31,7 +31,6 @@ Packages:
     fnw|bits/decorations
     fnw|bits/craters
     fnw|bits/scorches
-    fnw|bits/scrap
     fnw|bits/deadhusk
 	fnw|bits/voice_notification
     # Sounds Files ///
@@ -47,7 +46,6 @@ Packages:
     fnw|bits/sounds/voice_unite
 	fnw|bits/sounds
     fnw|bits/olitrax
-    fnw|bits/stationa
 	fnw|uibits
 	
 MapFolders:
@@ -94,10 +92,10 @@ Rules:
     fnw|rules/factions/conclave_researh.yaml
 
 	# Federation
-    fnw|rules/factions/federation_structures.yaml
+    # fnw|rules/factions/federation_structures.yaml
     # fnw|rules/factions/federation_infantry.yaml
-    fnw|rules/factions/federation_vehicles.yaml
-    fnw|rules/factions/federation_aircraft.yaml
+    # fnw|rules/factions/federation_vehicles.yaml
+    # fnw|rules/factions/federation_aircraft.yaml
     # fnw|rules/factions/federation_researh.yaml
 	
 Sequences:
@@ -126,7 +124,6 @@ Assemblies:
 	
 TileSets:
     fnw|tilesets/olitrax.yaml
-    fnw|tilesets/stationa.yaml
 	
 
 ChromeLayout:

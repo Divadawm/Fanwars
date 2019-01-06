@@ -191,7 +191,7 @@ upgrade.Repair.Training.Baneslayer:
 	Valued:
 		Cost: 800
 	RenderSprites:
-		Image: kevlarbaneslayericon
+		Image: repairtrainingicon
 	ProvidesPrerequisite:
 		Prerequisite: research.Repair.Training.Baneslayer
 

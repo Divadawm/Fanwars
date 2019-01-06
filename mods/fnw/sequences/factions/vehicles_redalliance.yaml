@@ -127,7 +127,7 @@ t3_annihilator:
         Start: 8
 		Facings: 8
 		Length: 21
-		Tick: 140
+		Tick: 80
 	turret: t3_annihilatortur
 		Facings: 64
 	muzzle: muzzle_autogun_small

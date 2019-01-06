@@ -1,0 +1,49 @@
+t2_basilisk.Husk:
+	Inherits: ^Husk
+	ThrowsParticle@turret:
+		Anim: turret
+	RenderSprites:
+		Image: t2_basilisk
+        
+t2_hydra.Husk:
+	Inherits: ^Husk
+	ThrowsParticle@turret:
+		Anim: turret
+	RenderSprites:
+		Image: t2_hydra
+
+t2_manticore.Husk:
+	Inherits: ^Husk
+	RenderSprites:
+		Image: t2_manticore
+
+t3_apocalypse.Husk:
+	Inherits: ^Husk
+	ThrowsParticle@turret:
+		Anim: turret
+	RenderSprites:
+		Image: t3_apocalypse
+        
+t2_garm.Husk:
+	Inherits: ^Husk
+	ThrowsParticle@turret:
+		Anim: turret
+	RenderSprites:
+		Image: t2_garm
+
+t2_troll.Husk:
+	Inherits: ^Husk
+	RenderSprites:
+		Image: t2_troll
+        
+t3_fafnir.Husk:
+	Inherits: ^Husk
+	RenderSprites:
+		Image: t3_fafnir
+
+t2_pilgrim.Husk:
+	Inherits: ^Husk
+	ThrowsParticle@turret:
+		Anim: turret
+	RenderSprites:
+		Image: t2_pilgrim

@@ -352,41 +352,6 @@ e1:
 	icon: champicon
 		Start: 0
 
-lancier:
-	Inherits@Stat: ^StatInfantryEffect
-    Inherits@Dead: ^DeadInfantryGlobal
-	stand:
-		Start: 0
-		Facings: 8
-	run:
-		Start: 8
-		Length: 6
-		Facings: 8
-		Tick: 80
-	idle:
-		Start: 56
-		Length: 15
-		Tick: 80
-	die1:
-		Start: 134
-		Length: 15
-		Tick: 80
-	shoot:
-		Start: 164
-		Length: 6
-		Facings: 8
-		Tick: 80
-	standup-0:
-		Start: 260
-		Length: 2
-		Facings: 8
-		Tick: 80
-	garrison-muzzle: minigun_impact
-		Start: 0
-		Length: *
-	icon: champicon
-		Start: 0
-
 ardisciple:
 	Inherits@Stat: ^StatInfantryEffect
     Inherits@Dead: ^DeadInfantryGlobal

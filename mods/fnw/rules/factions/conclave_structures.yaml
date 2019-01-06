@@ -17,8 +17,6 @@ tccacnst:
 		Type: Concrete
 	RevealsShroud:
 		Range: 10c0
-	GivesBuildableArea:
-		AreaTypes: building, IonTrapGive
 	Production:
 		Produces: Building.conclave, Defence.conclave, Research.conclave
 		MoveIntoWorld: false
@@ -100,18 +98,17 @@ tcpodrelais:
 		Range: 4c0
 	HitShape:
 
-tcpowr:
+tciontrap:
 	Inherits: ^Building
 	Inherits@2: ^2x2Shape
-	Inherits@AUTOTARGET: ^AutoTargetAll
 	Buildable:
 		Queue: Building.conclave
 		BuildPaletteOrder: 10
-		BuildDurationModifier: 6
+		BuildDurationModifier: 5
 		Description: Provides power for other structures, building radius and tech levels\n> 1 Ion trap = Tier 1\n> 3 Ion traps = Tier 2\n> 6 Ion traps = Tier 3
 		IconPalette: Conclave.Icon
 	Valued:
-		Cost: 600
+		Cost: 500
 	Tooltip:
 		Name: Ion Trap
 	Selectable:
@@ -137,13 +134,8 @@ tcpowr:
 		Dimensions: 2,2
 		Adjacent: 8
 		BuildSounds: make_conclave_building.aud
-	GivesBuildableArea:
-		AreaTypes: Building, IonTrapGive
-	RequiresBuildableArea:
-		AreaTypes: IonTrapGive
-		Adjacent: 7
 	Health:
-		HP: 4000
+		HP: 5000
 	Armor:
 		Type: Concrete
 	RevealsShroud@Base:
@@ -151,10 +143,6 @@ tcpowr:
 		RequiresCondition: !plug.eyeplug
 	Power:
 		Amount: 50
-	Turreted:
-		TurnSpeed: 255
-		Offset: 128,128,384
-	AttackTurreted:
 	InfiltrateForPowerOutage:
 	AffectedByPowerOutage:
 	ScalePowerWithHealth:
@@ -162,28 +150,15 @@ tcpowr:
 		Cooldown: 75
 		Range: 7c0
 	HitShape:
-	AutoTarget:
 	WithIdleOverlay@Lightning:
 		Offset: 0,0,0
 		Sequence: lightingrelais
 		Palette: effect
 	Pluggable:
 		Conditions:
-			plug.relaisdef: plug.relaisdef
 			plug.eyeplug: plug.eyeplug
 			plug.repairmodule: plug.repairmodule
-	WithIdleOverlay@DefenceI:
-		Offset: 0,0,0
-		Sequence: plug.relaisdef
-		RequiresCondition: plug.relaisdef
-	Armament@PRIMARY:
-		Weapon: electro_defence
-		LocalOffset: 0,-85,1280
-		RequiresCondition: plug.relaisdef
-	Armament@SECONDARY:
-		Weapon: electro_defenceAA
-		LocalOffset: 0,-85,1280
-		RequiresCondition: plug.relaisdef
+    #Eye Plugable Module
 	WithIdleOverlay@EyeI:
 		Offset: 0,0,0
 		Sequence: plug.eyeplug
@@ -195,6 +170,7 @@ tcpowr:
 	RevealsShroud@PlugEye:
 		Range: 14c0
 		RequiresCondition: plug.eyeplug
+    #Repair Plugable Module
 	WithIdleOverlay@RelaisModuleRepairVehicle:
 		Offset: 0,0,0
 		Sequence: plug.tcrepairplug
@@ -214,6 +190,8 @@ tcpowr:
 		Range: 5c0
 		AffectsParent: true
 		RequiresCondition: plug.repairmodule
+    RenderSprites:
+        Image: tcpowr
 
 relaisaiguille:
 	Inherits: ^BuildingPlugable
@@ -222,7 +200,7 @@ relaisaiguille:
 	Tooltip:
 		Name: Guard Needle
 	Buildable:
-		Queue: Defence.conclave
+		Queue: lock.conclave
 		BuildPaletteOrder: 10
 		Prerequisites: Ion Trap X1
 		Description: Must be placed on an ion trap\nElectrocutes nearby enemy units
@@ -287,7 +265,7 @@ tcproc:
 		Description: Refines Diastim into credits
 		IconPalette: Conclave.Icon
 	Valued:
-		Cost: 1800
+		Cost: 2000
 	Building:
 		Footprint: xxx xxx ===
 		Dimensions: 3,3
@@ -297,7 +275,7 @@ tcproc:
 	Targetable:
 		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate
 	Health:
-		HP: 5000
+		HP: 8000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -341,7 +319,7 @@ tcproc:
 		Adjacent: 8
 		BuildSounds: make_conclave_building.aud
 	Health:
-		HP: 4000
+		HP: 7000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -361,7 +339,7 @@ tcholotech.rodeur:
 		Queue: Building.conclave
 		BuildPaletteOrder: 50
 		Prerequisites: Ion Trap X3
-		BuildDurationModifier: 20
+		BuildDurationModifier: 10
 		Description: Unlocks the Prowler tank and its upgrades
 		IconPalette: Conclave.Icon
 	ProvidesPrerequisite:
@@ -379,7 +357,7 @@ tcholotech.pelerin:
 		Queue: Building.conclave
 		BuildPaletteOrder: 60
 		Prerequisites: Ion Trap X3
-		BuildDurationModifier: 20
+		BuildDurationModifier: 10
 		Description: Unlocks the Pilgrim missile launcher and its upgrades
 		IconPalette: Conclave.Icon
 	Valued:
@@ -399,11 +377,11 @@ tcholotech.arpenteur:
 		Queue: Building.conclave
 		BuildPaletteOrder: 110
 		Prerequisites: Ion Trap X6
-		BuildDurationModifier: 30
+		BuildDurationModifier: 20
 		Description: Unlocks the Surveyor heavy walker and its upgrades
 		IconPalette: Conclave.Icon
 	Valued:
-		Cost: 1200
+		Cost: 1400
 	ProvidesPrerequisite:
 	Power:
 		Amount: -50
@@ -419,7 +397,7 @@ tcholotech.comete:
 		Queue: Building.conclave
 		BuildPaletteOrder: 70
 		Prerequisites: Ion Trap X3
-		BuildDurationModifier: 20
+		BuildDurationModifier: 10
 		Description: Unlocks the Comet aircraft and its upgrades
 		IconPalette: Conclave.Icon
 	ProvidesPrerequisite:
@@ -440,7 +418,7 @@ tcholotech.zenith:
 		Queue: Building.conclave
 		BuildPaletteOrder: 80
 		Prerequisites: Ion Trap X3
-		BuildDurationModifier: 20
+		BuildDurationModifier: 15
 		Description: Unlocks the Zenith transport and its upgrades
 		IconPalette: Conclave.Icon
 	ProvidesPrerequisite:
@@ -459,7 +437,7 @@ tcholotech.quasar:
 		Queue: Building.conclave
 		BuildPaletteOrder: 110
 		Prerequisites: Ion Trap X6
-		BuildDurationModifier: 30
+		BuildDurationModifier: 20
 		Description: Unlocks the Quasar spaceship and its upgrades
 		IconPalette: Conclave.Icon
 	Valued:
@@ -471,16 +449,23 @@ tcholotech.quasar:
 		Offset: 0,0,0
 		Sequence: Holo.Anim
 
+UnkownPlace.Building.conclave90:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 90
+		Queue: Building.conclave
+		Prerequisites: unkown
+        
 tcholotech.navigator:
 	Inherits: ^tcholotech
 	Tooltip:
 		Name: Holo-Tech: Navigator
 		Description: ...
 	Buildable:
-		Queue: Building.conclave
+		Queue: lock.conclave
 		BuildPaletteOrder: 90
 		Prerequisites: Ion Trap X6
-		BuildDurationModifier: 30
+		BuildDurationModifier: 10
 		Description: Unlocks the Navigator advanced infantry unit and its upgrades
 		IconPalette: Conclave.Icon
 	Valued:
@@ -537,17 +522,18 @@ tcbarr:
 
 tcweap:
 	Inherits: ^Building
-	Inherits@2: ^3x2Shape
+	Inherits@2: ^3x3Shape
 	Buildable:
 		Queue: Building.conclave
 		BuildPaletteOrder: 40
 		Prerequisites: Ion Trap X1
-		BuildDurationModifier: 15
+		BuildDurationModifier: 10
 		Description: Can produce all Conclave’s units\nRequires Holo-Tech buildings to unlock them
 		IconPalette: Conclave.Icon
 	Valued:
-		Cost: 1500
+		Cost: 1000
 	Selectable:
+        Bounds: 80,80
 	Tooltip:
 		Name: Arsenal
 	ProvidesPrerequisite:
@@ -558,7 +544,7 @@ tcweap:
 		BuildSounds: make_conclave_building.aud
 		Adjacent: 8
 	Health:
-		HP: 3800
+		HP: 8000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -587,6 +573,8 @@ tcweap:
 		Factions: conclave
 		Group: Vehicle
 		LowPowerSlowdown: 2
+	WithProductionDoorOverlay:
+		Sequence: build-top
 	ProductionBar@Vehicle:
 		ProductionType: Vehicle.conclave
 	ProductionBar:
@@ -614,7 +602,7 @@ dcatnk_deployed:
 	RevealsShroud:
 		Range: 7c0
 	Health:
-		HP: 2300
+		HP: 5000
 	Transforms:
 		IntoActor: t2_pilgrim
 		TransformSounds: deploy_vehicle_mode.aud
@@ -670,7 +658,7 @@ tctech:
 		BuildSounds: make_conclave_building.aud
 		Adjacent: 8
 	Health:
-		HP: 2500
+		HP: 9000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -710,7 +698,7 @@ tcsuperweap:
 		BuildSounds: make_conclave_building.aud
 		Adjacent: 8
 	Health:
-		HP: 7500
+		HP: 9000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -738,4 +726,46 @@ tcsuperweap:
 		ChargeInterval: 7500
 		Actor: avatar
 	ProvidesPrerequisite@buildingname:
+	HitShape:
+    
+tcextract:
+	Inherits: ^Building
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: Defence.conclave
+		BuildPaletteOrder: 10
+		Description: Automatically recover the resources of the deposit zones
+		BuildDurationModifier: 30
+        Prerequisites: tcproc
+		Adjacent: 18
+		IconPalette: Conclave.Icon
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: Diastime Extractor
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+		Adjacent: 10
+        TerrainTypes: Deposit
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 6000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	InfiltrateForPowerOutage:
+	AffectedByPowerOutage:
+	ScalePowerWithHealth:
+	Power:
+		Amount: 30
+    RenderSprites:
+        Scale: 1.0
+    CashTrickler:
+        InitialDelay: 800
+		Interval: 700
+		Amount: 950
 	HitShape:

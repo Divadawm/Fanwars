@@ -1,5 +1,10 @@
+^RevisionScaleTreeModel:
+    RenderSprites:
+        Scale: 0.55
+
 tree01:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -8,6 +13,7 @@ tree01:
 
 tree02:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -16,6 +22,7 @@ tree02:
 
 tree03:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -24,6 +31,7 @@ tree03:
 
 tree04:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -32,6 +40,7 @@ tree04:
 
 tree05:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: x__ xxx xxx
 		Dimensions: 3,3
@@ -40,6 +49,7 @@ tree05:
 
 tree06:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -48,6 +58,7 @@ tree06:
 
 tree07:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: xxx xxx xxx
 		Dimensions: 3,3
@@ -56,6 +67,7 @@ tree07:
 
 tree08:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: x_x _x_ ___
 		Dimensions: 3,3
@@ -64,6 +76,7 @@ tree08:
 
 tree09:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: xxx _x_ x_x
 		Dimensions: 3,3
@@ -72,6 +85,7 @@ tree09:
 
 tree10:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -80,6 +94,7 @@ tree10:
 
 tree11:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -88,6 +103,7 @@ tree11:
 
 tree12:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -96,6 +112,7 @@ tree12:
 
 tree13:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -104,6 +121,7 @@ tree13:
 
 tree14:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -112,6 +130,7 @@ tree14:
 
 tree15:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -120,6 +139,7 @@ tree15:
 
 tree16:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -128,6 +148,7 @@ tree16:
 
 tree17:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -136,6 +157,7 @@ tree17:
 
 tree18:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -144,6 +166,7 @@ tree18:
 
 tree19:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel
 	Building:
 		Footprint: xx
 		Dimensions: 2,1

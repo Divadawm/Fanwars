@@ -224,23 +224,10 @@ AircraftExplode:
 		ValidTargets: Ground, Water, Air
 
 ^gibs:
-	Range: 5c0
-	Projectile: Bullet
-		Speed: 64, 128
-		LaunchAngle: 80, 192
-		Image: gibs01
-		High: true
-		Inaccuracy: 125
-		TrailImage: gibs_smoke
-		TrailInterval: 2
-		TrailPalette: Red_effect
-		ContrailLength: 10
-		ContrailWidth: 7
-		Shadow: true
-		Blockable: false
+	Range: 2c0
 	Warhead@1Dam: SpreadDamage
-		Spread: 64
-		Damage: 5
+		Spread: 512
+		Damage: 1
 		Versus:
 			Infantry: 20
 			ArmorInfantry: 20
@@ -250,16 +237,13 @@ AircraftExplode:
 			LordTank: 20
 			harvester: 20
 			Concrete: 20
-		DamageTypes: TriggerProne, ExplosionDeath
+		DamageTypes: Gorehusk
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: Gorehusk
 	Warhead@2Eff: CreateEffect
 		Explosions: expl_gibs01
 		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Water, Air
-	Warhead@4Smu: LeaveSmudge
-		SmudgeType: Ghusk
-		InvalidTargets: Vehicle, Building, Wall
+		ValidTargets: Ground, Road, Water, Air
 
 gibs_plok:
 	Inherits@gibs: ^gibs
-	Projectile: Bullet
-		Image: gibs01

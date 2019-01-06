@@ -50,17 +50,55 @@ DisordCannon:
 		ValidTargets: Ground
 		Spread: 64
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne
+		DamageTypes: Gorehusk
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: piff
 		ValidTargets: Ground, Water
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_small
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
+        
+^Fortressdefense.Target.default:
+	ValidTargets: Ground
+	Projectile: InstantHit
+	Warhead@1Dam: SpreadDamage
+		Spread: 0
+		Damage: 0
+		Versus:
+			Infantry: 1
+			ArmorInfantry: 1
+			LightVehicle: 1
+			ArmorTank: 1
+			Lord: 1
+			LordTank: 1
+			harvester: 1
+			Concrete: 1
+        
+^Fortressdefense.default:
+	Projectile: LaserZap
+		Width: 45
+		Color: fff71a
+		SecondaryBeam: true
+		SecondaryBeamWidth: 125
+		SecondaryBeamColor: ff9c00
+	Warhead@1Dam: SpreadDamage
+		Spread: 300
+		DeathType: 5
+		DamageTypes: Burned, TriggerProne, Crater
+	Warhead@3EffGround: CreateEffect
+		Falloff: 100, 68, 35
+		Explosions: apo_expl
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground, Water, Air
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: light
+		ValidTargets: Ground, Water, Air
+		Palette: Upgrade_blue_effect
 
 SmokeCamoWarhead.Active:
 	ValidTargets: Ground, Rough, Tree, Air
@@ -98,11 +136,12 @@ SmokeCamoWarhead.Active:
 			LordTank: 50
 			harvester: 70
 			Concrete: 100
-		DamageTypes: Burned, TriggerProne
+		DamageTypes: Burned
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
-		Explosions: small_sismic_impact
+		Explosions: normal_sismic_impact
 		ExplosionPalette: effectalpha75
 		ValidTargets: Ground, Water, Air
 	Warhead@8Light: CreateEffect
@@ -124,7 +163,7 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		Spread: 3
 		DeathType: 1
-		DamageTypes: Burned, TriggerProne
+		DamageTypes: Burned
 	Warhead@801: CreateEffect
 		Explosions: laserimpact
 		ExplosionPalette: effect
@@ -146,9 +185,10 @@ SmokeCamoWarhead.Active:
 		Spread: 50
 		DeathType: 4
 		ValidTargets: Ground, Water
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DamageTypes: Gorehusk, Crater
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: shrap_exp
 		ExplosionPalette: effectalpha75
@@ -159,13 +199,12 @@ SmokeCamoWarhead.Active:
 		ExplosionPalette: effect
 		ValidTargets: Ground
 	Warhead@802: CreateEffect
-		Explosions: obus_smokeexpl2
+		Explosions: obus_smokeexpl
 		ExplosionPalette: effectalpha75
 		ValidTargets: Ground, Water
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_large
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -199,9 +238,10 @@ SmokeCamoWarhead.Active:
 		Spread: 16
 		DeathType: 5
 		RangeLimit: 7c256
-		DamageTypes: Burned, TriggerProne, Scrap
+		DamageTypes: Burned, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: small_sismic_impact
 		ExplosionPalette: effectalpha75
@@ -213,18 +253,15 @@ SmokeCamoWarhead.Active:
 
 ^Desolator.Weapons.default:
 	Projectile: LaserZap
-		Width: 10
-		Color: 84FF00
+		Width: 30
+		Color: ffa200
 		Inaccuracy: 1000
 		SecondaryBeam: true
-		SecondaryBeamWidth: 30
+		SecondaryBeamWidth: 80
 		SecondaryBeamColor: 00CC0A
 	Warhead@1Dam: SpreadDamage
-		Spread: 420
-		DamageTypes: NukeDeath, TriggerProne
-	Warhead@3EffGround: CreateEffect
-		Explosions: plasma_pulsemin
-		ExplosionPalette: effectalpha75
+		Spread: 512
+		DamageTypes: NukeDeath
 		ValidTargets: Ground, Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -240,9 +277,10 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground
 		Spread: 65
 		DeathType: 4
-		DamageTypes: TriggerProne, Scrap
+		DamageTypes: Crater
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: autogun_expl
 		ExplosionPalette: effectalpha75
@@ -250,8 +288,20 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_small
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
+        
+^Desolator.Fusion.Weapons.default:
+	Projectile: AreaBeam
+        Speed: 850
+        DamageInterval: 1
+        BeyondTargetRange: 3
+		Width: 80
+		Color: ffa200
+		Inaccuracy: 25
+	Warhead@1Dam: SpreadDamage
+		Spread: 512
+		DamageTypes: NukeDeath
+		ValidTargets: Ground, Water
 
 ^Harvester.Weapons.default:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -262,9 +312,9 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground
 		Spread: 128
 		DeathType: 4
-		DamageTypes: TriggerProne
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: autogun_expl
 		ExplosionPalette: effectalpha75
@@ -272,7 +322,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_small
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 
 ^Bike.Weapons.default:
@@ -291,9 +340,10 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		ValidTargets: Ground, Air, Water
 		DeathType: 4
-		DamageTypes: TriggerProne, Scrap
+		DamageTypes: Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3Eff: CreateEffect
 		Explosions: blast_expl
 		ExplosionPalette: effectalpha75
@@ -307,7 +357,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -318,15 +367,15 @@ SmokeCamoWarhead.Active:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	ValidTargets: Ground
 	Projectile: Bullet
-		Speed: 380
+		Speed: 560
 		Image: minburning
-		Inaccuracy: 1900
+		Inaccuracy: 1300
 		TrailInterval: 0
 	Warhead@1Dam: SpreadDamage
 		ValidTargets: Ground
 		Spread: 512
 		DeathType: 5
-		DamageTypes: Burned, TriggerProne
+		DamageTypes: Burned
 	Warhead@3EffGround: CreateEffect
 		Falloff: 100, 68, 35
 		Explosions: burnimpact
@@ -340,6 +389,7 @@ SmokeCamoWarhead.Active:
 		Palette: Upgrade_blue_effect
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 
 ^Basilisk.Weapons.default:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -353,9 +403,10 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground
 		Spread: 85
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DamageTypes: Gorehusk, TriggerProne, Crater
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: obus_expl
 		ExplosionPalette: effectalpha75
@@ -367,12 +418,11 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground
 	Warhead@802: CreateEffect
 		Explosions: ring_pulsemin
-		ExplosionPalette: effectalpha75
+		ExplosionPalette: effectalpha30
 		ValidTargets: Ground, Water
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_large
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -393,9 +443,9 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Air
 		Spread: 128
 		DeathType: 4
-		DamageTypes: TriggerProne
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: autogun_expl
 		ExplosionPalette: effectalpha75
@@ -414,9 +464,9 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground, Air
 		Spread: 128
 		DeathType: 4
-		DamageTypes: TriggerProne
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: autogun_expl
 		ExplosionPalette: effectalpha75
@@ -424,7 +474,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_small
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 
 ^Hydra.barrage.Weapons.default:
@@ -444,9 +493,10 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground, Water
 		Spread: 256
 		DeathType: 4
-		DamageTypes: TriggerProne, Scrap
+		DamageTypes: Burned, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3Eff: CreateEffect
 		Explosions: napalmhydraexpl
 		ExplosionPalette: effectalpha55
@@ -454,7 +504,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -477,9 +526,10 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		Spread: 1c128
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DamageTypes: Gorehusk, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: thermoexpl
 		ExplosionPalette: effectalpha75
@@ -492,7 +542,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_large
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 
 ^Manticore.WeaponsAA.default:
@@ -515,6 +564,7 @@ SmokeCamoWarhead.Active:
 		DamageTypes: TriggerProne
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffAir: CreateEffect
 		Explosions: air_expl
 		ExplosionPalette: effectalpha75
@@ -539,9 +589,10 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
 		DeathType: 4
-		DamageTypes: Burned, TriggerProne
+		DamageTypes: Burned
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Falloff: 100, 68, 35
 		Explosions: burnimpact
@@ -569,21 +620,21 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground, Water
 		Spread: 128
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DamageTypes: Gorehusk, TriggerProne, Crater
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: apo_expl
 		ExplosionPalette: effectalpha75
 		ValidTargets: Ground
 	Warhead@801: CreateEffect
 		Explosions: ring_pulsemin
-		ExplosionPalette: effect
+		ExplosionPalette: effectalpha30
 		ValidTargets: Ground
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_large
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -606,9 +657,10 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		ValidTargets: Ground, Air, Water
 		DeathType: 4
-		DamageTypes: TriggerProne, Scrap
+		DamageTypes: Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3Eff: CreateEffect
 		Explosions: blast_expl
 		ExplosionPalette: effectalpha75
@@ -623,7 +675,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -645,6 +696,7 @@ SmokeCamoWarhead.Active:
 		DamageTypes: Burned
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: burn_flam
 		ExplosionPalette: effectalpha75
@@ -695,14 +747,14 @@ SmokeCamoWarhead.Active:
 		Color: 40E5E3
 	Warhead@1Dam: SpreadDamage
 		Spread: 2048
-		DamageTypes: NukeDeath, TriggerProne, Scrap
+		DamageTypes: NukeDeath, TriggerProne, Crater
 	Warhead@3EffGround: CreateEffect
-		Explosions: plasma_expl
+		Explosions: ion_expl
 		ExplosionPalette: effectalpha75
 		ValidTargets: Ground, Water
 	Warhead@2bisEffGround: CreateEffect
 		Explosions: ring_pulse
-		ExplosionPalette: effectalpha75
+		ExplosionPalette: effectalpha30
 		ValidTargets: Ground, Water
 	Warhead@4EffGround: CreateEffect
 		Explosions: mininuke_impact
@@ -727,9 +779,10 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground
 		Spread: 65
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DamageTypes: Gorehusk, Crater
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: shrap_exp
 		ExplosionPalette: effectalpha75
@@ -750,9 +803,10 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground
 		Spread: 32
 		DeathType: 4
-		DamageTypes: TriggerProne, Scrap
+		DamageTypes: Scorch
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: shrap_exp
 		ExplosionPalette: effectalpha75
@@ -772,9 +826,9 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Air
 		Spread: 65
 		DeathType: 4
-		DamageTypes: TriggerProne
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: autogun_expl
 		ExplosionPalette: effectalpha75
@@ -782,7 +836,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_small
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 
 ^Archidemon.Weapons.default:
@@ -794,9 +847,10 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		Spread: 2c256
 		DeathType: 1
-		DamageTypes: NukeDeath, TriggerProne, Scrap
+		DamageTypes: NukeDeath, TriggerProne, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: mininuke_impact
 		ExplosionPalette: effectalpha75
@@ -819,9 +873,10 @@ SmokeCamoWarhead.Active:
 		Spread: 128
 		DeathType: 4
 		ValidTargets: Ground, Water
-		DamageTypes: TriggerProne, Scrap
+		DamageTypes: Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3Eff: CreateEffect
 		Explosions: blast_expl
 		ExplosionPalette: effectalpha75
@@ -842,7 +897,7 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		Spread: 300
 		DeathType: 5
-		DamageTypes: Burned, TriggerProne, Scrap
+		DamageTypes: Burned, Crater
 	Warhead@3EffGround: CreateEffect
 		Falloff: 100, 68, 35
 		Explosions: apo_expl
@@ -868,7 +923,7 @@ SmokeCamoWarhead.Active:
 		Color: 40E5E3
 	Warhead@1Dam: SpreadDamage
 		Spread: 1248
-		DamageTypes: Burned, TriggerProne, Scrap
+		DamageTypes: Burned, Crater
 	Warhead@3EffGround: CreateEffect
 		Explosions: fusionimpactfire
 		ExplosionPalette: powereffect
@@ -876,7 +931,7 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground, Water, Air
 	Warhead@2bisEffGround: CreateEffect
 		Explosions: ring_pulse
-		ExplosionPalette: effectalpha75
+		ExplosionPalette: effectalpha30
 		ValidTargets: Ground, Water
 
 ^niflheim.Weapons.default:
@@ -896,9 +951,10 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DamageTypes: Gorehusk, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: emp_splash
 		ExplosionPalette: powereffect
@@ -910,7 +966,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_large
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 
 ^Carabine.Weapons.default:
@@ -943,9 +998,10 @@ SmokeCamoWarhead.Active:
 		Spread: 128
 		DeathType: 4
 		ValidTargets: Ground, Water, Air
-		DamageTypes: TriggerProne, Scrap
+		DamageTypes: Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
 	Warhead@3Eff: CreateEffect
 		Explosions: impact_balist_medium
 		ExplosionPalette: effectalpha75
@@ -974,13 +1030,14 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground
 		Spread: 512
 		DeathType: 5
-		DamageTypes: PlasmaDeath, TriggerProne
+		DamageTypes: PlasmaDeath
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
 		ExplosionPalette: light
 		ValidTargets: Ground, Water, Air
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 
 ^jotuunMode2.Weapons.default:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -998,9 +1055,10 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
 		DeathType: 4
-		DamageTypes: PlasmaDeath, TriggerProne, Scrap
+		DamageTypes: PlasmaDeath, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: plasma_pulseminx2
 		ExplosionPalette: effect
@@ -1012,7 +1070,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_large
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 
 ^Vanir.Weapons.default:
@@ -1031,9 +1088,10 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DamageTypes: Gorehusk, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: obus_ballexpl
 		ExplosionPalette: effectalpha75
@@ -1045,7 +1103,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 
 ^Aesir.Weapons.default:
@@ -1069,7 +1126,7 @@ SmokeCamoWarhead.Active:
 			LordTank: 40
 			harvester: 80
 			Concrete: 100
-		DamageTypes: Burned, TriggerProne, Scrap
+		DamageTypes: Burned, Crater
 	Warhead@3EffGround: CreateEffect
 		Explosions: matter_explmin
 		ExplosionPalette: effectalpha75
@@ -1088,16 +1145,16 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground
 		Spread: 64
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne
+		DamageTypes: Gorehusk
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: piff
 		ValidTargets: Ground, Water
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_small
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 
 ^Heidrun.WeaponsAA.default:
@@ -1116,9 +1173,9 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
 		DeathType: 4
-		DamageTypes: TriggerProne
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
 	Warhead@3Eff: CreateEffect
 		Explosions: impact_balist_medium
 		ExplosionPalette: effectalpha75
@@ -1127,7 +1184,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -1143,15 +1199,16 @@ SmokeCamoWarhead.Active:
 		LaunchAngle: 60
 		Inaccuracy: 454
 		TrailInterval: 0
-		ContrailLength: 8
+		ContrailLength: 2
 		ContrailWidth: 28
 		Color: 5F5F5F
 	Warhead@1Dam: SpreadDamage
 		Spread: 750
-		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DeathType: 5
+		DamageTypes: Gorehusk, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: impact_balist_large
 		ExplosionPalette: effect
@@ -1177,7 +1234,7 @@ SmokeCamoWarhead.Active:
 		SecondaryBeamColor: 33ccff
 	Warhead@1Dam: SpreadDamage
 		Spread: 1
-		DamageTypes: IonDeath, TriggerProne, Scrap
+		DamageTypes: IonDeath, Crater
 	Warhead@3EffGround: CreateEffect
 		Explosions: garm_impactgun
 		ExplosionPalette: powereffect
@@ -1204,14 +1261,14 @@ SmokeCamoWarhead.Active:
 		SecondaryBeamColor: 33ccff
 	Warhead@1Dam: SpreadDamage
 		Spread: 512
-		DamageTypes: IonDeath, TriggerProne, Scrap
+		DamageTypes: IonDeath
 	Warhead@3EffGround: CreateEffect
 		Explosions: ring_pulsemedium
-		ExplosionPalette: effectalpha75
+		ExplosionPalette: effectalpha30
 		ValidTargets: Ground, Air
 	Warhead@3EffWater: CreateEffect
 		Explosions: ring_pulsemedium
-		ExplosionPalette: effectalpha75
+		ExplosionPalette: effectalpha30
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
 		ExplosionPalette: bluelight
@@ -1232,18 +1289,18 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		Spread: 512
 		DeathType: 5
-		DamageTypes: PlasmaDeath, TriggerProne, Scrap
+		DamageTypes: PlasmaDeath, TriggerProne, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
-		Explosions: plasma_expl
+		Explosions: ion_expl
 		ExplosionPalette: effectalpha75
 		ImpactSounds: flames01.aud
 		ValidTargets: Ground, Air
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -1282,9 +1339,10 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		Spread: 1c128
 		DeathType: 4
-		DamageTypes: PlasmaDeath, TriggerProne, Scrap
+		DamageTypes: PlasmaDeath, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: plasma_impact
 		ExplosionPalette: effect
@@ -1296,7 +1354,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_large
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 
 ^Warg.Weapons.default:
@@ -1312,6 +1369,7 @@ SmokeCamoWarhead.Active:
 		DamageTypes: TriggerProne
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: autogun_expl
 		ExplosionPalette: effectalpha75
@@ -1319,7 +1377,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_small
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 
 ^lindwyrm.Weapons.default:
@@ -1338,9 +1395,10 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DamageTypes: Gorehusk, TriggerProne, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: doomexpl75
 		ExplosionPalette: effectalpha75
@@ -1353,7 +1411,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_large
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 
 ^Heimdall.Weapons.default:
@@ -1374,9 +1431,10 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground, Water
 		Spread: 512
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DamageTypes: Gorehusk, TriggerProne, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: thermoexpl
 		ExplosionPalette: effectalpha75
@@ -1389,7 +1447,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_large
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 
 ^Loki.Weapons.default:
@@ -1406,15 +1463,14 @@ SmokeCamoWarhead.Active:
 		Color: 40E5E3
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
-		DamageTypes: IonDeath, TriggerProne, Scrap
+		DamageTypes: IonDeath, Crater
 	Warhead@3EffGround: CreateEffect
-		Explosions: plasma_expl
+		Explosions: ion_expl
 		ExplosionPalette: effectalpha75
 		ValidTargets: Ground, Air
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -1437,7 +1493,7 @@ SmokeCamoWarhead.Active:
 		ContrailDelay: 0
 	Warhead@1Dam: SpreadDamage
 		Spread: 1024
-		DamageTypes: IonDeath, TriggerProne, Scrap
+		DamageTypes: IonDeath, TriggerProne, Crater
 	Warhead@3EffGround: CreateEffect
 		Explosions: matter_expl
 		ExplosionPalette: effect
@@ -1445,7 +1501,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -1473,7 +1528,7 @@ SmokeCamoWarhead.Active:
 			LordTank: 40
 			harvester: 80
 			Concrete: 100
-		DamageTypes: IonDeath, TriggerProne, Scrap
+		DamageTypes: IonDeath, Crater
 	Warhead@3EffGround: CreateEffect
 		Explosions: garm_impactgun
 		ExplosionPalette: powereffect
@@ -1481,7 +1536,6 @@ SmokeCamoWarhead.Active:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -1537,6 +1591,7 @@ SmokeCamoWarhead.Active:
 		DamageTypes: TriggerProne
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: autogun_expl
 		ExplosionPalette: effectalpha75
@@ -1556,13 +1611,14 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		DeathType: 5
 		Spread: 256
-		DamageTypes: IonDeath, TriggerProne, Scrap
+		DamageTypes: IonDeath
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
 		ExplosionPalette: bluelight
 		ValidTargets: Ground, Water, Air
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 
 ^Hel.Weapons.default:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -1578,7 +1634,7 @@ SmokeCamoWarhead.Active:
 		Color: 40E5E3
 	Warhead@1Dam: SpreadDamage
 		Spread: 1248
-		DamageTypes: Burned, TriggerProne, Scrap
+		DamageTypes: Burned, TriggerProne, Crater
 	Warhead@3EffGround: CreateEffect
 		Explosions: apo_expl
 		ExplosionPalette: effectalpha75
@@ -1586,7 +1642,7 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground, Water, Air
 	Warhead@2bisEffGround: CreateEffect
 		Explosions: ring_pulse
-		ExplosionPalette: effectalpha75
+		ExplosionPalette: effectalpha30
 		ValidTargets: Ground, Water
 
 ^Ragnarok.Weapons.default:
@@ -1605,9 +1661,10 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		Spread: 2c128
 		DeathType: 4
-		DamageTypes: PlasmaDeath, TriggerProne, Scrap
+		DamageTypes: PlasmaDeath, TriggerProne
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: ragnarok_plasmaimpact
 		ExplosionPalette: powereffect
@@ -1634,12 +1691,11 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		DeathType: 5
 		Spread: 5
-		DamageTypes: Burned, TriggerProne, Scrap
+		DamageTypes: Burned
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
 		ExplosionPalette: bluelight
 		ValidTargets: Ground, Water, Air
-	Warhead@2Smu: LeaveSmudge
 
 ^Statis.Weapons.default:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -1648,7 +1704,7 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		DeathType: 5
 		Spread: 5
-		DamageTypes: Burned, TriggerProne
+		DamageTypes: Burned
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
 		ExplosionPalette: bluelight
@@ -1659,7 +1715,7 @@ SmokeCamoWarhead.Active:
 	Report: mattergun.aud
 	Warhead@1Dam: SpreadDamage
 		Spread: 1024
-		DamageTypes: Burned, TriggerProne, Scrap
+		DamageTypes: Burned
 	Warhead@3EffGround: CreateEffect
 		Explosions: matter_expl
 		ExplosionPalette: effect
@@ -1681,13 +1737,14 @@ SmokeCamoWarhead.Active:
 	Warhead@1Dam: SpreadDamage
 		DeathType: 5
 		Spread: 2
-		DamageTypes: Burned, TriggerProne, Scrap
+		DamageTypes: Burned
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
 		ExplosionPalette: bluelight
 		ValidTargets: Ground, Water, Air
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 
 ^Pilgrim.Weapons.default:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -1711,9 +1768,10 @@ SmokeCamoWarhead.Active:
 		Spread: 64
 		DeathType: 4
 		ValidTargets: Ground, Water
-		DamageTypes: TriggerProne, Scrap
+		DamageTypes: TriggerProne, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large
+        InvalidTargets: Vehicle
 	Warhead@3Eff: CreateEffect
 		Explosions: photo_expl
 		ExplosionPalette: effect
@@ -1741,7 +1799,7 @@ Surveyor.Weapons.default:
 	Warhead@1Dam: HealthPercentageDamage
 		Spread: 1
 		Damage: 15
-		DamageTypes: Burned, TriggerProne, Scrap
+		DamageTypes: Burned
 	Warhead@2Dam: HealthPercentageDamage
 		Spread: 20
 		DamageTypes: Burned, TriggerProne
@@ -1754,6 +1812,7 @@ Surveyor.Weapons.default:
 		ExplosionPalette: powereffect60
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
         
 Surveyor.Primaris.Weapons.default:
 	Projectile: LaserZap
@@ -1767,7 +1826,7 @@ Surveyor.Primaris.Weapons.default:
 	Warhead@1Dam: HealthPercentageDamage
 		Spread: 1
 		Damage: 15
-		DamageTypes: Burned, TriggerProne, Scrap
+		DamageTypes: Burned
 	Warhead@2Dam: HealthPercentageDamage
 		Spread: 20
 		DamageTypes: Burned, TriggerProne
@@ -1780,6 +1839,7 @@ Surveyor.Primaris.Weapons.default:
 		ExplosionPalette: powereffect60
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 
 ^Comete.Weapons.default:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -1796,13 +1856,41 @@ Surveyor.Primaris.Weapons.default:
 		ValidTargets: Ground, Water, Air
 		DeathType: 5
 		Spread: 20
-		DamageTypes: Burned, TriggerProne, Scrap
+		DamageTypes: Burned
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
 		ExplosionPalette: bluelight
 		ValidTargets: Ground, Water, Air
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        
+^Zenith.Weapons.default:
+	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+	Projectile: Bullet
+		Speed: 420
+		Image: zenithball
+		Palette: powereffect
+		High: true
+		Inaccuracy: 125
+	Warhead@1Dam: SpreadDamage
+		Spread: 1c128
+		DeathType: 4
+		DamageTypes: PlasmaDeath, Crater
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
+	Warhead@3EffGround: CreateEffect
+		Explosions: zenithimpact
+		ExplosionPalette: powereffect
+		ValidTargets: Ground
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: light
+		ValidTargets: Ground, Water
+	Warhead@3EffWater: CreateEffect
+		Explosions: impact_water_large
+		ExplosionPalette: effectalpha75
+		ValidTargets: Water
 
 ^Quasar.Weapons.default:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -1818,13 +1906,12 @@ Surveyor.Primaris.Weapons.default:
 	Warhead@1Dam: SpreadDamage
 		Spread: 36
 		DeathType: 5
-		DamageTypes: Burned, TriggerProne
+		DamageTypes: Burned
 		ValidTargets: Air
 		ValidStances: Neutral, Enemy
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -1849,12 +1936,11 @@ Surveyor.Primaris.Weapons.default:
 	Warhead@1Dam: SpreadDamage
 		Spread: 36
 		DeathType: 5
-		DamageTypes: Burned, TriggerProne
+		DamageTypes: Burned
 		ValidStances: Neutral, Enemy
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -1877,7 +1963,7 @@ Atomic:
 			LordTank: 65
 			harvester: 80
 			Concrete: 100
-		DamageTypes: ExplosionGore, TriggerProne
+		DamageTypes: Gorehusk, TriggerProne
 	Warhead@3Eff: CreateEffect
 		Explosions: impact_balist_medium
 		ExplosionPalette: effectalpha75
@@ -1914,9 +2000,10 @@ Atomic:
 			LordTank: 65
 			harvester: 80
 			Concrete: 100
-		DamageTypes: ExplosionGore, TriggerProne
+		DamageTypes: Gorehusk, TriggerProne
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: thermoexpl
 		ExplosionPalette: effectalpha75
@@ -1961,9 +2048,10 @@ Atomic:
 			LordTank: 65
 			harvester: 80
 			Concrete: 100
-		DamageTypes: ExplosionGore, TriggerProne
+		DamageTypes: Gorehusk
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: grenade_expl
 		ExplosionPalette: effectalpha75
@@ -2013,6 +2101,7 @@ Atomic:
 		DamageTypes: TriggerProne
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
 	Warhead@3Eff: CreateEffect
 		Explosions: impact_balist_medium
 		ExplosionPalette: effectalpha75
@@ -2021,7 +2110,6 @@ Atomic:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -2059,9 +2147,10 @@ Atomic:
 			LordTank: 20
 			harvester: 40
 			Concrete: 50
-		DamageTypes: ExplosionGore, TriggerProne
+		DamageTypes: Gorehusk, TriggerProne
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: minigun_impact
 		ValidTargets: Ground, Water
@@ -2098,6 +2187,7 @@ Atomic:
 		DamageTypes: TriggerProne
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: autogun_expl
 		ExplosionPalette: effectalpha75
@@ -2143,6 +2233,7 @@ Atomic:
 		DamageTypes: TriggerProne
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3Eff: CreateEffect
 		Explosions: blast_expl
 		ExplosionPalette: effectalpha75
@@ -2157,7 +2248,6 @@ Atomic:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -2189,9 +2279,10 @@ Atomic:
 			LordTank: 70
 			harvester: 80
 			Concrete: 70
-		DamageTypes: ExplosionGore, TriggerProne
+		DamageTypes: Gorehusk, TriggerProne
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: obus_expl
 		ExplosionPalette: effectalpha75
@@ -2202,13 +2293,12 @@ Atomic:
 		ExplosionPalette: effect
 		ValidTargets: Ground
 	Warhead@802: CreateEffect
-		Explosions: obus_smokeexpl2
+		Explosions: obus_smokeexpl
 		ExplosionPalette: effectalpha75
 		ValidTargets: Ground, Water
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_large
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -2255,6 +2345,7 @@ Atomic:
 		Palette: Upgrade_blue_effect
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 
 ^HeavyFlamerAlliance:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -2286,6 +2377,7 @@ Atomic:
 		DamageTypes: Burned
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: burn_flam
 		ExplosionPalette: effectalpha75
@@ -2323,6 +2415,7 @@ Atomic:
 		DamageTypes: Burned, TriggerProne
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: small_sismic_impact
 		ExplosionPalette: effectalpha75
@@ -2365,6 +2458,7 @@ Atomic:
 		ValidTargets: Ground, Water, Air
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 
 ^LaserparticleConclave:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -2398,6 +2492,7 @@ Atomic:
 		ValidTargets: Ground, Water, Air
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 
 ^Impuls_Catapult:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -2426,13 +2521,12 @@ Atomic:
 			Concrete: 70
 		DamageTypes: Burned, TriggerProne
 	Warhead@3EffGround: CreateEffect
-		Explosions: plasma_expl
+		Explosions: ion_expl
 		ExplosionPalette: effectalpha75
 		ValidTargets: Ground, Air
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -2474,6 +2568,7 @@ Atomic:
 		DamageTypes: TriggerProne
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large
+        InvalidTargets: Vehicle
 	Warhead@3Eff: CreateEffect
 		Explosions: photo_expl
 		ExplosionPalette: effect
@@ -2516,7 +2611,7 @@ Atomic:
 			Concrete: 100
 		DamageTypes: Burned, TriggerProne
 	Warhead@3EffGround: CreateEffect
-		Explosions: plasma_expl
+		Explosions: ion_expl
 		ExplosionPalette: effectalpha75
 		ValidTargets: Ground, Air
 	Warhead@3EffWater: CreateEffect
@@ -2561,8 +2656,9 @@ Atomic:
 		DamageTypes: Burned, TriggerProne
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
-		Explosions: plasma_expl
+		Explosions: ion_expl
 		ExplosionPalette: effectalpha75
 		ImpactSounds: flames01.aud
 		ValidTargets: Ground, Air
@@ -2606,9 +2702,10 @@ Atomic:
 			LordTank: 70
 			harvester: 70
 			Concrete: 120
-		DamageTypes: ExplosionGore, TriggerProne
+		DamageTypes: Gorehusk, TriggerProne
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: plasma_impact
 		ExplosionPalette: effect
@@ -2666,7 +2763,6 @@ Atomic:
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_medium
 		ExplosionPalette: effectalpha75
-		ImpactSounds:
 		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
@@ -2705,6 +2801,7 @@ Atomic:
 		ValidTargets: Ground, Water, Air
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
         
 # Federation Weapons Base
 
@@ -2717,9 +2814,10 @@ Atomic:
 		ValidTargets: Ground
 		Spread: 64
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne
+		DamageTypes: Gorehusk, TriggerProne
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: piff
 		ValidTargets: Ground, Water
@@ -2745,6 +2843,7 @@ Atomic:
 		DamageTypes: TriggerProne
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: autogun_expl
 		ExplosionPalette: effectalpha75
@@ -2763,9 +2862,10 @@ Atomic:
 		Spread: 256
 		DeathType: 4
 		ValidTargets: Ground, Air
-		DamageTypes: TriggerProne, Scrap
+		DamageTypes: TriggerProne, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3Eff: CreateEffect
 		Explosions: autogun_expl
 		ExplosionPalette: effectalpha75
@@ -2792,9 +2892,10 @@ Atomic:
 	Warhead@1Dam: SpreadDamage
 		Spread: 1c128
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DamageTypes: Gorehusk, TriggerProne, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: doomexpl75
 		ExplosionPalette: effectalpha75
@@ -2822,9 +2923,10 @@ Atomic:
 		ValidTargets: Ground
 		Spread: 85
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DamageTypes: Gorehusk, TriggerProne, Crater
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: obus_expl
 		ExplosionPalette: effectalpha75
@@ -2836,7 +2938,7 @@ Atomic:
 		ValidTargets: Ground
 	Warhead@802: CreateEffect
 		Explosions: ring_pulsemin
-		ExplosionPalette: effectalpha75
+		ExplosionPalette: effectalpha30
 		ValidTargets: Ground, Water
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_large
@@ -2864,9 +2966,10 @@ Atomic:
 		ValidTargets: Air
 		Spread: 256
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DamageTypes: Gorehusk, TriggerProne, Crater
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: autogun_expl
 		ExplosionPalette: effectalpha75
@@ -2922,9 +3025,10 @@ Atomic:
 	Warhead@1Dam: SpreadDamage
 		Spread: 1c0
 		DeathType: 4
-		DamageTypes: ExplosionGore, TriggerProne, Scrap
+		DamageTypes: Gorehusk, TriggerProne, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
+        InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
 		Explosions: mantis_explo
 		ExplosionPalette: effectalpha75
@@ -2982,9 +3086,10 @@ Atomic:
 	Warhead@1Dam: SpreadDamage
 		ValidTargets: Ground, Water
 		DeathType: 4
-		DamageTypes: TriggerProne, Scrap
+		DamageTypes: TriggerProne, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
+        InvalidTargets: Vehicle
 	Warhead@3Eff: CreateEffect
 		Explosions: eplosionfire01
 		ExplosionPalette: effect

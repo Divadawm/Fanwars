@@ -13,7 +13,7 @@ opcacnst:
 		Dimensions: 4,3
 		BuildSounds: deploy_order.aud
 	Health:
-		HP: 10000
+		HP: 14000
 	Armor:
 		Type: Concrete
 	RevealsShroud@base:
@@ -204,7 +204,7 @@ oppowr:
 		Adjacent: 10
 		BuildSounds: deploy_order.aud
 	Health:
-		HP: 3500
+		HP: 5000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -264,18 +264,18 @@ opproc:
 		Description: Refines Diastim into credits
 		BuildDurationModifier: 20
 	Valued:
-		Cost: 1800
+		Cost: 2000
 	Tooltip:
 		Name: Diastim Refinery
 	Building:
-		Footprint: xxx xxx xx=
+		Footprint: xxx xxx ===
 		Dimensions: 3,3
 		Adjacent: 18
 		BuildSounds: deploy_order.aud
 	Targetable:
 		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate
 	Health:
-		HP: 5000
+		HP: 8000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -323,7 +323,7 @@ opbarr:
 		Adjacent: 18
 		BuildSounds: deploy_order.aud
 	Health:
-		HP: 3500
+		HP: 5000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -376,7 +376,7 @@ opweap:
 		BuildSounds: deploy_order.aud
 		Adjacent: 18
 	Health:
-		HP: 5000
+		HP: 8000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -430,7 +430,7 @@ optech:
 		Adjacent: 18
 		BuildSounds: deploy_order.aud
 	Health:
-		HP: 5000
+		HP: 7000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -475,7 +475,7 @@ optech2:
 		Adjacent: 18
 		BuildSounds: deploy_order.aud
 	Health:
-		HP: 7000
+		HP: 9000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -509,7 +509,7 @@ opavtech:
 		Adjacent: 18
 		BuildSounds: deploy_order.aud
 	Health:
-		HP: 5000
+		HP: 7000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -607,7 +607,7 @@ t1_midgard:
 	RevealsShroud:
 		Range: 7c0
 	Health:
-		HP: 6000
+		HP: 8000
 	Armament@gun:
 		Weapon: Midgard.gun
 		Recoil: 150
@@ -657,7 +657,7 @@ t2_niflheim:
 	RevealsShroud:
 		Range: 7c0
 	Health:
-		HP: 6500
+		HP: 8000
 	Armament@gun:
 		Weapon: Niflheim.gun
 		Recoil: 150
@@ -707,7 +707,7 @@ t3_hel:
 	RevealsShroud:
 		Range: 7c0
 	Health:
-		HP: 10000
+		HP: 9000
 	Armament@gun:
 		Weapon: Helgun
 		Recoil: 150
@@ -731,4 +731,45 @@ t3_hel:
 		-WAngle:
 	WithVoxelTurret:
 		ShowShadow: false
+	HitShape:
+    
+opextract:
+	Inherits: ^Building
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: Defence.baneslayer
+		BuildPaletteOrder: 10
+		Description: Automatically recover the resources of the deposit zones
+		BuildDurationModifier: 30
+        Prerequisites: opproc
+		Adjacent: 18
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: Diastime Extractor
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+		Adjacent: 10
+        TerrainTypes: Deposit
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 6000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	InfiltrateForPowerOutage:
+	AffectedByPowerOutage:
+	ScalePowerWithHealth:
+	Power:
+		Amount: 30
+    RenderSprites:
+        Scale: 1.0
+    CashTrickler:
+        InitialDelay: 800
+		Interval: 700
+		Amount: 950
 	HitShape:

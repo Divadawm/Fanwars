@@ -309,7 +309,7 @@ t2_command_relais:
 		RepulsionSpeed: 40
 		MaximumPitch: 56
 		LandWhenIdle: true
-		LandableTerrainTypes: Clear, Rough, Tree
+		LandableTerrainTypes: Clear, Rough, Tree, Road
 	-AutoTarget:
 	Transforms:
 		IntoActor: t3_commandbuilding
@@ -354,7 +354,7 @@ t4_cruiser:
 	Inherits: ^Helicoptershape
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Buildable:
-		Queue: Building.redalliance
+		Queue: Defence.redalliance
 		BuildPaletteOrder: 120
 		Prerequisites: t2_command_relais
 		BuildDurationModifier: 60
@@ -366,7 +366,7 @@ t4_cruiser:
 	Tooltip:
 		Name: Astro-Cruiser
 	Health:
-		HP: 15000
+		HP: 13000
 	Armor:
 		Type: LordTank
 	RevealsShroud:

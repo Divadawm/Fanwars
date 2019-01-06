@@ -22,12 +22,8 @@ t1_bike:
 		TurnSpeed: 25
 		Speed: 170
 	AutoTarget:
-	AttackTurreted:
+	AttackFrontal:
 		RequiresCondition: !empdisable
-	Turreted:
-		TurnSpeed: 8
-		RealignDelay: 20
-		Offset: -10,0,0
 	Armament@gun:
 		Weapon: BikeMissile
 		Modifier: 0
@@ -47,11 +43,8 @@ t1_bike:
 	RevealsShroud:
 		Range: 7c0
 	DetectCloaked:
-		Range: 5c0
+		Range: 6c0
 		CloakTypes: Cloak, Buried
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	RenderSprites:
 	HitShape:
 
@@ -108,9 +101,6 @@ ar_scarab:
 		NoTransformSounds:
 	RevealsShroud:
 		Range: 6c0
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	RenderSprites:
 	RenderVoxels:
 		Scale: 1.0
@@ -193,13 +183,14 @@ t2_basilisk:
 		RequiresCondition: upgrade.Flak.Basilisk.Redalliance
 	WithMuzzleOverlay:
 	RevealsShroud:
-		Range: 7c0
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
+		Range: 8c0
 	RenderSprites:
 		Scale: 0.80
 	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: t2_basilisk.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
 	HitShape:
 
 t2_hydra:
@@ -291,9 +282,6 @@ t2_hydra:
 	WithMuzzleOverlay:
 	RevealsShroud:
 		Range: 8c0
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	RenderSprites:
 		Scale: 0.80
 	WithSpriteTurret:
@@ -301,6 +289,10 @@ t2_hydra:
 		DeployedCondition: mode2
 		DeploySound: deploy_vehicle_mode.aud
 		UndeploySound: deploy_vehicle_mode.aud
+	SpawnActorOnDeath:
+		Actor: t2_hydra.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
 	HitShape:
 
 t2_manticore:
@@ -357,12 +349,13 @@ t2_manticore:
 		RequiresCondition: upgrade.HE.Weapons.Redalliancee
 	WithMuzzleOverlay:
 	RevealsShroud:
-		Range: 8c0
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
+		Range: 10c0
 	RenderSprites:
 		Scale: 0.80
+	SpawnActorOnDeath:
+		Actor: t2_manticore.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
 	HitShape:
 
 t2_salamander:
@@ -430,16 +423,13 @@ t2_salamander:
 		EjectOnDeath: true
 	RevealsShroud:
 		RequiresCondition: !submerged
-		Range: 5c0
+		Range: 8c0
 		MaxHeightDelta: 3
 	WithIdleOverlay@Shadow:
 		Offset: 0,0,-1
 		Sequence: shadow.small
 		Palette: effectalpha30
 		RequiresCondition: !submerged
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	RenderVoxels:
 		Scale: 0.95
 	WithVoxelTurret:
@@ -522,12 +512,13 @@ t3_apocalypse:
 	WithMuzzleOverlay:
 	RevealsShroud:
 		Range: 8c0
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	RenderSprites:
 		Scale: 0.80
 	WithSpriteTurret:
+	SpawnActorOnDeath:
+		Actor: t3_apocalypse.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
 	HitShape:
 
 t3_purifier:
@@ -584,9 +575,6 @@ t3_purifier:
 		RecoilRecovery: 15
 		LocalOffset: 800,200,340, 800,-200,340
 		RequiresCondition: upgrade.WeaponsFlamer.Redalliance
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	RenderSprites:
 		Scale: 0.70
 	WithSpriteTurret:
@@ -626,9 +614,6 @@ t3_harbinger_mobile:
 		Range: 8c0
 	RenderSprites:
 	-AutoTarget:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	GrantConditionOnDeploy:
 		DeployedCondition: deployed
 	WithVoxelBody@Normal:
@@ -639,12 +624,12 @@ t3_harbinger_mobile:
 		RequiresCondition: deployed
 	ProximityExternalCondition@HarbingerRepair:
 		Condition: harbingerRepairVehicle
-		Range: 6c0
+		Range: 5c0
 		AffectsParent: true
 		RequiresCondition: deployed
 	ProximityExternalCondition@harbingerHealthInfantry:
 		Condition: harbingerHealthInfantry
-		Range: 6c0
+		Range: 5c0
 		AffectsParent: true
 		RequiresCondition: deployed
 	ProximityExternalCondition@CloakGeneratorIdle:
@@ -657,6 +642,10 @@ t3_harbinger_mobile:
 	WithRangeCircle@Cloak:
 		Range: 5c0
 		Type: cloakgenerator
+	DetectCloaked:
+		Range: 8c0
+		CloakTypes: Cloak, Buried
+        RequiresCondition: deployed
 	RenderVoxels:
 	WithVoxelBody:
 	HitShape:
@@ -700,9 +689,6 @@ t3_annihilator:
 		LocalOffset: 800,-450,80
 		MuzzleSequence: muzzle
 	WithMuzzleOverlay:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	AutoTarget:
 	RenderSprites:
 		Scale: 0.75
@@ -719,13 +705,6 @@ t3_annihilator:
 		TurnSpeed: 6
 		RealignDelay: 20
 		Offset: 0,0,1150
-	GrantConditionOnMovement@MOUVSOUND:
-		Condition: mouvsnd
-	AmbientSound@MOVE:
-		RequiresCondition: mouvsnd
-		SoundFiles: steps_heavywalker.wav
-		Delay: 0
-		Interval: 30
 	HitShape:
 
 t1_harvester:
@@ -775,7 +754,7 @@ t1_harvester:
 		InitialStance: HoldFire
 		InitialStanceAI: HoldFire
 	RevealsShroud:
-		Range: 4c0
+		Range: 8c0
 	WithSpriteBody:
 	WithDockingAnimation:
 	WithVoxelTurret:
@@ -820,9 +799,6 @@ armcv:
 		Range: 6c0
 	MustBeDestroyed:
 		RequiredForShortGame: true
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	Transforms:
 		Facing: 96
 		IntoActor: aracnst
@@ -842,7 +818,7 @@ armcv:
 refinery:
 	Inherits: ^VoxelVehicleHeavy
 	Valued:
-		Cost: 1500
+		Cost: 2000
 	Buildable:
 		Queue: Building.redalliance
 		Prerequisites: aracnst
@@ -866,7 +842,7 @@ refinery:
 		TerrainSpeeds:
 			wall: 65
 	RevealsShroud:
-		Range: 10c0
+		Range: 6c0
 	StoresResources:
 		PipCount: 0
 		Capacity: 2000000
@@ -887,16 +863,13 @@ refinery:
 	RenderVoxels:
 		Scale: 0.75
 	BaseBuilding:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	AutoCarryable:
 	HitShape:
 
 refinery.seconddeploy:
 	Inherits: ^VoxelVehicleHeavy
 	Valued:
-		Cost: 1500
+		Cost: 2000
 	Buildable:
 		Queue: nope.redalliance
 		Prerequisites: BuildOrderBase.redalliance
@@ -920,7 +893,7 @@ refinery.seconddeploy:
 		TerrainSpeeds:
 			wall: 65
 	RevealsShroud:
-		Range: 10c0
+		Range: 6c0
 	StoresResources:
 		PipCount: 0
 		Capacity: 2000000
@@ -941,9 +914,6 @@ refinery.seconddeploy:
 		Image: refinery
 		Scale: 0.75
 	BaseBuilding:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	AutoCarryable:
 	RenderSprites:
 		Image: refinery
@@ -976,7 +946,7 @@ arnahand:
 		TerrainSpeeds:
 			wall: 65
 	RevealsShroud:
-		Range: 10c0
+		Range: 6c0
 	Transforms:
 		IntoActor: arbarr
 		Offset: -1,-1
@@ -994,9 +964,6 @@ arnahand:
 	RenderVoxels:
 		Scale: 1.1
 	BaseBuilding:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	AutoCarryable:
 	HitShape:
 
@@ -1027,7 +994,7 @@ arnaweap:
 		TerrainSpeeds:
 			wall: 65
 	RevealsShroud:
-		Range: 10c0
+		Range: 6c0
 	Transforms:
 		IntoActor: arweap
 		Offset: -2,-1
@@ -1043,9 +1010,6 @@ arnaweap:
 	RenderVoxels:
 		Scale: 0.75
 	BaseBuilding:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	AutoCarryable:
 	HitShape:
 
@@ -1078,7 +1042,7 @@ mobilerelay:
 		TerrainSpeeds:
 			wall: 65
 	RevealsShroud:
-		Range: 10c0
+		Range: 6c0
 	StoresResources:
 		PipCount: 0
 		Capacity: 2000000
@@ -1097,9 +1061,6 @@ mobilerelay:
 	RenderVoxels:
 		Scale: 0.75
 	BaseBuilding:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	AutoCarryable:
 	HitShape:
 
@@ -1131,7 +1092,7 @@ t1_defence_hq:
 		TerrainSpeeds:
 			wall: 65
 	RevealsShroud:
-		Range: 10c0
+		Range: 6c0
 	Transforms:
 		IntoActor: ardeftech
 		Offset: -1,-1
@@ -1145,9 +1106,6 @@ t1_defence_hq:
 	RenderVoxels:
 		Scale: 1.0
 	BaseBuilding:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	AutoCarryable:
 	HitShape:
 
@@ -1178,7 +1136,7 @@ t2_airfield:
 		TerrainSpeeds:
 			wall: 65
 	RevealsShroud:
-		Range: 10c0
+		Range: 6c0
 	Transforms:
 		IntoActor: arheli
 		Offset: -1,-1
@@ -1192,9 +1150,6 @@ t2_airfield:
 	RenderVoxels:
 		Scale: 1.15
 	BaseBuilding:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	HitShape:
 
 t3_doomtower_mobile:
@@ -1217,7 +1172,7 @@ t3_doomtower_mobile:
 		TerrainSpeeds:
 			wall: 65
 	RevealsShroud:
-		Range: 10c0
+		Range: 6c0
 	Transforms:
 		IntoActor: t3_doomtowerbuild
 		Offset: 0,0
@@ -1230,9 +1185,6 @@ t3_doomtower_mobile:
 	RenderVoxels:
 		Scale: 0.72
 	BaseBuilding:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	HitShape:
 
 t2_predator_mobile:
@@ -1267,10 +1219,7 @@ t2_predator_mobile:
 		TransformSounds:
 		NoTransformSounds:
 	RevealsShroud:
-		Range: 8c0
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
+		Range: 6c0
 	RenderSprites:
 	RenderVoxels:
 		Scale: 0.75
@@ -1319,10 +1268,7 @@ t2_tarantula_mobile:
 		TransformSounds:
 		NoTransformSounds:
 	RevealsShroud:
-		Range: 8c0
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
+		Range: 6c0
 	RenderSprites:
 	RenderVoxels:
 		Scale: 0.75

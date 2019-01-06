@@ -235,94 +235,52 @@ Unlocked.droneSpawn.Redalliance:
 	RenderSprites:
 		Image: nukeammo_icon
 
-UnkownPlace.baneslayerVehicle30:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 30
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerVehicle40:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 40
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerVehicle50:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 50
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerVehicle60:
+UnkownPlace.redallianceInfantry60:
 	Inherits: ^UnkownPlace
 	Buildable:
 		BuildPaletteOrder: 60
 		Queue: Infantry.redalliance
 		Prerequisites: unkown
+        
+UnkownPlace.redallianceInfantr70:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 70
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
+        
+UnkownPlace.redallianceInfantr80:
+	Inherits: ^UnkownPlace
+	Buildable:
+		BuildPaletteOrder: 80
+		Queue: Infantry.redalliance
+		Prerequisites: unkown
 
-UnkownPlace.baneslayerVehicle90:
+UnkownPlace.redallianceInfantry90:
 	Inherits: ^UnkownPlace
 	Buildable:
 		BuildPaletteOrder: 90
 		Queue: Infantry.redalliance
 		Prerequisites: unkown
 
-UnkownPlace.baneslayerVehicle100:
+UnkownPlace.redallianceInfantry100:
 	Inherits: ^UnkownPlace
 	Buildable:
 		BuildPaletteOrder: 100
 		Queue: Infantry.redalliance
 		Prerequisites: unkown
 
-UnkownPlace.baneslayerVehicle110:
+UnkownPlace.redallianceInfantry110:
 	Inherits: ^UnkownPlace
 	Buildable:
 		BuildPaletteOrder: 110
 		Queue: Infantry.redalliance
 		Prerequisites: unkown
 
-UnkownPlace.baneslayerVehicle120:
+UnkownPlace.redallianceInfantry120:
 	Inherits: ^UnkownPlace
 	Buildable:
 		BuildPaletteOrder: 120
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerVehicle140:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 140
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerVehicle150:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 150
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerVehicle160:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 160
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerVehicle170:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 170
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerVehicle180:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 180
 		Queue: Infantry.redalliance
 		Prerequisites: unkown
 

@@ -11,7 +11,7 @@ fedcnst:
 		Dimensions: 4,4
 		BuildSounds: deploy_order.aud
 	Health:
-		HP: 10000
+		HP: 14000
 	Armor:
 		Type: Concrete
 	RevealsShroud@base:
@@ -84,7 +84,7 @@ fedpowr:
 		Adjacent: 10
 		BuildSounds: deploy_order.aud
 	Health:
-		HP: 3500
+		HP: 5000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -126,7 +126,7 @@ fedproc:
 	Targetable:
 		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate
 	Health:
-		HP: 5000
+		HP: 8000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -178,7 +178,7 @@ fedbarr:
 		Adjacent: 18
 		BuildSounds: deploy_order.aud
 	Health:
-		HP: 3500
+		HP: 5000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -234,7 +234,7 @@ fedweap:
 		BuildSounds: deploy_order.aud
 		Adjacent: 18
 	Health:
-		HP: 5000
+		HP: 8000
 	Armor:
 		Type: Concrete
 	RevealsShroud:

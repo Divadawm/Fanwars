@@ -18,10 +18,10 @@ tcmcv:
 	Armor:
 		Type: ArmorTank
 	Mobile:
-		Speed: 31
+		Speed: 65
 		Crushes: crate, infantry
 	RevealsShroud:
-		Range: 2c768
+		Range: 6c0
 	MustBeDestroyed:
 		RequiredForShortGame: true
 	Explodes:
@@ -84,7 +84,7 @@ prospecteur:
 		TurnSpeed: 14
 		Crushes: gibs, infantry, mine, husk
 	RevealsShroud:
-		Range: 4c0
+		Range: 6c0
 	RenderSprites:
 		Scale: 1.0
 	WithSpriteBody:
@@ -120,7 +120,7 @@ t2_rodeur:
 	Health:
 		HP: 2400
 	RevealsShroud:
-		Range: 7c0
+		Range: 8c0
 	Armament@gun:
 		Weapon: Rodeur.Dual.LightLaser
 		Recoil: 150
@@ -356,7 +356,7 @@ t2_pilgrim:
 	Armor:
 		Type: LightVehicle
 	RevealsShroud:
-		Range: 7c0
+		Range: 9c0
 	Armament@gun:
 		Weapon: Photo_MissileAA
 		Recoil: 150
@@ -383,4 +383,8 @@ t2_pilgrim:
 		TurnSpeed: 10
 		RealignDelay: 10
 		Offset: -150,0,220
+	SpawnActorOnDeath:
+		Actor: t2_pilgrim.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
 	HitShape:

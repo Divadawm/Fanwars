@@ -324,14 +324,14 @@ grenade.ratatoskr:
 	Inherits@default.weapons: ^ratatosk.Weapons.default
 	ReloadDelay: 45
 	Range: 7c256
-	Report: grenade_launcher.aud
+	Report: rataskgun.aud
 	Warhead@1Dam: SpreadDamage
 		Damage: 450
 		Versus:
-			Infantry: 95
-			ArmorInfantry: 75
-			LightVehicle: 40
-			ArmorTank: 20
+			Infantry: 60
+			ArmorInfantry: 70
+			LightVehicle: 60
+			ArmorTank: 45
 			Lord: 40
 			LordTank: 10
 			harvester: 45
@@ -341,7 +341,7 @@ grenade.ratatoskr.upgrade:
 	Inherits@default.weapons: ^ratatosk.Weapons.default
 	ReloadDelay: 45
 	Range: 7c256
-	Report: grenade_launcher.aud
+	Report: rataskgun.aud
 	Warhead@1Dam: SpreadDamage
 		Damage: 650
 		Versus:
@@ -396,7 +396,7 @@ plasma.volcano:
 	Range: 10c0
 	Report: volcanogunmin.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 850
+		Damage: 950
 		Versus:
 			Infantry: 100
 			ArmorInfantry: 100
@@ -413,7 +413,7 @@ plasma.volcanox2:
 	Range: 10c0
 	Report: volcanogunmax.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 750
+		Damage: 850
 		Versus:
 			Infantry: 110
 			ArmorInfantry: 110

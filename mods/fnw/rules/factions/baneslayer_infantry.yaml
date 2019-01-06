@@ -55,7 +55,7 @@ roquetteorderinf:
 	Inherits@1: ^Infantry
 	Inherits@2: ^Global.Upgrade.baneslayer
 	Inherits@3: ^Infantry.Upgrade.baneslayer
-	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@Target: ^AutoTargetAll
 	Inherits@Upgrade01: ^upgrade.kevlar.infantry.baneslayer
 	Buildable:
 		Queue: Infantry.baneslayer
@@ -249,7 +249,7 @@ vanir:
 		Sequence: shoot
 		RequiresCondition: Tshoot
 	RevealsShroud:
-		Range: 12c0
+		Range: 10c0
 		Type: GroundPosition
 		RevealGeneratedShroud: False
 	AutoTarget:

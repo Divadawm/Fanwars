@@ -13,7 +13,7 @@ aracnst:
 		Dimensions: 3,2
 		BuildSounds: makebuild.wav
 	Health:
-		HP: 10000
+		HP: 14000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -81,7 +81,7 @@ arpowr:
 		BuildSounds: makebuild.wav
 		Adjacent: 10
 	Health:
-		HP: 2000
+		HP: 5000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -118,7 +118,7 @@ arhighpowr:
 		Adjacent: 10
 		BuildSounds: makebuild.wav
 	Health:
-		HP: 3500
+		HP: 8000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -157,7 +157,7 @@ arproc:
 	Tooltip:
 		Name: Diastim Refinery
 	Building:
-		Footprint: === xxx xx=
+		Footprint: xxx xxx ===
 		Dimensions: 3,3
 		BuildSounds: makebuild.wav
 		Adjacent: 10
@@ -168,7 +168,7 @@ arproc:
 	Targetable:
 		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate
 	Health:
-		HP: 5000
+		HP: 8000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -226,7 +226,7 @@ arproc.seconddeploy:
 	Targetable:
 		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate
 	Health:
-		HP: 5000
+		HP: 8000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -274,7 +274,7 @@ arbarr:
 		Description: Produces infantry units
 		Adjacent: 10
 	Health:
-		HP: 2500
+		HP: 5000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -323,7 +323,7 @@ arweap:
 		Adjacent: 10
 		Description: Produces ground vehicles
 	Health:
-		HP: 5000
+		HP: 8000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
@@ -363,7 +363,7 @@ artech:
 	Selectable:
 		Bounds: 100,100
 	Health:
-		HP: 5500
+		HP: 7000
 	Armor:
 		Type: Concrete
 	Valued:
@@ -413,7 +413,7 @@ ardeftech:
 	Selectable:
 		Bounds: 100,100
 	Health:
-		HP: 5000
+		HP: 7000
 	Armor:
 		Type: Concrete
 	Valued:
@@ -448,7 +448,7 @@ t3_commandbuilding:
 	Selectable:
 		Bounds: 100,100
 	Health:
-		HP: 5500
+		HP: 9000
 	Armor:
 		Type: Concrete
 	Valued:
@@ -460,6 +460,7 @@ t3_commandbuilding:
 		Dimensions: 3,2
 		Adjacent: 10
 		BuildSounds: makebuild.wav
+        TerrainTypes: Clear,Road
 		Description: Unlocks tier 3 units, upgrades and structures
 	Production:
 		Produces: Research.RedAlliance
@@ -497,7 +498,7 @@ droned:
 	RevealsShroud:
 		Range: 8c0
 	Health:
-		HP: 2000
+		HP: 5000
 	Transforms:
 		IntoActor: ar_scarab
 		Offset: 0,0
@@ -532,7 +533,7 @@ t3_annihilator_deployed:
 	RevealsShroud:
 		Range: 7c0
 	Health:
-		HP: 6000
+		HP: 8000
 	Transforms:
 		IntoActor: t3_annihilator
 		Offset: 0,0
@@ -599,7 +600,7 @@ t2_predator_deployed:
 	Armor:
 		Type: Concrete
 	Health:
-		HP: 4000
+		HP: 8000
 	Transforms:
 		IntoActor: t2_predator_mobile
 		Offset: 0,0
@@ -648,7 +649,7 @@ t2_tarantula_deployed:
 	RevealsShroud:
 		Range: 7c0
 	Health:
-		HP: 4000
+		HP: 8000
 	Transforms:
 		IntoActor: t2_tarantula_mobile
 		Offset: 0,0
@@ -721,7 +722,7 @@ t3_doomtowerbuild:
 	RevealsShroud:
 		Range: 7c0
 	Health:
-		HP: 1000
+		HP: 2000
 	WithIdleOverlay@Lightning:
 		Offset: 0,0,0
 		Sequence: doomtowerelectro
@@ -805,4 +806,46 @@ arheli:
 		Condition: Ammocraft
 		Range: 5c0
 		AffectsParent: true
+	HitShape:
+    
+arextract:
+	Inherits: ^Building
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 72,50,0,12
+	Buildable:
+		Queue: Defence.redalliance
+		BuildPaletteOrder: 10
+		Description: Automatically recover the resources of the deposit zones
+		BuildDurationModifier: 30
+        Prerequisites: arproc
+		Adjacent: 18
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: Diastime Extractor
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+		Adjacent: 10
+        TerrainTypes: Deposit
+		BuildSounds: deploy_order.aud
+	Health:
+		HP: 6000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 4c0
+	InfiltrateForPowerOutage:
+	AffectedByPowerOutage:
+	ScalePowerWithHealth:
+	Power:
+		Amount: 0
+    RenderSprites:
+        Scale: 1.0
+    CashTrickler:
+        InitialDelay: 800
+		Interval: 700
+		Amount: 950
 	HitShape:

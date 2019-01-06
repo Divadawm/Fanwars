@@ -62,6 +62,7 @@
 	Inherits@4: ^HammerEradicatorStunVehicle
 	Inherits@DisturbPower: ^PowerDistrub.Conclave
 	Inherits@Avatar.conclave: ^Aura.Avatar.Conclave
+    Inherits@Avatar.corossion: ^corossion.desolator
     Inherits@Shield.Protect: ^Shield.Protect
     
 ^ConditionGeneralBuildDefense:
@@ -221,6 +222,7 @@
 		Sequence: VehicleRepair
 		Palette: effectalpha55
 		RequiresCondition: RepairVehicle
+    #Weapons Fact repair
 	ExternalCondition@RepairVehicleX2:
 		Condition: RepairVehicleX2
 	SelfHealing@RepairVehicleX2:
@@ -236,6 +238,7 @@
 		RequiresCondition: RepairVehicleX2
 	EditorTilesetFilter:
 		Categories: Vehicle
+    #Relais mod conclave
 	ExternalCondition@RelaisModuleRepairVehicle:
 		Condition: RelaisModuleRepairVehicle
 	SelfHealing@RelaisModuleRepairVehicle:
@@ -251,6 +254,7 @@
 		RequiresCondition: RelaisModuleRepairVehicle
 	EditorTilesetFilter:
 		Categories: Vehicle
+    #Valkirye
 	ExternalCondition@valkyrieRepairVehicle:
 		Condition: valkyrieRepairVehicle
 	SelfHealing@valkyrieRepairVehicle:
@@ -264,6 +268,7 @@
 		Sequence: VehicleRepair
 		Palette: effectalpha55
 		RequiresCondition: valkyrieRepairVehicle
+    #Harbinger
 	ExternalCondition@harbingerRepairVehicle:
 		Condition: harbingerRepairVehicle
 	SelfHealing@harbingerRepairVehicle:
@@ -277,6 +282,7 @@
 		Sequence: VehicleRepair
 		Palette: effectalpha55
 		RequiresCondition: harbingerRepairVehicle
+    #Zenith
 	ExternalCondition@zenithRepairVehicle:
 		Condition: zenithRepairVehicle
 	SelfHealing@zenithRepairVehicle:
@@ -290,6 +296,34 @@
 		Sequence: VehicleRepair
 		Palette: effectalpha55
 		RequiresCondition: zenithRepairVehicle
+    #Zenith
+	ExternalCondition@zenithRepairVehicle:
+		Condition: zenithRepairVehicle
+	SelfHealing@zenithRepairVehicle:
+		Step: 6
+		Delay: 2
+		HealIfBelow: 100
+		DamageCooldown: 0
+		RequiresCondition: zenithRepairVehicle
+	WithIdleOverlay@zenithRepairVehicle:
+		Offset: 0,0,0
+		Sequence: VehicleRepair
+		Palette: effectalpha55
+		RequiresCondition: zenithRepairVehicle
+    #Ratatosk balise
+	ExternalCondition@RatatoskB:
+		Condition: RatatoskB
+	SelfHealing@RatatoskB:
+		Step: 6
+		Delay: 2
+		HealIfBelow: 100
+		DamageCooldown: 0
+		RequiresCondition: RatatoskB
+	WithIdleOverlay@RatatoskB:
+		Offset: 0,0,0
+		Sequence: VehicleRepair
+		Palette: effectalpha55
+		RequiresCondition: RatatoskB
 
 ^CoditionHeal:
 	ExternalCondition@HealInfantry:
@@ -516,6 +550,17 @@
 		ReferencePoint: top, Right
 		RequiresCondition: stunspeed
 		ZOffset: 120
+
+^corossion.desolator:
+	DamageMultiplier@corossiondesolator:
+		Modifier: 250
+		RequiresCondition: corossiondesolator
+		TargetTypes: Ground, Vehicle, Repair, C4, Water, Road, Concrete
+	WithColoredOverlay@corossiondesolator:
+        Palette: corossion
+		RequiresCondition: corossiondesolator
+	TimedConditionBar@corossiondesolator:
+		Condition: corossiondesolator
         
 ^Shield.Protect:
 	DamageMultiplier@Cover:
@@ -553,9 +598,9 @@
 	ExternalCondition@FlakCruiser:
 		Condition: FlakCruiser
 	DamagedByTerrain@FlakCruiser:
-		Damage: 200
+		Damage: 120
 		DamageInterval: 8
-		Terrain: Clear, Rough, Tree, Diast, Road
+		Terrain: Clear, Rough, Tree, Diast, Road, Rock, Water, Diast, Beach, Wall, Diastgems, Concrete
 		RequiresCondition: FlakCruiser
 	WithIdleOverlay@FlakCruiser:
 		Offset: 0, 0, 220

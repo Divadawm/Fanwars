@@ -28,10 +28,6 @@
 		Name: Conclave
 		InternalName: conclave
 		Description: ...  
-	Faction@Federation:
-		Name: Federation
-		InternalName: federation
-		Description: ...  
 	ResourceType@Diast:
 		Image: resources
 		Type: Diast
@@ -39,7 +35,7 @@
 		ResourceType: 1
 		Palette: diastgreen
 		TerrainType: Diast
-		MaxDensity: 140
+		MaxDensity: 180
 		ValuePerUnit: 30
 		Sequences: diast01, diast02, diast03, diast04, diast05
 		PipColor: green
@@ -52,8 +48,8 @@
 		ResourceType: 2
 		Palette: diastgold
 		TerrainType: Diastgems
-		MaxDensity: 140
-		ValuePerUnit: 50
+		MaxDensity: 180
+		ValuePerUnit: 60
 		Sequences: diast01, diast02, diast03, diast04, diast05
 		PipColor: red
 		AllowedTerrainTypes: Clear,Road
@@ -302,17 +298,9 @@ World:
 		Palette: isotem
 		SmokePalette: player
 	SmudgeLayer@GHUSK:
-		Type: Ghusk
+		Type: Gorehusk
 		Sequence: ghusk
-		SmokePercentage: 50
-		Palette: effect
-		SmokePalette: player
-	SmudgeLayer@SCRAP:
-		Type: Scrap
-		Sequence: scrap
-		SmokePercentage: 50
-		Palette: player
-		SmokePalette: player
+        Palette: effect
 	ObjectivesPanel:
 		PanelName: SKIRMISH_STATS
 	LoadWidgetAtGameStart:

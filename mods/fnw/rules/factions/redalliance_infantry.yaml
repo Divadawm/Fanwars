@@ -93,7 +93,7 @@ t2_tesla:
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Infantry.redalliance
-		BuildPaletteOrder: 70
+		BuildPaletteOrder: 30
 		Prerequisites: artech
 		Description: Heavy infantry armed with tesla weaponry\nCan temporarily disable vehicles and slow down aircrafts\n> Strong vs Infantry, Light Vehicles, Aircraft, Structures\n> Weak vs. Heavy Vehicles
 		BuildDurationModifier: 5
@@ -137,7 +137,7 @@ t2_devastator:
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Infantry.redalliance
-		BuildPaletteOrder: 80
+		BuildPaletteOrder: 40
 		Prerequisites: artech
 		Description: Heavy infantry equipped with a fusion cannon\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
 		BuildDurationModifier: 5
@@ -182,7 +182,7 @@ t3_eradicator:
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Infantry.redalliance
-		BuildPaletteOrder: 130
+		BuildPaletteOrder: 50
 		Prerequisites: t2_command_relais
 		Description: Super heavy infantry unit armed with a powerful autocannon and a flamethrower\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
 		BuildDurationModifier: 8
@@ -197,7 +197,7 @@ t3_eradicator:
 		Crushes: gibs
 		Speed: 65
 	RevealsShroud:
-		Range: 6c0
+		Range: 8c0
 	AttackFrontal:
 	WithInfantryBody:
 		IdleSequences: idle1
@@ -205,7 +205,7 @@ t3_eradicator:
 		DefaultAttackSequence: shoot
 	Armament@PRIMARY:
 		Weapon: AP_Gatling_Era
-		LocalOffset: 0,0,220
+		LocalOffset: 0,30,220
 		MuzzleSequence: muzzle
 	Armament@GARRISONED:
 		Name: garrisoned

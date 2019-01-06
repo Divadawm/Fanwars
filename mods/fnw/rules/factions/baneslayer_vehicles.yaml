@@ -16,9 +16,9 @@
 		Condition: upgrade.Repair.Training.Baneslayer
 	SelfHealing@Upgrade.Repair.Training.Baneslayer:
 		Step: 30
-		Delay: 40
+		Delay: 20
 		HealIfBelow: 50
-		DamageCooldown: 200
+		DamageCooldown: 80
 		RequiresCondition: upgrade.Repair.Training.Baneslayer
 	WithIdleOverlay@Upgrade.Repair.Training.Baneslayer:
 		Offset: 0,0,0
@@ -111,7 +111,7 @@ t1_dainn:
 		TurnSpeed: 14
 		Crushes: gibs, infantry, mine, husk
 	RevealsShroud:
-		Range: 5c0
+		Range: 6c0
 	WithSpriteBody:
 	RenderSprites:
 		Scale: 1.0
@@ -148,7 +148,7 @@ t1_heidrun:
 	Health:
 		HP: 1200
 	RevealsShroud:
-		Range: 7c0
+		Range: 6c0
 	DetectCloaked:
 		Range: 5c0
 		CloakTypes: Cloak, Buried
@@ -224,7 +224,7 @@ t1_ratatoskr:
 	Health:
 		HP: 1500
 	RevealsShroud:
-		Range: 9c0
+		Range: 8c0
 	GrantConditionOnPrerequisite@research.roquette.baneslayer:
 		Prerequisites: research.roquette.baneslayer
 		Condition: upgrade.roquette.baneslayer
@@ -247,9 +247,35 @@ t1_ratatoskr:
 		Weapon: UnitExplodeSmall
 		EmptyWeapon: UnitExplodeSmall
 	AutoTarget:
+	Minelayer:
+		Mine: activate.BaliseHealth
+		AmmoPoolName: balise
+	AmmoPool@initial:
+		Name: balise
+		Armaments: balise
+		Ammo: 1
+		ReloadCount: 1
+		ReloadDelay: 20
+	ReloadAmmoPool@initial:
+		AmmoPool: balise
+		Delay: 700
+		ResetOnFire: true
 	AttackFrontal:
 		RequiresCondition: !empdisable
 	HitShape:
+    
+activate.BaliseHealth:
+	Inherits: ^baliseMine.system
+	KillsSelf:
+		Delay: 180
+	ProximityExternalCondition@RatatoskB:
+		Condition: RatatoskB
+		Range: 6c0
+		AffectsParent: true
+    RenderSprites:
+        Image: balise_medic
+        Scale: 0.7
+	Interactable:
 
 t2_garm:
 	Inherits: ^ShapeVehicleMedium
@@ -346,6 +372,10 @@ t2_garm:
 		TurnSpeed: 15
 		RealignDelay: 20
 		Offset: -85,0,350
+	SpawnActorOnDeath:
+		Actor: t2_garm.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
 	HitShape:
 
 t2_dwarf:
@@ -446,6 +476,10 @@ t2_dwarf:
 		ReferencePoint: bottom, center
 		ZOffset: 100
 		RequiresCondition: mode2
+	SpawnActorOnDeath:
+		Actor: t2_dwarf.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
 	HitShape:
 
 t2_troll:
@@ -477,7 +511,7 @@ t2_troll:
 	Health:
 		HP: 3000
 	RevealsShroud:
-		Range: 7c0
+		Range: 8c0
 	GrantConditionOnAttack@TargetDoom:
 		ArmamentNames: primary
 		RevokeOnNewTarget: false
@@ -507,8 +541,10 @@ t2_troll:
 	RenderSprites:
 	AttackFrontal:
 		RequiresCondition: !empdisable
-	GrantConditionOnMovement@MOUVSOUND:
-		Condition: mouvsnd
+	SpawnActorOnDeath:
+		Actor: t2_troll.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
 	HitShape:
 
 t2_warg:
@@ -660,7 +696,7 @@ t2_lindwyrm:
 	Health:
 		HP: 1800
 	RevealsShroud:
-		Range: 8c0
+		Range: 10c0
 	Explodes:
 		Weapon: UnitExplodeSmall
 		EmptyWeapon: UnitExplodeSmall
@@ -678,13 +714,6 @@ t2_lindwyrm:
 		TurnSpeed: 6
 		RealignDelay: 20
 		Offset: -30,0,0
-	GrantConditionOnMovement@MOUVSOUND:
-		Condition: mouv
-	AmbientSound:
-		RequiresCondition: mouv
-		SoundFiles: tnkmove.wav
-		Delay: 0
-		Interval: 200
 	HitShape:
 
 t3_fafnir:
@@ -743,6 +772,10 @@ t3_fafnir:
 		Scale: 0.80
 	GrantConditionOnMovement@MOUVSOUND:
 		Condition: mouvsnd
+	SpawnActorOnDeath:
+		Actor: t3_fafnir.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
 	HitShape:
 
 t3_loki:
@@ -774,7 +807,7 @@ t3_loki:
 	Health:
 		HP: 1800
 	RevealsShroud:
-		Range: 7c0
+		Range: 8c0
 	Armament@gun:
 		Weapon: Sharest.Railgun
 		Recoil: 150
@@ -820,7 +853,7 @@ t3_heimdall:
 	Health:
 		HP: 1600
 	RevealsShroud:
-		Range: 7c0
+		Range: 10c0
 	Armament@gun:
 		Weapon: Heimdall.Missile
 		Recoil: 150

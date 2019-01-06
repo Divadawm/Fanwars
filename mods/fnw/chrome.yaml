@@ -283,9 +283,9 @@ production-icons: chrome.png
 	veteran-alert: 546,32,16,16
 
 order-icons: chrome.png
-	debug: 480,0,16,16
-	debug-disabled: 480,16,16,16
-	debug-active: 480,32,16,16
+	debug: 564,0,16,16
+	debug-disabled: 564,16,16,16
+	debug-active: 564,32,16,16
 	options: 480,0,16,16
 	options-disabled: 480,16,16,16
 	options-active: 480,32,16,16
