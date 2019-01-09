@@ -13,6 +13,14 @@ addons:
     - nsis-common
 
 script:
+ - chmod +x fetch-engine.sh
+ - chmod +x launch-dedicated.sh
+ - chmod +x launch-game.sh
+ - chmod +x utility.sh
+ - chmod +x packaging/package-all.sh
+ - chmod +x packaging/linux/buildpackage.sh
+ - chmod +x packaging/osx/buildpackage.sh
+ - chmod +x packaging/windows/buildpackage.sh
  - make
  - . mod.config;
    awk '/\r$$/ { exit(1); }' mod.config || (printf "Invalid mod.config format. File must be saved using unix-style (CR, not CRLF) line endings.\n"; travis_terminate 1);
