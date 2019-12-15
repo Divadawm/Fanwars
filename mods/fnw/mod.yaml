@@ -6,6 +6,7 @@ Packages:
 	.
 	$fnw: fnw
 	./mods/common: common
+	./mods/d2k: d2k
 	fnw|bits
 	fnw|bits/icones_ingame/
 	fnw|bits/icones_ingame/build_upgrades_baneslayer
@@ -129,7 +130,7 @@ Chrome:
 Assemblies:
 	common|OpenRA.Mods.Common.dll
 	common|OpenRA.Mods.Cnc.dll
-	fnw|OpenRA.Mods.D2k.dll
+	d2k|OpenRA.Mods.D2k.dll
 	
 TileSets:
     fnw|tilesets/olitrax.yaml
