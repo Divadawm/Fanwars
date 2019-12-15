@@ -29,9 +29,6 @@ Convoy.objective:
         Image: refinery
 		Scale: 0.75
 	BaseBuilding:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
     RenderSprites:
         Image: refinery
 	MustBeDestroyed:

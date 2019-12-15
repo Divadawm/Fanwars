@@ -17,14 +17,10 @@
 		Damage: 10
 		Versus:
 			Infantry: 20
-			ArmorInfantry: 20
 			LightVehicle: 20
 			ArmorTank: 20
-			Lord: 20
-			LordTank: 20
-			harvester: 20
 			Concrete: 20
-		DamageTypes: TriggerProne, ExplosionDeath
+		DamageTypes: TriggerProne, Gibs
 	Warhead@2Eff: CreateEffect
 		Explosions: shrap_exp
 		ExplosionPalette: effectalpha75
@@ -47,7 +43,8 @@ SmallDebris:
 SmallDebris2:
 	Inherits: ^Debris
 	Projectile: Bullet
-		TrailImage: smokey
+		TrailImage: trail_smokemin01
+		TrailPalette: flameeffect
 		Image: medium_debris2
 
 SmallDebris3:
@@ -68,21 +65,17 @@ Debris:
 		Blockable: false
 		Angle: 30, 90
 		Inaccuracy: 1c256
-		Image: shrapnel
+		Image: small_debris2
 	Warhead@1Dam: SpreadDamage
 		Spread: 320
 		Falloff: 100, 60, 30, 15, 0
 		Damage: 150
 		Versus:
 			Infantry: 20
-			ArmorInfantry: 50
 			LightVehicle: 100
 			ArmorTank: 75
-			Lord: 40
-			LordTank: 40
-			harvester: 50
 			Concrete: 100
-		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+		DamageTypes: Prone50Percent, TriggerProne, Gibs
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: SandCrater
 	Warhead@3Eff: CreateEffect
@@ -98,7 +91,7 @@ Debris2:
 		Blockable: false
 		Angle: 30, 90
 		Inaccuracy: 1c256
-		Image: shrapnel2
+		Image: small_debris2
 		Trail: bazooka_trail
 		TrailPalette: effect75alpha
 		TrailInterval: 2
@@ -108,22 +101,14 @@ Debris2:
 		Damage: 250
 		Versus:
 			none: 90
-			wall: 5
-			building: 65
-			wood: 50
-			light: 40
-			heavy: 30
-			concrete: 100
-			invulnerable: 0
-			cy: 20
-			harvester: 25
-		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+		DamageTypes: Prone50Percent, TriggerProne, Gibs
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: SandCrater
 	Warhead@3Eff: CreateEffect
 		Explosion: impact_balist_medium
 		ImpactSound: EXPLLG5.WAV
 		ValidTargets: Ground, Water, Air
+
 
 Debris3:
 	ReloadDelay: 60
@@ -133,7 +118,7 @@ Debris3:
 		Blockable: false
 		Angle: 30, 90
 		Inaccuracy: 1c256
-		Image: shrapnel3
+		Image: small_debris2
 		Trail: large_trail
 		TrailPalette: effect75alpha
 		TrailInterval: 1
@@ -143,16 +128,7 @@ Debris3:
 		Damage: 10
 		Versus:
 			none: 90
-			wall: 5
-			building: 65
-			wood: 50
-			light: 40
-			heavy: 30
-			concrete: 100
-			invulnerable: 0
-			cy: 20
-			harvester: 25
-		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+		DamageTypes: Prone50Percent, TriggerProne, Gibs
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: SandCrater
 	Warhead@3Eff: CreateEffect
@@ -178,16 +154,7 @@ Debris4:
 		Damage: 250
 		Versus:
 			none: 90
-			wall: 5
-			building: 65
-			wood: 50
-			light: 40
-			heavy: 30
-			concrete: 100
-			invulnerable: 0
-			cy: 20
-			harvester: 25
-		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+		DamageTypes: Prone50Percent, TriggerProne, Gibs
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: SandCrater
 	Warhead@3Eff: CreateEffect
@@ -208,7 +175,7 @@ HuskExplode:
 	Warhead@2Eff: CreateEffect
 		Explosion: smokehusk
 		ValidTargets: Ground, Water, Air
-        
+		
 AircraftExplode:
 	Report: vehicle_deathexpl01.aud, vehicle_deathexpl02.aud, vehicle_deathexpl03.aud
 	Warhead@1Dam: SpreadDamage
@@ -230,16 +197,12 @@ AircraftExplode:
 		Damage: 1
 		Versus:
 			Infantry: 20
-			ArmorInfantry: 20
 			LightVehicle: 20
 			ArmorTank: 20
-			Lord: 20
-			LordTank: 20
-			harvester: 20
 			Concrete: 20
-		DamageTypes: Gorehusk
+		DamageTypes: Gibs
 	Warhead@4Smu: LeaveSmudge
-		SmudgeType: Gorehusk
+		SmudgeType: Gibs
 	Warhead@2Eff: CreateEffect
 		Explosions: expl_gibs01
 		ExplosionPalette: effectalpha75

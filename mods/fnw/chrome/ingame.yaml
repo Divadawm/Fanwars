@@ -59,6 +59,7 @@ Container@INGAME_ROOT:
 				Container@PERF_ROOT:
 		Container@MENU_ROOT:
 		TooltipContainer@TOOLTIP_CONTAINER:
+        TooltipContainer@TOOLTIP_STAT:
 
 Container@PERF_WIDGETS:
 	Logic: PerfDebugLogic

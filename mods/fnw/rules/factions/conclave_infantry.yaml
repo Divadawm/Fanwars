@@ -7,24 +7,20 @@ gardian:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 20
 		Description: Infantry armed with a laser rifle that has a three shots burst\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
-		BuildDurationModifier: 3
+		BuildDurationModifier: 4
 		IconPalette: Conclave.Icon
 	Valued:
-		Cost: 100
+		Cost: 120
 	Tooltip:
 		Name: Ranger
 	Health:
 		HP: 500
-	Mobile:
-		Crushes: gibs
-		Speed: 80
-	RevealsShroud:
-		Range: 6c0
 	AttackFrontal:
 	Armament@PRIMARY:
 		Weapon: Gardian.zap.Laser
 		LocalOffset: 0,0,260
 		MuzzleSequence: muzzle
+		MuzzlePalette: flammeeffectblue
 	WithInfantryBody:
 		IdleSequences: idle1
 		StandSequences: stand
@@ -37,117 +33,97 @@ gardian:
 		Name: garrisoned.fafnir
 		Weapon: Gardian.zap.Laser.fafnir
 		MuzzleSequence: garrison-muzzle
-	ExternalCaptures:
+	Captures:
 		CaptureTypes: TechBuilding
 		PlayerExperience: 20
+		CaptureDelay: 375
+		ConsumedByCapture: False
+		EnterCursor: ability
+		EnterBlockedCursor: move-blocked
 	HitShape:
+	CaptureManager:
 
 statis:
 	Inherits@1: ^Infantry
 	Inherits@2: ^Global.Upgrade.Conclave
 	Inherits@3: ^Infantry.Upgrade.Conclave
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@CaptureRules: ^Unite.CaptureRules
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 30
-		Description: EMP laser equipped infantryman\nCan capture neutral structures\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
-		BuildDurationModifier: 4
+		Description: Infantry unit equipped with an impulse lance \n can capture the structure \n> Strong vs vehicles, planes \n> Weak vs infantry
+		BuildDurationModifier: 7
 		IconPalette: Conclave.Icon
 	Valued:
-		Cost: 450
+		Cost: 500
 	Tooltip:
 		Name: Statis
 	Health:
-		HP: 650
-	Mobile:
-		Crushes: gibs
-		Speed: 75
-	RevealsShroud:
-		Range: 6c0
+		HP: 450
 	AttackFrontal:
-	Armament@PRIMARY:
-		Weapon: Statis.emp.Laser
+	Armament@Primary:
+		Weapon: Statis.Missile
 		LocalOffset: 0,0,260
-		MuzzleSequence: muzzle
 	Armament@GARRISONED:
 		Name: garrisoned
-		Weapon: Statis.emp.Laser
+		Weapon: Statis.Missile
 		MuzzleSequence: garrison-muzzle
 	Armament@GARRISONEDFAFNIR:
 		Name: garrisoned.fafnir
-		Weapon: Statis.emp.Laser.fafnir
+		Weapon: Statis.Missile
 		MuzzleSequence: garrison-muzzle
 	WithInfantryBody:
 		StandSequences: stand
 		DefaultAttackSequence: shoot
-	HitShape:
+	RenderSprites:
+		Scale: 0.85
 
 droneconclave:
 	Inherits@1: ^Infantry
 	Inherits@2: ^Global.Upgrade.Conclave
 	Inherits@3: ^Infantry.Upgrade.Conclave
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@Range: ^Scout.Range.Base
 	Buildable:
-		Queue: Vehicle.conclave
+		Queue: locked.conclave
 		BuildPaletteOrder: 50
 		Description: Drone used for recon\nCan leap on infantry units\nCan explode violently when deployed\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
-		BuildDurationModifier: 5
+		BuildDurationModifier: 6
 		IconPalette: Conclave.Icon
-	Valued:
-		Cost: 600
 	Tooltip:
 		Name: Tracker
+	Valued:
+		Cost: 600
 	Health:
-		HP: 1000
+		HP: 600
 	Mobile:
-		Speed: 90
-	RevealsShroud:
-		Range: 8c0
+		Crushes: husk
+		Speed: 110
 	AttackLeap:
 		Speed: 0c200
-	AttackMove:
-	GrantConditionOnDeploy:
-		DeployedCondition: Bipbipboum
-		DeploySound: bip.aud
-		CanUndeploy: false
-	KillsSelf:
-		RequiresCondition: Bipbipboum
-		Delay: 80
-	Explodes@Boum:
-		Weapon: bipboumexplode
-		RequiresCondition: Bipbipboum
 	Armament:
 		Weapon: DroneJaw
 	WithInfantryBody:
 		IdleSequences: idle1
 		StandSequences: stand
 		DefaultAttackSequence: shoot
-	SpawnActorOnDeath:
-		Actor: camera.scout.death
-		RequiresCondition: Bipbipboum
 	HitShape:
-
-UnkownPlace.Infantry.conclave100:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 100
-		Queue: Vehicle.conclave
-		Prerequisites: unkown
-    
+	
 t3_navigator:
 	Inherits@1: ^Infantry
 	Inherits@2: ^Global.Upgrade.Conclave
 	Inherits@3: ^Infantry.Upgrade.Conclave
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Buildable:
-		Queue: Vehicle.conclave
+		Queue: locked.conclave
 		BuildPaletteOrder: 100
 		Prerequisites: lock.navigator
 		Description: Infantry unit able to teleport and generate an energy beam affecting all enemies in its trajectory\n> Strong vs Infantry, Vehicles\n> Weak vs Aircraft
-		BuildDurationModifier: 10
+		BuildDurationModifier: 16
 		IconPalette: Conclave.Icon
 	Valued:
-		Cost: 1050
+		Cost: 1000
 	Tooltip:
 		Name: Navigator
 	Health:
@@ -164,15 +140,14 @@ t3_navigator:
 			Water: 90
 			Pilrock: 90
 			Diast: 90
-	RevealsShroud:
-		Range: 8c0
 	HiddenUnderFog:
 		Type: GroundPosition
-	PortableChrono:
-		ChargeDelay: 600
-		MaxDistance: 5
 	AttackFrontal:
 	-Crushable:
+	WithIdleOverlay@robe:
+		Offset: 0,0,-5
+		Sequence: robe_navigator
+		Palette: powereffect
 	Armament@PRIMARY:
 		Weapon: Navigator.force
 		MuzzleSequence: muzzle
@@ -214,8 +189,6 @@ avatar:
 			Water: 90
 			Pilrock: 90
 			Diast: 90
-	RevealsShroud:
-		Range: 8c0
 	HiddenUnderFog:
 		Type: GroundPosition
 	AttackFrontal:

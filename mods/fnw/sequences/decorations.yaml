@@ -157,6 +157,188 @@ tree39:
 tree40:
 	Defaults:
 	idle:
+    
+treebionte01:
+	Defaults:
+	idle:
+    
+treebionte02:
+	Defaults:
+	idle:
+    
+treebionte03:
+	Defaults:
+	idle:
+    
+treebionte04:
+	Defaults:
+	idle:
+    
+orga_tree01:
+    treeroot:
+        Start: 1
+	idle:
+        ShadowStart: 2
+    
+orga_tree02:
+    treeroot:
+        Start: 1
+	idle:
+        ShadowStart: 2
+    
+orga_tree03:
+    treeroot:
+        Start: 1
+	idle:
+        ShadowStart: 2
+    
+orga_tree04:
+    treeroot:
+        Start: 1
+	idle:
+        ShadowStart: 2
+    
+orga_tree05:
+    treeroot:
+        Start: 1
+	idle:
+        ShadowStart: 2
+    
+orga_tree06:
+    treeroot:
+        Start: 1
+	idle:
+        ShadowStart: 2
+    
+orga_tree07:
+    treeroot:
+        Start: 1
+	idle:
+        ShadowStart: 2
+    
+orga_tree08:
+    treeroot:
+        Start: 1
+	idle:
+        ShadowStart: 2
+    
+orga_tree09:
+    treeroot:
+        Start: 1
+	idle:
+    
+orga_tree10:
+	Defaults:
+        ShadowStart: 2
+    treeroot:
+        Start: 1
+	idle:
+        ShadowStart: 2
+
+crystal_tree01:
+
+    treeroot:
+        Start: 1
+    light:
+        Start: 3
+        BlendMode: Additive
+    effect: crystaltree_effet
+		Start: 0
+		Length: *
+        BlendMode: Additive
+	idle:
+        ShadowStart: 2
+
+crystal_tree02:
+    treeroot:
+        Start: 1
+    light:
+        Start: 3
+        BlendMode: Additive
+    effect: crystaltree_effet
+		Start: 0
+		Length: *
+        BlendMode: Additive
+	idle:
+        ShadowStart: 2
+
+crystal_tree03:
+    treeroot:
+        Start: 1
+    light:
+        Start: 3
+        BlendMode: Additive
+    effect: crystaltree_effet
+		Start: 0
+		Length: *
+        BlendMode: Additive
+	idle:
+        ShadowStart: 2
+
+crystal_tree04:
+    treeroot:
+        Start: 1
+    light:
+        Start: 3
+        BlendMode: Additive
+    effect: crystaltree_effet
+		Start: 0
+		Length: *
+        BlendMode: Additive
+	idle:
+        ShadowStart: 2
+
+crystal_tree05:
+    treeroot:
+        Start: 1
+    light:
+        Start: 3
+        BlendMode: Additive
+    effect: crystaltree_effet
+		Start: 0
+		Length: *
+        BlendMode: Additive
+	idle:
+        ShadowStart: 2
+
+crystal_tree06:
+    treeroot:
+        Start: 1
+    light:
+        Start: 3
+        BlendMode: Additive
+    effect: crystaltree_effet
+		Start: 0
+		Length: *
+        BlendMode: Additive
+	idle:
+        ShadowStart: 2
+
+crystal_tree07:
+    treeroot:
+        Start: 1
+    light:
+        Start: 3
+        BlendMode: Additive
+    effect: crystaltree_effet
+		Start: 0
+		Length: *
+        BlendMode: Additive
+	idle:
+        ShadowStart: 2
+
+crystal_tree08:
+    treeroot:
+        Start: 1
+    light:
+        Start: 3
+        BlendMode: Additive
+    effect: crystaltree_effet
+		Start: 0
+		Length: *
+        BlendMode: Additive
+	idle:
+        ShadowStart: 2
 
 rock_olitrax1:
 	Defaults:
@@ -171,6 +353,7 @@ rock_olitrax3:
 	idle:
 
 urbandecoy_01:
+    Inherits@Buildstat: ^StatBuildingEffect
 	Defaults:
 	idle:
 	damaged-idle:
@@ -185,6 +368,7 @@ urbandecoy_01:
 		BlendMode: Additive
 
 urbandecoy_02:
+    Inherits@Buildstat: ^StatBuildingEffect
 	Defaults:
 	idle:
 	damaged-idle:
@@ -199,6 +383,7 @@ urbandecoy_02:
 		BlendMode: Additive
 
 urbandecoy_03:
+    Inherits@Buildstat: ^StatBuildingEffect
 	Defaults:
 	idle:
 	damaged-idle:

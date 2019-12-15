@@ -1,0 +1,48 @@
+#Red Alliance Vehicle Trad
+t1_harvester:
+	Buildable:
+		Description: Moissonneuse blindée équipée d'une MG lourd\n> Fort vs Infanterie\n> Faible vs Véhicules, Avion
+	Tooltip:
+		Name: Lamia (Moissonneuse)
+		GenericName: Moissonneuse
+
+t1_bike:
+	Buildable:
+		Description: Véhicule de reconnaissance très léger et rapide armé de deux lance-missiles \nPeut détecter les unités furtives\n> Forts vs véhicules légers, avions \n> Faible vs infantile, véhicules lourds
+
+t1_scarab:
+	Buildable:
+		Description: Véhicule de soutien équipée d'un lance-flammes \n> Forts vs Infanterie, Structures \n> Faibles vs véhicules, avions
+
+t2_basilisk:
+	Buildable:
+		Description: Char de combat principal lourdement blindée et équipée avec un imposant canon \n> Fort vs véhicules, Structures\n> Faibles vs Infanterie, Avion
+
+t2_hydra:
+	Buildable:
+		Description: Canon antiaérien lourd autopropulsé sur la coque d'un char de combat principal \n> Forts vs Avion \n> Faibles vs Vehicles
+
+t2_manticore:
+	Buildable:
+		Description: Artillerie lourde automotrice  \n> Forts vs Infanterie, Structures\n> Faibles vs Véhicules, Avions
+
+t2_salamander:
+	Buildable:
+		Description: Véhicule de transport souterrain équipé d'un lance-flammes \n> Forts vs Infanterie, Structures \n> Faible vs Véhicules, Avion
+
+t3_apocalypse:
+	Buildable:
+		Description: Char ultra-lourd armé d'un double canon et de lance-missiles \n> Forts vs véhicules, avions, structures \n> Faible vs Infanterie
+
+t3_purifier:
+	Buildable:
+		Description: Véhicule blindé très lourd équipé d'un double lance-flammes Lourd \n> Forts vs Infanterie, Véhicules Légers, Structures\n> Faible vs Heavy Vehicle, Aircraft
+
+t3_annihilator:
+	Buildable:
+		Description: Véhicule d'artillerie de soutien équiper d'une canon experimentale à balistique nucléaire \nPossibilité de basculer entre le mode combat rapproché / artillerie \n> Fort vs Infanterie, Véhicules, Structures \n> Faible vs Avion
+
+t3_harbinger_mobile:
+	Buildable:
+		Description: Véhicule de soutien avancé non armé capable de guérir et de masquer les unités proches lorsqu’il est déployé \n> Fort vs Aucun \n> Faible vs Tout
+

@@ -3,17 +3,19 @@ General:
 	TileSize: 28
 	Id: OLITRAX
 	EditorTemplateOrder: Terrain, TerrainBlock, Rough, Tree, Road, Cliffs, Wall Cliffs, Cloak Forest Zone, River, Bridge, Pilrock
+	SheetSize: 1024
+	HeightDebugColors: AA0000
 	Extensions: .oli,.shp
-
 Terrain:
 	TerrainType@Clear:
 		Type: Clear
 		TargetTypes: Ground
-		AcceptsSmudgeType: Scorch, Crater, Gorehusk
+		AcceptsSmudgeType: Gibs, Scorch, Crater
+		Color: 2d4f0d
 	TerrainType@ClearBlock:
 		Type: ClearBlock
 		TargetTypes: Ground
-		AcceptsSmudgeType: Scorch, Crater, Gorehusk
+		AcceptsSmudgeType: Scorch, Crater, Gibs
 		Color: 2d4f0d
 	TerrainType@Water:
 		Type: Water
@@ -23,13 +25,13 @@ Terrain:
 	TerrainType@Rough:
 		Type: Rough
 		TargetTypes: Ground
-		AcceptsSmudgeType: Scorch, Crater, Gorehusk, Crater
+		AcceptsSmudgeType: Scorch, Crater, Gibs, Crater
 		Color: 493612
 	TerrainType@Road:
 		Type: Road
 		TargetTypes: Ground
-		AcceptsSmudgeType: Scorch, Crater, Gorehusk, Crater
-		Color: 606060
+		AcceptsSmudgeType: Scorch, Crater, Gibs, Crater
+		Color: 4b4b4b
 	TerrainType@Pilrock:
 		Type: Pilrock
 		TargetTypes: Ground
@@ -43,18 +45,18 @@ Terrain:
 	TerrainType@Tree:
 		Type: Tree
 		TargetTypes: Ground
-		AcceptsSmudgeType: Scorch, Gorehusk, Crater
+		AcceptsSmudgeType: Scorch, Gibs, Crater
 		IsWater: False
-		Color: 194505
+		Color: 2d4a16
 	TerrainType@Beach:
 		Type: Beach
 		TargetTypes: Ground
-		AcceptsSmudgeType: Scorch, Gorehusk, Crater
+		AcceptsSmudgeType: Scorch, Gibs, Crater
 		IsWater: False
 		Color: 314add
 	TerrainType@Concrete:
 		Type: Concrete
-		TargetTypes: Ground, Gorehusk, Crater
+		TargetTypes: Ground, Gibs, Crater
 		Color: 515350
 	TerrainType@Wall:
 		Type: Wall
@@ -74,7 +76,7 @@ Terrain:
 		Color: ffcc00
 	TerrainType@Deposit:
 		Type: Deposit
-        TargetTypes: Ground
+		TargetTypes: Ground
 		Color: C7C9FA
 	TerrainType@Subterranean:
 		Type: Subterranean
@@ -89,6 +91,54 @@ Templates:
 		Categories: Terrain
 		Tiles:
 			0: Clear
+	Template@439:
+		Id: 439
+		Images: t439.oli, t440.oli, t441.oli, t442.oli, t443.oli, t444.oli, t445.oli, t446.oli, t447.oli, t448.oli, t449.oli, t450.oli, t451.oli, t452.oli, t453.oli, t454.oli, t455.oli, t456.oli, t457.oli, t458.oli, t459.oli, t460.oli, t461.oli, t462.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Terrain
+		Tiles:
+			0: Clear
+	Template@463:
+		Id: 463
+		Images: t463.oli, t464.oli, t465.oli, t466.oli, t467.oli, t468.oli, t469.oli, t470.oli, t471.oli, t472.oli, t473.oli, t474.oli, t475.oli, t476.oli, t477.oli, t478.oli, t479.oli, t480.oli, t481.oli, t482.oli, t483.oli, t484.oli, t485.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Terrain
+		Tiles:
+			0: Clear    
+	Template@511:
+		Id: 511
+		Images: t511.oli, t512.oli, t513.oli, t514.oli, t515.oli, t516.oli, t517.oli, t518.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Terrain
+		Tiles:
+			0: Clear
+	Template@519:
+		Id: 519
+		Images: t519.oli, t520.oli, t521.oli, t522.oli, t523.oli, t524.oli, t525.oli, t526.oli, t527.oli, t528.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Terrain
+		Tiles:
+			0: Clear  
+	Template@529:
+		Id: 529
+		Images: t529.oli, t530.oli, t531.oli, t532.oli, t533.oli, t534.oli, t535.oli, t536.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Terrain
+		Tiles:
+			0: Clear
+	Template@538:
+		Id: 538
+		Images: t538.oli, t539.oli, t540.oli, t541.oli, t542.oli, t543.oli, t544.oli, t545.oli, t546.oli, t547.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Terrain
+		Tiles:
+			0: Clear 
 	Template@0bis:
 		Id: 800
 		Images: t00.oli, t210.oli, t211.oli, t222.oli, t229.oli, t230.oli, t231.oli, t233.oli, t236.oli, t278.oli, t279.oli, t280.oli
@@ -102,9 +152,9 @@ Templates:
 		Images: t01.oli, t214.oli, t215.oli, t223.oli, t224.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@2:
 		Id: 2
 		Images: t02.oli, t216.oli, t217.oli, t225.oli
@@ -488,149 +538,149 @@ Templates:
 		Images: t41.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@42:
 		Id: 42
 		Images: t42.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@43:
 		Id: 43
 		Images: t43.oli
 		Size: 2,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
-			1: Rough
+			0: Clear
+			1: Clear
 	Template@44:
 		Id: 44
 		Images: t44.oli
 		Size: 2,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			1: Rough
-			0: Rough
+			1: Clear
+			0: Clear
 	Template@45:
 		Id: 45
 		Images: t45.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@46:
 		Id: 46
 		Images: t46.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@47:
 		Id: 47
 		Images: t47.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@48:
 		Id: 48
 		Images: t48.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@49:
 		Id: 49
 		Images: t49.oli
 		Size: 1,1
 		PickAny: False
 		Tiles:
-		Categories: Rough
-			0: Rough
+		Categories: Clear
+			0: Clear
 	Template@50:
 		Id: 50
 		Images: t50.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@51:
 		Id: 51
 		Images: t51.oli
 		Size: 2,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
-			1: Rough
+			0: Clear
+			1: Clear
 	Template@52:
 		Id: 52
 		Images: t52.oli
 		Size: 2,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			1: Rough
-			0: Rough
+			1: Clear
+			0: Clear
 	Template@53:
 		Id: 53
 		Images: t53.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@54:
 		Id: 54
 		Images: t54.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@55:
 		Id: 55
 		Images: t55.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@56:
 		Id: 56
 		Images: t56.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@57:
 		Id: 57
 		Images: t57.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@58:
 		Id: 58
 		Images: t58.oli
 		Size: 1,1
 		PickAny: False
-		Categories: Rough
+		Categories: Clear
 		Tiles:
-			0: Rough
+			0: Clear
 	Template@59:
 		Id: 59
 		Images: t59.oli
@@ -2001,9 +2051,9 @@ Templates:
 		PickAny: False
 		Categories: Terrain
 		Tiles:
-			2: Rough
+			2: Clear
 			3: Clear
-			1: Rough
+			1: Clear
 			0: Clear
 	Template@202:
 		Id: 202
@@ -3471,7 +3521,7 @@ Templates:
 		Tiles:
 			0: Rock
 			1: Rock
-			2: Clear
+			2: Road
 	Template@360:
 		Id: 360
 		Images: t360.oli
@@ -3504,3 +3554,978 @@ Templates:
 		Categories: Wall Cliffs
 		Tiles:
 			0: Rock
+	Template@364:
+		Id: 364
+		Images: t364.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@365:
+		Id: 365
+		Images: t365.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@366:
+		Id: 366
+		Images: t366.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			2: Road
+			3: Road
+			1: Road
+	Template@367:
+		Id: 367
+		Images: t367.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			2: Road
+			3: Road
+			1: Road
+	Template@368:
+		Id: 368
+		Images: t368.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@369:
+		Id: 369
+		Images: t369.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@370:
+		Id: 370
+		Images: t370.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@371:
+		Id: 371
+		Images: t371.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			2: Road
+			3: Road
+			1: Road
+	Template@372:
+		Id: 372
+		Images: t372.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@373:
+		Id: 373
+		Images: t373.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			2: Road
+			3: Road
+			1: Road
+	Template@374:
+		Id: 374
+		Images: t374.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			2: Road
+			3: Road
+			1: Road
+	Template@375:
+		Id: 375
+		Images: t375.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			2: Road
+			3: Road
+			1: Road
+	Template@376:
+		Id: 376
+		Images: t376.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@377:
+		Id: 377
+		Images: t377.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@378:
+		Id: 378
+		Images: t378.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			2: Road
+			3: Road
+			1: Road
+	Template@379:
+		Id: 379
+		Images: t379.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@380:
+		Id: 380
+		Images: t380.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@381:
+		Id: 381
+		Images: t381.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@382:
+		Id: 382
+		Images: t382.oli, t383.oli, t384.oli, t385.oli, t386.oli, t387.oli
+		Size: 1,1
+		PickAny: False
+		Categories: TerrainBlock
+		Tiles:
+			0: Pilrock
+	Template@388:
+		Id: 388
+		Images: t388.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@389:
+		Id: 389
+		Images: t389.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@390:
+		Id: 390
+		Images: t390.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@391:
+		Id: 391
+		Images: t391.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@392:
+		Id: 392
+		Images: t392.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@393:
+		Id: 393
+		Images: t393.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@394:
+		Id: 394
+		Images: t394.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@395:
+		Id: 395
+		Images: t395.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@396:
+		Id: 396
+		Images: t396.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@397:
+		Id: 397
+		Images: t397.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@398:
+		Id: 398
+		Images: t398.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@399:
+		Id: 399
+		Images: t399.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@400:
+		Id: 400
+		Images: t400.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@401:
+		Id: 401
+		Images: t401.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@402:
+		Id: 402
+		Images: t402.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@403:
+		Id: 403
+		Images: t403.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@404:
+		Id: 404
+		Images: t404.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@405:
+		Id: 405
+		Images: t405.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			2: Road
+			0: Road
+			1: Road
+			3: Road
+	Template@406:
+		Id: 406
+		Images: t406.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			2: Road
+			0: Road
+			1: Road
+			3: Road
+	Template@407:
+		Id: 407
+		Images: t407.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			2: Road
+			0: Road
+			1: Road
+			3: Road
+	Template@408:
+		Id: 408
+		Images: t408.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			2: Road
+			3: Road
+			1: Road
+	Template@409:
+		Id: 409
+		Images: t409.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			2: Road
+			0: Road
+			1: Road
+			3: Road
+	Template@410:
+		Id: 410
+		Images: t410.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			2: Road
+			0: Road
+			1: Road
+			3: Road
+	Template@411:
+		Id: 411
+		Images: t411.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			2: Road
+			0: Road
+			1: Road
+			3: Road
+	Template@412:
+		Id: 412
+		Images: t412.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Road
+		Tiles:
+			2: Road
+			0: Road
+			1: Road
+			3: Road
+	Template@413:
+		Id: 413
+		Images: t413.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@414:
+		Id: 414
+		Images: t414.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@415:
+		Id: 415
+		Images: t415.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@416:
+		Id: 416
+		Images: t416.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@417:
+		Id: 417
+		Images: t417.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@418:
+		Id: 418
+		Images: t418.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@419:
+		Id: 419
+		Images: t419.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@420:
+		Id: 420
+		Images: t420.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@421:
+		Id: 421
+		Images: t421.oli
+		Categories: Road
+		Size: 1,1
+		PickAny: False
+		Tiles:
+			0: Road
+	Template@422:
+		Id: 422
+		Images: t422.oli
+		Categories: Road
+		Size: 1,1
+		PickAny: False
+		Tiles:
+			0: Road
+	Template@423:
+		Id: 423
+		Images: t423.oli
+		Categories: Road
+		Size: 1,1
+		PickAny: False
+		Tiles:
+			0: Road
+	Template@424:
+		Id: 424
+		Images: t424.oli
+		Categories: Road
+		Size: 1,1
+		PickAny: False
+		Tiles:
+			0: Road
+			
+	Template@425:
+		Id: 425
+		Images: t425.oli
+		Size: 4,3
+		PickAny: False
+		Categories: Terrain
+		Tiles:
+			9: Rock
+			5: Rock
+			1: Rock
+			0: Rock
+			4: Rock
+			8: Rock
+			10: Rock
+			6: Clear
+			7: Clear
+			11: Clear
+			2: Clear
+			3: Clear
+	Template@426:
+		Id: 426
+		Images: t426.oli
+		Size: 3,2
+		PickAny: False
+		Categories: Terrain
+		Tiles:
+			5: Rock
+			2: Rock
+			1: Rock
+			0: Rock
+			3: Clear
+			4: Rock
+	Template@427:
+		Id: 427
+		Images: t427.oli
+		Size: 3,2
+		PickAny: False
+		Categories: Terrain
+		Tiles:
+			5: Rock
+			2: Rock
+			1: Rock
+			0: Rock
+			3: Rock
+			4: Rock
+	Template@428:
+		Id: 428
+		Images: t428.oli
+		Size: 2,3
+		PickAny: False
+		Categories: Road
+		Tiles:
+			4: Road
+			2: Road
+			0: Clear
+			1: Road
+			3: Road
+			5: Clear
+	Template@429:
+		Id: 429
+		Images: t429.oli
+		Size: 2,3
+		PickAny: False
+		Categories: Road
+		Tiles:
+			4: Clear
+			2: Road
+			0: Road
+			1: Clear
+			3: Road
+			5: Road
+	Template@430:
+		Id: 430
+		Images: t430.oli
+		Size: 6,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Clear
+			1: Road
+			2: Road
+			3: Road
+			4: Road
+			5: Road
+	Template@431:
+		Id: 431
+		Images: t431.oli
+		Size: 6,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+			2: Road
+			3: Road
+			4: Road
+			5: Clear
+	Template@432:
+		Id: 432
+		Images: t432.oli
+		Size: 2,3
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Clear
+			2: Road
+			4: Road
+			5: Clear
+			3: Road
+			1: Road
+	Template@433:
+		Id: 433
+		Images: t433.oli
+		Size: 2,3
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			2: Road
+			4: Clear
+			5: Road
+			3: Road
+			1: Clear
+	Template@434:
+		Id: 434
+		Images: t434.oli
+		Size: 6,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+			2: Road
+			3: Road
+			4: Road
+			5: Clear
+	Template@435:
+		Id: 435
+		Images: t435.oli
+		Size: 6,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Clear
+			1: Road
+			2: Road
+			3: Road
+			4: Road
+			5: Road
+	Template@436:
+		Id: 436
+		Images: t436.oli
+		Size: 1,3
+		PickAny: False
+		Categories: Cliffs
+		Tiles:
+			0: Rock
+			1: Rock
+			2: Clear
+	Template@437:
+		Id: 437
+		Images: t437.oli
+		Size: 1,3
+		PickAny: False
+		Categories: Cliffs
+		Tiles:
+			0: Rock
+			1: Rock
+			2: Clear
+	Template@438:
+		Id: 438
+		Images: t438.oli
+		Size: 1,3
+		PickAny: False
+		Categories: Cliffs
+		Tiles:
+			0: Rock
+			1: Rock
+			2: Clear
+	Template@486:
+		Id: 486
+		Images: t486.oli
+		Size: 1,4
+		PickAny: False
+		Categories: Cliffs
+		Tiles:
+			0: Road
+			1: Rock
+			2: Rock
+			3: Clear
+	Template@487:
+		Id: 487
+		Images: t487.oli
+		Size: 2,4
+		PickAny: False
+		Categories: Cliffs
+		Tiles:
+			0: Rock
+			2: Rock
+			4: Rock
+			6: Clear
+			7: Clear
+			5: Rock
+			3: Rock
+			1: Rock
+	Template@488:
+		Id: 488
+		Images: t488.oli
+		Size: 2,4
+		PickAny: False
+		Categories: Cliffs
+		Tiles:
+			0: Rock
+			2: Rock
+			4: Rock
+			5: Rock
+			7: Clear
+			6: Clear
+			3: Rock
+			1: Rock
+	Template@489:
+		Id: 489
+		Images: t489.oli
+		Size: 1,4
+		PickAny: False
+		Categories: Cliffs
+		Tiles:
+			0: Road
+			1: Rock
+			2: Rock
+			3: Road
+	Template@490:
+		Id: 490
+		Images: t490.oli
+		Size: 2,4
+		PickAny: False
+		Categories: Cliffs
+		Tiles:
+			6: Road
+			4: Rock
+			2: Rock
+			0: Clear
+			1: Rock
+			3: Rock
+			5: Rock
+			7: Road
+	Template@491:
+		Id: 491
+		Images: t491.oli
+		Size: 2,4
+		PickAny: False
+		Categories: Cliffs
+		Tiles:
+			6: Road
+			4: Rock
+			2: Rock
+			0: Rock
+			1: Clear
+			3: Rock
+			5: Rock
+			7: Road
+	Template@492:
+		Id: 492
+		Images: t492.oli
+		Size: 3,3
+		PickAny: False
+		Categories: Terrain
+		Tiles:
+			0: Clear
+			3: Clear
+			6: Clear
+			7: Clear
+			8: Clear
+			5: Clear
+			2: Clear
+			1: Clear
+			4: Clear
+	Template@493:
+		Id: 493
+		Images: t493.oli
+		Size: 3,2
+		PickAny: False
+		Categories: Terrain
+		Tiles:
+			0: Clear
+			3: Clear
+			4: Clear
+			5: Clear
+			2: Clear
+			1: Clear
+	Template@494:
+		Id: 494
+		Images: t494.oli
+		Size: 3,2
+		PickAny: False
+		Categories: Terrain
+		Tiles:
+			0: Clear
+			3: Clear
+			4: Clear
+			5: Clear
+			2: Clear
+			1: Clear
+	Template@495:
+		Id: 495
+		Images: t495.oli
+		Size: 3,2
+		PickAny: False
+		Categories: Terrain
+		Tiles:
+			0: Clear
+			3: Clear
+			4: Clear
+			1: Clear
+			2: Clear
+			5: Clear
+	Template@496:
+		Id: 496
+		Images: t496.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@497:
+		Id: 497
+		Images: t497.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@498:
+		Id: 498
+		Images: t498.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@499:
+		Id: 499
+		Images: t499.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@500:
+		Id: 500
+		Images: t500.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@501:
+		Id: 501
+		Images: t501.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@502:
+		Id: 502
+		Images: t502.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@503:
+		Id: 503
+		Images: t503.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@504:
+		Id: 504
+		Images: t504.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Rock
+		Tiles:
+			0: Rock
+			2: Road
+			3: Road
+			1: Rock
+	Template@505:
+		Id: 505
+		Images: t505.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Rock
+		Tiles:
+			0: Rock
+			2: Road
+			3: Road
+			1: Rock
+	Template@506:
+		Id: 506
+		Images: t506.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Rock
+		Tiles:
+			0: Rock
+			2: Road
+			3: Road
+			1: Rock
+	Template@507:
+		Id: 507
+		Images: t507.oli
+		Size: 2,2
+		PickAny: False
+		Categories: Rock
+		Tiles:
+			0: Rock
+			2: Road
+			3: Road
+			1: Rock
+	Template@508:
+		Id: 508
+		Images: t508.oli
+		Size: 2,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+	Template@509:
+		Id: 509
+		Images: t509.oli
+		Size: 1,1
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+	Template@510:
+		Id: 510
+		Images: t510.oli
+		Size: 4,4
+		PickAny: False
+		Categories: Road
+		Tiles:
+			0: Road
+			1: Road
+			2: Road
+			6: Road
+			7: Road
+			3: Road
+			11: Road
+			15: Road
+			14: Road
+			13: Road
+			12: Road
+			8: Road
+			4: Road
+			5: Road
+			9: Road
+			10: Road

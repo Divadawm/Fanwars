@@ -5,12 +5,13 @@ tcmcv:
 
 prospecteur:
 	Inherits@Stat: ^StatVehicleEffect
-	idle: null
+	idle:
+		Facings: 64
 	harvest: harvest_anim
 		Length: *
 		BlendMode: Additive
-	dock: null
-	dock-loop: null
+	dock: prospecteur
+	dock-loop: prospecteur
 	icon: prospecticon
 
 arpenteur:
@@ -57,6 +58,7 @@ t2_rodeur:
 		Tick: 20
 	turret: t2_rodeurtur
 		Facings: 64
+		Offset: 0, -20
 	muzzle: muzzle_bluegun
 		Length: *
 		BlendMode: Additive

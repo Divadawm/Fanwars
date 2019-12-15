@@ -1,10 +1,10 @@
 english:
 	english: English
 
-t1_ratatoskr:
-    Tooltip:
-        Name: CaptainWAAARGH
-        
-oppowr:
-    Tooltip:
-        Name: centrale
+    t1_ratatoskr:
+        Tooltip:
+            Name: CaptainWAAARGH
+            
+    oppowr:
+        Tooltip:
+            Name: centrale

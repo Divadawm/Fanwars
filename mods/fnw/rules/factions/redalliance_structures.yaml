@@ -1,3 +1,33 @@
+arwall:
+	Inherits: ^Wall
+	Buildable:
+		Queue: nope.redalliance
+		BuildPaletteOrder: 30
+		Description: Stop units and blocks enemy fire.
+	Valued:
+		Cost: 200
+	CustomSellValue:
+		Value: 0
+	Tooltip:
+		Name: Concrete Wall
+	SoundOnDamageTransition:
+		DamagedSounds:
+		DestroyedSounds:
+	Health:
+		HP: 4000
+	Armor:
+		Type: Concrete
+	Crushable:
+		CrushClasses: heavywall
+	BlocksProjectiles:
+	LineBuild:
+		NodeTypes: concrete
+	LineBuildNode:
+		Types: concrete
+	WithWallSpriteBody:
+		Type: concrete
+
+
 aracnst:
 	Inherits@1: ^Building
 	Inherits@2: ^3x2Shape
@@ -16,34 +46,35 @@ aracnst:
 		HP: 14000
 	Armor:
 		Type: Concrete
-	RevealsShroud:
-		Range: 10c0
-	ProductionAirdrop:
-		Produces: Building.redalliance
-		ActorType: t0_transportship
+	WithProductionDoorOverlay:
+		RequiresCondition: !build-incomplete
+		Sequence: make-drop
 	Production:
-		Produces: Defence.redalliance
+		Produces: Building.redalliance, Defence.redalliance
+		PauseOnCondition: empdisable
+		RequiresCondition: !build-incomplete
 	Transforms:
 		IntoActor: armcv
-		Offset: 1,1
+		Offset: 0,0
 		Facing: 96
 	ProductionQueue@Building:
 		Type: Building.redalliance
 		Factions: redalliance
 		Group: Building
-		LowPowerSlowdown: 2
+		LowPowerModifier: 200
 		QueuedAudio: Building
 		ReadyAudio: BuildingReady
 	ProductionQueue@DEFENCE:
 		Type: Defence.redalliance
 		Factions: redalliance
 		Group: defence
-		LowPowerSlowdown: 2
+		LowPowerModifier: 200
 		QueuedAudio: Building
 		ReadyAudio: BuildingReady
 	Exit@1:
-		SpawnOffset: -850,900,0
+		SpawnOffset: -50,50,0
 		ExitCell: 0,2
+		ExitDelay: 45
 	BaseBuilding:
 	ProductionBar@Building:
 		ProductionType: Building.redalliance
@@ -58,6 +89,11 @@ aracnst:
 	RallyPoint:
 		RallyPoint: 3,4
 	ProvidesPrerequisite@buildingname:
+	WithIdleOverlay@Smoke:
+		Offset: 0, 0, 0
+		Sequence: smoke
+		Palette: effectalpha75
+		RequiresCondition: !build-incomplete
 	HitShape:
 
 arpowr:
@@ -84,8 +120,6 @@ arpowr:
 		HP: 5000
 	Armor:
 		Type: Concrete
-	RevealsShroud:
-		Range: 4c0
 	Power:
 		Amount: 100
 	InfiltrateForPowerOutage:
@@ -93,6 +127,7 @@ arpowr:
 		Offset: -545, 480, 1630
 		Sequence: smoke_cheminal
 		Palette: effect
+		RequiresCondition: !build-incomplete
 	AffectedByPowerOutage:
 	ScalePowerWithHealth:
 	HitShape:
@@ -121,8 +156,6 @@ arhighpowr:
 		HP: 8000
 	Armor:
 		Type: Concrete
-	RevealsShroud:
-		Range: 4c0
 	Power:
 		Amount: 350
 	InfiltrateForPowerOutage:
@@ -162,17 +195,17 @@ arproc:
 		BuildSounds: makebuild.wav
 		Adjacent: 10
 	Selectable:
-		Bounds: 72,50,0,12
+		Bounds: 80,70,0,0
 	SelectionDecorations:
 		VisualBounds: 72,70,0,-2
+	Sellable:
+		RefundPercent: 90
 	Targetable:
 		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate
 	Health:
 		HP: 8000
 	Armor:
 		Type: Concrete
-	RevealsShroud:
-		Range: 6c0
 	Refinery@1:
 		DockAngle: 164
 		DockOffset: 2,2
@@ -199,6 +232,11 @@ arproc:
 	Power:
 		Amount: 0
 	WithDeathAnimation:
+	WithIdleOverlay@Smoke:
+		Offset: 0, 0, 0
+		Sequence: smoke
+		Palette: effectalpha75
+		RequiresCondition: !build-incomplete
 	HitShape:
 
 arproc.seconddeploy:
@@ -220,7 +258,7 @@ arproc.seconddeploy:
 		BuildSounds: makebuild.wav
 		Adjacent: 10
 	Selectable:
-		Bounds: 72,50,0,12
+		Bounds: 80,70,0,0
 	SelectionDecorations:
 		VisualBounds: 72,70,0,-2
 	Targetable:
@@ -229,8 +267,6 @@ arproc.seconddeploy:
 		HP: 8000
 	Armor:
 		Type: Concrete
-	RevealsShroud:
-		Range: 6c0
 	Refinery@1:
 		DockAngle: 96
 		DockOffset: 2,2
@@ -257,11 +293,18 @@ arproc.seconddeploy:
 	WithDeathAnimation:
 	RenderSprites:
 		Image: arproc
+	WithIdleOverlay@Smoke:
+		Offset: 0, 0, 0
+		Sequence: smoke
+		Palette: effectalpha75
+		RequiresCondition: !build-incomplete
 	HitShape:
 
 arbarr:
 	Inherits@1: ^Building
 	Inherits@2: ^3x2Shape
+	Selectable:
+		Bounds: 80,60
 	Valued:
 		Cost: 500
 	Tooltip:
@@ -277,15 +320,15 @@ arbarr:
 		HP: 5000
 	Armor:
 		Type: Concrete
-	RevealsShroud:
-		Range: 6c0
 	Production:
 		Produces: Infantry.redalliance
+		PauseOnCondition: empdisable
+		RequiresCondition: !build-incomplete
 	ProductionQueue@Infantry:
 		Type: Infantry.redalliance
 		Factions: redalliance
 		Group: Infantry
-		LowPowerSlowdown: 2
+		LowPowerModifier: 200
 	ProductionBar@HeavyInfantry:
 		ProductionType: Infantry.redalliance
 	RallyPoint:
@@ -305,11 +348,23 @@ arbarr:
 		AffectsParent: true
 	ProvidesPrerequisite@buildingame:
 		Prerequisite: arbarr
+	WithIdleOverlay@Smoke:
+		Offset: 0, 0, 0
+		Sequence: smoke
+		Palette: effectalpha75
+		RequiresCondition: !build-incomplete
+	WithIdleOverlay@Light:
+		Offset: 0, 0, 0
+		Sequence: light_holo
+		Palette: powereffect40
+		RequiresCondition: !build-incomplete
 	HitShape:
 
 arweap:
 	Inherits@1: ^Building
 	Inherits@2: ^4x3Shape
+	Selectable:
+		Bounds: 80,70
 	Valued:
 		Cost: 2000
 	Tooltip:
@@ -329,39 +384,48 @@ arweap:
 	RevealsShroud:
 		Range: 4c0
 	RallyPoint:
-		RallyPoint: 3,4
+		RallyPoint: 4,2
 	Exit:
 		SpawnOffset: -50,-50,0
-		ExitCell: 2,1
+		ExitCell: 4,3
 	ProximityExternalCondition@BuildingRepair:
-		Condition: RepairVehicle
+		Condition: FactoryRepairVehicle
 		Range: 5c0
 		AffectsParent: true
+		PauseOnCondition: empdisable
 	WithProductionDoorOverlay:
+		RequiresCondition: !build-incomplete
 		Sequence: build-top
 	Production:
 		Produces: Vehicle.redalliance
+		PauseOnCondition: empdisable
+		RequiresCondition: !build-incomplete
 	ProductionQueue@Vehicle:
 		Type: Vehicle.redalliance
 		Factions: redalliance
 		Group: Vehicle
-		LowPowerSlowdown: 2
-	ProductionBar@Vehicle:
-		ProductionType: Vehicle.redalliance
-	Power:
-		Amount: 0
+		LowPowerModifier: 200
 	Transforms:
 		IntoActor: arnaweap
 		Offset: 2,1
 		Facing: 164
+	ProductionBar@Vehicle:
+		ProductionType: Vehicle.redalliance
+	Power:
+		Amount: 0
 	ConditionManager:
+	WithIdleOverlay@Smoke:
+		Offset: 0, 0, 0
+		Sequence: smoke
+		Palette: effectalpha75
+		RequiresCondition: !build-incomplete
 	HitShape:
 
 artech:
 	Inherits@1: ^Building
 	Inherits@2: ^3x2Shape
 	Selectable:
-		Bounds: 100,100
+		Bounds: 80,70
 	Health:
 		HP: 7000
 	Armor:
@@ -379,21 +443,23 @@ artech:
 	Production:
 		Produces: Research.RedAlliance
 		MoveIntoWorld: false
+		PauseOnCondition: empdisable
+		RequiresCondition: !build-incomplete
+	RevealsShroud:
+		Range: 4c0
+	Exit:
 	Transforms:
 		IntoActor: mobilerelay
 		Offset: 1,1
 		Facing: 164
 		TransformSounds: makebuild.wav
 		NoTransformNotification: CannotDeploy
-	RevealsShroud:
-		Range: 4c0
-	Exit:
 	ProductionQueue@Research:
 		Type: Research.RedAlliance
 		Factions: redalliance
 		Group: Research
 		BuildDurationModifier: 80
-		LowPowerSlowdown: 2
+		LowPowerModifier: 200
 		QueuedAudio: Research
 		ReadyAudio: ResearchReady
 	ProvidesPrerequisite@buildingame:
@@ -404,14 +470,20 @@ artech:
 		Amount: 0
 	WithDeliveryAnimation:
 		ActiveSequence: idle
+	WithIdleOverlay@Smoke:
+		Offset: 0, 0, 0
+		Sequence: smoke
+		Palette: effectalpha75
+		RequiresCondition: !build-incomplete
 	HitShape:
 
 ardeftech:
 	Inherits@1: ^Building
 	Inherits@2: ^3x2Shape
 	Inherits@PowerBuilding: ^BuildingGivePower.Alliance
+	Inherits@3: ^DisablePowerDown
 	Selectable:
-		Bounds: 100,100
+		Bounds: 80,60,0,0
 	Health:
 		HP: 7000
 	Armor:
@@ -427,12 +499,27 @@ ardeftech:
 		BuildSounds: makebuild.wav
 	Transforms:
 		IntoActor: t1_defence_hq
-		Offset: 0,0
-		Facing: 164
+		Offset: 1,1
+		Facing: 98
 		TransformSounds: makebuild.wav
 		NoTransformNotification: CannotDeploy
-	RevealsShroud:
-		Range: 4c0
+	Production:
+		Produces: Doctrines.RedAlliance
+		MoveIntoWorld: false
+		PauseOnCondition: empdisable
+		RequiresCondition: !build-incomplete
+	ProductionQueue@Doctrines:
+		Type: Doctrines.RedAlliance
+		Factions: redalliance
+		Group: Doctrines
+		BuildDurationModifier: 80
+		LowPowerModifier: 200
+		QueuedAudio: Research
+		ReadyAudio: ResearchReady
+	ProvidesPrerequisite@buildingame:
+		Prerequisite: artech
+	ProductionBar@Doctrines.RedAlliance:
+		ProductionType: Doctrines.RedAlliance
 	Exit:
 	BaseProvider:
 		Cooldown: 75
@@ -440,13 +527,20 @@ ardeftech:
 	ProvidesPrerequisite:
 	Power:
 		Amount: 0
+	ConditionManager:
+	GrantExternalConditionToProduced@WeaponsAR:
+		Condition: RemoveBaseWeaponsAR
+		Duration: 10
+	GrantExternalConditionToProduced@StatAR:
+		Condition: RemoveBaseStatsAR
+		Duration: 10
 	HitShape:
 
 t3_commandbuilding:
 	Inherits@1: ^Building
 	Inherits@2: ^3x2Shape
 	Selectable:
-		Bounds: 100,100
+		Bounds: 80,80,0,0
 	Health:
 		HP: 9000
 	Armor:
@@ -460,19 +554,11 @@ t3_commandbuilding:
 		Dimensions: 3,2
 		Adjacent: 10
 		BuildSounds: makebuild.wav
-        TerrainTypes: Clear,Road
+		TerrainTypes: Clear,Road
 		Description: Unlocks tier 3 units, upgrades and structures
 	Production:
 		Produces: Research.RedAlliance
 		MoveIntoWorld: false
-	Transforms:
-		IntoActor: t2_command_relais
-		Offset: 1,1
-		Facing: 164
-		TransformSounds: makebuild.wav
-		NoTransformNotification: CannotDeploy
-	RevealsShroud:
-		Range: 4c0
 	ProvidesPrerequisite@buildingame:
 		Prerequisite: t2_command_relais
 	RenderSprites:
@@ -495,28 +581,28 @@ droned:
 	Building:
 		Footprint: x
 		Dimensions: 1,1
-	RevealsShroud:
-		Range: 8c0
 	Health:
 		HP: 5000
 	Transforms:
 		IntoActor: ar_scarab
 		Offset: 0,0
 		Facing: 96
+	RevealsShroud:
+		Range: 6c0
 	Cloak:
 		InitialDelay: 2
 		CloakDelay: 2
 		CloakSound:
 		UncloakSound:
 		IsPlayerPalette: true
-		CloakTypes: buried
+		CloakTypes: Cloak
 	Armor:
 		Type: LightVehicle
 	-MustBeDestroyed:
 	HitShape:
 
 t3_annihilator_deployed:
-	Inherits@1: ^Building
+	Inherits@1: ^Defence
 	Inherits@2: ^1x1Shape
 	Inherits@AUTOTARGET: ^AutoTargetGround
 	Inherits@3: ^ConditioneffetGeneralsUnit
@@ -530,19 +616,26 @@ t3_annihilator_deployed:
 	Building:
 		Footprint: x
 		Dimensions: 1,1
-	RevealsShroud:
-		Range: 7c0
 	Health:
 		HP: 8000
 	Transforms:
 		IntoActor: t3_annihilator
 		Offset: 0,0
 		Facing: 96
+		TransformSounds: deploy_vehicle_mode.aud
 	GrantConditionOnAttack@TargetRailgun:
 		ArmamentNames: primary
 		RevokeOnNewTarget: true
 		RequiredShotsPerInstance: 25
 		Condition: Target
+	Armament@muzzle:
+		Weapon: Ann.muzzle
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 2150,0,1280
+		RequiresCondition: !Target
+		MuzzleSequence: muzzle.target
+		MuzzlePalette: flammeeffectblue
 	Armament@gun:
 		Weapon: Ann.TargetBeam
 		Recoil: 150
@@ -555,12 +648,15 @@ t3_annihilator_deployed:
 		RecoilRecovery: 15
 		LocalOffset: 2150,0,1280
 		RequiresCondition: Target
+		MuzzleSequence: muzzle.fire
+		MuzzlePalette: powereffect
+	WithMuzzleOverlay:
 	Armor:
 		Type: Heavy
 	AttackTurreted:
-		RequiresCondition: !empdisable
+		PauseOnCondition: empdisable
 	Turreted:
-		TurnSpeed: 4
+		TurnSpeed: 6
 		RealignDelay: 20
 	RenderSprites:
 		Scale: 0.8
@@ -575,7 +671,7 @@ t3_annihilator_deployed:
 	HitShape:
 
 t2_predator_deployed:
-	Inherits@1: ^Building
+	Inherits@1: ^Defence
 	Inherits@2: ^1x1Shape
 	Inherits@AUTOTARGET: ^AutoTargetGround
 	Buildable:
@@ -595,8 +691,6 @@ t2_predator_deployed:
 		Footprint: x
 		Dimensions: 1,1
 		Adjacent: 10
-	RevealsShroud:
-		Range: 7c0
 	Armor:
 		Type: Concrete
 	Health:
@@ -611,12 +705,12 @@ t2_predator_deployed:
 		RecoilRecovery: 15
 		LocalOffset: 150,0,200
 	AttackTurreted:
-		RequiresCondition: !empdisable
+		PauseOnCondition: build-incomplete || empdisable
 	Turreted:
-		TurnSpeed: 4
+		TurnSpeed: 12
 		RealignDelay: 20
 	RenderVoxels:
-		Scale: 1
+		Scale: 1.2
 		-WAngle:
 	WithVoxelTurret:
 		ShowShadow: false
@@ -626,7 +720,7 @@ t2_predator_deployed:
 	HitShape:
 
 t2_tarantula_deployed:
-	Inherits@1: ^Building
+	Inherits@1: ^Defence
 	Inherits@2: ^1x1Shape
 	Inherits@AUTOTARGET: ^AutoTargetAir
 	Buildable:
@@ -637,7 +731,7 @@ t2_tarantula_deployed:
 		Description: Tier 2 anti-air defensive structure\nRange increased when deployed\n> Strong vs Aircraft\n> Weak vs Infantry, Vehicles
 		IconPalette: RedAlliance.Icon
 	Valued:
-		Cost: 600
+		Cost: 800
 	Selectable:
 		Bounds: 28,28
 	Tooltip:
@@ -646,8 +740,6 @@ t2_tarantula_deployed:
 		Footprint: x
 		Dimensions: 1,1
 		Adjacent: 10
-	RevealsShroud:
-		Range: 7c0
 	Health:
 		HP: 8000
 	Transforms:
@@ -661,13 +753,13 @@ t2_tarantula_deployed:
 		LocalOffset: 150,50,850, 150,-50,850
 	DetectCloaked:
 		Range: 6c0
-		CloakTypes: Cloak, Buried
+		CloakTypes: Cloak
 	Armor:
 		Type: Concrete
 	AttackTurreted:
-		RequiresCondition: !empdisable
+		RequiresCondition: build-incomplete || empdisable
 	Turreted:
-		TurnSpeed: 4
+		TurnSpeed: 12
 		RealignDelay: 20
 	RenderVoxels:
 		Scale: 1
@@ -680,7 +772,7 @@ t2_tarantula_deployed:
 	HitShape:
 
 t3_doomtowerbuild:
-	Inherits@1: ^Building
+	Inherits@1: ^Defence
 	Inherits@2: ^1x1Shape
 	Inherits@AUTOTARGET: ^AutoTargetGround
 	Inherits@EMPDisable: ^EmpDisable
@@ -693,12 +785,13 @@ t3_doomtowerbuild:
 		Description: Tier 3 defensive structure fitted with a massive tesla coil\nDeals damage to all enemy ground units within a certain radius and resistance increased when deployed\n> Strong vs Infantry, Vehicles\n> Weak vs Aircraft
 		IconPalette: RedAlliance.Icon
 	Valued:
-		Cost: 2600
+		Cost: 1500
 	Selectable:
 		Bounds: 28,28
 	Tooltip:
 		Name: Doom Tower
 	AttackTurreted:
+		PauseOnCondition: empdisable || disabled
 	Turreted:
 		TurnSpeed: 255
 		Offset: 128,128,384
@@ -706,10 +799,6 @@ t3_doomtowerbuild:
 		Footprint: x
 		Dimensions: 1,1
 		Adjacent: 10
-	ProximityExternalCondition@DoomForce:
-		Condition: DoomImpact
-		ValidStances: Enemy
-		Range: 9c0
 	DamageMultiplier@DoomShield:
 		Modifier: 8
 		RequiresCondition: !empdisable
@@ -719,8 +808,6 @@ t3_doomtowerbuild:
 		Facing: 164
 		TransformSounds: makebuild.wav
 		NoTransformNotification: CannotDeploy
-	RevealsShroud:
-		Range: 7c0
 	Health:
 		HP: 2000
 	WithIdleOverlay@Lightning:
@@ -739,7 +826,7 @@ t3_doomtowerbuild:
 		LocalOffset: 0,0,1250
 	DetectCloaked:
 		Range: 6c0
-		CloakTypes: Cloak, Buried
+		CloakTypes: Cloak
 	Armor:
 		Type: Concrete
 	-MustBeDestroyed:
@@ -766,23 +853,24 @@ arheli:
 		HP: 5000
 	Armor:
 		Type: Concrete
-	RevealsShroud:
-		Range: 5c0
 	Exit@1:
-		SpawnOffset: 0,-256,0
+		RequiresCondition: !being-captured
+		SpawnOffset: 0,256,0
 		ExitCell: 0,0
-		MoveIntoWorld: false
+		Facing: 224
 	ProximityExternalCondition@BuildingRepair:
-		Condition: RepairVehicle
+		Condition: FactoryRepairAircraft
 		Range: 5c0
 		AffectsParent: true
 	Production:
 		Produces: Aircraft.redalliance
+		PauseOnCondition: empdisable
+		RequiresCondition: !build-incomplete
 	ProductionQueue@Aircraft:
 		Type: Aircraft.redalliance
 		Factions: redalliance
 		Group: Aircraft
-		LowPowerSlowdown: 2
+		LowPowerModifier: 200
 	ProductionBar@Aircraft:
 		ProductionType: Aircraft.redalliance
 	RallyPoint:
@@ -794,10 +882,6 @@ arheli:
 		Facing: 164
 		TransformSounds: makebuild.wav
 		NoTransformNotification: CannotDeploy
-	ProximityExternalCondition@REPAIRAIRCRAFT:
-		Condition: RepairAircraft
-		Range: 6c0
-		AffectsParent: true
 	Power:
 		Amount: 0
 	Reservable:
@@ -807,45 +891,45 @@ arheli:
 		Range: 5c0
 		AffectsParent: true
 	HitShape:
-    
-arextract:
-	Inherits: ^Building
-	Inherits@2: ^2x2Shape
+	
+t2_hydra_deployed:
+	Inherits@1: ^Building
+	Inherits@2: ^1x1Shape
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Inherits@3: ^ConditioneffetGeneralsUnit
+	Inherits@4: ^ConditionGeneralBuildDefense
 	Selectable:
-		Bounds: 72,50,0,12
-	Buildable:
-		Queue: Defence.redalliance
-		BuildPaletteOrder: 10
-		Description: Automatically recover the resources of the deposit zones
-		BuildDurationModifier: 30
-        Prerequisites: arproc
-		Adjacent: 18
-		IconPalette: RedAlliance.Icon
-	Valued:
-		Cost: 1200
 	Tooltip:
-		Name: Diastime Extractor
+		Name: Hydra Deployed
 	Building:
-		Footprint: xx xx
-		Dimensions: 2,2
+		Footprint: x
+		Dimensions: 1,1
 		Adjacent: 10
-        TerrainTypes: Deposit
-		BuildSounds: deploy_order.aud
 	Health:
-		HP: 6000
+		HP: 4000
+	Transforms:
+		IntoActor: t2_hydra
+		TransformSounds: deploy_vehicle_mode.aud
+		Offset: 0,0
+		Facing: 96
+	WithMuzzleOverlay:
+	Armament@gun:
+		Weapon: AP_hydra_multimiss
+		Recoil: 220
+		RecoilRecovery: 15
+		LocalYaw: 100, -100
+		LocalOffset: 280,60,420, 280,-60,420
+		MuzzleSequence: muzzle
 	Armor:
-		Type: Concrete
-	RevealsShroud:
-		Range: 4c0
-	InfiltrateForPowerOutage:
-	AffectedByPowerOutage:
-	ScalePowerWithHealth:
-	Power:
-		Amount: 0
-    RenderSprites:
-        Scale: 1.0
-    CashTrickler:
-        InitialDelay: 800
-		Interval: 700
-		Amount: 950
+		Type: Heavy
+	WithSpriteTurret:
+	AttackTurreted:
+		RequiresCondition: !build-incomplete
+		PauseOnCondition: empdisable
+	Turreted:
+		TurnSpeed: 12
+		RealignDelay: 10
+		Offset: 0,0,0
+	RenderSprites:
+		Scale: 1
 	HitShape:

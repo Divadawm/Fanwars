@@ -4,23 +4,14 @@ t1_hummingbird.reinforce:
 		BuildPaletteOrder: 40
 		Description: Multipurpose VTOL equipped with 2 autocannons and an EMP cannon\n> Strong vs Vehicles, Aircraft\n> Weak vs Infantry
 		BuildDurationModifier: 10
-        IconPalette: Federation.Icon
+		IconPalette: Federation.Icon
 	Valued:
 		Cost: 1300
 	Tooltip:
 		Name: Hummingbird
 	Health:
 		HP: 1100
-	Armor:
-		Type: LightVehicle
-	RevealsShroud:
-		Range: 12c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	RevealsShroud@GAPGEN:
-		Range: 10c0
-		Type: GroundPosition
-    AttackFrontal:
+	AttackFrontal:
 	Aircraft:
 		CruiseAltitude: 2060
 		CruisingCondition: cruising
@@ -28,12 +19,12 @@ t1_hummingbird.reinforce:
 		Speed: 400
 		TurnSpeed: 14
 		LandableTerrainTypes: Clear,Rough,Road,Beach,Diast,Diastgems
-        AltitudeVelocity: 0c125
+		AltitudeVelocity: 0c125
 		Repulsable: False
-		LandWhenIdle: False
 		AirborneCondition: airborne
 		CanHover: True
 		VTOL: true
+		CanSlide: True
 	AutoCarryall:
 		LoadingDelay: 2
 		UnloadingDelay: 2
@@ -50,32 +41,31 @@ t1_hummingbird.reinforce:
 		Image: t1_hummingbird
 	SpawnActorOnDeath:
 		Actor: t1_hummingbird.Husk
-	HitShape:
-    
+	
 t1_hummingbird:
 	Inherits: t1_hummingbird.reinforce
 	-AutoCarryall:
 	Carryall:
-		LoadingDelay: 5
-		UnloadingDelay: 5
+		BeforeLoadDelay: 5
+		BeforeUnloadDelay: 5
 		LocalOffset: 0, 0, -125
 	Aircraft:
 		MinAirborneAltitude: 400
 	Buildable:
 		BuildPaletteOrder: 120
-        Queue: Aircraft.federation
+		Queue: Aircraft.federation
 
 
 t1_hummingbird.Husk:
 	Inherits: ^AircraftHuskShape
 	Tooltip:
-		Name: Nidhogg
+		Name: Vulture
 	Aircraft:
 		TurnSpeed: 10
 		Speed: 186
 	RenderSprites:
 		Image: t1_hummingbird
-        
+		
 t1_vulture:
 	Inherits: ^Helicoptershape
 	Inherits@Target: ^AutoTargetAllAssaultMove
@@ -84,30 +74,23 @@ t1_vulture:
 		BuildPaletteOrder: 40
 		Description: Multipurpose VTOL equipped with 2 autocannons and an EMP cannon\n> Strong vs Vehicles, Aircraft\n> Weak vs Infantry
 		BuildDurationModifier: 10
-        IconPalette: Federation.Icon
+		IconPalette: Federation.Icon
 	Valued:
 		Cost: 1300
 	Tooltip:
-		Name: Nidhogg
+		Name: Vulture
 	Health:
 		HP: 2200
-	Armor:
-		Type: LightVehicle
-	RevealsShroud:
-		Range: 12c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	RevealsShroud@GAPGEN:
-		Range: 10c0
-		Type: GroundPosition
 	Armament@PRIMARY:
 		Weapon: vulture.missile
 		LocalOffset: 280,-260,20, 280,260,20
-        LocalYaw: 90, -90
+		LocalYaw: 90, -90
 		MuzzleSequence: muzzle
 	WithMuzzleOverlay:
-	AttackHeli:
+	AttackAircraft:
 		FacingTolerance: 20
+		PersistentTargeting: false
+		AttackType: Hover
 	Aircraft:
 		CruiseAltitude: 2500
 		InitialFacing: 192
@@ -115,7 +98,6 @@ t1_vulture:
 		Speed: 180
 		RepulsionSpeed: 40
 		MaximumPitch: 56
-		LandWhenIdle: false
 		LandableTerrainTypes: Clear,Rough,Road,Beach
 	AutoTarget:
 		InitialStance: Defend
@@ -124,7 +106,6 @@ t1_vulture:
 		Bounds: 36,28
 	SpawnActorOnDeath:
 		Actor: t1_vulture.Husk
-	HitShape:
 
 t1_vulture.Husk:
 	Inherits: ^AircraftHuskShape
@@ -135,7 +116,7 @@ t1_vulture.Husk:
 		Speed: 186
 	RenderSprites:
 		Image: t1_vulture
-        
+		
 t1_mosquito:
 	Inherits: ^Aircraftshape
 	Inherits@Target: ^AutoTargetGround
@@ -145,31 +126,21 @@ t1_mosquito:
 		Prerequisites: Research Module
 		Description: Experimental aircraft armed with a triple fast-firing ion cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
 		BuildDurationModifier: 5
-        IconPalette: Federation.Icon
+		IconPalette: Federation.Icon
 	Valued:
 		Cost: 400
 	Tooltip:
 		Name: Mosquito
 	Health:
 		HP: 800
-	Armor:
-		Type: LightVehicle
-	RevealsShroud:
-		Range: 13c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	RevealsShroud@GAPGEN:
-		Range: 11c0
-		Type: GroundPosition
 	Armament:
 		Weapon: mosquito.autogun
 		LocalOffset: -50,-420,-40, -50,420,-80
 		LocalYaw: -40, -24
 		MuzzleSequence: muzzle
 	WithMuzzleOverlay:
-	AttackPlane:
+	AttackAircraft:
 		FacingTolerance: 25
-	ReturnOnIdle:
 	Aircraft:
 		CruiseAltitude: 3400
 		InitialFacing: 192
@@ -182,7 +153,7 @@ t1_mosquito:
 		EnableStances: false
 		InitialStance: HoldFire
 	RenderSprites:
-        Scale: 0.65
+		Scale: 0.65
 	Selectable:
 		Bounds: 36,28
 	SmokeTrailWhenDamaged:
@@ -190,8 +161,7 @@ t1_mosquito:
 		Interval: 2
 	SpawnActorOnDeath:
 		Actor: t3_thor.Husk
-	HitShape:
-    
+	
 t1_mosquito.Husk:
 	Inherits: ^AircraftHuskShape
 	Tooltip:
@@ -201,4 +171,4 @@ t1_mosquito.Husk:
 		Speed: 186
 	RenderSprites:
 		Image: t1_mosquito
-        
+		

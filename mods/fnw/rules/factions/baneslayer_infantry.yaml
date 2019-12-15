@@ -18,22 +18,19 @@ soldierop:
 		BuildPaletteOrder: 10
 		Prerequisites: ~opbarr, ~techlevel.infonly
 		Description: Basic infantryman armed with an assault rifle\nCan capture neutral structures\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
-		BuildDurationModifier: 3
+		BuildDurationModifier: 4
 	Valued:
 		Cost: 100
 	Tooltip:
 		Name: Draugr
 	Health:
-		HP: 450
-	Mobile:
-		Crushes: gibs
-		Speed: 80
-	RevealsShroud:
-		Range: 6c0
+		HP: 500
 	AttackFrontal:
 	Armament@PRIMARY:
 		Weapon: M1Carbine
-		LocalOffset: 0,0,220
+		LocalOffset: 700,0,340
+		MuzzleSequence: garrison-muzzle
+		MuzzlePalette: flameeffect
 	WithInfantryBody:
 		IdleSequences: idle1
 		StandSequences: stand
@@ -42,14 +39,13 @@ soldierop:
 		Name: garrisoned
 		Weapon: M1Carbine
 		MuzzleSequence: garrison-muzzle
+		MuzzlePalette: flameeffect
 	Armament@GARRISONEDFAFNIR:
 		Name: garrisoned.fafnir
 		Weapon: M1Carbine.fafnir
 		MuzzleSequence: garrison-muzzle
-	ExternalCaptures:
-		CaptureTypes: TechBuilding
-		PlayerExperience: 20
-	HitShape:
+		MuzzlePalette: flameeffect
+	WithMuzzleOverlay:
 
 roquetteorderinf:
 	Inherits@1: ^Infantry
@@ -61,19 +57,15 @@ roquetteorderinf:
 		Queue: Infantry.baneslayer
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 20
-		BuildDurationModifier: 6
+		BuildDurationModifier: 7
 		Description: Infantryman armed with a missile-launcher\n> Strong vs Light Vehicles, Aircraft\n> Weak vs Infantry, Heavy Vehicles
 		Prerequisites: ~opbarr, ~techlevel.infonly
 	Valued:
-		Cost: 280
+		Cost: 300
 	Tooltip:
 		Name: Einherjar
 	Health:
-		HP: 550
-	Mobile:
-		Speed: 77
-	RevealsShroud:
-		Range: 6c0
+		HP: 500
 	AttackFrontal:
 	GrantConditionOnPrerequisite@research.roquette.baneslayer:
 		Prerequisites: research.roquette.baneslayer
@@ -108,6 +100,117 @@ roquetteorderinf:
 		Weapon: Einherjar.missile.upgrade.fafnir
 		MuzzleSequence: garrison-muzzle
 		RequiresCondition: upgrade.roquette.baneslayer
+	
+t1_opengineer:
+	Inherits@1: ^Infantry
+	Inherits@2: ^Global.Upgrade.baneslayer
+	Inherits@3: ^Infantry.Upgrade.baneslayer
+	Inherits@Upgrade01: ^upgrade.kevlar.infantry.baneslayer
+	Inherits@CaptureRules: ^Unite.CaptureRules
+	Buildable:
+		Queue: Infantry.baneslayer
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 20
+		BuildDurationModifier: 12
+		Description: Unarmed Infantry \n Can Capture Structures\n> Weak vs all
+		Prerequisites: ~opbarr, ~techlevel.infonly
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: engineer
+	Health:
+		HP: 500
+	WithInfantryBody:
+		IdleSequences: idle
+		StandSequences: stand
+		DefaultAttackSequence: idle
+	-AutoTarget:
+	-AttackMove:
+
+vanir:
+	Inherits@1: ^Helicoptershape
+	Inherits@2: ^Global.Upgrade.baneslayer
+	Inherits@3: ^Infantry.Upgrade.baneslayer
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@Upgrade01: ^upgrade.kevlar.infantry.baneslayer
+	Buildable:
+		Queue: Infantry.baneslayer
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 40
+		BuildDurationModifier: 18
+		Description: Jumpjet infantry armed with grenade launchers\n> Strong vs Infantry, Light Vehicles\n> Weak vs Heavy Vehicles, Aircraft
+		Prerequisites: optech
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Vanir
+	Health:
+		HP: 450
+	AttackAircraft:
+		FacingTolerance: 20
+	Aircraft:
+		CruiseAltitude: 2200
+		InitialFacing: 192
+		TurnSpeed: 4
+		Speed: 150
+		RepulsionSpeed: 20
+		MaximumPitch: 45
+	Armament@PRIMARY:
+		Weapon: grenade.vanir
+		LocalOffset: 0,-70,280
+	WithFacingSpriteBody@idle:
+		RequiresCondition: !Tshoot
+		Sequence: run
+	WithFacingSpriteBody@shoot:
+		Sequence: shoot
+		RequiresCondition: Tshoot
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
+	RenderSprites:
+		Scale: 0.75
+	HitShape:
+
+jotun:
+	Inherits@1: ^Infantry
+	Inherits@2: ^Global.Upgrade.baneslayer
+	Inherits@3: ^Infantry.Upgrade.baneslayer
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@Upgrade01: ^upgrade.kevlar.infantry.baneslayer
+	Buildable:
+		Queue: Infantry.baneslayer
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 30
+		BuildDurationModifier: 20
+		Description: Heavy infantry equipped with a plasma gun\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
+		Prerequisites: optech
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Jötunn
+	Health:
+		HP: 650
+	AttackFrontal:
+	WithMuzzleOverlay:
+	Armament@PRIMARY:
+		Weapon: plasmamode2.jotuun
+		LocalOffset: 50,0,500
+		MuzzleSequence: muzzle
+		MuzzlePalette: greenlight
+	WithInfantryBody:
+		IdleSequences: idle1
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: plasmamode2.jotuun
+		MuzzleSequence: muzzle
+		MuzzlePalette: greenlight
+	Armament@GARRISONEDFAFNIR:
+		Name: garrisoned.fafnir
+		Weapon: plasma.jotuun.fafnir
+		MuzzleSequence: muzzle
+		MuzzlePalette: greenlight
 	HitShape:
 
 t1_aesir:
@@ -119,20 +222,16 @@ t1_aesir:
 	Buildable:
 		Queue: Infantry.baneslayer
 		BuildAtProductionType: Soldier
-		BuildPaletteOrder: 20
-		BuildDurationModifier: 15
+		BuildPaletteOrder: 50
+		BuildDurationModifier: 28
 		Description: Sharpshooter equipped with an experimental sniper rifle firing antimatter rounds\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
 		Prerequisites: Research Module
 	Valued:
-		Cost: 850
+		Cost: 1000
 	Tooltip:
 		Name: Aesir
 	Health:
-		HP: 500
-	Mobile:
-		Speed: 77
-	RevealsShroud:
-		Range: 6c0
+		HP: 300
 	AttackFrontal:
 	Armament@PRIMARY:
 		Weapon: Aesir.Mattergun
@@ -147,114 +246,4 @@ t1_aesir:
 		Name: garrisoned.fafnir
 		Weapon: Aesir.Mattergun.fafnir
 		MuzzleSequence: garrison-muzzle
-	HitShape:
-
-jotun:
-	Inherits@1: ^Infantry
-	Inherits@2: ^Global.Upgrade.baneslayer
-	Inherits@3: ^Infantry.Upgrade.baneslayer
-	Inherits@Target: ^AutoTargetGroundAssaultMove
-	Inherits@Upgrade01: ^upgrade.kevlar.infantry.baneslayer
-	Buildable:
-		Queue: Infantry.baneslayer
-		BuildAtProductionType: Soldier
-		BuildPaletteOrder: 70
-		BuildDurationModifier: 6
-		Description: SHIELD PROTOCOL UNIT\nHeavy infantry equipped with a plasma gun\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
-		Prerequisites: optech, ~Doctrine.Valkyr.baneslayer
-	Valued:
-		Cost: 650
-	Tooltip:
-		Name: Jötunn
-	Health:
-		HP: 1100
-	Mobile:
-		Speed: 75
-	RevealsShroud:
-		Range: 6c0
-	AttackFrontal:
-	GrantConditionOnDeploy:
-		DeployedCondition: mode2
-	Armament@PRIMARY:
-		Weapon: plasma.jotuun
-		LocalOffset: 0,0,220
-		RequiresCondition: !mode2
-	Armament@SECONDARY:
-		Weapon: plasmamode2.jotuun
-		LocalOffset: 0,0,220
-		RequiresCondition: mode2
-	WithInfantryBody:
-		IdleSequences: idle1
-		StandSequences: stand
-		DefaultAttackSequence: shoot
-	Armament@GARRISONED:
-		Name: garrisoned
-		Weapon: plasma.jotuun
-	Armament@GARRISONEDFAFNIR:
-		Name: garrisoned.fafnir
-		Weapon: plasma.jotuun.fafnir
-		MuzzleSequence: garrison-muzzle
-	WithDecoration@MOD1:
-		Image: stat-effect
-		Sequence: Level21
-		Palette: effect
-		ReferencePoint: bottom, center
-		ZOffset: 100
-		RequiresCondition: !mode2
-	WithDecoration@MOD2:
-		Image: stat-effect
-		Sequence: Level22
-		Palette: effect
-		ReferencePoint: bottom, center
-		ZOffset: 100
-		RequiresCondition: mode2
-	HitShape:
-
-vanir:
-	Inherits@1: ^Helicoptershape
-	Inherits@2: ^Global.Upgrade.baneslayer
-	Inherits@3: ^Infantry.Upgrade.baneslayer
-	Inherits@Target: ^AutoTargetGroundAssaultMove
-	Inherits@Upgrade01: ^upgrade.kevlar.infantry.baneslayer
-	Buildable:
-		Queue: Infantry.baneslayer
-		BuildAtProductionType: Soldier
-		BuildPaletteOrder: 70
-		BuildDurationModifier: 6
-		Description: SWORD PROTOCOL UNIT\nJumpjet infantry armed with grenade launchers\n> Strong vs Infantry, Light Vehicles\n> Weak vs Heavy Vehicles, Aircraft
-		Prerequisites: optech, ~Doctrine.Artemien.baneslayer
-	Valued:
-		Cost: 650
-	Tooltip:
-		Name: Vanir
-	Health:
-		HP: 1000
-	AttackHeli:
-		FacingTolerance: 20
-	Aircraft:
-		CruiseAltitude: 2200
-		InitialFacing: 192
-		TurnSpeed: 4
-		Speed: 150
-		RepulsionSpeed: 20
-		MaximumPitch: 45
-		LandWhenIdle: false
-	Armament@PRIMARY:
-		Weapon: grenade.vanir
-		LocalOffset: 0,-70,280
-	WithFacingSpriteBody@idle:
-		RequiresCondition: !Tshoot
-		Sequence: run
-	WithFacingSpriteBody@shoot:
-		Sequence: shoot
-		RequiresCondition: Tshoot
-	RevealsShroud:
-		Range: 10c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	AutoTarget:
-		InitialStance: Defend
-		InitialStanceAI: Defend
-	RenderSprites:
-		Scale: 0.75
 	HitShape:

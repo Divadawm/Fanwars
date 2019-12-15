@@ -1,31 +1,41 @@
 t1_comrade:
 	Inherits@1: ^Infantry
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Infantry.Upgrade.Redalliance
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+    # / Upgrade Faction /
+	Inherits@3: ^Infantry.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Infantry.Doctrines.Upgrade.Armor
+	Inherits@Doctrines02: ^Aspect.Range.Doctrines.Weapon
 	Buildable:
 		Queue: Infantry.redalliance
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 10
 		Description: Resilient and well trained infantry unit armed with a laser rifle\n> Strong vs Infantry, Light Vehicles\n> Weak vs Heavy Vehicles, Aircraft
-		BuildDurationModifier: 3
+		BuildDurationModifier: 6
 		IconPalette: RedAlliance.Icon
 	Valued:
-		Cost: 150
+		Cost: 180
 	Tooltip:
 		Name: Comrade
 	Health:
-		HP: 600
-	Mobile:
-		Crushes: gibs
-		Speed: 80
-	RevealsShroud:
-		Range: 6c0
+		HP: 500
 	AttackFrontal:
 	Armament@PRIMARY:
 		Weapon: Laser_cf
-		LocalOffset: 0,0,220
+		LocalOffset: 100,0,350
 		MuzzleSequence: muzzle
+		RequiresCondition: !Laser.Doctrines.Redalliance
+	Armament@PRIMARY.Doctrines:
+		Weapon: Laser_cf.Doctrine
+		LocalOffset: 100,0,350
+		MuzzleSequence: muzzle
+		RequiresCondition: Laser.Doctrines.Redalliance
+	# Upgrade Doctrines
+	GrantConditionOnPrerequisite@Laser.Doctrines.Redalliance:
+		Prerequisites: Doctrine.Lasergun.RedAlliance
+		Condition: Laser.Doctrines.Redalliance
+	WithMuzzleOverlay:
 	WithInfantryBody:
 		IdleSequences: idle1
 		StandSequences: stand
@@ -34,25 +44,22 @@ t1_comrade:
 		Name: garrisoned
 		Weapon: Laser_cf
 		MuzzleSequence: garrison-muzzle
-	Armament@GARRISONEDFAFNIR:
-		Name: garrisoned.fafnir
-		Weapon: Laser_cf.fafnir
-		MuzzleSequence: garrison-muzzle
-	ExternalCaptures:
-		CaptureTypes: TechBuilding
-		PlayerExperience: 20
 	HitShape:
 
 t1_disciple:
 	Inherits@1: ^Infantry
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Infantry.Upgrade.Redalliance
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetAllAssaultMove
+    # / Upgrade Faction /
+	Inherits@3: ^Infantry.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Infantry.Doctrines.Upgrade.Armor
+	Inherits@Doctrines02: ^Aspect.Range.Doctrines.Weapon
 	Buildable:
 		Queue: Infantry.redalliance
 		BuildPaletteOrder: 20
 		Description: Specialist infantryman equipped with a dual-purpose anti-air/anti-vehicle heavy rifle\n> Strong vs Vehicles, Aircraft\n> Weak vs Infantry
-		BuildDurationModifier: 4
+		BuildDurationModifier: 9
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 300
@@ -60,18 +67,26 @@ t1_disciple:
 		Name: Sentinel
 	Health:
 		HP: 500
-	Mobile:
-		Crushes: gibs
-		Speed: 80
-	RevealsShroud:
-		Range: 6c0
 	AttackFrontal:
+	WithMuzzleOverlay:
 	Armament@PRIMARY:
 		Weapon: AP_Sentient
-		LocalOffset: 0,0,220
+		LocalOffset: 300,0,550
+		MuzzleSequence: muzzle
+		RequiresCondition: !Balistique.Doctrines.Redalliance
+	Armament@PRIMARY.Doctrine:
+		Weapon: AP_Sentient.Doctrine
+		LocalOffset: 300,0,550
+		MuzzleSequence: muzzle
+		RequiresCondition: Balistique.Doctrines.Redalliance
 	Armament@SECONDARY:
 		Weapon: AP_SentientAA
-		LocalOffset: 0,0,220
+		LocalOffset: 300,0,550
+		MuzzleSequence: muzzle
+	# Upgrade Doctrines
+	GrantConditionOnPrerequisite@Flammer.Doctrines.Redalliance:
+		Prerequisites: Doctrine.Balistique.RedAlliance
+		Condition: Balistique.Doctrines.Redalliance
 	WithInfantryBody:
 		IdleSequences: idle1
 		StandSequences: stand
@@ -80,79 +95,117 @@ t1_disciple:
 		Name: garrisoned
 		Weapon: AP_Sentient
 		MuzzleSequence: garrison-muzzle
-	Armament@GARRISONEDFAFNIR:
-		Name: garrisoned.fafnir
-		Weapon: AP_Sentient.fafnir
-		MuzzleSequence: garrison-muzzle
 	HitShape:
-
+	
 t2_tesla:
 	Inherits@1: ^Infantry
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Infantry.Upgrade.Redalliance
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@CaptureRules: ^Unite.CaptureRules
+    # / Upgrade Faction /
+	Inherits@3: ^Infantry.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Infantry.Doctrines.Upgrade.Armor
 	Buildable:
 		Queue: Infantry.redalliance
 		BuildPaletteOrder: 30
-		Prerequisites: artech
-		Description: Heavy infantry armed with tesla weaponry\nCan temporarily disable vehicles and slow down aircrafts\n> Strong vs Infantry, Light Vehicles, Aircraft, Structures\n> Weak vs. Heavy Vehicles
-		BuildDurationModifier: 5
+		Description: Multifunctional support infantry\n Can repair vehicles \n> Can captured structures \n> Weak vs all
+		BuildDurationModifier: 12
 		IconPalette: RedAlliance.Icon
 	Valued:
-		Cost: 450
+		Cost: 500
 	Tooltip:
 		Name: Devastator
 	Health:
-		HP: 750
-	Mobile:
-		Crushes: gibs
-		Speed: 70
-	RevealsShroud:
-		Range: 6c0
+		HP: 600
 	AttackFrontal:
 	GrantConditionOnPrerequisite@research.DisturbZap.TeslaTrooper.Redalliance:
 		Prerequisites: research.DisturbZap.TeslaTrooper.Redalliance
 		Condition: upgrade.DisturbZap.TeslaTrooper.Redalliance
 	Armament@PRIMARY:
-		Weapon: Volkit_gun
+		Weapon: Volkit_repair
 		LocalOffset: 0,0,220
+		Cursor: repair
+		OutsideRangeCursor: repair
+		TargetStances: Ally
+		ForceTargetStances: None
 	WithInfantryBody:
 		IdleSequences: idle1
 		StandSequences: stand
 		DefaultAttackSequence: shoot
 	Armament@GARRISONED:
 		Name: garrisoned
-		Weapon: Volkit_gun
+		Weapon: Volkit_repair
 		MuzzleSequence: garrison-muzzle
-	Armament@GARRISONEDFAFNIR:
-		Name: garrisoned.fafnir
-		Weapon: Volkit_gun.fafnir
-		MuzzleSequence: garrison-muzzle
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Vehicle, Ship
+	AutoTarget:
+	RenderSprites:
+		Scale: 0.85
 	HitShape:
+	
 
-t2_devastator:
-	Inherits@1: ^InfantryHeavy
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Infantry.Upgrade.Redalliance
+t1_stealhar:
+	Inherits@1: ^Infantry
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+    # / Upgrade Faction /
+	Inherits@3: ^Infantry.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Infantry.Doctrines.Upgrade.Armor
 	Buildable:
 		Queue: Infantry.redalliance
+		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 40
 		Prerequisites: artech
-		Description: Heavy infantry equipped with a fusion cannon\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
-		BuildDurationModifier: 5
+		Description: Infantry unit with a stealth combination \n> Strong against infantry\n> Weak vs light or heavy vehicles, planes
+		BuildDurationModifier: 20
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 500
 	Tooltip:
+		Name: Saboteur
+	Health:
+		HP: 600
+	AttackFrontal:
+	Armament@PRIMARY:
+		Weapon: Saberweapon
+		LocalOffset: 100,0,350
+	Cloak:
+		UncloakOn: Attack, Unload, Infiltrate, Demolish, Dock
+		CloakDelay: 10
+		IsPlayerPalette: true
+		CloakedCondition: cloaked
+	WithIdleOverlay@Shadow:
+		RequireCondition: !cloaked
+	WithInfantryBody:
+		IdleSequences: idle1
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	HitShape:
+
+t2_devastator:
+	Inherits@1: ^Infantry
+    # / Inherit Stat Unite /
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+    # / Upgrade Faction /
+	Inherits@3: ^Infantry.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Infantry.Doctrines.Upgrade.Armor
+	Inherits@Doctrines02: ^Aspect.Range.Doctrines.Weapon
+	Buildable:
+		Queue: Infantry.redalliance
+		BuildPaletteOrder: 50
+		Prerequisites: artech
+		Description: Heavy infantry equipped with a Radiation cannon\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
+		BuildDurationModifier: 22
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 650
+	Tooltip:
 		Name: Desolator
 	Health:
 		HP: 700
-	Mobile:
-		Crushes: gibs
-		Speed: 70
-	RevealsShroud:
-		Range: 6c0
 	AttackFrontal:
 	Armament@PRIMARY:
 		Weapon: Nukegun
@@ -164,10 +217,6 @@ t2_devastator:
 	Armament@GARRISONED:
 		Name: garrisoned
 		Weapon: Nukegun
-		MuzzleSequence: garrison-muzzle
-	Armament@GARRISONEDFAFNIR:
-		Name: garrisoned.fafnir
-		Weapon: Nukegun.fafnir
 		MuzzleSequence: garrison-muzzle
 	TakeCover:
 		DamageModifiers:
@@ -177,27 +226,26 @@ t2_devastator:
 
 t3_eradicator:
 	Inherits@1: ^InfantryHeavy
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Infantry.Upgrade.Redalliance
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+    # / Upgrade Faction /
+	Inherits@3: ^Infantry.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Infantry.Doctrines.Upgrade.Armor
+	Inherits@Doctrines02: ^Aspect.Range.Doctrines.Weapon
 	Buildable:
 		Queue: Infantry.redalliance
-		BuildPaletteOrder: 50
+		BuildPaletteOrder: 60
 		Prerequisites: t2_command_relais
-		Description: Super heavy infantry unit armed with a powerful autocannon and a flamethrower\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
-		BuildDurationModifier: 8
+		Description: Super heavy infantry unit armed with a powerful autocannon and a Fusion Canon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 30
 		IconPalette: RedAlliance.Icon
 	Valued:
-		Cost: 800
+		Cost: 1300
 	Tooltip:
 		Name: Eradicator
 	Health:
-		HP: 1600
-	Mobile:
-		Crushes: gibs
-		Speed: 65
-	RevealsShroud:
-		Range: 8c0
+		HP: 1000
 	AttackFrontal:
 	WithInfantryBody:
 		IdleSequences: idle1
@@ -205,16 +253,26 @@ t3_eradicator:
 		DefaultAttackSequence: shoot
 	Armament@PRIMARY:
 		Weapon: AP_Gatling_Era
-		LocalOffset: 0,30,220
-		MuzzleSequence: muzzle
+		LocalOffset: 1200,-380,720
+	Armament@Secondary:
+		FireDelay: 10
+		Weapon: Beam_Gatling_Era
+		LocalOffset: 1200,380,720
+		RequiresCondition: !Laser.Doctrines.Redalliance
+	Armament@SecondaryDoctrines:
+		FireDelay: 10
+		Weapon: Beam_Gatling_Era
+		LocalOffset: 1200,380,720
+		RequiresCondition: Laser.Doctrines.Redalliance
+	# Upgrade Doctrines
+	GrantConditionOnPrerequisite@Laser.Doctrines.Redalliance:
+		Prerequisites: Doctrine.Lasergun.RedAlliance
+		Condition: Laser.Doctrines.Redalliance
 	Armament@GARRISONED:
 		Name: garrisoned
 		Weapon: AP_Gatling_Era
-		MuzzleSequence: garrison-muzzle
-	Armament@GARRISONEDFAFNIR:
-		Name: garrisoned.fafnir
-		Weapon: AP_Gatling_Era.fafnir
-		MuzzleSequence: garrison-muzzle
 	DamageMultiplier:
 		Modifier: 65
+	RenderSprites:
+		Scale: 0.70
 	HitShape:

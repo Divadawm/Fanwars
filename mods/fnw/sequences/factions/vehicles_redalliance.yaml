@@ -1,7 +1,27 @@
 armcv:
 	Inherits@Stat: ^StatVehicleEffect
 	idle:
+		Facings: 8
+	walk:
+        Start: 8
+		Facings: 8
+		Length: 6
+		Tick: 120
 	icon: armcvicon
+    
+t1_scarab:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+		Facings: 8
+	walk:
+        Start: 8
+		Facings: 8
+		Length: 8
+		Tick: 50
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	icon: droneicon
 
 arnahand:
 	Inherits@Stat: ^StatVehicleEffect
@@ -52,11 +72,6 @@ t1_bike:
         Facings: 64
 	icon: bikeicon
 
-ar_scarab:
-	Inherits@Stat: ^StatVehicleEffect
-	idle:
-	icon: droneicon
-
 t1_raider:
 	Inherits@Stat: ^StatVehicleEffect
 	idle:
@@ -65,11 +80,13 @@ t1_raider:
 t2_basilisk:
 	Inherits@Stat: ^StatVehicleEffect
 	Inherits@1: ^HeavySmokeEffect
-	muzzle: muzzle_120mm
-		Length: *
+	muzzle: firegunmuzzle
+		Facings: -16
+		Length: 14
 		BlendMode: Additive
-	muzzle.secondary: muzzle_60mm
-		Length: *
+	muzzle.secondary: firegunmuzzle
+		Facings: 16
+		Length: 14
 		BlendMode: Additive
 	idle:
 		Facings: 64
@@ -98,8 +115,9 @@ t2_salamander:
 
 t2_hydra:
 	Inherits@Stat: ^StatVehicleEffect
-	muzzle: muzzle_60mm
-		Length: *
+	muzzle: firegunmuzzlemin
+		Facings: -16
+		Length: 14
 		BlendMode: Additive
 	idle:
 		Facings: 64
@@ -115,6 +133,8 @@ t3_apocalypse:
 		BlendMode: Additive
 	idle:
 		Facings: 64
+    aura: aura_apoc
+        Length: *
 	turret: t3_apocalypsetur
 		Facings: 64
 	icon: apocicon

@@ -1,9 +1,16 @@
 t1_heidrun:
-	Inherits@Stat: ^StatVehicleEffect
+	Inherits@Stat: ^StatVehicleEffect	
+    idle:
+        Facings: 64
+	turret: t1_heidruntur
+		Facings: 64
+    turret_miss: t1_heidrun_misstur
+		Facings: 64
+    turret_gun: t1_heidrun_guntur
+		Facings: 64
 	muzzle: muzzle_autogun_small
 		Length: *
 		BlendMode: Additive
-	idle:
 	icon: artemisicon
 
 t2_dwarf:
@@ -49,10 +56,16 @@ t2_garm:
 
 t2_warg:
 	Inherits@Stat: ^StatVehicleEffect
-	muzzle: muzzle_autogun_small
-		Length: *
-		BlendMode: Additive
 	idle:
+		Facings: 64
+	turret: t2_wargtur
+		Facings: 64
+	idleamp: t2_wargamp
+		Facings: 64
+	muzzle: firegunmuzzlemin
+		Facings: -16
+		Length: 14
+		BlendMode: Additive
 	icon: wargicon
 
 t2_warg.husk:
@@ -66,9 +79,8 @@ t2_yggdrasil:
 
 t2_lindwyrm:
 	Inherits@Stat: ^StatVehicleEffect
-	muzzle: muzzle_balist_large
+	muzzle: muzzle_190mm
 		Length: *
-		BlendMode: Additive
 	idle:
 	icon: lindwyrnicon
 
@@ -85,6 +97,10 @@ t3_fafnir:
 	muzzle: muzzle_autogun_small
 		Length: *
 		BlendMode: Additive
+    secturret: fafnir_secturret
+        Facings: 64
+    secturret2: fafnir_secturret2
+        Facings: 64
 	idle:
 		Facings: 64
 	icon: fafniricon
@@ -92,6 +108,7 @@ t3_fafnir:
 t3_loki:
 	Inherits@Stat: ^StatVehicleEffect
 	idle:
+		Facings: 64
 	icon: lokiicon
 
 t3_heimdall:
@@ -100,12 +117,19 @@ t3_heimdall:
 		Length: *
 		BlendMode: Additive
 	idle:
+		Facings: 64
 	icon: heimicon
 
 t4_odin:
 	Inherits@Stat: ^StatVehicleEffect
 	idle:
 		Facings: 64
+    muzzle: odin_muzzlefire
+		Length: *
+		BlendMode: Additive
+    muzzle_charge: odin_muzzlecharge
+		Length: *
+		BlendMode: Additive
 	turret: t4_odintur
 		Facings: 64
 	turretmode: t4_odinturmode
@@ -154,9 +178,8 @@ t1_tick:
     
 t1_suricate:
 	Inherits@Stat: ^StatVehicleEffect
-	muzzle: muzzle_autogun_small
+	muzzle: muzzle_15mm
 		Length: *
-		BlendMode: Additive
 	idle:
 		Facings: 64
 	turret: t1_suricatetur
@@ -187,20 +210,22 @@ t2_lynx:
     
 t3_rhino:
 	Inherits@Stat: ^StatVehicleEffect
-	muzzle: muzzle_autogun_small
+	muzzle: muzzle_80mm01
 		Length: *
-		BlendMode: Additive
+	muzzlesec: muzzle_15mm
+		Length: *
 	idle:
 		Facings: 64
 	turret: t3_rhinotur
+		Facings: 64
+	secturret: t3_rhinosectur
 		Facings: 64
 	icon: t3_rhinoicon
     
 t3_porcupine:
 	Inherits@Stat: ^StatVehicleEffect
-	muzzle: muzzle_autogun_small
+	muzzle: muzzle_190mm
 		Length: *
-		BlendMode: Additive
 	idle:
 		Facings: 64
 	turret: t3_porcupinetur

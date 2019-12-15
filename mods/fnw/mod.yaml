@@ -1,6 +1,6 @@
 Metadata:
 	Title: Fractured Realms
-	Version: Fnw {02-01-2018}
+	Version: Dev {12-11-2019}
 
 Packages:
 	.
@@ -17,6 +17,7 @@ Packages:
 	fnw|bits/icones_ingame/unites_redalliance
 	fnw|bits/icones_ingame/unites_federation
 	fnw|bits/icones_ingame/Power_icons
+    fnw|bits/icones_ingame/doctrine_icons
 	fnw|bits/voxels
 	fnw|bits/palettes
 	fnw|bits/shp_factions
@@ -44,6 +45,11 @@ Packages:
     fnw|bits/sounds/interact_unite
     fnw|bits/sounds/interact_power
     fnw|bits/sounds/voice_unite
+    # Faction Sounds weapons ///
+    fnw|bits/sounds/fire_weapons/redalliance
+    fnw|bits/sounds/fire_weapons/order
+    fnw|bits/sounds/fire_weapons/conclave
+    fnw|bits/sounds/fire_weapons/federation
 	fnw|bits/sounds
     fnw|bits/olitrax
 	fnw|uibits
@@ -62,7 +68,8 @@ Rules:
 	fnw|rules/husks.yaml
     fnw|rules/world/trees.yaml
     fnw|rules/world/rock.yaml
-    fnw|rules/mechanicus.yaml
+    fnw|rules/mechanics.yaml
+    fnw|rules/doctrines.yaml
 	
 	# Comuns
 	fnw|rules/factions/comun_structures.yaml
@@ -76,6 +83,7 @@ Rules:
 	fnw|rules/factions/redalliance_vehicles.yaml
 	fnw|rules/factions/redalliance_aircraft.yaml
     fnw|rules/factions/redalliance_researh.yaml
+    fnw|rules/factions/redalliance_mobile_building.yaml
 	
 	# Baneslayer
 	fnw|rules/factions/baneslayer_structures.yaml
@@ -92,11 +100,11 @@ Rules:
     fnw|rules/factions/conclave_researh.yaml
 
 	# Federation
-    # fnw|rules/factions/federation_structures.yaml
-    # fnw|rules/factions/federation_infantry.yaml
-    # fnw|rules/factions/federation_vehicles.yaml
-    # fnw|rules/factions/federation_aircraft.yaml
-    # fnw|rules/factions/federation_researh.yaml
+    fnw|rules/factions/federation_structures.yaml
+    fnw|rules/factions/federation_infantry.yaml
+    fnw|rules/factions/federation_vehicles.yaml
+    fnw|rules/factions/federation_aircraft.yaml
+    fnw|rules/factions/federation_researh.yaml
 	
 Sequences:
 	fnw|sequences/aircraft.yaml
@@ -121,6 +129,7 @@ Chrome:
 Assemblies:
 	common|OpenRA.Mods.Common.dll
 	common|OpenRA.Mods.Cnc.dll
+	fnw|OpenRA.Mods.D2k.dll
 	
 TileSets:
     fnw|tilesets/olitrax.yaml
@@ -136,12 +145,12 @@ ChromeLayout:
 	common|chrome/ingame-infoobjectives.yaml
 	common|chrome/ingame-infostats.yaml
 	common|chrome/ingame-menu.yaml
-	fnw|chrome/ingame-observer.yaml
-	fnw|chrome/ingame-observerstats.yaml
+	common|chrome/ingame-observer.yaml
 	fnw|chrome/ingame-player.yaml
 	common|chrome/ingame-perf.yaml
 	common|chrome/ingame-debug.yaml
-    common|chrome/ingame-infochat.yaml
+	common|chrome/ingame-debuginfo.yaml
+	common|chrome/ingame-infochat.yaml
 	common|chrome/mainmenu.yaml
 	common|chrome/settings.yaml
 	common|chrome/credits.yaml
@@ -160,6 +169,8 @@ ChromeLayout:
 	common|chrome/multiplayer-directconnect.yaml
 	common|chrome/connection.yaml
 	common|chrome/replaybrowser.yaml
+	common|chrome/gamesave-browser.yaml
+	common|chrome/gamesave-loading.yaml
 	common|chrome/dropdowns.yaml
 	common|chrome/musicplayer.yaml
 	common|chrome/tooltips.yaml
@@ -168,6 +179,9 @@ ChromeLayout:
 	common|chrome/confirmation-dialogs.yaml
 	common|chrome/editor.yaml
 	common|chrome/playerprofile.yaml
+    
+    
+    
 	
 Weapons:
     fnw|weapons/base_weapons.yaml
@@ -202,7 +216,7 @@ Hotkeys:
     
 LoadScreen: LogoStripeLoadScreen
 	Image: fnw|uibits/loadscreen.png
-	Text: (°Д°), (°X°), (°3°), (°U°), (°w°), (°_°), (°o°), (°O°),  (°*°), (Ô_õ), (°ɷ°), (-ɷ-), (-o"), (x_x), (=_=), ( ͡° ͜ʖ ͡°)
+	Text: (°Д°) ...Loading,(°X°) ...Loading,(°3°) ...Loading,(°U°) ...Loading,(°w°) ...Loading,(°_°) ...Loading,(°o°) ...Loading,(°O°) ...Loading,(°*°) ...Loading,(Ô_õ) ...Loading,(x_x) ...Loading,(=_=) ...Loading,( ͡° ͜ʖ ͡°) ...Loading
 
 ServerTraits:
 	LobbyCommands
@@ -215,33 +229,45 @@ ChromeMetrics:
 	fnw|metrics.yaml
 
 Fonts:
-	Regular:
-		Font: common|FreeSans.ttf
-		Size:14
-	Bold:
-		Font: common|FreeSansBold.ttf
-		Size:14
-	Title:
-		Font: fnw|Dune2k.ttf
-		Size:32
-	MediumBold:
-		Font: common|FreeSansBold.ttf
-		Size:18
-	BigBold:
-		Font: common|FreeSansBold.ttf
-		Size:24
-	Small:
-		Font: common|FreeSans.ttf
-		Size:12
 	Tiny:
 		Font: common|FreeSans.ttf
-		Size:10
+		Size: 10
+		Ascender: 8
 	TinyBold:
 		Font: common|FreeSansBold.ttf
-		Size:10
+		Size: 10
+		Ascender: 8
+	Small:
+		Font: common|FreeSans.ttf
+		Size: 12
+		Ascender: 9
+	Regular:
+		Font: common|FreeSans.ttf
+		Size: 14
+		Ascender: 11
+	Bold:
+		Font: common|FreeSansBold.ttf
+		Size: 14
+		Ascender: 11
+	MediumBold:
+		Font: common|FreeSansBold.ttf
+		Size: 18
+		Ascender: 14
+	BigBold:
+		Font: common|FreeSansBold.ttf
+		Size: 24
+		Ascender: 18
+	Title:
+		Font: fnw|steel_blade_7.ttf
+		Size: 32
+		Ascender: 26
+	InfoConso:
+		Font: common|FreeSansBold.ttf
+		Size:18
+		Ascender: 20
 
 MapGrid:
-	TileSize: 28,28
+	TileSize: 26,26
 	Type: Rectangular
 	
 ColorValidator:

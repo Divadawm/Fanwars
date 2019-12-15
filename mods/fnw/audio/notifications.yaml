@@ -14,20 +14,22 @@ Speech:
 		StartGame:
 		UnitReady: uniteready
 		NoBuild: cannotoptionbuilding
-		NoRoom: NROOM
+		NoRoom: 
 		Training: training
 		OnHold: onhold
 		Cancelled: cancel
 		Building: construction
 		BuildingReady: construction_complete
-		OrderPlaced: ORDER
-		Reinforce: REINF
+        GameLoaded:
+		GameSaved:
+		OrderPlaced: 
+		Reinforce: 
 		UnitLost: unitelost
-		BuildingLost: ENEMY
+		BuildingLost: 
 		BuildingCaptured:
-		EnemyUnitsApproaching: ENEMY
-		EnemyUnitsDetected: ENEMY_DETECTED
-		UnitRepaired: GANEW
+		EnemyUnitsApproaching: 
+		EnemyUnitsDetected: 
+		UnitRepaired: 
 		CannotDeploy: canotdeployere
 		Research: research
         ResearchReady: researchcomplete
@@ -42,9 +44,9 @@ Sounds:
 		CashTickDown: creddwn1
 		LevelUp:
 		ChatLine: hover_btn
-		BuildPaletteOpen: BUTTON1
-		BuildPaletteClose: BUTTON1
-		TabClick: SIDEBAR1
+		BuildPaletteOpen: 
+		BuildPaletteClose: 
+		TabClick: 
 		ClickSound: click_btn
 		ClickDisabledSound: unclick_btn
-		Beacon: CHAT1
+		Beacon: 

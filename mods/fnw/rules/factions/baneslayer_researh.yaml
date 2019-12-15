@@ -1,4 +1,11 @@
 ^Global.Upgrade.baneslayer:
+	GrantConditionOnPrerequisite@SWORD:
+		Condition: doctrine.sword
+		Prerequisites: activate.doctrine.sword
+	SpeedMultiplier@SWORD:
+		RequiresCondition: doctrine.sword
+		Modifier: 280
+		
 
 ^Infantry.Upgrade.baneslayer:
 
@@ -45,64 +52,57 @@ Power.Smoke.baneslayer:
 		Prerequisite: Select.Power
 	RenderSprites:
 		Image: nukeammo_icon
-
-Doctrine.Artemien.baneslayer:
-	Interactable:
-	AlwaysVisible:
-	Tooltip:
-		Name: Sword Protocol
-		Description: ...
-	Buildable:
-		BuildPaletteOrder: 50
-		Queue: Veteran.baneslayer
-		Prerequisites: ~!Doctrine.Artemien.baneslayer, ~!Doctrine.Valkyr.baneslayer
-		Description: Only one protocol can be chosen\nGrants the authorization to create offensive-oriented units\n> Vanir (jumpjet infantry) can be recruited\n> Troll (self-propelled heavy mortar) can be created\n> Heimdall (heavy MLRS) can be created
-	Valued:
-		Cost: 0
-	RenderSprites:
-		Image: upgrade_doctrine_artemienicon
-	ProvidesPrerequisite:
-		Prerequisite: Doctrine.Artemien.baneslayer
-	ProvidesPrerequisite@Unlock.Doctrine:
-		Prerequisite: Doctrine.unlocked.baneslayer
-
-Doctrine.Valkyr.baneslayer:
-	Interactable:
-	AlwaysVisible:
-	Tooltip:
-		Name: Shield Protocol
-		Description: ...
-	Buildable:
-		BuildPaletteOrder: 60
-		Queue: Veteran.baneslayer
-		Prerequisites: ~!Doctrine.Artemien.baneslayer, ~!Doctrine.Valkyr.baneslayer
-		Description: Only one protocol can be chosen\nGrants the authorization to create defensive and support-oriented units\n> Jötunn (heavy infantry) can be recruited\n> Dwarf (light support vehicle) can be created\n> Loki (experimental mobile ion cannon) can be created
-	Valued:
-		Cost: 0
-	RenderSprites:
-		Image: upgrade_doctrine_valkyricon
-	ProvidesPrerequisite:
-		Prerequisite: Doctrine.Valkyr.baneslayer
-	ProvidesPrerequisite@Unlock.Doctrine:
-		Prerequisite: Doctrine.unlocked.baneslayer
-
-upgrade_heidrun_baneslayer:
+		
+activate.doctrine.shield:
 	Inherits@Research: ^ResearchActor
 	AlwaysVisible:
 	Tooltip:
-		Name: Improvised Outpost
+		Name: Shield Protocol
 	Buildable:
-		BuildPaletteOrder: 40
-		Queue: none.baneslayer
-		Prerequisites: ~!research.heidrun_baneslayer, t2_command_relais
-		Description: Heidrun can now be converted to an outpost that provides a small building radius
-		BuildDurationModifier: 20
-	Valued:
-		Cost: 1200
-	RenderSprites:
-		Image: heidruncasematicon
+		BuildPaletteOrder: 60
+		Queue: Doctrine.baneslayer
+		Prerequisites: !activate.doctrine.shield
+		Description: Only one protocol can be chosen\nGrants the authorization to create offensive-oriented units\n> Dwarf (light support vehicle) can be created\n> Heimdall (heavy MLRS) can be created
 	ProvidesPrerequisite:
-		Prerequisite: research.heidrun_baneslayer
+		Prerequisite: activate.doctrine.shield
+	KillsSelf:
+		RemoveInstead: true
+		Delay: 0
+		RequiresCondition: doctrine.sword
+	GrantConditionOnPrerequisite@Shield:
+		Condition: doctrine.shield
+		Prerequisites: activate.doctrine.shield
+	GrantConditionOnPrerequisite@Sword:
+		Condition: doctrine.sword
+		Prerequisites: activate.doctrine.sword
+	RenderSprites:
+		Image: upgrade_doctrine_artemienicon
+		
+activate.doctrine.sword:
+	Inherits@Research: ^ResearchActor
+	AlwaysVisible:
+	Tooltip:
+		Name: Sword Protocol
+	Buildable:
+		BuildPaletteOrder: 60
+		Queue: Doctrine.baneslayer
+		Prerequisites: !activate.doctrine.sword
+		Description: Only one protocol can be chosen\nGrants the authorization to create defensive and support-oriented units\n> Troll (self-propelled heavy mortar) can be created\n> Loki (experimental mobile ion cannon) can be created
+	ProvidesPrerequisite:
+		Prerequisite: activate.doctrine.sword
+	KillsSelf:
+		RemoveInstead: true
+		Delay: 0
+		RequiresCondition: doctrine.shield
+	GrantConditionOnPrerequisite@Shield:
+		Condition: doctrine.shield
+		Prerequisites: activate.doctrine.shield
+	GrantConditionOnPrerequisite@Sword:
+		Condition: doctrine.sword
+		Prerequisites: activate.doctrine.sword
+	RenderSprites:
+		Image: upgrade_doctrine_valkyricon
+		
 
 upgrade.Thor.baneslayer:
 	Inherits@Research: ^ResearchActor
@@ -199,7 +199,7 @@ upgrade.Repair.Training.Baneslayer:
 	IonCannonPower@Orbital.Baneslayer:
 		Description: EMP Strike
 		LongDesc: Calls an EMP strike at the selected location disabling all ground vehicles
-		ChargeInterval: 2250
+		ChargeInterval: 3880
 		CameraActor: camera
 		Effect: emporbital
 		EffectPalette: powereffect
@@ -222,142 +222,9 @@ upgrade.Repair.Training.Baneslayer:
 		Icon: aircraftbaneslayerpowericon
 		Description: Airstrike
 		LongDesc: Calls 3 close-support aircraft that unload all their ordnance on the designated area
-		ChargeInterval: 3500
+		ChargeInterval: 3800
 		SquadSize: 3
 		CameraActor: camera.spy
 		QuantizedFacings: 64
 		DeploySound: spyreveal.aud
 		EffectImage: null
-
-UnkownPlace.baneslayerInfantry30:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 30
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerInfantry40:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 40
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerVehicle50:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 50
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerInfantry60:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 60
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-Locked.baneslayerInfantry70:
-	Inherits: ^LockedPlace
-	Buildable:
-		BuildPaletteOrder: 70
-		Queue: Infantry.baneslayer
-		Prerequisites: ~!Doctrine.unlocked.baneslayer, unkown
-
-UnkownPlace.baneslayerInfantry80:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 80
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerInfantry90:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 90
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerInfantry100:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 100
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerInfantry110:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 110
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerInfantry120:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 120
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerInfantry140:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 140
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerInfantry150:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 150
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerInfantry160:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 160
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerInfantry170:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 170
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerInfantry180:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 180
-		Queue: Infantry.baneslayer
-		Prerequisites: unkown
-
-Locked.baneslayerVehicle60:
-	Inherits: ^LockedPlace
-	Buildable:
-		BuildPaletteOrder: 50
-		Queue: Vehicle.baneslayer
-		Prerequisites: ~!Doctrine.unlocked.baneslayer, unkown
-
-Locked.baneslayerVehicle110:
-	Inherits: ^LockedPlace
-	Buildable:
-		BuildPaletteOrder: 110
-		Queue: Vehicle.baneslayer
-		Prerequisites: ~!Doctrine.unlocked.baneslayer, unkown
-
-UnkownPlace.baneslayerVehicle110:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 110
-		Queue: Vehicle.baneslayer
-		Prerequisites: unkown
-
-UnkownPlace.baneslayerBuilding70:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 70
-		Queue: Building.baneslayer
-		Prerequisites: unkown

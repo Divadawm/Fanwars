@@ -3,28 +3,552 @@
 		Range: 0c750
 		Duration: 60
 		Condition: HEDamageDelay
-        
-fusion.missile:
-	Inherits@weapons: ^Fusion.Weapons.default
-	ReloadDelay: 70
-	Range: 9c0
-	Report: helrocket.aud
+
+# ///// Infantry Weapons ///////
+Laser_cf:
+	Inherits@default.weapons: ^LasergunComrade.default
+	Inherits@Range: ^Range.Infantry.Base
+	ReloadDelay: 30
+	Report: comrade_gun01.aud, comrade_gun02.aud, comrade_gun03.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 100
+		Versus:
+			Infantry: 100
+			LightVehicle: 25
+			ArmorTank: 15
+			Concrete: 20
+			
+Laser_cf.Doctrine:
+	Inherits@default.weapons: Laser_cf
+	Inherits@doctrines.supplement: ^Doctrines.LaserSup
+
+AP_Sentient:
+	Inherits@default.weapons: ^FlakDisciple.Weapons.default
+	Inherits@Range: ^Range.Infantry.Base
+	ReloadDelay: 75
+	Report: ar_autogun_01.aud, ar_autogun_02.aud, ar_autogun_03.aud
+	ValidTargets: Ground, Water
+	Warhead@1Dam: SpreadDamage
+		Spread: 50
+		Damage: 320
+		Versus:
+			Infantry: 50
+			LightVehicle: 110
+			ArmorTank: 120
+			Concrete: 70
+
+AP_Sentient.Doctrine:
+	Inherits@default.weapons: AP_Sentient
+	Inherits@Doctrine: ^Doctrines.BalistSup
+
+AP_SentientAA:
+	Inherits@default.weapons: ^FlakDisciple.WeaponsAA.default
+	Inherits@Range: ^Range.Infantry.Base
+	ReloadDelay: 90
+	Report: ar_autogun_01.aud, ar_autogun_02.aud, ar_autogun_03.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 250
+		Versus:
+			Infantry: 50
+			LightVehicle: 100
+			ArmorTank: 120
+			Concrete: 70
+		
+Saberweapon:
+	Inherits@default.weapons: ^Saber.Weapons.default
+	ReloadDelay: 80
+	Range: 1c0
+	Report: cruise_biglaser.aud
 	Warhead@1Dam: SpreadDamage
 		Damage: 1000
 		Versus:
-			Infantry: 50
-			ArmorInfantry: 50
-			LightVehicle: 50
-			ArmorTank: 50
-			Lord: 50
-			LordTank: 50
-			harvester: 50
-			Concrete: 50
-	Warhead@Fire: GrantExternalCondition
-		Range: 4c512
-		Duration: 180
-		Condition: HEDamageDelay
+			Infantry: 100
+			LightVehicle: 10
+			ArmorTank: 10
+			Concrete: 20
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: light
+		ValidTargets: Ground, Water, Air
+		Palette: Upgrade_blue_effect
 
+Volkit_repair:
+	Inherits@Range: ^Range.Infantry.Base
+	ReloadDelay: 80
+	Report: voltkit_gun.aud
+	ValidTargets: Repair
+	Projectile: Bullet
+		Speed: 0c682
+	Warhead@1Dam: SpreadDamage
+		Spread: 213
+		Damage: -200
+		ValidStances: Ally
+		ValidTargets: Repair
+		DebugOverlayColor: 00FF00
+
+Nukegun:
+	Inherits@default.weapons: ^Desolator.Fusion.Weapons.default
+	Inherits@Range: ^Range.Infantry.Base
+	ReloadDelay: 55
+	ValidTargets: Ground
+	Report: flameera.aud
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Ground
+		Damage: 50
+		Versus:
+			Infantry: 250
+			LightVehicle: 20
+			ArmorTank: 20
+			Concrete: 50
+	Warhead@Radiant: GrantExternalCondition
+		Range: 0c512
+		Duration: 80
+		Condition: RadiantDelay
+
+AP_Gatling_Era:
+	Inherits@default.weapons: ^Eradicator.Weapons.default
+	Inherits@Range: ^Range.Infantry.Base
+	ReloadDelay: 6
+	Report: eradicator_APcanon01.aud, eradicator_APcanon02.aud, eradicator_APcanon03.aud
+	ValidTargets: Ground
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Ground
+		Damage: 65
+		Versus:
+			Infantry: 120
+			LightVehicle: 65
+			ArmorTank: 50
+			Concrete: 20
+		DamageTypes: Burned
+			
+Beam_Gatling_Era:
+	Inherits@default.weapons: ^Eradicator.Beam.Weapons.default
+	Inherits@Range: ^Range.Infantry.Base
+	ReloadDelay: 120
+	Report: eradicator_Hecanon01.aud, eradicator_Hecanon02.aud
+	ValidTargets: Ground
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Ground
+		Damage: 450
+		Versus:
+			Infantry: 200
+			LightVehicle: 120
+			ArmorTank: 100
+			Concrete: 80
+		DamageTypes: Burned
+		
+Beam_Gatling_Era.Doctrine:
+	Inherits@default.weapons: Beam_Gatling_Era
+	Inherits@doctrines;supplement: ^Doctrines.LaserSup
+
+AP_Gatling_Era.fafnir:
+	Inherits@default.weapons: AP_Gatling_Era
+	Inherits@Range: ^Range.Garrisoned.Base
+	ReloadDelay: 35
+	Range: 8c512
+	Warhead@1Dam: SpreadDamage
+		Damage: 74
+		
+# /////// Vehicle Weapons ///////
+BikeMissile:
+	Inherits@default.weapons: ^Bike.Weapons.default
+	Inherits@Range: ^Range.Vehicle.Base
+	ReloadDelay: 95
+	Burst: 2
+	BurstDelay: 8
+	Report: roquettehe.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 300
+		Versus:
+			Infantry: 20
+			LightVehicle: 100
+			ArmorTank: 90
+			Concrete: 45
+
+FlamerDrone:
+	Inherits@default.weapons: ^Scarab.Weapons.default
+	Inherits@Range: ^Range.Vehicle.Base
+	ReloadDelay: 50
+	Burst: 2
+	BurstDelay: 8
+	Warhead@1Dam: SpreadDamage
+		Damage: 100
+		Versus:
+			Infantry: 250
+			LightVehicle: 40
+			ArmorTank: 30
+			Concrete: 180
+
+FlamerDroneUP:
+	Inherits@default.weapons: FlamerDrone
+	Inherits@D.Upgrade: ^FlamerUgrade
+	Projectile: Bullet
+		TrailPalette: flammeeffectblue
+
+FlamerDrone.Doctrines:
+	Inherits@default.weapons: FlamerDrone
+	Inherits@Doctrines.Upgrade: ^Doctrines.FlammerSup
+	
+FlamerDroneUP.Doctrines:
+	Inherits@default.weapons: FlamerDrone
+	Inherits@default.Upgrade: ^FlamerUgrade
+	Inherits@Doctrines.Upgrade: ^Doctrines.FlammerSup
+	Projectile: Bullet
+		TrailPalette: flammeeffectblue
+	Warhead@8DotrinesUpgradeeffect0: CreateEffect
+		ExplosionPalette: flammeeffectblue
+	Warhead@8DotrinesUpgradeeffect01: CreateEffect
+		ExplosionPalette: flammeeffectblue
+	Warhead@8DotrinesUpgradeeffect02: CreateEffect
+		ExplosionPalette: flammeeffectblue
+
+AP_Harvesterturret:
+	Inherits@default.weapons: ^Harvester.Weapons.default
+	Inherits@Range: ^Range.Vehicle.Base
+	ReloadDelay: 10
+	Report: autocannon.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 38
+		Versus:
+			Infantry: 80
+			LightVehicle: 50
+			ArmorTank: 100
+			Concrete: 50
+
+AP_basilic:
+	Inherits@default.weapons: ^Basilisk.Weapons.default
+	ReloadDelay: 80
+	Range: 8c0
+	Report: basilisk_gun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 800
+		Versus:
+			Infantry: 30
+			LightVehicle: 85
+			ArmorTank: 75
+			Concrete: 50
+
+AP_basilic_HE_UP:
+	Inherits@weapons: AP_basilic
+	Inherits@Upgrade: ^UpgradeHEAlliance
+
+AP_basilic_AA_flak:
+	Inherits@default.weapons: ^Basilisk.WeaponsAA.default
+	Inherits@Range: ^Range.Vehicle.Base
+	ReloadDelay: 12
+	Burst: 2
+	Report: autocannon.aud
+	ValidTargets: Air
+	Warhead@1Dam: SpreadDamage
+		Damage: 300
+		Versus:
+			Infantry: 70
+			LightVehicle: 80
+			ArmorTank: 60
+			Concrete: 30
+
+AP_Tarantula:
+	Inherits@default.weapons: ^Hydra/Tarantula.Weapons.default
+	Inherits@Range: ^Range.VehicleAA.Base
+	ReloadDelay: 8
+	Burst: 4
+	BurstDelays: 2
+	ValidTargets: Air
+	Report: hydrafire01.aud, hydrafire02.aud, hydrafire03.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 50
+		Versus:
+			Infantry: 50
+			LightVehicle: 80
+			ArmorTank: 50
+			Concrete: 30
+		ValidTargets: Air
+
+AP_hydra:
+	Inherits@default.weapons: ^Hydra/Tarantula.Weapons.default
+	Inherits@Range: ^Range.VehicleAA.Base
+	ReloadDelay: 8
+	Burst: 2
+	BurstDelays: 2
+	Report: hydrafire01.aud, hydrafire02.aud, hydrafire03.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 100
+		Versus:
+			Infantry: 45
+			LightVehicle: 50
+			ArmorTank: 10
+			Concrete: 50
+
+AP_hydra_multimiss:
+	Inherits@default.weapons: ^Hydra.barrage.Weapons.default
+	Inherits@Upgrade: ^UpgradeHEAlliance
+	Inherits@Range: ^Range.ArtyLow.Base
+	ReloadDelay: 95
+	Burst: 8
+	Report: hydra_barrage_rocket.aud
+	ValidTargets: Ground
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		ValidTargets: Ground
+		Damage: 120
+		Versus:
+			Infantry: 140
+			LightVehicle: 100
+			ArmorTank: 90
+			Concrete: 100
+	Warhead@disturb: GrantExternalCondition
+		ValidTargets: Ground, Rough, Tree
+		Range: 3c0
+		Duration: 80
+		Condition: disturbingspeed
+
+120mm_mantis:
+	Inherits@default.weapons: ^Manticore.Weapons.default
+	Inherits@Range: ^Range.ArtyHigh.Base
+	ReloadDelay: 100
+	MinRange: 4c0
+	Report: mantis_fire.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 1c128
+		Damage: 2200
+		Versus:
+			Infantry: 45
+			LightVehicle: 75
+			ArmorTank: 85
+			Concrete: 130
+
+120mm_mantis_HE_UP:
+	Inherits@weapons: 120mm_mantis
+	Inherits@Upgrade: ^UpgradeHEAlliance
+
+inferno_flamer_salamander:
+	Inherits@default.weapons: ^Salamander.Weapons.default
+	Inherits@Range: ^Range.Vehicle.Base
+	ReloadDelay: 20
+	Range: 7c128
+	Warhead@1Dam: SpreadDamage
+		Damage: 7
+		Versus:
+			Infantry: 150
+			LightVehicle: 80
+			ArmorTank: 40
+			Concrete: 150
+	Warhead@Fire: GrantExternalCondition
+		Range: 0c750
+		Duration: 60
+		Condition: HEDamageDelay
+		
+inferno_flamer_salamander_UP:
+	Inherits@default.weapons: inferno_flamer_salamander
+	Inherits@default.Upgrade: ^FlamerUgrade
+	Projectile: Bullet
+		TrailPalette: flammeeffectblue
+	
+inferno_flamer_salamander.Doctrines:
+	Inherits@default.weapons: inferno_flamer_salamander
+	Inherits@Doctrines.Upgrade: ^Doctrines.FlammerSup
+	
+inferno_flamer_salamander_UP.Doctrines:
+	Inherits@default.weapons: inferno_flamer_salamander
+	Inherits@default.Upgrade: ^FlamerUgrade
+	Inherits@Doctrines.Upgrade: ^Doctrines.FlammerSup
+	Projectile: Bullet
+		TrailPalette: flammeeffectblue
+	Warhead@8DotrinesUpgradeeffect0: CreateEffect
+		ExplosionPalette: flammeeffectblue
+	Warhead@8DotrinesUpgradeeffect01: CreateEffect
+		ExplosionPalette: flammeeffectblue
+	Warhead@8DotrinesUpgradeeffect02: CreateEffect
+		ExplosionPalette: flammeeffectblue
+
+AP_Apocalypse:
+	Inherits@default.weapons: ^Apocalypse.Weapons.default
+	Inherits@Range: ^Range.Vehicle.Base
+	ReloadDelay: 90
+	Burst: 2
+	BurstDelays: 18
+	Report: apoc_gun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 750
+		Versus:
+			Infantry: 30
+			LightVehicle: 75
+			ArmorTank: 70
+			Concrete: 50
+		
+
+AP_Apocalypse_HE_UP:
+	Inherits@weapons: AP_Apocalypse
+	Inherits@Upgrade: ^UpgradeHEAlliance
+
+fragMissile:
+	Inherits@default.weapons: ^Apocalypse.WeaponsAA.default
+	Inherits@Range: ^Range.Vehicle.Base
+	ReloadDelay: 120
+	Burst: 2
+	Range: 6c0
+	Report: roquettehe.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 150
+		Versus:
+			Infantry: 95
+			LightVehicle: 100
+			ArmorTank: 70
+			Concrete: 60
+
+FlamerPurifier:
+	Inherits@default.weapons: ^Purifier.Weapons.default
+	Inherits@Range: ^Range.Vehicle.Base
+	ReloadDelay: 60
+	Range: 7c0
+	Burst: 40
+	BurstDelays: 0
+	Report: firepurifier.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 50
+		Versus:
+			Infantry: 250
+			LightVehicle: 80
+			ArmorTank: 40
+			Concrete: 120
+			
+FlamerPurifierUP:
+	Inherits@default.weapons: FlamerPurifier
+	Inherits@default.Upgrade: ^FlamerUgrade
+	
+FlamerPurifier.Doctrine:
+	Inherits@default.weapons: FlamerPurifier
+	Inherits@default.Doctrines: ^Doctrines.FlammerSup
+	
+FlamerPurifierUP.Doctrine:
+	Inherits@default.weapons: FlamerPurifier
+	Inherits@default.Upgrade: ^FlamerUgrade
+	Inherits@default.Doctrines: ^Doctrines.FlammerSup
+	Warhead@8DotrinesUpgradeeffect0: CreateEffect
+		ExplosionPalette: flammeeffectblue
+	Warhead@8DotrinesUpgradeeffect01: CreateEffect
+		ExplosionPalette: flammeeffectblue
+	Warhead@8DotrinesUpgradeeffect02: CreateEffect
+		ExplosionPalette: flammeeffectblue
+	
+
+Ann.muzzle:
+	Inherits@default.weapons: ^Anhilihator.Target.default
+	Inherits@Range: ^Range.ArtyHigh.Base
+	Projectile: InstantHit
+	ReloadDelay: 100
+	MinRange: 4c0
+	
+Ann.TargetBeam:
+	Inherits@default.weapons: ^Anhilihator.Target.default
+	Inherits@Range: ^Range.ArtyHigh.Base
+	ReloadDelay: 4
+	MinRange: 4c0
+
+RailgunAnn:
+	Inherits@default.weapons: ^Anhilihator.Weapons.default
+	Inherits@Range: ^Range.ArtyHigh.Base
+	ReloadDelay: 20
+	MinRange: 4c0
+	Report: ann_gun.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		Versus:
+			Infantry: 30
+			LightVehicle: 75
+			ArmorTank: 110
+			Concrete: 100
+
+AP_Gatling_ann:
+	Inherits@default.weapons: ^AnhilihatorAP.Weapons.default
+	Inherits@Range: ^Range.ArtyHigh.Base
+	ReloadDelay: 4
+	Report: hydrafire01.aud, hydrafire02.aud, hydrafire03.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 100
+		DeathType: 4
+		Versus:
+			Infantry: 80
+			LightVehicle: 80
+			ArmorTank: 70
+			Concrete: 50
+
+AP_chimera:
+	Inherits@default.weapons: ^Chimera.Weapons.default
+	Inherits@Range: ^Range.Aircraft.Base
+	ReloadDelay: 8
+	Report: chimeregun01.aud, chimeregun02.aud, chimeregun03.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 65
+		DeathType: 4
+		Versus:
+			Infantry: 50
+			LightVehicle: 85
+			ArmorTank: 75
+			Concrete: 60
+
+AP_Wyvern:
+	Inherits@default.weapons: ^Wyvern.Weapons.default
+	Inherits@Range: ^Range.Aircraft.Base
+	ReloadDelay: 60
+	Burst: 6
+	BurstDelays: 3
+	Report: autocannon.aud
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Air
+		Spread: 65
+		Damage: 120
+		DeathType: 4
+		Versus:
+			Infantry: 100
+			LightVehicle: 90
+			ArmorTank: 75
+			Concrete: 60
+			
+CommandMissile:
+	Inherits@default.weapons: ^Bike.Weapons.default
+	Inherits@Range: ^Range.Aircraft.Base
+	ReloadDelay: 75
+	Burst: 4
+	Report: roquettehe.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 250
+		Versus:
+			Infantry: 22
+			LightVehicle: 100
+			ArmorTank: 90
+			Concrete: 45
+
+
+therombomb:
+	Inherits@default.weapons: ^Archidemon.Weapons.default
+	ReloadDelay: 500
+	Range: 1c256
+	Warhead@1Dam: SpreadDamage
+		Damage: 3800
+		Versus:
+			Infantry: 120
+			LightVehicle: 100
+			ArmorTank: 90
+			Concrete: 130
+			
+inferno.rayon:
+	Inherits@default.weapons: ^Purifier.Weapons.default
+	ReloadDelay: 0
+	Range: 0c256
+	Projectile: Bullet
+		Speed: 220
+		Inaccuracy: 50
+	Warhead@1Dam: SpreadDamage
+		Damage: 100
+		Versus:
+			Infantry: 120
+			LightVehicle: 100
+			ArmorTank: 50
+			Concrete: 130
+			
 cannon_cruiser:
 	Inherits@default.weapons: ^cannon_cruiser.default
 	ReloadDelay: 60
@@ -36,12 +560,8 @@ cannon_cruiser:
 		Damage: 450
 		Versus:
 			Infantry: 60
-			ArmorInfantry: 55
 			LightVehicle: 85
 			ArmorTank: 70
-			Lord: 40
-			LordTank: 40
-			harvester: 50
 			Concrete: 60
 
 laserdefence:
@@ -55,12 +575,8 @@ laserdefence:
 		Damage: 1800
 		Versus:
 			Infantry: 100
-			ArmorInfantry: 90
 			LightVehicle: 80
 			ArmorTank: 80
-			Lord: 50
-			LordTank: 50
-			harvester: 90
 			Concrete: 80
 	Warhead@3EffGround: CreateEffect
 		Falloff: 100, 68, 35
@@ -72,24 +588,20 @@ laserdefence:
 		ExplosionPalette: light
 		ValidTargets: Ground, Water, Air
 		Palette: Upgrade_blue_effect
-
+			
+# ///// Defense Weapons ///////
 Predator.gun:
 	Inherits@default.weapons: ^Chimera.Weapons.default
-	ReloadDelay: 6
-	BurstDelays: 8
+	ReloadDelay: 25
 	Range: 7c256
 	Report: Chimeregun.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 45
+		Damage: 85
 		DeathType: 4
 		Versus:
-			Infantry: 20
-			ArmorInfantry: 25
-			LightVehicle: 85
-			ArmorTank: 75
-			Lord: 60
-			LordTank: 65
-			harvester: 30
+			Infantry: 40
+			LightVehicle: 95
+			ArmorTank: 85
 			Concrete: 20
 
 DoomTower.Gun:
@@ -101,12 +613,8 @@ DoomTower.Gun:
 		Damage: 1050
 		Versus:
 			Infantry: 70
-			ArmorInfantry: 80
 			LightVehicle: 100
 			ArmorTank: 90
-			Lord: 70
-			LordTank: 60
-			harvester: 70
 			Concrete: 100
 	Warhead@sismic: GrantExternalCondition
 		ValidTargets: Ground, Rough, Tree
@@ -114,22 +622,145 @@ DoomTower.Gun:
 		Duration: 50
 		Condition: empdisable
 
+#  //////////////////////////////////////////////////////////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  #
+# /////////////////////////////////////////////////////////////// Doctrines Weapons Supplement \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ #
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ /////////////////////////////////////////////////////////////////////////////////////// #
+
+^Doctrines.LaserSup:
+	Projectile: LaserZap
+		Color: f2bae6
+		SecondaryBeamColor: 7c1943
+	Warhead@Dam.DotrinesUpgrade: SpreadDamage
+		Spread: 64
+		DeathType: 1
+		DamageTypes: Burned
+	Warhead@2Dam.Doctrine: SpreadDamage
+		Damage: 25
+		Versus:
+			Infantry: 100
+			LightVehicle: 50
+			ArmorTank: 25
+			Concrete: 20
+	Warhead@8DotrinesUpgrade: CreateEffect
+		Explosions: laser_spark01, laser_spark02, laser_spark03
+		ExplosionPalette: powereffect2
+		ValidTargets: Ground
+		
+^Doctrines.FlammerSup:
+	Warhead@2Dam.Doctrine: SpreadDamage
+		Damage: 50
+		Spread: 720
+		Delay: 20
+		DeathType: 5
+		RangeLimit: 7c256
+		DamageTypes: Burned
+	Warhead@2Dam.Doctrine: SpreadDamage
+		Damage: 25
+		Spread: 1024
+		Delay: 40
+		DeathType: 5
+		RangeLimit: 7c256
+		DamageTypes: Burned
+	Warhead@2Dam.Doctrine: SpreadDamage
+		Damage: 15
+		Versus:
+			Infantry: 100
+			LightVehicle: 50
+			ArmorTank: 25
+			Concrete: 20
+	Warhead@8DotrinesUpgradeeffect0: CreateEffect
+		Delay: 20
+		Explosions: flamezoneres01, flamezoneres02, flamezoneres03
+		ExplosionPalette: flameeffect60
+		ValidTargets: Ground
+	Warhead@8DotrinesUpgradeeffect01: CreateEffect
+		Delay: 20
+		Explosions: flamezoneres01, flamezoneres02, flamezoneres03
+		ExplosionPalette: flameeffect60
+		ValidTargets: Ground
+	Warhead@8DotrinesUpgradeeffect02: CreateEffect
+		Delay: 40
+		Explosions: flamezoneres01, flamezoneres02, flamezoneres03
+		ExplosionPalette: flameeffect60
+		ValidTargets: Ground
+		
+^Doctrines.RailgunSup:
+	Warhead@2Dam.Doctrine: SpreadDamage
+		Damage: 50
+		Spread: 25
+		Delay: 20
+		DeathType: 5
+		RangeLimit: 7c256
+		DamageTypes: Burned
+	Warhead@8DotrinesUpgradeeffect01: CreateEffect
+		Delay: 5
+		Explosions: expl_railgun01, expl_railgun01, expl_railgun01
+		ExplosionPalette: powereffect
+		ValidTargets: Ground
+		
+^Doctrines.BalistSup:
+	Warhead@2Dam.Doctrine: SpreadDamage
+		Damage: 50
+		Spread: 180
+		Delay: 8
+		DeathType: 5
+		RangeLimit: 7c256
+		DamageTypes: Burned
+	Warhead@8DotrinesUpgradeeffect01: CreateEffect
+		Delay: 8
+		Explosions: expl_balistzone01, expl_balistzone02, expl_balistzone03
+		ExplosionPalette: flameeffect
+		ValidTargets: Ground
+
+#  //////////////////////////////////////////////////////////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  #
+# /////////////////////////////////////////////////////////////////// Upgrade Weapons Base \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ #
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ /////////////////////////////////////////////////////////////////////////////////////// #
+
+^FlamerUgrade:
+	Projectile: Bullet
+		Palette: flammeeffectblue
+	Warhead@1DamagezUp: SpreadDamage
+		Damage: 50
+		Versus:
+			Infantry: 250
+			LightVehicle: 40
+			ArmorTank: 35
+			Concrete: 200
+	Warhead@3EffGround: CreateEffect
+		ExplosionPalette: flammeeffectblue
+
+#  //////////////////////////////////////////////////////////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  #
+# ////////////////////////////////////////////////////////////////////// Super Weapons \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ #
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ /////////////////////////////////////////////////////////////////////////////////////// # 
+
+fusion.missile:
+	Inherits@weapons: ^Fusion.Weapons.default
+	ReloadDelay: 70
+	Range: 9c0
+	Report: helrocket.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 1000
+		Versus:
+			Infantry: 50
+			LightVehicle: 50
+			ArmorTank: 50
+			Concrete: 50
+	Warhead@Fire: GrantExternalCondition
+		Range: 4c512
+		Duration: 180
+		Condition: HEDamageDelay
+
 nuke.alliance.missile:
 	ValidTargets: Ground, Tree, Water, Underwater, Air
 	Warhead@1Dam_impact: SpreadDamage
 		Spread: 1c0
-		Damage: 2000
+		Damage: 3500
 		Falloff: 1000, 368, 135, 50, 18, 7, 0
 		ValidTargets: Ground, Tree, Water, Air
 		Versus:
 			Infantry: 70
-			ArmorInfantry: 80
 			LightVehicle: 100
-			ArmorTank: 90
-			Lord: 70
-			LordTank: 60
-			harvester: 70
-			Concrete: 100
+			Concrete: 75
 		DamageTypes: Prone50Percent, TriggerProne
 	Warhead@2Res_impact: DestroyResource
 		Size: 1
@@ -218,576 +849,3 @@ nuke.alliance.missile:
 		InvalidTargets: Vehicle, Structure, Wall
 		Size: 5
 		Delay: 20
-
-Laser_cf:
-	Inherits@default.weapons: ^LasergunComrade.default
-	ReloadDelay: 18
-	Range: 5c0
-	Report: laser_inf.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 120
-		Versus:
-			Infantry: 100
-			ArmorInfantry: 55
-			LightVehicle: 10
-			ArmorTank: 10
-			Lord: 70
-			LordTank: 5
-			harvester: 20
-			Concrete: 20
-
-Laser_cf.fafnir:
-	Inherits@default.weapons: Laser_cf
-	ReloadDelay: 10
-	Range: 6c0
-	Warhead@1Dam: SpreadDamage
-		Damage: 110
-
-AP_Sentient:
-	Inherits@default.weapons: ^FlakDisciple.Weapons.default
-	ReloadDelay: 90
-	Range: 6c256
-	Report: flak_mortar_alliance.aud
-	ValidTargets: Ground, Water
-	Warhead@1Dam: SpreadDamage
-		Spread: 50
-		Damage: 250
-		Versus:
-			Infantry: 50
-			ArmorInfantry: 100
-			LightVehicle: 110
-			ArmorTank: 120
-			Lord: 50
-			LordTank: 70
-			harvester: 80
-			Concrete: 70
-
-AP_Sentient.fafnir:
-	Inherits@default.weapons: AP_Sentient
-	ReloadDelay: 70
-	Range: 7c256
-	Warhead@1Dam: SpreadDamage
-		Damage: 280
-
-AP_SentientAA:
-	Inherits@default.weapons: ^FlakDisciple.WeaponsAA.default
-	ReloadDelay: 90
-	Range: 6c256
-	Report: flak_mortar_alliance.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 250
-		Versus:
-			Infantry: 50
-			ArmorInfantry: 100
-			LightVehicle: 100
-			ArmorTank: 120
-			Lord: 50
-			LordTank: 70
-			harvester: 80
-			Concrete: 70
-
-AP_SentientAA.fafnir:
-	Inherits@default.weapons: AP_SentientAA
-	ReloadDelay: 70
-	Range: 7c256
-	Warhead@1Dam: SpreadDamage
-		Damage: 270
-
-Volkit_gun:
-	Inherits@default.weapons: ^Ellectrocutor.Weapons.default
-	ReloadDelay: 50
-	Range: 6c0
-	Report: voltkit_gun.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 180
-		Versus:
-			Infantry: 50
-			ArmorInfantry: 80
-			LightVehicle: 130
-			ArmorTank: 100
-			Lord: 70
-			LordTank: 60
-			harvester: 70
-			Concrete: 100
-	Warhead@sismic: GrantExternalCondition
-		ValidTargets: Ground, Rough, Tree
-		Range: 0c512
-		Duration: 20
-		Condition: empdisable
-
-Volkit_gun.fafnir:
-	Inherits@default.weapons: Volkit_gun
-	ReloadDelay: 40
-	Range: 7c0
-	Warhead@1Dam: SpreadDamage
-		Damage: 180
-	Warhead@sismic: GrantExternalCondition
-		ValidTargets: Ground, Rough, Tree, Rock
-		Range: 0c258
-		Duration: 60
-		Condition: empdisable
-
-Nukegun:
-	Inherits@default.weapons: ^Desolator.Fusion.Weapons.default
-	ReloadDelay: 45
-	Range: 7c512
-	ValidTargets: Ground
-	Report: flameera.aud
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Damage: 80
-		Versus:
-			Infantry: 450
-			ArmorInfantry: 50
-			LightVehicle: 20
-			ArmorTank: 20
-			Lord: 40
-			LordTank: 20
-			harvester: 30
-			Concrete: 50
-            
-
-Nukegun.fafnir:
-	Inherits@default.weapons: Nukegun
-	ReloadDelay: 50
-	Range: 6c512
-	Warhead@1Dam: SpreadDamage
-		Damage: 500
-
-AP_Gatling_Era:
-	Inherits@default.weapons: ^Eradicator.Weapons.default
-	ReloadDelay: 45
-	Burst: 3
-	BurstDelays: 2
-	Range: 7c512
-	Report: h_gatling_fire.aud
-	ValidTargets: Ground
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Damage: 68
-		Versus:
-			Infantry: 100
-			ArmorInfantry: 60
-			LightVehicle: 65
-			ArmorTank: 50
-			Lord: 70
-			LordTank: 40
-			harvester: 60
-			Concrete: 40
-
-AP_Gatling_Era.fafnir:
-	Inherits@default.weapons: AP_Gatling_Era
-	ReloadDelay: 35
-	Range: 8c512
-	Warhead@1Dam: SpreadDamage
-		Damage: 74
-
-BikeMissile:
-	Inherits@default.weapons: ^Bike.Weapons.default
-	ReloadDelay: 90
-	Burst: 2
-	Range: 6c0
-	Report: roquettehe.aud
-	Warhead@1Dam: SpreadDamage
-		Spread: 128
-		Damage: 260
-		Versus:
-			Infantry: 22
-			ArmorInfantry: 80
-			LightVehicle: 100
-			ArmorTank: 90
-			Lord: 50
-			LordTank: 100
-			harvester: 110
-			Concrete: 45
-
-FlamerDrone:
-	Inherits@default.weapons: ^Scarab.Weapons.default
-	ReloadDelay: 75
-	Range: 7c0
-	Burst: 12
-	BurstDelays: 0
-	Warhead@1Dam: SpreadDamage
-		Damage: 16
-		Versus:
-			Infantry: 500
-			ArmorInfantry: 130
-			LightVehicle: 40
-			ArmorTank: 30
-			Lord: 70
-			LordTank: 40
-			harvester: 45
-			Concrete: 250
-
-FlamerDroneUP:
-	Inherits@default.weapons: ^Scarab.Weapons.default
-	ReloadDelay: 75
-	Range: 6c0
-	Burst: 10
-	BurstDelays: 0
-	Projectile: Bullet
-		Palette: Upgrade_blue_effect
-	Warhead@1Dam: SpreadDamage
-		Damage: 20
-		Versus:
-			Infantry: 200
-			ArmorInfantry: 150
-			LightVehicle: 40
-			ArmorTank: 30
-			Lord: 70
-			LordTank: 40
-			harvester: 45
-			Concrete: 140
-	Warhead@3EffGround: CreateEffect
-		Falloff: 100, 68, 35
-		Explosions: burnimpact
-		ExplosionPalette: Upgrade_blue_effect
-		ImpactSounds: flames01.aud
-		ValidTargets: Ground, Water, Air
-
-AP_Harvesterturret:
-	Inherits@default.weapons: ^Harvester.Weapons.default
-	ReloadDelay: 10
-	Range: 6c256
-	Report: autocannon.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 38
-		Versus:
-			Infantry: 80
-			ArmorInfantry: 75
-			LightVehicle: 50
-			ArmorTank: 100
-			Lord: 40
-			LordTank: 40
-			harvester: 80
-			Concrete: 50
-
-AP_basilic:
-	Inherits@default.weapons: ^Basilisk.Weapons.default
-	ReloadDelay: 88
-	Range: 7c512
-	Report: basilisk_gun.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 750
-		Versus:
-			Infantry: 15
-			ArmorInfantry: 70
-			LightVehicle: 80
-			ArmorTank: 100
-			Lord: 30
-			LordTank: 60
-			harvester: 80
-			Concrete: 60
-
-AP_basilic_HE_UP:
-	Inherits@weapons: AP_basilic
-	Inherits@Upgrade: ^UpgradeHEAlliance
-
-AP_basilic_AA_flak:
-	Inherits@default.weapons: ^Basilisk.WeaponsAA.default
-	ReloadDelay: 12
-	Burst: 2
-	Range: 7c256
-	Report: autocannon.aud
-	ValidTargets: Air
-	Warhead@1Dam: SpreadDamage
-		Damage: 40
-		Versus:
-			Infantry: 70
-			ArmorInfantry: 70
-			LightVehicle: 80
-			ArmorTank: 60
-			Lord: 50
-			LordTank: 40
-			harvester: 80
-			Concrete: 30
-
-AP_Tarantula:
-	Inherits@default.weapons: ^Hydra/Tarantula.Weapons.default
-	ReloadDelay: 9
-	Range: 10c256
-	Burst: 4
-	BurstDelays: 2
-	ValidTargets: Air
-	Report: autogunhydra.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 65
-		Versus:
-			Infantry: 50
-			ArmorInfantry: 50
-			LightVehicle: 80
-			ArmorTank: 80
-			Lord: 40
-			LordTank: 30
-			harvester: 40
-			Concrete: 30
-		ValidTargets: Air
-
-AP_hydra:
-	Inherits@default.weapons: ^Hydra/Tarantula.Weapons.default
-	ReloadDelay: 8
-	Range: 8c256
-	Burst: 2
-	BurstDelays: 4
-	Report: autogunhydra.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 65
-		Versus:
-			Infantry: 50
-			ArmorInfantry: 70
-			LightVehicle: 80
-			ArmorTank: 50
-			Lord: 40
-			LordTank: 80
-			harvester: 40
-			Concrete: 30
-
-AP_hydra_multimiss:
-	Inherits@default.weapons: ^Hydra.barrage.Weapons.default
-	Inherits@Upgrade: ^UpgradeHEAlliance
-	ReloadDelay: 95
-	Burst: 8
-	Range: 14c0
-	Report: hydra_barrage_rocket.aud
-	ValidTargets: Ground
-	Warhead@1Dam: SpreadDamage
-		Spread: 256
-		ValidTargets: Ground
-		Damage: 95
-		Versus:
-			Infantry: 100
-			ArmorInfantry: 90
-			LightVehicle: 100
-			ArmorTank: 90
-			Lord: 100
-			LordTank: 90
-			harvester: 90
-			Concrete: 100
-	Warhead@disturb: GrantExternalCondition
-		ValidTargets: Ground, Rough, Tree
-		Range: 3c0
-		Duration: 80
-		Condition: disturbingspeed
-
-120mm_mantis:
-	Inherits@default.weapons: ^Manticore.Weapons.default
-	ReloadDelay: 110
-	Range: 14c256
-	MinRange: 4c0
-	Report: mantis_fire.aud
-	Warhead@1Dam: SpreadDamage
-		Spread: 1c128
-		Damage: 500
-		Versus:
-			Infantry: 95
-			ArmorInfantry: 70
-			LightVehicle: 70
-			ArmorTank: 50
-			Lord: 50
-			LordTank: 40
-			harvester: 70
-			Concrete: 140
-
-120mm_mantis_HE_UP:
-	Inherits@weapons: 120mm_mantis
-	Inherits@Upgrade: ^UpgradeHEAlliance
-
-inferno_flamer_salamander:
-	Inherits@default.weapons: ^Salamander.Weapons.default
-	ReloadDelay: 4
-	Range: 7c128
-	BurstDelays: 0
-	Warhead@1Dam: SpreadDamage
-		Damage: 20
-		Versus:
-			Infantry: 100
-			ArmorInfantry: 80
-			LightVehicle: 80
-			ArmorTank: 60
-			Lord: 70
-			LordTank: 60
-			harvester: 50
-			Concrete: 50
-	Warhead@Fire: GrantExternalCondition
-		Range: 0c750
-		Duration: 60
-		Condition: HEDamageDelay
-
-inferno_flamer_salamander_UP:
-	Inherits@weapons: inferno_flamer_salamander
-	Projectile: Bullet
-		Palette: Upgrade_blue_effect
-		Color: 49C5FF
-	Warhead@1Dam: SpreadDamage
-		Damage: 95
-	Warhead@3EffGround: CreateEffect
-		ExplosionPalette: Upgrade_blue_effect
-
-AP_Apocalypse:
-	Inherits@default.weapons: ^Apocalypse.Weapons.default
-	ReloadDelay: 90
-	Range: 7c256
-	Burst: 2
-    BurstDelays: 28
-	Report: apoc_gun.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 710
-		Versus:
-			Infantry: 30
-			ArmorInfantry: 60
-			LightVehicle: 100
-			ArmorTank: 110
-			Lord: 50
-			LordTank: 100
-			harvester: 80
-			Concrete: 110
-
-AP_Apocalypse_HE_UP:
-	Inherits@weapons: AP_Apocalypse
-	Inherits@Upgrade: ^UpgradeHEAlliance
-
-fragMissile:
-	Inherits@default.weapons: ^Apocalypse.WeaponsAA.default
-	ReloadDelay: 120
-	Burst: 2
-	Range: 6c0
-	Report: roquettehe.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 150
-		Versus:
-			Infantry: 95
-			ArmorInfantry: 70
-			LightVehicle: 100
-			ArmorTank: 70
-			Lord: 70
-			LordTank: 80
-			harvester: 70
-			Concrete: 60
-
-FlamerPurifier:
-	Inherits@default.weapons: ^Purifier.Weapons.default
-	ReloadDelay: 60
-	Range: 7c0
-	Burst: 45
-	BurstDelays: 1
-	Report: firepurifier.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 70
-		Versus:
-			Infantry: 250
-			ArmorInfantry: 120
-			LightVehicle: 80
-			ArmorTank: 40
-			Lord: 80
-			LordTank: 40
-			harvester: 40
-			Concrete: 140
-
-FlamerPurifierUP:
-	Inherits@weaponsUP: FlamerPurifier
-	Projectile: Bullet
-		Palette: Upgrade_blue_effect
-	Warhead@1Dam: SpreadDamage
-		Damage: 95
-	Warhead@3EffGround: CreateEffect
-		ExplosionPalette: Upgrade_blue_effect
-
-Ann.TargetBeam:
-	Inherits@default.weapons: ^Anhilihator.Target.default
-	ReloadDelay: 4
-	Range: 15c512
-	MinRange: 4c0
-
-RailgunAnn:
-	Inherits@default.weapons: ^Anhilihator.Weapons.default
-	ReloadDelay: 20
-	Range: 17c512
-	MinRange: 4c0
-	Report: ann_gun.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 5000
-		Versus:
-			Infantry: 30
-			ArmorInfantry: 100
-			LightVehicle: 75
-			ArmorTank: 110
-			Lord: 60
-			LordTank: 75
-			harvester: 60
-			Concrete: 100
-
-AP_Gatling_ann:
-	Inherits@default.weapons: ^AnhilihatorAP.Weapons.default
-	ReloadDelay: 3
-	Range: 6c512
-	Report: h_gatling_fire.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 100
-		DeathType: 4
-		Versus:
-			Infantry: 80
-			ArmorInfantry: 70
-			LightVehicle: 80
-			ArmorTank: 70
-			Lord: 80
-			LordTank: 70
-			harvester: 80
-			Concrete: 50
-
-AP_chimera:
-	Inherits@default.weapons: ^Chimera.Weapons.default
-	ReloadDelay: 50
-	Burst: 2
-	BurstDelays: 8
-	Range: 7c256
-	Report: Chimeregun.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 115
-		DeathType: 4
-		Versus:
-			Infantry: 50
-			ArmorInfantry: 60
-			LightVehicle: 85
-			ArmorTank: 75
-			Lord: 60
-			LordTank: 65
-			harvester: 70
-			Concrete: 60
-
-AP_Wyvern:
-	Inherits@default.weapons: ^Wyvern.Weapons.default
-	ReloadDelay: 60
-	Range: 10c128
-	Burst: 6
-	BurstDelays: 3
-	Report: autocannon.aud
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Air
-		Spread: 65
-		Damage: 120
-		DeathType: 4
-		Versus:
-			Infantry: 100
-			ArmorInfantry: 80
-			LightVehicle: 90
-			ArmorTank: 75
-			Lord: 60
-			LordTank: 60
-			harvester: 80
-			Concrete: 60
-
-therombomb:
-	Inherits@default.weapons: ^Archidemon.Weapons.default
-	ReloadDelay: 500
-	Range: 1c256
-	Warhead@1Dam: SpreadDamage
-		Damage: 3800
-		Versus:
-			Infantry: 120
-			ArmorInfantry: 90
-			LightVehicle: 100
-			ArmorTank: 90
-			Lord: 60
-			LordTank: 60
-			harvester: 80
-			Concrete: 130

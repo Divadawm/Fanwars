@@ -10,7 +10,7 @@ mpspawn:
 	WithSpriteBody:
 	BodyOrientation:
 		QuantizedFacings: 1
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: Actor
 
 waypoint:
@@ -21,7 +21,7 @@ waypoint:
 	WithSpriteBody:
 	BodyOrientation:
 		QuantizedFacings: 1
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: Actor
 
 # // Editor Color Picker Images //
@@ -30,7 +30,7 @@ aracnst.colorpicker:
 	RenderSprites:
 		Image: aracnst
 		Palette: colorpicker
-        
+		
 # ////////////////////////////////////////// Camera Actor Rules //////////////////////////////////////     
 CAMERA:
 	EditorOnlyTooltip:
@@ -40,7 +40,7 @@ CAMERA:
 	Immobile:
 		OccupiesSpace: false
 	RevealsShroud:
-		Range: 10c0
+		Range: 8c0
 		Type: CenterPosition
 	BodyOrientation:
 		QuantizedFacings: 1
@@ -62,7 +62,7 @@ camera.spy:
 		Name: (support power proxy camera)
 	DetectCloaked:
 		Range: 10c0
-		CloakTypes: Cloak, Hijacker, Buried
+		CloakTypes: Cloak, Hijacker
 	WithDecoration:
 		Image: revealradr
 		Sequence: idle
@@ -80,7 +80,16 @@ camera.cloak:
 		EnableSound: cloak5.aud
 		DisableSound: cloak5.aud
 		AffectsParent: true
-        
+		
+# ////////////////////////////////////////// Mine Actor Rules //////////////////////////////////////
+
+Plasma.mine:
+	Inherits: ^Mine
+	RenderSprites:
+		Image: plasmine
+	Explodes:
+		Weapon: doom.deploy.gun
+		
 # ////////////////////////////////////////// Sound Actor Rules //////////////////////////////////////
 
 soundambiance:
@@ -91,7 +100,7 @@ soundambiance:
 	WithSpriteBody:
 	BodyOrientation:
 		QuantizedFacings: 1
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: Actor
 
 wind01:
@@ -144,7 +153,7 @@ wind03:
 		Name:
 	RenderSprites:
 		Image: lockedicon
-        
+		
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 # ///////////////////////////////////// Ressource Spawn Actor Rules //////////////////////////////////
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -165,7 +174,7 @@ DiastMine:
 	SeedsResource:
 		ResourceType: Diast
 		Interval: 50
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: Resource spawn
 	RenderSprites:
 		Image: diastore
@@ -187,12 +196,12 @@ DiastMine.Gold:
 	SeedsResource:
 		ResourceType: Diastgems
 		Interval: 50
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: Resource spawn
 	RenderSprites:
 		Image: diastore
 		Palette: diastgold
-        
+		
 Gisement.Diast:
 	Inherits@1: ^SpriteActor
 	HiddenUnderShroud:
@@ -208,11 +217,11 @@ Gisement.Diast:
 		Terrain: Diast
 	Targetable:
 		TargetTypes: gisement
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: Resource spawn
 	RenderSprites:
 		Image: gisement
-        
+		
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 # //////////////////////////////////////////    Other Rules    ///////////////////////////////////////
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -222,7 +231,7 @@ Mine_Scar:
 	RenderSprites:
 		Image: mine_weapon
 	Explodes:
-		Weapon: UnitExplodeSmall
+		Weapon: uniteanimexplode
 
 matlay01:
 	Inherits: ^terrain_mat

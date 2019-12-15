@@ -1,0 +1,463 @@
+armcv:
+	Inherits@1: ^ShapeWalkerHeavy
+	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
+	Buildable:
+		Prerequisites: artech
+		Queue: Vehicle.redalliance
+		BuildPaletteOrder: 80
+		Description: Mobile construction vehicle
+		BuildDurationModifier: 20
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 2500
+	Tooltip:
+		Name: Gigantes(MCV)
+	Selectable:
+		Priority: 4
+		Bounds: 28,28
+	Health:
+		HP: 5000
+	Mobile:
+		Speed: 60
+		TurnSpeed: 6
+		Crushes: gibs, infantry, husk
+		TerrainSpeeds:
+			wall: 65
+	MustBeDestroyed:
+		RequiredForShortGame: true
+	Transforms:
+		Facing: 96
+		IntoActor: aracnst
+		Offset: -1,-1
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	SelectionDecorations:
+		VisualBounds: 42,42
+	-AutoTarget:
+	BaseBuilding:
+	RenderSprites:
+		Scale: 0.75
+
+refinery:
+	Inherits: ^VoxelVehicleMedium
+	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
+	Valued:
+		Cost: 2000
+	Buildable:
+		Queue: Building.redalliance
+		Prerequisites: aracnst
+		BuildPaletteOrder: 30
+		Description: Refines Diastim into credits
+		BuildDurationModifier: 38
+		IconPalette: RedAlliance.Icon
+	Tooltip:
+		Name: Mobile Refinery
+	Selectable:
+		Priority: 4
+		Bounds: 42,42
+	Health:
+		HP: 3000
+	Mobile:
+		Speed: 60
+		TurnSpeed: 6
+		Crushes: gibs, infantry, husk
+		TerrainSpeeds:
+			wall: 65
+	StoresResources:
+		PipCount: 0
+		Capacity: 2000000
+	Transforms:
+		IntoActor: arproc
+		Offset: -1,-1
+		Facing: 32
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	ProvidesPrerequisite:
+		Prerequisite: Mobile.Refinery
+	ProvidesPrerequisite@buildingname:
+		Prerequisite: arproc
+	MustBeDestroyed:
+		RequiredForShortGame: true
+	-AutoTarget:
+	RenderVoxels:
+		Scale: 0.75
+	BaseBuilding:
+
+refinery.seconddeploy:
+	Inherits: ^VoxelVehicleMedium
+	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
+	Valued:
+		Cost: 2000
+	Buildable:
+		Queue: nope.redalliance
+		Prerequisites: BuildOrderBase.redalliance
+		BuildPaletteOrder: 38
+		Description: Refines Diastim into credits
+		BuildDurationModifier: 38
+		IconPalette: RedAlliance.Icon
+	Tooltip:
+		Name: Mobile Refinery (no harvester)
+	Selectable:
+		Priority: 4
+		Bounds: 42,42
+	Health:
+		HP: 3000
+	Mobile:
+		Speed: 60
+		TurnSpeed: 6
+		Crushes: gibs, infantry, husk
+		TerrainSpeeds:
+			wall: 65
+	StoresResources:
+		PipCount: 0
+		Capacity: 2000000
+	Transforms:
+		IntoActor: arproc.seconddeploy
+		Offset: -1,-1
+		Facing: 32
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	ProvidesPrerequisite:
+		Prerequisite: Mobile.Refinery
+	ProvidesPrerequisite@buildingname:
+		Prerequisite: arproc
+	MustBeDestroyed:
+		RequiredForShortGame: true
+	-AutoTarget:
+	RenderVoxels:
+		Image: refinery
+		Scale: 0.75
+	BaseBuilding:
+	RenderSprites:
+		Image: refinery
+
+arnahand:
+	Inherits: ^VoxelVehicleHeavyWalker
+	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
+	Valued:
+		Cost: 500
+	Buildable:
+		Queue: Building.redalliance
+		Prerequisites: aracnst
+		BuildPaletteOrder: 20
+		Description: Produces infantry units
+		BuildDurationModifier: 18
+		IconPalette: RedAlliance.Icon
+	Tooltip:
+		Name: Mobile Barracks
+	Selectable:
+		Priority: 4
+		Bounds: 42,42
+	Health:
+		HP: 3000
+	Mobile:
+		Speed: 40
+		TurnSpeed: 6
+		Crushes: gibs, infantry, husk
+		TerrainSpeeds:
+			wall: 65
+	Transforms:
+		IntoActor: arbarr
+		Offset: -1,-1
+		Facing: 96
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	ProvidesPrerequisite:
+		Prerequisite: Mobile.Barracks
+	ProvidesPrerequisite@buildingame:
+		Prerequisite: arbarr
+	MustBeDestroyed:
+		RequiredForShortGame: true
+	-AutoTarget:
+	RenderSprites:
+	RenderVoxels:
+		Scale: 1.1
+	BaseBuilding:
+
+arnaweap:
+	Inherits: ^VoxelVehicleHeavyWalker
+	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
+	Valued:
+		Cost: 2000
+	Buildable:
+		Queue: Building.redalliance
+		Prerequisites: aracnst, arproc
+		BuildPaletteOrder: 42
+		Description: Produces vehicles
+		BuildDurationModifier: 50
+		IconPalette: RedAlliance.Icon
+	Tooltip:
+		Name: Mobile War Factory
+	Selectable:
+		Priority: 4
+		Bounds: 42,42
+	Health:
+		HP: 3000
+	Mobile:
+		Speed: 40
+		TurnSpeed: 6
+		Crushes: gibs, infantry, husk
+		TerrainSpeeds:
+			wall: 65
+	Transforms:
+		IntoActor: arweap
+		Offset: -2,-1
+		Facing: 164
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	ProvidesPrerequisite@buildingame:
+		Prerequisite: arweap
+	MustBeDestroyed:
+		RequiredForShortGame: true
+	-AutoTarget:
+	RenderSprites:
+	RenderVoxels:
+		Scale: 0.75
+	BaseBuilding:
+
+mobilerelay:
+	Inherits: ^VoxelVehicleHeavy
+	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Mobile Orbital Relay
+	Selectable:
+		Priority: 4
+		Bounds: 42,42
+	Buildable:
+		Queue: Building.redalliance
+		BuildPaletteOrder: 50
+		Prerequisites: arweap
+		BuildDurationModifier: 42
+		Description: Unlocks tier 2 units, upgrades and structures
+		IconPalette: RedAlliance.Icon
+	Health:
+		HP: 3000
+	ProvidesPrerequisite@buildingname:
+		Prerequisite: artech
+	Mobile:
+		Speed: 60
+		TurnSpeed: 6
+		Crushes: gibs, infantry, husk
+		TerrainSpeeds:
+			wall: 65
+	StoresResources:
+		PipCount: 0
+		Capacity: 2000000
+	Transforms:
+		IntoActor: artech
+		Offset: -1,-1
+		Facing: 164
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	ProvidesPrerequisite@buildingame:
+		Prerequisite: artech
+	MustBeDestroyed:
+		RequiredForShortGame: true
+	-AutoTarget:
+	RenderSprites:
+	RenderVoxels:
+		Scale: 0.75
+	BaseBuilding:
+
+t1_defence_hq:
+	Inherits: ^VoxelVehicleHeavy
+	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Mobile Defence Outpost
+	Selectable:
+		Priority: 4
+		Bounds: 42,42
+	Buildable:
+		Queue: Building.redalliance
+		BuildPaletteOrder: 60
+		BuildDurationModifier: 15
+		Description: Unlocks the Alliance's defensive structures and support powers
+		IconPalette: RedAlliance.Icon
+	Health:
+		HP: 3000
+	ProvidesPrerequisite@buildingname:
+		Prerequisite: ardeftech
+	Mobile:
+		Speed: 50
+		TurnSpeed: 6
+		Crushes: gibs, infantry, husk
+		TerrainSpeeds:
+			wall: 65
+	Transforms:
+		IntoActor: ardeftech
+		Offset: -1,-1
+		Facing: 98
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	MustBeDestroyed:
+		RequiredForShortGame: true
+	-AutoTarget:
+	RenderSprites:
+	RenderVoxels:
+		Scale: 1.0
+	BaseBuilding:
+
+t2_airfield:
+	Inherits: ^VoxelVehicleHeavyHover
+	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
+	Valued:
+		Cost: 1500
+	Buildable:
+		Queue: Building.redalliance
+		Prerequisites: aracnst, artech
+		BuildPaletteOrder: 80
+		Description: Produces and repairs aircraft
+		BuildDurationModifier: 35
+		IconPalette: RedAlliance.Icon
+	Tooltip:
+		Name: Mobile Airfield
+	Selectable:
+		Priority: 4
+		Bounds: 42,42
+	Health:
+		HP: 3000
+	Mobile:
+		Speed: 40
+		TurnSpeed: 6
+		Crushes: gibs, infantry, husk
+		TerrainSpeeds:
+			wall: 65
+	Transforms:
+		IntoActor: arheli
+		Offset: -1,-1
+		Facing: 164
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	MustBeDestroyed:
+		RequiredForShortGame: true
+	-AutoTarget:
+	RenderSprites:
+	RenderVoxels:
+		Scale: 1.15
+	BaseBuilding:
+
+t3_doomtower_mobile:
+	Inherits: ^VoxelVehicleHeavy
+	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Doom Tower (Mobile)
+	Selectable:
+		Priority: 4
+		Bounds: 42,42
+	Health:
+		HP: 2500
+	Mobile:
+		Speed: 55
+		TurnSpeed: 6
+		Crushes: gibs, infantry, husk
+		TerrainSpeeds:
+			wall: 65
+	Transforms:
+		IntoActor: t3_doomtowerbuild
+		Offset: 0,0
+		Facing: 164
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
+	MustBeDestroyed:
+	-AutoTarget:
+	RenderSprites:
+	RenderVoxels:
+		Scale: 0.72
+	BaseBuilding:
+
+t2_predator_mobile:
+	Inherits: ^VoxelVehicleHeavyWalker
+	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Cyclops Turret (Mobile)
+	Mobile:
+		Speed: 60
+		TurnSpeed: 8
+		Crushes: gibs, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 70
+			Road: 100
+			Beach: 70
+			Diast: 70
+	Health:
+		HP: 3000
+	Armament@gun:
+		Weapon: AP_Harvesterturret
+		Recoil: 100
+		RecoilRecovery: 15
+		LocalOffset: 500,200,340
+	Transforms:
+		IntoActor: t2_predator_deployed
+		Offset: 0,0
+		Facing: 96
+		TransformSounds:
+		NoTransformSounds:
+	RenderSprites:
+	RenderVoxels:
+		Scale: 0.75
+	WithVoxelWalkerBody:
+		TickRate: 2
+	WithVoxelTurret:
+		ShowShadow: false
+	WithVoxelBarrel:
+		ShowShadow: false
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 4
+		RealignDelay: 20
+
+
+t2_tarantula_mobile:
+	Inherits: ^VoxelVehicleHeavyWalker
+	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Centaur Turret (Mobile)
+	Mobile:
+		Speed: 60
+		TurnSpeed: 8
+		Crushes: gibs, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 70
+			Road: 100
+			Beach: 70
+			Diast: 70
+	Health:
+		HP: 3000
+	Armament@gun:
+		Weapon: AP_Harvesterturret
+		Recoil: 100
+		RecoilRecovery: 15
+		LocalOffset: 500,200,340
+	Transforms:
+		IntoActor: t2_tarantula_deployed
+		Offset: 0,0
+		Facing: 96
+		TransformSounds:
+		NoTransformSounds:
+	RenderSprites:
+	RenderVoxels:
+		Scale: 0.75
+	WithVoxelWalkerBody:
+		TickRate: 2
+	WithVoxelTurret:
+		ShowShadow: false
+	WithVoxelBarrel:
+		ShowShadow: false
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 4
+		RealignDelay: 20

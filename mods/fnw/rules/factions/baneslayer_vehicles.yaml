@@ -25,105 +25,37 @@
 		Sequence: VehicleRepair
 		Palette: effectalpha55
 		RequiresCondition: upgrade.Repair.Training.Baneslayer
-        
+		
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 # ////////////////////////////////////// Vehicles Baneslayer Rules ///////////////////////////////////
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-opmcv:
-	Inherits: ^VoxelVehicleHeavy
-	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
-	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Buildable:
-		Queue: nope.baneslayer
-		BuildPaletteOrder: 90
-		Description: Mobile construction vehicle\nCan be outfitted with a tier 3 module when deployed
-		BuildDurationModifier: 25
-	Valued:
-		Cost: 1500
-	Tooltip:
-		Name: Yggdrasil(MCV)
-	Selectable:
-		Priority: 4
-	SelectionDecorations:
-		VisualBounds: 38,38
-	Health:
-		HP: 5000
-	Mobile:
-		Speed: 80
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			wall: 65
-	RevealsShroud:
-		Range: 6c0
-	-AutoTarget:
-	MustBeDestroyed:
-		RequiredForShortGame: true
-	Transforms:
-		IntoActor: opcacnst
-		Offset: -2,-2
-		Facing: 96
-		TransformSounds: placbldg.aud, build5.aud
-		NoTransformSounds: nodeply1.aud
-	RenderSprites:
-	RenderVoxels:
-		Scale: 6.15
-	WithVoxelBody:
-	BaseBuilding:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	HitShape:
 
 t1_dainn:
 	Inherits: ^VoxelVehicleMedium
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
+	Inherits@harvester: ^Harvester.rules
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 10
 		InitialActivity: FindResources
 		Description: Harvester with average protection\n> Strong vs None\n Weak vs Everything
-		BuildDurationModifier: 10
-	Valued:
-		Cost: 1000
 	Tooltip:
 		Name: Dainn(Harvester)
 		GenericName: Harvester
-	Selectable:
-		Priority: 7
-		DecorationBounds: 42,42
-	Harvester:
-		PipCount: 8
-		Capacity: 20
-		Resources: Diast,Diastgems
-		BaleLoadDelay: 15
-		BaleUnloadDelay: 1
-		SearchFromProcRadius: 24
-		SearchFromOrderRadius: 12
 	WithHarvestOverlay:
 	Health:
 		HP: 4000
-	Armor:
-		Type: harvester
-	Mobile:
-		Speed: 95
-		TurnSpeed: 14
-		Crushes: gibs, infantry, mine, husk
-	RevealsShroud:
-		Range: 6c0
-	WithSpriteBody:
-	RenderSprites:
-		Scale: 1.0
 	-AutoTarget:
+	WithSpriteBody:
 	WithDockingAnimation:
-	HitShape:
 
 t1_heidrun:
-	Inherits: ^VoxelVehicleLight
+	Inherits: ^ShapeVehicleLight
 	Inherits@Target: ^AutoTargetAllAssaultMove
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
+	Inherits@RevealCells: ^8cells.Range.base
 	Valued:
 		Cost: 500
 	Tooltip:
@@ -131,100 +63,103 @@ t1_heidrun:
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 20
-		Description: Light recon vehicle armed with a heavy MG and an AA missile-launcher\n> Can detect stealthed units\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
-		BuildDurationModifier: 5
-	Mobile:
-		Speed: 150
-		TurnSpeed: 14
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
-	Selectable:
-		Bounds: 32,30
+		Description: Light recon units equiped a machine gun and an AA missile launcher\n can detect stealth units\n can be equipped with a secondary turret depending on the loaded infantry\n> strong against infantry and airplanes\n> Weak against vehicles.
+		BuildDurationModifier: 9
 	Health:
-		HP: 1200
-	RevealsShroud:
-		Range: 6c0
+		HP: 2400
 	DetectCloaked:
 		Range: 5c0
-		CloakTypes: Cloak, Buried
+		CloakTypes: Cloak
+	Mobile:
+		TurnSpeed: 20
+		Speed: 120
 	Cargo:
 		Types: Infantry
 		MaxWeight: 1
 		PipCount: 1
+		PassengerConditions:
+			roquetteorderinf: if-at
+			soldierop: if-ap
 	Armament@Gun:
-		Name: primary
+		Name: APgun
 		Weapon: Minigun.matrice
 		Recoil: 150
 		RecoilRecovery: 15
-		LocalOffset: 150,0,450
+		LocalOffset: 250,0,450
 		MuzzleSequence: muzzle
 	Armament@Missile:
-		Name: primary
+		Name: missile
 		Weapon: Missile.matrice
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 60,25,450
 		MuzzleSequence: muzzle
+	Armament@miss:
+		Name: AT_armament
+		Weapon: Einherjar.missile.fafnir
+		Turret: AT_armament
+		LocalOffset: 128,0,1024
+		RequiresCondition: if-at
+	Armament@gun:
+		Name: AP_armament
+		Weapon: Supergun.matrice
+		Turret: AP_armament
+		LocalOffset: 128,0,1024
+		RequiresCondition: if-ap
 	WithMuzzleOverlay:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	AutoTarget:
-	RenderSprites:
-	RenderVoxels:
-	WithVoxelBody:
-	WithVoxelTurret:
+	WithSpriteTurret:
 		ShowShadow: false
-	WithVoxelBarrel:
+		Turret: matrice
+	WithSpriteTurret@AT:
 		ShowShadow: false
+		Sequence: turret_miss
+		Turret: AT_armament
+		RequiresCondition: if-at
+	WithSpriteTurret@AP:
+		ShowShadow: false
+		Sequence: turret_gun
+		Turret: AP_armament
+		RequiresCondition: if-ap
 	AttackTurreted:
-		Turrets: primary
-		Armaments: primary
+		Armaments: APgun, missile, AT_armament, AP_armament
+		Turrets: matrice, AT_armament, AP_armament
 		RequiresCondition: !empdisable
 	Turreted:
+		Turret: matrice
 		TurnSpeed: 12
 		RealignDelay: 20
-		Offset: -30,0,0
-	GrantConditionOnMovement@MOUVSOUND:
-		Condition: mouvsnd
-	HitShape:
+		Offset: 0,0,0
+	Turreted@AT:
+		Turret: AT_armament
+		TurnSpeed: 12
+		RealignDelay: 2
+		Offset: -340,0,480
+	Turreted@AP:
+		Turret: AP_armament
+		TurnSpeed: 12
+		RealignDelay: 20
+		Offset: -340,0,480
 
 t1_ratatoskr:
 	Inherits: ^ShapeVehicleLight
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
+	Inherits@RevealCells: ^7cells.Range.base
 	Valued:
-		Cost: 700
+		Cost: 650
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 30
-		Description: Light support vehicle equipped with an EMP grenade launcher\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
-		BuildDurationModifier: 8
-	Mobile:
-		Speed: 120
-		TurnSpeed: 14
-		WaitSpread: 12
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
+		Description: Light support vehicle equipped with a grenade launcher \nCan Deploy an Observation Beacon\n> Strong vs Light Vehicle\n> Weak vs. Infantry, Aircraft
+		BuildDurationModifier: 10
 	Tooltip:
 		Name: Ratatoskr
-	Selectable:
-		Bounds: 30,24
 	Health:
-		HP: 1500
-	RevealsShroud:
-		Range: 8c0
+		HP: 2600
+	Mobile:
+		TurnSpeed: 20
+		Speed: 115
 	GrantConditionOnPrerequisite@research.roquette.baneslayer:
 		Prerequisites: research.roquette.baneslayer
 		Condition: upgrade.roquette.baneslayer
@@ -236,17 +171,13 @@ t1_ratatoskr:
 		MuzzleSequence: muzzle
 		RequiresCondition: !upgrade.roquette.baneslayer
 	Armament@PRIMARY.Upgrade:
-		Weapon: grenade.ratatoskr.Upgrade
+		Weapon: grenade.ratatoskr.upgrade
 		Recoil: 200
 		RecoilRecovery: 100
 		LocalOffset: 140,0,380
 		MuzzleSequence: muzzle
 		RequiresCondition: upgrade.roquette.baneslayer
 	WithMuzzleOverlay:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	AutoTarget:
 	Minelayer:
 		Mine: activate.BaliseHealth
 		AmmoPoolName: balise
@@ -260,30 +191,28 @@ t1_ratatoskr:
 		AmmoPool: balise
 		Delay: 700
 		ResetOnFire: true
+	RenderSprites:
+		Scale: 1.0
 	AttackFrontal:
-		RequiresCondition: !empdisable
-	HitShape:
-    
+		PauseOnCondition: empdisable
+	Rearmable:
+		RearmActors: fix
+		AmmoPools: primary, balise
+		
 activate.BaliseHealth:
 	Inherits: ^baliseMine.system
-	KillsSelf:
-		Delay: 180
-	ProximityExternalCondition@RatatoskB:
-		Condition: RatatoskB
-		Range: 6c0
-		AffectsParent: true
-    RenderSprites:
-        Image: balise_medic
-        Scale: 0.7
+	Inherits@RevealCells: ^7cells.Range.base
+	RenderSprites:
+		Image: balise_medic
+		Scale: 0.7
 	Interactable:
 
 t2_garm:
-	Inherits: ^ShapeVehicleMedium
+	Inherits: ^ShapeHoverMedium
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Valued:
-		Cost: 1100
+	Inherits@RevealCells: ^8cells.Range.base
 	Tooltip:
 		Name: Garm
 	Buildable:
@@ -291,269 +220,82 @@ t2_garm:
 		BuildPaletteOrder: 40
 		Prerequisites: optech
 		Description: Main battle tank with average armor protection outfitted with a powerful ion cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
-		BuildDurationModifier: 10
-	Armor:
-		Type: ArmorTank
+		BuildDurationModifier: 18
+	Health:
+		HP: 4500
 	Mobile:
 		Speed: 95
-		TurnSpeed: 10
-		WaitSpread: 8
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-	Health:
-		HP: 2500
-	RevealsShroud:
-		Range: 8c0
-	GrantConditionOnDeploy:
-		DeployedCondition: mode2
-		DeploySound: deploy_vehicle_mode.aud
-		UndeploySound: deploy_vehicle_mode.aud
-	GrantConditionOnPrerequisite@research.Thor.baneslayer:
-		Prerequisites: research.Thor.baneslayer
-		Condition: upgrade.Thor.baneslayer
+	Valued:
+		Cost: 1000
 	Armament@PRIMARYDEFAULT:
 		Weapon: Garm.Railgun
 		Recoil: 400
 		MuzzleSequence: muzzle
 		RecoilRecovery: 400
 		LocalOffset: 1150,0,320
-		RequiresCondition: !mode2 && !upgrade.Thor.baneslayer
-	Armament@PRIMARYDEFAULTMODE2:
-		Weapon: Garm.Railgun
-		Recoil: 400
-		MuzzleSequence: muzzle
-		RecoilRecovery: 400
-		LocalOffset: 1150,0,320
-		RequiresCondition: mode2 && !upgrade.Thor.baneslayer
-	Armament@PRIMARYUPGRADE:
-		Weapon: Garm.Railgun
-		Recoil: 400
-		MuzzleSequence: muzzle
-		RecoilRecovery: 400
-		LocalOffset: 1150,0,320
-		RequiresCondition: !mode2 && upgrade.Thor.baneslayer
-	Armament@PRIMARYUPGRADEMODE2:
-		Weapon: Garm.Railgun.Mode2
-		Recoil: 400
-		MuzzleSequence: muzzle
-		RecoilRecovery: 400
-		LocalOffset: 1150,0,320
-		RequiresCondition: mode2 && upgrade.Thor.baneslayer
-	WithDecoration@MOD1:
-		Image: stat-effect
-		Sequence: Level21
-		Palette: effect
-		ReferencePoint: bottom, center
-		ZOffset: 100
-		RequiresCondition: !mode2 && upgrade.Thor.baneslayer
-	WithDecoration@MOD2:
-		Image: stat-effect
-		Sequence: Level22
-		Palette: effect
-		ReferencePoint: bottom, center
-		ZOffset: 100
-		RequiresCondition: mode2 && upgrade.Thor.baneslayer
 	WithMuzzleOverlay:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	AutoTarget:
-	RenderSprites:
 	AttackTurreted:
 		RequiresCondition: !empdisable
 	RenderSprites:
-		Scale: 0.80
+		Scale: 0.75
 	WithSpriteTurret:
 	Turreted:
 		TurnSpeed: 15
 		RealignDelay: 20
-		Offset: -85,0,350
+		Offset: -185,0,350
 	SpawnActorOnDeath:
 		Actor: t2_garm.Husk
 		OwnerType: InternalName
 		EffectiveOwnerFromOwner: true
-	HitShape:
 
-t2_dwarf:
-	Inherits: ^ShapeVehicleMedium
-	Inherits@Target: ^AutoTargetGroundAssaultMove
-	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
-	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Valued:
-		Cost: 1400
-	Tooltip:
-		Name: Dwarf
-	Buildable:
-		Queue: Vehicle.baneslayer
-		BuildPaletteOrder: 50
-		Prerequisites: optech, ~Doctrine.Valkyr.baneslayer
-		Description: SHIELD PROTOCOL UNIT\nLightly armored support vehicle fitted with a heavy plasma gun\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
-		BuildDurationModifier: 15
-	Mobile:
-		Speed: 75
-		TurnSpeed: 4
-		WaitSpread: 12
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
-	Health:
-		HP: 2200
-	RevealsShroud:
-		Range: 9c0
-	Armament@gunx1:
-		Weapon: plasma.volcano
-		Recoil: 150
-		RecoilRecovery: 15
-		LocalOffset: 800,-100,250
-		MuzzleSequence: muzzle
-		PauseOnCondition: !ammo
-		RequiresCondition: !mode2
-	Armament@gunx2:
-		Weapon: plasma.volcanox2
-		Recoil: 150
-		RecoilRecovery: 15
-		LocalOffset: 800,-100,250
-		MuzzleSequence: muzzle
-		PauseOnCondition: !ammo
-		RequiresCondition: mode2
-	WithMuzzleOverlay:
-	GrantConditionOnDeploy:
-		DeployedCondition: mode2
-	AmmoPool@initial:
-		Ammo: 4
-		InitialAmmo: 1
-		AmmoCondition: ammo
-	ReloadAmmoPool@default:
-		Delay: 100
-		ResetOnFire: True
-		RequiresCondition: !mode2
-		PipCount: 1
-	ReloadAmmoPool@OverMode:
-		Delay: 25
-		ResetOnFire: False
-		RequiresCondition: mode2
-		PipCount: 2
-	DamagedByTerrain@Mode2Active:
-		Damage: 20
-		DamageInterval: 3
-		Terrain: Clear, Rough, Tree, Road, Beach
-		RequiresCondition: mode2
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	AutoTarget:
-	RenderSprites:
-	AttackFrontal:
-		RequiresCondition: !empdisable
-	WithIdleOverlay@LightMode1:
-		Offset: 450,-160,220
-		Sequence: lightgun
-		Palette: greenlight
-	WithIdleOverlay@LightMode2:
-		Offset: 450,-160,220
-		Sequence: lightgun
-		Palette: greenlight
-		RequiresCondition: mode2
-	WithDecoration@MOD1:
-		Image: stat-effect
-		Sequence: Level21
-		Palette: effect
-		ReferencePoint: bottom, center
-		ZOffset: 100
-		RequiresCondition: !mode2
-	WithDecoration@MOD2:
-		Image: stat-effect
-		Sequence: Level22
-		Palette: effect
-		ReferencePoint: bottom, center
-		ZOffset: 100
-		RequiresCondition: mode2
-	SpawnActorOnDeath:
-		Actor: t2_dwarf.Husk
-		OwnerType: InternalName
-		EffectiveOwnerFromOwner: true
-	HitShape:
 
 t2_troll:
 	Inherits: ^ShapeVehicleMedium
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
+	Inherits@RevealCells: ^8cells.Range.base
 	Valued:
 		Cost: 1000
 	Tooltip:
-		Name: Troll
+		Name: Dwarf
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 50
-		Prerequisites: optech, ~Doctrine.Artemien.baneslayer
-		Description: SWORD PROTOCOL UNIT\nSupport vehicle with medium protection and a super heavy mortar\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
-		BuildDurationModifier: 15
-	Mobile:
-		Speed: 75
-		TurnSpeed: 5
-		WaitSpread: 12
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
+		Prerequisites: optech
+		Description: Medium armor, deployable into a devastating support unit\n> Strong vs Vehicle, Building, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 20
 	Health:
-		HP: 3000
-	RevealsShroud:
-		Range: 8c0
-	GrantConditionOnAttack@TargetDoom:
-		ArmamentNames: primary
-		RevokeOnNewTarget: false
-		IsCyclic: true
-		RequiredShotsPerInstance: 8
-		Condition: Target
-	Armament@gun:
-		Weapon: doom.target
-		Recoil: 150
-		RecoilRecovery: 15
-		LocalOffset: 500,-100,250
-		RequiresCondition: !Target
-		MuzzleSequence: muzzle
-		MuzzlePalette: powereffect
+		HP: 2500
+	Transforms:
+		IntoActor: t2_troll_deployed
+		TransformSounds: troll_deploy.aud
+		Offset: 0,0
+		Facing: 96
 	Armament@railgun:
 		Name: secondary
 		Weapon: doom.gun
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 500,-100,250
-		RequiresCondition: Target
 	WithMuzzleOverlay:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	AutoTarget:
 	RenderSprites:
+		Scale: 1
 	AttackFrontal:
-		RequiresCondition: !empdisable
+		PauseOnCondition: empdisable
 	SpawnActorOnDeath:
 		Actor: t2_troll.Husk
 		OwnerType: InternalName
 		EffectiveOwnerFromOwner: true
-	HitShape:
 
 t2_warg:
-	Inherits: ^VoxelVehicleMedium
+	Inherits: ^ShapeVehicleMedium
 	Inherits@TargetAir: ^AutoTargetAir
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
+	Inherits@RevealCells: ^7cells.Range.base
 	Valued:
-		Cost: 900
+		Cost: 800
 	Tooltip:
 		Name: Warg
 	Buildable:
@@ -561,62 +303,39 @@ t2_warg:
 		BuildPaletteOrder: 60
 		Prerequisites: optech
 		Description: Infantry transport vehicle outfitted with an effective dual AA autocannon\n> Strong vs Aircraft\n> Weak vs Infantry, Vehicles
-		BuildDurationModifier: 10
+		BuildDurationModifier: 18
 	Mobile:
-		Speed: 115
-		TurnSpeed: 8
-		WaitSpread: 12
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 75
-			Water: 80
+		Locomotor: amphibious
 	Health:
 		HP: 2500
-	Armor:
-		Type: LightVehicle
-	RevealsShroud:
-		Range: 8c0
 	Armament@PRIMARY:
 		Weapon: Warg_AA
 		Recoil: 400
 		RecoilRecovery: 400
 		LocalOffset: 200,-300,600, 200,300,600
 		MuzzleSequence: muzzle
+		MuzzlePalette: flameeffect
 	WithMuzzleOverlay:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	Cargo:
 		Types: Infantry
 		MaxWeight: 10
 		PipCount: 5
 		PassengerFacing: -1
-	AutoTarget:
-	RenderSprites:
-	WithVoxelBody@normal:
-		RequiresCondition: !amphibie
 	GrantConditionOnTerrain@Water:
 		Condition: amphibie
 		TerrainTypes: Water
-	WithVoxelBody@amphibie:
-		Sequence: amphibiemode
+	WithFacingSpriteBody:
+		RequiresCondition: !amphibie
+	WithFacingSpriteBody@AmphMode:
+		Sequence: idleamp
 		RequiresCondition: amphibie
-	WithVoxelTurret:
-		ShowShadow: false
-	WithVoxelBarrel:
-		ShowShadow: false
+	WithSpriteTurret:
 	AttackTurreted:
 		RequiresCondition: !empdisable
-	RenderVoxels:
-		Scale: 0.60
 	Turreted:
 		TurnSpeed: 15
 		RealignDelay: 20
-		Offset: 0,0,25
-	HitShape:
+		Offset: 0,0,600
 
 t2_yggdrasil:
 	Inherits: ^VoxelVehicleMedium
@@ -632,16 +351,8 @@ t2_yggdrasil:
 		Cost: 2500
 	Tooltip:
 		Name: Yggdrasil (Mcv)
-	Selectable:
-		Priority: 4
-		Bounds: 28,28
 	Health:
 		HP: 5000
-	Mobile:
-		Speed: 80
-		Crushes: wall, mine, crate, infantry
-	RevealsShroud:
-		Range: 6c0
 	-AutoTarget:
 	Transforms:
 		IntoActor: opcacnst
@@ -649,25 +360,23 @@ t2_yggdrasil:
 		Facing: 96
 		TransformSounds: placbldg.aud, build5.aud
 		NoTransformSounds: nodeply1.aud
-	MustBeDestroyed:
-		RequiredForShortGame: true
-	RenderSprites:
 	RenderVoxels:
 		Scale: 1.10
 	WithVoxelBody:
 	BaseBuilding:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	HitShape:
+	Selectable:
+		Priority: 4
+	MustBeDestroyed:
+		RequiredForShortGame: true
 
 t2_lindwyrm:
-	Inherits@1: ^VoxelVehicleHeavy
+	Inherits@1: ^VoxelVehicleMedium
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
+	Inherits@RevealCells: ^8cells.Range.base
 	Valued:
-		Cost: 1100
+		Cost: 1000
 	Tooltip:
 		Name: Lindwyrm
 	Buildable:
@@ -675,32 +384,23 @@ t2_lindwyrm:
 		BuildPaletteOrder: 70
 		Prerequisites: optech
 		Description: Lightly armored and relatively fast self-propelled gun\n> Strong vs Vehicles, Structures\n> Weak vs Infantry, Aircraft
-		BuildDurationModifier: 15
-	Mobile:
-		Speed: 98
-		TurnSpeed: 6
-		WaitSpread: 12
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
+		BuildDurationModifier: 20
+	GrantConditionOnPrerequisite@research.roquette.baneslayer:
+		Prerequisites: research.roquette.baneslayer
+		Condition: upgrade.roquette.baneslayer
 	Armament@primary:
 		Weapon: 120mm.lindwyrm
 		LocalOffset: 1230,0,1050
-		RequiresCondition: !upgrade.PlamsaArtilerie.baneslayer
+		RequiresCondition: !upgrade.roquette.baneslayer
+		MuzzleSequence: muzzle
+	Armament@primaryplasma:
+		Weapon: 120mm.lindwyrm.upgrade
+		LocalOffset: 1230,0,1050
+		RequiresCondition: upgrade.roquette.baneslayer
 		MuzzleSequence: muzzle
 	WithMuzzleOverlay:
 	Health:
 		HP: 1800
-	RevealsShroud:
-		Range: 10c0
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	RenderSprites:
 	RenderVoxels:
 		Scale: 0.60
 	WithVoxelBody:
@@ -714,13 +414,13 @@ t2_lindwyrm:
 		TurnSpeed: 6
 		RealignDelay: 20
 		Offset: -30,0,0
-	HitShape:
 
 t3_fafnir:
-	Inherits: ^ShapeVehicleHeavy
+	Inherits: ^ShapeHoverHeavy
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
+	Inherits@RevealCells: ^7cells.Range.base
 	Valued:
 		Cost: 1500
 	Tooltip:
@@ -730,22 +430,9 @@ t3_fafnir:
 		BuildPaletteOrder: 90
 		Prerequisites: Research Module
 		Description: Super heavy transport vehicle fitted with fireports\nInfantry units can fire from inside\n> Strong vs N/A\n> Weak vs N/A
-		BuildDurationModifier: 15
-	Mobile:
-		Speed: 78
-		TurnSpeed: 8
-		WaitSpread: 12
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
+		BuildDurationModifier: 30
 	Health:
 		HP: 6500
-	RevealsShroud:
-		Range: 8c0
 	Cargo:
 		Types: Infantry
 		MaxWeight: 10
@@ -756,18 +443,86 @@ t3_fafnir:
 		Delay: 8
 		HealIfBelow: 50
 		DamageCooldown: 60
-	AttackGarrisoned:
-		Armaments: garrisoned.fafnir
-		PortOffsets: 384,0,128, 224,-341,128, -224,-341,128, -384,0,128, -224,341,128, 224,341,128
-		PortYaws: 0, 176, 341, 512, 682, 853
-		PortCones: 88, 90, 75, 60, 100, 80
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	Turreted:
-		TurnSpeed: 255
-	-QuantizeFacingsFromSequence:
-	AutoTarget:
+	Armament@minturret1:
+		Name: minturretGun
+		Turret: minturret1
+		Weapon: AP_Tarantula
+		Recoil: 400
+		RecoilRecovery: 400
+		LocalOffset: 280,0,20
+		MuzzleSequence: muzzle
+		MuzzlePalette: flameeffect
+	Armament@minturret2:
+		Name: minturretGun
+		Turret: minturret2
+		Weapon: AP_Tarantula
+		Recoil: 400
+		RecoilRecovery: 400
+		LocalOffset: 280,0,20
+		MuzzleSequence: muzzle
+		MuzzlePalette: flameeffect
+	Armament@minturret3:
+		Name: minturretGun
+		Turret: minturret3
+		Weapon: Rhino_gun
+		Recoil: 400
+		RecoilRecovery: 400
+		LocalOffset: 280,0,20
+		MuzzleSequence: muzzle
+		MuzzlePalette: flameeffect
+	Armament@minturret4:
+		Name: minturretGun
+		Turret: minturret4
+		Weapon: Rhino_gun
+		Recoil: 400
+		RecoilRecovery: 400
+		LocalOffset: 280,0,20
+		MuzzleSequence: muzzle
+		MuzzlePalette: flameeffect
+	WithSpriteTurret@minturret1:
+		ShowShadow: false
+		Sequence: secturret2
+		Turret: minturret1
+	WithSpriteTurret@minturret2:
+		ShowShadow: false
+		Sequence: secturret2
+		Turret: minturret2
+	WithSpriteTurret@minturret3:
+		ShowShadow: false
+		Sequence: secturret
+		Turret: minturret3
+	WithSpriteTurret@minturret3:
+		ShowShadow: false
+		Sequence: secturret
+		Turret: minturret3
+	WithSpriteTurret@minturret4:
+		ShowShadow: false
+		Sequence: secturret
+		Turret: minturret4
+	AttackTurreted:
+		Armaments: minturretGun
+		Turrets: minturret1, minturret2, minturret3, minturret4
+		RequiresCondition: !empdisable
+	Turreted@minturret1:
+		Turret: minturret1
+		TurnSpeed: 12
+		RealignDelay: 20
+		Offset: 455,455,425
+	Turreted@minturret2:
+		Turret: minturret2
+		TurnSpeed: 12
+		RealignDelay: 20
+		Offset: 455,-455,425
+	Turreted@minturret3:
+		Turret: minturret3
+		TurnSpeed: 12
+		RealignDelay: 20
+		Offset: -455,455,425
+	Turreted@minturret4:
+		Turret: minturret4
+		TurnSpeed: 12
+		RealignDelay: 20
+		Offset: -455,-455,425
 	RenderSprites:
 		Scale: 0.80
 	GrantConditionOnMovement@MOUVSOUND:
@@ -776,13 +531,13 @@ t3_fafnir:
 		Actor: t3_fafnir.Husk
 		OwnerType: InternalName
 		EffectiveOwnerFromOwner: true
-	HitShape:
 
 t3_loki:
-	Inherits: ^VoxelVehicleHover
+	Inherits: ^ShapeHoverMedium
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
+	Inherits@RevealCells: ^7cells.Range.base
 	Valued:
 		Cost: 1500
 	Tooltip:
@@ -790,96 +545,54 @@ t3_loki:
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 100
-		Prerequisites: Research Module, ~Doctrine.Valkyr.baneslayer
-		Description: SHIELD PROTOCOL UNIT\nLight support vehicle armed with an experimental fast firing ion cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		Prerequisites: Research Module
+		Description: Light support vehicle armed with an experimental demolition cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
 		BuildDurationModifier: 20
-	Mobile:
-		Speed: 130
-		TurnSpeed: 18
-		WaitSpread: 4
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
 	Health:
-		HP: 1800
-	RevealsShroud:
-		Range: 8c0
+		HP: 2800
 	Armament@gun:
 		Weapon: Sharest.Railgun
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 650,0,280
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	AutoTarget:
 	RenderSprites:
-	RenderVoxels:
-	WithVoxelBody:
+		Scale: 0.90
 	AttackFrontal:
-		RequiresCondition: !empdisable
-	HitShape:
+		PauseOnCondition: empdisable
 
 t3_heimdall:
-	Inherits: ^VoxelVehicleHeavy
-	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits: ^ShapeVehicleHeavy
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
+	Inherits@RevealCells: ^9cells.Range.base
 	Valued:
-		Cost: 1800
+		Cost: 2200
 	Tooltip:
 		Name: Heimdall
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 100
-		Prerequisites: Research Module, ~Doctrine.Artemien.baneslayer
-		Description: SWORD PROTOCOL UNIT\nMLRS carrying 3 long-range rockets that release submunitions before impact\n> Strong vs Infantry, Light Vehicles, Structures\n> Weak vs Heavy Vehicles, Aircraft
-		BuildDurationModifier: 20
-	Mobile:
-		Speed: 75
-		TurnSpeed: 5
-		WaitSpread: 12
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
+		Prerequisites: Research Module
+		Description: MLRS carrying 3 long-range rockets that release submunitions before impact\n> Strong vs Infantry, Light Vehicles, Structures\n> Weak vs Heavy Vehicles, Aircraft
+		BuildDurationModifier: 28
 	Health:
-		HP: 1600
-	RevealsShroud:
-		Range: 10c0
-	Armament@gun:
-		Weapon: Heimdall.Missile
-		Recoil: 150
-		RecoilRecovery: 15
-		LocalOffset: 700,0,880, 700,150,580, 700,-150,580
-		MuzzleSequence: muzzle
-	WithMuzzleOverlay:
-	AttackFrontal:
-		RequiresCondition: !empdisable
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	AutoTarget:
+		HP: 2000
+	-AutoTarget:
+	Transforms:
+		IntoActor: t3_heimdall_deploy
+		Offset: 0,0
+		Facing: 98
+		TransformSounds: makebuild.wav
+		NoTransformNotification: CannotDeploy
 	RenderSprites:
-	RenderVoxels:
-		Scale: 0.78
-	WithVoxelBody:
-	GrantConditionOnMovement@MOUVSOUND:
-		Condition: mouvsnd
-	HitShape:
+		Scale: 0.88
 
 t4_odin:
 	Inherits: ^ShapeVehicleHeavy
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
+	Inherits@RevealCells: ^8cells.Range.base
 	Valued:
 		Cost: 5000
 	Tooltip:
@@ -891,54 +604,46 @@ t4_odin:
 		Description: Experimental super-unit armed with 2 antimatter heavy cannons and 4 high-powered ion cannons\nCan switch between two modes\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
 		BuildDurationModifier: 60
 		BuildLimit: 1
-	Mobile:
-		Speed: 60
-		TurnSpeed: 4
-		WaitSpread: 8
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
 	Health:
-		HP: 19000
-	RevealsShroud:
-		Range: 9c0
-	Armor:
-		Type: LordTank
+		HP: 18000
 	Armament@MATTER:
+		Weapon: OdinWeapon.target
+		Recoil: 400
+		RecoilRecovery: 400
+		LocalOffset: 1600,540,420, 1600,-540,420
+		MuzzleSequence: muzzle_charge
+		MuzzlePalette: powereffect
+		RequiresCondition: !mode2
+	Armament@MATTER2:
+		FireDelay: 35
 		Weapon: Dark.Matter
 		Recoil: 400
 		RecoilRecovery: 400
-		LocalOffset: 1250,250,720, 1250,-250,720
+		LocalOffset: 1600,540,420, 1600,-540,420
 		MuzzleSequence: muzzle
+		MuzzlePalette: powereffect
 		RequiresCondition: !mode2
+	WithMuzzleOverlay:
 	Armament@ION:
 		Weapon: Ion.Matter
 		Recoil: 400
 		RecoilRecovery: 400
-		LocalOffset: 950,250,720, 950,-250,720
+		LocalOffset: 1600,540,420, 1600,-540,420
 		MuzzleSequence: muzzle
 		RequiresCondition: mode2
 	GrantConditionOnDeploy:
 		DeployedCondition: mode2
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	AutoTarget:
 	RenderSprites:
-        Scale: 0.84
+		Scale: 0.84
 	WithSpriteTurret@MATTER:
-        RequiresCondition: !mode2
-        Sequence: turret
-    WithSpriteTurret@ION:
-        RequiresCondition: mode2
-        Sequence: turretmode
+		RequiresCondition: !mode2
+		Sequence: turret
+	WithSpriteTurret@ION:
+		RequiresCondition: mode2
+		Sequence: turretmode
 	AttackTurreted:
 		RequiresCondition: !empdisable
 	Turreted:
 		TurnSpeed: 3
 		RealignDelay: 20
 		Offset: 0,0,500
-	HitShape:

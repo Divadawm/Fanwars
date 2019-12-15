@@ -1,8 +1,9 @@
 ^Palettes:
-    PaletteFromFile@Olitrax:
-        Name: terrain
-        Tileset: OLITRAX
-        Filename: olitrax.pal
+	PaletteFromFile@Olitrax:
+		Name: terrain
+		Tileset: OLITRAX
+		Filename: olitrax.pal
+		ShadowIndex: 3, 4
 	PaletteFromFile@player:
 		Name: player
 		Filename: unittem.pal
@@ -12,6 +13,11 @@
 		Filename: variante_terrainpal.pal
 		ShadowIndex: 1
 		AllowModifiers: false
+	PaletteFromFile@cursor:
+		Name: cursor
+		Filename: temperat.pal
+		AllowModifiers: false
+		CursorPalette: true
 	PaletteFromFile@chrome:
 		Name: chrome
 		Filename: temperat.pal
@@ -21,43 +27,74 @@
 		Name: isotem
 		ShadowIndex: 255
 		Filename: isotem.pal
-		AllowModifiers: false
+		AllowModifiers: true
 	PaletteFromFile@effect:
 		Name: effect
 		Filename: temperat.pal
 		ShadowIndex: 1
 		AllowModifiers: false
+	PaletteFromFile@treeorganic:
+		Name: treeorganic
+		Filename: treeorganic.pal
+		ShadowIndex: 1
+		AllowModifiers: true
+	PaletteFromFile@treebionte:
+		Name: treebionte
+		Filename: bionte_faune.pal
+		ShadowIndex: 1
+		AllowModifiers: true
+	PaletteFromFile@crystaltree:
+		Name: crystaltree
+		Filename: crystaltree.pal
+		ShadowIndex: 1
+		AllowModifiers: true
 	PaletteFromFile@TerrainMat:
 		Name: TerrainMatPal
 		Filename: variante_terrainpal.pal
 		ShadowIndex: 1
 		AllowModifiers: false
+	PaletteFromFile@greenpowereffect:
+		Name: greeneffect
+		Filename: greenpower.pal
+		AllowModifiers: false
 	PaletteFromFile@powereffect:
 		Name: powereffect
 		Filename: powereffect.pal
+		AllowModifiers: false
+	PaletteFromFile@flameeffect:
+		Name: flameeffect
+		Filename: flammeeffect.pal
+		AllowModifiers: false
+	PaletteFromFile@flammeeffectblue:
+		Name: flammeeffectblue
+		Filename: flammeeffectblue.pal
 		AllowModifiers: false
 	PaletteFromFile@colorpicker:
 		Name: colorpicker
 		Filename: unittem.pal
 		ShadowIndex: 1
 		AllowModifiers: false
-        
+	PaletteFromFile@powereffect2:
+		Name: powereffect2
+		Filename: powereffect2.pal
+		AllowModifiers: false
+	# Icons Faxction Palette
 	PaletteFromFile@RedAlliance.Icon:
 		Name: RedAlliance.Icon
 		Filename: palette_color_ar.pal
-        ShadowIndex: 1
+		ShadowIndex: 1
 		AllowModifiers: false
 	PaletteFromFile@Conclave.Icon:
 		Name: Conclave.Icon
 		Filename: palette_color_conclave.pal
-        ShadowIndex: 1
+		ShadowIndex: 1
 		AllowModifiers: false
 	PaletteFromFile@Federation.Icon:
 		Name: Federation.Icon
 		Filename: pallete_color_federation.pal
-        ShadowIndex: 1
+		ShadowIndex: 1
 		AllowModifiers: false
-        
+	# Icons Light Palette
 	PaletteFromFile@light:
 		Name: light
 		Filename: light.pal
@@ -86,36 +123,36 @@
 		Name: voidlight
 		Filename: voidlight.pal
 		ShadowIndex: 0
-        
+		
 	VoxelNormalsPalette@normals:
 		Name: normals
 		Filename: light.pal
 		ShadowIndex: 1
-        
+		
 	PaletteFromRGBA@disabled:
-        AllowModifiers: false
+		AllowModifiers: false
 		Name: disabled
 		R: 0
 		G: 0
 		B: 0
 		A: 180
-        
-    PaletteFromRGBA@Upgrade_blue_effect:
-        BasePalette: effect
+		
+	PaletteFromRGBA@Upgrade_blue_effect:
+		BasePalette: effect
 		Name: Upgrade_blue_effect
 		R: 35
 		G: 35
 		B: 100
 		A: 255
-        
-    PaletteFromRGBA@red_effect:
-        BasePalette: effect
+		
+	PaletteFromRGBA@red_effect:
+		BasePalette: effect
 		Name: Red_effect
 		R: 255
 		G: 35
 		B: 50
 		A: 255
-        
+		
 	PaletteFromRGBA@shadow:
 		Name: shadow
 		R: 0
@@ -176,17 +213,26 @@
 		G: 0
 		B: 0
 		A: 80
-        
+		
 	PaletteFromPaletteWithAlpha@Unitalpha60:
 		Name: unitalpha60
 		Alpha: 0.60
 		BasePalette: player
-        
+		
 	PaletteFromPaletteWithAlpha@powereffect60:
 		Name: powereffect60
 		Alpha: 0.60
-		BasePalette: powereffect   
-        
+		BasePalette: powereffect
+	PaletteFromPaletteWithAlpha@powereffect40:
+		Name: powereffect40
+		Alpha: 0.40
+		BasePalette: powereffect
+		
+	PaletteFromPaletteWithAlpha@crystaltreealpha25:
+		Name: crystaltreealpha25
+		Alpha: 0.25
+		BasePalette: crystaltree
+		
 	PaletteFromPaletteWithAlpha@effectalpha75:
 		Name: effectalpha75
 		Alpha: 0.70
@@ -199,12 +245,31 @@
 		Name: effectalpha30
 		Alpha: 0.30
 		BasePalette: effect
+	PaletteFromPaletteWithAlpha@effectalpha10:
+		Name: effectalpha10
+		Alpha: 0.10
+		BasePalette: effect
 	PaletteFromPaletteWithAlpha@effectalpha55:
 		Name: effectalpha55
 		Alpha: 0.55
 		BasePalette: effect
 		Premultiply: false
-
+		
+	PaletteFromPaletteWithAlpha@flameeffectalpha50:
+		Name: flameeffect50
+		Alpha: 0.50
+		BasePalette: flameeffect
+		Premultiply: false
+	PaletteFromPaletteWithAlpha@flameeffectalpha60:
+		Name: flameeffect60
+		Alpha: 0.60
+		BasePalette: flameeffect
+		Premultiply: false
+	PaletteFromPaletteWithAlpha@flameeffectalpha70:
+		Name: flameeffect70
+		Alpha: 0.70
+		BasePalette: flameeffect
+		Premultiply: false
 	ShroudPalette@shroud:
 		Name: shroud
 		Type: Shroud
@@ -214,7 +279,6 @@
 	PlayerColorPalette:
 		BasePalette: player
 		RemapIndex: 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
-        Ramp: 0.25
 		ShadowIndex: 2
 	PaletteFromPaletteWithAlpha@effect50:
 		BasePalette: effect
@@ -239,3 +303,11 @@
 	ChronoshiftPaletteEffect:
 	FlashPaletteEffect@NUKE:
 		Type: Nuke
+	PaletteFromPaletteWithAlpha@placelinesegment:
+		Name: placelinesegment
+		BasePalette: terrain
+		Alpha: 0.65
+	PaletteFromPlayerPaletteWithAlpha@placebuilding:
+		BaseName: placebuilding
+		BasePalette: player
+		Alpha: 0.65

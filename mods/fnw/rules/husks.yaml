@@ -4,7 +4,7 @@ t2_basilisk.Husk:
 		Anim: turret
 	RenderSprites:
 		Image: t2_basilisk
-        
+		
 t2_hydra.Husk:
 	Inherits: ^Husk
 	ThrowsParticle@turret:
@@ -23,7 +23,7 @@ t3_apocalypse.Husk:
 		Anim: turret
 	RenderSprites:
 		Image: t3_apocalypse
-        
+		
 t2_garm.Husk:
 	Inherits: ^Husk
 	ThrowsParticle@turret:
@@ -31,11 +31,16 @@ t2_garm.Husk:
 	RenderSprites:
 		Image: t2_garm
 
+t2_dwarf.husk:
+	Inherits: ^Husk
+	RenderSprites:
+		Image: t2_dwarf
+		
 t2_troll.Husk:
 	Inherits: ^Husk
 	RenderSprites:
 		Image: t2_troll
-        
+		
 t3_fafnir.Husk:
 	Inherits: ^Husk
 	RenderSprites:

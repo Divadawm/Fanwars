@@ -25,18 +25,78 @@
 	DamageMultiplier@ArmorPalIII:
 		Modifier: 70
 		RequiresCondition: damheavyspeed || Critical && Upgrade.RegArmorPalIII.conclave
+		
+# Aspect Upgrade base
+^Aspect.Base.Conclave:
+	Inherits@Research: ^ResearchActor
+	ConditionManager:
+	AlwaysVisible:
+	Buildable:
+		BuildPaletteOrder: 10
+		Queue: Research.conclave
+		BuildDurationModifier: 30
+		IconPalette: Conclave.Icon
+		BuildLimit: 1
+	ProvidesPrerequisite:
+	Valued:
+		Cost: 0
+	#Condition Recovery
+	ExternalCondition@RemoveBase:
+		Condition: RemoveAspect
+	KillsSelf:
+		RemoveInstead: true
+		
+^Rodeur.Aspect:
+	#receipt condition
+	ProvidesPrerequisite@RemoveStat:
+		Prerequisite: Remove.Weapons.Rodeur
+		RequiresCondition: RemoveAspect
+
+^Pelerin.Aspect:
+	#receipt condition
+	ProvidesPrerequisite@RemoveStat:
+		Prerequisite: Remove.Weapons.Pelerin
+		RequiresCondition: RemoveAspect
+		
+^Comete.Aspect:
+	#receipt condition
+	ProvidesPrerequisite@RemoveStat:
+		Prerequisite: Remove.Weapons.Comete
+		RequiresCondition: RemoveAspect
+		
+^Arpenteur.Aspect:
+	#receipt condition
+	ProvidesPrerequisite@RemoveStat:
+		Prerequisite: Remove.Weapons.Arpenteur
+		RequiresCondition: RemoveAspect
+
+^Zenith.Aspect:
+	#receipt condition
+	ProvidesPrerequisite@RemoveStat:
+		Prerequisite: Remove.Weapons.Zenith
+		RequiresCondition: RemoveAspect
+		
+^Quasar.Aspect:
+	#receipt condition
+	ProvidesPrerequisite@RemoveStat:
+		Prerequisite: Remove.Weapons.Quasar
+		RequiresCondition: RemoveAspect
+		
+^Navigator.Aspect:
+	#receipt condition
+	ProvidesPrerequisite@RemoveStat:
+		Prerequisite: Remove.Weapons.Navigator
+		RequiresCondition: RemoveAspect
 
 Upgrade.Alpha.Rodeur.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Rodeur.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: Stalker
 	Buildable:
 		BuildPaletteOrder: 10
-		Queue: Research.conclave
-		Prerequisites: !research.Omega.Rodeur.Conclave, !research.Alpha.Rodeur.Conclave, tcholotech.rodeur
-		BuildDurationModifier: 30
-		IconPalette: Conclave.Icon
+		Prerequisites: tcholotech.rodeur
 		Description: Increases the Prowler's damage and range
 	Valued:
 		Cost: 800
@@ -44,20 +104,21 @@ Upgrade.Alpha.Rodeur.Conclave:
 		Image: holoup_alrodeur
 	ProvidesPrerequisite:
 		Prerequisite: research.Alpha.Rodeur.Conclave
-	ProvidesPrerequisite@Base:
-		Prerequisite: research.Base.Rodeur.Conclave
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Rodeur, research.Omega.Rodeur.Conclave
+		Condition: RevokedRodeur
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedRodeur
 
 Upgrade.Omega.Rodeur.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Rodeur.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: Hunter
 	Buildable:
 		BuildPaletteOrder: 20
-		Queue: Research.conclave
-		Prerequisites: !research.Omega.Rodeur.Conclave, !research.Alpha.Rodeur.Conclave, tcholotech.rodeur
-		BuildDurationModifier: 30
-		IconPalette: Conclave.Icon
+		Prerequisites: tcholotech.rodeur
 		Description: Increases the Prowler's damage and HP
 	Valued:
 		Cost: 800
@@ -65,100 +126,115 @@ Upgrade.Omega.Rodeur.Conclave:
 		Image: holoup_omrodeur
 	ProvidesPrerequisite:
 		Prerequisite: research.Omega.Rodeur.Conclave
-	ProvidesPrerequisite@Base:
-		Prerequisite: research.Base.Rodeur.Conclave
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Rodeur, research.Alpha.Rodeur.Conclave
+		Condition: RevokedRodeur
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedRodeur
 
 Upgrade.Alpha.Pelerin.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Pelerin.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: Wanderer
 	Buildable:
 		BuildPaletteOrder: 30
-		Queue: Research.conclave
-		Prerequisites: !research.Omega.Pelerin.Conclave, !research.Alpha.Pelerin.Conclave, tcholotech.pelerin
-        BuildDurationModifier: 60
-		IconPalette: Conclave.Icon
+		Prerequisites: tcholotech.pelerin
 		Description: Increases the Pilgrim's damage\nCan attack ground units in its AA form
+		BuildLimit: 1
 	Valued:
 		Cost: 1000
 	RenderSprites:
 		Image: holoup_alpelerin
 	ProvidesPrerequisite:
 		Prerequisite: research.Alpha.Pelerin.Conclave
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Pelerin, research.Omega.Pelerin.Conclave
+		Condition: RevokedPelerin
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedPelerin
 
 Upgrade.Omega.Pelerin.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Pelerin.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: Settler
 	Buildable:
 		BuildPaletteOrder: 40
-		Queue: Research.conclave
-		Prerequisites: !research.Omega.Pelerin.Conclave, !research.Alpha.Pelerin.Conclave, tcholotech.pelerin
-        BuildDurationModifier: 60
-		IconPalette: Conclave.Icon
+		Prerequisites: tcholotech.pelerin
 		Description: Increases the damage of the pilgrim.\nHas a shield once deployed that can absorb 15% of the damage.
+		BuildLimit: 1
 	Valued:
 		Cost: 1000
 	RenderSprites:
 		Image: holoup_ompelerin
 	ProvidesPrerequisite:
 		Prerequisite: research.Omega.Pelerin.Conclave
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Pelerin, research.Alpha.Pelerin.Conclave
+		Condition: RevokedPelerin
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedPelerin
 
 Upgrade.Alpha.Comete.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Comete.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: Moonlight
 	Buildable:
 		BuildPaletteOrder: 50
-		Queue: Research.conclave
-		Prerequisites: !research.Omega.Comete.Conclave, !research.Alpha.Comete.Conclave, tcholotech.comete
-		BuildDurationModifier: 60
-		IconPalette: Conclave.Icon
+		Prerequisites: tcholotech.comete
 		Description: Increases the Comet's damage\nCan detect stealthed units
+		BuildLimit: 1
 	Valued:
 		Cost: 1000
 	RenderSprites:
 		Image: holoup_alcomete
 	ProvidesPrerequisite:
 		Prerequisite: research.Alpha.Comete.Conclave
-	ProvidesPrerequisite@Base:
-		Prerequisite: research.Base.Comete.Conclave
+	#Condition generate to parallel aspect
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Comete, research.Omega.Comete.Conclave
+		Condition: RevokedComete
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedComete
 
 Upgrade.Omega.Comete.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Comete.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: Moon's shadow
 	Buildable:
 		BuildPaletteOrder: 60
-		Queue: Research.conclave
-		Prerequisites: !research.Omega.Comete.Conclave, !research.Alpha.Comete.Conclave, tcholotech.comete
-		BuildDurationModifier: 60
-		IconPalette: Conclave.Icon
+		Prerequisites: tcholotech.comete
 		Description: Increases the Comet's damage\nBecomes stealthed while not moving
+		BuildLimit: 1
 	Valued:
 		Cost: 1000
 	RenderSprites:
 		Image: holoup_omcomete
 	ProvidesPrerequisite:
 		Prerequisite: research.Omega.Comete.Conclave
-	ProvidesPrerequisite@Base:
-		Prerequisite: research.Base.Comete.Conclave
+	#Condition generate to parallel aspect
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Comete, research.Alpha.Comete.Conclave
+		Condition: RevokedComete
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedComete
 
 Upgrade.Alpha.Arpenteur.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Arpenteur.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: Juggernaut
 	Buildable:
 		BuildPaletteOrder: 70
-		Queue: Research.conclave
-		Prerequisites: !research.Omega.Arpenteur.Conclave, !research.Alpha.Arpenteur.Conclave, tcholotech.arpenteur
-		IconPalette: Conclave.Icon
-        BuildDurationModifier: 120
+		Prerequisites: tcholotech.arpenteur
 		Description: Increases the Surveyor's speed\nCan now crush light and medium units\nBecomes immune to EMP and negative effects
 	Valued:
 		Cost: 1000
@@ -166,18 +242,22 @@ Upgrade.Alpha.Arpenteur.Conclave:
 		Image: holoup_alarpenteur
 	ProvidesPrerequisite:
 		Prerequisite: research.Alpha.Arpenteur.Conclave
+	#Condition generate to parallel aspect
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Arpenteur, research.Omega.Arpenteur.Conclave
+		Condition: RevokedArpenteur
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedArpenteur
 
 Upgrade.Omega.Arpenteur.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Arpenteur.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: Dreadnought
 	Buildable:
 		BuildPaletteOrder: 80
-		Queue: Research.conclave
-		Prerequisites: !research.Omega.Arpenteur.Conclave, !research.Alpha.Arpenteur.Conclave, tcholotech.arpenteur
-		IconPalette: Conclave.Icon
-        BuildDurationModifier: 120
+		Prerequisites: tcholotech.arpenteur
 		Description: Increases the Surveyor's HP, range and rate of fire
 	Valued:
 		Cost: 1000
@@ -185,18 +265,22 @@ Upgrade.Omega.Arpenteur.Conclave:
 		Image: holoup_omarpenteur
 	ProvidesPrerequisite:
 		Prerequisite: research.Omega.Arpenteur.Conclave
+	#Condition generate to parallel aspect
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Arpenteur, research.Alpha.Arpenteur.Conclave
+		Condition: RevokedArpenteur
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedArpenteur
 
 Upgrade.Alpha.Zenith.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Zenith.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: Gravity field
 	Buildable:
 		BuildPaletteOrder: 90
-		Queue: Research.conclave
-		Prerequisites: !research.Omega.Zenith.Conclave, !research.Alpha.Zenith.Conclave, tcholotech.zenith
-		IconPalette: Conclave.Icon
-        BuildDurationModifier: 60
+		Prerequisites: tcholotech.zenith
 		Description: Increases the Zenith's HP\nIncreases nearby allied units' speed
 	Valued:
 		Cost: 800
@@ -204,18 +288,22 @@ Upgrade.Alpha.Zenith.Conclave:
 		Image: holoup_alzenith
 	ProvidesPrerequisite:
 		Prerequisite: research.Alpha.Zenith.Conclave
+	#Condition generate to parallel aspect
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Zenith, research.Omega.Zenith.Conclave
+		Condition: RevokedZenith
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedZenith
 
 Upgrade.Omega.Zenith.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Zenith.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: Field repair
 	Buildable:
 		BuildPaletteOrder: 100
-		Queue: Research.conclave
-		Prerequisites: !research.Omega.Zenith.Conclave, !research.Alpha.Zenith.Conclave, tcholotech.zenith
-		IconPalette: Conclave.Icon
-        BuildDurationModifier: 60
+		Prerequisites: tcholotech.zenith
 		Description: Increases the Zenith's HP\nHeals nearby allied units
 	Valued:
 		Cost: 800
@@ -223,18 +311,22 @@ Upgrade.Omega.Zenith.Conclave:
 		Image: holoup_omzenith
 	ProvidesPrerequisite:
 		Prerequisite: research.Omega.Zenith.Conclave
+	#Condition generate to parallel aspect
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Zenith, research.Alpha.Zenith.Conclave
+		Condition: RevokedZenith
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedZenith
 
 Upgrade.Alpha.Quasar.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Quasar.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: Death Fleet
 	Buildable:
 		BuildPaletteOrder: 110
-		Queue: Research.conclave
-		Prerequisites: !research.Omega.Quasar.Conclave, !research.Alpha.Quasar.Conclave, tcholotech.quasar
-		IconPalette: Conclave.Icon
-        BuildDurationModifier: 60
+		Prerequisites: tcholotech.quasar
 		Description: Increases Quasar's weapon radius density and gives a damage zone on impact
 	Valued:
 		Cost: 800
@@ -242,18 +334,22 @@ Upgrade.Alpha.Quasar.Conclave:
 		Image: holoup_alquasar
 	ProvidesPrerequisite:
 		Prerequisite: research.Alpha.Quasar.Conclave
+	#Condition generate to parallel aspect
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Quasar, research.Omega.Quasar.Conclave
+		Condition: RevokedQuasar
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedQuasar
 
 Upgrade.Omega.Quasar.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Quasar.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: Golden Armada
 	Buildable:
 		BuildPaletteOrder: 120
-		Queue: Research.conclave
-		Prerequisites: !research.Omega.Quasar.Conclave, !research.Alpha.Quasar.Conclave, tcholotech.quasar
-		IconPalette: Conclave.Icon
-        BuildDurationModifier: 60
+		Prerequisites: tcholotech.quasar
 		Description: Drastically increases the Quasar’s HP
 	Valued:
 		Cost: 800
@@ -261,9 +357,16 @@ Upgrade.Omega.Quasar.Conclave:
 		Image: holoup_omquasar
 	ProvidesPrerequisite:
 		Prerequisite: research.Omega.Quasar.Conclave
+	#Condition generate to parallel aspect
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Quasar, research.Alpha.Quasar.Conclave
+		Condition: RevokedQuasar
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedQuasar
 
 Upgrade.Alpha.Navigator.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Navigator.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: ...
@@ -271,7 +374,6 @@ Upgrade.Alpha.Navigator.Conclave:
 		BuildPaletteOrder: 130
 		Queue: Stace.conclave
 		Prerequisites: !research.Omega.Navigator.Conclave, !research.Alpha.Navigator.Conclave, tcholotech.navigator
-		IconPalette: Conclave.Icon
 		Description: ...
 	Valued:
 		Cost: 100
@@ -279,9 +381,16 @@ Upgrade.Alpha.Navigator.Conclave:
 		Image: holoup_alnavigator
 	ProvidesPrerequisite:
 		Prerequisite: research.Alpha.Navigator.Conclave
+	#Condition generate to parallel aspect
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Navigator, research.Omega.Navigator.Conclave
+		Condition: RevokedNavigator
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedNavigator
 
 Upgrade.Omega.Navigator.Conclave:
-	Inherits@Research: ^ResearchActor
+	Inherits@Research: ^Aspect.Base.Conclave
+	Inherits@Research1: ^Navigator.Aspect
 	AlwaysVisible:
 	Tooltip:
 		Name: ...
@@ -289,7 +398,6 @@ Upgrade.Omega.Navigator.Conclave:
 		BuildPaletteOrder: 140
 		Queue: Stace.conclave
 		Prerequisites: !research.Omega.Navigator.Conclave, !research.Navigator.Conclave, tcholotech.navigator
-		IconPalette: Conclave.Icon
 		Description: ...
 	Valued:
 		Cost: 100
@@ -297,23 +405,17 @@ Upgrade.Omega.Navigator.Conclave:
 		Image: holoup_omnavigator
 	ProvidesPrerequisite:
 		Prerequisite: research.Omega.Navigator.Conclave
+	#Condition generate to parallel aspect
+	GrantConditionOnPrerequisite@Revoked:
+		Prerequisites: Remove.Weapons.Navigator, research.Alpha.Navigator.Conclave
+		Condition: RevokedNavigator
+	KillsSelf:
+		RequiresCondition: !RemoveAspect && RevokedNavigator
 
 ^BuildingGivePower.Conclave:
-	SpawnActorPower@SpawnRelais:
-		OrderName: SpawnRelais
-		Prerequisites: ~TCtech.LVL4
-		Icon: powerrelaisicon
-		IconPalette: Conclave.Icon
-		Description: Radar
-		LifeTime: 1200
-		LongDesc: Téleporte un Relais
-		ChargeInterval: 3200
-		Actor: tcpodrelais
-		DeploySound: spyreveal.aud
-		EffectImage: revealradr
 	IonCannonPower@OrbitalDistrub:
 		Description: Orbital Graviton
-		Prerequisites: Ion Trap X5
+		Prerequisites: Ion Trap X5, Spell.Alpha.Rodeur.Conclave
 		LongDesc: significantly slow the movement and effectiveness of unit weapons in the area of effect.
 		ChargeInterval: 4500
 		CameraActor: camera
@@ -322,10 +424,16 @@ Upgrade.Omega.Navigator.Conclave:
 		Weapon: DisordCannon
 		BeaconImage: null
 		Icon: powergravitconclaveicon
-
-UnkownPlace.Building.conclave30:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 30
-		Queue: Building.conclave
-		Prerequisites: unkown
+	AirstrikePower@Conclave.eclipse.Power:
+		OrderName: attack.baneslayer.module
+		UnitType: eclipse
+		Prerequisites: Ion Trap X5, Spell.Omega.Rodeur.Conclave
+		Icon: aircraftbaneslayerpowericon
+		Description: Eclipse
+		LongDesc: Calls 3 close-support aircraft that unload all their ordnance on the designated area
+		ChargeInterval: 3500
+		SquadSize: 1
+		CameraActor: camera.spy
+		QuantizedFacings: 64
+		DeploySound: spyreveal.aud
+		EffectImage: powergravitconclaveicon

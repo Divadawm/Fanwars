@@ -2,7 +2,7 @@
 
 @echo on
 
-set Name="Fanwars Server"
+set Name="Dedicated Server"
 set ListenPort=1234
 set AdvertiseOnline=True
 set EnableSingleplayer=False

@@ -1,3 +1,20 @@
+command-button: buttons.png
+	background: 34,0,34,26
+command-button-hover: buttons.png
+	background: 0,0,34,26
+command-button-pressed: buttons.png
+	background: 24,0,34,26
+command-button-highlighted: buttons.png
+	background: 0,0,34,26
+command-button-highlighted-hover: buttons.png
+	background: 0,0,34,26
+command-button-highlighted-pressed: buttons.png
+	background: 0,0,34,26
+command-button-disabled: buttons.png
+	background: 34,0,34,26
+command-button-highlighted-disabled: buttons.png
+	background: 34,0,34,26
+
 # //////////// RED ALLIANCE //////////////////////
 
 sidebar: side_factions.png
@@ -6,14 +23,50 @@ sidebar: side_factions.png
     background-overtop: 289,0,350,8
     background-supportoverlay: 289,224,64,48
     commandbar-background: 524,363,434,43
+    cashproduction-background: 599,99,425,54
 	
-sidebar-redalliance: side_factions.png
-	background-top: 524,0,300,289
-	background-iconrow: 524,289,450,74
-    background-bottom: 350,345,350,8
-    background-overtop: 639,0,350,8
-    background-supportoverlay: 639,224,64,48
-    commandbar-background: 524,363,434,43
+sidebar-redalliance: alliance_hub.png
+	background-top: 0,0,300,289
+	background-iconrow: 596,21,430,75
+    commandbar-background: 300,247,434,43
+    cashproduction-background: 599,99,425,54
+
+
+sidebar-button-redalliance: alliance_hub.png
+	background: 328,0,28,28
+sidebar-button-redalliance-hover: alliance_hub.png
+	background: 328,0,28,28
+sidebar-button-redalliance-pressed: alliance_hub.png
+	background: 300,0,28,28
+sidebar-button-redalliance-highlighted: alliance_hub.png
+	background: 328,0,28,28
+sidebar-button-redalliance-highlighted-hover: alliance_hub.png
+	background: 384,0,28,28
+sidebar-button-redalliance-highlighted-pressed: alliance_hub.png
+	background: 384,0,28,28
+sidebar-button-redalliance-disabled: alliance_hub.png
+	background: 300,0,28,28
+sidebar-button-redalliance-highlighted-disabled: alliance_hub.png
+	background: 356,0,28,28
+    
+	
+type-button-redalliance: alliance_hub.png
+	background: 300,84,47,28
+type-button-redalliance-hover: alliance_hub.png
+	background: 300,84,47,28
+type-button-redalliance-pressed: alliance_hub.png
+	background: 300,84,47,28
+type-button-redalliance-highlighted: alliance_hub.png
+	background: 300,56,47,28
+type-button-redalliance-highlighted-hover: alliance_hub.png
+	background: 300,28,47,28
+type-button-redalliance-highlighted-pressed: alliance_hub.png
+	background: 300,28,47,28
+type-button-redalliance-disabled: alliance_hub.png
+	background: 300,84,47,28
+type-button-redalliance-highlighted-disabled: alliance_hub.png
+	background: 300,84,47,28
+    
 	
 sideback: back_factions.png
 	background-side: 0,0,480,287
@@ -22,149 +75,94 @@ sideback: back_factions.png
 	background-overtop: 639,0,350,8
 	background-supportoverlay: 639,224,64,48
     
-command-button: buttons.png
-	background: 22,0,22,22
-command-button-hover: buttons.png
-	background: 22,0,22,22
-command-button-pressed: buttons.png
-	background: 22,0,22,22
-command-button-highlighted: buttons.png
-	background: 0,0,22,22
-command-button-highlighted-hover: buttons.png
-	background: 0,0,22,22
-command-button-highlighted-pressed: buttons.png
-	background: 0,0,22,22
-command-button-disabled: buttons.png
-	background: 22,0,22,22
-command-button-highlighted-disabled: buttons.png
-	background: 22,0,22,22
-    
-sidebar-button-redalliance: side_factions.png
-	background: 824,0,28,28
-sidebar-button-redalliance-hover: side_factions.png
-	background: 880,0,28,28
-sidebar-button-redalliance-pressed: side_factions.png
-	background: 824,0,28,28
-sidebar-button-redalliance-highlighted: side_factions.png
-	background: 852,0,28,28
-sidebar-button-redalliance-highlighted-hover: side_factions.png
-	background: 908,0,28,28
-sidebar-button-redalliance-highlighted-pressed: side_factions.png
-	background: 908,0,28,28
-sidebar-button-redalliance-disabled: side_factions.png
-	background: 824,0,28,28
-sidebar-button-redalliance-highlighted-disabled: side_factions.png
-	background: 824,0,28,28
-    
-hover-button-redalliance: side_factions.png
-	background: 824,84,47,28
-hover-button-redalliance-hover: side_factions.png
-	background: 824,84,47,28
-hover-button-redalliance-pressed: side_factions.png
-	background: 824,84,47,28
-hover-button-redalliance-highlighted: side_factions.png
-	background: 824,56,47,28
-hover-button-redalliance-highlighted-hover: side_factions.png
-	background: 824,28,47,28
-hover-button-redalliance-highlighted-pressed: side_factions.png
-	background: 824,28,47,28
-hover-button-redalliance-disabled: side_factions.png
-	background: 824,84,47,28
-hover-button-redalliance-highlighted-disabled: side_factions.png
-	background: 824,84,47,28
     
 # Conclave chrome ui //////////////////////
 
-sidebar-conclave: side_factions.png
-	background-top: 1046,0,300,289
-	background-iconrow: 1046,289,450,74
-    background-bottom: 350,345,350,8
-    background-overtop: 639,0,350,8
-    background-supportoverlay: 639,224,64,48
-    commandbar-background: 1046,363,434,43
+sidebar-conclave: conclave_hub.png
+	background-top: 0,0,300,289
+	background-iconrow: 596,21,430,75
+    commandbar-background: 300,247,434,43
+    cashproduction-background: 599,99,425,54
 
 
-sidebar-button-conclave: side_factions.png
-	background: 1374,0,28,28
-sidebar-button-conclave-hover: side_factions.png
-	background: 1374,0,28,28
-sidebar-button-conclave-pressed: side_factions.png
-	background: 1346,0,28,28
-sidebar-button-conclave-highlighted: side_factions.png
-	background: 1374,0,28,28
-sidebar-button-conclave-highlighted-hover: side_factions.png
-	background: 1430,0,28,28
-sidebar-button-conclave-highlighted-pressed: side_factions.png
-	background: 1430,0,28,28
-sidebar-button-conclave-disabled: side_factions.png
-	background: 1346,0,28,28
-sidebar-button-conclave-highlighted-disabled: side_factions.png
-	background: 1402,0,28,28
+sidebar-button-conclave: conclave_hub.png
+	background: 328,0,28,28
+sidebar-button-conclave-hover: conclave_hub.png
+	background: 328,0,28,28
+sidebar-button-conclave-pressed: conclave_hub.png
+	background: 300,0,28,28
+sidebar-button-conclave-highlighted: conclave_hub.png
+	background: 328,0,28,28
+sidebar-button-conclave-highlighted-hover: conclave_hub.png
+	background: 384,0,28,28
+sidebar-button-conclave-highlighted-pressed: conclave_hub.png
+	background: 384,0,28,28
+sidebar-button-conclave-disabled: conclave_hub.png
+	background: 300,0,28,28
+sidebar-button-conclave-highlighted-disabled: conclave_hub.png
+	background: 356,0,28,28
     
 	
-hover-button-conclave: side_factions.png
-	background: 1346,84,47,28
-hover-button-conclave-hover: side_factions.png
-	background: 1346,84,47,28
-hover-button-conclave-pressed: side_factions.png
-	background: 1346,84,47,28
-hover-button-conclave-highlighted: side_factions.png
-	background: 1346,56,47,28
-hover-button-conclave-highlighted-hover: side_factions.png
-	background: 1346,28,47,28
-hover-button-conclave-highlighted-pressed: side_factions.png
-	background: 1346,28,47,28
-hover-button-conclave-disabled: side_factions.png
-	background: 1346,84,47,28
-hover-button-conclave-highlighted-disabled: side_factions.png
-	background: 1346,84,47,28
+type-button-conclave: conclave_hub.png
+	background: 300,84,47,28
+type-button-conclave-hover: conclave_hub.png
+	background: 300,84,47,28
+type-button-conclave-pressed: conclave_hub.png
+	background: 300,84,47,28
+type-button-conclave-highlighted: conclave_hub.png
+	background: 300,56,47,28
+type-button-conclave-highlighted-hover: conclave_hub.png
+	background: 300,28,47,28
+type-button-conclave-highlighted-pressed: conclave_hub.png
+	background: 300,28,47,28
+type-button-conclave-disabled: conclave_hub.png
+	background: 300,84,47,28
+type-button-conclave-highlighted-disabled: conclave_hub.png
+	background: 300,84,47,28
     
 	
 	
 # baneslayer chrome ui //////////////////////
 
-sidebar-baneslayer: side_factions.png
+sidebar-baneslayer: order_hub.png
 	background-top: 0,0,300,289
-	background-iconrow: 0,289,450,74
-    background-bottom: 350,345,350,8
-    background-overtop: 639,0,350,8
-    background-supportoverlay: 639,224,64,48
-    commandbar-background: 0,363,434,43
+	background-iconrow: 596,21,430,75
+    commandbar-background: 300,247,434,43
+    cashproduction-background: 599,99,425,54
 
-	
-	
-sidebar-button-baneslayer: side_factions.png
-	background: 300,0,28,28
-sidebar-button-baneslayer-hover: side_factions.png
-	background: 356,0,28,28
-sidebar-button-baneslayer-pressed: side_factions.png
-	background: 300,0,28,28
-sidebar-button-baneslayer-highlighted: side_factions.png
+sidebar-button-baneslayer: order_hub.png
 	background: 328,0,28,28
-sidebar-button-baneslayer-highlighted-hover: side_factions.png
-	background: 384,0,28,28
-sidebar-button-baneslayer-highlighted-pressed: side_factions.png
-	background: 384,0,28,28
-sidebar-button-baneslayer-disabled: side_factions.png
+sidebar-button-baneslayer-hover: order_hub.png
+	background: 328,0,28,28
+sidebar-button-baneslayer-pressed: order_hub.png
 	background: 300,0,28,28
-sidebar-button-baneslayer-highlighted-disabled: side_factions.png
+sidebar-button-baneslayer-highlighted: order_hub.png
+	background: 328,0,28,28
+sidebar-button-baneslayer-highlighted-hover: order_hub.png
+	background: 384,0,28,28
+sidebar-button-baneslayer-highlighted-pressed: order_hub.png
+	background: 384,0,28,28
+sidebar-button-baneslayer-disabled: order_hub.png
 	background: 300,0,28,28
+sidebar-button-baneslayer-highlighted-disabled: order_hub.png
+	background: 356,0,28,28
+    
 	
-hover-button-baneslayer: side_factions.png
+type-button-baneslayer: order_hub.png
 	background: 300,84,47,28
-hover-button-baneslayer-hover: side_factions.png
+type-button-baneslayer-hover: order_hub.png
 	background: 300,84,47,28
-hover-button-baneslayer-pressed: side_factions.png
+type-button-baneslayer-pressed: order_hub.png
 	background: 300,84,47,28
-hover-button-baneslayer-highlighted: side_factions.png
+type-button-baneslayer-highlighted: order_hub.png
 	background: 300,56,47,28
-hover-button-baneslayer-highlighted-hover: side_factions.png
+type-button-baneslayer-highlighted-hover: order_hub.png
 	background: 300,28,47,28
-hover-button-baneslayer-highlighted-pressed: side_factions.png
+type-button-baneslayer-highlighted-pressed: order_hub.png
 	background: 300,28,47,28
-hover-button-baneslayer-disabled: side_factions.png
+type-button-baneslayer-disabled: order_hub.png
 	background: 300,84,47,28
-hover-button-baneslayer-highlighted-disabled: side_factions.png
+type-button-baneslayer-highlighted-disabled: order_hub.png
 	background: 300,84,47,28
 
 
@@ -176,7 +174,7 @@ sidebar-federation: side_factions.png
     background-overtop: 639,0,350,8
     background-supportoverlay: 639,224,64,48
     commandbar-background: 0,771,434,43
-
+    cashproduction-background: 599,99,425,54
 	
 	
 sidebar-button-federation: side_factions.png
@@ -196,21 +194,21 @@ sidebar-button-federation-disabled: side_factions.png
 sidebar-button-federation-highlighted-disabled: side_factions.png
 	background: 300,408,28,28
 	
-hover-button-federation: side_factions.png
+type-button-federation: side_factions.png
 	background: 300,492,47,28
-hover-button-federation-hover: side_factions.png
+type-button-federation-hover: side_factions.png
 	background: 300,492,47,28
-hover-button-federation-pressed: side_factions.png
+type-button-federation-pressed: side_factions.png
 	background: 300,492,47,28
-hover-button-federation-highlighted: side_factions.png
+type-button-federation-highlighted: side_factions.png
 	background: 300,464,47,28
-hover-button-federation-highlighted-hover: side_factions.png
+type-button-federation-highlighted-hover: side_factions.png
 	background: 300,436,47,28
-hover-button-federation-highlighted-pressed: side_factions.png
+type-button-federation-highlighted-pressed: side_factions.png
 	background: 300,436,47,28
-hover-button-federation-disabled: side_factions.png
+type-button-federation-disabled: side_factions.png
 	background: 300,492,47,28
-hover-button-federation-highlighted-disabled: side_factions.png
+type-button-federation-highlighted-disabled: side_factions.png
 	background: 300,492,47,28 
     
     
@@ -278,9 +276,9 @@ production-icons: chrome.png
 	research: 496,48,16,16
 	research-disabled: 496,64,16,16
 	research-alert: 496,80,16,16
-	veteran: 546,0,16,16
-	veteran-disabled: 546,16,16,16
-	veteran-alert: 546,32,16,16
+	doctrines: 546,0,16,16
+	doctrines-disabled: 546,16,16,16
+	doctrines-alert: 546,32,16,16
 
 order-icons: chrome.png
 	debug: 564,0,16,16
@@ -794,7 +792,22 @@ logos: loadscreen.png
 dropdown: dialog.png
     separator: 512,1,1,19
     observer-separator: 768,256,1,19
-    
+
+reload-icon: buttons.png
+	enabled: 0,189,16,16
+	disabled-0: 16,189,16,16
+	disabled-1: 32,189,16,16
+	disabled-2: 48,189,16,16
+	disabled-3: 64,189,16,16
+	disabled-4: 80,189,16,16
+	disabled-5: 96,189,16,16
+	disabled-6: 112,189,16,16
+	disabled-7: 128,189,16,16
+	disabled-8: 144,189,16,16
+	disabled-9: 160,189,16,16
+	disabled-10: 176,189,16,16
+	disabled-11: 192,189,16,16
+
 command-icons: chrome.png
 	attack-move: 0,168,24,24
 	attack-move-disabled: 0,192,24,24

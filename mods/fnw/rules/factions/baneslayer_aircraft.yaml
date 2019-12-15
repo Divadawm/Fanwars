@@ -9,38 +9,34 @@ baneslayerattackaircraft:
 		TurnSpeed: 4
 		Speed: 520
 		Repulsable: False
+		IdleBehavior: LeaveMap
 	AttackBomber:
-		Armaments: gun, bombs
+		Armaments: bomb2, bombs
 	DamageMultiplier@INVULNERABLE:
 		Modifier: 0
 	Health:
 		HP: 1500
-	Armament@GUNS:
-		Name: gun
-		Weapon: Einherjar.missile.Aircraft
-		LocalOffset: 1024,0,-85
-	Armament@GUNS2:
-		Name: gun
-		Weapon: Einherjar.missile.Aircraft
-		LocalOffset: 1024,0,-85
 	WithMuzzleOverlay:
 	Targetable:
 		TargetTypes: NoAircraftTarget
 		RequiresForceFire: true
 	RejectsOrders:
-	FlyAwayOnIdle:
+	-RevealsShroud:
 	-AutoTarget:
 	Armament@BOMBS:
 		Name: bombs
 		Weapon: Helgun.Aircraft
 		LocalOffset: 0,-256,-43, 0,256,-43
+	Armament@BOMBS2:
+		Name: bombs2
+		Weapon: Helgun.Aircraft
+		LocalOffset: 0,-256,-43, 0,256,-43
 	Buildable:
 		Description: Used to deliver air strikes.
-	HitShape:
 
 t2_nidhogg:
 	Inherits: ^Helicoptershape
-	Inherits@Target: ^AutoTargetAllAssaultMove
+	Inherits@Target: ^NidhoggAutoTargetAllAssaultMove
 	Inherits@Upgrade: ^Aircraft.Upgrade.baneslayer
 	Buildable:
 		Queue: Aircraft.baneslayer
@@ -53,25 +49,49 @@ t2_nidhogg:
 		Name: Nidhogg
 	Health:
 		HP: 1100
-	Armor:
-		Type: LightVehicle
-	RevealsShroud:
-		Range: 12c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	RevealsShroud@GAPGEN:
-		Range: 10c0
-		Type: GroundPosition
 	Armament@PRIMARY:
+		Name: secondary
 		Weapon: minigun.Nidhogg
 		LocalOffset: 280,-260,20, 280,260,20
 		MuzzleSequence: muzzle
+		RequiresCondition: !mode2
+	GrantConditionOnDeploy:
+		DeployedCondition: mode2
+		DeploySounds: deploy_vehicle_mode.aud
+		UndeploySounds: deploy_vehicle_mode.aud
+	GrantConditionOnAttack@TargetRailgun:
+		ArmamentNames: primary
+		RevokeOnNewTarget: true
+		RequiredShotsPerInstance: 15
+		IsCyclic: False
+		Condition: Target
+	Armament@SecondaryTarget:
+		Weapon: Iem.Target
+		LocalOffset: 980,0,-30
+		RequiresCondition: mode2 && !Target
 	Armament@Secondary:
 		Weapon: Nidhogg.StunCannon
 		LocalOffset: 980,0,-30
+		RequiresCondition: mode2 && Target
+	WithDecoration@MOD1:
+		Image: stat-effect
+		Sequence: Level21
+		Palette: effect
+		ReferencePoint: bottom, center
+		ZOffset: 100
+		RequiresCondition: !mode2
+	WithDecoration@MOD2:
+		Image: stat-effect
+		Sequence: Level22
+		Palette: effect
+		ReferencePoint: bottom, center
+		ZOffset: 100
+		RequiresCondition: mode2
 	WithMuzzleOverlay:
-	AttackHeli:
+	AttackAircraft:
 		FacingTolerance: 20
+		PersistentTargeting: false
+		AttackType: Hover
 	Aircraft:
 		CruiseAltitude: 2500
 		InitialFacing: 192
@@ -79,7 +99,6 @@ t2_nidhogg:
 		Speed: 180
 		RepulsionSpeed: 40
 		MaximumPitch: 56
-		LandWhenIdle: false
 		LandableTerrainTypes: Clear,Rough,Road,Beach
 	AutoTarget:
 		InitialStance: Defend
@@ -88,7 +107,6 @@ t2_nidhogg:
 		Bounds: 36,28
 	SpawnActorOnDeath:
 		Actor: t2_nidhogg.Husk
-	HitShape:
 
 t2_nidhogg.Husk:
 	Inherits: ^AircraftHuskShape
@@ -116,19 +134,11 @@ t3_thor:
 		Name: Thor
 	Health:
 		HP: 1300
-	Armor:
-		Type: LightVehicle
-	RevealsShroud:
-		Range: 13c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	RevealsShroud@GAPGEN:
-		Range: 11c0
-		Type: GroundPosition
 	GrantConditionOnDeploy:
 		DeployedCondition: mode2
-		DeploySound: deploy_vehicle_mode.aud
-		UndeploySound: deploy_vehicle_mode.aud
+		DeploySounds: deploy_vehicle_mode.aud
+		UndeploySounds: deploy_vehicle_mode.aud
+		PauseOnCondition: !upgrade.Thor.baneslayer
 	GrantConditionOnPrerequisite@research.Thor.baneslayer:
 		Prerequisites: research.Thor.baneslayer
 		Condition: upgrade.Thor.baneslayer
@@ -177,9 +187,8 @@ t3_thor:
 		ReferencePoint: bottom, center
 		ZOffset: 100
 		RequiresCondition: mode2 && upgrade.Thor.baneslayer
-	AttackPlane:
+	AttackAircraft:
 		FacingTolerance: 25
-	ReturnOnIdle:
 	Aircraft:
 		CruiseAltitude: 3400
 		InitialFacing: 192
@@ -198,7 +207,6 @@ t3_thor:
 		Interval: 2
 	SpawnActorOnDeath:
 		Actor: t3_thor.Husk
-	HitShape:
 
 t3_thor.Husk:
 	Inherits: ^PlaneHusk
@@ -226,23 +234,6 @@ t3_valkyrie:
 		Name: Valkyrie
 	Health:
 		HP: 1400
-	Armor:
-		Type: LightVehicle
-	RevealsShroud:
-		Range: 12c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	RevealsShroud@GAPGEN:
-		Range: 10c0
-		Type: GroundPosition
-	Armament@Gun:
-		Weapon: Valkyrie.StunCannon
-		LocalOffset: 1500,0,-650
-	AttackTurreted:
-	Turreted:
-		TurnSpeed: 8
-		RealignDelay: 20
-		Offset: -80,0,0
 	Aircraft:
 		CruiseAltitude: 2500
 		InitialFacing: 192
@@ -250,36 +241,79 @@ t3_valkyrie:
 		Speed: 140
 		RepulsionSpeed: 40
 		MaximumPitch: 56
-		LandWhenIdle: false
 		LandableTerrainTypes: Clear,Rough,Road,Beach
+	SpeedMultiplier:
+		Modifier: 0
+		RequiresCondition: deployed
 	AutoTarget:
 		InitialStance: Defend
 		InitialStanceAI: Defend
 	Selectable:
 		Bounds: 36,28
-	WithVoxelTurret:
-		ShowShadow: false
-	WithVoxelBarrel:
-		ShowShadow: false
-	GrantConditionOnMovement@EngineMove:
-		Condition: EngineMove
+	GrantConditionOnDeploy:
+		DeployedCondition: deployed
+		UndeployedCondition: undeployed
+		Facing: 96
+		AllowedTerrainTypes: Clear, Road, DirtRoad, Rough
 	ProximityExternalCondition@valkyrieRepair:
-		Condition: valkyrieRepairVehicle
+		Condition: UniteRepairVehicle
 		Range: 6c0
 		AffectsParent: true
-		RequiresCondition: !EngineMove
+		RequiresCondition: deployed
+	WithFacingSpriteBody:
+		PauseOnCondition: deployed
+	# Multi Turret support
+	Armament@TurretGun1:
+		Name: IonBatt.Gun01
+		Turret: Gun.Turret01
+		Weapon: Valkyrie.StunCannon
+		RequiresCondition: !deployed
+		LocalOffset: 800,0,-50, 800,200,150
+	Armament@TurretGun2:
+		Name: IonBatt.Gun02
+		Turret: Gun.Turret02
+		Weapon: Valkyrie.StunCannon
+		RequiresCondition: !deployed
+		LocalOffset: 800,0,-50, 800,200,150
+	AttackTurreted:
+		Turrets: Gun.Turret01, Gun.Turret02
+		Armaments: IonBatt.Gun01, IonBatt.Gun02
+		RequiresCondition: !deployed
+	WithSpriteTurret@1:
+		Sequence: Gun.Turret01
+		Turret: Gun.Turret01
+		RequiresCondition: !deployed
+	WithSpriteTurret@2:
+		Sequence: Gun.Turret02
+		Turret: Gun.Turret02
+		RequiresCondition: !deployed
+	Turreted@1:
+		Turret: Gun.Turret01
+		TurnSpeed: 8
+		InitialFacing: 96
+		RealignDelay: 20
+		Offset: 540,-280,-150
+	Turreted@2:
+		Turret: Gun.Turret02
+		TurnSpeed: 8
+		InitialFacing: 96
+		RealignDelay: 20
+		Offset: 540,280,-150
+	# Repair Function
 	ProximityExternalCondition@REPAIRAIRCRAFT:
-		Condition: valkyrieRepairAircraft
-		Range: 6c0
+		Condition: UniteRepairAircraft
+		Range: 4c0
 		AffectsParent: true
-		RequiresCondition: !EngineMove
-	RenderVoxels:
-		Scale: 1.08
+		RequiresCondition: deployed
+	WithIdleOverlay@EngineSPOT:
+		Offset: 0,0,0
+		Sequence: pulse_repair
+		Palette: powereffect40
+		RequiresCondition: deployed
 	RenderSprites:
 		Scale: 1.10
 	SpawnActorOnDeath:
 		Actor: t3_valkyrie.Husk
-	HitShape:
 
 t3_valkyrie.Husk:
 	Inherits: ^PlaneHusk

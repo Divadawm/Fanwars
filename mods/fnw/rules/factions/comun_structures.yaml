@@ -9,7 +9,7 @@ diastextractor:
 		Description: Provides power for other structures
 		BuildDurationModifier: 30
 		Adjacent: 18
-        IconPalette: Federation.Icon
+		IconPalette: Federation.Icon
 	Valued:
 		Cost: 1200
 	Tooltip:
@@ -18,7 +18,7 @@ diastextractor:
 		Footprint: xx xx
 		Dimensions: 2,2
 		Adjacent: 10
-        TerrainTypes: Deposit
+		TerrainTypes: Deposit
 		BuildSounds: deploy_order.aud
 	Health:
 		HP: 5000
@@ -35,13 +35,13 @@ diastextractor:
 	ScalePowerWithHealth:
 	Power:
 		Amount: 0
-    CashTrickler:
-        InitialDelay: 800
+	CashTrickler:
+		InitialDelay: 800
 		Interval: 700
 		Amount: 950
 	HitShape:
 
-DERRICK:
+derrick:
 	Inherits: ^TechBuilding
 	Inherits@2: ^2x2Shape
 	Selectable:
@@ -53,10 +53,9 @@ DERRICK:
 		HP: 8000
 	RevealsShroud:
 		Range: 3c0
-	ExternalCapturable:
+	Capturable:
 		Types: TechBuilding
-		CaptureCompleteTime: 20
-	ExternalCapturableBar:
+	CapturableProgressBar:
 	EngineerRepairable:
 	CashTrickler:
 		Interval: 250
@@ -66,6 +65,8 @@ DERRICK:
 	GivesCashOnCapture:
 		Amount: 300
 	HitShape:
+	CapturableProgressBlink:
+	CaptureManager:
 
 generatciv_01:
 	Inherits: ^TechBuilding
@@ -82,326 +83,8 @@ generatciv_01:
 	Tooltip:
 		Name: Generator
 	HitShape:
-
-reactor:
-	Inherits: ^TechBuilding
-	Inherits@2: ^2x2Shape
-	Selectable:
-		Priority: 0
-	Building:
-		Footprint: xx xx
-		Dimensions: 2,2
-	Health:
-		HP: 25000
-	RevealsShroud:
-		Range: 3c0
-	Tooltip:
-		Name: Reactor
-	ExternalCapturable:
-		Types: TechBuilding
-		CaptureCompleteTime: 40
-	StrategicPoint:
-	MustBeDestroyed:
-		RequiredForShortGame: True
-	ExternalCapturableBar:
-	HitShape:
-
-postpoint:
-	Inherits: ^TechBuilding
-	Inherits@2: ^2x2Shape
-	Selectable:
-		Priority: 0
-	Building:
-		Footprint: xx xx
-		Dimensions: 2,2
-	Health:
-		HP: 5000
-	RevealsShroud:
-		Range: 5c0
-	Tooltip:
-		Name: Strategic Point
-	ExternalCapturable:
-		Types: TechBuilding
-		CaptureCompleteTime: 40
-	StrategicPoint:
-	Targetable:
-		TargetTypes: strategic.point
-	ExternalCapturableBar:
-	DamageMultiplier:
-		Modifier: 0
-	HitShape:
-
-avpost:
-	Inherits: ^TechBuilding
-	Inherits@2: ^2x2Shape
-	Selectable:
-		Priority: 0
-	Building:
-		Footprint: xx xx
-		Dimensions: 2,2
-	Health:
-		HP: 7000
-	RevealsShroud:
-		Range: 12c0
-	Tooltip:
-		Name: observation post
-	ExternalCapturable:
-		Types: TechBuilding
-		CaptureCompleteTime: 25
-	ProximityExternalCondition@AVPOSTRANGE:
-		Condition: Avpost.Range
-		Range: 3c0
-	ExternalCapturableBar:
-	HitShape:
-
-opwall:
-	Inherits: ^Wall
-	Valued:
-		Cost: 50
-	CustomSellValue:
-		Value: 0
-	Tooltip:
-		Name: Wall
-	Health:
-		HP: 3500
-	Armor:
-		Type: Concrete
-	LineBuild:
-		Range: 10
-		NodeTypes: wall
-	LineBuildNode:
-		Types: wall
-	WithWallSpriteBody:
-		Type: wall
-        
-plandefense:
-	Inherits: ^TechBuilding
-	Inherits@2: ^2x2Shape
-    Inherits@AUTOTARGET: ^AutoTargetGround
-	Selectable:
-		Bounds: 36,36
-	Building:
-		Footprint: xx xx
-		Dimensions: 2,2
-	Health:
-		HP: 10000
-	RevealsShroud:
-		Range: 7c0
-	ExternalCapturable:
-		Types: TechBuilding
-		CaptureCompleteTime: 25
-	ExternalCapturableBar:
-	EngineerRepairable:
-    WithSpriteTurret:
-	AttackTurreted:
-		RequiresCondition: !empdisable
-	Turreted:
-		TurnSpeed: 3
-		RealignDelay: 0
-		Offset: 0,0,1000
-	WithMuzzleOverlay:
-	GrantConditionOnAttack@TargetDefense:
-		ArmamentNames: primary
-		RevokeOnNewTarget: false
-		IsCyclic: true
-		RequiredShotsPerInstance: 30
-		Condition: Target
-	Armament@target00:
-		Weapon: fortress.targetpri
-		LocalOffset: 0,0,0
-		RequiresCondition: !Target
-	Armament@target001:
-		Weapon: fortress.targetpri
-		LocalOffset: 0,0,0
-		RequiresCondition: !Target
-	Armament@target002:
-		Weapon: fortress.targetpri
-		LocalOffset: 0,0,0
-		RequiresCondition: !Target
-	Armament@target01:
-		Weapon: fortress.target
-		LocalOffset: 1950,850,50
-		RequiresCondition: !Target
-		MuzzleSequence: muzzle
-	Armament@target02:
-		Weapon: fortress.target
-		LocalOffset: 1950,350,50
-		RequiresCondition: !Target
-		MuzzleSequence: muzzle
-	Armament@target02:
-		Weapon: fortress.target
-		LocalOffset: 1950,150,50
-		RequiresCondition: !Target
-		MuzzleSequence: muzzle
-	Armament@Fire01:
-        Name: secondary
-		Weapon: fortress.laser
-		LocalOffset: 1950,800,50
-		RequiresCondition: Target
-	Armament@Fire02:
-        Name: secondary
-		Weapon: fortress.laser
-		LocalOffset: 1950,500,50
-		RequiresCondition: Target
-	Armament@Fire03:
-        Name: secondary
-		Weapon: fortress.laser
-		LocalOffset: 1950,200,50
-		RequiresCondition: Target
-	Armament@Fire04:
-        Name: secondary
-		Weapon: fortress.laser
-		LocalOffset: 1950,-800,50
-		RequiresCondition: Target
-	Armament@Fire05:
-        Name: secondary
-		Weapon: fortress.laser
-		LocalOffset: 1950,-500,50
-		RequiresCondition: Target
-	Armament@Fire06:
-        Name: secondary
-		Weapon: fortress.laser
-		LocalOffset: 1950,-200,50
-		RequiresCondition: Target
-	AmbientSound:
-		RequiresCondition: charging
-		SoundFiles: trollgun.aud
-	WithMuzzleOverlay:
-	Tooltip:
-		Name: Fortress Defense
-	BodyOrientation:
-		QuantizedFacings: 0
-	HitShape:
-
-        
-
-towerdefenceap:
-	Inherits: ^TechBuilding
-	Inherits@2: ^2x2Shape
-    Inherits@AUTOTARGET: ^AutoTargetGround
-	Selectable:
-		Bounds: 36,36
-	Building:
-		Footprint: xx xx
-		Dimensions: 2,2
-	Health:
-		HP: 6000
-	RevealsShroud:
-		Range: 7c0
-	ExternalCapturable:
-		Types: TechBuilding
-		CaptureCompleteTime: 20
-	ExternalCapturableBar:
-	EngineerRepairable:
-    WithSpriteTurret:
-	AttackTurreted:
-		RequiresCondition: !empdisable
-	Turreted:
-		TurnSpeed: 8
-		RealignDelay: 20
-		Offset: 0,0,1900
-	Armament@primary01:
-		Weapon: Gatling.tower
-		LocalOffset: 1050,100,50
-		MuzzleSequence: muzzle
-		Recoil: 85
-		RecoilRecovery: 25
-	Armament@primary02:
-		Weapon: Gatling.tower
-        FireDelay: 4
-		LocalOffset: 1050,-100,50
-		MuzzleSequence: muzzle
-		Recoil: 85
-		RecoilRecovery: 25
-	WithMuzzleOverlay:
-	Tooltip:
-		Name: Gatling Tower
-	BodyOrientation:
-		QuantizedFacings: 0
-	HitShape:
-
-towerdefenceac:
-	Inherits: ^TechBuilding
-	Inherits@2: ^2x2Shape
-	Selectable:
-		Bounds: 36,36
-	Building:
-		Footprint: xx xx
-		Dimensions: 2,2
-	Health:
-		HP: 5000
-	RevealsShroud:
-		Range: 5c0
-	ExternalCapturable:
-		Type: TechBuilding
-		CaptureCompleteTime: 30
-	ExternalCapturableBar:
-	EngineerRepairable:
-	Tooltip:
-		Name: defence
-	BodyOrientation:
-		QuantizedFacings: 0
-	HitShape:
-
-bunker:
-	Inherits: ^TechBuilding
-	Inherits@target: ^AutoTargetAll
-	Inherits@2: ^2x2Shape
-	Selectable:
-		Bounds: 36,36
-	Building:
-		Footprint: xx xx
-		Dimensions: 2,2
-	Health:
-		HP: 7000
-	RevealsShroud:
-		Range: 5c0
-	ExternalCapturable:
-		Types: TechBuilding
-		CaptureCompleteTime: 10
-	Turreted:
-		TurnSpeed: 255
-	BodyOrientation:
-		QuantizedFacings: 8
-	Cargo:
-		Types: Infantry
-		MaxWeight: 5
-		PipCount: 5
-	AttackGarrisoned:
-		Armaments: garrisoned
-		PortOffsets: 384,0,128, 224,-341,128, -224,-341,128, -384,0,128, -224,341,128, 224,341,128
-		PortYaws: 0, 176, 341, 512, 682, 853
-		PortCones: 88, 98, 108, 78, 68, 80
-	ExternalCapturableBar:
-	EngineerRepairable:
-	Tooltip:
-		Name: bunker
-	HitShape:
-
-bunker.husk:
-	Inherits: ^TechBuilding
-	Selectable:
-		Bounds: 36,36
-	Building:
-		Footprint: xx xx
-		Dimensions: 2,2
-	Health:
-		HP: 800
-	RevealsShroud:
-		Range: 5c0
-	EngineerRepairable:
-	Capturable:
-		Type: huskBuilding
-		AllowAllies: true
-		CaptureThreshold: 100
-	TransformOnCapture:
-		ForceHealthPercentage: 25
-	Tooltip:
-		Name: bunker epave
-	TransformOnCapture:
-		IntoActor: bunker
-	HitShape:
-
+	
+# ////// Building type grung
 buildingdepot:
 	Inherits: ^BasicBuilding
 	Inherits@2: ^2x2Shape
@@ -417,6 +100,7 @@ buildingdepot:
 	Tooltip:
 		Name: Dépot
 	HitShape:
+	
 
 taudi_01:
 	Inherits: ^BasicBuilding
@@ -529,6 +213,919 @@ taudi_07:
 	Tooltip:
 		Name: Darnell Garage
 	HitShape:
+	
+# ///// Building Type Residence
+resbuilding01:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 100,80,0,-20
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Residence building1
+	HitShape:
+
+resbuilding02:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 65,110,0,-20
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Residence building2
+	HitShape:
+
+resbuilding03:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 120,50,0,-5
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Residence building3
+	HitShape:
+
+resbuilding04:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 120,50,0,-5
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Residence building4
+	HitShape:
+
+resbuilding05:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 120,50,0,-5
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Residence building5
+	HitShape:
+
+resbuilding06:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 80,80
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Residence building6
+	HitShape:
+	
+# ///// Animated Building Type Neo-City
+civpunkbuilding01:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^3x3Shape
+	Selectable:
+		Bounds: 80,80
+	Building:
+		Footprint: xxx xxx xxx
+		Dimensions: 3,3
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Makeshift building1
+	WithIdleOverlay@Effect:
+		Offset: 0, 0, 0
+		Sequence: effect
+		Palette: powereffect
+	HitShape:
+
+civpunkbuilding02:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^3x3Shape
+	Selectable:
+		Bounds: 80,80
+	Building:
+		Footprint: xxx xxx xxx
+		Dimensions: 3,3
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Makeshift building2
+	WithIdleOverlay@Effect:
+		Offset: 0, 0, 0
+		Sequence: effect
+		Palette: powereffect
+	HitShape:
+	
+civpunkbuilding03:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^3x3Shape
+	Selectable:
+		Bounds: 80,80
+	Building:
+		Footprint: xxx xxx xxx
+		Dimensions: 3,3
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Makeshift building3
+	WithIdleOverlay@Effect:
+		Offset: 0, 0, 0
+		Sequence: effect
+		Palette: powereffect
+	HitShape:
+
+civpunkbuilding04:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^3x3Shape
+	Selectable:
+		Bounds: 80,70,0,-15
+	Building:
+		Footprint: xxx xxx xxx
+		Dimensions: 3,3
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	WithIdleOverlay@Effect:
+		Offset: 0, 0, 0
+		Sequence: effect
+		Palette: powereffect
+	Tooltip:
+		Name: Makeshift building4
+	HitShape:
+	
+civpunkbuilding05:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^3x3Shape
+	Selectable:
+		Bounds: 80,70,0,-20
+	Building:
+		Footprint: xxx xxx xxx
+		Dimensions: 3,3
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Makeshift building5
+	HitShape:
+	
+civpunkbuilding06:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^3x3Shape
+	Selectable:
+		Bounds: 80,60,0,-30
+	Building:
+		Footprint: xxx xxx xxx
+		Dimensions: 3,3
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Makeshift building6
+	HitShape:
+	
+civpunkbuilding07:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^3x2Shape
+	Selectable:
+		Bounds: 80,80
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 2,3
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	WithIdleOverlay@Effect:
+		Offset: 0, 0, 0
+		Sequence: effect
+		Palette: powereffect
+	Tooltip:
+		Name: Makeshift building7
+	HitShape:
+	
+avpost:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+		Bounds: 80,80,0,0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 7000
+	RevealsShroud:
+		Range: 12c0
+	Tooltip:
+		Name: Building
+	Capturable:
+		Types: TechBuilding
+	ProximityExternalCondition@AVPOSTRANGE:
+		Condition: Avpost.Range
+		Range: 3c0
+	WithIdleOverlay@Effect:
+		Offset: 0, 0, 0
+		Sequence: effect
+		Palette: powereffect
+	CapturableProgressBar:
+	HitShape:
+	CapturableProgressBlink:
+	CaptureManager:
+
+# ///// Building Type Administrative
+commbuilding01:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 80,80
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Administrative building1
+	HitShape:
+	
+
+# ///// Building Type Container / Crane / citern
+cont01:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 200
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Container
+	HitShape:
+	
+cont02:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 200
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Container
+	HitShape:
+	
+cont03:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 200
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Container
+	HitShape:
+	
+cont04:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 200
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Container
+	HitShape:
+	
+crane:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+		Bounds: 38,28,0,-10
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 200
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Container
+	HitShape:
+	
+crane2:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+		Bounds: 38,28,0,-10
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 200
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Container
+	HitShape:
+	
+proj01:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^3x2Shape
+	Selectable:
+		Priority: 0
+		Bounds: 36,25,0,-5
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	WithIdleOverlay@Light:
+		Offset: 0, 0, 0
+		Sequence: light
+		Palette: light
+	Tooltip:
+		Name: Projector
+	HitShape:
+
+proj02:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^3x2Shape
+	Selectable:
+		Priority: 0
+		Bounds: 36,25,0,-5
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	WithIdleOverlay@Light:
+		Offset: 0, 0, 0
+		Sequence: light
+		Palette: light
+	Tooltip:
+		Name: Projector
+	HitShape:
+
+proj03:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^3x2Shape
+	Selectable:
+		Priority: 0
+		Bounds: 36,25,0,-5
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	WithIdleOverlay@Light:
+		Offset: 0, 0, 0
+		Sequence: light
+		Palette: light
+	Tooltip:
+		Name: Projector
+	HitShape:
+
+citern1:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 200
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: water tank
+	HitShape:
+	
+citern2:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 200
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: water tank
+	HitShape:
+	
+citern3:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	Health:
+		HP: 200
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: water tank
+	HitShape:
+	
+citern4:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	Health:
+		HP: 200
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: water tank
+	HitShape:
+	
+derrick3:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^3x3Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 3000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Makeshift building
+	WithIdleOverlay@Effect:
+		Offset: 0, 0, 0
+		Sequence: effect
+		Palette: powereffect
+	HitShape:
+
+reactor:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 25000
+	RevealsShroud:
+		Range: 3c0
+	Tooltip:
+		Name: Reactor
+	Capturable:
+		Types: TechBuilding
+	StrategicPoint:
+	MustBeDestroyed:
+		RequiredForShortGame: True
+	CapturableProgressBar:
+	HitShape:
+	CapturableProgressBlink:
+	CaptureManager:
+
+postpoint:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Priority: 0
+		Bounds: 80,80,0,0
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 5000
+	RevealsShroud:
+		Range: 5c0
+	Tooltip:
+		Name: Strategic Point
+	Capturable:
+		Types: TechBuilding
+	StrategicPoint:
+	Targetable:
+		TargetTypes: strategic.point
+	CapturableProgressBar:
+	DamageMultiplier:
+		Modifier: 0
+	HitShape:
+	CapturableProgressBlink:
+	CaptureManager:
+
+opwall:
+	Inherits: ^Wall
+	Valued:
+		Cost: 50
+	CustomSellValue:
+		Value: 0
+	Tooltip:
+		Name: Wall
+	Health:
+		HP: 3500
+	Armor:
+		Type: Concrete
+	LineBuild:
+		Range: 10
+		NodeTypes: wall
+	LineBuildNode:
+		Types: wall
+	WithWallSpriteBody:
+		Type: wall
+        
+concrete_base:
+	Inherits: ^terrain_mat
+	Building:
+		Footprint: xxx xxx xxx
+		Dimensions: 3,3
+	Tooltip:
+		Name: Large Concrete Slab
+	Valued:
+		Cost: 50
+	Buildable:
+		Queue: Defence.redalliance, Defence.baneslayer, Defence.conclave, Defence.federation
+		BuildPaletteOrder: 40
+		BuildDuration: 81
+		BuildDurationModifier: 40
+		
+wallbrik:
+	Inherits: ^Wall
+	Buildable:
+		Queue: Defence.redalliance, Defence.baneslayer, Defence.conclave, Defence.federation
+		BuildPaletteOrder: 30
+		BuildDurationModifier: 4
+		Description: Stop units and blocks enemy fire.
+	Valued:
+		Cost: 200
+	CustomSellValue:
+		Value: 0
+	Tooltip:
+		Name: Concrete Wall
+	SoundOnDamageTransition:
+		DamagedSounds:
+		DestroyedSounds:
+	Health:
+		HP: 4000
+	Armor:
+		Type: Concrete
+	Crushable:
+		CrushClasses: heavywall
+	BlocksProjectiles:
+	LineBuild:
+		NodeTypes: concrete
+	Replaceable:
+		Types: Brikgate
+	LineBuild:
+		NodeTypes: wall, turret
+	WithWallSpriteBody:
+		Type: concrete
+
+gate_h:
+	Inherits: ^Gate_A
+	Buildable:
+		Queue: Defence.redalliance, Defence.baneslayer, Defence.conclave, Defence.federation
+		BuildPaletteOrder: 40
+		BuildDurationModifier: 8
+	Tooltip:
+		Name: Gate H
+	Replacement:
+		ReplaceableTypes: Brikgate
+		
+gate_v:
+	Inherits: ^Gate_B
+	Buildable:
+		Queue: Defence.redalliance, Defence.baneslayer, Defence.conclave, Defence.federation
+		BuildPaletteOrder: 40
+		BuildDurationModifier: 8
+	Tooltip:
+		Name: Gate V
+	Replacement:
+		ReplaceableTypes: Brikgate
+		
+biggate_h:
+	Inherits: ^Gate_A
+	Buildable:
+		Queue: Defence.redalliance, Defence.baneslayer, Defence.conclave, Defence.federation
+		BuildPaletteOrder: 40
+		BuildDurationModifier: 8
+	Building:
+		Dimensions: 5,1
+		Footprint: xxxxx
+	Tooltip:
+		Name: Big Gate H
+	Replacement:
+		ReplaceableTypes: Brikgate
+		
+plandefense:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Selectable:
+		Bounds: 36,36
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 10000
+	RevealsShroud:
+		Range: 7c0
+	Capturable:
+		Types: TechBuilding
+	CapturableProgressBar:
+	EngineerRepairable:
+	WithSpriteTurret:
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 3
+		RealignDelay: 0
+		Offset: 0,0,1000
+	WithMuzzleOverlay:
+	GrantConditionOnAttack@TargetDefense:
+		ArmamentNames: primary
+		RevokeOnNewTarget: false
+		IsCyclic: true
+		RequiredShotsPerInstance: 30
+		Condition: Target
+	Armament@target00:
+		Weapon: fortress.targetpri
+		LocalOffset: 0,0,0
+		RequiresCondition: !Target
+	Armament@target001:
+		Weapon: fortress.targetpri
+		LocalOffset: 0,0,0
+		RequiresCondition: !Target
+	Armament@target002:
+		Weapon: fortress.targetpri
+		LocalOffset: 0,0,0
+		RequiresCondition: !Target
+	Armament@target01:
+		Weapon: fortress.target
+		LocalOffset: 1950,850,50
+		RequiresCondition: !Target
+		MuzzleSequence: muzzle
+	Armament@target02:
+		Weapon: fortress.target
+		LocalOffset: 1950,350,50
+		RequiresCondition: !Target
+		MuzzleSequence: muzzle
+	Armament@target02:
+		Weapon: fortress.target
+		LocalOffset: 1950,150,50
+		RequiresCondition: !Target
+		MuzzleSequence: muzzle
+	Armament@Fire01:
+		Name: secondary
+		Weapon: fortress.laser
+		LocalOffset: 1950,800,50
+		RequiresCondition: Target
+	Armament@Fire02:
+		Name: secondary
+		Weapon: fortress.laser
+		LocalOffset: 1950,500,50
+		RequiresCondition: Target
+	Armament@Fire03:
+		Name: secondary
+		Weapon: fortress.laser
+		LocalOffset: 1950,200,50
+		RequiresCondition: Target
+	Armament@Fire04:
+		Name: secondary
+		Weapon: fortress.laser
+		LocalOffset: 1950,-800,50
+		RequiresCondition: Target
+	Armament@Fire05:
+		Name: secondary
+		Weapon: fortress.laser
+		LocalOffset: 1950,-500,50
+		RequiresCondition: Target
+	Armament@Fire06:
+		Name: secondary
+		Weapon: fortress.laser
+		LocalOffset: 1950,-200,50
+		RequiresCondition: Target
+	AmbientSound:
+		RequiresCondition: charging
+		SoundFiles: trollgun.aud
+	WithMuzzleOverlay:
+	Tooltip:
+		Name: Fortress Defense
+	BodyOrientation:
+		QuantizedFacings: 0
+	HitShape:
+		
+	CapturableProgressBlink:
+	CaptureManager:
+
+
+towerdefenceap:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Selectable:
+		Bounds: 36,36
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 6000
+	RevealsShroud:
+		Range: 7c0
+	Capturable:
+		Types: TechBuilding
+	CapturableProgressBar:
+	EngineerRepairable:
+	WithSpriteTurret:
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 8
+		RealignDelay: 20
+		Offset: 0,0,1900
+	Armament@primary01:
+		Weapon: Gatling.tower
+		LocalOffset: 1050,100,50
+		MuzzleSequence: muzzle
+		Recoil: 85
+		RecoilRecovery: 25
+	Armament@primary02:
+		Weapon: Gatling.tower
+		FireDelay: 4
+		LocalOffset: 1050,-100,50
+		MuzzleSequence: muzzle
+		Recoil: 85
+		RecoilRecovery: 25
+	WithMuzzleOverlay:
+	Tooltip:
+		Name: Gatling Tower
+	BodyOrientation:
+		QuantizedFacings: 0
+	HitShape:
+	CapturableProgressBlink:
+	CaptureManager:
+
+towerdefenceac:
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 36,36
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 5000
+	RevealsShroud:
+		Range: 5c0
+	Capturable:
+		Type: TechBuilding
+		Types: building
+	CapturableProgressBar:
+	EngineerRepairable:
+	Tooltip:
+		Name: defence
+	BodyOrientation:
+		QuantizedFacings: 0
+	HitShape:
+	CapturableProgressBlink:
+	CaptureManager:
+
+bunker:
+	Inherits: ^TechBuilding
+	Inherits@target: ^AutoTargetAll
+	Inherits@2: ^2x2Shape
+	Selectable:
+		Bounds: 36,36
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 7000
+	RevealsShroud:
+		Range: 5c0
+	Capturable:
+		Types: TechBuilding
+	Turreted:
+		TurnSpeed: 255
+	BodyOrientation:
+		QuantizedFacings: 8
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+		PipCount: 5
+	AttackGarrisoned:
+		Armaments: garrisoned
+		PortOffsets: 384,0,128, 224,-341,128, -224,-341,128, -384,0,128, -224,341,128, 224,341,128
+		PortYaws: 0, 176, 341, 512, 682, 853
+		PortCones: 88, 98, 108, 78, 68, 80
+	CapturableProgressBar:
+	EngineerRepairable:
+	Tooltip:
+		Name: bunker
+	HitShape:
+	CapturableProgressBlink:
+	CaptureManager:
+
+bunker.husk:
+	Inherits: ^TechBuilding
+	Selectable:
+		Bounds: 36,36
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Health:
+		HP: 800
+	RevealsShroud:
+		Range: 5c0
+	EngineerRepairable:
+	Capturable:
+		Type: huskBuilding
+		AllowAllies: true
+		Types: building
+	TransformOnCapture:
+		ForceHealthPercentage: 25
+	Tooltip:
+		Name: bunker epave
+	TransformOnCapture:
+		IntoActor: bunker
+	HitShape:
+	CaptureManager:
 
 urbandecoy_01:
 	Inherits: ^BasicBuilding

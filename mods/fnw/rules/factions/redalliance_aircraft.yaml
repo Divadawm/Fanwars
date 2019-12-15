@@ -1,5 +1,6 @@
 t0_transportship:
 	Inherits: ^Aircraft
+	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
 	Valued:
 		Cost: 2000
 	Tooltip:
@@ -8,29 +9,20 @@ t0_transportship:
 		HP: 15000
 	DamageMultiplier@INVULNERABLE:
 		Modifier: 0
-	Armor:
-		Type: LightVehicle
-	RevealsShroud:
-		Range: 0c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	RevealsShroud@GAPGEN:
-		Range: 0c0
-		Type: GroundPosition
 	Aircraft:
-		CruiseAltitude: 4500
+		CruiseAltitude: 4800
 		InitialFacing: 30
 		TurnSpeed: 3
 		Speed: 680
-		RepulsionSpeed: 95
-		MaximumPitch: 56
+		RepulsionSpeed: 25
+		MaximumPitch: 46
+		IdleBehavior: LeaveMap
 	Targetable:
 		TargetTypes: NoAircraftTarget
 		RequiresForceFire: true
 	Selectable:
 		Bounds: 36,28
 	RejectsOrders:
-	FlyAwayOnIdle:
 	-AutoTarget:
 	-AttackMove:
 	HiddenUnderFog:
@@ -55,11 +47,13 @@ t0_transportship:
 		RequiresCondition: EngineMove || !SmokeCamoActivate
 	WithVoxelBody:
 		ShowShadow: false
-	HitShape:
 
 t2_wyvern:
 	Inherits: ^Aircraftshape
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetAir
+    # / Doctrines /
+	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
 	Buildable:
 		Queue: Aircraft.redalliance
 		BuildPaletteOrder: 10
@@ -71,34 +65,16 @@ t2_wyvern:
 	Tooltip:
 		Name: Wyvern
 	Health:
-		HP: 1200
-	Armor:
-		Type: LightVehicle
-	RevealsShroud:
-		Range: 13c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	AppearsOnRadar:
-		UseLocation: False
-	RevealsShroud@GAPGEN:
-		Range: 11c0
-		Type: GroundPosition
+		HP: 1000
 	Armament:
 		Weapon: AP_Wyvern
 		LocalOffset: 0,-640,0, 0,640,0
 		LocalYaw: -40, 24
 	DetectCloaked:
 		Range: 6c0
-	AmmoPool@initial:
-		Ammo: 4
-		PipCount: 2
-		ReloadCount: 250
-		ReloadDelay: 450
-		SelfReloads: true
-	AttackPlane:
+	AttackAircraft:
 		FacingTolerance: 24
 		AttackTurnDelay: 15
-	ReturnOnIdle:
 	GrantConditionOnPrerequisite@Upgrade.Supersonic.Redalliance.Aircraft:
 		Prerequisites: research.Supersonic.Redalliance.Aircraft
 		Condition: upgrade.Supersonic.Redalliance.Aircraft
@@ -126,7 +102,6 @@ t2_wyvern:
 		Interval: 2
 	SpawnActorOnDeath:
 		Actor: t2_wyvern.husk
-	HitShape:
 
 t2_wyvern.husk:
 	Inherits: ^PlaneHusk
@@ -142,7 +117,10 @@ t2_wyvern.husk:
 
 t2_chimera:
 	Inherits: ^Helicoptershape
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+    # / Doctrines /
+	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
 	Buildable:
 		Queue: Aircraft.redalliance
 		BuildPaletteOrder: 20
@@ -151,39 +129,29 @@ t2_chimera:
 		Description: Heavily armored gunship equipped with 2 high caliber cannons\n> Strong vs Vehicles, Structures\n> Weak vs Infantry, Aircraft
 		IconPalette: RedAlliance.Icon
 	Valued:
-		Cost: 1400
+		Cost: 1500
 	Tooltip:
 		Name: Chimera
 	Health:
-		HP: 1300
-	Armor:
-		Type: ArmorTank
-	RevealsShroud:
-		Range: 12c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	RevealsShroud@GAPGEN:
-		Range: 10c0
-		Type: GroundPosition
+		HP: 1200
 	Armament@PRIMARY:
 		Weapon: AP_chimera
-		LocalOffset: 0,-213,-85
+		LocalOffset: 290,-213,-85, 290,213,-85
 		MuzzleSequence: muzzle
-	Armament@SECONDARY:
-		Weapon: AP_chimera
-		LocalOffset: 0,213,-85
-		MuzzleSequence: muzzle
+		RequiresCondition: !Active.Doctrines.AirView
 	WithMuzzleOverlay:
-	AttackHeli:
+	AttackAircraft:
 		FacingTolerance: 20
+		PersistentTargeting: false
+		AttackType: Hover
+	Carryall:
+		Voice: Move
+		LocalOffset: 0,0,-317
+		BeforeLoadDelay: 10
+		BeforeUnloadDelay: 10
 	Aircraft:
-		CruiseAltitude: 2500
-		InitialFacing: 192
 		TurnSpeed: 4
-		Speed: 180
-		RepulsionSpeed: 20
-		MaximumPitch: 45
-		LandWhenIdle: false
+		Speed: 150
 	AutoTarget:
 		InitialStance: Defend
 		InitialStanceAI: Defend
@@ -191,7 +159,7 @@ t2_chimera:
 		Bounds: 36,28
 	SpawnActorOnDeath:
 		Actor: t2_chimera.Husk
-	HitShape:
+
 
 t2_chimera.husk:
 	Inherits: ^AircraftHuskShape
@@ -205,7 +173,10 @@ t2_chimera.husk:
 
 t3_archdemon:
 	Inherits: ^Aircraftshape
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+    # / Doctrines /
+	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
 	Buildable:
 		Queue: Aircraft.redalliance
 		BuildAtProductionType: Aircraft
@@ -220,23 +191,14 @@ t3_archdemon:
 		Name: Archdemon
 	Health:
 		HP: 1000
-	Armor:
-		Type: LightVehicle
 	AppearsOnRadar:
 		UseLocation: False
-	RevealsShroud:
-		Range: 13c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	RevealsShroud@GAPGEN:
-		Range: 11c0
-		Type: GroundPosition
 	Armament@LEFT:
 		Weapon: therombomb
 		AmmoPoolName: primary
 		LocalOffset: 0,-640,0, 0,640,0
 		LocalYaw: -40, 24
-	AttackPlane:
+	AttackAircraft:
 		FacingTolerance: 20
 	Aircraft:
 		CruiseAltitude: 2560
@@ -252,7 +214,9 @@ t3_archdemon:
 		ReloadCount: 500
 		ReloadDelay: 500
 		SelfReloads: true
-	ReturnOnIdle:
+		AmmoCondition: ammo
+	Rearmable:
+		RearmActors: t2_airfield, arheli
 	AutoTarget:
 		EnableStances: false
 		InitialStance: HoldFire
@@ -263,7 +227,6 @@ t3_archdemon:
 		Interval: 2
 	SpawnActorOnDeath:
 		Actor: t3_archdemon.Husk
-	HitShape:
 
 t3_archdemon.husk:
 	Inherits: ^PlaneHusk
@@ -278,7 +241,11 @@ t3_archdemon.husk:
 		Image: t3_archdemon
 
 t2_command_relais:
-	Inherits: ^Helicopter
+	Inherits: ^Helicoptershape
+    # / Inherit Stat Unite /
+	Inherits@Range.Scout: ^Scout.Range.Base
+    # / Doctrines /
+	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
 	Buildable:
 		Queue: Building.redalliance
 		BuildPaletteOrder: 90
@@ -287,20 +254,18 @@ t2_command_relais:
 		BuildDurationModifier: 50
 		IconPalette: RedAlliance.Icon
 	Valued:
-		Cost: 2500
+		Cost: 2000
 	Tooltip:
 		Name: Mobile Orbital Command Center
 	Health:
 		HP: 2000
 	Armor:
-		Type: LightVehicle
-	RevealsShroud:
-		Range: 18c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
+		Type: ArmorTank
+	AttackFrontal:
 	DetectCloaked:
-		Range: 10c0
-		CloakTypes: Cloak, Buried
+		Range: 7c0
+		CloakTypes: Cloak
+		RequiresCondition: upgrade.Range.Detect.Redalliance
 	Aircraft:
 		CruiseAltitude: 2600
 		InitialFacing: 192
@@ -308,21 +273,14 @@ t2_command_relais:
 		Speed: 60
 		RepulsionSpeed: 40
 		MaximumPitch: 56
-		LandWhenIdle: true
-		LandableTerrainTypes: Clear, Rough, Tree, Road
-	-AutoTarget:
-	Transforms:
-		IntoActor: t3_commandbuilding
-		Offset: -1,-1
-		Facing: 164
-		TransformSounds: makebuild.wav
-		NoTransformNotification: CannotDeploy
-	RenderVoxels:
-		Scale: 1.4
+	ProvidesPrerequisite@buildingame:
+		Prerequisite: t2_command_relais
 	Selectable:
-		Bounds: 36,28
-	GrantConditionOnMovement@EngineMove:
-		Condition: EngineMove
+		Bounds: 80,80
+	# Upgrade Researh
+	GrantConditionOnPrerequisite@research.HE.Weapons.Redalliance:
+		Prerequisites: research.Range.Detect.Redalliance
+		Condition: upgrade.Range.Detect.Redalliance
 	WithIdleOverlay@EngineSTAND:
 		Offset: 0,0,0
 		Sequence: engine
@@ -332,11 +290,8 @@ t2_command_relais:
 		Offset: 0,0,0
 		Sequence: spot
 		Palette: light
-	WithVoxelBody:
-		ShowShadow: false
 	SpawnActorOnDeath:
 		Actor: t2_command_relais.Husk
-	HitShape:
 
 t2_command_relais.husk:
 	Inherits: ^PlaneHusk
@@ -352,7 +307,10 @@ t2_command_relais.husk:
 
 t4_cruiser:
 	Inherits: ^Helicoptershape
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+    # / Doctrines /
+	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
 	Buildable:
 		Queue: Defence.redalliance
 		BuildPaletteOrder: 120
@@ -367,12 +325,6 @@ t4_cruiser:
 		Name: Astro-Cruiser
 	Health:
 		HP: 13000
-	Armor:
-		Type: LordTank
-	RevealsShroud:
-		Range: 10c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
 	Armament@primary:
 		Turret: borde01
 		Weapon: cannon_cruiser
@@ -413,7 +365,6 @@ t4_cruiser:
 		Speed: 60
 		RepulsionSpeed: 40
 		MaximumPitch: 56
-		LandWhenIdle: false
 	ProximityExternalCondition@FlakBATTERY:
 		Condition: FlakCruiser
 		ValidStances: Enemy
@@ -446,7 +397,7 @@ t4_cruiser:
 		Cursor: nuke
 		Icon: nukeallianceicons
 		IconPalette: RedAlliance.Icon
-		ChargeInterval: 8500
+		ChargeInterval: 7000
 		Description: Wrath of God
 		LongDesc: Please select the section of the map you want to obliterate
 		BeginChargeSpeechNotification:
@@ -462,7 +413,6 @@ t4_cruiser:
 		DisplayRadarPing: True
 		BeaconPoster: atomicon
 		CameraRange: 10c0
-	HitShape:
 
 t4_cruiser.husk:
 	Inherits: ^PlaneHusk

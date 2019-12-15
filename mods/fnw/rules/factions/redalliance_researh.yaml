@@ -1,5 +1,3 @@
-^Global.Upgrade.Redalliance:
-
 ^Infantry.Upgrade.Redalliance:
 	GrantConditionOnPrerequisite@Up.Inf.Speed:
 		Prerequisites: research.SpeedInfantry.Redalliance
@@ -33,11 +31,245 @@
 	SpeedMultiplier@Engine Speed:
 		RequiresCondition: Upgrade.FusionSpeed.Vehicle
 		Modifier: 120
+#Aspect Trait Option
 
-^Tank.Upgrade.Redalliance:
+^Aspect.Base.Redalliance:
+	Inherits@Research: ^ResearchActor
+	ConditionManager:
+	AlwaysVisible:
+	Buildable:
+		BuildPaletteOrder: 10
+		Queue: Doctrines.RedAlliance
+		BuildDurationModifier: 60
+		IconPalette: RedAlliance.Icon
+		BuildLimit: 1
+	ProvidesPrerequisite:
+	Valued:
+		Cost: 0
+	#Condition Recovery
+	ExternalCondition@RemoveOption:
+		Condition: Revoked
+	#receipt condition
+	ProvidesPrerequisite@RemoveWeapons:
+		Prerequisite: Remove.Weapons
+		RequiresCondition: RemoveBaseWeaponsAR
+	ProvidesPrerequisite@RemoveStat:
+		Prerequisite: Remove.Stat
+		RequiresCondition: RemoveBaseStatsAR
+	GrantConditionOnPrerequisite@RevokedWeapons:
+		Prerequisites: Remove.Weapons
+		Condition: RevokedWeapons
+	GrantConditionOnPrerequisite@RevokedStat:
+		Prerequisites: Remove.Stat
+		Condition: RevokedStat
+	KillsSelf:
+		RemoveInstead: true
+	
+Doctrine.Lasergun.RedAlliance:
+	Inherits@Research: ^Aspect.Base.Redalliance
+	Buildable:
+		BuildPaletteOrder: 10
+		Description: ...
+		BuildDurationModifier: 60
+	Tooltip:
+		Name: Optimise Laser gun
+	ProvidesPrerequisite:
+		Prerequisite: Doctrine.Lasergun.RedAlliance
+	RenderSprites:
+		Image: aspect_ar_lasericons
+	#Condition Recovery
+	ExternalCondition@RemoveBase:
+		Condition: RemoveBaseWeaponsAR
+	KillsSelf:
+		RequiresCondition: !RemoveBaseWeaponsAR && RevokedWeapons
+		
+Doctrine.Balistique.RedAlliance:
+	Inherits@Research: ^Aspect.Base.Redalliance
+	Buildable:
+		BuildPaletteOrder: 20
+		Description: ...
+		BuildDurationModifier: 60
+	Tooltip:
+		Name: Optimise Ballistique gun
+	ProvidesPrerequisite:
+		Prerequisite: Doctrine.Balistique.RedAlliance
+	RenderSprites:
+		Image: aspect_ar_balisticons
+	#Condition Recovery
+	ExternalCondition@RemoveBase:
+		Condition: RemoveBaseWeaponsAR
+	KillsSelf:
+		RequiresCondition: !RemoveBaseWeaponsAR && RevokedWeapons
+		
+Doctrine.Flammer.RedAlliance:
+	Inherits@Research: ^Aspect.Base.Redalliance
+	Buildable:
+		BuildPaletteOrder: 70
+		Description: ...
+		BuildDurationModifier: 60
+	Tooltip:
+		Name: Optimise Flammer
+	ProvidesPrerequisite:
+		Prerequisite: Doctrine.Flammer.RedAlliance
+	RenderSprites:
+		Image: aspect_ar_flammeicons
+	#Condition Recovery
+	ExternalCondition@RemoveBase:
+		Condition: RemoveBaseWeaponsAR
+	KillsSelf:
+		RequiresCondition: !RemoveBaseWeaponsAR && RevokedWeapons
 
-^Upgrade_nanoarmor_Tank:
+Doctrine.Railgun.RedAlliance:
+	Inherits@Research: ^Aspect.Base.Redalliance
+	Buildable:
+		BuildPaletteOrder: 80
+		Description: ...
+		BuildDurationModifier: 60
+	Tooltip:
+		Name: Optimise Railgun
+	RenderSprites:
+		Image: aspect_ar_railgunicons
+	#Condition Recovery
+	ExternalCondition@RemoveBase:
+		Condition: RemoveBaseWeaponsAR
+	KillsSelf:
+		RequiresCondition: !RemoveBaseWeaponsAR && RevokedWeapons
+		
+unknon.place1:
+	Inherits@Research: ^Blank
+	AlwaysVisible:
+	Buildable:
+		BuildPaletteOrder: 30
+		Queue: Doctrines.RedAlliance
 
+unknon.place2:
+	Inherits@Research: ^Blank
+	AlwaysVisible:
+	Buildable:
+		BuildPaletteOrder: 40
+		Queue: Doctrines.RedAlliance
+		
+unknon.place3:
+	Inherits@Research: ^Blank
+	AlwaysVisible:
+	Buildable:
+		BuildPaletteOrder: 90
+		Queue: Doctrines.RedAlliance
+		
+unknon.place4:
+	Inherits@Research: ^Blank
+	AlwaysVisible:
+	Buildable:
+		BuildPaletteOrder: 100
+		Queue: Doctrines.RedAlliance
+		
+Doctrine.ArmorInf.RedAlliance:
+	Inherits@Research: ^Aspect.Base.Redalliance
+	Buildable:
+		BuildPaletteOrder: 50
+		Description: ...
+		BuildDurationModifier: 60
+	Tooltip:
+		Name: Optimise Infantry Armor
+	ProvidesPrerequisite:
+		Prerequisite: Doctrine.ArmorInf.RedAlliance
+	RenderSprites:
+		Image: aspect_ar_armorinficons
+	#Condition Recovery
+	ExternalCondition@RemoveStat:
+		Condition: RemoveBaseStatsAR
+	KillsSelf:
+		RequiresCondition: !RemoveBaseStatsAR && RevokedStat
+	
+Doctrine.RangeStand.RedAlliance:
+	Inherits@Research: ^Aspect.Base.Redalliance
+	Buildable:
+		BuildPaletteOrder: 60
+		Description: ...
+		BuildDurationModifier: 60
+	Tooltip:
+		Name: Range Unite
+	ProvidesPrerequisite:
+		Prerequisite: Doctrine.RangeStand.RedAlliance
+	RenderSprites:
+		Image: aspect_ar_rangeicons
+	#Condition Recovery
+	ExternalCondition@RemoveStat:
+		Condition: RemoveBaseStatsAR
+	KillsSelf:
+		RequiresCondition: !RemoveBaseStatsAR && RevokedStat
+		
+Doctrine.Walker.RedAlliance:
+	Inherits@Research: ^Aspect.Base.Redalliance
+	Buildable:
+		BuildPaletteOrder: 110
+		Description: ...
+		BuildDurationModifier: 60
+	Tooltip:
+		Name: Optimise Speed Base Walker
+	ProvidesPrerequisite:
+		Prerequisite: Doctrine.Walker.RedAlliance
+	RenderSprites:
+		Image: aspect_ar_walkericons
+	#Condition Recovery
+	ExternalCondition@RemoveStat:
+		Condition: RemoveBaseStatsAR
+	KillsSelf:
+		RequiresCondition: !RemoveBaseStatsAR && RevokedStat
+		
+Doctrine.AirView.RedAlliance:
+	Inherits@Research: ^Aspect.Base.Redalliance
+	Buildable:
+		BuildPaletteOrder: 120
+		Description: ...
+		BuildDurationModifier: 60
+	Tooltip:
+		Name: Optimise Flammer
+	ProvidesPrerequisite:
+		Prerequisite: Doctrine.AirView.RedAlliance
+	RenderSprites:
+		Image: aspect_ar_airicons
+	#Condition Recovery
+	ExternalCondition@RemoveBase:
+		Condition: RemoveBaseStatsAR
+	KillsSelf:
+		RequiresCondition: !RemoveBaseStatsAR && RevokedStat
+
+# Doctrines Stat Active  
+^Aspect.Infantry.Doctrines.Upgrade.Armor:
+	GrantConditionOnPrerequisite@Infantry.Doctrines.Upgrade.Armor:
+		Prerequisites: Doctrine.ArmorInf.RedAlliance
+		Condition: Active.Infantry.Doctrines.Upgrade.Armor
+	DamageMultiplier@Infantry.Doctrines.Upgrade.Armor:
+		Modifier: 85
+		RequiresCondition: Active.Infantry.Doctrines.Upgrade.Armor
+
+^Aspect.Range.Doctrines.Weapon:
+	GrantConditionOnPrerequisite@Range.Doctrines.Weapon:
+		Prerequisites: Doctrine.RangeStand.RedAlliance
+		Condition: Active.Range.Doctrines.Weapon
+	RangeMultiplier@Range.Doctrines.Weapon:
+		Modifier: 120
+		RequiresCondition: Active.Range.Doctrines.Weapon
+		
+^Aspect.Speed.Doctrines.Walker:
+	GrantConditionOnPrerequisite@Speed.Doctrines.Walker:
+		Prerequisites: Doctrine.Walker.RedAlliance
+		Condition: Active.Speed.Doctrines.Walker
+	SpeedMultiplier@Speed.Doctrines.Walker:
+		Modifier: 120
+		RequiresCondition: Active.Speed.Doctrines.Walker
+		
+^Aspect.Air.Doctrines.Upgrade.View:
+	GrantConditionOnPrerequisite@Air.Doctrines.Upgrade.View:
+		Prerequisites: Doctrine.AirView.RedAlliance
+		Condition: Active.Doctrines.AirView
+	RevealsShroudMultiplier@Air.Doctrines.Upgrade.View:
+		Modifier: 150
+		RequiresCondition: Active.Doctrines.AirView
+	
+	
+# Research / Upgrade Tech
 Upgrade.SpeedInfantry.Redalliance:
 	Inherits@Research: ^ResearchActor
 	AlwaysVisible:
@@ -160,7 +392,7 @@ Upgrade.HE.Weapons.Redalliance:
 	Buildable:
 		BuildPaletteOrder: 90
 		Queue: Research.RedAlliance
-		Prerequisites: ~!research.HE.Weapons.Redalliancee, t2_command_relais
+		Prerequisites: ~!research.HE.Weapons.Redalliance, t2_command_relais
 		Description: Slightly increases the overall damage inflicted by shell-based weaponry\nDrastically improves the effectiveness against infantry
 		BuildDurationModifier: 120
 		IconPalette: RedAlliance.Icon
@@ -169,7 +401,7 @@ Upgrade.HE.Weapons.Redalliance:
 	RenderSprites:
 		Image: nukeammo_icon
 	ProvidesPrerequisite:
-		Prerequisite: research.HE.Weapons.Redalliancee
+		Prerequisite: research.HE.Weapons.Redalliance
 
 Upgrade.Flak.Basilisk.Redalliance:
 	Inherits@Research: ^ResearchActor
@@ -190,12 +422,32 @@ Upgrade.Flak.Basilisk.Redalliance:
 	ProvidesPrerequisite:
 		Prerequisite: research.Flak.Basilisk.Redalliance
 
+Upgrade.Range.Detect.Redalliance:
+	Inherits@Research: ^ResearchActor
+	AlwaysVisible:
+	Tooltip:
+		Name: Optique stealh
+	Buildable:
+		BuildPaletteOrder: 110
+		Queue: Research.RedAlliance
+		Prerequisites: ~!research.Flak.Basilisk.Redalliance, t2_command_relais
+		Description: Provides additional firepower to existing vehicles\n> Basilisks get an additional pair of anti-air autocannons\n> Manticores get a close defense anti-vehicle turret\n> Hydras get incendiary rocket-launchers and can now switch between two modes
+		BuildDurationModifier: 80
+		IconPalette: RedAlliance.Icon
+	Valued:
+		Cost: 1500
+	RenderSprites:
+		Image: detectrange_icons
+	ProvidesPrerequisite:
+		Prerequisite: research.Range.Detect.Redalliance
+
 ^BuildingGivePower.Alliance:
 	NukePower@FusionMissile:
 		OrderName: Judgment
 		PauseOnCondition: disabled
 		Cursor: nuke
 		Icon: fusionmissileicon
+		IconPalette: RedAlliance.Icon
 		ChargeInterval: 8500
 		FlightVelocity: 1c128
 		FlightDelay: 280
@@ -234,80 +486,3 @@ Unlocked.droneSpawn.Redalliance:
 		Prerequisite: Select.Power
 	RenderSprites:
 		Image: nukeammo_icon
-
-UnkownPlace.redallianceInfantry60:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 60
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-        
-UnkownPlace.redallianceInfantr70:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 70
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-        
-UnkownPlace.redallianceInfantr80:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 80
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.redallianceInfantry90:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 90
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.redallianceInfantry100:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 100
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.redallianceInfantry110:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 110
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.redallianceInfantry120:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 120
-		Queue: Infantry.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.redalliance10:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 10
-		Queue: Building.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.redalliance70:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 70
-		Queue: Building.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.redalliance100:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 100
-		Queue: Building.redalliance
-		Prerequisites: unkown
-
-UnkownPlace.redalliance110:
-	Inherits: ^UnkownPlace
-	Buildable:
-		BuildPaletteOrder: 110
-		Queue: Building.redalliance
-		Prerequisites: unkown

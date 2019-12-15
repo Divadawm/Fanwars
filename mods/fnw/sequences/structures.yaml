@@ -1,3 +1,13 @@
+^DefaultCivBuildSequence:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+	damaged-idle:
+		Start: 0
+	critical-idle:
+		Start: 0
+	dead:
+
 opwall:
 	idle:
 		Length: 16
@@ -7,6 +17,325 @@ arwall:
 	idle:
 		Length: 16
 	icon: arwallicon
+    
+wallbrik:
+	idle:
+		Length: 16
+	scratched-idle:
+		Start: 16
+		Length: 16
+	damaged-idle:
+		Start: 32
+		Length: 16
+	icon: wallicon
+    
+concrete_base:
+	idle:
+	icon: arwallicon
+
+civpunkbuilding01:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+        Offset: 0, 20
+	damaged-idle:
+		Start: 1
+        Offset: 0, 20
+	critical-idle:
+		Start: 2
+        Offset: 0, 20
+    effect: civpunkeffect01
+		Start: 0
+		Length: *
+        Offset: 0, 20
+        BlendMode: Additive
+	dead:
+    
+civpunkbuilding02:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+        Offset: -5, 5
+	damaged-idle:
+		Start: 1
+        Offset: -5, 5
+	critical-idle:
+		Start: 2
+        Offset: -5, 5
+    effect: civpunkeffect02
+		Start: 0
+		Length: *
+        Offset: -5, -20
+        BlendMode: Additive
+	dead:
+    
+civpunkbuilding03:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+        Offset: 5, -20
+	damaged-idle:
+		Start: 1
+        Offset: 5, -20
+	critical-idle:
+		Start: 2
+        Offset: 5, -20
+    effect: civpunkeffect03
+		Start: 0
+		Length: *
+        Offset: 5, -20
+        BlendMode: Additive
+	dead:
+    
+civpunkbuilding04:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+        Offset: 0, 5
+	damaged-idle:
+		Start: 1
+        Offset: 0, 5
+	critical-idle:
+		Start: 2
+        Offset: 0, 5
+    effect: civpunkeffect04
+		Start: 0
+		Length: *
+        Offset: 0, 5
+        BlendMode: Additive
+	dead:
+    
+civpunkbuilding05:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+        Offset: 0, -10
+	damaged-idle:
+		Start: 1
+        Offset: 0, -10
+	critical-idle:
+		Start: 2
+        Offset: 0, -10
+    effect: civpunkeffect03
+		Start: 0
+		Length: *
+        Offset: 0, -10
+        BlendMode: Additive
+	dead:
+
+civpunkbuilding06:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+        Offset: 10, -15
+	damaged-idle:
+		Start: 1
+        Offset: 10, -15
+	critical-idle:
+		Start: 2
+        Offset: 10, -15
+    effect: civpunkeffect03
+		Start: 0
+		Length: *
+        Offset: 10, -15
+        BlendMode: Additive
+	dead:
+
+commbuilding01:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+        Offset: 10, 0
+	damaged-idle:
+		Start: 1
+        Offset: 10, 0
+	critical-idle:
+		Start: 2
+        Offset: 10, 0
+	dead:
+
+civpunkbuilding07:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+        Offset: 15, 5
+	damaged-idle:
+		Start: 1
+        Offset: 15, 5
+	critical-idle:
+		Start: 2
+        Offset: 15, 5
+    effect: civpunkeffect07
+		Start: 0
+		Length: *
+        Offset: 15, 5
+	dead:
+
+crane:
+    Inherits@01: ^DefaultCivBuildSequence
+    
+crane2:
+    Inherits@01: ^DefaultCivBuildSequence
+
+resbuilding01:
+    Inherits@01: ^DefaultCivBuildSequence
+
+resbuilding02:
+    Inherits@01: ^DefaultCivBuildSequence
+
+resbuilding03:
+    Inherits@01: ^DefaultCivBuildSequence
+
+resbuilding04:
+    Inherits@01: ^DefaultCivBuildSequence
+
+resbuilding05:
+    Inherits@01: ^DefaultCivBuildSequence
+
+resbuilding06:
+    Inherits@01: ^DefaultCivBuildSequence
+    
+citern1:
+    Inherits@01: ^DefaultCivBuildSequence
+
+citern2:
+    Inherits@01: ^DefaultCivBuildSequence
+
+citern3:
+    Inherits@01: ^DefaultCivBuildSequence
+
+citern4:
+    Inherits@01: ^DefaultCivBuildSequence
+
+cont01:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+	damaged-idle:
+		Start: 0
+	critical-idle:
+		Start: 0
+	dead:
+
+cont02:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+	damaged-idle:
+		Start: 0
+	critical-idle:
+		Start: 0
+	dead:
+    
+cont03:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+	damaged-idle:
+		Start: 0
+	critical-idle:
+		Start: 0
+	dead:
+    
+cont04:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+	damaged-idle:
+		Start: 0
+	critical-idle:
+		Start: 0
+	dead:
+    
+proj01:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+	damaged-idle:
+		Start: 0
+	critical-idle:
+		Start: 0
+    light: proj01light
+        BlendMode: Additive
+	dead:
+
+proj02:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+	damaged-idle:
+		Start: 0
+	critical-idle:
+		Start: 0
+    light: proj02light
+        BlendMode: Additive
+	dead:
+
+proj03:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+	damaged-idle:
+		Start: 0
+	critical-idle:
+		Start: 0
+    light: proj03light
+        BlendMode: Additive
+	dead:
+
+gate_h:
+    Inherits@Buildstat: ^StatBuildingEffect
+	Defaults:
+		Tick: 80
+	idle:
+		Start: 0
+		Length: 25
+	damaged-idle:
+		Start: 0
+		Length: 25
+	open:
+		Start: 25
+		ZRamp: 1
+	damaged-open:
+		Start: 25
+	dead:
+	icon: gatehicon
+    
+gate_v:
+    Inherits@Buildstat: ^StatBuildingEffect
+	Defaults:
+		Tick: 80
+	idle:
+		Start: 0
+		Length: 24
+	damaged-idle:
+		Start: 0
+		Length: 24
+	open:
+		Start: 24
+		ZRamp: 1
+	damaged-open:
+		Start: 24
+	dead:
+	icon: gatevicon
+    
+biggate_h:
+    Inherits@Buildstat: ^StatBuildingEffect
+	Defaults:
+		Tick: 80
+	idle:
+		Start: 0
+		Length: 72
+	damaged-idle:
+		Start: 0
+		Length: 72
+	open:
+		Start: 72
+		ZRamp: 1
+	damaged-open:
+		Start: 72
+	dead:
+	icon: gatehicon
 
 lay_clear01:
 	idle: lay_clear
@@ -20,37 +349,52 @@ lay_clear02:
 	icon: arwallicon
     
 balise_medic:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
         Length: 5
 	damaged:
 		Length: 5
 
 aracnst:
+    Inherits@Buildstat: ^StatBuildingEffect
+	smoke: arcacnstsmoke
+		Length: *
+		Offset: 0, -45
+        Tick: 45
 	idle:
+    	Start: 1
+		Length: 11
 		ShadowStart: 27
 	build:
 		Start: 1
 		Length: 11
-		Offset: 1, 0
 		ShadowStart: 27
 	damaged-idle:
 		Start: 13
+        ShadowStart: 27
 	damaged-build:
 		Start: 14
 		Length: 11
+        ShadowStart: 27
 	active:
 		Start: 1
 		Length: 11
+        ShadowStart: 27
 	damaged-active:
 		Start: 14
 		Length: 11
+        ShadowStart: 27
+    make-drop: dropar
+		Length: 50
+		Offset: 0, -150
+        Tick: 45
 	dead:
 	make: aracnstmk
 		Length: 24
-		Offset: 0, 25
 	icon: arbarricon
 
 arpowr:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 14
@@ -75,6 +419,7 @@ arpowr:
 	icon: arpowricon
 
 arhighpowr:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle: arhighpowr
 		Start: 0
 		Length: 14
@@ -95,9 +440,15 @@ arhighpowr:
 	make: arhighpowrmk
 		Length: 29
 		Offset: -1, 28
+		Tick: 180
 	icon: arhighpowricon
 
 arbarr:
+    Inherits@Buildstat: ^StatBuildingEffect
+	smoke: artechsmoke
+		Length: *
+        Tick: 30
+		Offset: 0, -18
 	idle:
 		Start: 0
 		Length: 9
@@ -107,13 +458,18 @@ arbarr:
 		Start: 9
 		Tick: 44
 		Length: 9
+    light_holo: arnahandholo
+        Length: *
+        BlendMode: Additive
 	dead:
 		Start: 10
 	make: arbarrmk
-		Length: 24
+		Length: 54
+		Tick: 80
 	icon: arbarricon
 
 t3_commandbuilding:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 4
@@ -126,6 +482,11 @@ t3_commandbuilding:
 		Length: *
 
 arproc:
+    Inherits@Buildstat: ^StatBuildingEffect
+	smoke: arprocsmoke
+		Length: *
+		Offset: 0, -50
+        Tick: 80
 	idle: arproc
 		Start: 0
 	damaged-idle:
@@ -133,10 +494,16 @@ arproc:
 	dead: arproc
 		Start: 2
 	make: arprocmk
-        Length: 30
+        Length: 50
+		Tick: 80
 	icon: arprocicon
 
 arweap:
+    Inherits@Buildstat: ^StatBuildingEffect
+	smoke: arweapsmoke
+		Length: *
+		Offset: 10, 5
+        Tick: 95
 	idle: arweap
 		ShadowStart: 6
 		Offset: 10, 5
@@ -166,30 +533,43 @@ arweap:
 		Start: 2
 		Offset: 10, 5
 	make: arweapmk
-		Length: 24
+		Length: 55
 		Offset: 10, 5
+		Tick: 80
 	icon: arweapicon
 
 artech:
+    Inherits@Buildstat: ^StatBuildingEffect
+	smoke: artechsmoke
+		Length: *
+		Offset: 0, -22
+        Tick: 70
 	idle:
 		Start: 0
-		Length: 10
-		ShadowStart: 22
+		Length: 20
+		ShadowStart: 41
 		Offset: 0, -22
 	damaged-idle:
-		Start: 11
-		Length: 10
+		Start: 21
+		Length: 20
 		Offset: 0, -22
+		ShadowStart: 41
 	dead: artech
-		Start: 2
+		Start: 21
+		Offset: 0, -22
+    light_holo: arnatechholo
+        Length: *
+        BlendMode: Additive
 		Offset: 0, -22
 	make: artechmk
 		Start: 0
-		Length: 20
+		Length: 55
 		Offset: 0, -22
+		Tick: 80
 	icon: artechicon
 
 ardeftech:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 12
@@ -199,12 +579,14 @@ ardeftech:
 		Length: 12
 	dead:
 		Start: 12
-	make: artechmk
+	make: ardeftechmk
 		Start: 0
-		Length: 20
+		Length: 50
+		Tick: 80
 	icon: ardeficon
 
 arheli:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle: t2_airfielddeployed
 	damaged-idle: t2_airfielddeployed
 		Start: 1
@@ -214,9 +596,11 @@ arheli:
 		Start: 2
 	make: t2_airfielddeployedmk
 		Length: 7
+		Tick: 180
 	icon: arheliicon
 
 droned:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle: droned
 		ShadowStart: 3
 		Offset: 0, 0
@@ -237,6 +621,7 @@ droned:
 	icon: artechicon
 
 t1_ratatoskrbuild:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Offset: 0, 0
 	damaged-idle:
@@ -262,8 +647,24 @@ t1_ratatoskrbuild:
 t1_ratatoskrbuild.plug:
 	idle: null
 	icon: ratatosk_plugicon
+    
+t3_heimdall_deploy:
+    Inherits@Buildstat: ^StatBuildingEffect
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+	damaged-idle:
+		Start: 0
+	critical-idle:
+		Start: 0
+	turret: t3_heimdall_deploytur
+		Facings: 64
+	make: t3_heimdall_deploymk
+		Length: 17
+		Tick: 30
+	icon: heimicon
 
-dcatnk_deployed:
+t2_pilgrimdeployed:
+    Inherits@Buildstat: ^StatBuildingEffect
 	Inherits@Stat: ^StatVehicleEffect
 	idle:
 		Offset: 0, 0
@@ -279,12 +680,36 @@ dcatnk_deployed:
 		BlendMode: Additive
 	turret: t2_pilgrimtur
 		Facings: 64
-	make: dcatnk_deployedmk
+	make: t2_pilgrimmk
 		Length: 8
 		Tick: 30
 		Offset: 0, 0
+        
+t2_hydra_deployed:
+    Inherits@Buildstat: ^StatBuildingEffect
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+		Offset: 0, 0
+	damaged-idle:
+		Start: 1
+		Offset: 0, 0
+	critical-idle:
+		Start: 2
+		Offset: 0, 0
+    turret: t2_hydratur
+        Facings: 64
+		Offset: 0, 0
+    muzzle: muzzle_autogun_small
+        Length: *
+		Tick: 15
+	make: t2_hydramk
+		Length: *
+		Tick: 75
+		Offset: 0, 0
+	icon: artechicon
 
 t3_annihilator_deployed:
+    Inherits@Buildstat: ^StatBuildingEffect
 	Inherits@Stat: ^StatVehicleEffect
 	idle:
 		ShadowStart: 3
@@ -301,9 +726,16 @@ t3_annihilator_deployed:
 		Length: 6
 		Tick: 30
 		Offset: 0, 0
+    muzzle.target: muzzle_targetrailgunan
+        BlendMode: Additive
+		Length: *
+    muzzle.fire: muzzle_fireann
+        BlendMode: Additive
+		Length: *
 	icon: artechicon
 
 t2_predator_deployed:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		ShadowStart: 3
 		Offset: 0, 0
@@ -323,6 +755,7 @@ t2_predator_deployed:
 	icon: predatoricon
 
 t2_tarantula_deployed:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		ShadowStart: 3
 		Offset: 0, 0
@@ -342,6 +775,7 @@ t2_tarantula_deployed:
 	icon: tarantulaicon
 
 t3_doomtowerbuild:
+    Inherits@Buildstat: ^StatBuildingEffect
 	Inherits@Stat: ^StatVehicleEffect
 	idle:
 		Offset: 0, 0
@@ -366,35 +800,31 @@ t3_doomtowerbuild:
 	icon: doomtowericon
 
 opcacnst:
+    Inherits@Buildstat: ^StatBuildingEffect
+    Defaults:
+        Tick: 80
 	idle: opcacnst
 		Start: 0
 		Length: 10
-		Offset: 0, 0
 	damaged-idle: opcacnst
 		Start: 9
 		Length: 10
-		Offset: 0, 0
 	build: opcacnst
 		Start: 0
 		Length: 10
 	critical-idle: opcacnst
 		Start: 9
 		Length: 10
-		Offset: 0, 0
 	dead:
 		Start: 9
 	make: opcacnstmk
 		Length: 10
-		Offset: 0, 0
 	plug.moduleshield: opcacnstshield
-		Offset: 0, 0
 	plug.modulesword: opcacnstsword
-		Offset: 0, 0
 	plug.moduleradr: opcacnstplugradr
 		Start: 0
 		Length: *
-		Tick: 6
-		Offset: 0, 0
+		Tick: 15
 	turret: ragnarokcanon
 		Facings: 64
 		Offset: 34, -5
@@ -413,53 +843,43 @@ doctrineshield.plug:
 	icon: upgrade_doctrine_artemienicon
 
 oppowr:
+    Inherits@Buildstat: ^StatBuildingEffect
+    Defaults:
+        Tick: 65
 	idle:
-		ShadowStart: 3
-		Offset: 0, 0
-	buried: oppowrbunk
-		Start: 0
-		Length: 24
-	bunk: oppowrmk
-		Start: 0
-		Offset: 0, 0
+        Length: 10
+		Offset: 0, -22
 	damaged-idle:
-		Start: 2
-		ShadowStart: 4
-		Offset: 0, 0
+		Start: 10
+        Length: 10
+		Offset: 0, -22
 	critical-idle:
-		Start: 2
-		ShadowStart: 4
-		Offset: 0, 0
+		Start: 10
+        Length: 10
+		Offset: 0, -22
 	smoke: smoke_min
 		Start: 0
 		Length: 19
-		Offset: 0, -20
+		Offset: 5, -42
 		BlendMode: Additive
 	plug.powr: oppowr_plug
-		Length: 9
-		Offset: 0, 0
+		Length: 10
+		Offset: 0, -22
 		BlendMode: Additive
 	dead:
-		Start: 2
+		Start: 11
+		Offset: 0, -22
 	make: oppowrmk
 		Length: 24
-		Offset: 0, 0
+		Offset: 0, -22
 	icon: oppowricon
 
 oppowr.plugpowr:
 	idle: null
 	icon: oppowr_plugicon
 
-opbunk:
-	idle:
-	damaged-idle:
-		Start: 0
-	critical-idle:
-		Start: 0
-	dead:
-		Start: 0
-
 opheli:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 9
@@ -486,6 +906,7 @@ opheli:
 	icon: opheliicon
 
 opproc:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 7
@@ -515,56 +936,51 @@ opproc:
 	icon: opprocicon
 
 opbarr:
-	idle: opbarr
-		ShadowStart: 3
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle: 
 		Offset: 0, -35
-	buried: opbarrbunk
-		Start: 0
-		Length: 24
+	damaged-idle:
+		Start: 1
 		Offset: 0, -35
-	bunk: opbarrmk
-		Start: 0
-		Offset: 0, -35
-	damaged-idle: opbarr
-		Start: 2
-		ShadowStart: 4
-		Offset: 0, -35
-	critical-idle: opbarr
-		Start: 2
-		ShadowStart: 4
+	critical-idle:
+		Start: 1
 		Offset: 0, -35
 	dead:
 		Start: 2
 	make: opbarrmk
-		Length: 24
+		Length: 30
 		Offset: 0, -35
 	icon: opbarricon
 
 opweap:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
-		Start: 0
-		Offset: -10, -15
-	damaged-idle:
-		Start: 1
-		Offset: -10, -15
-	build-top:
-		Start: 4
-		Length: 5
-		Offset: -10, -15
-	damaged-build-top:
-		Start: 9
-		Length: 5
-		Offset: -10, -15
-	dead:
 		Start: 2
+		Offset: -10, -24
+	damaged-idle:
+		Start: 3
+		Offset: -10, -24
+	idle-top:
+		Start: 0
+		Offset: -10, -24
+	damaged-idle-top:
+		Start: 1
+		Offset: -10, -24
+	build-top:
+		Start: 0
+		Offset: -10, -24
+	damaged-build-top:
+		Start: 1
+		Offset: -10, -24
+	dead:
+		Start: 1
 	make: opweapmk
-		Length: 24
-		Offset: -10, -15
-	bib: bib2
-		Length: *
+		Length: 40
+		Offset: -10, -24
 	icon: opweapicon
 
 optech:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle: optech
 		Offset: 0, -25
 	buried: optechbunk
@@ -587,6 +1003,7 @@ optech:
 	icon: optechicon
 
 optech2:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 10
@@ -603,6 +1020,7 @@ optech2:
 	icon: optech3icon
 
 opavtech:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Offset: 0, 0
 	buried: opavtechbunk
@@ -624,72 +1042,72 @@ opavtech:
 		Offset: 0, 0
 	icon: optech2icon
 
-prometheed:
-	idle: prometheed
-		ShadowStart: 3
-		Offset: 0, 0
-	damaged-idle: prometheed
-		Start: 2
-		ShadowStart: 4
-		Offset: 0, 0
-	critical-idle: prometheed
-		Start: 2
-		ShadowStart: 4
-		Offset: 0, 0
-	make: prometheedmk
-		Length: 8
-		Offset: 0, 0
-	icon: artechicon
-
 t1_midgard:
-	idle: t1_midgardbase
-		Offset: 0, 0
-	damaged-idle: t1_midgardbase
-		Start: 1
-		Offset: 0, 0
-	critical-idle: t1_midgardbase
-		Start: 2
-		Offset: 0, 0
-	dead: t1_midgardbase
-		Start: 2
-	make: t1_midgardbase
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle: supportdefenseop
+        Start: 6
+	damaged-idle: supportdefenseop
+		Start: 7
+	critical-idle: supportdefenseop
+		Start: 7
+	dead: supportdefenseop
+		Start: 7
+	make: supportdefenseop
 		Length: *
-		Offset: 0, 0
 	icon: midgardicon
 
 t2_niflheim:
-	idle: t2_niflheimbase
-		Offset: 0, 0
-	damaged-idle: t2_niflheimbase
-		Start: 1
-		Offset: 0, 0
-	critical-idle: t2_niflheimbase
-		Start: 2
-		Offset: 0, 0
-	dead: t2_niflheimbase
-		Start: 2
-	make: t2_niflheimbase
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle: supportdefenseop
+        Start: 6
+	damaged-idle: supportdefenseop
+		Start: 7
+	critical-idle: supportdefenseop
+		Start: 7
+	dead: supportdefenseop
+		Start: 7
+	make: supportdefenseop
 		Length: *
-		Offset: 0, 0
 	icon: niflheimicon
 
 t3_hel:
-	idle: t3_helbase
-		Offset: 0, 0
-	damaged-idle: t3_helbase
-		Start: 1
-		Offset: 0, 0
-	critical-idle: t3_helbase
-		Start: 2
-		Offset: 0, 0
-	dead: t3_helbase
-		Start: 2
-	make: t3_helbase
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle: supportdefenseop
+        Start: 6
+	damaged-idle: supportdefenseop
+		Start: 7
+	critical-idle: supportdefenseop
+		Start: 7
+	dead: supportdefenseop
+		Start: 7
+	make: supportdefenseop
 		Length: *
+	icon: helicon
+    
+t4_executioner:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle: plandefense
+        Start: 0
+	damaged-idle: plandefense
+		Start: 1
+	critical-idle: plandefense
+		Start: 1
+	dead: plandefense
+		Start: 2
+    turret: plasmabigguntur
+        Facings: 64
 		Offset: 0, 0
+    muzzle: bigplasma_chargemuzzle
+        Length: *
+        BlendMode: Additive
+    muzzlesouffle: souffle
+        Length: *
+	make: supportdefenseop
+		Length: *
 	icon: helicon
 
 tccacnst:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle: tccacnst
 		ShadowStart: 3
 	build: tccacnst
@@ -707,6 +1125,7 @@ tccacnst:
 	icon: arweapicon
 
 tcpowr:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle: tcpowr
 		Offset: 0, 0
 	damaged-idle: tcpowr
@@ -717,8 +1136,8 @@ tcpowr:
 		Offset: 0, 0
 	lightingrelais: tcpowr_anim
 		Start: 0
-		Length: 19
-		Tick: 28
+		Length: 60
+		Tick: 25
 		BlendMode: Additive
 	plug.relaisdef: tcpodrelais
 		Start: 0
@@ -738,7 +1157,7 @@ tcpowr:
 	dead:
 		Start: 2
 	make: tcpowrmk
-		Length: 24
+		Length: 40
 		Offset: 0, 0
 	icon: tcpowricon
 
@@ -754,7 +1173,27 @@ repairplug:
 	idle: null
 	icon: tcrepairplugicon
 
+conclave_turret:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle: conclave_turret
+        Start: 0
+	damaged-idle: conclave_turret
+		Start: 1
+	critical-idle: conclave_turret
+		Start: 1
+	dead: conclave_turret
+		Start: 2
+	make: conclave_turret
+		Length: *
+    turret: impulsturret
+        Facings: 64
+	muzzle: muzzle_bluegun
+		Length: *
+		BlendMode: Additive
+	icon: helicon
+
 ^tcholotech:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle: tcholotech
 		Start: 0
 		Length: 4
@@ -845,6 +1284,7 @@ tcholotech.navigator:
 	icon: holonavigatoricon
 
 tcproc:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 8
@@ -857,11 +1297,12 @@ tcproc:
 		Start: 6
 		Offset: 0, -0
 	make: tcprocmk
-		Length: 10
+		Length: 40
 		Offset: 0, -0
 	icon: tcprocicon
 
 tcbarr:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle: tcbarr
 		ShadowStart: 3
 		Offset: 0, 0
@@ -879,59 +1320,57 @@ tcbarr:
 		Length: 24
 		Offset: 0, 0
 	icon: tcbarricon
-    
-opweap:
-	idle:
-		Start: 0
-		Offset: -10, -15
-	damaged-idle:
-		Start: 1
-		Offset: -10, -15
-	build-top:
-		Start: 4
-		Length: 5
-		Offset: -10, -15
-	damaged-build-top:
-		Start: 9
-		Length: 5
-		Offset: -10, -15
-	dead:
-		Start: 2
-	make: opweapmk
-		Length: 24
-		Offset: -10, -15
-	bib: bib2
-		Length: *
-	icon: opweapicon
 
 tcweap:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
-		Offset: 0, 27
+		Length: 15
+		Offset: 0, -15
 	damaged-idle:
-		Start: 0
-		Offset: 0, 27
-	idle-top:
-		Start: 1
-		Offset: 0, 27
+		Start: 14
+		Length: 15
+		Offset: 0, -15
 	build-top: tcweapbuild
-		Length: 10
-		Offset: 0, 27
+		Length: 45
+		Offset: 0, -15
+		BlendMode: Additive
 	damaged-build-top: tcweapbuild
-		Length: 10
-		Offset: 0, 27
-	damaged-idle-top: tcweap
-		Start: 2
-		Offset: 0, 27
+		Length: 45
+		Offset: 0, -15
+		BlendMode: Additive
 	dead:
 		Start: 0
-		Offset: 0, 27
+		Offset: 0, -15
 	make: tcweapmk
-		Length: 24
-		Offset: 0, 0
+		Length: *
+		Offset: 0, -15
 	icon: tcweapicon
+    
+t2_troll_deployed:
+	Inherits@Stat: ^StatVehicleEffect
+	idle:
+		Offset: 0, 0
+	damaged-idle:
+		Start: 1
+		Offset: 0, 0
+	critical-idle:
+		Start: 2
+		Offset: 0, 0
+    turret: t2_troll_deployedtur
+        Facings: 64
+		Offset: 0, 0
+    muzzle: plasma_pulseminx2
+        Length: *
+		Tick: 15
+	make: t2_trollmk
+		Length: *
+		Tick: 75
+		Offset: 0, 0
+	icon: artechicon
 
 tcsuperweap:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 10
@@ -977,6 +1416,7 @@ tcpodrelais:
 	icon: tcweapicon
 
 tctech:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle: tctech
 		ShadowStart: 3
 		Offset: 0, 0
@@ -998,6 +1438,7 @@ tctech:
 # Federation Buuilding Sequences:
 
 fedcnst:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 10
@@ -1025,6 +1466,7 @@ fedcnst:
 	icon: arbarricon
     
 fedpowr:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Offset: 0, 0
 	damaged-idle:
@@ -1046,6 +1488,7 @@ fedpowr:
 	icon: fedpowricon
     
 fedbarr:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 	damaged-idle:
@@ -1060,6 +1503,7 @@ fedbarr:
 	icon: fedbarricon
     
 fedweap:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 	damaged-idle:
 		Start: 2
@@ -1081,6 +1525,7 @@ fedweap:
 	icon: fedweapicon
     
 fedproc:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 4
@@ -1095,6 +1540,7 @@ fedproc:
 	icon: fedprocicon
     
 fedheli:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Offset: 0, 0
         Length: 5
@@ -1114,6 +1560,7 @@ fedheli:
 	icon: fedheliicon
 
 derrick:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 5
@@ -1123,8 +1570,25 @@ derrick:
 	critical-idle:
 		Start: 5
 	dead:
+    
+derrick3:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+		Start: 0
+		Length: 5
+	damaged-idle:
+		Start: 5
+		Length: 5
+	critical-idle:
+		Start: 5
+    effect: derrick3effect
+		Start: 0
+		Length: *
+        BlendMode: Additive
+	dead:
 
 reactor:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 9
@@ -1136,6 +1600,7 @@ reactor:
 	dead:
 
 postpoint:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 9
@@ -1147,6 +1612,7 @@ postpoint:
 	dead:
 
 avpost:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 10
@@ -1155,9 +1621,14 @@ avpost:
 		Length: 10
 	critical-idle:
 		Start: 10
+    effect: avposteffect
+		Start: 0
+		Length: *
+        BlendMode: Additive
 	dead:
 
 generatciv_01:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 9
@@ -1169,6 +1640,7 @@ generatciv_01:
 	dead:
 
 bunker:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 	damaged-idle:
@@ -1177,16 +1649,8 @@ bunker:
 		Start: 2
 	dead:
 
-bunker.husk:
-	idle: bunker
-		Start: 2
-	damaged-idle: bunker
-		Start: 2
-	critical-idle: bunker
-		Start: 2
-	dead:
-
 towerdefenceap:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 5
@@ -1207,6 +1671,7 @@ towerdefenceap:
 	dead:
     
 plandefense:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 	muzzle: muzzle_autogun_small
@@ -1222,6 +1687,7 @@ plandefense:
 	dead:
 
 towerdefenceac:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		Start: 0
 		Length: 5
@@ -1236,6 +1702,7 @@ towerdefenceac:
 	dead:
 
 buildingdepot:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		ShadowStart: 3
 	damaged-idle:
@@ -1247,6 +1714,7 @@ buildingdepot:
 	dead:
 
 taudi_01:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		ShadowStart: 3
 	damaged-idle:
@@ -1258,6 +1726,7 @@ taudi_01:
 	dead:
 
 taudi_02:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		ShadowStart: 3
 	damaged-idle:
@@ -1269,6 +1738,7 @@ taudi_02:
 	dead:
 
 taudi_03:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		ShadowStart: 3
 	damaged-idle:
@@ -1280,6 +1750,7 @@ taudi_03:
 	dead:
 
 taudi_04:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 	damaged-idle:
 		Start: 2
@@ -1288,6 +1759,7 @@ taudi_04:
 	dead:
 
 taudi_05:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 	damaged-idle:
 		Start: 1
@@ -1296,6 +1768,7 @@ taudi_05:
 	dead:
 
 taudi_06:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 	damaged-idle:
 		Start: 1
@@ -1304,6 +1777,7 @@ taudi_06:
 	dead:
 
 taudi_07:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 	damaged-idle:
 		Start: 1
@@ -1312,24 +1786,28 @@ taudi_07:
 	dead:
 
 techcivbuild_01:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 	dead:
 	damaged-idle:
 		Start: 1
 
 techcivbuild_02:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 	dead:
 	damaged-idle:
 		Start: 1
 
 techcivbuild_03:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 	dead:
 	damaged-idle:
 		Start: 1
 
 mirador_ice:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 		ShadowStart: 3
 	damaged-idle:
@@ -1339,53 +1817,9 @@ mirador_ice:
 		Start: 2
 		ShadowStart: 5
 	dead:
-    
-#Extractor
-
-arextract:
-	idle:
-        Length: 7
-	damaged-idle:
-		Start: 7
-        Length: 7
-	critical-idle:
-		Start: 7
-        Length: 7
-	dead:
-		Start: 7
-        Length: 7
-	make: arextractmk
-		Length: *
-	icon: arextracticon
-
-opextract:
-	idle:
-        Length: 12
-	damaged-idle:
-		Start: 12
-        Length: 12
-	critical-idle:
-		Start: 12
-        Length: 12
-	dead:
-		Start: 12
-	make: opextractmk
-		Length: *
-	icon: opextracticon
-    
-tcextract:
-	idle:
-	damaged-idle:
-		Start: 1
-	critical-idle:
-		Start: 2
-	dead:
-		Start: 2
-	make: tcextract
-		Length: *
-	icon: tcextracticon
 
 diastextractor:
+    Inherits@Buildstat: ^StatBuildingEffect
 	idle:
 	damaged-idle:
 		Start: 1

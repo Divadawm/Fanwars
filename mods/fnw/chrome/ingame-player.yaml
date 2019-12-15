@@ -5,7 +5,7 @@ Container@PLAYER_WIDGETS:
 		LogicTicker@SIDEBAR_TICKER:
 		Container@SUPPORT_POWERS:
 			Logic: SupportPowerBinLogic
-			X: 8
+			X: WINDOW_RIGHT-80
 			Y: 100
 			Width: 405
 			Height: 70
@@ -13,7 +13,7 @@ Container@PLAYER_WIDGETS:
 				Container@PALETTE_BACKGROUND:
 					Children:
 						Background@ICON_TEMPLATE:
-							Width: 64
+							Width: 80
 							Height: 64
 							ClickThrough: false
 							Background: panel-black
@@ -26,7 +26,7 @@ Container@PLAYER_WIDGETS:
 					HoldText: On Hold
 		Image@COMMAND_BAR_BACKGROUND:
 			Logic: AddFactionSuffixLogic
-			X: WINDOW_RIGHT/2-217
+			X: 300
 			Y: WINDOW_BOTTOM-43
 			Width: 434
 			Height: 43
@@ -34,7 +34,7 @@ Container@PLAYER_WIDGETS:
 			ImageName: commandbar-background
 		Container@COMMAND_BAR:
 			Logic: CommandBarLogic
-			X: WINDOW_RIGHT/2-212
+			X: 310
 			Y: WINDOW_BOTTOM-34
 			Width: 275
 			Height: 26
@@ -56,7 +56,7 @@ Container@PLAYER_WIDGETS:
 							X: 5
 							Y: 1
 							ImageCollection: command-icons
-							ImageName: attack-move     
+							ImageName: attack-move
 				Button@FORCE_MOVE:
 					X: 34
 					Width: 34
@@ -181,7 +181,7 @@ Container@PLAYER_WIDGETS:
 							ImageName: queue-orders
 		Container@STANCE_BAR:
 			Logic: StanceSelectorLogic
-			X: WINDOW_RIGHT/2+75
+			X: 590
 			Y: WINDOW_BOTTOM-33
 			Width: 138
 			Height: 26
@@ -266,10 +266,18 @@ Container@PLAYER_WIDGETS:
 			ImageCollection: sidebar
 			ImageName: background-top
 			Children:
+				Label@GAME_TIMER:
+					Logic: GameTimerLogic
+					X: 9
+					Y: 0-3
+					Width: PARENT_RIGHT
+					Height: 28
+					Align: Center
+					Font: TinyBold
 				Container@TOP_BUTTONS:
 					Logic: MenuButtonsChromeLogic
 					X: 265
-					Y: 18
+					Y: 38
 					Children:
 						MenuButton@DEBUG_BUTTON:
 							Logic: AddFactionSuffixLogic
@@ -397,45 +405,52 @@ Container@PLAYER_WIDGETS:
 							Width: 247
 							Height: 247
 							Children:
+		Image@CASHPOWER_BACKGROUND:
+			Logic: AddFactionSuffixLogic
+			X: WINDOW_RIGHT-425
+			Y: WINDOW_BOTTOM-54
+			Width: 425
+			Height: 54
+			ImageCollection: sidebar
+			ImageName: cashproduction-background
+		Container@CASHPOWER:
+			Logic: StanceSelectorLogic
+			X: WINDOW_RIGHT-400
+			Y: WINDOW_BOTTOM-45
+			Width: 400
+			Height: 30
+			Children:
 				LabelWithTooltip@POWER:
 					Logic: IngamePowerCounterLogic
-					X: PARENT_RIGHT - WIDTH - 20
+					X: 160
 					Y: 0
 					Width: 50
-					Height: 22
-					Align: Right
-					Font: Bold
+					Height: 28
+					Align: Left
+					Font: InfoConso
 					Text: {0}
 					TooltipContainer: TOOLTIP_CONTAINER
 					TooltipTemplate: SIMPLE_TOOLTIP
 					Children:
 						Image@POWER_ICON:
-							X: PARENT_RIGHT + 4
-							Y: 5
+							X: PARENT_RIGHT-70
+							Y: 8
 							ImageCollection: power-icons
 							ImageName: power-normal
-				Label@GAME_TIMER:
-					Logic: GameTimerLogic
-					X: 3
-					Y: 263
-					Width: PARENT_RIGHT
-					Height: 22
-					Align: Center
-					Font: TinyBold
 				LabelWithTooltip@CASH:
 					Logic: IngameCashCounterLogic
-					X: 35
+					X: 280
 					Y: 0
 					Width: 50
-					Height: 22
-					Align: Center
-					Font: Bold
-					Text: ${0}
+					Height: 28
+					Align: Left
+					Font: InfoConso
+					Text: $ {0}
 		Container@SIDEBAR_PRODUCTION:
 			Logic: ClassicProductionLogic
-			X: WINDOW_RIGHT -280
-			Y: WINDOW_BOTTOM -256
-			Width: 280
+			X: WINDOW_RIGHT -400
+			Y: WINDOW_BOTTOM -195
+			Width: 250
 			Height: 74
 			Children:
 				Container@PALETTE_BACKGROUND:
@@ -445,25 +460,25 @@ Container@PLAYER_WIDGETS:
 						Image@ROW_TEMPLATE:
 							Logic: AddFactionSuffixLogic
 							Width: 280
-							Height: 74
+							Height: 71
 							ClickThrough: false
 							ImageCollection: sidebar
 							ImageName: background-iconrow
 				LogicTicker@PRODUCTION_TICKER:
 				ProductionPalette@PRODUCTION_PALETTE:
-					X: 0
-					Y: 0
+					X: 8
+					Y: 5
 					TooltipContainer: TOOLTIP_CONTAINER
 					ReadyText: READY
 					HoldText: ON HOLD
 					IconSize: 64, 64
-					IconMargin: 1, 10
+					IconMargin: 1, 5
 					IconSpriteOffset: 0, 0
 					HotkeyPrefix: Production
 					HotkeyCount: 24
-					Columns: 4
-					MinimumRows: 3
-					MaximumRows: 3
+					Columns: 6
+					MinimumRows: 2
+					MaximumRows: 2
 				Container@PALETTE_FOREGROUND:
 					X: 25
 					Y: 0
@@ -475,98 +490,113 @@ Container@PLAYER_WIDGETS:
 							ImageCollection: sidebar-bits
 							ImageName: production-iconoverlay
 				Container@PRODUCTION_TYPES:
-					X: 0-60
-					Y: 0-62
+					X: 0-56
+					Y: 0-48
 					Children:
 						ProductionTypeButton@BUILDING:
 							Logic: AddFactionSuffixLogic
 							Width: 47
-							Height: 28
-							X: 48
+							Height: 22
+							Y: 48
 							TooltipText: Buildings
 							TooltipContainer: TOOLTIP_CONTAINER
 							ProductionGroup: Building
-							Background: hover-button
+							Background: type-button
 							Key: ProductionTypeBuilding
 							Children:
 								Image@ICON:
-									X: 16
-									Y: 6
+									X: 20
+									Y: 3
 									ImageCollection: production-icons
 						ProductionTypeButton@DEFENSE:
 							Logic: AddFactionSuffixLogic
 							Width: 47
-							Height: 28
-							X: 96
+							Height: 22
+							Y: 72
 							TooltipText: Support
 							TooltipContainer: TOOLTIP_CONTAINER
 							ProductionGroup: defence
-							Background: hover-button
+							Background: type-button
 							Key: ProductionTypeDefense
 							Children:
 								Image@ICON:
-									X: 16
-									Y: 6
+									X: 20
+									Y: 3
 									ImageCollection: production-icons
-						ProductionTypeButton@HEAVYINFANTRY:
+						ProductionTypeButton@INFANTRY:
 							Logic: AddFactionSuffixLogic
 							Width: 47
-							Height: 28
-							X: 144
+							Height: 22
+							Y: 96
 							TooltipText: Infantry
 							TooltipContainer: TOOLTIP_CONTAINER
 							ProductionGroup: Infantry
-							Background: hover-button
+							Background: type-button
 							Key: ProductionTypeInfantry
 							Children:
 								Image@ICON:
-									X: 16
-									Y: 6
+									X: 20
+									Y: 3
 									ImageCollection: production-icons
 						ProductionTypeButton@VEHICLE:
 							Logic: AddFactionSuffixLogic
 							Width: 47
-							Height: 28
-							X: 192
-							Background: hover-button
+							Height: 22
+							Y: 120
+							Background: type-button
 							TooltipText: Vehicles
 							TooltipContainer: TOOLTIP_CONTAINER
 							ProductionGroup: Vehicle
 							Key: ProductionTypeVehicle
 							Children:
 								Image@ICON:
-									X: 16
-									Y: 6
+									X: 20
+									Y: 3
 									ImageCollection: production-icons
 						ProductionTypeButton@AIRCRAFT:
 							Logic: AddFactionSuffixLogic
 							Width: 47
-							Height: 28
-							X: 240
-							Background: hover-button
+							Height: 22
+							Y: 144
+							Background: type-button
 							TooltipText: Aircraft
 							TooltipContainer: TOOLTIP_CONTAINER
 							ProductionGroup: Aircraft
 							Key: ProductionTypeAircraft
 							Children:
 								Image@ICON:
-									X: 16
-									Y: 6
+									X: 20
+									Y: 4
 									ImageCollection: production-icons
 						ProductionTypeButton@RESEARCH:
 							Logic: AddFactionSuffixLogic
 							Width: 47
-							Height: 28
-							X: 288
-							Background: hover-button
+							Height: 22
+							Y: 168
+							Background: type-button
 							TooltipText: researchs
 							TooltipContainer: TOOLTIP_CONTAINER
 							ProductionGroup: Research
 							Key: ProductionTypeResearch
 							Children:
 								Image@ICON:
-									X: 16
-									Y: 6
+									X: 20
+									Y: 4
+									ImageCollection: production-icons
+						ProductionTypeButton@DOCTRINES:
+							Logic: AddFactionSuffixLogic
+							Width: 47
+							Height: 22
+							Y: 192
+							Background: type-button
+							TooltipText: doctrines
+							TooltipContainer: TOOLTIP_CONTAINER
+							ProductionGroup: Doctrines
+							Key: ProductionTypeResearch
+							Children:
+								Image@ICON:
+									X: 20
+									Y: 4
 									ImageCollection: production-icons
 		ProductionTabs@PRODUCTION_TABS:
 			Logic: ProductionTabsLogic
@@ -575,7 +605,7 @@ Container@PLAYER_WIDGETS:
 			BackgroundContainer: PRODUCTION_BACKGROUND
 			PreviousProductionTabKey: PreviousProductionTab
 			NextProductionTabKey: NextProductionTab
-			X: WINDOW_RIGHT -300
-			Y: WINDOW_BOTTOM -287
-			Width: 300
+			X: WINDOW_RIGHT -425
+			Y: WINDOW_BOTTOM -225
+			Width: 425
 			Height: 25

@@ -1,0 +1,69 @@
+## ///////////////// General Doctrines  /////////////////////
+## //////////////////////////////////////////////////////////
+
+## ////////////// Comon Doctrines  //////////////////
+
+## ////////////// Infantrey Doctrines  //////////////////
+
+## renforcement physique
+Doctrines.Infantry.constitution:
+	Inherits@Research: ^ResearchActor
+	AlwaysVisible:
+	Tooltip:
+		Name: renforcement physique
+	Buildable:
+		BuildPaletteOrder: 10
+		Queue: Doctrines
+		Prerequisites: !Doctrines.Infantry.constitution
+		Description: Improves infantry units’ moving speed by 20%
+		BuildDurationModifier: 0
+	Valued:
+		Cost: 0
+	RenderSprites:
+		Image: doctrines_inf_armoricon
+	ProvidesPrerequisite:
+		Prerequisite: Valid.Doc.Inf.constitution.Effet
+		
+^Doctrines.Inf.constitution.Effet:
+	GrantConditionOnPrerequisite@Doctrines.Inf.constitution.Effete:
+		Prerequisites: Valid.Doc.Inf.constitution.Effet
+		Condition: Doctrines.Inf.constitution
+	DamageMultiplier@Doctrines.Inf.constitution:
+		Modifier: 90
+		RequiresCondition: Doctrines.Inf.constitution
+	SpeedMultiplier@Doctrines.Inf.constitution:
+		Modifier: 110
+		RequiresCondition: Doctrines.Inf.constitution
+		
+## renforcement augmetique
+Doctrines.Infantry.augmetique:
+	Inherits@Research: ^ResearchActor
+	AlwaysVisible:
+	Tooltip:
+		Name: augmentique infanterie
+	Buildable:
+		BuildPaletteOrder: 10
+		Queue: Doctrines
+		Prerequisites: !Doctrines.Infantry.augmetique
+		Description: Improves infantry units’ moving speed by 20%
+		BuildDurationModifier: 0
+	Valued:
+		Cost: 0
+	RenderSprites:
+		Image: doctrines_inf_regenicon
+	ProvidesPrerequisite:
+		Prerequisite: Valid.Doc.Inf.augmetique.Effet
+		
+^Doctrines.Inf.augmetique.Effet:
+	GrantConditionOnPrerequisite@Doctrines.Inf.constitution.Effete:
+		Prerequisites: Valid.Doc.Inf.augmetique.Effet
+		Condition: Doctrines.Inf.augmetique
+	DamageMultiplier@Doctrines.Inf.augmetique:
+		Modifier: 90
+		RequiresCondition: Doctrines.Inf.augmetique
+	SpeedMultiplier@Doctrines.Inf.augmetique:
+		Modifier: 110
+		RequiresCondition: Doctrines.Inf.augmetique
+		
+		
+		

@@ -14,6 +14,14 @@ baneslayerattackaircraft:
 	muzzle: muzzle_autogun_small
 		Length: *
 		BlendMode: Additive
+        
+eclipse:
+	Inherits@Stat: ^StatAircraftEffect
+	idle:
+        Length: *
+        Tick: 35
+		BlendMode: Multiply
+	icon: Commandt3icon
 
 t4_cruiser:
 	Inherits@Stat: ^StatAircraftEffect
@@ -33,6 +41,8 @@ t4_cruiser:
 t2_command_relais:
 	Inherits@Stat: ^StatAircraftEffect
 	idle:
+        Length: 64
+        Tick: 70
 	engine: baselightcub
 		Length: 4
 		BlendMode: Additive
@@ -86,11 +96,26 @@ t3_thor:
 t3_valkyrie:
 	Inherits@Stat: ^StatAircraftEffect
 	idle:
+        ZOffset: -10
 		Facings: 64
-	icon: valkyrieicon
+	idle.station: t3_valkyriestationary
+		Length: *
+    pulse_repair: circle_pulse_green
+		Length: *
+		BlendMode: Additive
+    Gun.Turret01: t3_valkyrietur
+        ZOffset: 5
+		Facings: 64
+    Gun.Turret02: t3_valkyrietur
+        ZOffset: 5
+		Facings: 64
+    make: t3_valkyriemk
+        ZOffset: 5
+        Length: *
 	muzzle: muzzle_autogun_small
 		Length: *
 		BlendMode: Additive
+	icon: valkyrieicon
 
 t2_comete:
 	Inherits@Stat: ^StatAircraftEffect
@@ -98,7 +123,7 @@ t2_comete:
 		Facings: 64
 		Length: 5
 	icon: cometeicon
-	muzzle: muzzle_autogun_small
+	muzzle: muzzle_comete
 		Length: *
 		BlendMode: Additive
 
@@ -125,6 +150,10 @@ t3_quasar:
 	idle:
 		Facings: 64
 	icon: quasaricon
+    make: t3_quasarmk
+        Length: *
+	deployed: t3_quasardeploy
+		Facings: 64
 	muzzle: muzzle_autogun_small
 		Length: *
 		BlendMode: Additive

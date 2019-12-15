@@ -7,17 +7,13 @@ Gatling.tower:
 		Damage: 25
 		Versus:
 			Infantry: 100
-			ArmorInfantry: 80
 			LightVehicle: 45
 			ArmorTank: 40
-			Lord: 50
-			LordTank: 60
-			harvester: 40
 			Concrete: 50
-            
+			
 fortress.targetpri:
 	Inherits@default.weapons: ^Fortressdefense.Target.default
-    Report: chargingdef.aud
+	Report: chargingdef.aud
 	ReloadDelay: 85
 	Range: 14c256
 
@@ -35,12 +31,8 @@ fortress.laser:
 		Damage: 650
 		Versus:
 			Infantry: 100
-			ArmorInfantry: 80
 			LightVehicle: 95
 			ArmorTank: 100
-			Lord: 50
-			LordTank: 40
-			harvester: 60
 			Concrete: 80
 
 ^AntiGroundMissile:
@@ -64,25 +56,21 @@ fortress.laser:
 		ValidTargets: Ground, Water, Air
 		Versus:
 			Infantry: 10
-			ArmorInfantry: 75
 			LightVehicle: 35
 			ArmorTank: 75
-			Lord: 40
-			LordTank: 40
-			harvester: 50
 			Concrete: 50
-		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+		DamageTypes: Prone50Percent, TriggerProne, Gibs
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Crater
 	Warhead@3Eff: CreateEffect
 		Explosions: shrap_exp
 		ExplosionPalette: effectalpha75
-		ImpactSounds: ap_warpact.wav
+		ImpactSounds: impact_explh01.aud, impact_explh02.aud, impact_explh03.aud
 		ValidTargets: Ground, Water, Air
 	Warhead@4EffWater: CreateEffect
 		Explosions: shrap_exp
 		ExplosionPalette: effectalpha75
-		ImpactSounds: ap_warpact.wav
+		ImpactSounds: impact_explh01.aud, impact_explh02.aud, impact_explh03.aud
 		ValidTargets: Water
 
 Raidergun:
@@ -104,12 +92,8 @@ Raidergun:
 		DeathType: 4
 		Versus:
 			Infantry: 130
-			ArmorInfantry: 60
 			LightVehicle: 20
 			ArmorTank: 20
-			Lord: 30
-			LordTank: 30
-			harvester: 80
 			Concrete: 30
 		DamageTypes: TriggerProne
 	Warhead@3Smu: LeaveSmudge
@@ -137,12 +121,8 @@ Autogun:
 		DeathType: 4
 		Versus:
 			Infantry: 120
-			ArmorInfantry: 70
 			LightVehicle: 75
 			ArmorTank: 35
-			Lord: 30
-			LordTank: 30
-			harvester: 80
 			Concrete: 38
 		DamageTypes: TriggerProne
 	Warhead@3Smu: LeaveSmudge
@@ -169,12 +149,8 @@ interceptor:
 		Damage: 70
 		Versus:
 			Infantry: 30
-			ArmorInfantry: 70
 			LightVehicle: 90
 			ArmorTank: 50
-			Lord: 40
-			LordTank: 40
-			harvester: 50
 			Concrete: 75
 
 Heal:
@@ -219,14 +195,10 @@ minigun_airforce:
 		DeathType: 4
 		Versus:
 			Infantry: 100
-			ArmorInfantry: 40
 			LightVehicle: 30
 			ArmorTank: 18
-			Lord: 30
-			LordTank: 20
-			harvester: 80
 			Concrete: 20
-		DamageTypes: Gorehusk, TriggerProne
+		DamageTypes: Gibs, TriggerProne
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Crater
 	Warhead@3EffGround: CreateEffect
@@ -243,7 +215,8 @@ Impulse_gun:
 		Speed: 850
 		Image: 120mm
 		Inaccuracy: 880
-		TrailImage: smokey
+		TrailImage: trail_smokemin01
+		TrailPalette: flameeffect
 		ContrailLength: 15
 		ContrailWidth: 14
 		Color: 5F5F5F
@@ -253,12 +226,8 @@ Impulse_gun:
 		DeathType: 4
 		Versus:
 			Infantry: 75
-			ArmorInfantry: 75
 			LightVehicle: 75
 			ArmorTank: 75
-			Lord: 40
-			LordTank: 40
-			harvester: 80
 			Concrete: 50
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
@@ -267,9 +236,9 @@ Impulse_gun:
 		ExplosionPalette: effectalpha75
 		ValidTargets: Ground
 
-AircraftExplode:
+uniteanimexplode:
 	Warhead@2Eff: CreateEffect
-		Explosions: air_expl
+		Explosions: explunit02, explunit01
 		ValidTargets: Ground, Water, Air
 	Warhead@Smu: LeaveSmudge
 		SmudgeType: Crater
@@ -283,7 +252,7 @@ plasma_pulsar:
 	Report: plasma_pulse.aud
 	Projectile: Bullet
 		Speed: 230
-		Image: plasma_pulsemin
+		Image: plasma_expl01
 		Inaccuracy: 1600
 		TrailInterval: 0
 	Warhead@1Dam: SpreadDamage
@@ -292,12 +261,8 @@ plasma_pulsar:
 		DeathType: 5
 		Versus:
 			Infantry: 200
-			ArmorInfantry: 100
 			LightVehicle: 25
 			ArmorTank: 25
-			Lord: 40
-			LordTank: 40
-			harvester: 80
 			Concrete: 120
 		DamageTypes: Burned,, TriggerProne
 	Warhead@3EffGround: CreateEffect
@@ -328,12 +293,8 @@ psyblast:
 		RangeLimit: 7c204
 		Versus:
 			Infantry: 250
-			ArmorInfantry: 60
 			LightVehicle: 110
 			ArmorTank: 25
-			Lord: 40
-			LordTank: 40
-			harvester: 80
 			Concrete: 150
 		DamageTypes: Burned, TriggerProne
 	Warhead@2Smu: LeaveSmudge
@@ -346,9 +307,14 @@ psyblast:
 
 SmallBuildingExplode:
 	Warhead@2Eff: CreateEffect
-		Explosions: ExplBuilding02, ExplBuilding03, ExplBuilding01, ExplBuilding04
+		Explosions: explbuilding01, explbuilding02, explbuilding03, explbuilding04, explbuilding05
+		ExplosionPalette: flameeffect70
+		ImpactSounds: buildsongexpl01.aud, buildsongexpl02.aud, buildsongexpl03.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@3Eff: CreateEffect
+		Explosions: bomb_expl01,  bomb_expl02, bomb_expl03
 		ExplosionPalette: effect
-		ImpactSounds: buildingexpl01.aud, buildingexpl02.aud
+		ImpactSounds: buildsongexpl01.aud, buildsongexpl02.aud, buildsongexpl03.aud
 		ValidTargets: Ground, Water, Air
 	Warhead@Smu: LeaveSmudge
 		SmudgeType: Crater
@@ -381,12 +347,8 @@ PhaseGun:
 		ValidTargets: Ground, Water, TriggerProne
 		Versus:
 			Infantry: 10
-			ArmorInfantry: 75
 			LightVehicle: 35
 			ArmorTank: 70
-			Lord: 40
-			LordTank: 40
-			harvester: 80
 			Concrete: 20
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
@@ -1141,7 +1103,8 @@ SubMissile:
 		Angle: 165
 		Inaccuracy: 2c938
 		Image: MISSILE
-		Trail: smokey
+		Trail: trail_smokemin01
+		TrailPalette: flameeffect
 		ContrailLength: 30
 	Warhead@1Dam: SpreadDamage
 		Spread: 426
@@ -1297,7 +1260,8 @@ SCUD:
 		Speed: 170
 		High: true
 		Shadow: false
-		Trail: smokey
+		Trail: trail_smokemin01
+		TrailPalette: flameeffect
 		TrailDelay: 5
 		Inaccuracy: 213
 		Image: V2
@@ -1535,9 +1499,9 @@ UnitVehicleExplodeSmall:
 	Warhead@4Smu: LeaveSmudge
 		SmudgeType: Crater
 	Warhead@2Eff: CreateEffect
-		Explosion: doomexpl75
+		Explosion: ExplUnit01, ExplUnit02
 		ImpactSound: kaboom15.aud
-		ValidTargets: Ground, Water, Air
+		ValidTargets: Clear, Road, Tree, Ground, Concrete, Water, Air
 	Warhead@3EffWater: CreateEffect
 		Explosion: large_splash
 		ImpactSound: splash9.aud
@@ -1556,9 +1520,9 @@ UnitExplodeSmall:
 	Warhead@4Smu: LeaveSmudge
 		SmudgeType: Crater
 	Warhead@2Eff: CreateEffect
-		Explosion: doomexpl75
+		Explosion: explunit01, explunit02
 		ImpactSound: kaboom15.aud
-		ValidTargets: Ground, Water, Air
+		ValidTargets: Clear, Road, Tree, Ground, Concrete, Water, Air
 	Warhead@3EffWater: CreateEffect
 		Explosion: large_splash
 		ImpactSound: splash9.aud
@@ -1850,12 +1814,8 @@ gunbladecomete:
 		Damage: 25
 		Versus:
 			Infantry: 50
-			ArmorInfantry: 100
 			LightVehicle: 90
 			ArmorTank: 80
-			Lord: 40
-			LordTank: 40
-			harvester: 80
 			Concrete: 70
 		DamageTypes: Burned, TriggerProne
 	Warhead@3EffGround: CreateEffect

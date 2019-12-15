@@ -1,0 +1,41 @@
+t1_guardmen:
+	Inherits@1: ^Infantry
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry.federation
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 10
+		Prerequisites: ~techlevel.infonly
+		Description: Basic infantryman armed with an assault rifle\nCan capture neutral structures\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
+		BuildDurationModifier: 4
+	Valued:
+		Cost: 80
+	Tooltip:
+		Name: GuardMen
+	Health:
+		HP: 200
+	AttackFrontal:
+	Armament@PRIMARY:
+		Weapon: M1Carbine
+		LocalOffset: 0,0,220
+	WithInfantryBody:
+		IdleSequences: idle1
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: M1Carbine
+		MuzzleSequence: garrison-muzzle
+	Armament@GARRISONEDFAFNIR:
+		Name: garrisoned.fafnir
+		Weapon: M1Carbine.fafnir
+		MuzzleSequence: garrison-muzzle
+	Captures:
+		CaptureTypes: TechBuilding
+		PlayerExperience: 20
+		CaptureDelay: 375
+		ConsumedByCapture: False
+		EnterCursor: ability
+		EnterBlockedCursor: move-blocked
+	HitShape:
+	CaptureManager:

@@ -1,3 +1,32 @@
+eclipse:
+	Inherits: ^Aircraftshape
+	Interactable:
+	Tooltip:
+		Name: Eclipse
+	Valued:
+		Cost: 50
+	Aircraft:
+		TurnSpeed: 4
+		Speed: 340
+		Repulsable: False
+		IdleBehavior: LeaveMap
+	DamageMultiplier@INVULNERABLE:
+		Modifier: 0
+	Health:
+		HP: 500
+	Targetable:
+		TargetTypes: NoAircraftTarget
+		RequiresForceFire: false
+	RejectsOrders:
+	AttackBomber:
+	-RevealsShroud:
+	-AutoTarget:
+	-WithShadow:
+	RenderSprites:
+		Palette: powereffect40
+	Buildable:
+		Description: Used to deliver air strikes.
+
 t2_comete:
 	Inherits: ^Helicoptershape
 	Inherits@Target: ^AutoTargetAll
@@ -5,38 +34,35 @@ t2_comete:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 70
 		Prerequisites: tcholotech.comete
-		BuildDurationModifier: 15
+		BuildDurationModifier: 18
 		Description: Light aircraft equipped with laser spray guns\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
 		IconPalette: Conclave.Icon
 	Valued:
 		Cost: 1200
 	Tooltip:
-		Name: Comet
+		Name: Comete
 	Health:
-		HP: 900
-	Armor:
-		Type: LightVehicle
-	RevealsShroud:
-		Range: 12c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	RevealsShroud@GAPGEN:
-		Range: 10c0
-		Type: GroundPosition
+		HP: 800
+	WithMuzzleOverlay:
 	Armament@PRIMARY:
 		Weapon: Dual.Impuls.Catapult
-		LocalOffset: 0,-420,-85, 0,420,-85
+		LocalOffset: 100,-420,-85, 100,420,-85
+		MuzzleSequence: muzzle
 		RequiresCondition: !upgrade.Base.Comete.Conclave
 	Armament@PRIMARYALPHA:
 		Weapon: Dual.Impuls.Catapult.Alpha
-		LocalOffset: 0,-420,-85, 0,420,-85
+		LocalOffset: 100,-420,-85, 100,420,-85
+		MuzzleSequence: muzzle
 		RequiresCondition: upgrade.Alpha.Comete.Conclave
 	Armament@PRIMARYOMEGA:
 		Weapon: Dual.Impuls.Catapult.Omega
-		LocalOffset: 0,-420,-85, 0,420,-85
+		LocalOffset: 100,-420,-85, 100,420,-85
+		MuzzleSequence: muzzle
 		RequiresCondition: upgrade.Omega.Comete.Conclave
-	AttackHeli:
+	AttackAircraft:
 		FacingTolerance: 20
+		PersistentTargeting: false
+		AttackType: Hover
 	Aircraft:
 		CruiseAltitude: 2500
 		InitialFacing: 192
@@ -44,7 +70,6 @@ t2_comete:
 		Speed: 180
 		RepulsionSpeed: 40
 		MaximumPitch: 56
-		LandWhenIdle: false
 		LandableTerrainTypes: Clear,Rough,Road,Beach
 	AutoTarget:
 		InitialStance: Defend
@@ -55,7 +80,7 @@ t2_comete:
 		UncloakOn: Attack, Unload, Infiltrate, Demolish, Dock, Move
 		CloakDelay: 20
 		IsPlayerPalette: true
-		RequiresCondition: upgrade.Omega.Comete.Conclave
+		PauseOnCondition: !(upgrade.Omega.Comete.Conclave)
 	DetectCloaked@Omega:
 		Range: 6c0
 		RequiresCondition: upgrade.Alpha.Comete.Conclave
@@ -71,7 +96,6 @@ t2_comete:
 		Condition: upgrade.Omega.Comete.Conclave
 	SpawnActorOnDeath:
 		Actor: comete.husk
-	HitShape:
 
 comete.husk:
 	Inherits: ^AircraftHuskShape
@@ -89,7 +113,7 @@ t2_zenith:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 90
 		Prerequisites: tcholotech.zenith
-		BuildDurationModifier: 10
+		BuildDurationModifier: 18
 		Description: Unarmed transport aircraft\nCan transport all types of units\n> Strong vs None\n> Weak vs Everything
 		IconPalette: Conclave.Icon
 	Valued:
@@ -98,39 +122,6 @@ t2_zenith:
 		Name: Zenith
 	Health:
 		HP: 2500
-	Armor:
-		Type: LightVehicle
-	RevealsShroud:
-		Range: 12c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	AttackHeli:
-		FacingTolerance: 10
-	WithMuzzleOverlay:
-	GrantConditionOnAttack@TargetZenith:
-		ArmamentNames: primary
-		RevokeOnNewTarget: false
-		IsCyclic: true
-		RequiredShotsPerInstance: 6
-		Condition: Target
-	Armament@gun:
-		Weapon: doom.target
-		Recoil: 150
-		RecoilRecovery: 15
-		LocalOffset: 500,-100,250
-		RequiresCondition: !Target
-		MuzzleSequence: muzzle
-		MuzzlePalette: powereffect
-	Armament@railgun:
-		Name: secondary
-		Weapon: zenith.gun
-		Recoil: 150
-		RecoilRecovery: 15
-		LocalOffset: 500,-100,250
-		RequiresCondition: Target
-	RevealsShroud@GAPGEN:
-		Range: 10c0
-		Type: GroundPosition
 	GrantConditionOnPrerequisite@Alpha:
 		Prerequisites: research.Alpha.Zenith.Conclave
 		Condition: upgrade.Alpha.Zenith.Conclave
@@ -143,7 +134,12 @@ t2_zenith:
 		AffectsParent: false
 		RequiresCondition: upgrade.Omega.Zenith.Conclave
 	ProximityExternalCondition@zenithRepairVehicle:
-		Condition: zenithRepairVehicle
+		Condition: UniteRepairVehicle
+		Range: 6c0
+		AffectsParent: false
+		RequiresCondition: upgrade.Omega.Zenith.Conclave
+	ProximityExternalCondition@zenithRepairAircraft:
+		Condition: UniteRepairAircraft
 		Range: 6c0
 		AffectsParent: false
 		RequiresCondition: upgrade.Omega.Zenith.Conclave
@@ -161,14 +157,21 @@ t2_zenith:
 		TurnSpeed: 35
 		Speed: 180
 		RepulsionSpeed: 40
-		MaximumPitch: 56
-		LandWhenIdle: false
+		MaximumPitch: 110
 		LandableTerrainTypes: Clear,Rough,Road,Beach,tree
-    WithFacingSpriteBody:
-        RequiresCondition: !EngineMove
-    WithFacingSpriteBody@Deploy:
-        Sequence: deployed
-        RequiresCondition: EngineMove
+		IdleBehavior: Land
+	-AutoTarget:
+	-AttackMove:
+	Cargo:
+		Types: Infantry, vehicle
+		MaxWeight: 10
+		PipCount: 5
+		PassengerFacing: -1
+	WithFacingSpriteBody:
+		RequiresCondition: !EngineMove
+	WithFacingSpriteBody@Deploy:
+		Sequence: deployed
+		RequiresCondition: EngineMove
 	WithIdleOverlay@PhieAura:
 		Offset: 0,0,20
 		Sequence: aura_phie
@@ -181,14 +184,12 @@ t2_zenith:
 		RequiresCondition: upgrade.Omega.Zenith.Conclave
 	Selectable:
 		Bounds: 36,28
-	-AutoTarget:
 	GrantConditionOnMovement@EngineMove:
 		Condition: EngineMove
-    RenderSprites:
-        Scale: 0.7
+	RenderSprites:
+		Scale: 0.6
 	SpawnActorOnDeath:
 		Actor: t2_zenith.husk
-	HitShape:
 
 t2_zenith.husk:
 	Inherits: ^AircraftHuskShape
@@ -198,7 +199,7 @@ t2_zenith.husk:
 		TurnSpeed: 5
 		Speed: 186
 	RenderSprites:
-        Scale: 0.7
+		Scale: 0.7
 		Image: t2_zenith
 
 t3_quasar:
@@ -208,7 +209,7 @@ t3_quasar:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 120
 		Prerequisites: tcholotech.quasar
-		BuildDurationModifier: 20
+		BuildDurationModifier: 25
 		Description: Anti-spaceship artillery\nCan make tactical jump\n> Strong vs Slow Moving Aircraft\n> Weak vs Infantry, Vehicles, Fast Moving Aircraft
 		IconPalette: Conclave.Icon
 	Valued:
@@ -217,15 +218,6 @@ t3_quasar:
 		Name: Quasar
 	Health:
 		HP: 1800
-	Armor:
-		Type: ArmorTank
-	RevealsShroud:
-		Range: 10c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-	RevealsShroud@GAPGEN:
-		Range: 11c0
-		Type: GroundPosition
 	GrantConditionOnAttack@TargetRailgun:
 		ArmamentNames: primary
 		RevokeOnNewTarget: true
@@ -235,20 +227,14 @@ t3_quasar:
 		Weapon: ExconvectorCanonAA.TargetBeam
 		Recoil: 150
 		RecoilRecovery: 15
-		LocalOffset: 0,-213,0
+		LocalOffset: 512,0,0
 		RequiresCondition: !Target
 	Armament@railgun:
 		Weapon: Quasar.Canon
 		Recoil: 150
 		RecoilRecovery: 15
-		LocalOffset: 0,-213,0
-		RequiresCondition: Target && !upgrade.Alpha.Quasar.Conclave
-	Armament@railgun.Alpha:
-		Weapon: Quasar.Canon.Alpha
-		Recoil: 150
-		RecoilRecovery: 15
-		LocalOffset: 0,-213,0
-		RequiresCondition: Target && upgrade.Alpha.Quasar.Conclave
+		LocalOffset: 512,0,0
+		RequiresCondition: Target
 	GrantConditionOnPrerequisite@Omega:
 		Prerequisites: research.Omega.Quasar.Conclave
 		Condition: upgrade.Omega.Quasar.Conclave
@@ -258,31 +244,31 @@ t3_quasar:
 	DamageMultiplier@Armor.Alpha.Quasar.Conclave:
 		Modifier: 85
 		RequiresCondition: upgrade.Omega.Quasar.Conclave
-	AttackHeli:
+	AttackAircraft:
 		FacingTolerance: 20
+		PersistentTargeting: false
+		AttackType: Hover
 	Aircraft:
 		CruiseAltitude: 2500
 		InitialFacing: 192
-		TurnSpeed: 2
+		TurnSpeed: 3
 		Speed: 70
 		RepulsionSpeed: 40
 		MaximumPitch: 56
-		LandWhenIdle: false
 		LandableTerrainTypes: Clear,Rough,Road,Beach
 	AutoTarget:
 		InitialStance: Defend
 		InitialStanceAI: Defend
 	Selectable:
 		Bounds: 36,28
-	GrantConditionOnMovement@EngineMove:
-		Condition: EngineMove
 	PortableChrono:
 		ChargeDelay: 900
-		MaxDistance: 10
+		MaxDistance: 15
 		ChronoshiftSound: quasar_warp.aud
 	SpawnActorOnDeath:
 		Actor: t3_quasar.husk
-	HitShape:
+	RenderSprites:
+		Scale: 0.6
 
 t3_quasar.husk:
 	Inherits: ^PlaneHusk
@@ -292,4 +278,5 @@ t3_quasar.husk:
 		TurnSpeed: 0
 		Speed: 186
 	RenderSprites:
+		Scale: 0.6
 		Image: t3_quasar

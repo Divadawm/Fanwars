@@ -1,14 +1,4 @@
-towerdefenceap:
-	turret: railhover
-    
-towerdefenceac:
-	turret: Biggun
-
 #Red Alliance ////////
-
-armcv:
-	idle:
-	
 arnahand:
 	idle:
     
@@ -26,18 +16,11 @@ t3_doomtower_mobile:
 	
 arnaweap:
 	idle:
-
-ar_scarab:
-	idle:
     
 t1_harvester:
 	idle:
 	unload: t1_harvester
     turret: t1_harvestertur
-    
-t2_basilisk.husk:
-	idle: t2_basiliskhusk
-    turret: t2_basilisktur
     
 t2_salamander:
 	idle:
@@ -60,8 +43,8 @@ t2_predator_mobile:
     
 t2_predator_deployed:
 	idle:
-	turret: T2_predator_Deployedtur
-	barrel: T2_predator_Deployedbarl
+	turret: t2_predator_Deployedtur
+	barrel: t2_predator_Deployedbarl
 
 t2_tarantula_mobile: 
 	idle:
@@ -70,8 +53,8 @@ t2_tarantula_mobile:
 
 t2_tarantula_deployed:
 	idle:
-	turret: T2_tarantula_Deployedtur
-	barrel: T2_tarantula_Deployedbarl
+	turret: t2_tarantula_Deployedtur
+	barrel: t2_tarantula_Deployedbarl
 
     
 # Aircraft RedAlliance
@@ -95,15 +78,6 @@ opmcv:
 t1_dainn:
 	idle:
 	unload: t1_dainn
-
-t1_heidrun:
-	idle:
-	turret: t1_heidruntur
-	barrel: t1_heidrunbarl
-    
-t3_heimdall:
-	idle: t3_heimdall_firing
-    deployed: t3_heimdall_firing
         
 t2_warg:
 	idle:
@@ -121,13 +95,6 @@ t2_lindwyrm:
 	turret.plasma: t2_lindwyrmplasmatur
 	barrel.plasma: t2_lindwyrmplasmabarl
     
-t3_loki:
-	idle:
-    
-t3_valkyrie:
-	turret: t3_valkyrietur
-	barrel: t3_valkyriebarl
-    
 t1_midgard:
 	idle:
 	turret: t1_midgardtur
@@ -144,10 +111,6 @@ t3_hel:
     
 tcmcv:
 	idle:
-	
-prospecteur:
-	idle:
-	unload: prospecteur
     
 t2_command_relais:
 	idle:

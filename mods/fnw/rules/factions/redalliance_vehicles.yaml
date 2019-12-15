@@ -1,29 +1,73 @@
+
+t1_harvester:
+	Inherits: ^VoxelVehicleMedium
+    # / Inherit Stat Unite /
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@harvester: ^Harvester.rules
+	Buildable:
+		Queue: Vehicle.redalliance
+		BuildPaletteOrder: 10
+		Description: Armored harvester equipped with a heavy MG\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
+		IconPalette: RedAlliance.Icon
+	Tooltip:
+		Name: Lamia (Harvester)
+		GenericName: Harvester
+	Selectable:
+		Priority: 7
+	WithHarvestOverlay:
+	ProximityExternalCondition@FirtDeploy:
+		Condition: Reffinery.FirstDeploy
+		Range: 2
+		AffectsParent: true
+	Armament@gun:
+		Weapon: AP_Harvesterturret
+		Recoil: 100
+		RecoilRecovery: 15
+		LocalOffset: 500,200,340
+	Health:
+		HP: 4000
+	WithSpriteBody:
+	WithDockingAnimation:
+	WithVoxelTurret:
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	RenderSprites:
+		Scale: 1.0
+	Turreted:
+		TurnSpeed: 4
+		RealignDelay: 20
+	RenderVoxels:
+		Scale: 0.75
+	ProvidesPrerequisite@buildingname:
+		Prerequisite: arproc
+
 t1_bike:
 	Inherits@1: ^ShapeVehicleLight
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Vehicle.Upgrade.Redalliance
 	Inherits@Target: ^AutoTargetAll
+    # / Inherit Stat Unite /
+	Inherits@RevealCells: ^7cells.Range.base
+	Inherits@DetectCloaked: ^Vehicles.DetectCloaked
+    # / Upgrade Faction /
+	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Range.Doctrines.Weapon
 	Tooltip:
 		Name: Sweeper
 	Buildable:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 20
-		BuildDurationModifier: 6
-		Description: Very light and fast recon vehicle armed with two missile-launchers\nIts pilot can leave (permanently) the vehicle\nCan detect stealthed units\n> Strong vs Light Vehicles, Aircraft\n> Weak vs Infantry, Heavy Vehicles
+		BuildDurationModifier: 7
+		Description: Very light and fast recon vehicle armed with two missile-launchers\n Can detect stealthed units\n> Strong vs Light Vehicles, Aircraft\n> Weak vs Infantry, Heavy Vehicles
 		IconPalette: RedAlliance.Icon
 	Valued:
-		Cost: 480
-	Armor:
-		Type: LightVehicle
+		Cost: 450
 	Health:
-		HP: 800
+		HP: 1800
 	Mobile:
-		Crushes: gibs
 		TurnSpeed: 25
-		Speed: 170
-	AutoTarget:
+		Speed: 130
 	AttackFrontal:
-		RequiresCondition: !empdisable
+		PauseOnCondition: empdisable
 	Armament@gun:
 		Weapon: BikeMissile
 		Modifier: 0
@@ -32,27 +76,18 @@ t1_bike:
 		LocalOffset: -400,105,180, -400,-105,180
 		MuzzleSequence: muzzle
 	WithMuzzleOverlay:
-	GrantConditionOnDeploy:
-		DeployedCondition: Destroy
-	KillsSelf:
-		RequiresCondition: Destroy
-		Delay: 5
-	SpawnActorOnDeath:
-		Actor: t1_comrade
-		RequiresCondition: Destroy
-	RevealsShroud:
-		Range: 7c0
-	DetectCloaked:
-		Range: 6c0
-		CloakTypes: Cloak, Buried
 	RenderSprites:
-	HitShape:
 
-ar_scarab:
-	Inherits@1: ^VoxelVehicleWalker
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Vehicle.Upgrade.Redalliance
+t1_scarab:
+	Inherits@1: ^ShapeWalkerLight
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@RevealCells: ^7cells.Range.base
+    # / Upgrade Faction /
+	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Range.Doctrines.Weapon
+	Inherits@Doctrines02: ^Aspect.Speed.Doctrines.Walker
 	Tooltip:
 		Name: Arachne
 	Selectable:
@@ -60,130 +95,111 @@ ar_scarab:
 	Buildable:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 30
-		BuildDurationModifier: 8
-		Description: Flame-thrower support vehicle\nCan be deployed and become a stealthed fixed spotter\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
+		BuildDurationModifier: 10
+		Description: Flame-thrower support vehicle\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
 		IconPalette: RedAlliance.Icon
 	Valued:
-		Cost: 750
-	Armor:
-		Type: LightVehicle
+		Cost: 650
 	Health:
-		HP: 1200
+		HP: 2900
 	Mobile:
-		Crushes: gibs
-		TurnSpeed: 35
-		Speed: 120
-	AutoTarget:
-	AttackFrontal:
+		TurnSpeed: 20
+		Speed: 115
+	AttackTurreted:
 		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 15
+		RealignDelay: 5
+		Offset: -10,0,0
 	Armament@Default:
 		Weapon: FlamerDrone
-		Recoil: 200
-		RecoilRecovery: 100
-		LocalOffset: 640,85,384
+		Recoil: 100
+		RecoilRecovery: 5
+		LocalOffset: 400,0,240
 		MuzzleSequence: muzzle
-		RequiresCondition: !upgrade.WeaponsFlamer.Redalliance
+		RequiresCondition: !upgrade.WeaponsFlamer.Redalliance && !Flammer.Doctrines.Redalliance
+	Armament@Upgrade:
+		Weapon: FlamerDroneUP
+		Recoil: 100
+		RecoilRecovery: 5
+		LocalOffset: 400,0,240
+		MuzzleSequence: muzzle
+		RequiresCondition: upgrade.WeaponsFlamer.Redalliance && !Flammer.Doctrines.Redalliance
+	Armament@Doctrines:
+		Weapon: FlamerDrone.Doctrines
+		Recoil: 100
+		RecoilRecovery: 5
+		LocalOffset: 400,0,240
+		MuzzleSequence: muzzle
+		RequiresCondition: !upgrade.WeaponsFlamer.Redalliance && Flammer.Doctrines.Redalliance
+	Armament@DoctrinesUpgrade:
+		Weapon: FlamerDroneUP.Doctrines
+		Recoil: 100
+		RecoilRecovery: 5
+		LocalOffset: 400,0,240
+		MuzzleSequence: muzzle
+		RequiresCondition: upgrade.WeaponsFlamer.Redalliance && Flammer.Doctrines.Redalliance
+	# Upgrade Reseach
 	GrantConditionOnPrerequisite@research.WeaponsFlamer.Redalliance:
 		Prerequisites: research.WeaponsFlamer.Redalliance
 		Condition: upgrade.WeaponsFlamer.Redalliance
-	Armament@Upgrade:
-		Weapon: FlamerDroneUP
-		Recoil: 200
-		RecoilRecovery: 100
-		LocalOffset: 640,85,384
-		MuzzleSequence: muzzle
-		RequiresCondition: upgrade.WeaponsFlamer.Redalliance
-	Transforms:
-		IntoActor: droned
-		Offset: 0,0
-		Facing: 96
-		TransformSounds:
-		NoTransformSounds:
-	RevealsShroud:
-		Range: 6c0
-	RenderSprites:
-	RenderVoxels:
-		Scale: 1.0
-	WithVoxelWalkerBody:
-		TickRate: 4
-	Transforms:
-		IntoActor: droned
-		Offset: 0,0
-		Facing: 96
-		TransformSounds:
-		NoTransformSounds:
-	GrantConditionOnTerrain@Destroy:
-		Condition: Destroy
-		TerrainTypes: Beach, Rock, Pilrock, Water, Wall, Void, building
-	HitShape:
+	# Upgrade Doctrines
+	GrantConditionOnPrerequisite@Flammer.Doctrines.Redalliance:
+		Prerequisites: Doctrine.Flammer.RedAlliance
+		Condition: Flammer.Doctrines.Redalliance
 
 t2_basilisk:
 	Inherits@1: ^ShapeVehicleMedium
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Tank.Upgrade.Redalliance
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetAllAssaultMove
-	Inherits@NanoArmor: ^Upgrade_nanoarmor_Tank
+    Inherits@UniteCarryable: ^UniteCarryable
+	Inherits@RevealCells: ^7cells.Range.base
+    # / Upgrade Faction /
+	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Range.Doctrines.Weapon
 	Tooltip:
 		Name: Basilisk
 	Buildable:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 40
 		Prerequisites: artech
-		BuildDurationModifier: 10
+		BuildDurationModifier: 20
 		Description: Powerful and resilient main battle tank with an impressive gun\n> Strong vs Vehicles, Structures\n> Weak vs Infantry, Aircraft
 		IconPalette: RedAlliance.Icon
-	Valued:
-		Cost: 1200
-	Armor:
-		Type: ArmorTank
 	Health:
-		HP: 3000
+		HP: 5000
 	Mobile:
-		Speed: 75
-		TurnSpeed: 8
-		WaitSpread: 12
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
-	AutoTarget:
+		Speed: 70
+	Valued:
+		Cost: 1100
+	Armament@primary:
+		Weapon: AP_basilic
+		LocalOffset: 1150,0,358
+		MuzzleSequence: muzzle
+		MuzzlePalette: flameeffect
+		Recoil: 85
+		RecoilRecovery: 25
+		RequiresCondition: !upgrade.HE.Weapons.Redalliance
+	Armament@primaryHE:
+		Weapon: AP_basilic_HE_UP
+		LocalOffset: 1150,0,358
+		MuzzleSequence: muzzle
+		MuzzlePalette: flameeffect
+		Recoil: 85
+		RecoilRecovery: 25
+		RequiresCondition: upgrade.HE.Weapons.Redalliance
+	WithMuzzleOverlay:
+	# Upgrade Researh
+	GrantConditionOnPrerequisite@research.HE.Weapons.Redalliance:
+		Prerequisites: research.HE.Weapons.Redalliance
+		Condition: upgrade.HE.Weapons.Redalliance
 	AttackTurreted:
 		RequiresCondition: !empdisable
 	Turreted:
 		TurnSpeed: 8
 		RealignDelay: 20
 		Offset: -30,0,0
-	Armament@primary:
-		Weapon: AP_basilic
-		LocalOffset: 1150,0,358
-		MuzzleSequence: muzzle
-		Recoil: 85
-		RecoilRecovery: 25
-		RequiresCondition: !upgrade.HE.Weapons.Redalliance
-	GrantConditionOnPrerequisite@research.HE.Weapons.Redalliance:
-		Prerequisites: research.HE.Weapons.Redalliance
-		Condition: upgrade.HE.Weapons.Redalliance
-	GrantConditionOnPrerequisite@research.Flak.Basilisk.Redalliance:
-		Prerequisites: research.Flak.Basilisk.Redalliance
-		Condition: upgrade.Flak.Basilisk.Redalliance
-	Armament@primaryHE:
-		Weapon: AP_basilic_HE_UP
-		LocalOffset: 1150,0,358
-		MuzzleSequence: muzzle
-		Recoil: 85
-		RecoilRecovery: 25
-		RequiresCondition: upgrade.HE.Weapons.Redalliance
-	Armament@secondary:
-		Weapon: AP_basilic_AA_flak
-		LocalOffset: -140,190,480, -140,-190,480
-		MuzzleSequence: muzzle.secondary
-		RequiresCondition: upgrade.Flak.Basilisk.Redalliance
-	WithMuzzleOverlay:
-	RevealsShroud:
-		Range: 8c0
 	RenderSprites:
 		Scale: 0.80
 	WithSpriteTurret:
@@ -191,40 +207,38 @@ t2_basilisk:
 		Actor: t2_basilisk.Husk
 		OwnerType: InternalName
 		EffectiveOwnerFromOwner: true
-	HitShape:
+
 
 t2_hydra:
 	Inherits@1: ^ShapeVehicleMedium
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Tank.Upgrade.Redalliance
-	Inherits@Target: ^AutoTargetAll
-	Inherits@NanoArmor: ^Upgrade_nanoarmor_Tank
+    # / Inherit Stat Unite /
+	Inherits@Target: ^AutoTargetAir
+    Inherits@UniteCarryable: ^UniteCarryable
+	Inherits@RevealCells: ^7cells.Range.base
+    # / Upgrade Faction /
+	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Range.Doctrines.Weapon
 	Tooltip:
 		Name: Hydra
 	Buildable:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 50
 		Prerequisites: artech
-		BuildDurationModifier: 10
-		Description: Heavy self-propelled anti-aircraft gun on a main battle tank hull\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
+		BuildDurationModifier: 20
+		Description: Heavy self-propelled anti-aircraft gun on a main battle tank hull\n> Strong vs Aircraft\n> Weak vs Vehicles
 		IconPalette: RedAlliance.Icon
+	Health:
+		HP: 2500
+	Mobile:
+		Speed: 75
 	Valued:
 		Cost: 1000
+	#// Exception armor //
 	Armor:
 		Type: LightVehicle
 	Health:
-		HP: 3000
-	Mobile:
-		Speed: 75
-		TurnSpeed: 8
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
-	AutoTarget:
+		HP: 2500
 	AttackTurreted:
 		RequiresCondition: !empdisable
 	GrantConditionOnPrerequisite@research.HE.Weapons.Redalliance:
@@ -242,22 +256,8 @@ t2_hydra:
 		Recoil: 150
 		RecoilRecovery: 15
 		MuzzleSequence: muzzle
-		LocalOffset: 1400,75,260, 1400,-75,260
-		RequiresCondition: !mode2 && !upgrade.Flak.Basilisk.Redalliance
-	Armament@PRIMARY2:
-		Weapon: AP_hydra
-		Recoil: 150
-		RecoilRecovery: 15
-		MuzzleSequence: muzzle
-		LocalOffset: 1400,75,260, 1400,-75,260
-		RequiresCondition: mode2 && !upgrade.Flak.Basilisk.Redalliance
-	Armament@PRIMARY3:
-		Weapon: AP_hydra
-		Recoil: 150
-		RecoilRecovery: 15
-		MuzzleSequence: muzzle
-		LocalOffset: 1400,75,260, 1400,-75,260
-		RequiresCondition: !mode2 && upgrade.Flak.Basilisk.Redalliance
+		MuzzlePalette: flameeffect
+		LocalOffset: 1800,140,260, 1800,-140,260
 	Armament@SECONDARY:
 		Weapon: AP_hydra_multimiss
 		Recoil: 150
@@ -265,69 +265,50 @@ t2_hydra:
 		MuzzleSequence: muzzle
 		LocalOffset: 1400,75,260, 1400,-75,260
 		RequiresCondition: mode2 && upgrade.Flak.Basilisk.Redalliance
-	WithDecoration@MOD1:
-		Image: stat-effect
-		Sequence: Level21
-		Palette: effect
-		ReferencePoint: bottom, center
-		ZOffset: 100
-		RequiresCondition: !mode2 && upgrade.Flak.Basilisk.Redalliance
-	WithDecoration@MOD2:
-		Image: stat-effect
-		Sequence: Level22
-		Palette: effect
-		ReferencePoint: bottom, center
-		ZOffset: 100
-		RequiresCondition: mode2 && upgrade.Flak.Basilisk.Redalliance
 	WithMuzzleOverlay:
 	RevealsShroud:
 		Range: 8c0
 	RenderSprites:
-		Scale: 0.80
+		Scale: 1.0
 	WithSpriteTurret:
-	GrantConditionOnDeploy:
-		DeployedCondition: mode2
-		DeploySound: deploy_vehicle_mode.aud
-		UndeploySound: deploy_vehicle_mode.aud
+	Transforms:
+		IntoActor: t2_hydra_deployed
+		TransformSounds: deploy_vehicle_mode.aud
+		Offset: 0,0
+		Facing: 96
+		PauseOnCondition: !upgrade.Flak.Basilisk.Redalliance
 	SpawnActorOnDeath:
 		Actor: t2_hydra.Husk
 		OwnerType: InternalName
 		EffectiveOwnerFromOwner: true
-	HitShape:
 
 t2_manticore:
 	Inherits@1: ^ShapeVehicleMedium
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Tank.Upgrade.Redalliance
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetGround
+    Inherits@UniteCarryable: ^UniteCarryable
+	Inherits@RevealCells: ^6cells.Range.base
+    # / Upgrade Faction /
+	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Range.Doctrines.Weapon
 	Tooltip:
 		Name: Manticore
 	Buildable:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 60
 		Prerequisites: artech
-		BuildDurationModifier: 15
+		BuildDurationModifier: 25
 		Description: Heavy self-propelled artillery on a main battle tank hull\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
 		IconPalette: RedAlliance.Icon
-	Valued:
-		Cost: 1300
-	Armor:
-		Type: ArmorTank
 	Health:
-		HP: 3000
+		HP: 1500
 	Mobile:
 		Speed: 65
-		TurnSpeed: 8
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
-	AutoTarget:
+	Valued:
+		Cost: 1200
 	AttackFrontal:
-		RequiresCondition: !empspeeddisable || !empdisable
+		PauseOnCondition: empdisable
 	Armament@PRIMARY:
 		Name: primary
 		Turret: primary
@@ -336,54 +317,55 @@ t2_manticore:
 		RecoilRecovery: 15
 		LocalOffset: 1000,0,750
 		MuzzleSequence: muzzle
-		RequiresCondition: !upgrade.HE.Weapons.Redalliancee
-	GrantConditionOnPrerequisite@research.HE.Weapons.Redalliancee:
-		Prerequisites: research.HE.Weapons.Redalliancee
-		Condition: upgrade.HE.Weapons.Redalliancee
+		RequiresCondition: !upgrade.HE.Weapons.Redalliance
+	GrantConditionOnPrerequisite@research.HE.Weapons.Redalliance:
+		Prerequisites: research.HE.Weapons.Redalliance
+		Condition: upgrade.HE.Weapons.Redalliance
 	Armament@primaryHE:
 		Name: primary
 		Turret: primary
 		Weapon: 120mm_mantis_HE_UP
 		LocalOffset: 1000,0,750
 		MuzzleSequence: muzzle
-		RequiresCondition: upgrade.HE.Weapons.Redalliancee
+		RequiresCondition: upgrade.HE.Weapons.Redalliance
 	WithMuzzleOverlay:
-	RevealsShroud:
-		Range: 10c0
 	RenderSprites:
 		Scale: 0.80
 	SpawnActorOnDeath:
 		Actor: t2_manticore.Husk
 		OwnerType: InternalName
 		EffectiveOwnerFromOwner: true
-	HitShape:
 
 t2_salamander:
 	Inherits@1: ^VoxelVehicleMedium
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Tank.Upgrade.Redalliance
-    Inherits@4: ^Subterean.Vehicle.Option
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@4: ^Subterean.Vehicle.Option
+	Inherits@RevealCells: ^6cells.Range.base
+    # / Upgrade Faction /
+	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Range.Doctrines.Weapon
 	Tooltip:
 		Name: Salamander
 	Buildable:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 70
 		Prerequisites: artech
-		BuildDurationModifier: 8
+		BuildDurationModifier: 15
 		Description: Subterranean transport vehicle armed with a flamethrower\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
 		IconPalette: RedAlliance.Icon
-	Valued:
-		Cost: 700
-	Armor:
-		Type: ArmorTank
 	Health:
-		HP: 2800
+		HP: 2500
+	Mobile:
+		Speed: 75
+	Valued:
+		Cost: 650
 	Mobile:
 		TurnSpeed: 5
-		Speed: 95
+		Speed: 100
 		Crushes: gibs, infantry, husk
-		RequiresCondition: !empdisable && !loading
+		PauseOnCondition: !(!empdisable && !loading)
 		Subterranean: true
 		SubterraneanCondition: submerged
 		SubterraneanTransitionTerrainTypes: Clear, Rough
@@ -393,7 +375,6 @@ t2_salamander:
 		SubterraneanTransitionSequence: idle
 		TerrainSpeeds:
 			Subterranean: 120
-	AutoTarget:
 	AttackTurreted:
 		RequiresCondition: !empdisable
 	Turreted:
@@ -401,20 +382,37 @@ t2_salamander:
 		RealignDelay: 20
 		Offset: -30,0,0
 	Armament@Flame:
-		Weapon: inferno_flamer_salamander
+		Weapon: FlamerDrone
 		Recoil: 15
 		RecoilRecovery: 15
 		LocalOffset: 1100,0,250
-		RequiresCondition: !upgrade.WeaponsFlamer.Redalliance
+		RequiresCondition: !upgrade.WeaponsFlamer.Redalliance && !Flammer.Doctrines.Redalliance
+	Armament@FlameUP:
+		Weapon: FlamerDroneUP
+		Recoil: 15
+		RecoilRecovery: 15
+		LocalOffset: 1100,0,250
+		RequiresCondition: upgrade.WeaponsFlamer.Redalliance && !Flammer.Doctrines.Redalliance
+	Armament@Doctrines.Flame:
+		Weapon: inferno_flamer_salamander.Doctrines
+		Recoil: 15
+		RecoilRecovery: 15
+		LocalOffset: 1100,0,250
+		RequiresCondition: !upgrade.WeaponsFlamer.Redalliance && Flammer.Doctrines.Redalliance
+	Armament@Doctrines.FlameUP:
+		Weapon: inferno_flamer_salamander_UP.Doctrines
+		Recoil: 15
+		RecoilRecovery: 15
+		LocalOffset: 1100,0,250
+		RequiresCondition: upgrade.WeaponsFlamer.Redalliance && Flammer.Doctrines.Redalliance
+	# Upgrade Upgrade
 	GrantConditionOnPrerequisite@research.WeaponsFlamer.Redalliance:
 		Prerequisites: research.WeaponsFlamer.Redalliance
 		Condition: upgrade.WeaponsFlamer.Redalliance
-	Armament@FlameUP:
-		Weapon: inferno_flamer_salamander_UP
-		Recoil: 15
-		RecoilRecovery: 15
-		LocalOffset: 1100,0,250
-		RequiresCondition: upgrade.WeaponsFlamer.Redalliance
+	# Upgrade Doctrines
+	GrantConditionOnPrerequisite@Flammer.Doctrines.Redalliance:
+		Prerequisites: Doctrine.Flammer.RedAlliance
+		Condition: Flammer.Doctrines.Redalliance
 	Cargo:
 		Types: Infantry
 		MaxWeight: 8
@@ -423,7 +421,7 @@ t2_salamander:
 		EjectOnDeath: true
 	RevealsShroud:
 		RequiresCondition: !submerged
-		Range: 8c0
+		Range: 5c0
 		MaxHeightDelta: 3
 	WithIdleOverlay@Shadow:
 		Offset: 0,0,-1
@@ -441,40 +439,32 @@ t2_salamander:
 		RequiresCondition: !submerged
 	Targetable:
 		RequiresCondition: !submerged
-	HitShape:
 
 t3_apocalypse:
 	Inherits: ^ShapeVehicleHeavy
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Tank.Upgrade.Redalliance
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetAll
-	Inherits@NanoArmor: ^Upgrade_nanoarmor_Tank
+    Inherits@UniteCarryable: ^UniteCarryable
+	Inherits@RevealCells: ^7cells.Range.base
+    # / Upgrade Faction /
+	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Range.Doctrines.Weapon
 	Tooltip:
 		Name: Apocalypse
 	Buildable:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 90
 		Prerequisites: t2_command_relais
-		BuildDurationModifier: 20
+		BuildDurationModifier: 35
 		Description: Super heavy tank armed with a dual-cannon and missile-launchers\n> Strong vs Vehicles, Aircraft, Structures\n> Weak vs Infantry
 		IconPalette: RedAlliance.Icon
+	Health:
+		HP: 9000
+	Mobile:
+		Speed: 55
 	Valued:
 		Cost: 2200
-	Armor:
-		Type: ArmorTank
-	Health:
-		HP: 5500
-	Mobile:
-		Speed: 70
-		TurnSpeed: 6
-		Crushes: gibs, infantry, husk, Vehicle
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
-	AutoTarget:
 	AttackTurreted:
 		RequiresCondition: !empdisable
 	Turreted:
@@ -486,7 +476,7 @@ t3_apocalypse:
 		Recoil: 150
 		RecoilRecovery: 15
 		MuzzleSequence: muzzle
-		LocalOffset: 1500,100,280, 1500,-100,280
+		LocalOffset: 1800,100,280, 1800,-100,280
 		RequiresCondition: !upgrade.HE.Weapons.Redalliance
 	GrantConditionOnPrerequisite@research.HE.Weapons.Redalliance:
 		Prerequisites: research.HE.Weapons.Redalliance
@@ -502,7 +492,7 @@ t3_apocalypse:
 		Weapon: fragMissile
 		Recoil: 150
 		RecoilRecovery: 15
-        FireDelay: 10
+		FireDelay: 10
 		LocalOffset: 5,300,260, 10,300,260, 15,300,260
 	SelfHealing@Base:
 		Step: 25
@@ -510,8 +500,6 @@ t3_apocalypse:
 		HealIfBelow: 50
 		DamageCooldown: 150
 	WithMuzzleOverlay:
-	RevealsShroud:
-		Range: 8c0
 	RenderSprites:
 		Scale: 0.80
 	WithSpriteTurret:
@@ -519,42 +507,30 @@ t3_apocalypse:
 		Actor: t3_apocalypse.Husk
 		OwnerType: InternalName
 		EffectiveOwnerFromOwner: true
-	HitShape:
 
 t3_purifier:
 	Inherits@1: ^ShapeVehicleHeavy
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Tank.Upgrade.Redalliance
+    # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetGroundAssaultMove
-	Inherits@NanoArmor: ^Upgrade_nanoarmor_Tank
+    Inherits@UniteCarryable: ^UniteCarryable
+	Inherits@RevealCells: ^7cells.Range.base
+    # / Upgrade Faction /
+	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Range.Doctrines.Weapon
 	Tooltip:
 		Name: Purifier
 	Buildable:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 100
 		Prerequisites: t2_command_relais
-		BuildDurationModifier: 20
+		BuildDurationModifier: 35
 		Description: Super heavy armored vehicle equipped with an insanely powerful dual flamethrower\n> Strong vs Infantry, Light Vehicles, Structures\n> Weak vs Heavy Vehicles, Aircraft
 		IconPalette: RedAlliance.Icon
 	Valued:
-		Cost: 2200
-	Armor:
-		Type: ArmorTank
+		Cost: 2000
 	Health:
-		HP: 5000
-	Mobile:
-		Speed: 70
-		TurnSpeed: 6
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
-	RevealsShroud:
-		Range: 8c0
-	AutoTarget:
+		HP: 7500
 	AttackTurreted:
 		RequiresCondition: !empdisable
 	Turreted:
@@ -565,25 +541,107 @@ t3_purifier:
 		Recoil: 100
 		RecoilRecovery: 15
 		LocalOffset: 800,200,340, 800,-200,340
-		RequiresCondition: !upgrade.WeaponsFlamer.Redalliance
-	GrantConditionOnPrerequisite@research.WeaponsFlamer.Redalliance:
-		Prerequisites: research.WeaponsFlamer.Redalliance
-		Condition: upgrade.WeaponsFlamer.Redalliance
+		RequiresCondition: !upgrade.WeaponsFlamer.Redalliance && !Flammer.Doctrines.Redalliance
 	Armament@gunUpgrade:
 		Weapon: FlamerPurifierUP
 		Recoil: 100
 		RecoilRecovery: 15
 		LocalOffset: 800,200,340, 800,-200,340
-		RequiresCondition: upgrade.WeaponsFlamer.Redalliance
+		RequiresCondition: upgrade.WeaponsFlamer.Redalliance && !Flammer.Doctrines.Redalliance
+	Armament@Doctrine:
+		Weapon: FlamerPurifier.Doctrine
+		Recoil: 100
+		RecoilRecovery: 15
+		LocalOffset: 800,200,340, 800,-200,340
+		RequiresCondition: !upgrade.WeaponsFlamer.Redalliance && Flammer.Doctrines.Redalliance
+	Armament@DoctrineUpgrade:
+		Weapon: FlamerPurifierUP.Doctrine
+		Recoil: 100
+		RecoilRecovery: 15
+		LocalOffset: 800,200,340, 800,-200,340
+		RequiresCondition: upgrade.WeaponsFlamer.Redalliance && Flammer.Doctrines.Redalliance
+	# Upgrade Reseach
+	GrantConditionOnPrerequisite@research.WeaponsFlamer.Redalliance:
+		Prerequisites: research.WeaponsFlamer.Redalliance
+		Condition: upgrade.WeaponsFlamer.Redalliance
+	# Upgrade Doctrines
+	GrantConditionOnPrerequisite@Flammer.Doctrines.Redalliance:
+		Prerequisites: Doctrine.Flammer.RedAlliance
+		Condition: Flammer.Doctrines.Redalliance
 	RenderSprites:
 		Scale: 0.70
 	WithSpriteTurret:
-	HitShape:
+	Armament@DoctrinesUpgrade:
+		Weapon: FlamerDroneUP.Doctrines
+		Recoil: 100
+		RecoilRecovery: 5
+		LocalOffset: 400,0,240
+		MuzzleSequence: muzzle
+		RequiresCondition: upgrade.WeaponsFlamer.Redalliance && Flammer.Doctrines.Redalliance
+	# Upgrade Reseach
+	GrantConditionOnPrerequisite@research.WeaponsFlamer.Redalliance:
+		Prerequisites: research.WeaponsFlamer.Redalliance
+		Condition: upgrade.WeaponsFlamer.Redalliance
+	# Upgrade Doctrines
+	GrantConditionOnPrerequisite@Flammer.Doctrines.Redalliance:
+		Prerequisites: Doctrine.Flammer.RedAlliance
+		Condition: Flammer.Doctrines.Redalliance
+	
+	
+
+t3_annihilator:
+	Inherits@1: ^ShapeWalkerHeavy
+    # / Inherit Stat Unite /
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@RevealCells: ^8cells.Range.base
+    # / Upgrade Faction /
+	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
+    # / Doctrines /
+	Inherits@Doctrines01: ^Aspect.Range.Doctrines.Weapon
+	Inherits@Doctrines02: ^Aspect.Speed.Doctrines.Walker
+	Valued:
+		Cost: 2300
+	Tooltip:
+		Name: Annihilator
+	Buildable:
+		Queue: Vehicle.redalliance
+		BuildPaletteOrder: 110
+		Prerequisites: t2_command_relais
+		BuildDurationModifier: 35
+		Description: Advanced nuclear artillery/support vehicle\nCan switch between close combat/artillery mode\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		IconPalette: RedAlliance.Icon
+	Health:
+		HP: 3800
+	Armament@gun:
+		Weapon: AP_Gatling_ann
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 800,-450,80
+		MuzzleSequence: muzzle
+	WithMuzzleOverlay:
+	RenderSprites:
+		Scale: 0.75
+	WithSpriteTurret:
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	Transforms:
+		IntoActor: t3_annihilator_deployed
+		Offset: 0,0
+		Facing: 96
+		TransformSounds: deploy_vehicle_mode.aud
+		NoTransformSounds:
+	Turreted:
+		TurnSpeed: 6
+		RealignDelay: 20
+		Offset: 0,0,1150
 
 t3_harbinger_mobile:
 	Inherits@1: ^VoxelVehicleHeavy
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Tank.Upgrade.Redalliance
+    # / Inherit Stat Unite /
+    Inherits@UniteCarryable: ^UniteCarryable
+	Inherits@RevealCells: ^7cells.Range.base
+    # / Upgrade Faction /
+	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
 	Tooltip:
 		Name: Harbinger
 	Buildable:
@@ -594,24 +652,11 @@ t3_harbinger_mobile:
 		Description: Advanced unarmed support vehicle capable of healing and cloaking nearby units when deployed\nCan detect stealthed units\n> Strong vs None\n> Weak vs Everything
 		IconPalette: RedAlliance.Icon
 	Valued:
-		Cost: 2300
-	Armor:
-		Type: ArmorTank
+		Cost: 2000
 	Health:
-		HP: 4600
+		HP: 3800
 	Mobile:
-		Speed: 70
-		TurnSpeed: 6
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
-		RequiresCondition: !deployed
-	RevealsShroud:
-		Range: 8c0
+		PauseOnCondition: !(!deployed)
 	RenderSprites:
 	-AutoTarget:
 	GrantConditionOnDeploy:
@@ -623,7 +668,7 @@ t3_harbinger_mobile:
 		Sequence: deployed
 		RequiresCondition: deployed
 	ProximityExternalCondition@HarbingerRepair:
-		Condition: harbingerRepairVehicle
+		Condition: FactoryRepairVehicle
 		Range: 5c0
 		AffectsParent: true
 		RequiresCondition: deployed
@@ -642,645 +687,5 @@ t3_harbinger_mobile:
 	WithRangeCircle@Cloak:
 		Range: 5c0
 		Type: cloakgenerator
-	DetectCloaked:
-		Range: 8c0
-		CloakTypes: Cloak, Buried
-        RequiresCondition: deployed
 	RenderVoxels:
 	WithVoxelBody:
-	HitShape:
-
-t3_annihilator:
-	Inherits@1: ^ShapeWalkerHeavy
-	Inherits@2: ^Global.Upgrade.Redalliance
-	Inherits@3: ^Tank.Upgrade.Redalliance
-	Inherits@Target: ^AutoTargetGroundAssaultMove
-	Valued:
-		Cost: 2400
-	Tooltip:
-		Name: Annihilator
-	Buildable:
-		Queue: Vehicle.redalliance
-		BuildPaletteOrder: 110
-		Prerequisites: t2_command_relais
-		BuildDurationModifier: 20
-		Description: Advanced nuclear artillery/support vehicle\nCan switch between close combat/artillery mode\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
-		IconPalette: RedAlliance.Icon
-	Mobile:
-		Speed: 70
-		TurnSpeed: 6
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
-	Health:
-		HP: 3200
-	Armor:
-		Type: ArmorTank
-	RevealsShroud:
-		Range: 8c0
-	Armament@gun:
-		Weapon: AP_Gatling_ann
-		Recoil: 150
-		RecoilRecovery: 15
-		LocalOffset: 800,-450,80
-		MuzzleSequence: muzzle
-	WithMuzzleOverlay:
-	AutoTarget:
-	RenderSprites:
-		Scale: 0.75
-	WithSpriteTurret:
-	AttackTurreted:
-		RequiresCondition: !empdisable
-	Transforms:
-		IntoActor: t3_annihilator_deployed
-		Offset: 0,0
-		Facing: 96
-		TransformSounds:
-		NoTransformSounds:
-	Turreted:
-		TurnSpeed: 6
-		RealignDelay: 20
-		Offset: 0,0,1150
-	HitShape:
-
-t1_harvester:
-	Inherits: ^VoxelVehicleMedium
-	Inherits@Target: ^AutoTargetGroundAssaultMove
-	Buildable:
-		Queue: Vehicle.redalliance
-		BuildPaletteOrder: 10
-		BuildDurationModifier: 10
-		Description: Armored harvester equipped with a heavy MG\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
-		IconPalette: RedAlliance.Icon
-	Valued:
-		Cost: 1000
-	Tooltip:
-		Name: Lamia (Harvester)
-		GenericName: Harvester
-	Selectable:
-		Priority: 7
-		DecorationBounds: 42,42
-	Harvester:
-		PipCount: 8
-		Capacity: 20
-		Resources: Diast,Diastgems
-		BaleLoadDelay: 15
-		BaleUnloadDelay: 1
-		SearchFromProcRadius: 24
-		SearchFromOrderRadius: 12
-	WithHarvestOverlay:
-	ProximityExternalCondition@FirtDeploy:
-		Condition: Reffinery.FirstDeploy
-		Range: 2
-		AffectsParent: true
-	Armament@gun:
-		Weapon: AP_Harvesterturret
-		Recoil: 100
-		RecoilRecovery: 15
-		LocalOffset: 500,200,340
-	Health:
-		HP: 4000
-	Armor:
-		Type: harvester
-	Mobile:
-		Speed: 95
-		TurnSpeed: 14
-		Crushes: gibs, infantry, mine, husk
-	AutoTarget:
-		InitialStance: HoldFire
-		InitialStanceAI: HoldFire
-	RevealsShroud:
-		Range: 8c0
-	WithSpriteBody:
-	WithDockingAnimation:
-	WithVoxelTurret:
-	AttackTurreted:
-		RequiresCondition: !empdisable
-	RenderSprites:
-		Scale: 1.0
-	Turreted:
-		TurnSpeed: 4
-		RealignDelay: 20
-	RenderVoxels:
-		Scale: 0.75
-	ProvidesPrerequisite@buildingname:
-		Prerequisite: arproc
-	HitShape:
-
-armcv:
-	Inherits: ^VoxelVehicleHeavyWalker
-	Buildable:
-		Prerequisites: artech
-		Queue: Vehicle.redalliance
-		BuildPaletteOrder: 80
-		Description: Mobile construction vehicle
-		BuildDurationModifier: 25
-		IconPalette: RedAlliance.Icon
-	Valued:
-		Cost: 2500
-	Tooltip:
-		Name: Gigantes(MCV)
-	Selectable:
-		Priority: 4
-		Bounds: 28,28
-	Health:
-		HP: 5000
-	Mobile:
-		Speed: 80
-		TurnSpeed: 6
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			wall: 65
-	RevealsShroud:
-		Range: 6c0
-	MustBeDestroyed:
-		RequiredForShortGame: true
-	Transforms:
-		Facing: 96
-		IntoActor: aracnst
-		Offset: -1,-1
-		TransformSounds: makebuild.wav
-		NoTransformNotification: CannotDeploy
-	SelectionDecorations:
-		VisualBounds: 42,42
-	WithVoxelWalkerBody:
-	-AutoTarget:
-	BaseBuilding:
-	RenderVoxels:
-		Scale: 0.75
-	AutoCarryable:
-	HitShape:
-
-refinery:
-	Inherits: ^VoxelVehicleHeavy
-	Valued:
-		Cost: 2000
-	Buildable:
-		Queue: Building.redalliance
-		Prerequisites: aracnst
-		BuildPaletteOrder: 20
-		Description: Refines Diastim into credits
-		BuildDurationModifier: 20
-		IconPalette: RedAlliance.Icon
-	Tooltip:
-		Name: Mobile Refinery
-	Selectable:
-		Priority: 4
-		Bounds: 42,42
-	Health:
-		HP: 3000
-	Armor:
-		Type: ArmorTank
-	Mobile:
-		Speed: 80
-		TurnSpeed: 6
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			wall: 65
-	RevealsShroud:
-		Range: 6c0
-	StoresResources:
-		PipCount: 0
-		Capacity: 2000000
-	Transforms:
-		IntoActor: arproc
-		Offset: -1,-2
-		Facing: 32
-		TransformSounds: makebuild.wav
-		NoTransformNotification: CannotDeploy
-	ProvidesPrerequisite:
-		Prerequisite: Mobile.Refinery
-	ProvidesPrerequisite@buildingname:
-		Prerequisite: arproc
-	MustBeDestroyed:
-		RequiredForShortGame: true
-	-AutoTarget:
-	RenderSprites:
-	RenderVoxels:
-		Scale: 0.75
-	BaseBuilding:
-	AutoCarryable:
-	HitShape:
-
-refinery.seconddeploy:
-	Inherits: ^VoxelVehicleHeavy
-	Valued:
-		Cost: 2000
-	Buildable:
-		Queue: nope.redalliance
-		Prerequisites: BuildOrderBase.redalliance
-		BuildPaletteOrder: 20
-		Description: Refines Diastim into credits
-		BuildDurationModifier: 20
-		IconPalette: RedAlliance.Icon
-	Tooltip:
-		Name: Mobile Refinery (no harvester)
-	Selectable:
-		Priority: 4
-		Bounds: 42,42
-	Health:
-		HP: 3000
-	Armor:
-		Type: ArmorTank
-	Mobile:
-		Speed: 80
-		TurnSpeed: 6
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			wall: 65
-	RevealsShroud:
-		Range: 6c0
-	StoresResources:
-		PipCount: 0
-		Capacity: 2000000
-	Transforms:
-		IntoActor: arproc.seconddeploy
-		Offset: -1,-2
-		Facing: 32
-		TransformSounds: makebuild.wav
-		NoTransformNotification: CannotDeploy
-	ProvidesPrerequisite:
-		Prerequisite: Mobile.Refinery
-	ProvidesPrerequisite@buildingname:
-		Prerequisite: arproc
-	MustBeDestroyed:
-		RequiredForShortGame: true
-	-AutoTarget:
-	RenderVoxels:
-		Image: refinery
-		Scale: 0.75
-	BaseBuilding:
-	AutoCarryable:
-	RenderSprites:
-		Image: refinery
-	HitShape:
-
-arnahand:
-	Inherits: ^VoxelVehicleHeavyWalker
-	Valued:
-		Cost: 500
-	Buildable:
-		Queue: Building.redalliance
-		Prerequisites: aracnst
-		BuildPaletteOrder: 30
-		Description: Produces infantry units
-		BuildDurationModifier: 5
-		IconPalette: RedAlliance.Icon
-	Tooltip:
-		Name: Mobile Barracks
-	Selectable:
-		Priority: 4
-		Bounds: 42,42
-	Health:
-		HP: 3000
-	Armor:
-		Type: ArmorTank
-	Mobile:
-		Speed: 80
-		TurnSpeed: 6
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			wall: 65
-	RevealsShroud:
-		Range: 6c0
-	Transforms:
-		IntoActor: arbarr
-		Offset: -1,-1
-		Facing: 96
-		TransformSounds: makebuild.wav
-		NoTransformNotification: CannotDeploy
-	ProvidesPrerequisite:
-		Prerequisite: Mobile.Barracks
-	ProvidesPrerequisite@buildingame:
-		Prerequisite: arbarr
-	MustBeDestroyed:
-		RequiredForShortGame: true
-	-AutoTarget:
-	RenderSprites:
-	RenderVoxels:
-		Scale: 1.1
-	BaseBuilding:
-	AutoCarryable:
-	HitShape:
-
-arnaweap:
-	Inherits: ^VoxelVehicleHeavyWalker
-	Valued:
-		Cost: 2000
-	Buildable:
-		Queue: Building.redalliance
-		Prerequisites: aracnst, arproc
-		BuildPaletteOrder: 40
-		Description: Produces vehicles
-		BuildDurationModifier: 25
-		IconPalette: RedAlliance.Icon
-	Tooltip:
-		Name: Mobile War Factory
-	Selectable:
-		Priority: 4
-		Bounds: 42,42
-	Health:
-		HP: 3000
-	Armor:
-		Type: ArmorTank
-	Mobile:
-		Speed: 80
-		TurnSpeed: 6
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			wall: 65
-	RevealsShroud:
-		Range: 6c0
-	Transforms:
-		IntoActor: arweap
-		Offset: -2,-1
-		Facing: 164
-		TransformSounds: makebuild.wav
-		NoTransformNotification: CannotDeploy
-	ProvidesPrerequisite@buildingame:
-		Prerequisite: arweap
-	MustBeDestroyed:
-		RequiredForShortGame: true
-	-AutoTarget:
-	RenderSprites:
-	RenderVoxels:
-		Scale: 0.75
-	BaseBuilding:
-	AutoCarryable:
-	HitShape:
-
-mobilerelay:
-	Inherits: ^VoxelVehicleHeavy
-	Valued:
-		Cost: 1500
-	Tooltip:
-		Name: Mobile Orbital Relay
-	Selectable:
-		Priority: 4
-		Bounds: 42,42
-	Buildable:
-		Queue: Building.redalliance
-		BuildPaletteOrder: 50
-		Prerequisites: arweap
-		BuildDurationModifier: 30
-		Description: Unlocks tier 2 units, upgrades and structures
-		IconPalette: RedAlliance.Icon
-	Health:
-		HP: 3000
-	Armor:
-		Type: ArmorTank
-	ProvidesPrerequisite@buildingname:
-		Prerequisite: artech
-	Mobile:
-		Speed: 84
-		TurnSpeed: 6
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			wall: 65
-	RevealsShroud:
-		Range: 6c0
-	StoresResources:
-		PipCount: 0
-		Capacity: 2000000
-	Transforms:
-		IntoActor: artech
-		Offset: -1,-1
-		Facing: 164
-		TransformSounds: makebuild.wav
-		NoTransformNotification: CannotDeploy
-	ProvidesPrerequisite@buildingame:
-		Prerequisite: artech
-	MustBeDestroyed:
-		RequiredForShortGame: true
-	-AutoTarget:
-	RenderSprites:
-	RenderVoxels:
-		Scale: 0.75
-	BaseBuilding:
-	AutoCarryable:
-	HitShape:
-
-t1_defence_hq:
-	Inherits: ^VoxelVehicleHeavy
-	Valued:
-		Cost: 1500
-	Tooltip:
-		Name: Mobile Defence Outpost
-	Selectable:
-		Priority: 4
-		Bounds: 42,42
-	Buildable:
-		Queue: Building.redalliance
-		BuildPaletteOrder: 60
-		BuildDurationModifier: 15
-		Description: Unlocks the Alliance's defensive structures and support powers
-		IconPalette: RedAlliance.Icon
-	Health:
-		HP: 3000
-	Armor:
-		Type: ArmorTank
-	ProvidesPrerequisite@buildingname:
-		Prerequisite: ardeftech
-	Mobile:
-		Speed: 85
-		TurnSpeed: 6
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			wall: 65
-	RevealsShroud:
-		Range: 6c0
-	Transforms:
-		IntoActor: ardeftech
-		Offset: -1,-1
-		Facing: 164
-		TransformSounds: makebuild.wav
-		NoTransformNotification: CannotDeploy
-	MustBeDestroyed:
-		RequiredForShortGame: true
-	-AutoTarget:
-	RenderSprites:
-	RenderVoxels:
-		Scale: 1.0
-	BaseBuilding:
-	AutoCarryable:
-	HitShape:
-
-t2_airfield:
-	Inherits: ^VoxelVehicleHeavyHover
-	Valued:
-		Cost: 1500
-	Buildable:
-		Queue: Building.redalliance
-		Prerequisites: aracnst, artech
-		BuildPaletteOrder: 80
-		Description: Produces and repairs aircraft
-		BuildDurationModifier: 15
-		IconPalette: RedAlliance.Icon
-	Tooltip:
-		Name: Mobile Airfield
-	Selectable:
-		Priority: 4
-		Bounds: 42,42
-	Health:
-		HP: 3000
-	Armor:
-		Type: ArmorTank
-	Mobile:
-		Speed: 60
-		TurnSpeed: 6
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			wall: 65
-	RevealsShroud:
-		Range: 6c0
-	Transforms:
-		IntoActor: arheli
-		Offset: -1,-1
-		Facing: 164
-		TransformSounds: makebuild.wav
-		NoTransformNotification: CannotDeploy
-	MustBeDestroyed:
-		RequiredForShortGame: true
-	-AutoTarget:
-	RenderSprites:
-	RenderVoxels:
-		Scale: 1.15
-	BaseBuilding:
-	HitShape:
-
-t3_doomtower_mobile:
-	Inherits: ^VoxelVehicleHeavy
-	Valued:
-		Cost: 1500
-	Tooltip:
-		Name: Doom Tower (Mobile)
-	Selectable:
-		Priority: 4
-		Bounds: 42,42
-	Health:
-		HP: 2500
-	Armor:
-		Type: ArmorTank
-	Mobile:
-		Speed: 60
-		TurnSpeed: 6
-		Crushes: gibs, infantry, husk
-		TerrainSpeeds:
-			wall: 65
-	RevealsShroud:
-		Range: 6c0
-	Transforms:
-		IntoActor: t3_doomtowerbuild
-		Offset: 0,0
-		Facing: 164
-		TransformSounds: makebuild.wav
-		NoTransformNotification: CannotDeploy
-	MustBeDestroyed:
-	-AutoTarget:
-	RenderSprites:
-	RenderVoxels:
-		Scale: 0.72
-	BaseBuilding:
-	HitShape:
-
-t2_predator_mobile:
-	Inherits: ^VoxelVehicleHeavyWalker
-	Valued:
-		Cost: 1000
-	Tooltip:
-		Name: Cyclops Turret (Mobile)
-	Mobile:
-		Speed: 60
-		TurnSpeed: 8
-		Crushes: gibs, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
-	Health:
-		HP: 3000
-	Armor:
-		Type: ArmorTank
-	Armament@gun:
-		Weapon: AP_Harvesterturret
-		Recoil: 100
-		RecoilRecovery: 15
-		LocalOffset: 500,200,340
-	Transforms:
-		IntoActor: t2_predator_deployed
-		Offset: 0,0
-		Facing: 96
-		TransformSounds:
-		NoTransformSounds:
-	RevealsShroud:
-		Range: 6c0
-	RenderSprites:
-	RenderVoxels:
-		Scale: 0.75
-	WithVoxelWalkerBody:
-		TickRate: 2
-	WithVoxelTurret:
-		ShowShadow: false
-	WithVoxelBarrel:
-		ShowShadow: false
-	AttackTurreted:
-		RequiresCondition: !empdisable
-	Turreted:
-		TurnSpeed: 4
-		RealignDelay: 20
-	HitShape:
-
-t2_tarantula_mobile:
-	Inherits: ^VoxelVehicleHeavyWalker
-	Valued:
-		Cost: 1000
-	Tooltip:
-		Name: Centaur Turret (Mobile)
-	Mobile:
-		Speed: 60
-		TurnSpeed: 8
-		Crushes: gibs, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
-	Health:
-		HP: 3000
-	Armor:
-		Type: ArmorTank
-	Armament@gun:
-		Weapon: AP_Harvesterturret
-		Recoil: 100
-		RecoilRecovery: 15
-		LocalOffset: 500,200,340
-	Transforms:
-		IntoActor: t2_tarantula_deployed
-		Offset: 0,0
-		Facing: 96
-		TransformSounds:
-		NoTransformSounds:
-	RevealsShroud:
-		Range: 6c0
-	RenderSprites:
-	RenderVoxels:
-		Scale: 0.75
-	WithVoxelWalkerBody:
-		TickRate: 2
-	WithVoxelTurret:
-		ShowShadow: false
-	WithVoxelBarrel:
-		ShowShadow: false
-	AttackTurreted:
-		RequiresCondition: !empdisable
-	Turreted:
-		TurnSpeed: 4
-		RealignDelay: 20
-	HitShape:

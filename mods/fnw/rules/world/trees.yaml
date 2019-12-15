@@ -1,6 +1,6 @@
 ^RevisionScaleTreeModel:
-    RenderSprites:
-        Scale: 0.55
+	RenderSprites:
+		Scale: 0.55
 
 tree01:
 	Inherits: ^Tree
@@ -308,7 +308,7 @@ tree36:
 		Dimensions: 1,1
 	HitShape:
 		UseTargetableCellsOffsets: true
-        
+		
 tree37:
 	Inherits: ^Tree
 	Building:
@@ -316,7 +316,7 @@ tree37:
 		Dimensions: 3,3
 	HitShape:
 		UseTargetableCellsOffsets: true
-        
+		
 tree38:
 	Inherits: ^Tree
 	Building:
@@ -324,7 +324,7 @@ tree38:
 		Dimensions: 3,3
 	HitShape:
 		UseTargetableCellsOffsets: true
-        
+		
 tree39:
 	Inherits: ^Tree
 	Building:
@@ -332,7 +332,7 @@ tree39:
 		Dimensions: 3,3
 	HitShape:
 		UseTargetableCellsOffsets: true
-        
+
 tree40:
 	Inherits: ^Tree
 	Building:
@@ -340,3 +340,331 @@ tree40:
 		Dimensions: 3,3
 	HitShape:
 		UseTargetableCellsOffsets: true
+		
+treebionte01:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: treebionte
+		Scale: 1.0
+	HitShape:
+		UseTargetableCellsOffsets: true
+		
+treebionte02:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: treebionte
+		Scale: 1.0
+	HitShape:
+		UseTargetableCellsOffsets: true
+		
+treebionte03:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: treebionte
+		Scale: 1.0
+	HitShape:
+		UseTargetableCellsOffsets: true
+		
+treebionte04:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: treebionte
+		Scale: 1.0
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+orga_tree01:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	RenderSprites:
+		Palette: treeorganic
+		Scale: 1.1
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+orga_tree02:
+	Inherits: ^Tree
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	RenderSprites:
+		Palette: treeorganic
+		Scale: 1.1
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+orga_tree03:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: treeorganic
+		Scale: 1.2
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+orga_tree04:
+	Inherits: ^Tree
+	Building:
+		Footprint: x x
+		Dimensions: 1,2
+	RenderSprites:
+		Palette: treeorganic
+		Scale: 1.2
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+orga_tree05:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: treeorganic
+		Scale: 1.3
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+orga_tree06:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: treeorganic
+		Scale: 1.4
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+orga_tree07:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: treeorganic
+		Scale: 1.4
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+orga_tree08:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx
+		Dimensions: 1,2
+	RenderSprites:
+		Palette: treeorganic
+		Scale: 1.5
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+orga_tree09:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: treeorganic
+		Scale: 1.5
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+orga_tree10:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: treeorganic
+		Scale: 1.5
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+
+crystal_tree01:
+	Inherits: ^Tree
+	Building:
+		Footprint: xxx
+		Dimensions: 1,3
+	RenderSprites:
+		Palette: crystaltree
+		Scale: 1.1
+	WithIdleOverlay:
+		Sequence: treeroot
+	WithIdleOverlay@light:
+		Sequence: light
+		Palette: crystaltreealpha25
+	WithIdleOverlay@effet:
+		Sequence: effect
+		Palette: crystaltreealpha25
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+crystal_tree02:
+	Inherits: ^Tree
+	Building:
+		Footprint: xxx
+		Dimensions: 1,3
+	RenderSprites:
+		Palette: crystaltree
+		Scale: 1.1
+	WithIdleOverlay:
+		Sequence: treeroot
+	WithIdleOverlay@light:
+		Sequence: light
+		Palette: crystaltreealpha25
+	WithIdleOverlay@effet:
+		Sequence: effect
+		Palette: crystaltreealpha25
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+crystal_tree03:
+	Inherits: ^Tree
+	Building:
+		Footprint: xxx
+		Dimensions: 1,3
+	RenderSprites:
+		Palette: crystaltree
+		Scale: 1.1
+	WithIdleOverlay:
+		Sequence: treeroot
+	WithIdleOverlay@light:
+		Sequence: light
+		Palette: crystaltreealpha25
+	WithIdleOverlay@effet:
+		Sequence: effect
+		Palette: crystaltreealpha25
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+crystal_tree04:
+	Inherits: ^Tree
+	Building:
+		Footprint: xxx
+		Dimensions: 1,3
+	RenderSprites:
+		Palette: crystaltree
+		Scale: 1.1
+	WithIdleOverlay:
+		Sequence: treeroot
+	WithIdleOverlay@light:
+		Sequence: light
+		Palette: crystaltreealpha25
+	WithIdleOverlay@effet:
+		Sequence: effect
+		Palette: crystaltreealpha25
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+crystal_tree05:
+	Inherits: ^Tree
+	Building:
+		Footprint: xxx
+		Dimensions: 1,3
+	RenderSprites:
+		Palette: crystaltree
+		Scale: 1.1
+	WithIdleOverlay:
+		Sequence: treeroot
+	WithIdleOverlay@light:
+		Sequence: light
+		Palette: crystaltreealpha25
+	WithIdleOverlay@effet:
+		Sequence: effect
+		Palette: crystaltreealpha25
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+crystal_tree06:
+	Inherits: ^Tree
+	Building:
+		Footprint: xxx
+		Dimensions: 1,3
+	RenderSprites:
+		Palette: crystaltree
+		Scale: 1.1
+	WithIdleOverlay:
+		Sequence: treeroot
+	WithIdleOverlay@light:
+		Sequence: light
+		Palette: crystaltreealpha25
+	WithIdleOverlay@effet:
+		Sequence: effect
+		Palette: crystaltreealpha25
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+crystal_tree07:
+	Inherits: ^Tree
+	Building:
+		Footprint: xxx
+		Dimensions: 1,3
+	RenderSprites:
+		Palette: crystaltree
+		Scale: 1.1
+	WithIdleOverlay:
+		Sequence: treeroot
+	WithIdleOverlay@light:
+		Sequence: light
+		Palette: crystaltreealpha25
+	WithIdleOverlay@effet:
+		Sequence: effect
+		Palette: crystaltreealpha25
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+crystal_tree08:
+	Inherits: ^Tree
+	Building:
+		Footprint: xxx
+		Dimensions: 1,3
+	RenderSprites:
+		Palette: crystaltree
+		Scale: 1.1
+	WithIdleOverlay:
+		Sequence: treeroot
+	WithIdleOverlay@light:
+		Sequence: light
+		Palette: crystaltreealpha25
+	WithIdleOverlay@effet:
+		Sequence: effect
+		Palette: crystaltreealpha25
+	HitShape:
+		UseTargetableCellsOffsets: true
+		

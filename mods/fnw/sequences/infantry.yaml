@@ -1,35 +1,30 @@
 ^DeadInfantryGlobal:
-	die5: explgore
+	die2: explgore
 		Start: 0
 		Length: 20
 		Tick: 50
 		ZOffset: -10
-	die6: burninf
+	die3: burninf
 		Start: 0
 		Length: 20
 		Tick: 50
 		ZOffset: -10
-	die7: megagoreexpl
-		Start: 0
-		Length: 16
-		Tick: 60
-		ZOffset: -10
-	die8: deathnuke
+	die4: deathnuke
 		Length: 15
 		Tick: 35
 		ZOffset: -10
-	die9: deathionique
+	die5: deathionique
 		Length: 10
 		Tick: 35
 		ZOffset: -10
-	die10: deathplasma
+	die6: deathplasma
 		Length: 10
 		Tick: 35
 		ZOffset: -10
 	die-crushed: explgore
-		Start: 16
+		Start: 15
 		Length: 1
-		Tick: 800
+		Tick: 1800
 		ZOffset: -511
 
 t1_comrade:
@@ -63,6 +58,38 @@ t1_comrade:
 		BlendMode: Additive
 	icon: t1_comradeicon
 		Start: 0
+        
+t1_stealhar:
+	Inherits@Stat: ^StatInfantryEffect
+    Inherits@Dead: ^DeadInfantryGlobal
+	stand:
+		Start: 0
+		Facings: 8
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+	idle1:
+		Start: 5
+		Length: 1
+	die1:
+		Start: 103
+		Length: 8
+		Tick: 80
+	shoot:
+		Start: 55
+		Length: 6
+		Facings: 8
+	muzzle: redbeam_small_muzzle
+		Start: 0
+		Length: *
+		BlendMode: Additive
+	garrison-muzzle: redbeam_small_muzzle
+		Start: 0
+		Length: *
+		BlendMode: Additive
+	icon: t1_stealharicon
+		Start: 0
 
 droneconclave:
 	Inherits@Stat: ^StatInfantryEffect
@@ -73,7 +100,7 @@ droneconclave:
 		Start: 8
 		Length: 6
 		Facings: 8
-		Tick: 50
+		Tick: 120
 	shoot:
 		Start: 56
 		Length: 1
@@ -121,8 +148,15 @@ t3_navigator:
 	die1: t1_comrade
 		Start: 0
 	shoot:
-		Start: 8
+		Start: 0
 		Facings: 8
+    Shield: shiel_pilgrim
+        Length: *
+        Offset: 0, 0
+		BlendMode: Additive
+    robe_navigator: robe_navigator
+        Length: *
+        Offset: 0, 0
 	muzzle: redbeam_small_muzzle
 		Start: 0
 		Length: *
@@ -147,15 +181,21 @@ t1_disciple:
 	idle1:
 		Start: 104
 		Length: 15
+	idle2:
+		Start: 119
+		Length: 15
 	die1:
-		Start: 120
-		Length: 8
+		Start: 134
+		Length: 15
 		Tick: 80
 	shoot:
 		Start: 56
 		Length: 6
 		Facings: 8
-	garrison-muzzle: minigun_impact
+	muzzle: muzzle_autogun_small
+		Start: 0
+		Length: *
+	garrison-muzzle: muzzle_autogun_small
 		Start: 0
 		Length: *
 	icon: t1_discipleicon
@@ -194,19 +234,21 @@ t2_tesla:
 	run:
 		Start: 8
 		Length: 6
-		Tick: 40
 		Facings: 8
-	idle1:
-		Start: 52
-		Length: 5
+		Tick: 90
+	idle:
+		Start: 103
+		Length: 6
+		Tick: 90
 	die1:
-		Start: 57
-		Length: 8
-		Tick: 80
+		Start: 109
+		Length: 6
+		Tick: 90
 	shoot:
-		Start: 63
-		Length: 1
+		Start: 56
+		Length: 6
 		Facings: 8
+		Tick: 90
 	garrison-muzzle: minigun_impact
 		Start: 0
 		Length: *
@@ -223,19 +265,24 @@ t3_eradicator:
 		Start: 8
 		Length: 6
 		Facings: 8
-		Tick: 60
+		Tick: 100
 	idle1:
 		Start: 104
 		Length: 15
+		Tick: 90
 	die1:
 		Start: 120
 		Length: 7
-		Tick: 80
+		Tick: 100
 	shoot:
 		Start: 56
 		Length: 6
 		Facings: 8
-	garrison-muzzle: minigun_impact
+		Tick: 120
+	muzzle: autogun_expl
+		Start: 0
+		Length: *
+	garrison-muzzle: autogun_expl
 		Start: 0
 		Length: *
 	icon: t3_eradicatoricon
@@ -247,35 +294,24 @@ t2_devastator:
 	stand:
 		Start: 0
 		Facings: 8
+		Tick: 90
 	run:
 		Start: 8
 		Length: 6
 		Facings: 8
-		Tick: 40
+		Tick: 90
 	idle1:
-		Start: 56
-		Length: 5
-	prone-run:
-		Start: 111
+		Start: 104
 		Length: 6
-		Facings: 8
-	prone-stand:
-		Start: 103
-		Length: 1
-		Facings: 8
-		Stride: 6
 	die1:
-		Start: 62
-		Length: 5
-		Tick: 80
+		Start: 116
+		Length: 6
+		Tick: 90
 	shoot:
-		Start: 68
+		Start: 56
 		Length: 6
 		Facings: 8
-	prone-shoot:
-		Start: 159
-		Length: 6
-		Facings: 8
+		Tick: 90
 	garrison-muzzle: minigun_impact
 		Start: 0
 		Length: *
@@ -390,32 +426,36 @@ ardisciple:
 soldierop:
 	Inherits@Stat: ^StatInfantryEffect
     Inherits@Dead: ^DeadInfantryGlobal
+    Default:
+		Tick: 30
 	stand:
 		Start: 0
 		Facings: 8
 	run:
-		Start: 7
-		Length: 5
-		Facings: 8
-	idle:
-		Start: 56
-		Length: 15
-	die:
-		Start: 135
-		Length: 18
-		Tick: 80
-	shoot:
-		Start: 116
+		Start: 8
 		Length: 6
 		Facings: 8
-	standup-0:
-		Start: 260
-		Length: 2
-		Facings: 8
+	idle:
+		Start: 104
+		Length: 12
+	die:
+		Start: 116
+		Length: 11
 		Tick: 80
-	garrison-muzzle: minigun_impact
-		Start: 0
-		Length: *
+	shoot:
+		Start: 56
+		Length: 6
+		Facings: 8
+		Tick: 60
+	muzzle: firegunmuzzlemin
+		Facings: -16
+		Length: 14
+		BlendMode: Additive
+		Tick: 60
+	garrison-muzzle: firegunmuzzlemin
+		Facings: -16
+		Length: 14
+		BlendMode: Additive
 	icon: champicon
 		Start: 0
 
@@ -444,6 +484,34 @@ roquetteorderinf:
 		Length: *
 	icon: roquetteorderinficon
 		Start: 0
+        
+t1_opengineer:
+	Inherits@Stat: ^StatInfantryEffect
+    Inherits@Dead: ^DeadInfantryGlobal
+	stand:
+		Start: 0
+		Facings: 8
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+	idle1:
+		Start: 56
+		Length: 12
+	die1:
+		Start: 67
+		Length: 12
+		Tick: 80
+	muzzle: redbeam_small_muzzle
+		Start: 0
+		Length: *
+		BlendMode: Additive
+	garrison-muzzle: redbeam_small_muzzle
+		Start: 0
+		Length: *
+		BlendMode: Additive
+	icon: engineer_opicon
+		Start: 0
 
 jotun:
 	Inherits@Stat: ^StatInfantryEffect
@@ -452,23 +520,28 @@ jotun:
 		Start: 0
 		Facings: 8
 	run:
-		Start: 7
-		Length: 5
+		Start: 8
+		Length: 6
 		Facings: 8
 	idle:
-		Start: 63
+		Start: 56
 		Length: 5
 	die1:
-		Start: 69
+		Start: 70
 		Length: 5
 		Tick: 80
 	shoot:
-		Start: 55
+		Start: 62
 		Length: 1
 		Facings: 8
-	garrison-muzzle: minigun_impact
+	muzzle: pulse_lightmin
 		Start: 0
 		Length: *
+        BlendMode: Additive
+	garrison-muzzle: pulse_lightmin
+		Start: 0
+		Length: *
+        BlendMode: Additive
 	icon: jotunicon
 		Start: 0
 
@@ -491,6 +564,8 @@ vanir:
 gardian:
 	Inherits@Stat: ^StatInfantryEffect
     Inherits@Dead: ^DeadInfantryGlobal
+    Default:
+		Tick: 30
 	stand:
 		Start: 0
 		Facings: 8
@@ -499,19 +574,66 @@ gardian:
 		Length: 6
 		Facings: 8
 	idle:
-		Start: 63
-		Length: 5
+		Start: 104
+		Length: 12
+	die:
+		Start: 116
+		Length: 11
+		Tick: 80
 	shoot:
 		Start: 56
-		Length: 5
+		Length: 6
 		Facings: 8
-	garrison-muzzle: minigun_impact
-		Start: 0
-		Length: *
+		Tick: 60
+	muzzle: firegunmuzzlemin
+		Facings: -16
+		Length: 14
+		BlendMode: Additive
+		Tick: 60
+	garrison-muzzle: firegunmuzzlemin
+		Facings: -16
+		Length: 14
+		BlendMode: Additive
 	icon: gardianicon
 		Start: 0
 
 statis:
+	Inherits@Stat: ^StatInfantryEffect
+    Inherits@Dead: ^DeadInfantryGlobal
+    Default:
+		Tick: 50
+	stand:
+		Start: 0
+		Facings: 8
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+	idle:
+		Start: 4
+		Length: 0
+	die:
+		Start: 104
+		Length: 6
+		Tick: 60
+	shoot:
+		Start: 56
+		Length: 6
+		Facings: 8
+		Tick: 50
+	muzzle: firegunmuzzlemin
+		Facings: -16
+		Length: 14
+		BlendMode: Additive
+		Tick: 60
+	garrison-muzzle: firegunmuzzlemin
+		Facings: -16
+		Length: 14
+		BlendMode: Additive
+	icon: statisicon
+		Start: 0
+        
+t1_guardmen:
 	Inherits@Stat: ^StatInfantryEffect
     Inherits@Dead: ^DeadInfantryGlobal
 	stand:
@@ -521,17 +643,16 @@ statis:
 		Start: 8
 		Length: 6
 		Facings: 8
-		Tick: 50
 	die1:
-		Start: 64
+		Start: 105
 		Length: 6
 		Tick: 80
 	shoot:
-		Start: 56
+		Start: 57
+		Length: 6
 		Facings: 8
-		Tick: 80
 	garrison-muzzle: minigun_impact
 		Start: 0
 		Length: *
-	icon: statisicon
+	icon: t1_aesiricon
 		Start: 0

@@ -17,16 +17,8 @@ tcmcv:
 		HP: 5000
 	Armor:
 		Type: ArmorTank
-	Mobile:
-		Speed: 65
-		Crushes: crate, infantry
-	RevealsShroud:
-		Range: 6c0
 	MustBeDestroyed:
 		RequiredForShortGame: true
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	Transforms:
 		Facing: 96
 		IntoActor: tccacnst
@@ -45,132 +37,85 @@ tcmcv:
 		Step: 5
 		Ticks: 3
 		HealIfBelow: 50
-	HitShape:
 
 prospecteur:
-	Inherits: ^VoxelVehicleHover
+	Inherits: ^ShapeHoverMedium
+	Inherits@harvester: ^Harvester.rules
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 10
 		Prerequisites: GateWarp.conclave
 		InitialActivity: FindResources
-		BuildDurationModifier: 10
 		Description: Hover Diastim harvester
 		IconPalette: Conclave.Icon
-	Valued:
-		Cost: 1000
 	Tooltip:
 		Name: Prospector(Harvester)
 		GenericName: Harvester
 	Selectable:
 		Priority: 7
 		DecorationBounds: 42,42
-	Harvester:
-		PipCount: 8
-		Capacity: 20
-		Resources: Diast,Diastgems
-		BaleLoadDelay: 15
-		BaleUnloadDelay: 1
-		SearchFromProcRadius: 24
-		SearchFromOrderRadius: 12
 	WithHarvestOverlay:
 	Health:
 		HP: 4000
-	Armor:
-		Type: harvester
 	-AutoTarget:
-	Mobile:
-		Speed: 95
-		TurnSpeed: 14
-		Crushes: gibs, infantry, mine, husk
-	RevealsShroud:
-		Range: 6c0
 	RenderSprites:
 		Scale: 1.0
-	WithSpriteBody:
-	WithVoxelBody:
 	WithDockingAnimation:
-	HitShape:
 
 t2_rodeur:
 	Inherits: ^ShapeWalkerMedium
 	Inherits@Target: ^AutoTargetGroundAssaultMove
-	Valued:
-		Cost: 1000
+	Inherits@DetectCloaked: ^Vehicles.DetectCloaked
+	Inherits@RevealCells: ^7cells.Range.base
 	Tooltip:
 		Name: Prowler
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 40
 		Prerequisites: tcholotech.rodeur
-		BuildDurationModifier: 10
+		BuildDurationModifier: 20
 		Description: Lightly armored “main battle tank” equipped with a twin fast-firing laser cannon\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
 		IconPalette: Conclave.Icon
-	Mobile:
-		Speed: 115
-		TurnSpeed: 19
-		WaitSpread: 1
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
 	Health:
-		HP: 2400
-	RevealsShroud:
-		Range: 8c0
+		HP: 3500
+	Mobile:
+		Speed: 105
+	Valued:
+		Cost: 980
 	Armament@gun:
 		Weapon: Rodeur.Dual.LightLaser
-		Recoil: 150
-		RecoilRecovery: 4
 		MuzzleSequence: muzzle
-		LocalOffset: 450,260,350
+		LocalOffset: 450,260,650
 		RequiresCondition: !upgrade.Base.Rodeur.Conclave
 	Armament@gun2:
 		Weapon: Rodeur.Dual.LightLaser
-		Recoil: 150
-		RecoilRecovery: 4
 		MuzzleSequence: muzzle
-		LocalOffset: 450,-260,350
+		LocalOffset: 450,-260,650
 		RequiresCondition: !upgrade.Base.Rodeur.Conclave
 	Armament@gunAlpha:
 		Weapon: Rodeur.Dual.LightLaser.Alpha
-		Recoil: 150
-		RecoilRecovery: 4
 		MuzzleSequence: muzzle
-		LocalOffset: 450,260,350
+		LocalOffset: 450,260,650
 		RequiresCondition: upgrade.Alpha.Rodeur.Conclave
 	Armament@gunAlpha2:
 		Weapon: Rodeur.Dual.LightLaser.Alpha
-		Recoil: 150
-		RecoilRecovery: 4
 		MuzzleSequence: muzzle
-		LocalOffset: 450,-260,350
+		LocalOffset: 450,-260,650
 		RequiresCondition: upgrade.Alpha.Rodeur.Conclave
 	Armament@gunOmega:
 		Weapon: Rodeur.Dual.LightLaser.Omega
-		Recoil: 150
-		RecoilRecovery: 4
 		MuzzleSequence: muzzle
-		LocalOffset: 450,260,350
+		LocalOffset: 450,260,650
 		RequiresCondition: upgrade.Omega.Rodeur.Conclave
 	Armament@gunOmega2:
 		Weapon: Rodeur.Dual.LightLaser.Omega
-		Recoil: 150
-		RecoilRecovery: 4
 		MuzzleSequence: muzzle
-		LocalOffset: 450,-260,350
+		LocalOffset: 450,-260,650
 		RequiresCondition: upgrade.Omega.Rodeur.Conclave
 	DamageMultiplier@Omega:
 		Modifier: 90
 		RequiresCondition: upgrade.Omega.Rodeur.Conclave
 	WithMuzzleOverlay:
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	AutoTarget:
 	RenderSprites:
 		Scale: 0.80
 	WithSpriteTurret:
@@ -189,59 +134,41 @@ t2_rodeur:
 	GrantConditionOnPrerequisite@Omega:
 		Prerequisites: research.Omega.Rodeur.Conclave
 		Condition: upgrade.Omega.Rodeur.Conclave
-	HitShape:
 
 t3_surveyor:
 	Inherits: ^ShapeWalkerMedium
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Valued:
-		Cost: 2400
+		Cost: 2200
 	Tooltip:
 		Name: Surveyor
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 110
 		Prerequisites: tcholotech.arpenteur
-		BuildDurationModifier: 20
+		BuildDurationModifier: 30
 		Description: Three legged heavy walker\nDeals damage based on HP percentages\n> Strong vs Vehicles, Structures\n> Weak vs Infantry, Aircraft
 		IconPalette: Conclave.Icon
 	Mobile:
-		Speed: 60
-		TurnSpeed: 3
-		Crushes: wall, mine, crate, infantry
-		TerrainSpeeds:
-			Clear: 100
-			Rough: 70
-			Road: 100
-			Beach: 70
-			Diast: 70
-		RequiresCondition: !empdisable || upgrade.Omega.Arpenteur.Conclave
+		PauseOnCondition: !(!empdisable || upgrade.Omega.Arpenteur.Conclave)
 	Health:
-		HP: 5000
-	Armor:
-		Type: ArmorTank
-	RevealsShroud:
-		Range: 8c0
+		HP: 4000
 	Armament@left:
 		Weapon: ExconvectorGun.lateral
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 400,320,50
-    Armament@right:
+	Armament@right:
 		Weapon: ExconvectorGun.lateral
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 400,-320,50
-    Armament@Primaris:
+	Armament@Primaris:
 		Weapon: ExconvectorGun.primaris
 		Recoil: 150
-        FireDelay: 6
+		FireDelay: 6
 		RecoilRecovery: 15
 		LocalOffset: 800,0,50
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
-	AutoTarget:
 	SelfHealing@Base:
 		Step: 25
 		Delay: 8
@@ -316,6 +243,15 @@ t3_surveyor:
 	TimedConditionBar@shield:
 		Condition: ShieldActivate
 	HitShape:
+	Rearmable:
+		RearmActors: fix
+		AmmoPools: primary, shield
+	Rearmable:
+		RearmActors: fix
+		AmmoPools: primary, shield
+	Rearmable:
+		RearmActors: fix
+		AmmoPools: primary, shield
 
 activate.Shield:
 	Inherits: ^Capacity.system.active
@@ -327,23 +263,18 @@ t2_pilgrim:
 	Inherits: ^ShapeHoverMedium
 	Inherits@Target: ^AutoTargetAllAssaultMove
 	Valued:
-		Cost: 1100
+		Cost: 1200
 	Tooltip:
 		Name: Pilgrim
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 60
 		Prerequisites: tcholotech.pelerin
-		BuildDurationModifier: 15
+		BuildDurationModifier: 25
 		Description: Hover anti-aircraft missile launcher\nCan be deployed into an artillery\n> Strong vs Vehicles, Aircraft\n> Weak vs Infantry
 		IconPalette: Conclave.Icon
-	Mobile:
-		Speed: 90
-		TurnSpeed: 6
-		WaitSpread: 12
-		Crushes: wall, mine, crate, infantry
 	Transforms:
-		IntoActor: dcatnk_deployed
+		IntoActor: t2_pilgrimdeployed
 		TransformSounds: deploy_vehicle_mode.aud
 		Offset: 0,0
 		Facing: 96
@@ -352,29 +283,23 @@ t2_pilgrim:
 		Prerequisites: research.Alpha.Pelerin.Conclave
 		Condition: upgrade.Alpha.Pelerin.Conclave
 	Health:
-		HP: 2300
-	Armor:
-		Type: LightVehicle
-	RevealsShroud:
-		Range: 9c0
+		HP: 1200
 	Armament@gun:
 		Weapon: Photo_MissileAA
 		Recoil: 150
 		RecoilRecovery: 15
-        LocalYaw: 100, -100
+		LocalYaw: 100, -100
 		LocalOffset: 250,100,200, 250,-100,200
 	Armament@gunAA:
 		Weapon: Photo_Missile
 		Recoil: 150
 		RecoilRecovery: 15
-        LocalYaw: 100, -100
+		LocalYaw: 100, -100
 		LocalOffset: 250,100,200, 250,-100,200
 		RequiresCondition: upgrade.Alpha.Pelerin.Conclave
-	Explodes:
-		Weapon: UnitExplodeSmall
-		EmptyWeapon: UnitExplodeSmall
 	AutoTarget:
 	RenderSprites:
+        Scale: 0.95
 	Hovers:
 	WithSpriteTurret:
 	AttackTurreted:
@@ -387,4 +312,3 @@ t2_pilgrim:
 		Actor: t2_pilgrim.Husk
 		OwnerType: InternalName
 		EffectiveOwnerFromOwner: true
-	HitShape:
