@@ -30,7 +30,10 @@
 		Condition: Upgrade.FusionSpeed.Vehicle
 	SpeedMultiplier@Engine Speed:
 		RequiresCondition: Upgrade.FusionSpeed.Vehicle
-		Modifier: 120
+		Modifier: 130
+	GrantConditionOnPrerequisite@research.Retrofit.Redalliance:
+		Prerequisites: research.Retrofit.Redalliance
+		Condition: Upgrade.Retrofit.Redalliance
 #Aspect Trait Option
 
 ^Aspect.Base.Redalliance:
@@ -198,6 +201,7 @@ Doctrine.RangeStand.RedAlliance:
 		Condition: RemoveBaseStatsAR
 	KillsSelf:
 		RequiresCondition: !RemoveBaseStatsAR && RevokedStat
+        
 		
 Doctrine.Walker.RedAlliance:
 	Inherits@Research: ^Aspect.Base.Redalliance
@@ -420,7 +424,7 @@ Upgrade.Flak.Basilisk.Redalliance:
 	RenderSprites:
 		Image: arflakicon
 	ProvidesPrerequisite:
-		Prerequisite: research.Flak.Basilisk.Redalliance
+		Prerequisite: research.Retrofit.Redalliance
 
 Upgrade.Range.Detect.Redalliance:
 	Inherits@Research: ^ResearchActor

@@ -1,5 +1,12 @@
-Player:
+^BasePlayer:
 	AlwaysVisible:
+	Shroud:
+    
+EditorPlayer:
+	Inherits: ^BasePlayer
+
+Player:
+	Inherits: ^BasePlayer
 	PlaceBuilding:
 		NewOptionsNotification: NewOptions
 		CannotPlaceNotification: BuildingCannotPlaceAudio
@@ -48,7 +55,13 @@ Player:
 		Id: unrestricted
 	EnemyWatcher:
 	ResourceStorageWarning:
+    LobbyPrerequisiteCheckbox@FrenchLanguage:
+        ID: Crane.option
+		Label: Activé les grues
+		Description: Active les structures type "grue"
+		Enabled: false
+		DisplayOrder: 8
+		Prerequisites: CraneOption
 	PlayerExperience:
-	
-EditorPlayer:
-	Inherits: Player
+	GameSaveViewportManager:
+	PlayerRadarTerrain:

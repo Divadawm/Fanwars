@@ -2,37 +2,45 @@ Player:
 	ModularBot@BaseAI:
 		Name: test AI
 		Type: BaseAI
+	ModularBot@DidactAI:
+		Name: Didactitiel AI
+		Type: DidactAI
 	GrantConditionOnBotOwner@BaseAI:
 		Condition: enable-BaseAI-ai
 		Bots: BaseAI
+	GrantConditionOnBotOwner@DidactAI:
+		Condition: enable-DidactAI-ai
+		Bots: DidactAI
 	HarvesterBotModule@BaseAI:
-		RequiresCondition: enable-BaseAI-ai
+		RequiresCondition: enable-BaseAI-ai || enable-DidactAI-ai
 		ScanForIdleHarvestersInterval: 13
 	HarvesterBotModule:
-		RequiresCondition: enable-BaseAI-ai
+		RequiresCondition: enable-BaseAI-ai || enable-DidactAI-ai
 		HarvesterTypes: t1_harvester, t1_dainn, prospecteur, t1_fedharv
 		RefineryTypes: refinery, opproc tcproc, fedproc
-	BaseBuilderBotModule@BaseAI:
-		RequiresCondition: enable-BaseAI-ai
-		MinimumExcessPower: 60
+	BaseBuilderBotModule@DidactAI:
+		RequiresCondition: enable-DidactAI-ai
+        StructureProductionInactiveDelay: 250
+        StructureProductionActiveDelay: 80
+        MinimumExcessPower: 60
 		MaximumExcessPower: 160
 		ExcessPowerIncrement: 40
 		ExcessPowerIncreaseThreshold: 4
-		BuildingQueues: Building.redalliance, Building.baneslayer, Building.conclave, Building.federation, Defence.redalliance, Defence.baneslayer, Defence.conclave
+		BuildingQueues: Building.redalliance, Building.baneslayer, Building.conclave, Building.federation, Research.conclave
+        DefenseQueues: Defence.redalliance, Defence.baneslayer, Defence.conclave
 		ConstructionYardTypes: aracnst, tccacnst, opcacnst, fedcnst
 		RefineryTypes: arproc, tcproc, opproc, fedproc
 		PowerTypes: oppowr, tciontrap, fedpowr
-		BarracksTypes: arbarr, opbarr, opweap
+		BarracksTypes: arbarr, opbarr, tcweap
 		VehiclesFactoryTypes: arweap, opweap, fedweap, tcweap
 		ProductionTypes: arbarr, arweap, arheli, opbarr, opweap, tcweap, fedweap
 		BuildingLimits:
-			refinery: 1
-			arnahand: 1
-			arnaweap: 1
-			t2_airfield: 1
-			artech: 1
-			t2_command_relais: 1
+			arproc: 2
+			arbarr: 2
+			arweap: 2
+			arheli: 1
 			ardeftech: 1
+			t2_command_relais: 1
 			t4_cruiser: 1
 			oppowr: 3
 			opproc: 2
@@ -42,9 +50,10 @@ Player:
 			optech: 1
 			optech2: 1
 			opcacnst.plug: 1
-			tciontrap: 8
+			tciontrap: 6
 			tcproc: 2
-			tcweap: 2
+			tcweap.first: 1
+            tcweap.second: 2
 			tcholotech.rodeur: 1
 			tcholotech.pelerin: 1
 			tcholotech.arpenteur: 1
@@ -55,14 +64,14 @@ Player:
 			fedproc: 2
 			fedweap: 3
 			diastextractor: 2
+            Upgrade.Omega.Rodeur.Conclave: 1
 		BuildingFractions:
-			refinery: 35
-			arnahand: 25
-			arnaweap: 25
-			t2_airfield: 10
-			mobilerelay: 35
+			arproc: 35
+			arbarr: 25
+			arweap: 25
+			arheli: 10
+			ardeftech: 35
 			t2_command_relais: 25
-			ardeftech: 1
 			t4_cruiser: 5
 			opproc: 99
 			oppowr: 99
@@ -73,7 +82,87 @@ Player:
 			opheli: 5
 			opcacnst.plug: 50
 			tcproc: 99
-			tcweap: 10
+			tcweap.first: 25
+            tcweap.second: 10
+			tciontrap: 60
+			tcholotech.rodeur: 8
+			tcholotech.pelerin: 8
+			tcholotech.arpenteur: 8
+			tcholotech.comete: 8
+			tcholotech.zenith: 8
+			tcholotech.quasar: 8
+			fedpowr: 95
+			fedproc: 99
+			fedweap: 25
+            Upgrade.Omega.Rodeur.Conclave: 25
+	BaseBuilderBotModule@BaseAI:
+		RequiresCondition: enable-BaseAI-ai
+		MinimumExcessPower: 60
+		MaximumExcessPower: 160
+		ExcessPowerIncrement: 40
+		ExcessPowerIncreaseThreshold: 4
+		BuildingQueues: Building.redalliance, Building.baneslayer, Building.conclave, Building.federation, Doctrines.Baneslayer, Research.conclave
+        DefenseQueues: Defence.redalliance, Defence.baneslayer, Defence.conclave
+		ConstructionYardTypes: aracnst, tccacnst, opcacnst, fedcnst
+		RefineryTypes: arproc, tcproc, opproc, fedproc
+		PowerTypes: oppowr, tciontrap, fedpowr
+		BarracksTypes: arbarr, opbarr, tcweap
+		VehiclesFactoryTypes: arweap, opweap, fedweap, tcweap
+		ProductionTypes: arbarr, arweap, arheli, opbarr, opweap, tcweap, fedweap
+		BuildingLimits:
+            Doctrine.loki.unlock.Baneslayer: 1
+            Doctrine.lindwyrm.unlock.Baneslayer: 1
+			arproc: 2
+			arbarr: 2
+			arweap: 2
+			arheli: 1
+			ardeftech: 1
+			t2_command_relais: 1
+			t4_cruiser: 1
+			oppowr: 3
+			opproc: 2
+			opbarr: 1
+			opheli: 2
+			optech: 1
+			optech2: 1
+			opweap: 3
+			opcacnst.plug: 1
+			tciontrap: 6
+			tcproc: 2
+			tcweap.first: 1
+            tcweap.second: 2
+			tcholotech.rodeur: 1
+			tcholotech.pelerin: 1
+			tcholotech.arpenteur: 1
+			tcholotech.comete: 1
+			tcholotech.zenith: 1
+			tcholotech.quasar: 1
+			fedpowr: 2
+			fedproc: 2
+			fedweap: 3
+			diastextractor: 2
+            Upgrade.Omega.Rodeur.Conclave: 1
+		BuildingFractions:
+            Doctrine.loki.unlock.Baneslayer: 25
+            Doctrine.lindwyrm.unlock.Baneslayer: 25
+			arproc: 35
+			arbarr: 25
+			arweap: 25
+			arheli: 10
+			ardeftech: 35
+			t2_command_relais: 25
+			t4_cruiser: 5
+			opproc: 75
+			oppowr: 40
+			opbarr: 35
+			opweap: 35
+			tcweap.first: 25
+            tcweap.second: 10
+			optech: 50
+			optech2: 25
+			opheli: 5
+			opcacnst.plug: 50
+			tcproc: 99
 			tciontrap: 60
 			tcholotech.rodeur: 8
 			tcholotech.pelerin: 8
@@ -85,8 +174,9 @@ Player:
 			fedproc: 99
 			fedweap: 25
 			diastextractor: 30
+            Upgrade.Omega.Rodeur.Conclave: 25
 	CaptureManagerBotModule@BaseAI:
-		RequiresCondition: enable-BaseAI-ai
+		RequiresCondition: enable-BaseAI-ai || enable-DidactAI-ai
 		CapturingActorTypes: soldierop, t1_comrade, statis
 		CapturableActorTypes: postpoint, avpost, derrick, towerdefenceap
 		MinimumCaptureDelay: 200
@@ -103,19 +193,31 @@ Player:
 		MaxBaseRadius: 15
 		ExcludeFromSquadsTypes: t1_harvester, t1_dainn, prospecteur, t1_fedharv, armcv, tcmcv, t2_yggdrasil, arnaweap, arnahand, refinery, mobilerelay, t2_airfield, t2_command_relais, t4_cruiser
 		ConstructionYardTypes: aracnst, tccacnst, opcacnst, fedcnst
+	SquadManagerBotModule@DidactAI:
+		RequiresCondition: enable-DidactAI-ai
+		SquadSize: 10
+		SquadSizeRandomBonus: 5
+		RushInterval: 800
+		AttackForceInterval: 40
+		RushAttackScanRadius: 25
+		ProtectUnitScanRadius: 30
+		MaxBaseRadius: 15
+		ExcludeFromSquadsTypes: t1_harvester, t1_dainn, prospecteur, t1_fedharv, armcv, tcmcv, t2_yggdrasil, arnaweap, arnahand, refinery, mobilerelay, t2_airfield, t2_command_relais, t4_cruiser
+		ConstructionYardTypes: aracnst, tccacnst, opcacnst, fedcnst
 	BuildingRepairBotModule:
-		RequiresCondition: enable-BaseAI-ai
+		RequiresCondition: enable-BaseAI-ai || enable-DidactAI-ai
 	McvManagerBotModule:
-		RequiresCondition: enable-BaseAI-ai
-		McvTypes: armcv, tcmcv, t2_yggdrasil, arnaweap, arnahand, refinery, mobilerelay, t2_airfield, t2_command_relais
+		RequiresCondition: enable-BaseAI-ai || enable-DidactAI-ai
+		McvTypes: armcv, tcmcv, t2_yggdrasil
+        RestrictMCVDeploymentFallbackToBase: false
 		ConstructionYardTypes: aracnst, tccacnst, opcacnst, fedcnst
 		McvFactoryTypes: arweap, opweap, fedweap, tcweap
+        ScanForNewMcvInterval: 100
 	UnitBuilderBotModule@BaseAI.RedAlliance:
-		RequiresCondition: enable-BaseAI-ai
+		RequiresCondition: enable-BaseAI-ai || enable-DidactAI-ai
 		UnitQueues: Infantry.redalliance, Vehicle.redalliance, Aircraft.redalliance, Research.redalliance
 		UnitsToBuild:
 			t1_comrade: 35
-			t2_tesla: 1
 			bike: 25
 			t2_basilisk: 35
 			t2_manticore: 15
@@ -124,10 +226,8 @@ Player:
 			t3_annihilator: 12
 			t2_hydra: 25
 			t1_harvester: 12
-			t2_chimera: 20
+			t2_chimera: 5
 			t3_archdemon: 25
-			mobilerelay: 20
-			armcv: 2
 			t2_command_relais: 50
 			t4_cruiser: 20
 		UnitLimits:
@@ -135,13 +235,10 @@ Player:
 			t2_tesla: 1
 			bike: 6
 			t2_basilisk: 18
-			refinery: 1
-			arnahand: 1
-			arnaweap: 1
 			t1_harvester: 4
 			armcv: 1
 	UnitBuilderBotModule@BaseAI.Baneslayer:
-		RequiresCondition: enable-BaseAI-ai
+		RequiresCondition: enable-BaseAI-ai || enable-DidactAI-ai
 		UnitQueues: Infantry.baneslayer, Vehicle.baneslayer, Aircraft.baneslayer, Research.baneslayer
 		UnitsToBuild:
 			soldierop: 80
@@ -159,15 +256,13 @@ Player:
 			t3_heimdall: 20
 			t3_loki: 25
 			t4_odin: 15
-			t2_yggdrasil: 2
 		UnitLimits:
 			t3_thor: 3
 			t3_valkyrie: 2
 			t2_nidhogg: 3
 			t1_dainn: 4
-			t2_yggdrasil: 1
 	UnitBuilderBotModule@BaseAI.Conclave:
-		RequiresCondition: enable-BaseAI-ai
+		RequiresCondition: enable-BaseAI-ai || enable-DidactAI-ai
 		UnitQueues: Vehicle.conclave
 		UnitsToBuild:
 			prospecteur: 20
@@ -183,7 +278,7 @@ Player:
 		UnitLimits:
 			prospecteur: 3
 	UnitBuilderBotModule@BaseAI.Federation:
-		RequiresCondition: enable-BaseAI-ai
+		RequiresCondition: enable-BaseAI-ai || enable-DidactAI-ai
 		UnitQueues: Vehicle.federation
 		UnitsToBuild:
 			t1_fedharv: 5

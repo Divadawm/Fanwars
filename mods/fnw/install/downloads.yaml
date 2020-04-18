@@ -1,6 +1,0 @@
-quickinstall: Quick Install Package
-	MirrorList: http://www.openra.net/packages/d2k-quickinstall-mirrors.txt
-	Extract:
-patch106: Patch 1.06 Content
-	MirrorList: http://www.openra.net/packages/d2k-patch106-mirrors.txt
-	Extract:

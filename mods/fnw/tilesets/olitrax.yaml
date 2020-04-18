@@ -2,7 +2,7 @@ General:
 	Name: olitrax
 	TileSize: 28
 	Id: OLITRAX
-	EditorTemplateOrder: Terrain, TerrainBlock, Rough, Tree, Road, Cliffs, Wall Cliffs, Cloak Forest Zone, River, Bridge, Pilrock
+	EditorTemplateOrder: Terrain, Concrete, Cliff, Water Cliff, Road, Cliffs, Wall Cliffs, Cloak Forest Zone, River, Bridge, Pilrock
 	SheetSize: 1024
 	HeightDebugColors: AA0000
 	Extensions: .oli,.shp

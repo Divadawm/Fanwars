@@ -1,0 +1,63 @@
+#  //////////// BUILDING TOOLTIP BANESLAYER FR //////////////
+
+opcacnst:
+
+opcacnst:
+	Tooltip:
+		Name:  Chantier de Construction
+    Buildable:
+		Description: Véhicule de construction mobile\n Peut être équipé de modules au tier 3
+   
+opcacnst.plugradr:
+	Tooltip:
+		Name: Module Radar
+    Buildable:
+		Description: Elargie de champ de vision de votre base\n Ce place sur le Chantier de Construction
+        
+oppowr:
+	Tooltip:
+		Name: Centrale à plasma
+    Buildable:
+		Description: Fournie votre base en energie\n peut etre ameliorer avec une cellule à plasma
+        
+oppowr.plugpowr:
+	Tooltip:
+		Name: Cellule à plasma
+    Buildable:
+		Description: Fournie un supplement d'energie à la centrale cible\n Ce place sur la centrale à plasma
+        
+opproc:
+	Tooltip:
+		Name: Raffinerie de diastime
+    Buildable:
+		Description: Transforme les minerait de Diastime recolter en credit.
+        
+opbarr:
+	Tooltip:
+		Name: Caserne chapelle
+    Buildable:
+		Description: Produit des unités de type Infanterie
+
+opweap:
+	Tooltip:
+		Name: Usine de production
+    Buildable:
+		Description: Produit des unités Blindée
+
+optech:
+	Tooltip:
+		Name: Centre de recherche
+    Buildable:
+		Description: Débloque les unité de Tier II\n Vous donne acces au recherche technologique
+
+optech2:
+	Tooltip:
+		Name: Laboratoire Experimentale
+    Buildable:
+		Description: Débloque les unité de Tier III
+
+opheli:
+	Tooltip:
+		Name: Héliport
+    Buildable:
+		Description: Produit des unité Aérienne

@@ -1,3 +1,12 @@
+t1_convdrone:
+	Inherits@Stat: ^StatAircraftEffect
+	idle:
+		Facings: 64
+	icon: convdroneicon
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+
 t2_chimera:
 	Inherits@Stat: ^StatAircraftEffect
 	idle:
@@ -18,10 +27,17 @@ baneslayerattackaircraft:
 eclipse:
 	Inherits@Stat: ^StatAircraftEffect
 	idle:
-        Length: *
-        Tick: 35
-		BlendMode: Multiply
+		BlendMode: Subtractive
 	icon: Commandt3icon
+    
+t3_inferno:
+	Inherits@Stat: ^StatAircraftEffect
+	idle:
+		Facings: 64
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	icon: cruiserdoicon
 
 t4_cruiser:
 	Inherits@Stat: ^StatAircraftEffect
@@ -123,8 +139,10 @@ t2_comete:
 		Facings: 64
 		Length: 5
 	icon: cometeicon
-	muzzle: muzzle_comete
-		Length: *
+	muzzle: firegunmuzzlemin
+		Facings: -16
+		Length: 14
+		Tick: 16
 		BlendMode: Additive
 
 t2_zenith:
@@ -188,6 +206,24 @@ t1_mosquito:
 	idle:
 		Facings: 64
 	icon: t2_mosquitoicon
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+
+t3_trasportfed:
+	Inherits@Stat: ^StatAircraftEffect
+	idle:
+		Facings: 64
+	icon: transprotfedicon
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+
+t3_bombardfed:
+	Inherits@Stat: ^StatAircraftEffect
+	idle:
+		Facings: 64
+	icon: borderdfedicon
 	muzzle: muzzle_autogun_small
 		Length: *
 		BlendMode: Additive

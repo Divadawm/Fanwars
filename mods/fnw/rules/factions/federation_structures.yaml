@@ -110,7 +110,7 @@ fedproc:
 		BuildDurationModifier: 35
 		IconPalette: Federation.Icon
 	Valued:
-		Cost: 1500
+		Cost: 1600
 	Tooltip:
 		Name: Diastim Refinery
 	Building:

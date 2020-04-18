@@ -1,13 +1,14 @@
 
 t1_harvester:
-	Inherits: ^VoxelVehicleMedium
+	Inherits@1: ^ShapeVehicleMedium
     # / Inherit Stat Unite /
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Inherits@harvester: ^Harvester.rules
+    Inherits@SoundMove: ^Truck.vehicle.move
 	Buildable:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 10
-		Description: Armored harvester equipped with a heavy MG\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
+		Description: Armored harvester equipped with a heavy Autocannon\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
 		IconPalette: RedAlliance.Icon
 	Tooltip:
 		Name: Lamia (Harvester)
@@ -26,18 +27,30 @@ t1_harvester:
 		LocalOffset: 500,200,340
 	Health:
 		HP: 4000
-	WithSpriteBody:
 	WithDockingAnimation:
-	WithVoxelTurret:
+	WithSpriteTurret:
 	AttackTurreted:
 		RequiresCondition: !empdisable
 	RenderSprites:
-		Scale: 1.0
+		Scale: 0.65
 	Turreted:
 		TurnSpeed: 4
-		RealignDelay: 20
-	RenderVoxels:
-		Scale: 0.75
+		RealignDelay: 10
+		Offset: 30,0,650
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,645,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,-645,-10
 	ProvidesPrerequisite@buildingname:
 		Prerequisite: arproc
 
@@ -45,8 +58,10 @@ t1_bike:
 	Inherits@1: ^ShapeVehicleLight
 	Inherits@Target: ^AutoTargetAll
     # / Inherit Stat Unite /
-	Inherits@RevealCells: ^7cells.Range.base
+    Inherits@UnitePlayStat:^UnitPlayerStat
+	Inherits@RevealCells: ^11cells.Range.base
 	Inherits@DetectCloaked: ^Vehicles.DetectCloaked
+    Inherits@SoundMove: ^Whell.vehicle.move
     # / Upgrade Faction /
 	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
     # / Doctrines /
@@ -56,16 +71,17 @@ t1_bike:
 	Buildable:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 20
-		BuildDurationModifier: 7
+		BuildDurationModifier: 8
+		Prerequisites: arproc
 		Description: Very light and fast recon vehicle armed with two missile-launchers\n Can detect stealthed units\n> Strong vs Light Vehicles, Aircraft\n> Weak vs Infantry, Heavy Vehicles
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 450
 	Health:
-		HP: 1800
+		HP: 700
 	Mobile:
 		TurnSpeed: 25
-		Speed: 130
+		Speed: 140
 	AttackFrontal:
 		PauseOnCondition: empdisable
 	Armament@gun:
@@ -77,12 +93,14 @@ t1_bike:
 		MuzzleSequence: muzzle
 	WithMuzzleOverlay:
 	RenderSprites:
+        Scale: 1.0
 
 t1_scarab:
 	Inherits@1: ^ShapeWalkerLight
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
-	Inherits@RevealCells: ^7cells.Range.base
+	Inherits@RevealCells: ^8cells.Range.base
     # / Upgrade Faction /
 	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
     # / Doctrines /
@@ -96,7 +114,7 @@ t1_scarab:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 30
 		BuildDurationModifier: 10
-		Description: Flame-thrower support vehicle\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
+		Description: Walker equipped with a flame thrower, can bury himself and remain stealthy\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Planes
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 650
@@ -105,12 +123,40 @@ t1_scarab:
 	Mobile:
 		TurnSpeed: 20
 		Speed: 115
-	AttackTurreted:
-		RequiresCondition: !empdisable
-	Turreted:
-		TurnSpeed: 15
-		RealignDelay: 5
-		Offset: -10,0,0
+        RequiresCondition: !deployed
+	Cloak:
+		UncloakOn: Attack, Unload, Infiltrate, Demolish, Dock
+		CloakDelay: 5
+		IsPlayerPalette: true
+		CloakedCondition: cloaked
+		RequiresCondition: deployed
+	AttackFrontal:
+		PauseOnCondition: empdisable
+	GrantConditionOnDeploy:
+		PauseOnCondition: empdisable || being-captured
+		DeployedCondition: deployed
+		UndeployedCondition: undeployed
+		UndeployOnMove: true
+		UndeployOnPickup: true
+		Facing: 96
+		AllowedTerrainTypes: Clear, Road, DirtRoad, Rough
+		DeploySounds: makebuild.wav
+		UndeploySounds: makebuild.wav
+		Voice: Move
+	WithMoveAnimation:
+		MoveSequence: walk
+		RequiresCondition: !deployed
+	WithFacingSpriteBody:
+        Sequence: idle
+        StartSequence: make
+		RequiresCondition: !deployed
+    WithIdleOverlay@Shadow:
+		RequiresCondition: !deployed
+	WithSpriteBody@deployed:
+        Name: Deploy
+        StartSequence: make
+        Sequence: idle-deployed
+		RequiresCondition: deployed
 	Armament@Default:
 		Weapon: FlamerDrone
 		Recoil: 100
@@ -151,9 +197,11 @@ t1_scarab:
 t2_basilisk:
 	Inherits@1: ^ShapeVehicleMedium
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetAllAssaultMove
     Inherits@UniteCarryable: ^UniteCarryable
-	Inherits@RevealCells: ^7cells.Range.base
+	Inherits@RevealCells: ^9cells.Range.base
+    Inherits@SoundMove: ^tracked.vehicle.move
     # / Upgrade Faction /
 	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
     # / Doctrines /
@@ -163,120 +211,160 @@ t2_basilisk:
 	Buildable:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 40
-		Prerequisites: artech
-		BuildDurationModifier: 20
-		Description: Powerful and resilient main battle tank with an impressive gun\n> Strong vs Vehicles, Structures\n> Weak vs Infantry, Aircraft
+		Prerequisites: arweap
+		BuildDurationModifier: 18
+		Description: Powerful and resistant main battle tank with a railgun cannon \ncan be equipped with a light anti-aircraft automatic cannon with upgrade\n> Strong against vehicles, Structures \n> Weak against infantry, Airplanes
 		IconPalette: RedAlliance.Icon
 	Health:
-		HP: 5000
+		HP: 5500
 	Mobile:
-		Speed: 70
+		Speed: 80
 	Valued:
-		Cost: 1100
+		Cost: 1200
 	Armament@primary:
 		Weapon: AP_basilic
-		LocalOffset: 1150,0,358
+		LocalOffset: 1350,0,358
 		MuzzleSequence: muzzle
-		MuzzlePalette: flameeffect
+		MuzzlePalette: flammeeffectblue
 		Recoil: 85
-		RecoilRecovery: 25
-		RequiresCondition: !upgrade.HE.Weapons.Redalliance
-	Armament@primaryHE:
-		Weapon: AP_basilic_HE_UP
-		LocalOffset: 1150,0,358
-		MuzzleSequence: muzzle
-		MuzzlePalette: flameeffect
+		RecoilRecovery: 15
+	Armament@AA.Canon:
+		Weapon: basilic_AACanon
+		LocalOffset: -150,220,458, -150,-220,458
 		Recoil: 85
-		RecoilRecovery: 25
-		RequiresCondition: upgrade.HE.Weapons.Redalliance
+		RecoilRecovery: 15
+        RequiresCondition: Upgrade.Retrofit.Redalliance
 	WithMuzzleOverlay:
-	# Upgrade Researh
-	GrantConditionOnPrerequisite@research.HE.Weapons.Redalliance:
-		Prerequisites: research.HE.Weapons.Redalliance
-		Condition: upgrade.HE.Weapons.Redalliance
 	AttackTurreted:
 		RequiresCondition: !empdisable
 	Turreted:
 		TurnSpeed: 8
 		RealignDelay: 20
-		Offset: -30,0,0
+		Offset: -30,0,80
 	RenderSprites:
-		Scale: 0.80
+		Scale: 0.74
 	WithSpriteTurret:
+        RequiresCondition: !Upgrade.Retrofit.Redalliance
+    WithSpriteTurret@Upgrade:
+        RequiresCondition: Upgrade.Retrofit.Redalliance
+        Sequence: turret.up
+	BodyOrientation:
+	ScriptTriggers:
+	Interactable:
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,645,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,-645,-10
+	WithFacingSpriteBody:
 	SpawnActorOnDeath:
 		Actor: t2_basilisk.Husk
 		OwnerType: InternalName
 		EffectiveOwnerFromOwner: true
 
-
 t2_hydra:
 	Inherits@1: ^ShapeVehicleMedium
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetAir
     Inherits@UniteCarryable: ^UniteCarryable
-	Inherits@RevealCells: ^7cells.Range.base
+	Inherits@RevealCells: ^9cells.Range.base
+    Inherits@SoundMove: ^tracked.vehicle.move
     # / Upgrade Faction /
 	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
-    # / Doctrines /
-	Inherits@Doctrines01: ^Aspect.Range.Doctrines.Weapon
 	Tooltip:
 		Name: Hydra
 	Buildable:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 50
 		Prerequisites: artech
-		BuildDurationModifier: 20
-		Description: Heavy self-propelled anti-aircraft gun on a main battle tank hull\n> Strong vs Aircraft\n> Weak vs Vehicles
+		BuildDurationModifier: 18
+		Description: Tank equipped with a double anti-aircraft laser \ncan be equipped with an incendiary rockette nacelle with the Retrofit upgrade \n> Strong vs plane \n> Weak vs vehicles
 		IconPalette: RedAlliance.Icon
 	Health:
-		HP: 2500
+		HP: 2800
 	Mobile:
 		Speed: 75
 	Valued:
-		Cost: 1000
-	#// Exception armor //
+		Cost: 1100
 	Armor:
 		Type: LightVehicle
 	Health:
 		HP: 2500
 	AttackTurreted:
 		RequiresCondition: !empdisable
-	GrantConditionOnPrerequisite@research.HE.Weapons.Redalliance:
-		Prerequisites: research.HE.Weapons.Redalliance
-		Condition: upgrade.HE.Weapons.Redalliance
-	GrantConditionOnPrerequisite@research.Flak.Basilisk.Redalliance:
-		Prerequisites: research.Flak.Basilisk.Redalliance
-		Condition: upgrade.Flak.Basilisk.Redalliance
 	Turreted:
 		TurnSpeed: 8
 		RealignDelay: 20
-		Offset: -30,0,0
+		Offset: -10,0,150
 	Armament@PRIMARY:
 		Weapon: AP_hydra
 		Recoil: 150
 		RecoilRecovery: 15
 		MuzzleSequence: muzzle
 		MuzzlePalette: flameeffect
-		LocalOffset: 1800,140,260, 1800,-140,260
-	Armament@SECONDARY:
-		Weapon: AP_hydra_multimiss
-		Recoil: 150
-		RecoilRecovery: 15
+		LocalOffset: 1800,140,360, 1800,-140,360
+		RequiresCondition: !SwitchFireMode
+	Armament@rocket:
+        Name: secondary
+		Weapon: hydra.Inferno.rocket
+        AmmoPoolName: secondary
+		LocalOffset: 20,80,160, 20,-80,160
+		RequiresCondition: SwitchFireMode
+		PauseOnCondition: !ammo
 		MuzzleSequence: muzzle
-		LocalOffset: 1400,75,260, 1400,-75,260
-		RequiresCondition: mode2 && upgrade.Flak.Basilisk.Redalliance
+        MuzzlePalette: flameeffect
+	AmmoPool@initial:
+        Name: secondary
+        Armaments: secondary
+		Ammo: 8
+		PipCount: 8
+		SelfReloads: true
+		AmmoCondition: ammo
+    ReloadAmmoPool:
+        AmmoPool: secondary
+        Delay: 50
+        Count: 1
+        ResetOnFire: true
+    GrantConditionOnDeploy:
+        DeployedCondition: SwitchFireMode
+        RequiresCondition: Upgrade.Retrofit.Redalliance
 	WithMuzzleOverlay:
 	RevealsShroud:
 		Range: 8c0
 	RenderSprites:
-		Scale: 1.0
+		Scale: 0.74
 	WithSpriteTurret:
-	Transforms:
-		IntoActor: t2_hydra_deployed
-		TransformSounds: deploy_vehicle_mode.aud
-		Offset: 0,0
-		Facing: 96
-		PauseOnCondition: !upgrade.Flak.Basilisk.Redalliance
+        RequiresCondition: !Upgrade.Retrofit.Redalliance
+    WithSpriteTurret@Upgrade:
+        RequiresCondition: Upgrade.Retrofit.Redalliance && !SwitchFireMode
+        Sequence: turretup
+    WithSpriteTurret@Deploy:
+        RequiresCondition: Upgrade.Retrofit.Redalliance && SwitchFireMode
+        Sequence: turretdeploy
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,625,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,-625,-10
 	SpawnActorOnDeath:
 		Actor: t2_hydra.Husk
 		OwnerType: InternalName
@@ -285,9 +373,11 @@ t2_hydra:
 t2_manticore:
 	Inherits@1: ^ShapeVehicleMedium
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGround
     Inherits@UniteCarryable: ^UniteCarryable
-	Inherits@RevealCells: ^6cells.Range.base
+	Inherits@RevealCells: ^9cells.Range.base
+    Inherits@SoundMove: ^tracked.vehicle.move
     # / Upgrade Faction /
 	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
     # / Doctrines /
@@ -298,17 +388,15 @@ t2_manticore:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 60
 		Prerequisites: artech
-		BuildDurationModifier: 25
-		Description: Heavy self-propelled artillery on a main battle tank hull\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
+		BuildDurationModifier: 24
+		Description: Self-propelled heavy artillery equipped with a long railgun cannon \ncan be equipped with a tracker missile with the Retrofit upgrade \n> Strong vs Infantry, Structures \ n> Weak vs Vehicles, Planes
 		IconPalette: RedAlliance.Icon
 	Health:
-		HP: 1500
+		HP: 1700
 	Mobile:
 		Speed: 65
 	Valued:
 		Cost: 1200
-	AttackFrontal:
-		PauseOnCondition: empdisable
 	Armament@PRIMARY:
 		Name: primary
 		Turret: primary
@@ -325,35 +413,69 @@ t2_manticore:
 		Name: primary
 		Turret: primary
 		Weapon: 120mm_mantis_HE_UP
-		LocalOffset: 1000,0,750
+		LocalOffset: 1300,0,950
 		MuzzleSequence: muzzle
 		RequiresCondition: upgrade.HE.Weapons.Redalliance
+	Armament@rocket:
+		Name: primary
+		Turret: primary
+		Weapon: rocket.mantis
+		LocalOffset: 200,75,350
+		MuzzleSequence: muzzle
+		RequiresCondition: Upgrade.Retrofit.Redalliance
 	WithMuzzleOverlay:
 	RenderSprites:
-		Scale: 0.80
+		Scale: 0.74
+	WithSpriteTurret:
+        RequiresCondition: !Upgrade.Retrofit.Redalliance
+    WithSpriteTurret@Upgrade:
+        RequiresCondition: Upgrade.Retrofit.Redalliance
+        Sequence: turret.up
+	AttackTurreted:
+		RequiresCondition: !empdisable
+	Turreted:
+		TurnSpeed: 8
+		RealignDelay: 20
+		Offset: -10,0,150
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,625,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,-625,-10
 	SpawnActorOnDeath:
 		Actor: t2_manticore.Husk
 		OwnerType: InternalName
 		EffectiveOwnerFromOwner: true
 
 t2_salamander:
-	Inherits@1: ^VoxelVehicleMedium
+	Inherits@1: ^ShapeVehicleMedium
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Inherits@4: ^Subterean.Vehicle.Option
-	Inherits@RevealCells: ^6cells.Range.base
+	Inherits@RevealCells: ^7cells.Range.base
+    Inherits@SoundMove: ^tracked.vehicle.move
     # / Upgrade Faction /
 	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
     # / Doctrines /
 	Inherits@Doctrines01: ^Aspect.Range.Doctrines.Weapon
 	Tooltip:
-		Name: Salamander
+		Name: Manticore
 	Buildable:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 70
 		Prerequisites: artech
 		BuildDurationModifier: 15
-		Description: Subterranean transport vehicle armed with a flamethrower\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
+		Description: transport vehicle armed with a flamethrower\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
 		IconPalette: RedAlliance.Icon
 	Health:
 		HP: 2500
@@ -380,7 +502,7 @@ t2_salamander:
 	Turreted:
 		TurnSpeed: 10
 		RealignDelay: 20
-		Offset: -30,0,0
+		Offset: 30,0,460
 	Armament@Flame:
 		Weapon: FlamerDrone
 		Recoil: 15
@@ -428,24 +550,22 @@ t2_salamander:
 		Sequence: shadow.small
 		Palette: effectalpha30
 		RequiresCondition: !submerged
-	RenderVoxels:
-		Scale: 0.95
-	WithVoxelTurret:
-		ShowShadow: false
-		RequiresCondition: !submerged
 	GrantConditionOnMovement@MOUVSOUND:
 		Condition: mouvsnd
-	WithVoxelBody:
-		RequiresCondition: !submerged
+	RenderSprites:
+		Scale: 0.75
+	WithSpriteTurret:
 	Targetable:
 		RequiresCondition: !submerged
 
 t3_apocalypse:
 	Inherits: ^ShapeVehicleHeavy
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetAll
     Inherits@UniteCarryable: ^UniteCarryable
-	Inherits@RevealCells: ^7cells.Range.base
+	Inherits@RevealCells: ^9cells.Range.base
+    Inherits@SoundMove: ^HeavyTracked.vehicle.move
     # / Upgrade Faction /
 	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
     # / Doctrines /
@@ -456,8 +576,8 @@ t3_apocalypse:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 90
 		Prerequisites: t2_command_relais
-		BuildDurationModifier: 35
-		Description: Super heavy tank armed with a dual-cannon and missile-launchers\n> Strong vs Vehicles, Aircraft, Structures\n> Weak vs Infantry
+		BuildDurationModifier: 28
+		Description: Super heavy tank armed with a dual-Railgun and missile-launchers\n> Strong vs Vehicles, Aircraft, Structures\n> Weak vs Infantry
 		IconPalette: RedAlliance.Icon
 	Health:
 		HP: 9000
@@ -470,29 +590,18 @@ t3_apocalypse:
 	Turreted:
 		TurnSpeed: 6
 		RealignDelay: 20
-		Offset: 30,0,0
+		Offset: -140,0,350
 	Armament@gun:
 		Weapon: AP_Apocalypse
 		Recoil: 150
 		RecoilRecovery: 15
 		MuzzleSequence: muzzle
-		LocalOffset: 1800,100,280, 1800,-100,280
-		RequiresCondition: !upgrade.HE.Weapons.Redalliance
-	GrantConditionOnPrerequisite@research.HE.Weapons.Redalliance:
-		Prerequisites: research.HE.Weapons.Redalliance
-		Condition: upgrade.HE.Weapons.Redalliance
-	Armament@primaryHE:
-		Weapon: AP_Apocalypse_HE_UP
-		Recoil: 150
-		RecoilRecovery: 15
-		MuzzleSequence: muzzle
-		LocalOffset: 1500,100,280, 1500,-100,280
-		RequiresCondition: upgrade.HE.Weapons.Redalliance
+		MuzzlePalette: powereffect
+		LocalOffset: 2100,180,430, 2100,-180,430
 	Armament@FragMissilex1:
 		Weapon: fragMissile
 		Recoil: 150
 		RecoilRecovery: 15
-		FireDelay: 10
 		LocalOffset: 5,300,260, 10,300,260, 15,300,260
 	SelfHealing@Base:
 		Step: 25
@@ -501,8 +610,22 @@ t3_apocalypse:
 		DamageCooldown: 150
 	WithMuzzleOverlay:
 	RenderSprites:
-		Scale: 0.80
+		Scale: 0.88
 	WithSpriteTurret:
+    LeavesTrails@01:
+        Image: smoke_movelarge
+        Sequences: smoke_movelarge01, smoke_movelarge02, smoke_movelarge03, smoke_movelarge04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,755,-10
+    LeavesTrails@02:
+        Image: smoke_movelarge
+        Sequences: smoke_movelarge01, smoke_movelarge02, smoke_movelarge03, smoke_movelarge04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,-755,-10
 	SpawnActorOnDeath:
 		Actor: t3_apocalypse.Husk
 		OwnerType: InternalName
@@ -511,9 +634,11 @@ t3_apocalypse:
 t3_purifier:
 	Inherits@1: ^ShapeVehicleHeavy
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
     Inherits@UniteCarryable: ^UniteCarryable
-	Inherits@RevealCells: ^7cells.Range.base
+	Inherits@RevealCells: ^8cells.Range.base
+    Inherits@SoundMove: ^HeavyTracked.vehicle.move
     # / Upgrade Faction /
 	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
     # / Doctrines /
@@ -524,7 +649,7 @@ t3_purifier:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 100
 		Prerequisites: t2_command_relais
-		BuildDurationModifier: 35
+		BuildDurationModifier: 25
 		Description: Super heavy armored vehicle equipped with an insanely powerful dual flamethrower\n> Strong vs Infantry, Light Vehicles, Structures\n> Weak vs Heavy Vehicles, Aircraft
 		IconPalette: RedAlliance.Icon
 	Valued:
@@ -569,7 +694,7 @@ t3_purifier:
 		Prerequisites: Doctrine.Flammer.RedAlliance
 		Condition: Flammer.Doctrines.Redalliance
 	RenderSprites:
-		Scale: 0.70
+		Scale: 0.88
 	WithSpriteTurret:
 	Armament@DoctrinesUpgrade:
 		Weapon: FlamerDroneUP.Doctrines
@@ -578,6 +703,20 @@ t3_purifier:
 		LocalOffset: 400,0,240
 		MuzzleSequence: muzzle
 		RequiresCondition: upgrade.WeaponsFlamer.Redalliance && Flammer.Doctrines.Redalliance
+    LeavesTrails@01:
+        Image: smoke_movelarge
+        Sequences: smoke_movelarge01, smoke_movelarge02, smoke_movelarge03, smoke_movelarge04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,755,-10
+    LeavesTrails@02:
+        Image: smoke_movelarge
+        Sequences: smoke_movelarge01, smoke_movelarge02, smoke_movelarge03, smoke_movelarge04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,-755,-10
 	# Upgrade Reseach
 	GrantConditionOnPrerequisite@research.WeaponsFlamer.Redalliance:
 		Prerequisites: research.WeaponsFlamer.Redalliance
@@ -592,8 +731,9 @@ t3_purifier:
 t3_annihilator:
 	Inherits@1: ^ShapeWalkerHeavy
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
-	Inherits@RevealCells: ^8cells.Range.base
+	Inherits@RevealCells: ^10cells.Range.base
     # / Upgrade Faction /
 	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
     # / Doctrines /
@@ -607,20 +747,21 @@ t3_annihilator:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 110
 		Prerequisites: t2_command_relais
-		BuildDurationModifier: 35
-		Description: Advanced nuclear artillery/support vehicle\nCan switch between close combat/artillery mode\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 28
+		Description: Advanced nuclear Railgun artillery/support vehicle\nCan switch between close combat/artillery mode\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
 		IconPalette: RedAlliance.Icon
 	Health:
 		HP: 3800
 	Armament@gun:
 		Weapon: AP_Gatling_ann
 		Recoil: 150
-		RecoilRecovery: 15
-		LocalOffset: 800,-450,80
+		RecoilRecovery: 23
+		LocalOffset: 800,-480,320
 		MuzzleSequence: muzzle
+		MuzzlePalette: flameeffect
 	WithMuzzleOverlay:
 	RenderSprites:
-		Scale: 0.75
+		Scale: 0.85
 	WithSpriteTurret:
 	AttackTurreted:
 		RequiresCondition: !empdisable
@@ -638,8 +779,10 @@ t3_annihilator:
 t3_harbinger_mobile:
 	Inherits@1: ^VoxelVehicleHeavy
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
     Inherits@UniteCarryable: ^UniteCarryable
 	Inherits@RevealCells: ^7cells.Range.base
+    Inherits@SoundMove: ^HeavyTracked.vehicle.move
     # / Upgrade Faction /
 	Inherits@Upgrade01: ^Vehicle.Upgrade.Redalliance
 	Tooltip:
@@ -684,6 +827,20 @@ t3_harbinger_mobile:
 		DisableSound:
 		AffectsParent: True
 		RequiresCondition: deployed
+    LeavesTrails@01:
+        Image: smoke_movelarge
+        Sequences: smoke_movelarge01, smoke_movelarge02, smoke_movelarge03, smoke_movelarge04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 770,655,-10
+    LeavesTrails@02:
+        Image: smoke_movelarge
+        Sequences: smoke_movelarge01, smoke_movelarge02, smoke_movelarge03, smoke_movelarge04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 770,-655,-10
 	WithRangeCircle@Cloak:
 		Range: 5c0
 		Type: cloakgenerator

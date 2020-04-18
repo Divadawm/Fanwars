@@ -17,15 +17,6 @@ t3_doomtower_mobile:
 arnaweap:
 	idle:
     
-t1_harvester:
-	idle:
-	unload: t1_harvester
-    turret: t1_harvestertur
-    
-t2_salamander:
-	idle:
-	turret: t2_salamandertur
-    
 t3_annihilator_deployed:
 	idle:
 	turret: t3_annihilator_deployedtur
@@ -50,11 +41,6 @@ t2_tarantula_mobile:
 	idle:
 	turret: t2_tarantula_mobiletur
 	barrel: t2_tarantula_mobilebarl
-
-t2_tarantula_deployed:
-	idle:
-	turret: t2_tarantula_Deployedtur
-	barrel: t2_tarantula_Deployedbarl
 
     
 # Aircraft RedAlliance
@@ -87,13 +73,6 @@ t2_warg:
     
 t2_yggdrasil:
 	idle:
-    
-t2_lindwyrm:
-	idle:
-	turret: t2_lindwyrmtur
-	barrel: t2_lindwyrmbarl
-	turret.plasma: t2_lindwyrmplasmatur
-	barrel.plasma: t2_lindwyrmplasmabarl
     
 t1_midgard:
 	idle:

@@ -234,9 +234,38 @@ orga_tree10:
         Start: 1
 	idle:
         ShadowStart: 2
+        
+toxintree01:
+	idle:
+    treeroot:
+        Start: 1
+        
+toxintree02:
+	idle:
+    treeroot:
+        Start: 1
+        
+toxintree03:
+	idle:
+    treeroot:
+        Start: 1
+        
+toxintree04:
+	idle:
+    treeroot:
+        Start: 1
+        
+toxintree05:
+	idle:
+    treeroot:
+        Start: 1
+        
+toxintree06:
+	idle:
+    treeroot:
+        Start: 1
 
 crystal_tree01:
-
     treeroot:
         Start: 1
     light:
@@ -341,17 +370,94 @@ crystal_tree08:
         ShadowStart: 2
 
 rock_olitrax1:
-	Defaults:
 	idle:
 
 rock_olitrax2:
-	Defaults:
 	idle:
 
 rock_olitrax3:
-	Defaults:
 	idle:
+    
+toxinegg01:
+	idle:
+    spore: spore01
+        Length: *
+		Tick: 55
+		BlendMode: Additive
+    
+toxinegg02:
+	idle:
+    spore: spore02
+        Length: *
+		Tick: 75
+		BlendMode: Additive
+    
+toxinegg03:
+	idle:
+    spore: spore03
+        Length: *
+		Tick: 50
+		BlendMode: Additive
+    
+toxinegg04:
+	idle:
+    spore: spore01
+        Length: *
+		Tick: 65
+		BlendMode: Additive
+    
+toxinegg05:
+	idle:
+    spore: spore02
+        Length: *
+		Tick: 55
+		BlendMode: Additive
+    
+skulldecoy01:
+	idle:
+    
+skulldecoy02:
+	idle:
+    
+skulldecoy03:
+	idle:
+     
+urbanlamp_01:
+    Inherits@Buildstat: ^StatBuildingEffect
+	Defaults: lamp01
+	idle:
+	Neon1:
+		Start: 1
+		BlendMode: Additive
+        
+megaspot01:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+	Neon1:
+		Start: 1
+		BlendMode: Additive
 
+megaspot02:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+	Neon1:
+		Start: 1
+		BlendMode: Additive
+        
+megaspot03:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+	Neon1:
+		Start: 1
+		BlendMode: Additive
+        
+megaspot04:
+    Inherits@Buildstat: ^StatBuildingEffect
+	idle:
+	Neon1:
+		Start: 1
+		BlendMode: Additive
+        
 urbandecoy_01:
     Inherits@Buildstat: ^StatBuildingEffect
 	Defaults:

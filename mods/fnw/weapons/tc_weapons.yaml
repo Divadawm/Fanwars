@@ -1,7 +1,7 @@
 # / Defense Weapons /
 
 Impulsor.LightLaser:
-	Inherits@default.weapons: ^Rodeur.Weapons.default
+	Inherits@default.weapons: ^Laser.Impulsor.Weapons.default
 	ReloadDelay: 55
 	Range: 8c0
 	Report: rodeur_gun01.aud, rodeur_gun02.aud, rodeur_gun03.aud
@@ -13,9 +13,10 @@ Impulsor.LightLaser:
 			ArmorTank: 80
 			Concrete: 50
 
-
 Gardian.zap.Laser:
-	Inherits@default.weapons: ^Ranger.Weapons.default
+	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+	Inherits@Animation.weapons: ^impulsgun.Weapons.Animation
+	Inherits@StatBase.weapons: ^impulsgun.Conclave.Stat
 	Inherits@Range: ^Range.Infantry.Base
 	ReloadDelay: 40
 	Burst: 2
@@ -23,49 +24,15 @@ Gardian.zap.Laser:
 	Report: pulse_rangerfire01.aud, pulse_rangerfire02.aud, pulse_rangerfire03.aud
 	Warhead@1Dam: SpreadDamage
 		Damage: 60
-		Versus:
-			Infantry: 110
-			LightVehicle: 40
-			ArmorTank: 40
-			Concrete: 20
-
-Gardian.zap.Laser.fafnir:
-	Inherits@default.weapons: Gardian.zap.Laser
-	Inherits@Range: ^Range.Garrisoned.Base
-
-Statis.emp.Laser:
-	Inherits@default.weapons: ^Statis.Weapons.default
-	Inherits@Range: ^Range.Infantry.Base
-	ReloadDelay: 18
-	Warhead@1Dam: SpreadDamage
-		Damage: 0
-		Versus:
-			Infantry: 100
-			LightVehicle: 100
-			ArmorTank: 100
-			Concrete: 100
-	Warhead@emp: GrantExternalCondition
-		Range: 0c128
-		Duration: 18
-		Condition: empdisable
-
-Statis.emp.Laser.fafnir:
-	Inherits@default.weapons: Statis.emp.Laser
-	Inherits@Range: ^Range.Garrisoned.Base
-	ReloadDelay: 18
-	Range: 6c128
-	Warhead@emp: GrantExternalCondition
-		Range: 0c128
-		Duration: 18
-		Condition: empdisable
 		
 Statis.Missile:
-	Inherits@default.weapons: ^Statis.Missile.Weapons.default
+	Inherits@default.weapons: ^photon.Missile.Weapons.default
 	Inherits@Range: ^Range.ArtyLow.Base
+    ValidTargets: Ground, Air, Water
 	ReloadDelay: 55
-	Report: phot_miss01.aud, phot_miss02.aud, phot_miss03.aud
+	Report: pilgrimfire01.aud, pilgrimfire02.aud, pilgrimfire03.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 280
+		Damage: 380
 		ValidTargets: Ground, Water, Air
 		Versus:
 			Infantry: 25
@@ -73,30 +40,8 @@ Statis.Missile:
 			ArmorTank: 100
 			Concrete: 80
 
-DroneJaw:
-	ValidTargets: Infantry
-	ReloadDelay: 10
-	Range: 3c0
-	Report:
-	Warhead@1Dam: SpreadDamage
-		Spread: 213
-		Damage: 1000
-		ValidTargets: Infantry
-		DamageTypes: TriggerProne
-
-bipboumexplode:
-	Inherits@default.weapons: ^Tracker.Weapons.default
-	Warhead@1Dam: SpreadDamage
-		Spread: 1024
-		Damage: 2000
-		Versus:
-			Infantry: 42
-			LightVehicle: 100
-			ArmorTank: 120
-			Concrete: 120
-
 ExconvectorGun.lateral:
-	Inherits@default.weapons: Surveyor.Weapons.default
+	Inherits@default.weapons: ^Laser.Surveyor.Conclave.Animation
 	Inherits@Range: ^Range.Vehicle.Base
 	ReloadDelay: 90
 	Report: pilgrimlasergun.aud
@@ -114,10 +59,18 @@ ExconvectorGun.lateral:
 			Concrete: 220
 			
 ExconvectorGun.primaris:
-	Inherits@default.weapons: Surveyor.Primaris.Weapons.default
+	Inherits@default.weapons: ^Laser.Surveyor.Conclave.Animation
 	Inherits@Range: ^Range.Vehicle.Base
 	ReloadDelay: 90
 	Report: surveyor_fireprimaris.aud
+	Projectile: LaserZap
+		Width: 45
+		Inaccuracy: 1000
+		Color: ffffff
+		Duration: 30
+		SecondaryBeam: true
+		SecondaryBeamWidth: 120
+		SecondaryBeamColor: 171bbc
 	Warhead@2Dam: HealthPercentageDamage
 		Damage: 100
 		Versus:
@@ -130,108 +83,182 @@ ExconvectorGun.primaris:
 		ValidTargets: Ground, Water
 		Versus:
 			Concrete: 220
-
-Photo_Missile:
-	Inherits@default.weapons: ^Pilgrim.Weapons.default
+            
+            
+# /////////////// Pilgrim Weapons Mode /////////////// 
+Photo_MissileArty:
+	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+    Inherits@Animation.weapons: ^photon.Missile.Weapons.default
+	Inherits@StatBase.weapons: ^Photon.Missile.Conclave.Stat
 	Inherits@Range: ^Range.ArtyHigh.Base
 	ReloadDelay: 95
-	MinRange: 5c0
-	Burst: 5
-	Report: phot_miss01.aud, phot_miss02.aud, phot_miss03.aud
+	MinRange: 3c0
+	Burst: 8
+    BurstDelays: 2
+	Report: pilgrimfire01.aud, pilgrimfire02.aud, pilgrimfire03.aud
+    ValidTargets: Ground, Water
+	Warhead@1Dam: SpreadDamage
+		Damage: 450
+        Spread: 450
+        ValidTargets: Ground, Water
+        
+Photo_MissileMinArty:
+	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+    Inherits@Animation.weapons: ^photon.Missile.Weapons.default
+	Inherits@StatBase.weapons: ^Photon.Missile.Conclave.Stat
+	Inherits@Range: ^Range.VehicleAA.Base
+	ReloadDelay: 95
+	MinRange: 3c0
+	Burst: 8
+    BurstDelays: 2
+	Report: pilgrimfire01.aud, pilgrimfire02.aud, pilgrimfire03.aud
+    ValidTargets: Ground, Water
 	Warhead@1Dam: SpreadDamage
 		Damage: 400
-		ValidTargets: Ground, Water
-		Versus:
-			Infantry: 20
-			LightVehicle: 80
-			ArmorTank: 120
-			Concrete: 100
+        Spread: 450
+        ValidTargets: Ground, Water
 
 Photo_MissileAA:
-	Inherits@default.weapons: ^Pilgrim.Weapons.default
+	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+    Inherits@Animation.weapons: ^photon.Missile.Weapons.default
+	Inherits@StatBase.weapons: ^Photon.Missile.Conclave.Stat
 	Inherits@Range: ^Range.VehicleAA.Base
 	ReloadDelay: 95
 	MinRange: 2c0
 	Burst: 4
-	Report: pilgrim_fire.aud
+	Report: pilgrimaafire01.aud, pilgrimaafire02.aud, pilgrimaafire03.aud
 	ValidTargets: Air
 	Warhead@1Dam: SpreadDamage
-		ValidTargets: Air
 		Damage: 500
-		Versus:
-			Infantry: 20
-			ArmorInfantry: 50
-			LightVehicle: 80
-			ArmorTank: 120
-			Concrete: 100
+        Spread: 300
+        ValidTargets: Air
 
+Photo_MissileAAArty:
+	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+    Inherits@Animation.weapons: ^photon.Missile.Weapons.default
+	Inherits@StatBase.weapons: ^Photon.Missile.Conclave.Stat
+	Inherits@Range: ^Range.ArtyHigh.Base
+	ReloadDelay: 95
+	MinRange: 2c0
+	Burst: 8
+	Report: pilgrimaafire01.aud, pilgrimaafire02.aud, pilgrimaafire03.aud
+	ValidTargets: Air
+	Warhead@1Dam: SpreadDamage
+		Damage: 350
+        Spread: 350
+        ValidTargets: Air
+
+# /////////////// Rodeur Weapons Mode ///////////////
 Rodeur.Dual.LightLaser:
-	Inherits@default.weapons: ^Rodeur.Weapons.default
-	ReloadDelay: 35
+	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+	Inherits@default.weapons: ^Laser.Impulsor.Weapons.default
+	Inherits@StatBase.weapons: ^impuls.laser.Conclave.Stat
+	Inherits@Range: ^Range.VehicleAA.Base
+	ReloadDelay: 10
 	Range: 7c0
 	Report: rodeur_gun01.aud, rodeur_gun02.aud, rodeur_gun03.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 120
-		Versus:
-			Infantry: 40
-			LightVehicle: 100
-			ArmorTank: 80
-			Concrete: 50
+		Damage: 40
+        Spread: 2
 
-Rodeur.Dual.LightLaser.Alpha:
+Rodeur.Dual.LightLaser.Alpha01:
 	Inherits@default.weapons: Rodeur.Dual.LightLaser
 	Range: 9c0
+    Burst: 20
+	BurstDelays: 1
+	ReloadDelay: 35
+	FirstBurstTargetOffset: 0,-950,0
+	FollowingBurstTargetOffset: 0,95,0
+    Report: rodeurphiefire01.aud, rodeurphiefire02.aud, rodeurphiefire03.aud
 	Projectile: LaserZap
 		Color: ffc000
 		SecondaryBeamColor: f08800
+		Duration: 2
 	Warhead@1Dam: SpreadDamage
-		Damage: 140
-
+		Damage: 20
+		Spread: 256
+		Versus:
+			Infantry: 200
+			LightVehicle: 50
+			ArmorTank: 20
+			Concrete: 35
+	Warhead@8Light: CreateEffect
+		Explosions: phierodeurimpact01, phierodeurimpact02, phierodeurimpact03
+		ExplosionPalette: flameeffect
+		ValidTargets: Ground, Water, Air
+        
+Rodeur.Dual.LightLaser.Alpha02:
+	Inherits@default.weapons: Rodeur.Dual.LightLaser.Alpha01
+	FirstBurstTargetOffset: 0,950,0
+	FollowingBurstTargetOffset: 0,-95,0
 
 Rodeur.Dual.LightLaser.Omega:
 	Inherits@default.weapons: Rodeur.Dual.LightLaser
+	ReloadDelay: 30
+    ValidTargets: Vehicle, Infantry, Structure
+    Report: rodeuromegafire01.aud, rodeuromegafire02.aud, rodeuromegafire03.aud
 	Projectile: LaserZap
 		Color: ea37ff
-		SecondaryBeamColor: 891bce
+        Width: 40
+		SecondaryBeamWidth: 28
 	Warhead@1Dam: SpreadDamage
-		Damage: 140
+		Spread: 1
+		Damage: 70
+		DamageTypes: Burned
+        ValidTargets: Vehicle, Infantry, Structure
 
+# /////////////// Comete Weapons Mode ///////////////
 Dual.Impuls.Catapult:
-	Inherits@default.weapons: ^Comete.Weapons.default
+	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+	Inherits@default.weapons: ^impulsgatling.Weapons.Animation
+	Inherits@StatBase.weapons: ^impulsgatling.Conclave.Stat
 	Inherits@Range: ^Range.Aircraft.Base
-	Burst: 2
-	ReloadDelay: 12
-	Report: laseguncomete.aud
+	ReloadDelay: 30
+    Burst: 10
+    BurstDelays: 3
+	ValidTargets: Ground, Air, Water
+	Report: cometefire01.aud, cometefire02.aud; cometefire03.aud
+	Projectile: Bullet
+        ContrailColor: a049e3
 	Warhead@1Dam: SpreadDamage
-		Damage: 76
-		Versus:
-			Infantry: 70
-			LightVehicle: 80
-			ArmorTank: 65
-			Concrete: 35
+		Damage: 40
+        ValidTargets: Ground, Air, Water
 
 Dual.Impuls.Catapult.Alpha:
 	Inherits@weapons: Dual.Impuls.Catapult
+	Projectile: Bullet
+        ContrailColor: f08800
 	Warhead@1Dam: SpreadDamage
-		Damage: 80
+		Damage: 55
 
 Dual.Impuls.Catapult.Omega:
 	Inherits@weapons: Dual.Impuls.Catapult
+	Projectile: Bullet
+        ContrailColor: ea37ff
 	Warhead@1Dam: SpreadDamage
-		Damage: 80
+		Damage: 55
 
+# /////////////// Quasar Weapons Mode ///////////////
 ExconvectorCanonAA.TargetBeam:
-	Inherits@weapons: ^Anhilihator.Target.default
+	Inherits@weapons: ^Laser.Target.Animation
 	Inherits@Range: ^Range.ArtyVeryHighAircraft.Base
 	ReloadDelay: 4
 	MinRange: 2c0
 	ValidTargets: Air
+	Projectile: LaserZap
+		Width: 18
+		TrackTarget: true
+		Color: ff7200
+		SecondaryBeam: true
+		SecondaryBeamWidth: 45
+		SecondaryBeamColor: ff0000
 	Warhead@1Dam: SpreadDamage
 		ValidTargets: Air
 
 Quasar.Canon:
-	Inherits@weapons: ^Quasar.Weapons.default
+	Inherits@weapons: ^Quasar.Railgun.Conclave.Animation
 	Inherits@Range: ^Range.ArtyVeryHighAircraft.Base
+    ValidTargets: Air
 	ReloadDelay: 20
 	Report: cometegun.aud
 	ValidTargets: Air
@@ -254,55 +281,96 @@ Quasar.Canon:
 			LightVehicle: 100
 			ArmorTank: 100
 			Concrete: 70
-			
-zenith.gun:
-	Inherits@default.weapons: ^Zenith.Weapons.default
-	Inherits@Range: ^Range.Aircraft.Base
-	ReloadDelay: 16
-	Range: 10c0
-	MinRange: 2c0
-	Report: zenithshot.aud
-	Warhead@1Dam: SpreadDamage
-		Spread: 1c512
-		Damage: 500
-		DeathType: 4
-		Versus:
-			Infantry: 100
-			LightVehicle: 100
-			ArmorTank: 80
-			Concrete: 80
 
 Quasar.Canon.Alpha:
 	Inherits@weapons: Quasar.Canon
 	Projectile: Railgun
 		DamageActorsInLine: true
-		HelixRadius: 128
-		HelixThickness: 45
-		BeamWidth: 250
+		HelixRadius: 32
+		HelixThickness: 24
+		BeamWidth: 50
 		BeamPlayerColor: true
 		BeamRenderableShape: Flat
 		HitAnim: quasarshotmax
 		HitAnimPalette: powereffect60
 		HelixPlayerColor: true
 		HelixRadiusDeltaPerTick: 6
-		HelixAngleDeltaPerTick: 32
+		HelixAngleDeltaPerTick: 16
 		Speed: 20c0
 	Warhead@1Dam: SpreadDamage
 		Spread: 1c0
 
-Navigator.force:
-	Inherits@weapons: ^navigator.Weapons.default
-	Inherits@Range: ^Range.Infantry.Base
-	ReloadDelay: 45
+Navigator.GravitonBall:
+	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+	Inherits@Animation.weapons: ^graviton.Missile.Conclave.Animation
+	Inherits@StatBase.weapons: ^Graviton.Missile.Conclave.Stat
+    ReloadDelay: 85
 	Range: 9c0
 	Warhead@1Dam: SpreadDamage
-		Damage: 480
-		Versus:
-			Infantry: 80
-			LightVehicle: 100
-			ArmorTank: 100
-			Concrete: 80
+		Damage: 1500
+	Warhead@Effect: GrantExternalCondition
+		Range: 1c0
+		Duration: 100
+		Condition: disturbingspeed
+  
+# /////////////// Vagabond Weapons Mode ///////////////
 
+vagabond.snipergun:
+	Inherits@default.weapons: ^Laser.Target.Animation
+	Inherits@Range: ^Range.InfantrySniper.Base
+	ReloadDelay: 60
+	Report: snipervagfire01.aud, snipervagfire02.aud, snipervagfire03.aud
+	ValidTargets: Infantry
+	InvalidTargets: Vehicle, Building
+    Projectile: LaserZap
+		Width: 35
+		Color: 773414
+		SecondaryBeamWidth: 25
+		SecondaryBeamColor: ff0000
+	Warhead@1Dam: SpreadDamage
+		Damage: 3500
+        Spread: 750
+		ValidTargets: Infantry
+        InvalidTargets: Vehicle, Building
+
+vagabond.sniper.target:
+	Inherits@default.weapons: ^Laser.Target.Animation
+	Inherits@Range: ^Range.InfantrySniper.Base
+	ReloadDelay: 4
+	InvalidTargets: Infantry
+    Projectile: LaserZap
+		Width: 35
+		Color: 773414
+		SecondaryBeamWidth: 25
+		SecondaryBeamColor: ff0000
+	Warhead@target: GrantExternalCondition
+		ValidTargets: Ground, Rough, Tree
+		Range: 25
+		Duration: 5
+		Condition: target.blue.weapon
+        
+vagabond.sniper.fire:
+	Inherits@default.weapons: ^Orbital.Weapons.Animation
+	Inherits@Range: ^Range.InfantrySniper.Base
+	ReloadDelay: 20
+	Report: orbitalrayon.aud
+	InvalidTargets: Infantry
+	Warhead@1Dam: SpreadDamage
+        Delay: 21
+		Damage: 9500
+        Spread: 750
+		ValidTargets: Ground, Water
+	Warhead@3EffGround: CreateEffect
+		Explosions: orbital_strike
+		ExplosionPalette: powereffect
+		ValidTargets: Ground, Water, Air
+	Warhead@4EffGround: CreateEffect
+        Delay: 19
+		Explosions: railbomb_expl02
+		ExplosionPalette: powereffect
+        ImpactSounds: orbitalimpact01.aud, orbitalimpact02.aud, orbitalimpact03.aud
+		ValidTargets: Ground, Water, Air
+        
 Avatar.Hallb:
 	ReloadDelay: 50
 	Range: 2c128
@@ -332,17 +400,15 @@ Avatar.Hallb:
 		Condition: HammerEradicatorStun
 
 electro_defence:
-	Inherits@weapons: ^TeslaGunAlliance
+	Inherits@weapons: ^TeslaGun.RedAlliance.Animation
 	Range: 8c0
-		ValidTargets: Ground, Water
-		InvalidTargets: Air
+    ValidTargets: Ground, Air, Water
 	Warhead@1Dam: SpreadDamage
 		Spread: 16
 		Damage: 350
 		DeathType: 5
 		RangeLimit: 7c256
-		ValidTargets: Ground, Water
-		InvalidTargets: Air
+        ValidTargets: Ground, Air, Water
 		Versus:
 			Infantry: 180
 			LightVehicle: 100
@@ -351,10 +417,9 @@ electro_defence:
 		DamageTypes: Burned, TriggerProne
 
 electro_defenceAA:
-	Inherits@weapons: ^Autogun
+	Inherits@weapons: ^Autocanon.Comon.Animation
 	ReloadDelay: 8
 	Range: 7c512
-	-Report:
 	ValidTargets: Air
 	InvalidTargets: Ground, Water
 	Warhead@1Dam: SpreadDamage

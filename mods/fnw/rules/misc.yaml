@@ -24,6 +24,54 @@ waypoint:
 	MapEditorData:
 		Categories: Actor
 
+^Spotlight.Base:
+	AlwaysVisible:
+	Immobile:
+		OccupiesSpace: false
+	Interactable:
+	WithSpriteBody:
+	BodyOrientation:
+		QuantizedFacings: 1
+	MapEditorData:
+		Categories: Actor
+	RenderSprites:
+		Image: ico_light
+
+Spotlight.Red:
+    Inherits: ^Spotlight.Base
+	WithIdleOverlay@Light:
+		Offset: 0, 0, 0
+		Sequence: Light
+		Palette: redlight
+        
+Spotlight.Purple:
+    Inherits: ^Spotlight.Base
+	WithIdleOverlay@Light:
+		Offset: 0, 0, 0
+		Sequence: Light
+		Palette: purplelight
+        
+Spotlight.Cyan:
+    Inherits: ^Spotlight.Base
+	WithIdleOverlay@Light:
+		Offset: 0, 0, 0
+		Sequence: Light
+		Palette: cyanlight
+        
+Spotlight.Blue:
+    Inherits: ^Spotlight.Base
+	WithIdleOverlay@Light:
+		Offset: 0, 0, 0
+		Sequence: Light
+		Palette: bluelight
+        
+Spotlight.Green:
+    Inherits: ^Spotlight.Base
+	WithIdleOverlay@Light:
+		Offset: 0, 0, 0
+		Sequence: Light
+		Palette: greenlight
+
 # // Editor Color Picker Images //
 aracnst.colorpicker:
 	Inherits: aracnst

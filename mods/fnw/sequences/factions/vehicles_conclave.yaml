@@ -59,7 +59,16 @@ t2_rodeur:
 	turret: t2_rodeurtur
 		Facings: 64
 		Offset: 0, -20
+	turretPhie: t2_rodeurphietur
+		Facings: 64
+		Offset: 0, -20
+	turretOmega: t2_rodeuromegatur
+		Facings: 64
+		Offset: 0, -20
 	muzzle: muzzle_bluegun
+		Length: *
+		BlendMode: Additive
+	muzzle_omega: muzzle_rodeuromega
 		Length: *
 		BlendMode: Additive
 	icon: rebornicon
@@ -71,6 +80,15 @@ t2_pilgrim:
 		BlendMode: Additive
 	idle:
 		Facings: 64
+	damaged-idle:
+		Start: 0
+	critical-idle:
+		Start: 0
+    idle-deployed: t2_pilgrimdeployed
 	turret: t2_pilgrimtur
 		Facings: 64
+	make: t2_pilgrimmk
+		Length: *
+		Tick: 30
 	icon: dcatnkicon
+

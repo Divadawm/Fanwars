@@ -4,6 +4,7 @@ t2_basilisk.Husk:
 		Anim: turret
 	RenderSprites:
 		Image: t2_basilisk
+		Scale: 0.80
 		
 t2_hydra.Husk:
 	Inherits: ^Husk
@@ -11,11 +12,13 @@ t2_hydra.Husk:
 		Anim: turret
 	RenderSprites:
 		Image: t2_hydra
+		Scale: 1.0
 
 t2_manticore.Husk:
 	Inherits: ^Husk
 	RenderSprites:
 		Image: t2_manticore
+		Scale: 0.80
 
 t3_apocalypse.Husk:
 	Inherits: ^Husk
@@ -23,6 +26,7 @@ t3_apocalypse.Husk:
 		Anim: turret
 	RenderSprites:
 		Image: t3_apocalypse
+		Scale: 0.80
 		
 t2_garm.Husk:
 	Inherits: ^Husk
@@ -30,6 +34,7 @@ t2_garm.Husk:
 		Anim: turret
 	RenderSprites:
 		Image: t2_garm
+		Scale: 0.75
 
 t2_dwarf.husk:
 	Inherits: ^Husk
@@ -45,6 +50,40 @@ t3_fafnir.Husk:
 	Inherits: ^Husk
 	RenderSprites:
 		Image: t3_fafnir
+		Scale: 0.80
+        
+t4_odin.Husk:
+	Inherits: ^Husk
+	ThrowsParticle@turret:
+		Anim: turret
+	RenderSprites:
+		Image: t4_odin
+		Scale: 0.86
+	Burns:
+		Damage: 80
+    AmbientSound@1:
+        Delay: 45
+        Interval: 45
+        SoundFiles: elec_spark01.aud, elec_spark02.aud
+        RequiresCondition: !alert.expl
+    AmbientSound@2:
+        SoundFiles: odin_chargeexpl.aud
+        RequiresCondition: alert.expl
+    GrantConditionOnDamageState:
+        Condition: alert.expl
+        ValidDamageStates: Critical
+	ConditionManager:
+	Explodes:
+		Weapon: odin.explode
+		EmptyWeapon: odin.explode
+	ThrowsShrapnel:
+		Weapons: SmallDebris1.bluetrail, SmallDebris2.bluetrail, SmallDebris3.bluetrail
+		Pieces: 4, 8
+		Range: 1c512, 7c0
+	WithIdleOverlay:
+		Offset: 0, 0, 30
+		Sequence: heat_flame
+		Palette: flameeffect
 
 t2_pilgrim.Husk:
 	Inherits: ^Husk
@@ -52,3 +91,4 @@ t2_pilgrim.Husk:
 		Anim: turret
 	RenderSprites:
 		Image: t2_pilgrim
+        Scale: 0.95

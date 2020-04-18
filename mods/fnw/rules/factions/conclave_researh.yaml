@@ -97,11 +97,13 @@ Upgrade.Alpha.Rodeur.Conclave:
 	Buildable:
 		BuildPaletteOrder: 10
 		Prerequisites: tcholotech.rodeur
-		Description: Increases the Prowler's damage and range
+		Description: Modify Prowler's weaponry for an anti-infantry arsenal
 	Valued:
 		Cost: 800
 	RenderSprites:
 		Image: holoup_alrodeur
+	ProvidesPrerequisite@comonRodeur:
+		Prerequisite: research.Base.Rodeur.Conclave
 	ProvidesPrerequisite:
 		Prerequisite: research.Alpha.Rodeur.Conclave
 	GrantConditionOnPrerequisite@Revoked:
@@ -117,13 +119,15 @@ Upgrade.Omega.Rodeur.Conclave:
 	Tooltip:
 		Name: Hunter
 	Buildable:
-		BuildPaletteOrder: 20
+		BuildPaletteOrder: 70
 		Prerequisites: tcholotech.rodeur
-		Description: Increases the Prowler's damage and HP
+		Description: modify Prowler's weaponry for a weapon that drains enemy units
 	Valued:
 		Cost: 800
 	RenderSprites:
 		Image: holoup_omrodeur
+	ProvidesPrerequisite@comonRodeur:
+		Prerequisite: research.Base.Rodeur.Conclave
 	ProvidesPrerequisite:
 		Prerequisite: research.Omega.Rodeur.Conclave
 	GrantConditionOnPrerequisite@Revoked:
@@ -139,9 +143,9 @@ Upgrade.Alpha.Pelerin.Conclave:
 	Tooltip:
 		Name: Wanderer
 	Buildable:
-		BuildPaletteOrder: 30
+		BuildPaletteOrder: 20
 		Prerequisites: tcholotech.pelerin
-		Description: Increases the Pilgrim's damage\nCan attack ground units in its AA form
+		Description: Grants additional damage to the Pilgrim\nCan attack ground units in mobile form.
 		BuildLimit: 1
 	Valued:
 		Cost: 1000
@@ -162,9 +166,9 @@ Upgrade.Omega.Pelerin.Conclave:
 	Tooltip:
 		Name: Settler
 	Buildable:
-		BuildPaletteOrder: 40
+		BuildPaletteOrder: 80
 		Prerequisites: tcholotech.pelerin
-		Description: Increases the damage of the pilgrim.\nHas a shield once deployed that can absorb 15% of the damage.
+		Description: Grants additional damage to the Pilgrim\nCan attack air units in deployed form.
 		BuildLimit: 1
 	Valued:
 		Cost: 1000
@@ -185,7 +189,7 @@ Upgrade.Alpha.Comete.Conclave:
 	Tooltip:
 		Name: Moonlight
 	Buildable:
-		BuildPaletteOrder: 50
+		BuildPaletteOrder: 30
 		Prerequisites: tcholotech.comete
 		Description: Increases the Comet's damage\nCan detect stealthed units
 		BuildLimit: 1
@@ -193,6 +197,8 @@ Upgrade.Alpha.Comete.Conclave:
 		Cost: 1000
 	RenderSprites:
 		Image: holoup_alcomete
+	ProvidesPrerequisite@comonComete:
+		Prerequisite: research.Base.Comete.Conclave
 	ProvidesPrerequisite:
 		Prerequisite: research.Alpha.Comete.Conclave
 	#Condition generate to parallel aspect
@@ -209,7 +215,7 @@ Upgrade.Omega.Comete.Conclave:
 	Tooltip:
 		Name: Moon's shadow
 	Buildable:
-		BuildPaletteOrder: 60
+		BuildPaletteOrder: 90
 		Prerequisites: tcholotech.comete
 		Description: Increases the Comet's damage\nBecomes stealthed while not moving
 		BuildLimit: 1
@@ -217,6 +223,8 @@ Upgrade.Omega.Comete.Conclave:
 		Cost: 1000
 	RenderSprites:
 		Image: holoup_omcomete
+	ProvidesPrerequisite@comonComete:
+		Prerequisite: research.Base.Comete.Conclave
 	ProvidesPrerequisite:
 		Prerequisite: research.Omega.Comete.Conclave
 	#Condition generate to parallel aspect
@@ -233,7 +241,7 @@ Upgrade.Alpha.Arpenteur.Conclave:
 	Tooltip:
 		Name: Juggernaut
 	Buildable:
-		BuildPaletteOrder: 70
+		BuildPaletteOrder: 50
 		Prerequisites: tcholotech.arpenteur
 		Description: Increases the Surveyor's speed\nCan now crush light and medium units\nBecomes immune to EMP and negative effects
 	Valued:
@@ -256,7 +264,7 @@ Upgrade.Omega.Arpenteur.Conclave:
 	Tooltip:
 		Name: Dreadnought
 	Buildable:
-		BuildPaletteOrder: 80
+		BuildPaletteOrder: 110
 		Prerequisites: tcholotech.arpenteur
 		Description: Increases the Surveyor's HP, range and rate of fire
 	Valued:
@@ -279,7 +287,7 @@ Upgrade.Alpha.Zenith.Conclave:
 	Tooltip:
 		Name: Gravity field
 	Buildable:
-		BuildPaletteOrder: 90
+		BuildPaletteOrder: 40
 		Prerequisites: tcholotech.zenith
 		Description: Increases the Zenith's HP\nIncreases nearby allied units' speed
 	Valued:
@@ -325,7 +333,7 @@ Upgrade.Alpha.Quasar.Conclave:
 	Tooltip:
 		Name: Death Fleet
 	Buildable:
-		BuildPaletteOrder: 110
+		BuildPaletteOrder: 60
 		Prerequisites: tcholotech.quasar
 		Description: Increases Quasar's weapon radius density and gives a damage zone on impact
 	Valued:
@@ -371,7 +379,7 @@ Upgrade.Alpha.Navigator.Conclave:
 	Tooltip:
 		Name: ...
 	Buildable:
-		BuildPaletteOrder: 130
+		BuildPaletteOrder: 40
 		Queue: Stace.conclave
 		Prerequisites: !research.Omega.Navigator.Conclave, !research.Alpha.Navigator.Conclave, tcholotech.navigator
 		Description: ...
@@ -395,7 +403,7 @@ Upgrade.Omega.Navigator.Conclave:
 	Tooltip:
 		Name: ...
 	Buildable:
-		BuildPaletteOrder: 140
+		BuildPaletteOrder: 100
 		Queue: Stace.conclave
 		Prerequisites: !research.Omega.Navigator.Conclave, !research.Navigator.Conclave, tcholotech.navigator
 		Description: ...
@@ -413,27 +421,36 @@ Upgrade.Omega.Navigator.Conclave:
 		RequiresCondition: !RemoveAspect && RevokedNavigator
 
 ^BuildingGivePower.Conclave:
-	IonCannonPower@OrbitalDistrub:
-		Description: Orbital Graviton
-		Prerequisites: Ion Trap X5, Spell.Alpha.Rodeur.Conclave
-		LongDesc: significantly slow the movement and effectiveness of unit weapons in the area of effect.
-		ChargeInterval: 4500
-		CameraActor: camera
-		Effect: disorientrayon
-		EffectPalette: powereffect
-		Weapon: DisordCannon
-		BeaconImage: null
-		Icon: powergravitconclaveicon
 	AirstrikePower@Conclave.eclipse.Power:
 		OrderName: attack.baneslayer.module
 		UnitType: eclipse
-		Prerequisites: Ion Trap X5, Spell.Omega.Rodeur.Conclave
-		Icon: aircraftbaneslayerpowericon
-		Description: Eclipse
-		LongDesc: Calls 3 close-support aircraft that unload all their ordnance on the designated area
+		Prerequisites: Ion Trap X5
+		Icon: powereclipseconclaveicon
+        IconPalette: Conclave.Icon
+		Description: Gravity Eclipse
+		LongDesc: ...
 		ChargeInterval: 3500
 		SquadSize: 1
-		CameraActor: camera.spy
+		CameraActor: CAMERA
 		QuantizedFacings: 64
 		DeploySound: spyreveal.aud
 		EffectImage: powergravitconclaveicon
+    GrantExternalConditionPower@Reveal.powerType:
+        Condition: Conclave.PowerReveal
+		PauseOnCondition: disabled
+        ValidStances: Enemy
+        Range: 0
+		Icon: powergravitconclaveicon
+        IconPalette: Conclave.Icon
+		ChargeInterval: 3000
+		Prerequisites: Ion Trap X3
+		Description: Pattern Analysis
+		LongDesc: ...
+		Duration: 500
+		SelectTargetSpeechNotification: 
+		InsufficientPowerSpeechNotification: 
+		BeginChargeSpeechNotification: 
+		EndChargeSpeechNotification: 
+		DisplayRadarPing: False
+		OnFireSound: 
+		SupportPowerPaletteOrder: 10

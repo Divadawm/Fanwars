@@ -35,6 +35,7 @@ t1_dainn:
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
 	Inherits@harvester: ^Harvester.rules
+    Inherits@SoundMove: ^Truck.vehicle.move
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 10
@@ -47,15 +48,35 @@ t1_dainn:
 	Health:
 		HP: 4000
 	-AutoTarget:
-	WithSpriteBody:
+	WithSpriteBody:	
+    RenderVoxels:
+		Scale: 1.10
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,525,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,-525,-10
 	WithDockingAnimation:
 
 t1_heidrun:
 	Inherits: ^ShapeVehicleLight
+    Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
+    Inherits@UnitePlayStat:^UnitPlayerStat
+    Inherits@SoundMove: ^Whell.vehicle.move
 	Inherits@Target: ^AutoTargetAllAssaultMove
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^8cells.Range.base
+	Inherits@RevealCells: ^10cells.Range.base
 	Valued:
 		Cost: 500
 	Tooltip:
@@ -64,7 +85,7 @@ t1_heidrun:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 20
 		Description: Light recon units equiped a machine gun and an AA missile launcher\n can detect stealth units\n can be equipped with a secondary turret depending on the loaded infantry\n> strong against infantry and airplanes\n> Weak against vehicles.
-		BuildDurationModifier: 9
+		BuildDurationModifier: 8
 	Health:
 		HP: 2400
 	DetectCloaked:
@@ -96,7 +117,7 @@ t1_heidrun:
 		MuzzleSequence: muzzle
 	Armament@miss:
 		Name: AT_armament
-		Weapon: Einherjar.missile.fafnir
+		Weapon: Einherjar.missile
 		Turret: AT_armament
 		LocalOffset: 128,0,1024
 		RequiresCondition: if-at
@@ -139,92 +160,43 @@ t1_heidrun:
 		TurnSpeed: 12
 		RealignDelay: 20
 		Offset: -340,0,480
-
-t1_ratatoskr:
-	Inherits: ^ShapeVehicleLight
-	Inherits@Target: ^AutoTargetGroundAssaultMove
-	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
-	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^7cells.Range.base
-	Valued:
-		Cost: 650
-	Buildable:
-		Queue: Vehicle.baneslayer
-		BuildPaletteOrder: 30
-		Description: Light support vehicle equipped with a grenade launcher \nCan Deploy an Observation Beacon\n> Strong vs Light Vehicle\n> Weak vs. Infantry, Aircraft
-		BuildDurationModifier: 10
-	Tooltip:
-		Name: Ratatoskr
-	Health:
-		HP: 2600
-	Mobile:
-		TurnSpeed: 20
-		Speed: 115
-	GrantConditionOnPrerequisite@research.roquette.baneslayer:
-		Prerequisites: research.roquette.baneslayer
-		Condition: upgrade.roquette.baneslayer
-	Armament@PRIMARY:
-		Weapon: grenade.ratatoskr
-		Recoil: 200
-		RecoilRecovery: 100
-		LocalOffset: 140,0,380
-		MuzzleSequence: muzzle
-		RequiresCondition: !upgrade.roquette.baneslayer
-	Armament@PRIMARY.Upgrade:
-		Weapon: grenade.ratatoskr.upgrade
-		Recoil: 200
-		RecoilRecovery: 100
-		LocalOffset: 140,0,380
-		MuzzleSequence: muzzle
-		RequiresCondition: upgrade.roquette.baneslayer
-	WithMuzzleOverlay:
-	Minelayer:
-		Mine: activate.BaliseHealth
-		AmmoPoolName: balise
-	AmmoPool@initial:
-		Name: balise
-		Armaments: balise
-		Ammo: 1
-		ReloadCount: 1
-		ReloadDelay: 20
-	ReloadAmmoPool@initial:
-		AmmoPool: balise
-		Delay: 700
-		ResetOnFire: true
-	RenderSprites:
-		Scale: 1.0
-	AttackFrontal:
-		PauseOnCondition: empdisable
-	Rearmable:
-		RearmActors: fix
-		AmmoPools: primary, balise
-		
-activate.BaliseHealth:
-	Inherits: ^baliseMine.system
-	Inherits@RevealCells: ^7cells.Range.base
-	RenderSprites:
-		Image: balise_medic
-		Scale: 0.7
-	Interactable:
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 4
+        Offsets: 570,425,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 4
+        Offsets: 570,-425,-10
 
 t2_garm:
 	Inherits: ^ShapeHoverMedium
+    Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
+    Inherits@UnitePlayStat:^UnitPlayerStat
+    Inherits@SoundMove: ^Hover.vehicle.move
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^8cells.Range.base
+	Inherits@RevealCells: ^9cells.Range.base
 	Tooltip:
 		Name: Garm
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 40
-		Prerequisites: optech
-		Description: Main battle tank with average armor protection outfitted with a powerful ion cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
-		BuildDurationModifier: 18
+		Prerequisites: opweap
+		Description: Main anti-gravity tank with medium armor protection equipped with a powerful ion cannon \n> Strong against infantry, vehicles, structures \n> Weak against planes
+		BuildDurationModifier: 16
 	Health:
 		HP: 4500
 	Mobile:
-		Speed: 95
+		Speed: 98
 	Valued:
 		Cost: 1000
 	Armament@PRIMARYDEFAULT:
@@ -243,6 +215,20 @@ t2_garm:
 		TurnSpeed: 15
 		RealignDelay: 20
 		Offset: -185,0,350
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 3
+        Offsets: 670,625,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 3
+        Offsets: 670,-625,-10
 	SpawnActorOnDeath:
 		Actor: t2_garm.Husk
 		OwnerType: InternalName
@@ -251,10 +237,11 @@ t2_garm:
 
 t2_troll:
 	Inherits: ^ShapeVehicleMedium
-	Inherits@Target: ^AutoTargetGroundAssaultMove
-	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
+    Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^8cells.Range.base
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@RevealCells: ^10cells.Range.base
 	Valued:
 		Cost: 1000
 	Tooltip:
@@ -262,27 +249,33 @@ t2_troll:
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 50
-		Prerequisites: optech
+		Prerequisites: optech, ~Doctrine.Dwarf.unlock.Baneslayer
 		Description: Medium armor, deployable into a devastating support unit\n> Strong vs Vehicle, Building, Structures\n> Weak vs Aircraft
 		BuildDurationModifier: 20
 	Health:
 		HP: 2500
+	-AutoTarget:
 	Transforms:
 		IntoActor: t2_troll_deployed
 		TransformSounds: troll_deploy.aud
 		Offset: 0,0
 		Facing: 96
-	Armament@railgun:
-		Name: secondary
-		Weapon: doom.gun
-		Recoil: 150
-		RecoilRecovery: 15
-		LocalOffset: 500,-100,250
-	WithMuzzleOverlay:
 	RenderSprites:
 		Scale: 1
-	AttackFrontal:
-		PauseOnCondition: empdisable
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,625,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,-625,-10
 	SpawnActorOnDeath:
 		Actor: t2_troll.Husk
 		OwnerType: InternalName
@@ -290,10 +283,14 @@ t2_troll:
 
 t2_warg:
 	Inherits: ^ShapeVehicleMedium
+    Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
+    Inherits@UnitePlayStat:^UnitPlayerStat
+    Inherits@SoundMove: ^Whell.vehicle.move
 	Inherits@TargetAir: ^AutoTargetAir
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^7cells.Range.base
+	Inherits@RevealCells: ^9cells.Range.base
 	Valued:
 		Cost: 800
 	Tooltip:
@@ -332,6 +329,22 @@ t2_warg:
 	WithSpriteTurret:
 	AttackTurreted:
 		RequiresCondition: !empdisable
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 6
+        Offsets: 870,625,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 6
+        Offsets: 870,-625,-10
+	RenderSprites:
+		Scale: 0.75
 	Turreted:
 		TurnSpeed: 15
 		RealignDelay: 20
@@ -339,6 +352,9 @@ t2_warg:
 
 t2_yggdrasil:
 	Inherits: ^VoxelVehicleMedium
+    Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
+    Inherits@UnitePlayStat:^UnitPlayerStat
+    Inherits@SoundMove: ^Truck.vehicle.move
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
 	Buildable:
@@ -366,15 +382,33 @@ t2_yggdrasil:
 	BaseBuilding:
 	Selectable:
 		Priority: 4
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 6
+        Offsets: 870,625,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 6
+        Offsets: 870,-625,-10
 	MustBeDestroyed:
 		RequiredForShortGame: true
 
 t2_lindwyrm:
-	Inherits@1: ^VoxelVehicleMedium
+	Inherits: ^ShapeVehicleMedium
+    Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
+    Inherits@UnitePlayStat:^UnitPlayerStat
+    Inherits@SoundMove: ^Truck.vehicle.move
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^8cells.Range.base
+	Inherits@RevealCells: ^9cells.Range.base
 	Valued:
 		Cost: 1000
 	Tooltip:
@@ -382,151 +416,171 @@ t2_lindwyrm:
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 70
-		Prerequisites: optech
-		Description: Lightly armored and relatively fast self-propelled gun\n> Strong vs Vehicles, Structures\n> Weak vs Infantry, Aircraft
-		BuildDurationModifier: 20
+		Prerequisites: optech, ~Doctrine.lindwyrm.unlock.Baneslayer
+		Description: Lightly armored and relatively fast self-propelled gun equipped with a plasma gun \ncan discharge a plasma shooting salvo in second firing mode \n> Strong vs Vehicles, Structures \ n> Weak vs Infantry, Airplanes
+		BuildDurationModifier: 24
 	GrantConditionOnPrerequisite@research.roquette.baneslayer:
 		Prerequisites: research.roquette.baneslayer
 		Condition: upgrade.roquette.baneslayer
 	Armament@primary:
 		Weapon: 120mm.lindwyrm
 		LocalOffset: 1230,0,1050
-		RequiresCondition: !upgrade.roquette.baneslayer
+		RequiresCondition: !SwitchFireMode
 		MuzzleSequence: muzzle
+        MuzzlePalette: flameeffect
 	Armament@primaryplasma:
-		Weapon: 120mm.lindwyrm.upgrade
+        Name: secondary
+		Weapon: 120mm.lindwyrm.secondfire
+        AmmoPoolName: secondary
 		LocalOffset: 1230,0,1050
-		RequiresCondition: upgrade.roquette.baneslayer
+		RequiresCondition: SwitchFireMode
+		PauseOnCondition: !ammo
 		MuzzleSequence: muzzle
+        MuzzlePalette: flameeffect
+	AmmoPool@initial:
+        Name: secondary
+        Armaments: secondary
+		Ammo: 8
+		PipCount: 8
+		SelfReloads: true
+		AmmoCondition: ammo
+    ReloadAmmoPool:
+        AmmoPool: secondary
+        Delay: 50
+        Count: 1
+        ResetOnFire: true
+    GrantConditionOnDeploy:
+        DeployedCondition: SwitchFireMode
 	WithMuzzleOverlay:
 	Health:
 		HP: 1800
-	RenderVoxels:
-		Scale: 0.60
-	WithVoxelBody:
-	WithVoxelTurret@normal:
-		ShowShadow: false
-	WithVoxelBarrel@normal:
-		ShowShadow: false
+	RenderSprites:
+		Scale: 0.75
+	WithSpriteTurret:
 	AttackTurreted:
 		RequiresCondition: !empdisable
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 6
+        Offsets: 870,625,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 6
+        Offsets: 870,-625,-10
 	Turreted:
 		TurnSpeed: 6
 		RealignDelay: 20
-		Offset: -30,0,0
+		Offset: -30,0,520
+
+t1_ratatoskr:
+	Inherits: ^ShapeHoverLight
+    Inherits@UnitePlayStat:^UnitPlayerStat
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+    Inherits@SoundMove: ^Whell.vehicle.move
+	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
+	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
+	Inherits@RevealCells: ^8cells.Range.base
+	Tooltip:
+		Name: ratatoskr
+	Buildable:
+		Queue: none.baneslayer
+		BuildPaletteOrder: 40
+		Prerequisites: opproc
+		Description: Main battle tank with average armor protection outfitted with a powerful ion cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 12
+	Health:
+		HP: 800
+	Mobile:
+		Speed: 95
+	Valued:
+		Cost: 500
+	AttackFrontal:
+	WithMuzzleOverlay:
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect10
+        Type: CenterPosition
+        MovingInterval: 4
+        Offsets: 870,645,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect10
+        Type: CenterPosition
+        MovingInterval: 4
+        Offsets: 870,-645,-10
+	RenderSprites:
+		Scale: 0.90
 
 t3_fafnir:
 	Inherits: ^ShapeHoverHeavy
+    Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
+    Inherits@UnitePlayStat:^UnitPlayerStat
+    Inherits@SoundMove: ^Hover.vehicle.move
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^7cells.Range.base
+	Inherits@RevealCells: ^9cells.Range.base
 	Valued:
-		Cost: 1500
+		Cost: 1700
 	Tooltip:
 		Name: Fafnir
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 90
 		Prerequisites: Research Module
-		Description: Super heavy transport vehicle fitted with fireports\nInfantry units can fire from inside\n> Strong vs N/A\n> Weak vs N/A
-		BuildDurationModifier: 30
+		Description: Super heavy transport anti-grav vehicle fitted with a pillbox \nInfantry units can fire from the inside \n> Strong vs N / A \n> Weak vs N / A
+		BuildDurationModifier: 20
 	Health:
-		HP: 6500
+		HP: 7500
+	Mobile:
+		Speed: 85
 	Cargo:
 		Types: Infantry
-		MaxWeight: 10
-		PipCount: 5
+		MaxWeight: 15
+		PipCount: 15
 		EjectOnDeath: true
 	SelfHealing@Base:
 		Step: 25
 		Delay: 8
 		HealIfBelow: 50
 		DamageCooldown: 60
-	Armament@minturret1:
-		Name: minturretGun
-		Turret: minturret1
-		Weapon: AP_Tarantula
-		Recoil: 400
-		RecoilRecovery: 400
-		LocalOffset: 280,0,20
-		MuzzleSequence: muzzle
-		MuzzlePalette: flameeffect
-	Armament@minturret2:
-		Name: minturretGun
-		Turret: minturret2
-		Weapon: AP_Tarantula
-		Recoil: 400
-		RecoilRecovery: 400
-		LocalOffset: 280,0,20
-		MuzzleSequence: muzzle
-		MuzzlePalette: flameeffect
-	Armament@minturret3:
-		Name: minturretGun
-		Turret: minturret3
-		Weapon: Rhino_gun
-		Recoil: 400
-		RecoilRecovery: 400
-		LocalOffset: 280,0,20
-		MuzzleSequence: muzzle
-		MuzzlePalette: flameeffect
-	Armament@minturret4:
-		Name: minturretGun
-		Turret: minturret4
-		Weapon: Rhino_gun
-		Recoil: 400
-		RecoilRecovery: 400
-		LocalOffset: 280,0,20
-		MuzzleSequence: muzzle
-		MuzzlePalette: flameeffect
-	WithSpriteTurret@minturret1:
-		ShowShadow: false
-		Sequence: secturret2
-		Turret: minturret1
-	WithSpriteTurret@minturret2:
-		ShowShadow: false
-		Sequence: secturret2
-		Turret: minturret2
-	WithSpriteTurret@minturret3:
-		ShowShadow: false
-		Sequence: secturret
-		Turret: minturret3
-	WithSpriteTurret@minturret3:
-		ShowShadow: false
-		Sequence: secturret
-		Turret: minturret3
-	WithSpriteTurret@minturret4:
-		ShowShadow: false
-		Sequence: secturret
-		Turret: minturret4
-	AttackTurreted:
-		Armaments: minturretGun
-		Turrets: minturret1, minturret2, minturret3, minturret4
-		RequiresCondition: !empdisable
-	Turreted@minturret1:
-		Turret: minturret1
-		TurnSpeed: 12
-		RealignDelay: 20
-		Offset: 455,455,425
-	Turreted@minturret2:
-		Turret: minturret2
-		TurnSpeed: 12
-		RealignDelay: 20
-		Offset: 455,-455,425
-	Turreted@minturret3:
-		Turret: minturret3
-		TurnSpeed: 12
-		RealignDelay: 20
-		Offset: -455,455,425
-	Turreted@minturret4:
-		Turret: minturret4
-		TurnSpeed: 12
-		RealignDelay: 20
-		Offset: -455,-455,425
+	AttackGarrisoned:
+		Name: garrisonedturret
+		Armaments: garrisoned
+		Turret: turretbunk
+		PortOffsets: 384,0,128, 224,-341,128, -224,-341,128, -384,0,128, -224,341,128, 224,341,128
+		PortYaws: 0, 176, 341, 512, 682, 853
+		PortCones: 488, 488, 488, 488, 488, 488
+	Turreted:
+		TurnSpeed: 255
 	RenderSprites:
 		Scale: 0.80
 	GrantConditionOnMovement@MOUVSOUND:
 		Condition: mouvsnd
+    LeavesTrails@01:
+        Image: smoke_movelarge
+        Sequences: smoke_movelarge01, smoke_movelarge02, smoke_movelarge03, smoke_movelarge04
+        Palette: flameeffect20
+        Type: CenterPosition
+        MovingInterval: 3
+        Offsets: 570,655,-10
+    LeavesTrails@02:
+        Image: smoke_movelarge
+        Sequences: smoke_movelarge01, smoke_movelarge02, smoke_movelarge03, smoke_movelarge04
+        Palette: flameeffect20
+        Type: CenterPosition
+        MovingInterval: 3
+        Offsets: 570,-655,-10
 	SpawnActorOnDeath:
 		Actor: t3_fafnir.Husk
 		OwnerType: InternalName
@@ -534,10 +588,14 @@ t3_fafnir:
 
 t3_loki:
 	Inherits: ^ShapeHoverMedium
+    Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
+    Inherits@UnitePlayStat:^UnitPlayerStat
+    Inherits@SoundMove: ^Hover.vehicle.move
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^7cells.Range.base
+	Inherits@RevealCells: ^8cells.Range.base
 	Valued:
 		Cost: 1500
 	Tooltip:
@@ -545,54 +603,144 @@ t3_loki:
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 100
-		Prerequisites: Research Module
-		Description: Light support vehicle armed with an experimental demolition cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		Prerequisites: Research Module, ~Doctrine.loki.unlock.Baneslayer
+		Description: Light anti-grav support vehicle armed with an experimental demolition cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
 		BuildDurationModifier: 20
 	Health:
 		HP: 2800
+	RenderSprites:
+		Scale: 0.90
+	AttackFrontal:
+		PauseOnCondition: empdisable
+	Passenger:
+		RequireForceMoveCondition: !undeployed
+	WithFacingSpriteBody:
 	Armament@gun:
 		Weapon: Sharest.Railgun
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 650,0,280
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Air
+		InvalidTargets: NoAutoTarget
+		RequiresCondition: deployed
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 5
+        Offsets: 870,635,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 5
+        Offsets: 870,-635,-10
+	WithMuzzleOverlay:
 	RenderSprites:
-		Scale: 0.90
-	AttackFrontal:
-		PauseOnCondition: empdisable
+		Scale: 0.88
 
 t3_heimdall:
 	Inherits: ^ShapeVehicleHeavy
+    Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
+    Inherits@UnitePlayStat:^UnitPlayerStat
+    Inherits@SoundMove: ^tracked.vehicle.move
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^9cells.Range.base
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@RevealCells: ^10cells.Range.base
 	Valued:
 		Cost: 2200
 	Tooltip:
 		Name: Heimdall
+		RequiresCondition: !deployed
+	Tooltip@DEPLOYED:
+		Name: Heimdall (deployed)
+		RequiresCondition: deployed
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 100
-		Prerequisites: Research Module
+		Prerequisites: Research Module, ~Doctrine.heimdall.unlock.Baneslayer
 		Description: MLRS carrying 3 long-range rockets that release submunitions before impact\n> Strong vs Infantry, Light Vehicles, Structures\n> Weak vs Heavy Vehicles, Aircraft
-		BuildDurationModifier: 28
+		BuildDurationModifier: 26
 	Health:
 		HP: 2000
-	-AutoTarget:
-	Transforms:
-		IntoActor: t3_heimdall_deploy
-		Offset: 0,0
-		Facing: 98
-		TransformSounds: makebuild.wav
-		NoTransformNotification: CannotDeploy
+	Passenger:
+		RequireForceMoveCondition: !undeployed
+	GrantConditionOnDeploy:
+		PauseOnCondition: empdisable || being-captured
+		DeployedCondition: deployed
+		UndeployedCondition: undeployed
+		UndeployOnMove: true
+		UndeployOnPickup: true
+		Facing: 96
+		AllowedTerrainTypes: Clear, Road, DirtRoad, Rough
+		DeploySounds: makebuild.wav
+		UndeploySounds: makebuild.wav
+		Voice: Move
+	WithFacingSpriteBody:
+        StartSequence: make
+		RequiresCondition: !deployed
+	WithSpriteBody@deployed:
+        StartSequence: make
+        Sequence: idle-deployed
+		RequiresCondition: deployed
+    WithSpriteTurret:
+		Turret: deployed
+		RequiresCondition: deployed
+	Turreted:
+		Turret: deployed
+		TurnSpeed: 12
+		RealignDelay: 10
+		Offset: -650,0,5
+	AttackTurreted@deployed:
+		Voice: Attack
+		Armaments: deployed
+		Turrets: deployed
+		RequiresCondition: deployed
+		PauseOnCondition: empdisable
+		TargetFrozenActors: True
+		ForceFireIgnoresActors: True
+		OutsideRangeRequiresForceFire: True
+	Armament@deployed:
+		Name: deployed
+		Turret: deployed
+		Weapon: Heimdall.Missile
+		LocalOffset: 820,0,1386
+		RequiresCondition: deployed
+		MuzzleSequence: muzzle
+	WithMuzzleOverlay:
 	RenderSprites:
 		Scale: 0.88
+    LeavesTrails@01:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,645,-10
+    LeavesTrails@02:
+        Image: smoke_movemin
+        Sequences: smoke_movemin01, smoke_movemin02, smoke_movemin03, smoke_movemin04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 2
+        Offsets: 870,-645,-10
+	RevealOnFire:
+		ArmamentNames: deployed
 
 t4_odin:
 	Inherits: ^ShapeVehicleHeavy
+    Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
+    Inherits@UnitePlayStat:^UnitPlayerStat
+    Inherits@SoundMove: ^HeavyTracked.vehicle.move
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^8cells.Range.base
+	Inherits@RevealCells: ^10cells.Range.base
 	Valued:
 		Cost: 5000
 	Tooltip:
@@ -602,7 +750,7 @@ t4_odin:
 		BuildPaletteOrder: 120
 		Prerequisites: Research Module
 		Description: Experimental super-unit armed with 2 antimatter heavy cannons and 4 high-powered ion cannons\nCan switch between two modes\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
-		BuildDurationModifier: 60
+		BuildDurationModifier: 50
 		BuildLimit: 1
 	Health:
 		HP: 18000
@@ -630,11 +778,12 @@ t4_odin:
 		RecoilRecovery: 400
 		LocalOffset: 1600,540,420, 1600,-540,420
 		MuzzleSequence: muzzle
+		MuzzlePalette: powereffect
 		RequiresCondition: mode2
 	GrantConditionOnDeploy:
 		DeployedCondition: mode2
 	RenderSprites:
-		Scale: 0.84
+		Scale: 0.86
 	WithSpriteTurret@MATTER:
 		RequiresCondition: !mode2
 		Sequence: turret
@@ -643,6 +792,24 @@ t4_odin:
 		Sequence: turretmode
 	AttackTurreted:
 		RequiresCondition: !empdisable
+	SpawnActorOnDeath:
+		Actor: t4_odin.Husk
+		OwnerType: InternalName
+		EffectiveOwnerFromOwner: true
+    LeavesTrails@01:
+        Image: smoke_movelarge
+        Sequences: smoke_movelarge01, smoke_movelarge02, smoke_movelarge03, smoke_movelarge04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 3
+        Offsets: 570,655,-10
+    LeavesTrails@02:
+        Image: smoke_movelarge
+        Sequences: smoke_movelarge01, smoke_movelarge02, smoke_movelarge03, smoke_movelarge04
+        Palette: flameeffect30
+        Type: CenterPosition
+        MovingInterval: 3
+        Offsets: 570,-655,-10
 	Turreted:
 		TurnSpeed: 3
 		RealignDelay: 20

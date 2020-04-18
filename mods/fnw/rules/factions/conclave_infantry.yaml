@@ -1,5 +1,6 @@
 gardian:
 	Inherits@1: ^Infantry
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.Conclave
 	Inherits@3: ^Infantry.Upgrade.Conclave
 	Inherits@Target: ^AutoTargetGroundAssaultMove
@@ -7,7 +8,7 @@ gardian:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 20
 		Description: Infantry armed with a laser rifle that has a three shots burst\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
-		BuildDurationModifier: 4
+		BuildDurationModifier: 3
 		IconPalette: Conclave.Icon
 	Valued:
 		Cost: 120
@@ -29,22 +30,11 @@ gardian:
 		Name: garrisoned
 		Weapon: Gardian.zap.Laser
 		MuzzleSequence: garrison-muzzle
-	Armament@GARRISONEDFAFNIR:
-		Name: garrisoned.fafnir
-		Weapon: Gardian.zap.Laser.fafnir
-		MuzzleSequence: garrison-muzzle
-	Captures:
-		CaptureTypes: TechBuilding
-		PlayerExperience: 20
-		CaptureDelay: 375
-		ConsumedByCapture: False
-		EnterCursor: ability
-		EnterBlockedCursor: move-blocked
 	HitShape:
-	CaptureManager:
 
 statis:
 	Inherits@1: ^Infantry
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.Conclave
 	Inherits@3: ^Infantry.Upgrade.Conclave
 	Inherits@Target: ^AutoTargetGroundAssaultMove
@@ -53,7 +43,7 @@ statis:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 30
 		Description: Infantry unit equipped with an impulse lance \n can capture the structure \n> Strong vs vehicles, planes \n> Weak vs infantry
-		BuildDurationModifier: 7
+		BuildDurationModifier: 5
 		IconPalette: Conclave.Icon
 	Valued:
 		Cost: 500
@@ -78,49 +68,19 @@ statis:
 		DefaultAttackSequence: shoot
 	RenderSprites:
 		Scale: 0.85
-
-droneconclave:
-	Inherits@1: ^Infantry
-	Inherits@2: ^Global.Upgrade.Conclave
-	Inherits@3: ^Infantry.Upgrade.Conclave
-	Inherits@Target: ^AutoTargetGroundAssaultMove
-	Inherits@Range: ^Scout.Range.Base
-	Buildable:
-		Queue: locked.conclave
-		BuildPaletteOrder: 50
-		Description: Drone used for recon\nCan leap on infantry units\nCan explode violently when deployed\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
-		BuildDurationModifier: 6
-		IconPalette: Conclave.Icon
-	Tooltip:
-		Name: Tracker
-	Valued:
-		Cost: 600
-	Health:
-		HP: 600
-	Mobile:
-		Crushes: husk
-		Speed: 110
-	AttackLeap:
-		Speed: 0c200
-	Armament:
-		Weapon: DroneJaw
-	WithInfantryBody:
-		IdleSequences: idle1
-		StandSequences: stand
-		DefaultAttackSequence: shoot
-	HitShape:
 	
 t3_navigator:
 	Inherits@1: ^Infantry
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.Conclave
 	Inherits@3: ^Infantry.Upgrade.Conclave
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Buildable:
-		Queue: locked.conclave
+		Queue: Vehicle.conclave
 		BuildPaletteOrder: 100
-		Prerequisites: lock.navigator
-		Description: Infantry unit able to teleport and generate an energy beam affecting all enemies in its trajectory\n> Strong vs Infantry, Vehicles\n> Weak vs Aircraft
-		BuildDurationModifier: 16
+		Prerequisites: tcholotech.navigator
+		Description: Infantry unit able to generate an energy ball affecting all enemies in its impact\n> Strong vs Infantry, Vehicles\n> Weak vs Aircraft
+		BuildDurationModifier: 15
 		IconPalette: Conclave.Icon
 	Valued:
 		Cost: 1000
@@ -149,7 +109,7 @@ t3_navigator:
 		Sequence: robe_navigator
 		Palette: powereffect
 	Armament@PRIMARY:
-		Weapon: Navigator.force
+		Weapon: Navigator.GravitonBall
 		MuzzleSequence: muzzle
 	WithInfantryBody:
 		StandSequences: stand
@@ -157,6 +117,60 @@ t3_navigator:
 	RenderSprites:
 		Scale: 0.78
 	HitShape:
+    
+t4_consniper:
+	Inherits@1: ^Infantry
+    Inherits@UnitePlayStat:^UnitPlayerStat
+	Inherits@2: ^Global.Upgrade.Conclave
+	Inherits@3: ^Infantry.Upgrade.Conclave
+	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Vehicle.conclave
+		BuildPaletteOrder: 20
+		Prerequisites: tcsuperweap
+		Description: Infantry unit equip a long range rifle, can designate an orbital strike on enemy buildings and vehicles\n> Strong vs Infantry, Vehicle\n> Weak vs Aircraft
+		BuildDurationModifier: 20
+		IconPalette: Conclave.Icon
+		BuildLimit: 1
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: ...
+	Health:
+		HP: 900
+	AttackFrontal:
+	GrantConditionOnAttack@TargetWeapon:
+		ArmamentNames: primary
+		RevokeOnNewTarget: true
+		RequiredShotsPerInstance: 20
+		Condition: Target
+	Armament@target:
+		Weapon: vagabond.sniper.target
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 20,0,40
+		RequiresCondition: !Target
+	Armament@fire:
+		Weapon: vagabond.sniper.fire
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 50,0,10
+		RequiresCondition: Target
+	Armament@sniper:
+		Weapon: vagabond.snipergun
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 20,0,40
+	WithInfantryBody:
+		IdleSequences: idle1
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: ExconvectorGun.primaris
+		MuzzleSequence: garrison-muzzle
+	HitShape:
+	CaptureManager:
 
 avatar:
 	Inherits@1: ^Infantry

@@ -404,7 +404,10 @@ Container@PLAYER_WIDGETS:
 							Y: 31
 							Width: 247
 							Height: 247
-							Children:
+						VqaPlayer@PLAYER:
+							Width: 249
+							Height: 249
+							Skippable: false
 		Image@CASHPOWER_BACKGROUND:
 			Logic: AddFactionSuffixLogic
 			X: WINDOW_RIGHT-425
@@ -577,21 +580,6 @@ Container@PLAYER_WIDGETS:
 							TooltipText: researchs
 							TooltipContainer: TOOLTIP_CONTAINER
 							ProductionGroup: Research
-							Key: ProductionTypeResearch
-							Children:
-								Image@ICON:
-									X: 20
-									Y: 4
-									ImageCollection: production-icons
-						ProductionTypeButton@DOCTRINES:
-							Logic: AddFactionSuffixLogic
-							Width: 47
-							Height: 22
-							Y: 192
-							Background: type-button
-							TooltipText: doctrines
-							TooltipContainer: TOOLTIP_CONTAINER
-							ProductionGroup: Doctrines
 							Key: ProductionTypeResearch
 							Children:
 								Image@ICON:

@@ -8,9 +8,11 @@
 
 soldierop:
 	Inherits@1: ^Infantry
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.baneslayer
 	Inherits@3: ^Infantry.Upgrade.baneslayer
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^upgrade.kevlar.infantry.baneslayer
 	Buildable:
 		Queue: Infantry.baneslayer
@@ -18,13 +20,13 @@ soldierop:
 		BuildPaletteOrder: 10
 		Prerequisites: ~opbarr, ~techlevel.infonly
 		Description: Basic infantryman armed with an assault rifle\nCan capture neutral structures\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
-		BuildDurationModifier: 4
+		BuildDurationModifier: 3
 	Valued:
 		Cost: 100
 	Tooltip:
 		Name: Draugr
 	Health:
-		HP: 500
+		HP: 400
 	AttackFrontal:
 	Armament@PRIMARY:
 		Weapon: M1Carbine
@@ -40,24 +42,21 @@ soldierop:
 		Weapon: M1Carbine
 		MuzzleSequence: garrison-muzzle
 		MuzzlePalette: flameeffect
-	Armament@GARRISONEDFAFNIR:
-		Name: garrisoned.fafnir
-		Weapon: M1Carbine.fafnir
-		MuzzleSequence: garrison-muzzle
-		MuzzlePalette: flameeffect
 	WithMuzzleOverlay:
 
 roquetteorderinf:
 	Inherits@1: ^Infantry
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.baneslayer
 	Inherits@3: ^Infantry.Upgrade.baneslayer
 	Inherits@Target: ^AutoTargetAll
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^upgrade.kevlar.infantry.baneslayer
 	Buildable:
 		Queue: Infantry.baneslayer
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 20
-		BuildDurationModifier: 7
+		BuildDurationModifier: 5
 		Description: Infantryman armed with a missile-launcher\n> Strong vs Light Vehicles, Aircraft\n> Weak vs Infantry, Heavy Vehicles
 		Prerequisites: ~opbarr, ~techlevel.infonly
 	Valued:
@@ -90,19 +89,10 @@ roquetteorderinf:
 		Name: garrisoned
 		Weapon: Einherjar.missile.upgrade
 		RequiresCondition: upgrade.roquette.baneslayer
-	Armament@GARRISONEDFAFNIR:
-		Name: garrisoned.fafnir
-		Weapon: Einherjar.missile.fafnir
-		MuzzleSequence: garrison-muzzle
-		RequiresCondition: !upgrade.roquette.baneslayer
-	Armament@GARRISONEDFAFNIRUPDRADE:
-		Name: garrisoned.fafnir
-		Weapon: Einherjar.missile.upgrade.fafnir
-		MuzzleSequence: garrison-muzzle
-		RequiresCondition: upgrade.roquette.baneslayer
 	
 t1_opengineer:
 	Inherits@1: ^Infantry
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.baneslayer
 	Inherits@3: ^Infantry.Upgrade.baneslayer
 	Inherits@Upgrade01: ^upgrade.kevlar.infantry.baneslayer
@@ -111,7 +101,7 @@ t1_opengineer:
 		Queue: Infantry.baneslayer
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 20
-		BuildDurationModifier: 12
+		BuildDurationModifier: 10
 		Description: Unarmed Infantry \n Can Capture Structures\n> Weak vs all
 		Prerequisites: ~opbarr, ~techlevel.infonly
 	Valued:
@@ -121,23 +111,22 @@ t1_opengineer:
 	Health:
 		HP: 500
 	WithInfantryBody:
-		IdleSequences: idle
-		StandSequences: stand
-		DefaultAttackSequence: idle
 	-AutoTarget:
 	-AttackMove:
 
 vanir:
 	Inherits@1: ^Helicoptershape
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.baneslayer
 	Inherits@3: ^Infantry.Upgrade.baneslayer
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^upgrade.kevlar.infantry.baneslayer
 	Buildable:
 		Queue: Infantry.baneslayer
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 40
-		BuildDurationModifier: 18
+		BuildDurationModifier: 15
 		Description: Jumpjet infantry armed with grenade launchers\n> Strong vs Infantry, Light Vehicles\n> Weak vs Heavy Vehicles, Aircraft
 		Prerequisites: optech
 	Valued:
@@ -173,15 +162,17 @@ vanir:
 
 jotun:
 	Inherits@1: ^Infantry
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.baneslayer
 	Inherits@3: ^Infantry.Upgrade.baneslayer
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^upgrade.kevlar.infantry.baneslayer
 	Buildable:
 		Queue: Infantry.baneslayer
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 30
-		BuildDurationModifier: 20
+		BuildDurationModifier: 12
 		Description: Heavy infantry equipped with a plasma gun\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
 		Prerequisites: optech
 	Valued:
@@ -189,7 +180,7 @@ jotun:
 	Tooltip:
 		Name: Jötunn
 	Health:
-		HP: 650
+		HP: 850
 	AttackFrontal:
 	WithMuzzleOverlay:
 	Armament@PRIMARY:
@@ -206,24 +197,21 @@ jotun:
 		Weapon: plasmamode2.jotuun
 		MuzzleSequence: muzzle
 		MuzzlePalette: greenlight
-	Armament@GARRISONEDFAFNIR:
-		Name: garrisoned.fafnir
-		Weapon: plasma.jotuun.fafnir
-		MuzzleSequence: muzzle
-		MuzzlePalette: greenlight
 	HitShape:
 
 t1_aesir:
 	Inherits@1: ^Infantry
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.baneslayer
 	Inherits@3: ^Infantry.Upgrade.baneslayer
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^upgrade.kevlar.infantry.baneslayer
 	Buildable:
 		Queue: Infantry.baneslayer
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 50
-		BuildDurationModifier: 28
+		BuildDurationModifier: 20
 		Description: Sharpshooter equipped with an experimental sniper rifle firing antimatter rounds\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
 		Prerequisites: Research Module
 	Valued:
@@ -242,8 +230,4 @@ t1_aesir:
 	Armament@GARRISONED:
 		Name: garrisoned
 		Weapon: Aesir.Mattergun
-	Armament@GARRISONEDFAFNIR:
-		Name: garrisoned.fafnir
-		Weapon: Aesir.Mattergun.fafnir
-		MuzzleSequence: garrison-muzzle
 	HitShape:

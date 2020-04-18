@@ -1,12 +1,14 @@
 Metadata:
 	Title: Fractured Realms
-	Version: Dev {12-11-2019}
+	Version: Pre-release {2020-04-18}
+	Website: https://www.moddb.com/mods/fractured-realms
+
+PackageFormats: Mix
 
 Packages:
 	.
 	$fnw: fnw
 	./mods/common: common
-	./mods/d2k: d2k
 	fnw|bits
 	fnw|bits/icones_ingame/
 	fnw|bits/icones_ingame/build_upgrades_baneslayer
@@ -44,6 +46,7 @@ Packages:
     fnw|bits/sounds/hub
     fnw|bits/sounds/impact_weapons
     fnw|bits/sounds/interact_unite
+    fnw|bits/sounds/interact_unite/building
     fnw|bits/sounds/interact_power
     fnw|bits/sounds/voice_unite
     # Faction Sounds weapons ///
@@ -53,6 +56,7 @@ Packages:
     fnw|bits/sounds/fire_weapons/federation
 	fnw|bits/sounds
     fnw|bits/olitrax
+    fnw|bits/sirius
 	fnw|uibits
 	
 MapFolders:
@@ -130,11 +134,10 @@ Chrome:
 Assemblies:
 	common|OpenRA.Mods.Common.dll
 	common|OpenRA.Mods.Cnc.dll
-	d2k|OpenRA.Mods.D2k.dll
 	
 TileSets:
     fnw|tilesets/olitrax.yaml
-	
+    fnw|tilesets/sirius.yaml
 
 ChromeLayout:
 	common|chrome/ingame.yaml
@@ -153,6 +156,7 @@ ChromeLayout:
 	common|chrome/ingame-debuginfo.yaml
 	common|chrome/ingame-infochat.yaml
 	common|chrome/mainmenu.yaml
+	common|chrome/mainmenu-prompts.yaml
 	common|chrome/settings.yaml
 	common|chrome/credits.yaml
 	common|chrome/lobby.yaml
@@ -180,10 +184,7 @@ ChromeLayout:
 	common|chrome/confirmation-dialogs.yaml
 	common|chrome/editor.yaml
 	common|chrome/playerprofile.yaml
-    
-    
-    
-	
+
 Weapons:
     fnw|weapons/base_weapons.yaml
 	fnw|weapons/weapons.yaml
@@ -192,6 +193,7 @@ Weapons:
     fnw|weapons/tc_weapons.yaml
     fnw|weapons/fed_weapons.yaml
 	fnw|weapons/debris.yaml
+    fnw|weapons/stat_weapons.yaml
 
 Voices:
 	fnw|audio/voices.yaml
@@ -217,6 +219,8 @@ Hotkeys:
     
 LoadScreen: LogoStripeLoadScreen
 	Image: fnw|uibits/loadscreen.png
+	Image2x: fnw|uibits/loadscreen-2x.png
+	Image3x: fnw|uibits/loadscreen-3x.png
 	Text: (°Д°) ...Loading,(°X°) ...Loading,(°3°) ...Loading,(°U°) ...Loading,(°w°) ...Loading,(°_°) ...Loading,(°o°) ...Loading,(°O°) ...Loading,(°*°) ...Loading,(Ô_õ) ...Loading,(x_x) ...Loading,(=_=) ...Loading,( ͡° ͜ʖ ͡°) ...Loading
 
 ServerTraits:
@@ -272,6 +276,7 @@ MapGrid:
 	Type: Rectangular
 	
 ColorValidator:
+	TeamColorPresets: ffc9ca, f50606, 98331f, f57606, f7bb06, f861a4, da06f3, ddb8ff, 06f739, cef7b2, 200738, 280df6, 2f86f2, 76d2f8, 34ba93, 000000
 
 SupportsMapsFrom: fnw, cnc, d2k
 
@@ -283,6 +288,8 @@ SpriteSequenceFormat: TilesetSpecificSpriteSequence
 	TilesetExtensions:
 		ARIDE: .ari
         OLITRAX: .oli
+        SIRIUS: .sir
+        VIGILE: .vig
         STATIONE: .sta
         
 ModelSequenceFormat: VoxelModelSequence
@@ -304,3 +311,17 @@ GameSpeeds:
 		Name: Fastest
 		Timestep: 20
 		OrderLatency: 6
+
+ModContent:
+	InstallPromptMessage: Tiberian Sun requires artwork and audio from the original game.\n\nQuick Install will automatically download this content (without music\nor videos) from a mirror of the 2012 Tiberian Sun freeware release.\n\nAdvanced Install includes options for downloading the music and for\ncopying the videos and other content from an original game disc.
+	QuickDownload: quickinstall
+	HeaderMessage: Game content may be extracted from the original game discs or an\nexisting digital install. OpenRA can also download the base game\nfiles from an online mirror of the 2008 freeware release of RA.
+	Packages:
+		music: Base Game Music
+			TestFiles: ^Content/ra/v2/scores.mix
+			Sources: allied, allied-linux, soviet, soviet-linux, tfd, ra-origin
+			Download: music
+	Downloads:
+		fnw|installer/downloads.yaml
+	Sources:
+		fnw|installer/downloads.yaml

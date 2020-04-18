@@ -1,13 +1,14 @@
 opcacnst:
 	Inherits: ^Building
 	Inherits@2: ^3x2Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Selectable:
 		Bounds: 80,80
 	Valued:
 		Cost: 2000
 	Tooltip:
 		Name: Construction Yard
-		Description: Mobile construction vehicle\nCan be outfitted with tier 3 modules
+		Description: Mobile construction vehicle\nCan be outfitted with modules
 	Building:
 		Footprint: xxxx xxxx xxxx
 		Dimensions: 4,3
@@ -17,10 +18,10 @@ opcacnst:
 	Armor:
 		Type: Concrete
 	RevealsShroud@base:
-		Range: 10c0
+		Range: 8c0
 		RequiresCondition: !Power.reveal.Baneslayer
 	RevealsShroud@radr:
-		Range: 20c0
+		Range: 30c0
 		RequiresCondition: Power.reveal.Baneslayer
 	Production:
 		Produces: Building.baneslayer, Defence.baneslayer
@@ -51,7 +52,7 @@ opcacnst:
 		ProductionType: Defence.baneslayer
 	BaseProvider:
 		Cooldown: 75
-		Range: 15c0
+		Range: 12c0
 	WithBuildingPlacedAnimation:
 	ProvidesRadar:
 	Power:
@@ -93,6 +94,14 @@ opcacnst:
 	RenderSprites:
 		Scale: 1.0
 	Exit:
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: opcacnst.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealopcacnst
+        Condition: opcacnst.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealopcacnst
 	HitShape:
 
 doctrineshield.plug:
@@ -147,6 +156,7 @@ opcacnst.plugradr:
 oppowr:
 	Inherits: ^Building
 	Inherits@2: ^3x2Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Selectable:
 		Bounds: 80,50
 	Buildable:
@@ -160,14 +170,16 @@ oppowr:
 	Tooltip:
 		Name: Powerplant
 	Building:
-		Footprint: xxx xxx
-		Dimensions: 3,2
+		Footprint: xxx xxx ===
+		Dimensions: 3,3
 		Adjacent: 10
-		BuildSounds: deploy_order.aud
+		BuildSounds: buildingmakeop.aud
 	Health:
 		HP: 5000
 	Armor:
 		Type: Concrete
+	Voiced:
+		VoiceSet: oppowr_voice
 	Power@Base:
 		Amount: 100
 		RequiresCondition: !plug.powr
@@ -179,7 +191,7 @@ oppowr:
 		Offset: 950, -120, 25
 		Sequence: smoke
 		Palette: effect
-		RequiresCondition: !build-incomplete
+		RequiresCondition: !build-incomplete && buildOverlay-active
 	ProvidesPrerequisite@buildingname:
 	AffectedByPowerOutage:
 	ScalePowerWithHealth:
@@ -190,6 +202,16 @@ oppowr:
 		Offset: 0,0,0
 		Sequence: plug.powr
 		RequiresCondition: plug.powr
+	WithBuildingBib:
+        Palette: treeorganic
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: opowr.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealOpowr
+        Condition: opowr.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealOpowr
 	HitShape:
 
 oppowr.plugpowr:
@@ -211,7 +233,8 @@ oppowr.plugpowr:
 
 opproc:
 	Inherits: ^Building
-	Inherits@2: ^3x3Shape
+	Inherits@2: ^4x3Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Selectable:
 		Bounds: 85,55
 	Buildable:
@@ -219,16 +242,16 @@ opproc:
 		Prerequisites: oppowr
 		BuildPaletteOrder: 30
 		Description: Refines Diastim into credits
-		BuildDurationModifier: 35
+		BuildDurationModifier: 30
 	Valued:
-		Cost: 2000
+		Cost: 1600
 	Tooltip:
 		Name: Diastim Refinery
 	Building:
-		Footprint: xxx xxx ===
-		Dimensions: 3,3
+		Footprint: xxxx xxxx ====
+		Dimensions: 4,3
 		Adjacent: 18
-		BuildSounds: deploy_order.aud
+		BuildSounds: buildingmakeop.aud
 	Targetable:
 		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate
 	Sellable:
@@ -239,7 +262,7 @@ opproc:
 		Type: Concrete
 	Refinery@base:
 		DockAngle: 164
-		DockOffset: 2,2
+		DockOffset: 3,2
 		UseStorage: false
 	DrawLineToTarget:
 	CustomSellValue:
@@ -257,15 +280,26 @@ opproc:
 	Explodes:
 		Delay: 1
 	ProvidesPrerequisite@buildingname:
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: opcacnst.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealopcacnst
+        Condition: opcacnst.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealopcacnst
+	WithBuildingBib:
+        Palette: treeorganic
 	HitShape:
 
 opbarr:
 	Inherits: ^Building
-	Inherits@2: ^3x2Shape
+	Inherits@2: ^4x3Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Selectable:
 		Bounds: 72,50
 	Valued:
-		Cost: 500
+		Cost: 400
 	Tooltip:
 		Name: Barracks
 	Buildable:
@@ -273,12 +307,12 @@ opbarr:
 		Prerequisites: oppowr
 		Description: Produces infantry units
 		Queue: Building.baneslayer
-		BuildDurationModifier: 12
+		BuildDurationModifier: 8
 	Building:
-		Footprint: xxx xxx
-		Dimensions: 3,2
+		Footprint: xxxx xxxx ====
+		Dimensions: 4,3
 		Adjacent: 18
-		BuildSounds: deploy_order.aud
+		BuildSounds: buildingmakeop.aud
 	Health:
 		HP: 5000
 	Armor:
@@ -297,9 +331,8 @@ opbarr:
 	Exit@1:
 		SpawnOffset: -850,900,0
 		ExitCell: 0,2
-	Exit@2:
-		SpawnOffset: -850,900,0
-		ExitCell: 0,3
+	Voiced:
+		VoiceSet: opbarr_voice
 	Power:
 		Amount: -20
 	ProvidesPrerequisite@buildingname:
@@ -308,11 +341,22 @@ opbarr:
 		Condition: HealInfantry
 		Range: 5c0
 		AffectsParent: true
+	WithBuildingBib:
+        Palette: treeorganic
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: opbarr.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealopbarr
+        Condition: opbarr.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealopbarr
 	HitShape:
 
 opweap:
 	Inherits: ^Building
-	Inherits@2: ^4x3Shape
+	Inherits@2: ^5x4Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Selectable:
 		Bounds: 100,80
 	Buildable:
@@ -320,15 +364,15 @@ opweap:
 		BuildPaletteOrder: 40
 		Prerequisites: opproc
 		Description: Produces vehicles
-		BuildDurationModifier: 48
+		BuildDurationModifier: 40
 	Valued:
 		Cost: 2000
 	Tooltip:
 		Name: War Factory
 	Building:
-		Footprint: xxxx xxxx xxx=
-		Dimensions: 4,3
-		BuildSounds: deploy_order.aud
+		Footprint: xxxxx xxxxx xxxx= =====
+		Dimensions: 5,4
+		BuildSounds: buildingmakeop.aud
 		Adjacent: 18
 	Health:
 		HP: 8000
@@ -361,22 +405,35 @@ opweap:
 	ProvidesPrerequisite@buildingname:
 	ProvidesPrerequisite@Building.Production.Multiplier:
 		Prerequisite: Weapons.Factory.Multiplier
+	Voiced:
+		VoiceSet: opweap_voice
 	Power:
 		Amount: -30
 	ConditionManager:
+	WithBuildingBib:
+        Palette: treeorganic
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: opweap.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealopweap
+        Condition: opweap.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealopweap
 	HitShape:
 
 optech:
 	Inherits: ^Building
 	Inherits@2: ^3x2Shape
 	Inherits@Power: ^BuildingGivePower.Baneslayer
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Selectable:
 		Bounds: 80,50
 	Buildable:
 		Queue: Building.baneslayer
 		BuildPaletteOrder: 50
 		Prerequisites: opweap
-		Description: Unlocks tier 2 units, upgrades and structures
+		Description: Unlock tier 2 units/structures and research/upgrades.
 		BuildDurationModifier: 35
 	Valued:
 		Cost: 1500
@@ -386,11 +443,13 @@ optech:
 		Footprint: xxx xxx
 		Dimensions: 3,2
 		Adjacent: 18
-		BuildSounds: deploy_order.aud
+		BuildSounds: buildingmakeop.aud
 	Health:
 		HP: 7000
 	Armor:
 		Type: Concrete
+	Voiced:
+		VoiceSet: optech_voice
 	Power:
 		Amount: -100
 	InfiltrateForPowerOutage:
@@ -411,16 +470,34 @@ optech:
 	ProductionBar@Research.Baneslayer:
 		ProductionType: Research.baneslayer
 	AffectedByPowerOutage:
+	GrantExternalConditionToProduced@WeaponsOP:
+		Condition: RemoveBaseOption
+		Duration: 10
+	GrantExternalConditionToProduced@WeaponsOP2:
+		Condition: RemoveBaseOption2
+		Duration: 10
+	GrantExternalConditionToProduced@StatOP:
+		Condition: RemoveBaseStat
+		Duration: 10
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: optech.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealoptech
+        Condition: optech.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealoptech
 	ScalePowerWithHealth:
 
 optech2:
 	Inherits: ^Building
 	Inherits@2: ^3x2Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Buildable:
 		Queue: Building.baneslayer
 		BuildPaletteOrder: 90
 		Prerequisites: optech
-		Description: Unlocks tier 3 units, upgrades and structures
+		Description: Unlock tier 3 units/structures and research/upgrades.
 		BuildDurationModifier: 45
 	Valued:
 		Cost: 2000
@@ -430,37 +507,38 @@ optech2:
 		Footprint: xxx xxx xxx
 		Dimensions: 3,3
 		Adjacent: 18
-		BuildSounds: deploy_order.aud
+		BuildSounds: buildingmakeop.aud
 	Health:
 		HP: 9000
 	Armor:
 		Type: Concrete
+	Voiced:
+		VoiceSet: opavtech_voice
 	Power:
 		Amount: -200
 	InfiltrateForPowerOutage:
 	ProvidesPrerequisite@tech2:
 		Prerequisite: Research Module
-	Production:
-		Produces: Doctrine.baneslayer
-		PauseOnCondition: empdisable
-	ProductionQueue@Doctrine:
-		Type: Doctrine.baneslayer
-		Factions: baneslayer
-		Group: Doctrine
-		LowPowerModifier: 200
-	ProductionBar@Doctrine:
-		ProductionType: Doctrine.baneslayer
 	RallyPoint:
 	Exit@1:
 		SpawnOffset: -850,900,0
 		ExitCell: 0,2
 	AffectedByPowerOutage:
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: optech2.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealoptech2
+        Condition: optech2.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealoptech2
 	ScalePowerWithHealth:
 
 opavtech:
 	Inherits@1: ^Building
 	Inherits@2: ^3x2Shape
 	Inherits@PowerBuilding: ^BuildingGivePower.Baneslayer
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Selectable:
 		Bounds: 72,50,0,12
 	Buildable:
@@ -476,7 +554,7 @@ opavtech:
 		Footprint: xxx xxx
 		Dimensions: 3,2
 		Adjacent: 18
-		BuildSounds: deploy_order.aud
+		BuildSounds: buildingmakeop.aud
 	Health:
 		HP: 7000
 	Armor:
@@ -498,11 +576,20 @@ opavtech:
 		ProductionType: Veteran.baneslayer
 	Power:
 		Amount: -200
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: opavtech.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealopavtech
+        Condition: opavtech.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealopavtech
 	ScalePowerWithHealth:
 
 opheli:
 	Inherits: ^Building
 	Inherits@2: ^3x2Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Selectable:
 		Bounds: 72,50,0,12
 	Buildable:
@@ -510,16 +597,16 @@ opheli:
 		BuildPaletteOrder: 80
 		Prerequisites: optech
 		Description: Produces aircraft
-		BuildDurationModifier: 30
+		BuildDurationModifier: 20
 	Valued:
-		Cost: 1000
+		Cost: 800
 	Tooltip:
 		Name: Heliport
 	Building:
 		Footprint: xxx xxx
 		Dimensions: 3,2
 		Adjacent: 18
-		BuildSounds: deploy_order.aud
+		BuildSounds: buildingmakeop.aud
 	Health:
 		HP: 5000
 	Armor:
@@ -544,6 +631,8 @@ opheli:
 	RallyPoint:
 	WithBuildingPlacedAnimation:
 	ProvidesPrerequisite@buildingname:
+	Voiced:
+		VoiceSet: opheli_voice
 	Power:
 		Amount: -30
 	Reservable:
@@ -552,6 +641,14 @@ opheli:
 		Condition: Ammocraft
 		Range: 5c0
 		AffectsParent: true
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: opheli.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealopheli
+        Condition: opheli.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealopheli
 	HitShape:
 
 t1_midgard:
@@ -577,7 +674,7 @@ t1_midgard:
 	Health:
 		HP: 8000
 	Armament@gun:
-		Weapon: Midgard.gun
+		Weapon: Warg_AA
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 15,650,850
@@ -592,15 +689,10 @@ t1_midgard:
 	Turreted:
 		TurnSpeed: 12
 		RealignDelay: 20
+		Offset: 0,0,240
+	WithSpriteTurret: 
 	Power:
 		Amount: -30
-	RenderVoxels:
-		Scale: 1.32
-		-WAngle:
-	WithVoxelTurret:
-		ShowShadow: false
-	WithVoxelBarrel:
-		ShowShadow: false
 	HitShape:
 
 t2_niflheim:
@@ -612,7 +704,7 @@ t2_niflheim:
 		BuildPaletteOrder: 20
 		BuildDurationModifier: 10
 		Prerequisites: opbarr
-		Description: Tier 2 defensive structure fitted with an EMP howitzer\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
+		Description: Tier 2 defensive structure fitted with an autocannon\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
 	Valued:
 		Cost: 1200
 	Selectable:
@@ -629,27 +721,22 @@ t2_niflheim:
 		Weapon: Niflheim.gun
 		Recoil: 150
 		RecoilRecovery: 15
-		LocalOffset: 15,650,850
+		LocalOffset: 150,0,200
 	DetectCloaked:
 		Range: 2c0
 		CloakTypes: Cloak
 	Armor:
 		Type: Heavy
+	AutoTarget:
 	AttackTurreted:
 		PauseOnCondition: build-incomplete || empdisable || disabled
-	AutoTarget:
 	Turreted:
 		TurnSpeed: 12
 		RealignDelay: 20
-	RenderVoxels:
-		Scale: 1.1
-		-WAngle:
+		Offset: 0,0,240
+	WithSpriteTurret: 
 	Power:
 		Amount: -30
-	WithVoxelTurret:
-		ShowShadow: false
-	WithVoxelBarrel:
-		ShowShadow: false
 	HitShape:
 
 t3_hel:
@@ -675,7 +762,7 @@ t3_hel:
 	Health:
 		HP: 9000
 	Armament@gun:
-		Weapon: Helgun
+		Weapon: Sharest.Railgun
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 15,650,850
@@ -690,24 +777,21 @@ t3_hel:
 	Turreted:
 		TurnSpeed: 8
 		RealignDelay: 20
+		Offset: 0,0,1650
+	WithSpriteTurret: 
 	Power:
 		Amount: -60
-	RenderVoxels:
-		Scale: 1.0
-		-WAngle:
-	WithVoxelTurret:
-		ShowShadow: false
 	HitShape:
 	
 t4_executioner:
 	Inherits@1: ^Defence
 	Inherits@2: ^3x2Shape
 	Buildable:
-		Queue: nope.baneslayer
+		Queue: Defence.baneslayer
 		BuildPaletteOrder: 30
 		BuildDurationModifier: 15
 		Prerequisites: Research Module
-		Description: Tier 3 defensive structure capable of launching hypersonic ATGM\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
+		Description: massive cannon firing a devastating plasma charge\n> Strong vs All
 	Valued:
 		Cost: 5000
 	Selectable:
@@ -720,7 +804,6 @@ t4_executioner:
 		Adjacent: 10
 	Health:
 		HP: 9000
-    -AutoTarget:
 	Armament@gun01:
 		Weapon: RagnarokCanonPlasma.target
 		LocalOffset: 2450,0,1350
@@ -737,10 +820,12 @@ t4_executioner:
 		Type: Heavy
 	AttackTurreted:
 		RequiresCondition: !build-incomplete && !empdisable && !disabled
+        AttackRequiresEnteringCell: true
 	Turreted:
 		TurnSpeed: 3
 		InitialFacing: 224
 		Offset: -70,0,850
+		RequiresCondition: !build-incomplete
     AttackOrderPower:
 		PauseOnCondition: empdisable || disabled
 		Cursor: attack
@@ -748,6 +833,7 @@ t4_executioner:
 		ChargeInterval: 6300
 		Description: Ragnarok Fire
 		LongDesc: Fires a pulse blast which disables\nall mechanical units in the area.
+        DisplayTimerStances: Ally, Neutral, Enemy
 		EndChargeSpeechNotification: 
 		SelectTargetSpeechNotification: 
 	Power:
@@ -814,9 +900,6 @@ t3_heimdall_deploy:
 		IntoActor: t3_heimdall
 		Offset: 0,0
 		Facing: 98
-	GrantConditionOnPrerequisite@research.roquette.baneslayer:
-		Prerequisites: research.roquette.baneslayer
-		Condition: upgrade.roquette.baneslayer
 	Armament@gun:
 		Weapon: Heimdall.Missile
 		Recoil: 150
@@ -824,12 +907,6 @@ t3_heimdall_deploy:
 		LocalOffset: 700,0,880, 700,150,580, 700,-150,580
 		MuzzleSequence: muzzle
 		RequiresCondition: !upgrade.roquette.baneslayer
-	Armament@gunUpgrade:
-		Weapon: Heimdall.Missile.upgrade
-		Recoil: 150
-		RecoilRecovery: 15
-		LocalOffset: 700,0,880, 700,150,580, 700,-150,580
-		MuzzleSequence: muzzle
 	WithSpriteTurret:
 		RequiresCondition: !build-incomplete
 	WithSpriteBody:

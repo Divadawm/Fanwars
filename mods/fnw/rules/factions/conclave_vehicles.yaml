@@ -2,7 +2,7 @@ tcmcv:
 	Inherits: ^VoxelVehicleHeavyWalker
 	Buildable:
 		Queue: Vehicle.conclave
-		Prerequisites: Ion Trap X3
+		Prerequisites: Ion Trap X3, tcweap.first
 		BuildPaletteOrder: 80
 		BuildDurationModifier: 25
 		Description: Mobile construction vehicle
@@ -40,11 +40,13 @@ tcmcv:
 
 prospecteur:
 	Inherits: ^ShapeHoverMedium
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@harvester: ^Harvester.rules
+    Inherits@SoundMove: ^HoverTech.vehicle.move
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 10
-		Prerequisites: GateWarp.conclave
+		Prerequisites: tcproc, tcweap.first
 		InitialActivity: FindResources
 		Description: Hover Diastim harvester
 		IconPalette: Conclave.Icon
@@ -60,24 +62,32 @@ prospecteur:
 	-AutoTarget:
 	RenderSprites:
 		Scale: 1.0
+    LeavesTrails@01:
+        Image: smoke_hovermove
+        Sequences: smoke_hovermove02, smoke_hovermove03, smoke_hovermove04
+        Palette: powereffect
+        Type: CenterPosition
+        MovingInterval: 5
+        Offsets: -20,0,-15
 	WithDockingAnimation:
 
 t2_rodeur:
 	Inherits: ^ShapeWalkerMedium
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Inherits@DetectCloaked: ^Vehicles.DetectCloaked
-	Inherits@RevealCells: ^7cells.Range.base
+	Inherits@RevealCells: ^9cells.Range.base
 	Tooltip:
 		Name: Prowler
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 40
 		Prerequisites: tcholotech.rodeur
-		BuildDurationModifier: 20
-		Description: Lightly armored “main battle tank” equipped with a twin fast-firing laser cannon\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
+		BuildDurationModifier: 16
+		Description: The lightly armored "main battle tank" equipped with a double rapid-fire laser cannon \ncan receive different armaments with the improvements \n> Strong against vehicles \n> Weak against infantry, airplanes
 		IconPalette: Conclave.Icon
 	Health:
-		HP: 3500
+		HP: 4200
 	Mobile:
 		Speed: 105
 	Valued:
@@ -85,40 +95,48 @@ t2_rodeur:
 	Armament@gun:
 		Weapon: Rodeur.Dual.LightLaser
 		MuzzleSequence: muzzle
-		LocalOffset: 450,260,650
-		RequiresCondition: !upgrade.Base.Rodeur.Conclave
-	Armament@gun2:
-		Weapon: Rodeur.Dual.LightLaser
-		MuzzleSequence: muzzle
-		LocalOffset: 450,-260,650
+		LocalOffset: 450,260,650, 450,-260,650
 		RequiresCondition: !upgrade.Base.Rodeur.Conclave
 	Armament@gunAlpha:
-		Weapon: Rodeur.Dual.LightLaser.Alpha
+		Weapon: Rodeur.Dual.LightLaser.Alpha01
 		MuzzleSequence: muzzle
 		LocalOffset: 450,260,650
 		RequiresCondition: upgrade.Alpha.Rodeur.Conclave
 	Armament@gunAlpha2:
-		Weapon: Rodeur.Dual.LightLaser.Alpha
+		Weapon: Rodeur.Dual.LightLaser.Alpha02
 		MuzzleSequence: muzzle
 		LocalOffset: 450,-260,650
 		RequiresCondition: upgrade.Alpha.Rodeur.Conclave
 	Armament@gunOmega:
 		Weapon: Rodeur.Dual.LightLaser.Omega
-		MuzzleSequence: muzzle
+		MuzzleSequence: muzzle_omega
+        MuzzlePalette: powereffect
 		LocalOffset: 450,260,650
 		RequiresCondition: upgrade.Omega.Rodeur.Conclave
 	Armament@gunOmega2:
 		Weapon: Rodeur.Dual.LightLaser.Omega
-		MuzzleSequence: muzzle
+		MuzzleSequence: muzzle_omega
+        MuzzlePalette: powereffect
 		LocalOffset: 450,-260,650
 		RequiresCondition: upgrade.Omega.Rodeur.Conclave
-	DamageMultiplier@Omega:
-		Modifier: 90
-		RequiresCondition: upgrade.Omega.Rodeur.Conclave
+    GrantConditionOnAttack@Omega:
+        Condition: Omega.drain
+	SelfHealing@Omega.drain:
+        Step: 140
+        Delay: 25
+        HealIfBelow: 100
+        RequiresCondition: Omega.drain
 	WithMuzzleOverlay:
 	RenderSprites:
 		Scale: 0.80
 	WithSpriteTurret:
+        RequiresCondition: !upgrade.Base.Rodeur.Conclave
+    WithSpriteTurret@phie:
+        Sequence: turretPhie
+        RequiresCondition: upgrade.Alpha.Rodeur.Conclave
+    WithSpriteTurret@Omega:
+        Sequence: turretOmega
+        RequiresCondition: upgrade.Omega.Rodeur.Conclave
 	AttackTurreted:
 		RequiresCondition: !empdisable
 	Turreted:
@@ -134,10 +152,22 @@ t2_rodeur:
 	GrantConditionOnPrerequisite@Omega:
 		Prerequisites: research.Omega.Rodeur.Conclave
 		Condition: upgrade.Omega.Rodeur.Conclave
+	WithDecoration@ModuleHealthInfantry:
+		Image: heal.infantry
+		Sequence: idle
+		ReferencePoint: Top, Center
+		Palette: effect
+		ValidStances: Enemy, Neutral, Ally
+		RequiresCondition: Omega.drain && upgrade.Omega.Rodeur.Conclave
+	Explodes:
+		Weapon: tank.blue.explode
+		EmptyWeapon: tank.blue.explode
 
 t3_surveyor:
 	Inherits: ^ShapeWalkerMedium
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+	Inherits@RevealCells: ^10cells.Range.base
 	Valued:
 		Cost: 2200
 	Tooltip:
@@ -146,13 +176,13 @@ t3_surveyor:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 110
 		Prerequisites: tcholotech.arpenteur
-		BuildDurationModifier: 30
-		Description: Three legged heavy walker\nDeals damage based on HP percentages\n> Strong vs Vehicles, Structures\n> Weak vs Infantry, Aircraft
+		BuildDurationModifier: 28
+		Description: Three legged heavy walker\nDeals damage based on HP percentages \ncan receive different capacity with the improvements \n> Strong vs Vehicles, Structures\n> Weak vs Infantry, Aircraft
 		IconPalette: Conclave.Icon
 	Mobile:
 		PauseOnCondition: !(!empdisable || upgrade.Omega.Arpenteur.Conclave)
 	Health:
-		HP: 4000
+		HP: 6000
 	Armament@left:
 		Weapon: ExconvectorGun.lateral
 		Recoil: 150
@@ -169,11 +199,6 @@ t3_surveyor:
 		FireDelay: 6
 		RecoilRecovery: 15
 		LocalOffset: 800,0,50
-	SelfHealing@Base:
-		Step: 25
-		Delay: 8
-		HealIfBelow: 50
-		DamageCooldown: 150
 	RenderSprites:
 		Scale: 0.78
 	WithSpriteTurret:
@@ -218,6 +243,7 @@ t3_surveyor:
 		TurnSpeed: 4
 		RealignDelay: 20
 		Offset: 0,0,2050
+    # // Shield System //
 	Minelayer:
 		Mine: activate.Shield
 		AmmoPoolName: shield
@@ -231,6 +257,9 @@ t3_surveyor:
 		AmmoPool: shield
 		Delay: 700
 		ResetOnFire: true
+    Rearmable:
+        RearmActors: t3_surveyor
+        AmmoPools: Shield
 	ExternalCondition@Shield:
 		Condition: ShieldActivate
 	DamageMultiplier@Shield:
@@ -243,15 +272,9 @@ t3_surveyor:
 	TimedConditionBar@shield:
 		Condition: ShieldActivate
 	HitShape:
-	Rearmable:
-		RearmActors: fix
-		AmmoPools: primary, shield
-	Rearmable:
-		RearmActors: fix
-		AmmoPools: primary, shield
-	Rearmable:
-		RearmActors: fix
-		AmmoPools: primary, shield
+	Explodes:
+		Weapon: tank.blue.explode
+		EmptyWeapon: tank.blue.explode
 
 activate.Shield:
 	Inherits: ^Capacity.system.active
@@ -261,54 +284,96 @@ activate.Shield:
 
 t2_pilgrim:
 	Inherits: ^ShapeHoverMedium
+    Inherits@UnitePlayStat:^UnitPlayerStat
+    Inherits@SoundMove: ^HoverTech.vehicle.move
 	Inherits@Target: ^AutoTargetAllAssaultMove
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
+	Inherits@RevealCells: ^9cells.Range.base
 	Valued:
 		Cost: 1200
 	Tooltip:
 		Name: Pilgrim
+		RequiresCondition: !deployed
+	Tooltip@DEPLOYED:
+		Name: Pilgrim (deployed)
+		RequiresCondition: deployed
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 60
 		Prerequisites: tcholotech.pelerin
 		BuildDurationModifier: 25
-		Description: Hover anti-aircraft missile launcher\nCan be deployed into an artillery\n> Strong vs Vehicles, Aircraft\n> Weak vs Infantry
+		Description: Hover anti-aircraft missile launcher \ncan receive different Capacity/armaments with the improvements \nCan be deployed into an artillery\n> Strong vs Vehicles, Aircraft\n> Weak vs Infantry
 		IconPalette: Conclave.Icon
-	Transforms:
-		IntoActor: t2_pilgrimdeployed
-		TransformSounds: deploy_vehicle_mode.aud
-		Offset: 0,0
+	Health:
+		HP: 2000
+	Passenger:
+		RequireForceMoveCondition: !undeployed
+	GrantConditionOnDeploy:
+		PauseOnCondition: empdisable || being-captured
+		DeployedCondition: deployed
+		UndeployedCondition: undeployed
+		UndeployOnMove: true
+		UndeployOnPickup: true
 		Facing: 96
-	WithMuzzleOverlay:
-	GrantConditionOnPrerequisite@Alpha:
+		AllowedTerrainTypes: Clear, Road, DirtRoad, Rough
+		DeploySounds: makebuild.wav
+		UndeploySounds: makebuild.wav
+		Voice: Move
+	WithFacingSpriteBody:
+        StartSequence: make
+		RequiresCondition: !deployed
+	WithSpriteBody@deployed:
+        StartSequence: make
+        Sequence: idle-deployed
+		RequiresCondition: deployed
+	WithSpriteTurret:
+	AttackTurreted:
+	Turreted:
+		TurnSpeed: 12
+		RealignDelay: 10
+		Offset: -650,0,125
+    # ///// Upgrade ,Conclave /////
+	GrantConditionOnPrerequisite@Phie:
 		Prerequisites: research.Alpha.Pelerin.Conclave
 		Condition: upgrade.Alpha.Pelerin.Conclave
-	Health:
-		HP: 1200
+	GrantConditionOnPrerequisite@Omega:
+		Prerequisites: research.Omega.Pelerin.Conclave
+		Condition: upgrade.Omega.Pelerin.Conclave
 	Armament@gun:
 		Weapon: Photo_MissileAA
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalYaw: 100, -100
 		LocalOffset: 250,100,200, 250,-100,200
-	Armament@gunAA:
-		Weapon: Photo_Missile
+	Armament@deployed:
+		Weapon: Photo_MissileArty
+		LocalOffset: 820,0,1386
+		RequiresCondition: deployed
+		MuzzleSequence: muzzle
+	Armament@gunPhie:
+		Weapon: Photo_MissileMinArty
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalYaw: 100, -100
 		LocalOffset: 250,100,200, 250,-100,200
 		RequiresCondition: upgrade.Alpha.Pelerin.Conclave
-	AutoTarget:
+	Armament@deployedOmega:
+		Weapon: Photo_MissileAAArty
+		LocalOffset: 820,0,1386
+		RequiresCondition: deployed && upgrade.Omega.Pelerin.Conclave
+		MuzzleSequence: muzzle
+	WithMuzzleOverlay:
 	RenderSprites:
-        Scale: 0.95
-	Hovers:
-	WithSpriteTurret:
-	AttackTurreted:
-		RequiresCondition: !empdisable
-	Turreted:
-		TurnSpeed: 10
-		RealignDelay: 10
-		Offset: -150,0,220
-	SpawnActorOnDeath:
-		Actor: t2_pilgrim.Husk
-		OwnerType: InternalName
-		EffectiveOwnerFromOwner: true
+		Scale: 0.84
+	RevealOnFire:
+		ArmamentNames: deployed
+    LeavesTrails@01:
+        Image: smoke_hovermove
+        Sequences: smoke_hovermove02, smoke_hovermove03, smoke_hovermove04
+        Palette: powereffect
+        Type: CenterPosition
+        MovingInterval: 5
+        Offsets: -20,0,-15
+	Explodes:
+		Weapon: tank.blue.explode
+		EmptyWeapon: tank.blue.explode

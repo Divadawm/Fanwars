@@ -103,7 +103,7 @@ Rhino_gun:
 	Range: 7c512
 	Report: rhinogun01.aud, rhinogun02.aud, rhinogun03.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 900
+		Damage: 400
 		Versus:
 			Infantry: 30
 			LightVehicle: 100
@@ -167,3 +167,20 @@ vulture.missile:
 			LightVehicle: 100
 			ArmorTank: 90
 			Concrete: 45
+
+fedbomber.fire:
+	Inherits@default.weapons: ^Anaconda.Weapons.default
+	Inherits@Range: ^Range.VehicleAA.Base
+    ValidTargets: Ground
+	Burst: 20
+	ReloadDelay: 70
+	Range: 14c0
+	Report: anaconda_fire.aud
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Ground
+		Damage: 80
+		Versus:
+			Infantry: 60
+			LightVehicle: 85
+			ArmorTank: 80
+			Concrete: 60

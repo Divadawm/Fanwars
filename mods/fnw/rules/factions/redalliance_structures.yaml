@@ -27,10 +27,10 @@ arwall:
 	WithWallSpriteBody:
 		Type: concrete
 
-
 aracnst:
 	Inherits@1: ^Building
 	Inherits@2: ^3x2Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Valued:
 		Cost: 2000
 	Selectable:
@@ -46,13 +46,22 @@ aracnst:
 		HP: 14000
 	Armor:
 		Type: Concrete
-	WithProductionDoorOverlay:
+	WithProductionDoorOverlay@0:
 		RequiresCondition: !build-incomplete
 		Sequence: make-drop
+	WithProductionDoorOverlay@1:
+		RequiresCondition: !build-incomplete
+		Sequence: build
 	Production:
 		Produces: Building.redalliance, Defence.redalliance
 		PauseOnCondition: empdisable
 		RequiresCondition: !build-incomplete
+    GrantConditionOnBotOwner:
+        Condition: BotOwner
+        Bots: BaseAI, DidactAI
+    ProvidesPrerequisite@Bot:
+        Prerequisite: BotOwnerBuild
+        RequiresCondition: BotOwner
 	Transforms:
 		IntoActor: armcv
 		Offset: 0,0
@@ -84,7 +93,6 @@ aracnst:
 		Cooldown: 75
 		Range: 14c0
 	WithBuildingPlacedAnimation:
-	WithDeliveryAnimation:
 	ProvidesRadar:
 	RallyPoint:
 		RallyPoint: 3,4
@@ -94,6 +102,14 @@ aracnst:
 		Sequence: smoke
 		Palette: effectalpha75
 		RequiresCondition: !build-incomplete
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: aracnst.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealaracnst
+        Condition: aracnst.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealaracnst
 	HitShape:
 
 arpowr:
@@ -178,10 +194,11 @@ arhighpowr:
 arproc:
 	Inherits@1: ^Building
 	Inherits@2: ^3x3Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Buildable:
-		Queue: none.redalliance
+		Queue: Building.redalliance
 		BuildPaletteOrder: 80
-		Prerequisites: aracnst
+		Prerequisites: aracnst, ~BotOwnerBuild
 		BuildDurationModifier: 20
 		Description: Refines Diastim into credits
 		IconPalette: RedAlliance.Icon
@@ -237,17 +254,20 @@ arproc:
 		Sequence: smoke
 		Palette: effectalpha75
 		RequiresCondition: !build-incomplete
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: arproc.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealarproc
+        Condition: arproc.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealarproc
 	HitShape:
 
 arproc.seconddeploy:
 	Inherits@1: ^Building
 	Inherits@2: ^3x3Shape
-	Buildable:
-		Queue: none.redalliance
-		BuildPaletteOrder: 80
-		Prerequisites: aracnst
-		Description: Refines Diastim into credits
-		IconPalette: RedAlliance.Icon
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Valued:
 		Cost: 2000
 	Tooltip:
@@ -298,20 +318,35 @@ arproc.seconddeploy:
 		Sequence: smoke
 		Palette: effectalpha75
 		RequiresCondition: !build-incomplete
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: arproc.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealarproc
+        Condition: arproc.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealarproc
 	HitShape:
 
 arbarr:
 	Inherits@1: ^Building
 	Inherits@2: ^3x2Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Selectable:
 		Bounds: 80,60
 	Valued:
 		Cost: 500
 	Tooltip:
 		Name: Barracks
+	Buildable:
+		Queue: Building.redalliance
+		BuildPaletteOrder: 80
+		Prerequisites: aracnst, ~BotOwnerBuild
+		BuildDurationModifier: 20
+		IconPalette: RedAlliance.Icon
 	Building:
-		Footprint: xxx xxx
-		Dimensions: 3,2
+		Footprint: xxx xxx ===
+		Dimensions: 3,3
 		BuildSounds: makebuild.wav
 		BuildDurationModifier: 5
 		Description: Produces infantry units
@@ -340,6 +375,8 @@ arbarr:
 		SpawnOffset: -850,900,0
 		ExitCell: 0,2
 	WithBuildingPlacedAnimation:
+	Voiced:
+		VoiceSet: arbarr_voice
 	Power:
 		Amount: 0
 	ProximityExternalCondition@HEAL:
@@ -358,11 +395,22 @@ arbarr:
 		Sequence: light_holo
 		Palette: powereffect40
 		RequiresCondition: !build-incomplete
+	WithBuildingBib:
+        Palette: treeorganic
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: arbarr.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealarbarr
+        Condition: arbarr.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealarbarr
 	HitShape:
 
 arweap:
 	Inherits@1: ^Building
 	Inherits@2: ^4x3Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Selectable:
 		Bounds: 80,70
 	Valued:
@@ -371,9 +419,15 @@ arweap:
 		Name: War Factory
 	ProvidesPrerequisite@buildingame:
 		Prerequisite: arweap
+	Buildable:
+		Queue: Building.redalliance
+		BuildPaletteOrder: 80
+		Prerequisites: arproc, ~BotOwnerBuild
+		BuildDurationModifier: 20
+		IconPalette: RedAlliance.Icon
 	Building:
-		Footprint: xxxx xxxx xxx=
-		Dimensions: 4,3
+		Footprint: xxxx xxxx xxx= ====
+		Dimensions: 4,4
 		BuildSounds: makebuild.wav
 		Adjacent: 10
 		Description: Produces ground vehicles
@@ -411,6 +465,8 @@ arweap:
 		Facing: 164
 	ProductionBar@Vehicle:
 		ProductionType: Vehicle.redalliance
+	Voiced:
+		VoiceSet: arweap_voice
 	Power:
 		Amount: 0
 	ConditionManager:
@@ -419,11 +475,22 @@ arweap:
 		Sequence: smoke
 		Palette: effectalpha75
 		RequiresCondition: !build-incomplete
+	WithBuildingBib:
+        Palette: treeorganic
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: arweap.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealarweap
+        Condition: arweap.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealarweap
 	HitShape:
 
 artech:
 	Inherits@1: ^Building
 	Inherits@2: ^3x2Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Selectable:
 		Bounds: 80,70
 	Health:
@@ -434,6 +501,12 @@ artech:
 		Cost: 2000
 	Tooltip:
 		Name: Orbital Relay
+	Buildable:
+		Queue: Building.redalliance
+		BuildPaletteOrder: 80
+		Prerequisites: arproc, ~BotOwnerBuild
+		BuildDurationModifier: 20
+		IconPalette: RedAlliance.Icon
 	Building:
 		Footprint: xxx xxx
 		Dimensions: 3,2
@@ -466,6 +539,8 @@ artech:
 		Prerequisite: artech
 	ProductionBar@Research.RedAlliance:
 		ProductionType: Research.RedAlliance
+	Voiced:
+		VoiceSet: artech_voice
 	Power:
 		Amount: 0
 	WithDeliveryAnimation:
@@ -475,6 +550,14 @@ artech:
 		Sequence: smoke
 		Palette: effectalpha75
 		RequiresCondition: !build-incomplete
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: artech.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealartech
+        Condition: artech.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealartech
 	HitShape:
 
 ardeftech:
@@ -482,6 +565,13 @@ ardeftech:
 	Inherits@2: ^3x2Shape
 	Inherits@PowerBuilding: ^BuildingGivePower.Alliance
 	Inherits@3: ^DisablePowerDown
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
+	Buildable:
+		Queue: Building.redalliance
+		BuildPaletteOrder: 80
+		Prerequisites: arproc, ~BotOwnerBuild
+		BuildDurationModifier: 20
+		IconPalette: RedAlliance.Icon
 	Selectable:
 		Bounds: 80,60,0,0
 	Health:
@@ -503,24 +593,27 @@ ardeftech:
 		Facing: 98
 		TransformSounds: makebuild.wav
 		NoTransformNotification: CannotDeploy
-	Production:
-		Produces: Doctrines.RedAlliance
-		MoveIntoWorld: false
-		PauseOnCondition: empdisable
-		RequiresCondition: !build-incomplete
-	ProductionQueue@Doctrines:
-		Type: Doctrines.RedAlliance
+	ProvidesPrerequisite@buildingame:
+		Prerequisite: artech
+	ProductionQueue@Research:
+		Type: Research.RedAlliance
 		Factions: redalliance
-		Group: Doctrines
+		Group: Research
 		BuildDurationModifier: 80
 		LowPowerModifier: 200
 		QueuedAudio: Research
 		ReadyAudio: ResearchReady
+	Production:
+		Produces: Research.RedAlliance
+		MoveIntoWorld: false
+		PauseOnCondition: empdisable
+		RequiresCondition: !build-incomplete
 	ProvidesPrerequisite@buildingame:
 		Prerequisite: artech
-	ProductionBar@Doctrines.RedAlliance:
-		ProductionType: Doctrines.RedAlliance
-	Exit:
+	ProductionBar@Research.RedAlliance:
+		ProductionType: Research.RedAlliance
+	Voiced:
+		VoiceSet: artech_voice
 	BaseProvider:
 		Cooldown: 75
 		Range: 14c0
@@ -528,12 +621,14 @@ ardeftech:
 	Power:
 		Amount: 0
 	ConditionManager:
-	GrantExternalConditionToProduced@WeaponsAR:
-		Condition: RemoveBaseWeaponsAR
-		Duration: 10
-	GrantExternalConditionToProduced@StatAR:
-		Condition: RemoveBaseStatsAR
-		Duration: 10
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: ardeftech.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealardeftech
+        Condition: ardeftech.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealardeftech
 	HitShape:
 
 t3_commandbuilding:
@@ -677,9 +772,9 @@ t2_predator_deployed:
 	Buildable:
 		Queue: Defence.redalliance
 		BuildPaletteOrder: 40
-		BuildDurationModifier: 10
-		Prerequisites: ardeftech
-		Description: Tier 1 defensive structure armed with a high-caliber autocannon\nRate-of-fire increased when deployed\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
+		BuildDurationModifier: 15
+		Prerequisites: arbarr
+		Description: Tier 1 defensive structure armed with a high-caliber autocannon\n> Strong vs Vehicle\n> Weak vs Infantry, Aircraft
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 800
@@ -695,28 +790,19 @@ t2_predator_deployed:
 		Type: Concrete
 	Health:
 		HP: 8000
-	Transforms:
-		IntoActor: t2_predator_mobile
-		Offset: 0,0
-		Facing: 96
 	Armament@gun:
-		Weapon: Predator.gun
+		Weapon: AP_basilic
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 150,0,200
 	AttackTurreted:
-		PauseOnCondition: build-incomplete || empdisable
+		PauseOnCondition: build-incomplete || empdisable || disabled
 	Turreted:
 		TurnSpeed: 12
 		RealignDelay: 20
-	RenderVoxels:
-		Scale: 1.2
-		-WAngle:
-	WithVoxelTurret:
-		ShowShadow: false
+		Offset: 0,0,160
+	WithSpriteTurret:
 	-MustBeDestroyed:
-	WithVoxelBarrel:
-		ShowShadow: false
 	HitShape:
 
 t2_tarantula_deployed:
@@ -726,9 +812,9 @@ t2_tarantula_deployed:
 	Buildable:
 		Queue: Defence.redalliance
 		BuildPaletteOrder: 40
-		BuildDurationModifier: 10
-		Prerequisites: ardeftech
-		Description: Tier 2 anti-air defensive structure\nRange increased when deployed\n> Strong vs Aircraft\n> Weak vs Infantry, Vehicles
+		BuildDurationModifier: 15
+		Prerequisites: arbarr
+		Description: Tier 2 anti-air defensive structure\n> Strong vs Aircraft\n> Weak vs Infantry, Vehicles
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 800
@@ -742,38 +828,29 @@ t2_tarantula_deployed:
 		Adjacent: 10
 	Health:
 		HP: 8000
-	Transforms:
-		IntoActor: t2_tarantula_mobile
-		Offset: 0,0
-		Facing: 96
 	Armament@gun:
-		Weapon: AP_Tarantula
+		Weapon: AP_hydra
 		Recoil: 150
 		RecoilRecovery: 15
-		LocalOffset: 150,50,850, 150,-50,850
+		LocalOffset: 150,250,850, 150,-250,850
 	DetectCloaked:
 		Range: 6c0
 		CloakTypes: Cloak
 	Armor:
 		Type: Concrete
 	AttackTurreted:
-		RequiresCondition: build-incomplete || empdisable
+		PauseOnCondition: build-incomplete || empdisable || disabled
 	Turreted:
 		TurnSpeed: 12
 		RealignDelay: 20
-	RenderVoxels:
-		Scale: 1
-		-WAngle:
-	WithVoxelTurret:
-		ShowShadow: false
+		Offset: 0,0,160
+	WithSpriteTurret:
 	-MustBeDestroyed:
-	WithVoxelBarrel:
-		ShowShadow: false
 	HitShape:
 
 t3_doomtowerbuild:
 	Inherits@1: ^Defence
-	Inherits@2: ^1x1Shape
+	Inherits@2: ^2x2Shape
 	Inherits@AUTOTARGET: ^AutoTargetGround
 	Inherits@EMPDisable: ^EmpDisable
 	Inherits@EMPSpeedDisable: ^EmpSpeedDisable
@@ -781,8 +858,8 @@ t3_doomtowerbuild:
 		Queue: Defence.redalliance
 		BuildPaletteOrder: 40
 		BuildDurationModifier: 26
-		Prerequisites: ardeftech, t2_command_relais
-		Description: Tier 3 defensive structure fitted with a massive tesla coil\nDeals damage to all enemy ground units within a certain radius and resistance increased when deployed\n> Strong vs Infantry, Vehicles\n> Weak vs Aircraft
+		Prerequisites: arbarr, t2_command_relais
+		Description: Tier 3 defensive structure fitted with a massive tesla coil \ nDeals damage to all enemy ground units within a large radius \ n> Strong vs Infantry, Vehicles \ n> Weak vs Aircraft
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 1500
@@ -791,17 +868,14 @@ t3_doomtowerbuild:
 	Tooltip:
 		Name: Doom Tower
 	AttackTurreted:
-		PauseOnCondition: empdisable || disabled
+		PauseOnCondition: build-incomplete || empdisable || disabled
 	Turreted:
 		TurnSpeed: 255
 		Offset: 128,128,384
 	Building:
-		Footprint: x
-		Dimensions: 1,1
+		Footprint: xx xx
+		Dimensions: 2,2
 		Adjacent: 10
-	DamageMultiplier@DoomShield:
-		Modifier: 8
-		RequiresCondition: !empdisable
 	Transforms:
 		IntoActor: t3_doomtower_mobile
 		Offset: 0,0
@@ -809,16 +883,11 @@ t3_doomtowerbuild:
 		TransformSounds: makebuild.wav
 		NoTransformNotification: CannotDeploy
 	Health:
-		HP: 2000
+		HP: 3000
 	WithIdleOverlay@Lightning:
 		Offset: 0,0,0
 		Sequence: doomtowerelectro
-		Palette: powereffect
-	WithIdleOverlay@Lightning2:
-		Offset: 0,0,0
-		Sequence: doomtowershield
-		Palette: powereffect
-		RequiresCondition: !empdisable
+		Palette: flammeeffectblue
 	Armament@gun:
 		Weapon: DoomTower.Gun
 		Recoil: 150
@@ -836,9 +905,9 @@ arheli:
 	Inherits@1: ^Building
 	Inherits@2: ^3x2Shape
 	Buildable:
-		Queue: nope.redalliance
+		Queue: Building.redalliance
 		BuildPaletteOrder: 110
-		Prerequisites: BuildOrderBase.redalliance, Mobile.Orbital.Relay
+		Prerequisites: artech, ~BotOwnerBuild
 		BuildDurationModifier: 10
 		Description: Produces and repairs aircraft
 		IconPalette: RedAlliance.Icon
@@ -882,6 +951,8 @@ arheli:
 		Facing: 164
 		TransformSounds: makebuild.wav
 		NoTransformNotification: CannotDeploy
+	Voiced:
+		VoiceSet: arheli_voice
 	Power:
 		Amount: 0
 	Reservable:
@@ -890,46 +961,11 @@ arheli:
 		Condition: Ammocraft
 		Range: 5c0
 		AffectsParent: true
-	HitShape:
-	
-t2_hydra_deployed:
-	Inherits@1: ^Building
-	Inherits@2: ^1x1Shape
-	Inherits@AUTOTARGET: ^AutoTargetGround
-	Inherits@3: ^ConditioneffetGeneralsUnit
-	Inherits@4: ^ConditionGeneralBuildDefense
-	Selectable:
-	Tooltip:
-		Name: Hydra Deployed
-	Building:
-		Footprint: x
-		Dimensions: 1,1
-		Adjacent: 10
-	Health:
-		HP: 4000
-	Transforms:
-		IntoActor: t2_hydra
-		TransformSounds: deploy_vehicle_mode.aud
-		Offset: 0,0
-		Facing: 96
-	WithMuzzleOverlay:
-	Armament@gun:
-		Weapon: AP_hydra_multimiss
-		Recoil: 220
-		RecoilRecovery: 15
-		LocalYaw: 100, -100
-		LocalOffset: 280,60,420, 280,-60,420
-		MuzzleSequence: muzzle
-	Armor:
-		Type: Heavy
-	WithSpriteTurret:
-	AttackTurreted:
-		RequiresCondition: !build-incomplete
-		PauseOnCondition: empdisable
-	Turreted:
-		TurnSpeed: 12
-		RealignDelay: 10
-		Offset: 0,0,0
-	RenderSprites:
-		Scale: 1
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: arheli.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealarheli
+        Condition: arheli.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealarheli
 	HitShape:

@@ -4,6 +4,15 @@
 		Tileset: OLITRAX
 		Filename: olitrax.pal
 		ShadowIndex: 3, 4
+	PaletteFromFile@Sirius:
+		Name: terrain
+		Tileset: SIRIUS
+		Filename: sirius.pal
+		ShadowIndex: 3, 4
+	PaletteFromFile@Vigile:
+		Name: terrain
+		Tileset: VIGILE
+		Filename: vigile.pal
 	PaletteFromFile@player:
 		Name: player
 		Filename: unittem.pal
@@ -13,6 +22,11 @@
 		Filename: variante_terrainpal.pal
 		ShadowIndex: 1
 		AllowModifiers: false
+	PaletteFromFile@DISABLED:
+		Name: disabled
+		Filename: unittemdisabled.pal
+		AllowModifiers: false
+		ShadowIndex: 1
 	PaletteFromFile@cursor:
 		Name: cursor
 		Filename: temperat.pal
@@ -38,6 +52,11 @@
 		Filename: treeorganic.pal
 		ShadowIndex: 1
 		AllowModifiers: true
+	PaletteFromFile@toxintree:
+		Name: toxintree
+		Filename: toxintree.pal
+		ShadowIndex: 1
+		AllowModifiers: true   
 	PaletteFromFile@treebionte:
 		Name: treebionte
 		Filename: bionte_faune.pal
@@ -129,14 +148,6 @@
 		Filename: light.pal
 		ShadowIndex: 1
 		
-	PaletteFromRGBA@disabled:
-		AllowModifiers: false
-		Name: disabled
-		R: 0
-		G: 0
-		B: 0
-		A: 180
-		
 	PaletteFromRGBA@Upgrade_blue_effect:
 		BasePalette: effect
 		Name: Upgrade_blue_effect
@@ -213,7 +224,16 @@
 		G: 0
 		B: 0
 		A: 80
-		
+
+	PaletteFromPaletteWithAlpha@Isotemalpha50:
+		Name: isotemalpha50
+		Alpha: 0.50
+		BasePalette: isotem
+
+	PaletteFromPaletteWithAlpha@Unitalpha30:
+		Name: unitalpha30
+		Alpha: 0.30
+		BasePalette: player
 	PaletteFromPaletteWithAlpha@Unitalpha60:
 		Name: unitalpha60
 		Alpha: 0.60
@@ -254,12 +274,29 @@
 		Alpha: 0.55
 		BasePalette: effect
 		Premultiply: false
-		
+
+	PaletteFromPaletteWithAlpha@flammeeffectbluealpha50:
+		Name: flammeeffectblue50
+		Alpha: 0.50
+		BasePalette: flammeeffectblue
+		Premultiply: false
+        
+	PaletteFromPaletteWithAlpha@flameeffectalpha10:
+		Name: flameeffect10
+		Alpha: 0.10
+		BasePalette: flameeffect
+	PaletteFromPaletteWithAlpha@flameeffectalpha20:
+		Name: flameeffect20
+		Alpha: 0.15
+		BasePalette: flameeffect
+	PaletteFromPaletteWithAlpha@flameeffectalpha30:
+		Name: flameeffect30
+		Alpha: 0.30
+		BasePalette: flameeffect
 	PaletteFromPaletteWithAlpha@flameeffectalpha50:
 		Name: flameeffect50
 		Alpha: 0.50
 		BasePalette: flameeffect
-		Premultiply: false
 	PaletteFromPaletteWithAlpha@flameeffectalpha60:
 		Name: flameeffect60
 		Alpha: 0.60
@@ -279,7 +316,7 @@
 	PlayerColorPalette:
 		BasePalette: player
 		RemapIndex: 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
-		ShadowIndex: 2
+		ShadowIndex: 1
 	PaletteFromPaletteWithAlpha@effect50:
 		BasePalette: effect
 		Name: effect50
@@ -310,4 +347,8 @@
 	PaletteFromPlayerPaletteWithAlpha@placebuilding:
 		BaseName: placebuilding
 		BasePalette: player
-		Alpha: 0.65
+		Alpha: 0.55
+	PaletteFromPaletteWithAlpha@placefootprint:
+		Name: placefootprint
+		BasePalette: player
+		Alpha: 0.7

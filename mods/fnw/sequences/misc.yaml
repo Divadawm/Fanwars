@@ -60,10 +60,10 @@
 		Offset: 4, -4
 		ZOffset: -50
 		BlendMode: Subtractive
-	heat_flame: burn
+	heat_flame: flame_husk
 		Length: *
-		Tick: 20
-		ZOffset: 100
+		Tick: 30
+		Offset: 0, -20
 	shadow.medium: shadow_vehiclelarge
 		Offset: 4, -4
 		ZOffset: -50
@@ -92,12 +92,20 @@
 		Tick: 15
 		ZOffset: 20
 		BlendMode: Additive
+    target.blue: blue_target
+		Length: *
+		Tick: 45
+		ZOffset: 5
     hover_move: hovermove
 		Length: *
 		ZOffset: -10
+		BlendMode: Additive
     hover_moveLarge: hovermovelarge
 		Length: *
 		ZOffset: -10
+    smoke_move: smoke_vehiclemove
+		Length: *
+		ZOffset: -20
 	aura.avatar.conclave: minlight_avatar
 		Length: *
 		Tick: 28
@@ -157,6 +165,11 @@ small_debris2:
 	Defaults:
 		Length: *
 	idle: small_debris2
+        
+gibsproj01:
+	Defaults:
+		Length: *
+	idle:
 
 gibs01:
 	Defaults:
@@ -167,6 +180,19 @@ gibs02:
 	Defaults:
 		Length: *
 	idle:
+    
+corps01:
+	Defaults:
+		Length: *
+
+corps02:
+	Defaults:
+		Length: *
+
+corps03:
+	Defaults:
+		Length: *
+
     
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 # ////////////////////////////////////// Abilitie & Power Sequences //////////////////////////////////
@@ -236,9 +262,18 @@ explosion:
 	Defaults:
 		Length: *
 		ZOffset: 511
-		scale: 0.58
+		scale: 0.98
 	water_piffs: impact_water_small
     #Building Explosion
+    builddestruc01: builddestruc01
+		Offset: 0, -50
+        Tick: 45
+    builddestruc02: builddestruc02
+		Offset: 0, -50
+        Tick: 45
+    builddestruc03: builddestruc03
+		Offset: 0, -50
+        Tick: 45
 	explbuilding01: buildexpl01
         Tick: 65
 		Offset: 0, -20
@@ -254,15 +289,28 @@ explosion:
     explbuilding05: buildexpl05
         Tick: 45
 		Offset: 0, -20
+    smoke_gaz: smoke_gaz
+		Offset: 0, -20
     bomb_expl01: bomb_expl01
-        BlendMode: Additive
 		Offset: 0, -20
     bomb_expl02: bomb_expl02
-        BlendMode: Additive
 		Offset: 0, -20
     bomb_expl03: bomb_expl03
-        BlendMode: Additive
 		Offset: 0, -20
+    balisimpact01: balisimpact01
+		Offset: 0, -24
+    balisimpact02: balisimpact02
+		Offset: 0, -24
+    balisimpact03: balisimpact03
+		Offset: 0, -24
+    balisimpact04: balisimpact04
+		Offset: 0, -24
+    balisimpact05: balisimpact05
+		Offset: 0, -24
+    balisimpact06: balisimpact06
+		Offset: 0, -24
+    balisimpact07: balisimpact07
+		Offset: 0, -24
     #Vehicle/Aircraft Explosion
     explunit01: unit_expl01
 		BlendMode: Additive
@@ -284,14 +332,19 @@ explosion:
 		Offset: 0, -20
 		BlendMode: Additive
     apo_expl01: apo_expl01
-		BlendMode: Additive
         Offset: 0, -50
     apo_expl02: apo_expl02
-		BlendMode: Additive
         Offset: 0, -50
     apo_expl03: apo_expl03
-		BlendMode: Additive
         Offset: 0, -50
+    flak_expl01: flak_expl01
+		BlendMode: Additive
+    flak_expl02: flak_expl02
+		BlendMode: Additive
+    flak_expl03: flak_expl03
+		BlendMode: Additive
+    flak_expl04: flak_expl04
+		BlendMode: Additive
 	obus_ballexpl: obus_ballexpl
 		BlendMode: Additive
 	obus_expl01: obus_expl01
@@ -312,6 +365,27 @@ explosion:
 	obus_smoke03: obus_smoke03
 		BlendMode: Additive
         Offset: 0, -35
+    clusterimpact01: clusterimpact01
+		BlendMode: Additive
+        Tick: 15
+        Offset: 0, -10
+    clusterimpact02: clusterimpact02
+		BlendMode: Additive
+        Tick: 15
+        Offset: 0, -10
+    clusterimpact03: clusterimpact03
+		BlendMode: Additive
+        Tick: 15
+        Offset: 0, -10
+    clusterimpact04: clusterimpact04
+		BlendMode: Additive
+        Tick: 15
+        Offset: 0, -10
+    trail_smoke01: trail_smoke01
+		BlendMode: Additive
+    trail_smoke02: trail_smoke02
+    trail_smoke03: trail_smoke03
+		BlendMode: Additive  
     trail_smokemin01: trail_smokemin01
 		BlendMode: Additive
     trail_smokemin02: trail_smokemin02
@@ -324,6 +398,12 @@ explosion:
         Offset: 0, -40
     large_bomb_expl03: large_bomb_expl03
         Offset: 0, -40
+    expl_tank01: expl_tank01
+        Offset: 0, -20
+    expl_tank02: expl_tank02
+        Offset: 0, -20
+    expl_tank03: expl_tank03
+        Offset: 0, -20
     #Unite "ballistique" Explosion
 	blast_expl: blast_expl
 	frag_expl: frag_expl
@@ -364,6 +444,10 @@ explosion:
     #Unite Electric Impact
 	small_sismic_impact: small_sismic_impact
 	normal_sismic_impact: normal_sismic_impact
+    zapimpactmin: zapimpactmin
+		BlendMode: Additive
+    railcharge01: railcharge01
+		BlendMode: Additive
     railbomb_expl01: railbomb_expl01
 		BlendMode: Additive
         Offset: 0, -45
@@ -373,6 +457,24 @@ explosion:
     railbomb_expl03: railbomb_expl03
 		BlendMode: Additive
         Offset: 0, -45
+    railbomb_explmin01: railbomb_explmin01
+		BlendMode: Additive
+        Offset: 0, -20
+    railbomb_explmin02: railbomb_explmin02
+		BlendMode: Additive
+        Offset: 0, -20
+    railbomb_explmin03: railbomb_explmin03
+		BlendMode: Additive
+        Offset: 0, -20
+    railgun_trailshot01: railgun_trailshot01
+		BlendMode: Additive
+        Offset: 0, -5
+    railgun_trailshot02: railgun_trailshot02
+		BlendMode: Additive
+        Offset: 0, -5
+    railgun_trailshot03: railgun_trailshot03
+		BlendMode: Additive
+        Offset: 0, -5
     zapimpact: zapimpact
         BlendMode: Additive
     laser_spark01: laser_spark01
@@ -394,6 +496,10 @@ explosion:
         BlendMode: Additive
         Offset: 0, -25
     #Unite Ion Impact
+    orbital_strike: orbital_strike
+		BlendMode: Additive
+        Tick: 25
+		Offset: 0, -250
 	ion_expl: ion_expl
     ionlaser_impact01: ionlaser_impact01
 		BlendMode: Additive
@@ -408,6 +514,21 @@ explosion:
     impact_particle03: impact_particle03
 		BlendMode: Additive
     #Unite Plasma Impact
+    navig_expl01: navig_expl01
+		BlendMode: Additive
+    navig_expl02: navig_expl02
+		BlendMode: Additive
+    navig_expl03: navig_expl03
+		BlendMode: Additive
+    plasma_expl01min: plasma_expl01min
+		BlendMode: Additive
+		Offset: 0, -15
+    plasma_expl02min: plasma_expl02min
+		BlendMode: Additive
+		Offset: 0, -15
+    plasma_expl03min: plasma_expl03min
+		BlendMode: Additive
+		Offset: 0, -15
     plasma_expl01: plasma_expl01
 		BlendMode: Additive
 		Offset: 0, -45
@@ -428,12 +549,27 @@ explosion:
         Tick: 65
 	bigplasma_expl: bigplasma_expl
 		BlendMode: Additive
+    sonic_impact: sonic_impact
+		BlendMode: Additive
+        Tick: 20
     #Unite Conclave blue Effect Weapons
 	photo_expl: photo_expl
 		BlendMode: Additive
 	quasarshotmin: quasarshotmin
 		BlendMode: Additive
 	quasarshotmax: quasarshotmax
+		BlendMode: Additive
+    phierodeurimpact01: phierodeurimpact01
+		BlendMode: Additive
+    phierodeurimpact02: phierodeurimpact02
+		BlendMode: Additive
+    phierodeurimpact03: phierodeurimpact03
+		BlendMode: Additive
+    phase_expl01: phase_expl01
+		BlendMode: Additive
+    phase_expl02: phase_expl02
+		BlendMode: Additive
+    phase_expl03: phase_expl03
 		BlendMode: Additive
     #Impact Air Weapons Balistic
 	air_expl: air_expl
@@ -499,6 +635,7 @@ explosion:
 	emp_impact: emp_impact
 		BlendMode: Additive
 	expl_gibs01: expl_gibs01
+	expl_gibsmin: expl_gibsmin
 	mininuke_impact: mininuke_impact
 		BlendMode: Additive
 		Offset: 0, -40
@@ -546,6 +683,12 @@ explosion:
 		Length: *
 		BlendMode: Additive
 	idle: 20mm
+    
+graviton_ball:
+	Defaults:
+		Length: *
+		BlendMode: Additive
+	idle: navig_ball
 
 jotunballmode:
 	idle:
@@ -570,6 +713,11 @@ smoke_missile:
 largesmoke:
 	idle:
 		Length: *
+        
+trail_smokemin03:
+	idle:
+		Length: *
+		BlendMode: Additive
 
 midsmoke:
 	idle:
@@ -578,10 +726,130 @@ midsmoke:
 minsmoke:
 	idle:
 		Length: *
-
-smoke_vehicle:
+        
+smoke_gaz:
 	idle:
+		Tick: 30
 		Length: *
+        
+damage_smoke.min:
+	smoke_damage01: damage_smokemin01
+		Tick: 30
+		Length: *
+		Offset: 0, -12
+	smoke_damage02: damage_smokemin01
+		Tick: 32
+		Length: *
+		Offset: 0, -12
+	smoke_damage03: damage_smokemin01
+		Tick: 28
+		Length: *
+		Offset: 0, -12
+	smoke_damage04: damage_smokemin01
+		Tick: 30
+		Length: *
+		Offset: 0, -12
+        
+damage_smoke.min:
+	smoke_damage01: damage_smokemin01
+		Tick: 30
+		Length: *
+		Offset: 0, -12
+	smoke_damage02: damage_smokemin01
+		Tick: 32
+		Length: *
+		Offset: 0, -12
+	smoke_damage03: damage_smokemin01
+		Tick: 28
+		Length: *
+		Offset: 0, -12
+	smoke_damage04: damage_smokemin01
+		Tick: 30
+		Length: *
+		Offset: 0, -12
+        
+damage_smoke.large:
+	smoke_damage01: damage_smokeLarge01
+		Tick: 30
+		Length: *
+		Offset: 0, -15
+	smoke_damage02: damage_smokeLarge01
+		Tick: 32
+		Length: *
+		Offset: 0, -15
+	smoke_damage03: damage_smokeLarge01
+		Tick: 28
+		Length: *
+		Offset: 0, -15
+	smoke_damage04: damage_smokeLarge01
+		Tick: 30
+		Length: *
+		Offset: 0, -15
+        
+smoke_movemin:
+	smoke_movemin01: smoke_movemin01
+		Tick: 30
+		Length: *
+		Offset: 0, -12
+	smoke_movemin02: smoke_movemin02
+		Tick: 32
+		Length: *
+		Offset: 0, -12
+	smoke_movemin03: smoke_movemin03
+		Tick: 28
+		Length: *
+		Offset: 0, -12
+	smoke_movemin04: smoke_movemin04
+		Tick: 30
+		Length: *
+		Offset: 0, -12
+        
+        
+smoke_movelarge:
+	smoke_movelarge01: smoke_movelarge01
+		Tick: 45
+		Length: *
+		Offset: 0, -16
+	smoke_movelarge02: smoke_movelarge02
+		Tick: 46
+		Length: *
+		Offset: 0, -16
+	smoke_movelarge03: smoke_movelarge03
+		Tick: 45
+		Length: *
+		Offset: 0, -16
+	smoke_movelarge04: smoke_movelarge04
+		Tick: 42
+		Length: *
+		Offset: 0, -16
+        
+move_smoke.burning:
+	move_burning01: expl_tank01
+		Tick: 30
+		Length: *
+		Offset: 0, -12
+	move_burning02: expl_tank02
+		Tick: 32
+		Length: *
+		Offset: 0, -12
+	move_burning03: expl_tank03
+		Tick: 28
+		Length: *
+		Offset: 0, -12
+
+smoke_hovermove:
+	smoke_hovermove02: smoke_hovermove02
+		Tick: 45
+		Length: *
+		BlendMode: Additive
+	smoke_hovermove03: smoke_hovermove03
+		Tick: 46
+		Length: *
+		BlendMode: Additive
+	smoke_hovermove04: smoke_hovermove04
+		Tick: 45
+		Length: *
+		BlendMode: Additive
 
 trailburn:
 	idle: trailburn
@@ -615,7 +883,7 @@ trollplasmaball:
 		BlendMode: Additive
         
 photo_ball:
-	idle: muzzle_bluegun
+	idle: phaseball
 		Length: *
 		Tick: 20
 		BlendMode: Additive
@@ -670,6 +938,16 @@ plasma_projectile:
 		Length: *
 		BlendMode: Additive
         
+plasmaball:
+	idle:
+		Length: *
+		BlendMode: Additive
+        
+plasmatrail:
+	idle:
+		Length: *
+		BlendMode: Additive
+        
 plasma_projectilemin:
 	idle:
 		Length: *
@@ -679,6 +957,11 @@ quasarshotmax:
 	idle:
 		Length: *
 		BlendMode: Additive
+
+impuls_ball:
+	idle:
+		Length: *
+		BlendMode: Additive    
 
 # ///////////////////// Projectile Facing x32 ////////////////////////
 minball_gun:
@@ -693,7 +976,7 @@ saber_proj:
         
 flame_projectile:
 	idle:
-		Facings: 32
+		Facings: -32
         Offset: 0, 5
 		BlendMode: Additive
         
@@ -723,6 +1006,11 @@ plasma_gunmin:
 		BlendMode: Additive
 
 bigplasma_gun:
+	idle:
+		Facings: 32
+		BlendMode: Additive
+
+muzzle_railgun:
 	idle:
 		Facings: 32
 		BlendMode: Additive
@@ -773,12 +1061,10 @@ litning:
 	bright: litning
 		Length: 4
 		ZOffset: 2048
-		BlendMode: Additive
 	dim: litning
 		Start: 4
 		Length: 4
 		ZOffset: 2048
-		BlendMode: Additive
   
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 # /////////////////////////////////////// Terrain Effet Sequences ////////////////////////////////////
@@ -848,12 +1134,19 @@ scorchs:
 ghusk:
 	Defaults:
 	ghusk01: ghusk01
+		Offset: 9, 5
 	ghusk02: ghusk02
+		Offset: -4, 0
 	ghusk03: ghusk03
+		Offset: -8, -6
 	ghusk04: ghusk04
+		Offset: 4, -10
 	ghusk05: ghusk05
+		Offset: -4, -6
 	ghusk06: ghusk06
+		Offset: -4, 6
 	ghusk07: ghusk07
+		Offset: 4, -4
 	ghusk08: ghusk08
     
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -906,6 +1199,11 @@ trail_smoke01:
 	idle:
 		Length: *
 		ZOffset: 512
+        
+trail_smoke03:
+	idle:
+		Length: *
+		ZOffset: 512
 
 smokey:
 	idle: smokeymin
@@ -925,7 +1223,7 @@ smokeyelectro:
 		BlendMode: Additive
 
 gibs_smoke:
-	idle: smokeymin
+	idle:
 		Length: *
 		ZOffset: 1023
 
@@ -934,42 +1232,6 @@ smoke_husk:
 		Length: *
 		BlendMode: Alpha
 		ZOffset: 1023
-
-groundsmoke:
-	idle: smoke_vehicle
-		Length: *
-		BlendMode: Additive
-	ZOffset: -100
-
-groundsmokeheavy:
-	idle: smoke_vehiclemove
-		Length: *
-	BlendMode: Additive
-	ZOffset: -100
-
-groundsmokewalker:
-	idle: smoke_vehicle
-		Length: *
-	BlendMode: Additive
-	ZOffset: -100
-
-groundsmokeheavywalker:
-	idle: smoke_vehicle
-		Length: *
-	BlendMode: Additive
-	ZOffset: -100
-
-groundsmokehover:
-	idle: smoke_vehicle
-		Length: *
-	BlendMode: Additive
-	ZOffset: -100
-
-groundsmokeheavyhover:
-	idle: smoke_vehicle
-		Length: *
-	BlendMode: Additive
-	ZOffset: -100
     
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 # //////////////////////////////////////// Stat Visual Sequences /////////////////////////////////////
@@ -986,20 +1248,19 @@ mine_weapon:
 		BlendMode: Additive
 
 overlay: overlay
-	build-valid-olitrax:
-	build-valid-kerberos:
-	build-valid-aride:
-	build-valid-stationa:
+	build-valid:
+		BlendMode: Additive
 	build-invalid:
 		Start: 1
+		BlendMode: Additive
 	target-select:
 		Start: 2
-	target-valid-olitrax:
-	target-valid-kerberos:
-	target-valid-aride:
-	target-valid-stationa:
+		BlendMode: Additive
+	target-valid:
+		BlendMode: Additive
 	target-invalid:
 		Start: 1
+		BlendMode: Additive
 
 editor-overlay:
 	copy: overlay
@@ -1031,6 +1292,10 @@ pips:
 		Start: 4
 	pip-blue: pips2
 		Start: 5
+	pip-ammofull: pipsammo
+		Start: 0
+	pip-ammoempty: pipsammo
+		Start: 1
 	pip-disguise: pip-disguise
 		Length: *
 		Tick: 300
@@ -1051,6 +1316,13 @@ pips.large.ammo:
 clock:
 	idle: clock
 		Length: *
+        
+selection.point:
+    infantry: select_inf
+		Length: *
+    vehicle.light: select_vehlight
+		Length: *
+    vehicle: select_veh
 
 powerdown:
 	disabled: speed
@@ -1069,7 +1341,34 @@ rank:
 		Start: 2
 	rank-elite:
 		Start: 3
-
+        
+icon_mobile_building:
+	Building:
+		Start: 0
+		Offset: 0,-20
+	Infantry:
+		Start: 1
+		Offset: 0,-20
+	Proc:
+		Start: 3
+		Offset: 0,-20
+	Weap:
+		Start: 2
+		Offset: 0,-20
+	T2:
+		Start: 4
+		Offset: 0,-20
+	T3:
+		Start: 5
+		Offset: 0,-20
+	Aircraft:
+		Start: 6 
+		Offset: 0,-20   
+        
+oprankspec:
+    icon: oprankspec
+   		Start: 0
+        
 rallypoint:
 	flag: arrow_beacon
 		Length: *
@@ -1098,6 +1397,12 @@ waypoint:
 camera:
 	idle: camera
 		Length: *
+
+ico_light:
+	idle: null
+		Length: *    
+    Light: light_zone_base
+        BlendMode: Additive
 
 shroud:
 	shroud: shadow
@@ -1204,7 +1509,7 @@ doctrines_air_bonusicon:
 	icon: doctrines_air_bonusicon
  
 
-# ////////////////////////////////////// RED ALLIENCES ////////////////////////////////////
+# ////////////////////////////////////// RED ALLIANCES ////////////////////////////////////
 
 # ///////////// Weapons Aspect /////////////
 aspect_ar_lasericons:
@@ -1222,9 +1527,33 @@ aspect_ar_armorinficons:
 aspect_ar_rangeicons:
 	icon: aspect_ar_rangeicons
 aspect_ar_walkericons:
+    idle:
+    make:
 	icon: aspect_ar_walkericons
 aspect_ar_airicons:
 	icon: aspect_ar_airicons
+    
+# ////////////////////////////////////// BANESLAYER ORDER ////////////////////////////////////
+
+# ///////////// Weapons Aspect /////////////
+aspect_op_infantryicons:
+	icon: doctrinesinficon
+aspect_op_vehicleicons:
+	icon: doctrinesvehicon
+aspect_op_aircrafticons:
+	icon: doctrinesairicon
+aspect_op_defenseicons:
+	icon: doctrinesdeficon
+     
+# ///////////// Stat Aspect /////////////
+aspect_op_locklidnicons:
+	icon: doctrineslocklidnicon
+aspect_op_lockdwarficons:
+	icon: doctrineslockdwarficon
+aspect_op_locklokiicons:
+	icon: doctrineslocklokiicon
+aspect_op_lockaheimdalicon:
+	icon: doctrineslockheimdalicon
 
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 # ////////////////////////////////////// Researh & Icon Sequences ////////////////////////////////////
@@ -1232,17 +1561,17 @@ aspect_ar_airicons:
 
 icon:
 	Defaults:
-		AddExtension: False
-	salveicon: salveicon.shp
-	detecticon: detecticon.shp
-	empstrike_icon: empstrike_icon.shp
-	powergravitconclaveicon: powergravitconclaveicon.shp
-	avataricon: avataricon.shp
-	powerrelaisicon: powerrelaisicon.shp
-	aircraftbaneslayerpowericon: aircraftbaneslayerpowericon.shp
-	nukeallianceicons: nukeallianceicons.shp
-	ragnarok_plasmaicon: ragnarok_plasmaicon.shp
-    fusionmissileicon: fusionmissileicon.shp
+	salveicon: salveicon
+	detecticon: detecticon
+	empstrike_icon: empstrike_icon
+	powergravitconclaveicon: powergravitconclaveicon
+	avataricon: avataricon
+	powerrelaisicon: powerrelaisicon
+	aircraftbaneslayerpowericon: aircraftbaneslayerpowericon
+	nukeallianceicons: nukeallianceicons
+	ragnarok_plasmaicon: ragnarok_plasmaicon
+    powereclipseconclaveicon: powereclipseconclaveicon
+    fusionmissileicon: fusionmissileicon
 
 lockedicon:
 	icon: lockedicon

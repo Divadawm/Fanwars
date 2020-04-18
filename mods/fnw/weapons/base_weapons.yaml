@@ -1,39 +1,3 @@
-# Range Stat Weapons
-
-^Range.Infantry.Base:
-	Range: 5c0
-	
-^Range.InfantrySniper.Base:
-	Range: 10c0
-	
-^Range.Vehicle.Base:
-	Range: 7c0
-	
-^Range.VehicleAA.Base:
-	Range: 8c0
-	
-^Range.ArtyLow.Base:
-	Range: 10c0
-	
-^Range.Garrisoned.Base:
-	Range: 7c0
-
-^Range.ArtyHigh.Base:
-	Range: 14c0
-	
-^Range.ArtyVeryHigh.Base:
-	Range: 20c0
-	
-^Range.Aircraft.Base:
-	Range: 8c0
-	
-^Range.ArtyAircraft.Base:
-	Range: 10c0
-	
-^Range.ArtyVeryHighAircraft.Base:
-	Range: 15c0
-	
-# Visuelle/Effect Weapons
 
 ^Weapons.Effect.Condition.Generale:
 	Warhead@3Eff: CreateEffect
@@ -46,72 +10,100 @@
 		ImpactSounds:
 		ValidTargets: Water
 
-ShieldWarhead.Active:
-	Warhead@1Dam: SpreadDamage
-		Spread: 0
-		Damage: 0
-		AffectsParent: true
-	Warhead@3Eff: CreateEffect
-		Explosions: grenade_expl
-	Warhead@stun: GrantExternalCondition
-		Range: 0c100
-		Duration: 150
-		Condition: ShieldActivate
+# Range Stat Weapons
 
-EMPLaserCannon.Active:
-	Report:
-	Warhead@1Eff: CreateEffect
-		Explosions: emp_impact
-		ExplosionPalette: powereffect
-	Warhead@emp: GrantExternalCondition
-		Range: 4c0
-		Duration: 200
-		Condition: empdisable
+^Range.Infantry.Base:
+	Range: 8c0
+	
+^Range.InfantrySniper.Base:
+	Range: 10c0
+	
+^Range.Vehicle.Base:
+	Range: 9c0
+	
+^Range.VehicleAA.Base:
+	Range: 10c0
+	
+^Range.ArtyLow.Base:
+	Range: 14c0
+	
+^Range.Garrisoned.Base:
+	Range: 9c0
 
-DisordCannon:
-	Warhead@disturb: GrantExternalCondition
-		ValidTargets: Ground, Rough, Tree, Air
-		Range: 6c0
-		Duration: 200
-		Condition: disturbing
-	Warhead@8Light: CreateEffect
-		Explosions: mediumlight
-		ExplosionPalette: redlight
-		
-^Gatling.Defense.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground
+^Range.ArtyHigh.Base:
+	Range: 16c0
+	
+^Range.ArtyVeryHigh.Base:
+	Range: 26c0
+	
+^Range.Aircraft.Base:
+	Range: 12c0
+	
+^Range.ArtyAircraft.Base:
+	Range: 16c0
+	
+^Range.ArtyVeryHighAircraft.Base:
+	Range: 18c0
+	
+# Visuelle/Effect Weapons
+
+^null.Comon.Animation:
+	ValidTargets: Ground, Water
 	Projectile: InstantHit
-		Inaccuracy: 750
+		Speed: 450
+		Inaccuracy: 128
 	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Spread: 64
+		Spread: 1
+		DamageTypes: DefaultDeath
+		ValidTargets: Ground, Water
+        
+^InstantHit.Comon.Animation:
+	Projectile: InstantHit
+		Inaccuracy: 712
+	Warhead@1Dam: SpreadDamage
+		Spread: 65
 		DeathType: 4
-		DamageTypes: Gibs
 	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Crater
+		SmudgeType: Scorch
 		InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
-		Explosions: piff
-		ValidTargets: Ground, Water
+		Explosions: flak_expl01, flak_expl02, flak_expl03, flak_expl04
+		ExplosionPalette: flameeffect
+		ValidTargets: Ground, Water, Air
 	Warhead@3EffWater: CreateEffect
 		Explosions: impact_water_small
 		ExplosionPalette: effectalpha75
 		ValidTargets: Water
-		
-^Fortressdefense.Target.default:
+        
+Comon.Delay weapon:
+	Inherits@default.weapons: ^null.Comon.Animation
+	Inherits@Range: ^Range.Vehicle.Base
+	ReloadDelay: 0
+
+^Laser.Target.Animation:
 	ValidTargets: Ground
-	Projectile: InstantHit
+	Projectile: LaserZap
+		Width: 18
+		TrackTarget: true
+		Color: ffFFFF
+		SecondaryBeam: true
+		SecondaryBeamWidth: 45
+		SecondaryBeamColor: 1e53c0
 	Warhead@1Dam: SpreadDamage
 		Spread: 0
 		Damage: 0
 		Versus:
-			Infantry: 1
-			LightVehicle: 1
-			ArmorTank: 1
-			Concrete: 1
-		
-^Fortressdefense.default:
+			Infantry: 10
+			LightVehicle: 10
+			ArmorTank: 10
+			Concrete: 10
+		DamageTypes: DefaultDeath, Burned, TriggerProne
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: bluelight
+		ValidTargets: Ground, Water, Air
+        
+^Laser.Fire.Comon.Animation:
 	Projectile: LaserZap
 		Width: 45
 		Color: fff71a
@@ -119,11 +111,10 @@ DisordCannon:
 		SecondaryBeamWidth: 125
 		SecondaryBeamColor: ff9c00
 	Warhead@1Dam: SpreadDamage
-		Spread: 300
+		Spread: 256
 		DeathType: 5
-		DamageTypes: Burned, TriggerProne, Crater
+		DamageTypes: Burned, TriggerProne, Crater, DefaultDeath
 	Warhead@3EffGround: CreateEffect
-		Falloff: 100, 68, 35
 		Explosions: apo_expl
 		ExplosionPalette: effectalpha75
 		ValidTargets: Ground, Water, Air
@@ -133,39 +124,179 @@ DisordCannon:
 		ValidTargets: Ground, Water, Air
 		Palette: Upgrade_blue_effect
 
-SmokeCamoWarhead.Active:
-	ValidTargets: Ground, Rough, Tree, Air
-	Warhead@1Dam_impact: SpreadDamage
-		Range: 0
-		Damage: 0
-		AffectsParent: True
-	Warhead@stun: GrantExternalCondition
-		ValidTargets: Ground, Rough, Tree
-		Range: 4c0
-		Duration: 320
-		Condition: SmokeCamoActivate
+^Minigun.Comon.Animation:
+	Projectile: InstantHit
+		Inaccuracy: 64
+	Warhead@1Dam: SpreadDamage
+		Spread: 4
+		DamageTypes: DefaultDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: piff
+		ValidTargets: Ground, Water
+	Warhead@3EffWater: CreateEffect
+		Explosions: water_piffs
+		ValidTargets: Water
+        
+^Minigun.medium.Comon.Animation:
+	Projectile: InstantHit
+		Inaccuracy: 750
+	Warhead@1Dam: SpreadDamage
+		Spread: 64
+		DeathType: 4
+		DamageTypes: Gibs, DefaultDeath
+	Warhead@3EffGround: CreateEffect
+		Explosions: piff
+		ValidTargets: Ground, Water
+	Warhead@3EffWater: CreateEffect
+		Explosions: water_piffs
+		ValidTargets: Water
 
-^DoomTowerAlliance:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+^Melee.Comon.Animation:
+	ValidTargets: Ground, Water
+	Projectile: InstantHit
+		Speed: 450
+		Inaccuracy: 128
+	Warhead@1Dam: SpreadDamage
+		Spread: 25
+		DamageTypes: DefaultDeath
+		ValidTargets: Ground, Water
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: light
+		ValidTargets: Ground, Water
+        
+^Orbital.Weapons.Animation:
+    Projectile: InstantHit
+		Inaccuracy: 128
+	Warhead@1Dam: SpreadDamage
+        Delay: 10
+		DeathType: 5
+		Spread: 5
+		DamageTypes: Burned
+	Warhead@3Eff: CreateEffect
+		Explosions: zapimpactmin
+		ExplosionPalette: flammeeffectblue
+		ValidTargets: Ground
+        
+^Missile.Comon.Animation:
+	ValidTargets: Ground, Air, Water
+	Projectile: Missile
+		Speed: 480
+		Arm: 2
+		TrailImage: trail_smokemin01
+		TrailPalette: flameeffect
+		TrailInterval: 0
+		ContrailLength: 2
+		Inaccuracy: 128
+		Image: 20mm
+		HorizontalRateOfTurn: 12
+		CruiseAltitude: 4c0
+		RangeLimit: 18c256
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Ground, Air, Water
+		DamageTypes: DefaultDeath, Crater
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
+		InvalidTargets: Vehicle
+	Warhead@3Eff: CreateEffect
+		Explosions: blast_expl
+		ExplosionPalette: effectalpha75
+		ImpactSounds: expnew05.wav
+		ValidTargets: Ground, Water, Air
+	Warhead@3EffAir: CreateEffect
+		Explosions: air_expl
+		ExplosionPalette: effectalpha75
+		ImpactSounds: impact_airfrag.aud
+		ValidTargets: Air
+	Warhead@3EffWater: CreateEffect
+		Explosions: impact_water_medium
+		ExplosionPalette: effectalpha75
+		ValidTargets: Water
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: light
+		ValidTargets: Ground, Water, Air
+
+^Autocanon.Comon.Animation:
+	ValidTargets: Ground, Water
+	Projectile: Bullet
+		ContrailLength: 10
+		ContrailWidth: 10
+		Color: 5F5F5F
+		Speed: 800
+		Inaccuracy: 450
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		DeathType: 4
+		ValidTargets: Ground, Water
+		DamageTypes: DefaultDeath, Crater
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		InvalidTargets: Vehicle
+	Warhead@3Eff: CreateEffect
+		Explosions: blast_expl
+		ExplosionPalette: effectalpha75
+		ImpactSounds: expnew05.wav
+		ValidTargets: Ground, Water
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: light
+		ValidTargets: Ground, Water
+        
+^GravityBomb.Comon.Animation:
+	Projectile: GravityBomb
+		Velocity: 72, 0, -90
+		Acceleration: 0, 0, -8
+		Image: 120mm
+		Shadow: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 2c256
+		DamageTypes: NukeDeath, TriggerProne, Crater
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		InvalidTargets: Vehicle
+	Warhead@3EffGround: CreateEffect
+		Explosions: mininuke_impact
+		ExplosionPalette: effectalpha75
+		ImpactSounds: mininuke_impact.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@5Eff: CreateEffect
+		Explosions: mediumlight
+		ExplosionPalette: light
+		ValidTargets: Ground, Water, Air
+
+# ///// Red Alliances Animation ////////////////////
+
+^Lasergun.Redalliance.Animation:
+	Charges: true
+	Projectile: LaserZap
+		Width: 25
+		Duration: 10
+		Inaccuracy: 0
+		Color: db9898
+		TrackTarget: false
+		SecondaryBeam: true
+		SecondaryBeamWidth: 65
+		SecondaryBeamColor: 9e0f0f
+	Warhead@801: CreateEffect
+		Explosions: laserimpact
+		ExplosionPalette: effect
+		ValidTargets: Ground
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: redlight
+		ValidTargets: Ground, Water, Air
+        
+^TeslaGun.RedAlliance.Animation:
 	ReloadDelay: 50
 	Range: 6c0
 	Report: voltkit_gun.aud
 	Projectile: TeslaZap
-		Duration: 2
+		Duration: 10
 		DimZaps: 1
 		BrightZaps: 1
-		Inaccuracy: 4500
-	Warhead@1Dam: SpreadDamage
-		Spread: 256
-		Damage: 100
-		DeathType: 5
-		RangeLimit: 7c256
-		Versus:
-			Infantry: 75
-			LightVehicle: 100
-			ArmorTank: 80
-			Concrete: 100
-		DamageTypes: Burned
+		Inaccuracy: 100
+        Palette: effectalpha75
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
 		InvalidTargets: Vehicle
@@ -177,34 +308,8 @@ SmokeCamoWarhead.Active:
 		Explosions: baselight
 		ExplosionPalette: bluelight
 		ValidTargets: Ground, Water, Air
-
-^LasergunComrade.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Charges: true
-	Projectile: LaserZap
-		Width: 25
-		Duration: 10
-		Inaccuracy: 0
-		Color: db9898
-		TrackTarget: false
-		SecondaryBeam: true
-		SecondaryBeamWidth: 65
-		SecondaryBeamColor: 9e0f0f
-	Warhead@1Dam: SpreadDamage
-		Spread: 3
-		DeathType: 1
-		DamageTypes: Burned
-	Warhead@801: CreateEffect
-		Explosions: laserimpact
-		ExplosionPalette: effect
-		ValidTargets: Ground
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: redlight
-		ValidTargets: Ground, Water, Air
-
-^FlakDisciple.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+        
+^80mm.RedAlliance.Animation:
 	ValidTargets: Ground, Water
 	Projectile: Bullet
 		Speed: 800
@@ -240,209 +345,18 @@ SmokeCamoWarhead.Active:
 		Explosions: baselight
 		ExplosionPalette: light
 		ValidTargets: Ground, Water
-
-^FlakDisciple.WeaponsAA.default:
-	ValidTargets: Air
-	Projectile: InstantHit
-		Inaccuracy: 512
-	Warhead@1Dam: SpreadDamage
-		Damage: 250
-		ValidTargets: Air
-	Warhead@3EffGround: CreateEffect
-		Explosions: shrap_exp
-		ExplosionPalette: effectalpha75
-		ImpactSounds: impact_explh01.aud, impact_explh02.aud, impact_explh03.aud
-		ValidTargets: Ground, Water, Air
-		
-^Saber.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground, Water
+        
+^Flamme.RedAlliance.Animation:
 	Projectile: Bullet
-		Speed: 450
-		Image: saber_proj
-		Palette: effectalpha75
-		Inaccuracy: 128
-	Warhead@1Dam: SpreadDamage
-		Spread: 25
-		DeathType: 4
-		ValidTargets: Ground, Water
-		DamageTypes: Gibs, Crater
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Crater
-		InvalidTargets: Vehicle
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water
-
-^Ellectrocutor.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 50
-	Range: 6c0
-	Report: voltkit_gun.aud
-	Projectile: TeslaZap
-		Duration: 2
-		DimZaps: 1
-		BrightZaps: 1
-		Inaccuracy: 2500
-	Warhead@1Dam: SpreadDamage
-		Spread: 16
-		DeathType: 5
-		RangeLimit: 7c256
-		DamageTypes: Burned, Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: small_sismic_impact
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Water, Air
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-
-^Desolator.Weapons.default:
-	Projectile: LaserZap
-		Width: 30
-		Color: ffa200
-		Inaccuracy: 1000
-		SecondaryBeam: true
-		SecondaryBeamWidth: 80
-		SecondaryBeamColor: 00CC0A
-	Warhead@1Dam: SpreadDamage
-		Spread: 512
-		DamageTypes: NukeDeath
-		ValidTargets: Ground, Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: greenlight
-		ValidTargets: Ground, Water
-
-^Eradicator.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground
-	Projectile: Bullet
-		Speed: 600
-		Image: pulse_laser_projectile_red
-		Palette: effect
-		Inaccuracy: 128
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Spread: 65
-		DeathType: 4
-		DamageTypes: Crater
-		
-^Eradicator.Beam.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground
-	Projectile: LaserZap
-		Duration: 25
-		Width: 100
-		ZOffset: 2047
-		Color: ffae00
-		SecondaryBeam: true
-		SecondaryBeamWidth: 25
-		SecondaryBeamZOffset: 2047
-		SecondaryBeamColor: ffff00
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-		
-^Desolator.Fusion.Weapons.default:
-	Projectile: LaserZap
-		Speed: 850
-		Width: 25
-		Duration: 10
-		Inaccuracy: 0
-		Color: ffa200
-		TrackTarget: false
-		SecondaryBeam: true
-		SecondaryBeamWidth: 65
-		SecondaryBeamColor: 9e0f0f
-	Warhead@1Dam: SpreadDamage
-		Spread: 512
-		DamageTypes: NukeDeath
-		ValidTargets: Ground, Water
-
-^Harvester.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground
-	Projectile: InstantHit
-		Inaccuracy: 128
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Spread: 128
-		DeathType: 4
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: autogun_expl
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Water, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_small
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-
-^Bike.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground, Air, Water
-	Projectile: Missile
-		Speed: 480
-		Arm: 2
-		TrailImage: trail_smokemin01
-		TrailPalette: flameeffect
-		TrailInterval: 0
-		ContrailLength: 2
-		Inaccuracy: 256
-		Image: 20mm
-		HorizontalRateOfTurn: 12
-		CruiseAltitude: 4c0
-		RangeLimit: 18c256
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground, Air, Water
-		DeathType: 4
-		DamageTypes: Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3Eff: CreateEffect
-		Explosions: blast_expl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: expnew05.wav
-		ValidTargets: Ground, Water, Air
-	Warhead@3EffAir: CreateEffect
-		Explosions: air_expl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: impact_airfrag.aud
-		ValidTargets: Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-
-^Scarab.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: Bullet
-		Speed: 450
-		Palette: flameeffect60
-		TrailImage: minburningspeed
-		TrailPalette: flameeffect
-		TrailInterval: 0
-		ContrailLength: 1
-		DamageInterval: 5
+		Speed: 250
+		TrailImage: minburning
+        TrailPalette: flameeffect60
+		DamageInterval: 15
 		Image: minburning
-		Inaccuracy: 800
+		Palette: flameeffect60
+		Inaccuracy: 1200
 	Warhead@1Dam: SpreadDamage
 		Spread: 512
-		DeathType: 5
 		RangeLimit: 7c256
 		DamageTypes: Burned
 	Warhead@2Smu: LeaveSmudge
@@ -457,29 +371,81 @@ SmokeCamoWarhead.Active:
 		Explosions: mediumlight
 		ExplosionPalette: light
 		ValidTargets: Ground, Water, Air
-		
-
-^Basilisk.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground
+        
+^FlammeBurst.RedAlliance.Animation:
 	Projectile: Bullet
-		Speed: 850
-		Image: obus_gun_min
-		Palette: effectalpha75
-		Inaccuracy: 128
+		Speed: 250
+		DamageInterval: 15
+		Image: flame_projectile
+		Palette: effect
+        BounceCount: 1
+        BounceRangeModifier: 25
+		Inaccuracy: 5
 	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Spread: 85
-		DeathType: 4
-		DamageTypes: Gibs, TriggerProne, Crater
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Crater
+		Spread: 512
+		RangeLimit: 7c256
+		DamageTypes: Burned
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
 		InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
-		Explosions: obus_expl01, obus_expl02, obus_expl03
+		Explosions: burn_flam
 		ExplosionPalette: effectalpha75
-		ImpactSounds: impact_explh01.aud, impact_explh02.aud, impact_explh03.aud
+		ImpactSounds: flames01.aud
+		ValidTargets: Ground, Water, Air
+	Warhead@8Light: CreateEffect
+		Explosions: mediumlight
+		ExplosionPalette: light
+		ValidTargets: Ground, Water, Air
+        
+^Inferno.rocket.RedAlliance.Animation:
+	ValidTargets: Ground, Water
+	Projectile: Missile
+		Speed: 520
+		Arm: 2
+		ContrailLength: 8
+		ContrailWidth: 10
+		Inaccuracy: 2C512
+		Image: 80mm
+		TrailImage: trail_smoke03
+		TrailPalette: flameeffect50
+		HorizontalRateOfTurn: 18
+		CruiseAltitude: 6c0
+		RangeLimit: 18c256
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Ground, Water
+		Spread: 256
+		DamageTypes: Burned, Crater
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
+		InvalidTargets: Vehicle
+	Warhead@3Eff: CreateEffect
+		Explosions: apo_expl01, apo_expl02, apo_expl03
+		ExplosionPalette: effectalpha55
 		ValidTargets: Ground
+	Warhead@3EffWater: CreateEffect
+		Explosions: impact_water_medium
+		ExplosionPalette: effectalpha75
+		ValidTargets: Water
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: light
+		ValidTargets: Ground, Water
+
+^Railgun.RedAlliance.Animation:
+	Projectile: Railgun
+		DamageActorsInLine: True
+		BeamColor: 428dda
+		BeamAlphaDeltaPerTick: -10
+		Duration: 20
+		BeamWidth: 25
+		HelixAnim: matter_bullet02
+		HelixAnimSequence: idle
+        HelixColor: 1356c4
+	Warhead@3EffGround: CreateEffect
+		Explosions: railgun_trailshot01, railgun_trailshot02, railgun_trailshot03
+		ImpactSounds: impact_explh01.aud, impact_explh02.aud, impact_explh03.aud
+		ExplosionPalette: powereffect
 	Warhead@801: CreateEffect
 		Explosions: obus_smoke01, obus_smoke02, obus_smoke03
 		ExplosionPalette: effect
@@ -495,114 +461,30 @@ SmokeCamoWarhead.Active:
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
 		ExplosionPalette: light
-		ValidTargets: Ground, Water
-
-^Basilisk.WeaponsAA.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 12
-	Burst: 2
-	BurstDelays: 5
-	Range: 7c256
-	Report: autocannon.aud
-	ValidTargets: Air
-	Projectile: InstantHit
-		Inaccuracy: 128
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Air
-		Spread: 128
-		DeathType: 4
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: autogun_expl
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Water, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_small
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-
-^Hydra/Tarantula.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Air
-	Projectile: InstantHit
-		Inaccuracy: 128
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Air
-		Spread: 128
-		DeathType: 4
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: autogun_expl
-		ExplosionPalette: effectalpha75
-		ValidTargets: Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_small
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-
-^Hydra.barrage.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground, Water
-	Projectile: Missile
-		Speed: 520
-		Arm: 2
-		ContrailLength: 8
-		ContrailWidth: 10
-		Inaccuracy: 2C512
-		Image: 80mm
-		HorizontalRateOfTurn: 18
-		CruiseAltitude: 6c0
-		RangeLimit: 18c256
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground, Water
-		Spread: 256
-		DeathType: 4
-		DamageTypes: Burned, Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3Eff: CreateEffect
-		Explosions: napalmhydraexpl
-		ExplosionPalette: effectalpha55
-		ValidTargets: Ground
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water
-
-^Manticore.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+        
+^Manticore.Railgun.RedAlliance.Animation:
 	Projectile: Bullet
 		Speed: 320
 		Image: 20mm
 		High: true
 		LaunchAngle: 160
 		Inaccuracy: 125
-		TrailImage: smokeymin
+		TrailImage: gaussringminx2
 		TrailInterval: 1
 		ContrailLength: 8
 		ContrailWidth: 8
 		Color: 5F5F5F
 	Warhead@1Dam: SpreadDamage
 		Spread: 1c128
-		DeathType: 4
 		DamageTypes: Gibs, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
 		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: thermoexpl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: heavy_explode_mantis.aud
-		ValidTargets: Ground, Water, Air
+	Warhead@4EffGround: CreateEffect
+		Explosions: railbomb_explmin01, railbomb_explmin02, railbomb_explmin03
+		ExplosionPalette: powereffect
+		ImpactSounds: railbomb_soundimpact01.aud, railbomb_soundimpact02.aud, railbomb_soundimpact03.aud
+		ValidTargets: Ground, Water
 	Warhead@8Light: CreateEffect
 		Explosions: mediumlight
 		ExplosionPalette: redlight
@@ -611,196 +493,8 @@ SmokeCamoWarhead.Active:
 		Explosions: impact_water_large
 		ExplosionPalette: effectalpha75
 		ValidTargets: Water
-
-^Manticore.WeaponsAA.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Air
-	Projectile: Missile
-		Speed: 480
-		Arm: 2
-		ContrailLength: 8
-		ContrailWidth: 10
-		Inaccuracy: 25
-		Image: 20mm
-		HorizontalRateOfTurn: 12
-		CruiseAltitude: 4c0
-		RangeLimit: 18c256
-	Warhead@1Dam: SpreadDamage
-		Spread: 128
-		ValidTargets: Air
-		DeathType: 4
-		DamageTypes: TriggerProne
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffAir: CreateEffect
-		Explosions: air_expl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: impact_airfrag.aud
-		ValidTargets: Air
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Air
-
-^Salamander.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: Bullet
-		Speed: 380
-		Image: minburning
-		High: true
-		Palette: flameeffect60
-		LaunchAngle: 100
-		Inaccuracy: 128
-		ContrailLength: 8
-		ContrailWidth: 12
-		Color: FF9900
-	Warhead@1Dam: SpreadDamage
-		Spread: 256
-		DeathType: 4
-		DamageTypes: Burned
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large, Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Falloff: 100, 68, 35
-		Explosions: burnimpact
-		ExplosionPalette: effectalpha75
-		ImpactSounds: flames01.aud
-		ValidTargets: Ground
-	Warhead@8Light: CreateEffect
-		Explosions: mediumlight
-		ExplosionPalette: redlight
-		ValidTargets: Ground, Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_large
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-
-^Apocalypse.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground, Water
-	Projectile: Bullet
-		Speed: 700
-		Image: obus_gun
-		Palette: effectalpha75
-		Inaccuracy: 128
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground, Water
-		Spread: 128
-		DeathType: 4
-		DamageTypes: Gibs, TriggerProne, Crater
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: apo_expl01, apo_expl02, apo_expl03
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground
-	Warhead@801: CreateEffect
-		Explosions: ring_pulsemin
-		ExplosionPalette: effectalpha30
-		ValidTargets: Ground
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_large
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water
-
-^Apocalypse.WeaponsAA.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground, Air, Water
-	Projectile: Missile
-		Speed: 380
-		Arm: 2
-		ContrailLength: 8
-		ContrailWidth: 10
-		Inaccuracy: 25
-		Image: 20mm
-		HorizontalRateOfTurn: 12
-		CruiseAltitude: 4c0
-		RangeLimit: 18c256
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground, Air, Water
-		DeathType: 4
-		DamageTypes: Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3Eff: CreateEffect
-		Explosions: blast_expl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: expnew05.wav
-		ValidTargets: Ground
-		InvalidTargets: Air
-	Warhead@3EffAir: CreateEffect
-		Explosions: air_expl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: impact_airfrag.aud
-		ValidTargets: Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-
-^Purifier.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: Bullet
-		Speed: 320
-		ExplosionPalette: effectalpha75
-		DamageInterval: 15
-		Image: minburning
-		Palette: flameeffect60
-		Inaccuracy: 2800
-	Warhead@1Dam: SpreadDamage
-		Spread: 512
-		DeathType: 5
-		RangeLimit: 7c256
-		DamageTypes: Burned
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: burn_flam
-		ExplosionPalette: effectalpha75
-		ImpactSounds: flames01.aud
-		ValidTargets: Ground, Water, Air
-	Warhead@8Light: CreateEffect
-		Explosions: mediumlight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-
-^Anhilihator.Target.default:
-	ValidTargets: Ground
-	Projectile: LaserZap
-		Width: 18
-		TrackTarget: true
-		Color: ff7200
-		SecondaryBeam: true
-		SecondaryBeamWidth: 45
-		SecondaryBeamColor: ff0000
-	Warhead@1Dam: SpreadDamage
-		Spread: 0
-		Damage: 0
-		Versus:
-			Infantry: 10
-			LightVehicle: 10
-			ArmorTank: 10
-			Concrete: 10
-		DamageTypes: Burned, TriggerProne
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-
-^Anhilihator.Weapons.default:
+        
+^Anhilihator.Railgun.default:
 	Projectile: Bullet
 		Speed: 700
 		Image: 120mm
@@ -827,117 +521,20 @@ SmokeCamoWarhead.Active:
 		ExplosionPalette: powereffect
 		ImpactSounds: railbomb_soundimpact01.aud, railbomb_soundimpact02.aud, railbomb_soundimpact03.aud
 		ValidTargets: Ground, Water
-
-^AnhilihatorAP.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Report: autocannon.aud
-	ValidTargets: Ground
+        
+^Flamme.RedAlliance.Animation:
 	Projectile: Bullet
-		Speed: 650
-		Image: minball_gun
-		TrailInterval: 0
-		ContrailLength: 8
-		ContrailWidth: 8
-		Color: FFFFFF
-		Palette: effectalpha45
-		Inaccuracy: 256
+		Speed: 250
+		TrailImage: minburning
+        TrailPalette: flameeffect60
+		DamageInterval: 15
+		Image: minburning
+		Palette: flameeffect60
+		Inaccuracy: 1200
 	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Spread: 65
-		DeathType: 4
-		DamageTypes: Gibs, Crater
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: shrap_exp
-		ExplosionPalette: effectalpha75
-		ImpactSounds: impact_explh01.aud, impact_explh02.aud, impact_explh03.aud
-		ValidTargets: Ground, Water, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_small
-		ExplosionPalette: effectalpha75
-		ImpactSounds:
-		ValidTargets: Water
-
-^Chimera.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground
-	Projectile: InstantHit
-		Inaccuracy: 786
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Spread: 32
-		DeathType: 4
-		DamageTypes: Scorch
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: trail_smokemin01, trail_smokemin02, trail_smokemin03
-		ExplosionPalette: flameeffect
-		ValidTargets: Ground, Water, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_small
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-
-^Wyvern.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Air
-	Projectile: InstantHit
-		Inaccuracy: 128
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Air
-		Spread: 65
-		DeathType: 4
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: autogun_expl
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Water, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_small
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-
-^Archidemon.Weapons.default:
-	Projectile: GravityBomb
-		Velocity: 72, 0, -90
-		Acceleration: 0, 0, -8
-		Image: 120mm
-		Shadow: true
-	Warhead@1Dam: SpreadDamage
-		Spread: 2c256
-		DeathType: 1
-		DamageTypes: NukeDeath, TriggerProne, Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: mininuke_impact
-		ExplosionPalette: effectalpha75
-		ImpactSounds: mininuke_impact.aud
-		ValidTargets: Ground, Water, Air
-	Warhead@5Eff: CreateEffect
-		Explosions: mediumlight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-		
-		
-
-^Infeno.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: GravityBomb
-		Velocity: 102, 0, -90
-		Acceleration: -1, -2, -8
-		ExplosionPalette: effectalpha75
-		Image: 120mm
-	Warhead@1Dam: SpreadDamage
-		Spread: 1c512
+		Spread: 512
 		DeathType: 5
+		RangeLimit: 7c256
 		DamageTypes: Burned
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
@@ -951,58 +548,12 @@ SmokeCamoWarhead.Active:
 		Explosions: mediumlight
 		ExplosionPalette: light
 		ValidTargets: Ground, Water, Air
-		
-		
+        
+        
 
-^cannon_cruiser.default:
-	ValidTargets: Ground, Water
-	Projectile: Bullet
-		ContrailLength: 10
-		ContrailWidth: 10
-		Color: 5F5F5F
-		Speed: 800
-		Inaccuracy: 450
-	Warhead@1Dam: SpreadDamage
-		Spread: 128
-		DeathType: 4
-		ValidTargets: Ground, Water
-		DamageTypes: Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Crater
-		InvalidTargets: Vehicle
-	Warhead@3Eff: CreateEffect
-		Explosions: blast_expl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: expnew05.wav
-		ValidTargets: Ground, Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water
+# ///// Superweapons
 
-^laserdefence.default:
-	Projectile: LaserZap
-		Width: 12
-		Color: FF0000
-		SecondaryBeam: true
-		SecondaryBeamWidth: 35
-		SecondaryBeamColor: CF0000
-	Warhead@1Dam: SpreadDamage
-		Spread: 300
-		DeathType: 5
-		DamageTypes: Burned, Crater
-	Warhead@3EffGround: CreateEffect
-		Falloff: 100, 68, 35
-		Explosions: apo_expl
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Water, Air
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-		Palette: Upgrade_blue_effect
-		
-^Fusion.Weapons.default:
+^FusionMissile.RedAlliance.Animation:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Projectile: Bullet
 		Speed: 800
@@ -1027,207 +578,9 @@ SmokeCamoWarhead.Active:
 		ExplosionPalette: effectalpha30
 		ValidTargets: Ground, Water
 
-^niflheim.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: Bullet
-		Speed: 450
-		Image: 20mm
-		High: true
-		LaunchAngle: 160
-		Inaccuracy: 125
-		TrailImage: smokeyelectro
-		TrailPalette: powereffect
-		TrailInterval: 0
-		ContrailLength: 8
-		ContrailWidth: 8
-		Color: 5F5F5F
-	Warhead@1Dam: SpreadDamage
-		Spread: 256
-		DeathType: 4
-		DamageTypes: Gibs, Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: emp_splash
-		ExplosionPalette: powereffect
-		ValidTargets: Ground
-	Warhead@8Light: CreateEffect
-		Explosions: mediumlight
-		ExplosionPalette: redlight
-		ValidTargets: Ground, Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_large
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
+# ///// Baneslayer Order Animation ////////////////////
 
-^Carabine.Weapons.default:
-	Projectile: InstantHit
-		Inaccuracy: 200
-	Warhead@1Dam: SpreadDamage
-		Spread: 4
-		DeathType: 2
-	Warhead@2Eff: CreateEffect
-		Explosions: piff
-		ValidTargets: Ground, Water, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: water_piffs
-		ValidTargets: Water
-
-^Einherjar.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Air, Ground, Water
-	Projectile: Missile
-		Speed: 490
-		Arm: 2
-		TrailImage: trail_smokemin01
-		TrailPalette: flameeffect
-		TrailInterval: 1
-		ContrailLength: 2
-		Inaccuracy: 128
-		Image: 20mm
-		Acceleration: 8
-		HomingActivationDelay: 4
-		HorizontalRateOfTurn: 18
-		RangeLimit: 6c0
-	Warhead@1Dam: SpreadDamage
-		Spread: 128
-		DeathType: 4
-		ValidTargets: Ground, Water, Air
-		DamageTypes: Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large, Crater
-		InvalidTargets: Vehicle
-	Warhead@3Eff: CreateEffect
-		Explosions: impact_balist_medium
-		ExplosionPalette: effectalpha75
-		ImpactSounds: expnew05.wav
-		ValidTargets: Ground, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ImpactSounds:
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-
-^jotuun.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground
-	Report: jotuungun.aud
-	Projectile: Bullet
-		Speed: 350
-		Image: plasma_pulseminx2
-		Inaccuracy: 0
-		TrailInterval: 0
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Spread: 512
-		DeathType: 5
-		DamageTypes: PlasmaDeath
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-
-^jotuunMode2.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: Bullet
-		Speed: 380
-		Image: plasma_projectilemin
-		Palette: powereffect2
-		High: true
-		Inaccuracy: 256
-		ContrailLength: 3
-		ContrailWidth: 3
-		Color: 3cff00
-	Warhead@1Dam: SpreadDamage
-		Spread: 256
-		DeathType: 4
-		DamageTypes: PlasmaDeath, Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large, Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: plasma_pulseminx2
-		ExplosionPalette: effect
-		ValidTargets: Ground
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_large
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-
-^Vanir.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: Bullet
-		Speed: 500
-		Image: 80mm
-		High: true
-		LaunchAngle: 62
-		Inaccuracy: 720
-		TrailImage: smokeymin
-		TrailInterval: 1
-		ContrailLength: 8
-		ContrailWidth: 8
-		Color: 5F5F5F
-	Warhead@1Dam: SpreadDamage
-		Spread: 256
-		DeathType: 4
-		DamageTypes: Gibs, Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: obus_ballexpl
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-
-^Aesir.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: LaserZap
-		Width: 8
-		TrackTarget: false
-		Inaccuracy: 128
-		Color: 0036ff
-		SecondaryBeam: true
-		SecondaryBeamWidth: 19
-		SecondaryBeamColor: 0038ff
-	Warhead@1Dam: SpreadDamage
-		Spread: 786
-		Versus:
-			Infantry: 50
-			LightVehicle: 90
-			ArmorTank: 120
-			Concrete: 100
-		DamageTypes: Burned, Crater
-	Warhead@3EffGround: CreateEffect
-		Explosions: matter_explmin
-		ExplosionPalette: powereffect
-		ValidTargets: Ground, Air, water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-
-^Heidrun.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+^Minigunorder.Baneslayer.Animation:
 	ValidTargets: Ground
 	Projectile: InstantHit
 		Inaccuracy: 256
@@ -1235,7 +588,7 @@ SmokeCamoWarhead.Active:
 		ValidTargets: Ground
 		Spread: 64
 		DeathType: 4
-		DamageTypes: Gibs
+		DamageTypes: DefaultDeath
 	Warhead@3Smu: LeaveSmudge
 		SmudgeType: Crater
 		InvalidTargets: Vehicle
@@ -1247,74 +600,95 @@ SmokeCamoWarhead.Active:
 		ExplosionPalette: effectalpha75
 		ValidTargets: Water
 
-^Heidrun.WeaponsAA.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Air
-	Projectile: Missile
-		Speed: 430
-		Arm: 2
-		ContrailLength: 8
-		ContrailWidth: 10
-		Inaccuracy: 30
-		Image: 20mm
-		HorizontalRateOfTurn: 12
-		CruiseAltitude: 3c0
-		RangeLimit: 14c410
+^Plasma.Baneslayer.Animation:
+	Projectile: Bullet
+		Speed: 250
+		TrailImage: plasmatrail
+        TrailPalette: powereffect2
+		DamageInterval: 15
+		Image: plasmaball
+		Palette: powereffect2
+		Inaccuracy: 600
 	Warhead@1Dam: SpreadDamage
-		Spread: 128
+		Spread: 256
 		DeathType: 4
-		ValidTargets: Air
+		DamageTypes: PlasmaDeath, Crater
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
 		InvalidTargets: Vehicle
-	Warhead@3Eff: CreateEffect
-		Explosions: impact_balist_medium
-		ExplosionPalette: effectalpha75
-		ImpactSounds: expnew05.wav
-		ValidTargets: Ground, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-
-^ratatosk.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: Bullet
-		Speed: 420
-		Image: 80mm
-		High: true
-		LaunchAngle: 60
-		Inaccuracy: 454
-		TrailInterval: 0
-		ContrailLength: 2
-		ContrailWidth: 28
-		Color: 5F5F5F
-	Warhead@1Dam: SpreadDamage
-		Spread: 64
-		DeathType: 5
-		DamageTypes: Gibs, Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Crater
-		InvalidTargets: Vehicle
 	Warhead@3EffGround: CreateEffect
-		Explosions: impact_balist_large
-		ExplosionPalette: effect
+		Explosions: plasma_expl01min, plasma_expl02min, plasma_expl03min
+		ExplosionPalette: powereffect
 		ValidTargets: Ground
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
 		ExplosionPalette: light
 		ValidTargets: Ground, Water
 	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
+		Explosions: impact_water_large
 		ExplosionPalette: effectalpha75
 		ValidTargets: Water
-
-^Garm.Weapons.default:
+        
+^PlamsaBlast.Baneslayer.Animation:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+	Projectile: InstantHit
+		Inaccuracy: 256
+	Warhead@1Dam: SpreadDamage
+		Spread: 1c128
+		DeathType: 4
+		DamageTypes: PlasmaDeath, Crater
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: craters_large, Crater
+		InvalidTargets: Vehicle
+	Warhead@3EffGround: CreateEffect
+		Explosions: plasma_expl01, plasma_expl02, plasma_expl03
+		ExplosionPalette: powereffect
+		ValidTargets: Ground
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: light
+		ValidTargets: Ground, Water
+	Warhead@3EffWater: CreateEffect
+		Explosions: impact_water_large
+		ExplosionPalette: effectalpha75
+		ValidTargets: Water
+        
+^PlasmaArty.Baneslayer.Animation:
+	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+	Projectile: Bullet
+		Speed: 230
+		Image: plasma_projectile
+		Palette: powereffect2
+		High: true
+		LaunchAngle: 160
+		Inaccuracy: 125
+		TrailImage: smokeymin
+		TrailInterval: 1
+		ContrailLength: 8
+		ContrailWidth: 8
+		Color: 5F5F5F
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		DeathType: 4
+		DamageTypes: Gibs, TriggerProne, Crater
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		InvalidTargets: Vehicle
+	Warhead@3EffGround: CreateEffect
+		Explosions: plasma_expl01, plasma_expl02, plasma_expl03
+		ExplosionPalette: powereffect
+		ImpactSounds: heavy_explode_mantis.aud
+		ValidTargets: Ground
+	Warhead@8Light: CreateEffect
+		Explosions: mediumlight
+		ExplosionPalette: redlight
+		ValidTargets: Ground, Water
+	Warhead@3EffWater: CreateEffect
+		Explosions: impact_water_large
+		ExplosionPalette: effectalpha75
+		ValidTargets: Water
+        
+^ionCanon.Baneslayer.Animation:
 	Projectile: LaserZap
 		Width: 25
 		TrackTarget: false
@@ -1339,187 +713,8 @@ SmokeCamoWarhead.Active:
 		Explosions: baselight
 		ExplosionPalette: bluelight
 		ValidTargets: Ground, Water, Air
-
-^Garm.Weapons.default.mode:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: LaserZap
-		Width: 95
-		TrackTarget: false
-		Inaccuracy: 256
-        Shape: Flat
-        Duration: 18
-		Color: 33ff99
-		SecondaryBeam: true
-		SecondaryBeamWidth: 125
-		SecondaryBeamColor: 33ccff
-	Warhead@1Dam: SpreadDamage
-		Spread: 512
-		DamageTypes: IonDeath
-	Warhead@3EffGround: CreateEffect
-		Explosions: ring_pulsemedium
-		ExplosionPalette: effectalpha30
-		ValidTargets: Ground, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: ring_pulsemedium
-		ExplosionPalette: effectalpha30
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-		
-^Dwarf.Mine.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: InstantHit
-		Inaccuracy: 1
-	Warhead@1Dam: SpreadDamage
-		Spread: 0c020
-		AffectsParent: true
-		DeathType: 4
-		DamageTypes: PlasmaDeath, Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large, Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: plasma_pulseminex2
-		ExplosionPalette: powereffect
-		ValidTargets: Ground
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_large
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-
-^Troll.Target.default:
-	ValidTargets: Ground
-	Projectile: InstantHit
-	Warhead@1Dam: SpreadDamage
-		Spread: 0
-		Damage: 1
-		Versus:
-			Infantry: 1
-			LightVehicle: 1
-			ArmorTank: 1
-			Concrete: 1
-
-^Troll.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: Bullet
-		Speed: 450
-		Image: plasma_projectile
-		Palette: powereffect2
-		Inaccuracy: 256
-		TrailInterval: 0
-		ContrailLength: 15
-		ContrailColor: 7eff00
-		ContrailWidth: 20
-		ContrailDelay: 0
-	Warhead@1Dam: SpreadDamage
-		Spread: 512
-		DeathType: 5
-		DamageTypes: PlasmaDeath, TriggerProne, Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large, Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: ion_expl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: flames01.aud
-		ValidTargets: Ground, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: greenlight
-		ValidTargets: Ground, Water, Air
-		
-^Troll.Deploy.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: InstantHit
-		Inaccuracy: 256
-	Warhead@1Dam: SpreadDamage
-		Spread: 1c128
-		DeathType: 4
-		DamageTypes: PlasmaDeath, Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large, Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: plasma_expl01, plasma_expl02, plasma_expl03
-		ExplosionPalette: powereffect
-		ValidTargets: Ground
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_large
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-
-^Warg.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Air
-	InvalidTargets: Ground, Water
-	Projectile: InstantHit
-		Inaccuracy: 128
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Air
-		Spread: 60
-		DeathType: 4
-		DamageTypes: TriggerProne
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: autogun_expl
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Water, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_small
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-
-^lindwyrm.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: Bullet
-		Speed: 230
-		Image: 20mm
-		High: true
-		LaunchAngle: 160
-		Inaccuracy: 125
-		TrailImage: smokeymin
-		TrailInterval: 1
-		ContrailLength: 8
-		ContrailWidth: 8
-		Color: 5F5F5F
-	Warhead@1Dam: SpreadDamage
-		Spread: 256
-		DeathType: 4
-		DamageTypes: Gibs, TriggerProne, Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: doomexpl75
-		ExplosionPalette: effectalpha75
-		ImpactSounds: heavy_explode_mantis.aud
-		ValidTargets: Ground
-	Warhead@8Light: CreateEffect
-		Explosions: mediumlight
-		ExplosionPalette: redlight
-		ValidTargets: Ground, Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_large
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-
-^Heimdall.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+        
+^BallistiqueMissile.Baneslayer.Animation:
 	ValidTargets: Ground, Water
 	Projectile: Bullet
 		Speed: 230
@@ -1554,210 +749,8 @@ SmokeCamoWarhead.Active:
 		Explosions: impact_water_large
 		ExplosionPalette: effectalpha75
 		ValidTargets: Water
-
-^Loki.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: Bullet
-		Speed: 350
-		Image: 120mm
-		Inaccuracy: 0
-		TrailDelay: 0
-		TrailImage: gaussringminx2
-		ContrailLength: 40
-		ContrailWidth: 80
-		TrailInterval: 0
-		Color: 40E5E3
-	Warhead@1Dam: SpreadDamage
-		Spread: 1248
-		DamageTypes: Burned, TriggerProne, Crater
-	Warhead@3EffGround: CreateEffect
-		Explosions: apo_expl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: impact_explh01.aud, impact_explh02.aud, impact_explh03.aud
-		ValidTargets: Ground, Water, Air
-	Warhead@2bisEffGround: CreateEffect
-		Explosions: ring_pulse
-		ExplosionPalette: effectalpha30
-		ValidTargets: Ground, Water
-
-^Odin.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: Bullet
-		Speed: 210
-		Image: matter_bullet
-		Palette: powereffect
-		Inaccuracy: 0
-		ContrailLength: 30
-		ContrailColor: 7560f3
-		ContrailWidth: 65
-		ContrailDelay: 0
-	Warhead@1Dam: SpreadDamage
-		Spread: 1024
-		DamageTypes: IonDeath, TriggerProne, Crater
-	Warhead@3EffGround: CreateEffect
-		Explosions: matter_expl
-		ExplosionPalette: powereffect
-		ValidTargets: Ground, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-		
-^Odin.Weapons.defaultmatter02:
-	Inherits@conditionweapons: ^Odin.Weapons.default
-	Projectile: Bullet
-		Image: matter_bullet02
-		Palette: powereffect
-
-^Odin.Weapons2.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: LaserZap
-		Width: 25
-		TrackTarget: false
-		Inaccuracy: 256
-		Color: 33ff99
-		SecondaryBeam: true
-		SecondaryBeamWidth: 65
-		SecondaryBeamColor: 33ccff
-	Warhead@1Dam: SpreadDamage
-		Spread: 20
-		Versus:
-			Infantry: 50
-			LightVehicle: 90
-			ArmorTank: 120
-			Concrete: 100
-		DamageTypes: IonDeath, Crater
-	Warhead@3EffGround: CreateEffect
-		Explosions: ionlaser_impact01, ionlaser_impact02, ionlaser_impact03
-		ExplosionPalette: powereffect
-		ValidTargets: Ground, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-		
-^Iem.Target.default:
-	ValidTargets: Ground
-	Projectile: LaserZap
-		Width: 18
-		TrackTarget: true
-		Color: ffFFFF
-		SecondaryBeam: true
-		SecondaryBeamWidth: 45
-		SecondaryBeamColor: 1e53c0
-	Warhead@1Dam: SpreadDamage
-		Spread: 0
-		Damage: 0
-		Versus:
-			Infantry: 10
-			LightVehicle: 10
-			ArmorTank: 10
-			Concrete: 10
-		DamageTypes: Burned, TriggerProne
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-
-^Nidhogg/Valkyrie.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground
-	Projectile: LaserZap
-		Width: 18
-		TrackTarget: true
-		Color: ffFFFF
-		SecondaryBeam: true
-		SecondaryBeamWidth: 45
-		SecondaryBeamColor: 1e53c0
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Spread: 256
-		Versus:
-			Infantry: 50
-			LightVehicle: 90
-			ArmorTank: 120
-			Concrete: 100
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-
-^Nidhogg.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground, Air
-	Projectile: InstantHit
-		Inaccuracy: 128
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground, Air
-		Spread: 60
-		DeathType: 4
-		Versus:
-			Infantry: 70
-			LightVehicle: 80
-			ArmorTank: 60
-			Concrete: 30
-		DamageTypes: TriggerProne
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: autogun_expl
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Air
-
-^Thor.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground
-	Projectile: LaserZap
-		Width: 15
-		Inaccuracy: 5
-		Color: 66ffff
-		TrackTarget: false
-		SecondaryBeam: true
-		SecondaryBeamWidth: 65
-		SecondaryBeamColor: 16ced0
-	Warhead@1Dam: SpreadDamage
-		DeathType: 5
-		Spread: 256
-		DamageTypes: IonDeath
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-		
-^Thor.Weapons.default.Mode2:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground
-	Projectile: Bullet
-		Speed: 600
-		Image: pulse_laser_projectile_blue
-		Palette: effect
-		Inaccuracy: 1c728
-	Warhead@1Dam: SpreadDamage
-		DeathType: 5
-		Spread: 256
-		DamageTypes: IonDeath
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-
-^Hel.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+        
+^SonicGun.Baneslayer.Animation:
 	Projectile: Bullet
 		Speed: 800
 		Image: 120mm
@@ -1780,6 +773,121 @@ SmokeCamoWarhead.Active:
 		Explosions: ring_pulse
 		ExplosionPalette: effectalpha10
 		ValidTargets: Ground, Water
+        
+^SonicGrenade.Baneslayer.Animation:
+	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+	Projectile: Bullet
+		Speed: 500
+		Image: 80mm
+		High: true
+		LaunchAngle: 62
+		Inaccuracy: 720
+		TrailImage: smokeymin
+		TrailInterval: 1
+		ContrailLength: 8
+		ContrailWidth: 8
+		Color: 5F5F5F
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		DamageTypes: Gibs, Crater
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		InvalidTargets: Vehicle
+	Warhead@3EffGround: CreateEffect
+		Explosions: obus_ballexpl
+		ExplosionPalette: effectalpha75
+		ValidTargets: Ground
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: light
+		ValidTargets: Ground, Water
+	Warhead@3EffWater: CreateEffect
+		Explosions: impact_water_medium
+		ExplosionPalette: effectalpha75
+		ValidTargets: Water
+        
+^Cluster.Loki.animation:
+	Projectile: Bullet
+		Speed: 1260
+		Image: null
+		Inaccuracy: 0
+		ContrailLength: 1
+		ContrailWidth: 1
+		TrailInterval: 0
+	Warhead@3EffGround: CreateEffect
+		Explosions: clusterimpact01, clusterimpact02, clusterimpact03, clusterimpact04
+		ExplosionPalette: flameeffect
+		ImpactSounds: clusterlokliexpl01.aud, clusterlokliexpl02.aud, clusterlokliexpl03.aud
+		ValidTargets: Ground
+
+^MatterMin.Baneslayer.Animation:
+	Projectile: LaserZap
+		Width: 8
+		TrackTarget: false
+		Inaccuracy: 128
+		Color: 0036ff
+		SecondaryBeam: true
+		SecondaryBeamWidth: 19
+		SecondaryBeamColor: 0038ff
+	Warhead@1Dam: SpreadDamage
+		DamageTypes: Burned, Crater
+	Warhead@3EffGround: CreateEffect
+		Explosions: matter_explmin
+		ExplosionPalette: powereffect
+		ValidTargets: Ground, Air, water
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: bluelight
+		ValidTargets: Ground, Water, Air
+        
+^Mattermax.Weapons.Animation:
+	Projectile: Bullet
+		Speed: 210
+		Image: matter_bullet
+		Palette: powereffect
+		Inaccuracy: 0
+		ContrailLength: 30
+		ContrailColor: 7560f3
+		ContrailWidth: 65
+		ContrailDelay: 0
+	Warhead@1Dam: SpreadDamage
+		Spread: 1024
+		DamageTypes: IonDeath, TriggerProne, Crater
+	Warhead@3EffGround: CreateEffect
+		Explosions: matter_expl
+		ExplosionPalette: powereffect
+		ImpactSounds: matterimpact01.aud, matterimpact02.aud
+		ValidTargets: Ground, Air
+	Warhead@3EffWater: CreateEffect
+		Explosions: impact_water_medium
+		ExplosionPalette: effectalpha75
+		ValidTargets: Water
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: bluelight
+		ValidTargets: Ground, Water, Air
+
+# ///// Superweapons
+
+ShieldWarhead.Active:
+	Warhead@1Dam: SpreadDamage
+		Spread: 0
+		Damage: 0
+		AffectsParent: true
+	Warhead@stun: GrantExternalCondition
+		Range: 0c100
+		Duration: 150
+		Condition: ShieldActivate
+
+EMPLaserCannon.Active:
+	Report:
+	Warhead@1Eff: CreateEffect
+		Explosions: emp_impact
+		ExplosionPalette: powereffect
+	Warhead@emp: GrantExternalCondition
+		Range: 4c0
+		Duration: 200
+		Condition: empdisable
 
 ^Ragnarok.Weapons.default:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -1801,7 +909,7 @@ SmokeCamoWarhead.Active:
 		DamageTypes: PlasmaDeath, TriggerProne
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: craters_large, Crater
-		InvalidTargets: Vehicle
+		InvalidTargets: Ground, Vehicle, Infantry
 	Warhead@3EffGround: CreateEffect
 		Explosions: bigplasma_impact
 		ExplosionPalette: greeneffect
@@ -1824,8 +932,9 @@ SmokeCamoWarhead.Active:
 		ImpactSounds:
 		ValidTargets: Water
 
-^Ranger.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+# ///// Horizon Conclave Animation ////////////////////
+
+^impulsgun.Weapons.Animation:
 	Projectile: Bullet
 		Speed: 600
 		Image: pulse_laser_projectile_blue
@@ -1835,85 +944,40 @@ SmokeCamoWarhead.Active:
 		DeathType: 5
 		Spread: 5
 		DamageTypes: Burned
+	Warhead@3Eff: CreateEffect
+		Explosions: zapimpactmin
+		ExplosionPalette: flammeeffectblue
+		ValidTargets: Ground
 
-^Statis.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: InstantHit
-		Inaccuracy: 1
+^impulsgatling.Weapons.Animation:
+	Projectile: Bullet
+		Speed: 550
+		Image: 20mm
+		Palette: effect
+		ContrailLength: 14
+        ContrailColor: a049e3
+		Inaccuracy: 625
 	Warhead@1Dam: SpreadDamage
 		DeathType: 5
 		Spread: 5
 		DamageTypes: Burned
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water
-		
-^Statis.Missile.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground, Water, Air
-	Projectile: Missile
-		Speed: 580
-		Arm: 2
-		TrailImage: photo_balltrail
-		TrailInterval: 0
-		ContrailLength: 2
-		Inaccuracy: 256
-		Image: photo_ball
-		HorizontalRateOfTurn: 12
-		CruiseAltitude: 4c0
-		RangeLimit: 18c256
-	Warhead@1Dam: SpreadDamage
-		Spread: 64
-		DeathType: 4
-		ValidTargets: Ground, Water
-		DamageTypes: TriggerProne, Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large
-		InvalidTargets: Vehicle
 	Warhead@3Eff: CreateEffect
-		Explosions: photo_expl
-		ExplosionPalette: effect
-		ImpactSounds: expnew05.wav
+		Explosions: zapimpactmin
+		ExplosionPalette: flammeeffectblue
 		ValidTargets: Ground
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ImpactSounds:
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water
 
-^Tracker.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Report: mattergun.aud
-	Warhead@1Dam: SpreadDamage
-		Spread: 1024
-		DamageTypes: Burned
-	Warhead@3EffGround: CreateEffect
-		Explosions: matter_expl
-		ExplosionPalette: effect
-		ValidTargets: Ground, Air
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-
-^Rodeur.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+^Laser.Impulsor.Weapons.default:
 	Projectile: LaserZap
-		Width: 15
-		Inaccuracy: 512
-		Color: 60fdff
+		Width: 30
+		Inaccuracy: 256
+		TrackTarget: false
+		Color: 5a2a45
 		Duration: 14
 		SecondaryBeam: true
-		SecondaryBeamWidth: 65
-		SecondaryBeamColor: 16ced0
+		SecondaryBeamWidth: 20
+		SecondaryBeamColor: ebb6f7
 	Warhead@1Dam: SpreadDamage
 		DeathType: 5
-		Spread: 2
 		DamageTypes: Burned
 	Warhead@8Light: CreateEffect
 		Explosions: impact_particle01, impact_particle02, impact_particle03
@@ -1922,49 +986,8 @@ SmokeCamoWarhead.Active:
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
 		InvalidTargets: Vehicle
-
-^Pilgrim.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground, Water
-	Projectile: Missile
-		MinimumLaunchSpeed: 50
-		MaximumLaunchSpeed: 600
-		Speed: 560
-		Arm: 2
-		TrailImage: photo_balltrail
-		TrailInterval: 0
-		ContrailLength: 3
-		Inaccuracy: 256
-		Image: photo_ball
-		Acceleration: 8
-		HomingActivationDelay: 3
-		HorizontalRateOfTurn: 12
-		CruiseAltitude: 4c0
-		RangeLimit: 14c256
-	Warhead@1Dam: SpreadDamage
-		Spread: 64
-		DeathType: 4
-		ValidTargets: Ground, Water
-		DamageTypes: TriggerProne, Crater
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large
-		InvalidTargets: Vehicle
-	Warhead@3Eff: CreateEffect
-		Explosions: photo_expl
-		ExplosionPalette: effect
-		ImpactSounds: expnew05.wav
-		ValidTargets: Ground
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ImpactSounds:
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water
-
-Surveyor.Weapons.default:
+        
+^Laser.Surveyor.Conclave.Animation:
 	Projectile: LaserZap
 		Width: 20
 		Inaccuracy: 1000
@@ -1990,87 +1013,72 @@ Surveyor.Weapons.default:
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Scorch
 		InvalidTargets: Vehicle
-		
-Surveyor.Primaris.Weapons.default:
-	Projectile: LaserZap
-		Width: 45
-		Inaccuracy: 1000
-		Color: ffffff
-		Duration: 30
-		SecondaryBeam: true
-		SecondaryBeamWidth: 120
-		SecondaryBeamColor: 171bbc
-	Warhead@1Dam: HealthPercentageDamage
-		Spread: 1
-		Damage: 15
-		DamageTypes: Burned
-	Warhead@2Dam: HealthPercentageDamage
-		Spread: 20
-		DamageTypes: Burned, TriggerProne
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-	Warhead@3Eff: CreateEffect
-		Explosions: quasarshotmin
-		ExplosionPalette: powereffect60
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
 
-^Comete.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground, Water, Air
-	Projectile: LaserZap
-		Width: 30
-		Inaccuracy: 600
-		TrackTarget: false
-		Color: 83e0ff
-		SecondaryBeam: true
-		SecondaryBeamWidth: 60
-		SecondaryBeamColor: 664486
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground, Water, Air
-		DeathType: 5
-		Spread: 20
-		DamageTypes: Burned
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		
-^Zenith.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Projectile: Bullet
-		Speed: 420
-		Image: zenithball
+^photon.Missile.Weapons.default:
+	Projectile: Missile
+		MinimumLaunchSpeed: 250
+		MaximumLaunchSpeed: 600
+		Speed: 680
+		Arm: 2
+		ContrailLength: 18
+        ContrailColor: a049e3
+		Inaccuracy: 795
+		Image: photo_ball
 		Palette: powereffect
-		High: true
-		Inaccuracy: 125
+		Acceleration: 8
+		HomingActivationDelay: 4
+		HorizontalRateOfTurn: 12
+		CruiseAltitude: 5c0
+		RangeLimit: 14c256
 	Warhead@1Dam: SpreadDamage
-		Spread: 1c128
 		DeathType: 4
-		DamageTypes: PlasmaDeath, Crater
+		ValidTargets: Ground, Water
+		DamageTypes: TriggerProne, Crater
 	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large, Crater
+		SmudgeType: craters_large
 		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: zenithimpact
+	Warhead@3Eff: CreateEffect
+		Explosions: phase_expl01, phase_expl02, phase_expl03
 		ExplosionPalette: powereffect
 		ValidTargets: Ground
+	Warhead@3EffWater: CreateEffect
+		Explosions: impact_water_medium
+		ExplosionPalette: effectalpha75
+		ImpactSounds:
+		ValidTargets: Water
 	Warhead@8Light: CreateEffect
 		Explosions: baselight
 		ExplosionPalette: light
 		ValidTargets: Ground, Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_large
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
 
-^Quasar.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
+^graviton.Missile.Conclave.Animation:
+	ValidTargets: Ground, Water
+	Projectile: Missile
+		Speed: 180
+		Arm: 8
+		Inaccuracy: 1
+        RangeLimit: 8c0
+		Image: graviton_ball
+        Palette: powereffect
+		HorizontalRateOfTurn: 12
+		CruiseAltitude: 0c64
+		RangeLimit: 18c256
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Ground, Air, Water
+		DamageTypes: DefaultDeath, Crater
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Scorch
+		InvalidTargets: Vehicle
+	Warhead@3Eff: CreateEffect
+		Explosions: navig_expl01, navig_expl02, navig_expl03
+		ExplosionPalette: powereffect
+		ValidTargets: Ground, Water
+	Warhead@8Light: CreateEffect
+		Explosions: baselight
+		ExplosionPalette: light
+		ValidTargets: Ground, Water, Air
+        
+^Quasar.Railgun.Conclave.Animation:
 	Projectile: Railgun
 		DamageActorsInLine: true
 		HelixRadius: 128
@@ -2094,814 +1102,10 @@ Surveyor.Primaris.Weapons.default:
 		Explosions: baselight
 		ExplosionPalette: bluelight
 		ValidTargets: Ground, Water, Air
-		
-		
-^navigator.Weapons.default:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground, Water
-	Projectile: Missile
-		Speed: 480
-		Arm: 2
-		ContrailLength: 4
-		Inaccuracy: 128
-		Image: 20mm
-		HorizontalRateOfTurn: 12
-		CruiseAltitude: 4c0
-		RangeLimit: 18c256
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground, Water
-		DeathType: 4
-		DamageTypes: Crater
-	Warhead@3Eff: CreateEffect
-		Explosions: grav_impact
-		ExplosionPalette: powereffect
-		ValidTargets: Ground, Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
 
-Atomic:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ValidTargets: Ground, Trees, Water, Underwater, Air
-	Warhead@1Dam_impact: SpreadDamage
-		Spread: 1c0
-		Damage: 150
-		ValidTargets: Ground, Tree, Water, Underwater, Air
-		Versus:
-			Infantry: 110
-			LightVehicle: 95
-			ArmorTank: 80
-			Concrete: 100
-		DamageTypes: Gibs, TriggerProne
-	Warhead@3Eff: CreateEffect
-		Explosions: impact_balist_medium
-		ExplosionPalette: effectalpha75
-		ImpactSounds: expnew05.wav
-		ValidTargets: Ground, Water, Air
+# ///// Superweapons
 
-^ballistic_weapons:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 110
-	Range: 14c512
-	MinRange: 4c0
-	Report: mantis_fire.aud
-	Projectile: Bullet
-		Speed: 450
-		Image: 120mm
-		High: true
-		LaunchAngle: 160
-		Inaccuracy: 125
-		TrailImage: trail_smokemin01
-		TrailPalette: flameeffect
-		TrailInterval: 2
-		ContrailLength: 8
-		ContrailWidth: 8
-		Color: 5F5F5F
-	Warhead@1Dam: SpreadDamage
-		Spread: 786
-		Damage: 800
-		DeathType: 4
-		Versus:
-			Infantry: 110
-			LightVehicle: 95
-			ArmorTank: 80
-			Concrete: 100
-		DamageTypes: Gibs, TriggerProne
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large, Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: thermoexpl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: warheead_art01.aud
-		ValidTargets: Ground
-	Warhead@8Light: CreateEffect
-		Explosions: mediumlight
-		ExplosionPalette: redlight
-		ValidTargets: Ground, Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_large
-		ExplosionPalette: effectalpha75
-		ImpactSounds:
-		ValidTargets: Water
-
-^grenade.Launcher:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 65
-	Range: 6c256
-	Report: mortarfire.aud
-	Projectile: Bullet
-		Speed: 520
-		Image: 120mm
-		High: true
-		LaunchAngle: 62
-		Inaccuracy: 454
-		TrailImage: trail_smokemin01
-		TrailPalette: flameeffect
-		TrailInterval: 0
-		ContrailLength: 8
-		ContrailWidth: 8
-		Color: 5F5F5F
-	Warhead@1Dam: SpreadDamage
-		Spread: 256
-		Damage: 250
-		DeathType: 4
-		Versus:
-			Infantry: 150
-			LightVehicle: 95
-			ArmorTank: 80
-			Concrete: 100
-		DamageTypes: Gibs
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: grenade_expl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: impact_explh01.aud, impact_explh02.aud, impact_explh03.aud
-		ValidTargets: Ground
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ImpactSounds:
-		ValidTargets: Water
-
-^high.missile:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 97
-	Burst: 2
-	Range: 6c0
-	Report: hemdail_rocket.aud
-	ValidTargets: Air, Ground, Water
-	Projectile: Missile
-		Speed: 260
-		Arm: 2
-		ContrailLength: 8
-		ContrailWidth: 10
-		Inaccuracy: 30
-		Image: 120mm
-		HorizontalRateOfTurn: 5
-		CruiseAltitude: 3c0
-		RangeLimit: 14c410
-	Warhead@1Dam: SpreadDamage
-		Spread: 128
-		Damage: 150
-		DeathType: 4
-		ValidTargets: Ground, Water, Air
-		Versus:
-			Infantry: 40
-			LightVehicle: 100
-			ArmorTank: 80
-			Concrete: 55
-		DamageTypes: TriggerProne
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large, Crater
-		InvalidTargets: Vehicle
-	Warhead@3Eff: CreateEffect
-		Explosions: impact_balist_medium
-		ExplosionPalette: effectalpha75
-		ImpactSounds: expnew05.wav
-		ValidTargets: Ground, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-
-^60mm:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 60
-	Burst: 15
-	BurstDelays: 1
-	Range: 5c256
-	Report: small_calibre_chain.aud
-	ValidTargets: Ground
-	Projectile: Bullet
-		Speed: 650
-		Image: minball_gun
-		TrailInterval: 0
-		ContrailLength: 8
-		ContrailWidth: 8
-		Color: FFFFFF
-		Palette: effectalpha45
-		Inaccuracy: 256
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Spread: 64
-		Damage: 45
-		DeathType: 4
-		Versus:
-			Infantry: 100
-			LightVehicle: 45
-			ArmorTank: 20
-			Concrete: 50
-		DamageTypes: Gibs, TriggerProne
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: minigun_impact
-		ValidTargets: Ground, Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_small
-		ExplosionPalette: effectalpha75
-		ImpactSounds:
-		ValidTargets: Water
-
-^Autogun:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 10
-	Burst: 2
-	BurstDelays: 10
-	Range: 7c256
-	Report: autocannon.aud
-	ValidTargets: Ground, Air
-	Projectile: InstantHit
-		Inaccuracy: 128
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground, Air
-		Spread: 128
-		Damage: 20
-		DeathType: 4
-		Versus:
-			Infantry: 70
-			LightVehicle: 80
-			ArmorTank: 60
-			Concrete: 30
-		DamageTypes: TriggerProne
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: autogun_expl
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Water, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_small
-		ExplosionPalette: effectalpha75
-		ImpactSounds:
-		ValidTargets: Water
-
-^AAInstantFire:
-
-^RoquetteAlliance:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 90
-	Burst: 2
-	Range: 6c0
-	Report: roquettehe.aud
-	ValidTargets: Ground, Air, Water
-	Projectile: Missile
-		Speed: 480
-		Arm: 2
-		ContrailLength: 8
-		ContrailWidth: 10
-		Inaccuracy: 25
-		Image: 120mm
-		HorizontalRateOfTurn: 12
-		CruiseAltitude: 4c0
-		RangeLimit: 18c256
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground, Air, Water
-		Damage: 120
-		Versus:
-			Infantry: 50
-			LightVehicle: 100
-			ArmorTank: 80
-			Concrete: 80
-		DeathType: 4
-		DamageTypes: TriggerProne
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3Eff: CreateEffect
-		Explosions: blast_expl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: expnew05.wav
-		ValidTargets: Ground
-		InvalidTargets: Air
-	Warhead@3EffAir: CreateEffect
-		Explosions: air_expl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: impact_airfrag.aud
-		ValidTargets: Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-
-^ObusHeatAlliance:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 100
-	Range: 7c256
-	Report: 145mm.aud
-	ValidTargets: Ground
-	Projectile: Bullet
-		Speed: 800
-		Image: obus_gun
-		Palette: effectalpha75
-		Inaccuracy: 128
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Spread: 60
-		Damage: 800
-		DeathType: 4
-		Versus:
-			Infantry: 50
-			LightVehicle: 100
-			ArmorTank: 120
-			Concrete: 70
-		DamageTypes: Gibs, TriggerProne
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: obus_expl01, obus_expl02, obus_expl03
-		ExplosionPalette: effectalpha75
-		ImpactSounds: impact_explh01.aud, impact_explh02.aud, impact_explh03.aud
-		ValidTargets: Ground
-	Warhead@801: CreateEffect
-		Explosions: obus_ballexpl
-		ExplosionPalette: effect
-		ValidTargets: Ground
-	Warhead@802: CreateEffect
-		Explosions: obus_smokeexpl
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_large
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water
-
-^FlamerAlliance:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 75
-	Range: 6c0
-	Burst: 10
-	BurstDelays: 0
-	ValidTargets: Ground
-	Projectile: Bullet
-		Speed: 250
-		Image: minburning
-		Inaccuracy: 1500
-		TrailInterval: 0
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Spread: 256
-		Damage: 15
-		DeathType: 5
-		Versus:
-			Infantry: 200
-			LightVehicle: 40
-			ArmorTank: 30
-			Concrete: 140
-		DamageTypes: Burned, TriggerProne
-	Warhead@3EffGround: CreateEffect
-		Falloff: 100, 68, 35
-		Explosions: burnimpact
-		ExplosionPalette: effectalpha75
-		ImpactSounds: flames01.aud
-		ValidTargets: Ground, Water, Air
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-		Palette: Upgrade_blue_effect
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-
-^HeavyFlamerAlliance:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 70
-	Range: 7c0
-	Burst: 30
-	BurstDelays: 1
-	Report: firepurifier.aud
-	Projectile: Bullet
-		Speed: 280
-		ExplosionPalette: effectalpha75
-		DamageInterval: 15
-		Image: minburning
-		Inaccuracy: 2800
-	Warhead@1Dam: SpreadDamage
-		Spread: 512
-		Damage: 10
-		DeathType: 5
-		RangeLimit: 7c256
-		Versus:
-			Infantry: 300
-			LightVehicle: 80
-			ArmorTank: 40
-			Concrete: 150
-		DamageTypes: Burned
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: burn_flam
-		ExplosionPalette: effectalpha75
-		ImpactSounds: flames01.aud
-		ValidTargets: Ground, Water, Air
-	Warhead@8Light: CreateEffect
-		Explosions: mediumlight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-
-^TeslaGunAlliance:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 50
-	Range: 6c0
-	Report: voltkit_gun.aud
-	Projectile: TeslaZap
-		Duration: 2
-		DimZaps: 1
-		BrightZaps: 1
-		Inaccuracy: 2500
-	Warhead@1Dam: SpreadDamage
-		Spread: 16
-		Damage: 100
-		DeathType: 5
-		RangeLimit: 7c256
-		Versus:
-			Infantry: 75
-			LightVehicle: 100
-			ArmorTank: 80
-			Concrete: 100
-		DamageTypes: Burned, TriggerProne
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: small_sismic_impact
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Water, Air
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-
-^LaserExconvectorConclave:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 68
-	Burst: 3
-	Range: 5c0
-	Report: pilgrimlasergun.aud
-	Projectile: LaserZap
-		Width: 20
-		Inaccuracy: 1000
-		Color: 63e3ff
-		SecondaryBeam: true
-		SecondaryBeamWidth: 80
-		SecondaryBeamColor: 496bc2
-	Warhead@1Dam: HealthPercentageDamage
-		Spread: 16
-		Damage: 1
-		DeathType: 1
-		Versus:
-			Infantry: 100
-			LightVehicle: 100
-			ArmorTank: 100
-			Concrete: 100
-		DamageTypes: Burned, TriggerProne
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-
-^LaserparticleConclave:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 5
-	Range: 7c0
-	Report: pilgrimlasergun.aud
-	Projectile: LaserZap
-		Width: 15
-		Inaccuracy: 0
-		Color: 60fdff
-		SecondaryBeam: true
-		SecondaryBeamWidth: 65
-		SecondaryBeamColor: 16ced0
-	Warhead@1Dam: SpreadDamage
-		Damage: 40
-		DeathType: 5
-		Spread: 5
-		Versus:
-			Infantry: 100
-			LightVehicle: 80
-			ArmorTank: 80
-			Concrete: 90
-		DamageTypes: Burned, TriggerProne
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-
-^Impuls_Catapult:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 15
-	Range: 7c512
-	Report: cometegun.aud
-	Projectile: Bullet
-		Speed: 700
-		Inaccuracy: 512
-		ContrailLength: 15
-		ContrailColor: 66ffff
-		ContrailWidth: 6
-		ContrailDelay: 0
-	Warhead@1Dam: SpreadDamage
-		Spread: 50
-		Damage: 12
-		DeathType: 5
-		Versus:
-			Infantry: 50
-			LightVehicle: 90
-			ArmorTank: 80
-			Concrete: 70
-		DamageTypes: Burned, TriggerProne
-	Warhead@3EffGround: CreateEffect
-		Explosions: ion_expl
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-
-^Phase_Missile:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 97
-	Burst: 4
-	Range: 9c0
-	MinRange: 2c0
-	ValidTargets: Ground, Water
-	Projectile: Missile
-		Speed: 480
-		Arm: 2
-		ContrailLength: 8
-		ContrailWidth: 25
-		Inaccuracy: 256
-		Image: photo_ball
-		Palette: effect
-		HorizontalRateOfTurn: 90
-		CruiseAltitude: 8c0
-		RangeLimit: 14c410
-	Warhead@1Dam: SpreadDamage
-		Spread: 128
-		Damage: 40
-		DeathType: 4
-		ValidTargets: Ground, Water
-		Versus:
-			Infantry: 40
-			LightVehicle: 75
-			ArmorTank: 60
-			Concrete: 50
-		DamageTypes: TriggerProne
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large
-		InvalidTargets: Vehicle
-	Warhead@3Eff: CreateEffect
-		Explosions: photo_expl
-		ExplosionPalette: effect
-		ImpactSounds: expnew05.wav
-		ValidTargets: Ground
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ImpactSounds:
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water
-
-^Railgun.Order:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 78
-	Range: 8c512
-	Report: minautfire.aud
-	Projectile: LaserZap
-		Width: 25
-		TrackTarget: false
-		Inaccuracy: 256
-		Color: 33ff99
-		SecondaryBeam: true
-		SecondaryBeamWidth: 65
-		SecondaryBeamColor: 33ccff
-	Warhead@1Dam: SpreadDamage
-		Spread: 50
-		Damage: 700
-		Versus:
-			Infantry: 50
-			LightVehicle: 90
-			ArmorTank: 120
-			Concrete: 100
-		DamageTypes: Burned, TriggerProne
-	Warhead@3EffGround: CreateEffect
-		Explosions: ion_expl
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ImpactSounds:
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-
-^Plasma.Order:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 85
-	Range: 10c0
-	Report: volcanogunmax.aud
-	Projectile: Bullet
-		Speed: 600
-		Image: plasma_gun
-		Palette: effectalpha75
-		Inaccuracy: 256
-		TrailInterval: 0
-		ContrailLength: 15
-		ContrailColor: 7eff00
-		ContrailWidth: 20
-		ContrailDelay: 0
-	Warhead@1Dam: SpreadDamage
-		Spread: 256
-		Damage: 900
-		DeathType: 5
-		RangeLimit: 7c204
-		Versus:
-			Infantry: 120
-			LightVehicle: 100
-			ArmorTank: 90
-			Concrete: 120
-		DamageTypes: Burned, TriggerProne
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large, Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: ion_expl
-		ExplosionPalette: effectalpha75
-		ImpactSounds: flames01.aud
-		ValidTargets: Ground, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ImpactSounds:
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: greenlight
-		ValidTargets: Ground, Water, Air
-
-^ballistic_Plasma_Order:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 110
-	Range: 5c512
-	MinRange: 1c0
-	Report: plasma_limfire.aud
-	Projectile: Bullet
-		Speed: 320
-		Image: plasmaarty.ball
-		High: true
-		LaunchAngle: 160
-		Inaccuracy: 125
-		TrailImage: trail_smokemin01
-		TrailPalette: flameeffect
-		TrailInterval: 2
-		ContrailLength: 8
-		ContrailWidth: 8
-		Color: 3cff00
-	Warhead@1Dam: SpreadDamage
-		Spread: 786
-		Damage: 850
-		DeathType: 4
-		Versus:
-			Infantry: 80
-			LightVehicle: 80
-			ArmorTank: 70
-			Concrete: 120
-		DamageTypes: Gibs, TriggerProne
-	Warhead@2Smu: LeaveSmudge
-		SmudgeType: craters_large, Crater
-		InvalidTargets: Vehicle
-	Warhead@3EffGround: CreateEffect
-		Explosions: plasma_impact
-		ExplosionPalette: effect
-		ValidTargets: Ground
-	Warhead@8Light: CreateEffect
-		Explosions: mediumlight
-		ExplosionPalette: redlight
-		ValidTargets: Ground, Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_large
-		ExplosionPalette: effectalpha75
-		ImpactSounds:
-		ValidTargets: Water
-	Warhead@disturb: GrantExternalCondition
-		ValidTargets: Ground, Rough, Tree
-		Range: 6c0
-		Duration: 100
-		Condition: disturbing
-
-^Matter.Order:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 10
-	Range: 9c512
-	Burst: 2
-	Report: mattergun.aud
-	Projectile: Bullet
-		Speed: 500
-		Image: matter_bullet
-		Inaccuracy: 0
-		TrailDelay: 0
-		TrailImage: gaussringmin
-		TrailInterval: 0
-		TrailPalette: Upgrade_blue_effect
-		ContrailLength: 30
-		ContrailColor: 7560f3
-		ContrailWidth: 65
-		ContrailDelay: 0
-	Warhead@1Dam: SpreadDamage
-		Spread: 1024
-		Damage: 1900
-		Versus:
-			Infantry: 50
-			ArmorInfantry: 80
-			LightVehicle: 100
-			ArmorTank: 120
-			Concrete: 150
-		DamageTypes: Burned, TriggerProne
-	Warhead@3EffGround: CreateEffect
-		Explosions: matter_expl
-		ExplosionPalette: powereffect
-		ValidTargets: Ground, Air
-	Warhead@3EffWater: CreateEffect
-		Explosions: impact_water_medium
-		ExplosionPalette: effectalpha75
-		ValidTargets: Water
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: bluelight
-		ValidTargets: Ground, Water, Air
-
-^FluxPlamind.Order:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	ReloadDelay: 2
-	Range: 6c0
-	ValidTargets: Ground
-	Report: jotuungun.aud
-	Projectile: Bullet
-		Speed: 380
-		Image: plasma_pulseminx2
-		Inaccuracy: 0
-		TrailInterval: 0
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Spread: 256
-		Damage: 10
-		DeathType: 5
-		Versus:
-			Infantry: 120
-			LightVehicle: 60
-			ArmorTank: 30
-			Concrete: 140
-		DamageTypes: Burned, TriggerProne
-	Warhead@8Light: CreateEffect
-		Explosions: baselight
-		ExplosionPalette: light
-		ValidTargets: Ground, Water, Air
-	Warhead@3Smu: LeaveSmudge
-		SmudgeType: Scorch
-		InvalidTargets: Vehicle
-		
-# Federation Weapons Base
+# ///// Federation Army Animation ////////////////////
 
 ^Federation.M60.Weapons.default:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -2924,7 +1128,7 @@ Atomic:
 		ExplosionPalette: effectalpha75
 		ImpactSounds:
 		ValidTargets: Water
-
+        
 ^Tick.Weapons.default:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	ValidTargets: Ground
@@ -3198,3 +1402,6 @@ Atomic:
 		Explosions: baselight
 		ExplosionPalette: light
 		ValidTargets: Ground, Water
+
+
+# ///// Superweapons

@@ -1,13 +1,15 @@
 eclipse:
 	Inherits: ^Aircraftshape
 	Interactable:
+	-Selectable:
+	-SelectionDecorations:
 	Tooltip:
 		Name: Eclipse
 	Valued:
 		Cost: 50
 	Aircraft:
 		TurnSpeed: 4
-		Speed: 340
+		Speed: 250
 		Repulsable: False
 		IdleBehavior: LeaveMap
 	DamageMultiplier@INVULNERABLE:
@@ -17,19 +19,27 @@ eclipse:
 	Targetable:
 		TargetTypes: NoAircraftTarget
 		RequiresForceFire: false
+    ProximityExternalCondition@ECLIPSE:
+		Condition: Eclipse.shroud
+		Range: 40c0
+        ValidStances: Enemy
+		AffectsParent: false
 	RejectsOrders:
 	AttackBomber:
 	-RevealsShroud:
 	-AutoTarget:
 	-WithShadow:
 	RenderSprites:
-		Palette: powereffect40
+		Palette: light
+        Scale: 1.90
 	Buildable:
 		Description: Used to deliver air strikes.
 
 t2_comete:
 	Inherits: ^Helicoptershape
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetAll
+    Inherits@SoundMove: ^Rotor.aircraft.move
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 70
@@ -46,18 +56,21 @@ t2_comete:
 	WithMuzzleOverlay:
 	Armament@PRIMARY:
 		Weapon: Dual.Impuls.Catapult
-		LocalOffset: 100,-420,-85, 100,420,-85
+		LocalOffset: 400,-360,-85, 400,360,-85
 		MuzzleSequence: muzzle
+		MuzzlePalette: flammeeffectblue
 		RequiresCondition: !upgrade.Base.Comete.Conclave
 	Armament@PRIMARYALPHA:
 		Weapon: Dual.Impuls.Catapult.Alpha
-		LocalOffset: 100,-420,-85, 100,420,-85
+		LocalOffset: 400,-360,-85, 400,360,-85
 		MuzzleSequence: muzzle
+		MuzzlePalette: flammeeffectblue
 		RequiresCondition: upgrade.Alpha.Comete.Conclave
 	Armament@PRIMARYOMEGA:
 		Weapon: Dual.Impuls.Catapult.Omega
-		LocalOffset: 100,-420,-85, 100,420,-85
+		LocalOffset: 400,-360,-85, 400,360,-85
 		MuzzleSequence: muzzle
+		MuzzlePalette: flammeeffectblue
 		RequiresCondition: upgrade.Omega.Comete.Conclave
 	AttackAircraft:
 		FacingTolerance: 20
@@ -104,11 +117,22 @@ comete.husk:
 	Aircraft:
 		TurnSpeed: 5
 		Speed: 186
+    SmokeTrailWhenDamaged:
+        Sprite: explosion
+        Interval: 8
+        Sequence: trail_smoke02
+        Palette: flammeeffectblue50
+        MinDamage: Undamaged
+	Explodes:
+		Weapon: tank.blue.explode
+		EmptyWeapon: tank.blue.explode
 	RenderSprites:
 		Image: t2_comete
 
 t2_zenith:
 	Inherits: ^Helicoptershape
+    Inherits@UnitePlayStat:^UnitPlayerStat
+    Inherits@SoundMove: ^Rotor.aircraft.move
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 90
@@ -198,13 +222,24 @@ t2_zenith.husk:
 	Aircraft:
 		TurnSpeed: 5
 		Speed: 186
+    SmokeTrailWhenDamaged:
+        Sprite: explosion
+        Interval: 8
+        Sequence: trail_smoke02
+        Palette: flammeeffectblue50
+        MinDamage: Undamaged
+	Explodes:
+		Weapon: tank.blue.explode
+		EmptyWeapon: tank.blue.explode
 	RenderSprites:
 		Scale: 0.7
 		Image: t2_zenith
 
 t3_quasar:
 	Inherits: ^Helicoptershape
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetAir
+    Inherits@SoundMove: ^Rotor.aircraft.move
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 120

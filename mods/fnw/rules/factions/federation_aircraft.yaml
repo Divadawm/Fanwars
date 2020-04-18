@@ -123,7 +123,6 @@ t1_mosquito:
 	Buildable:
 		Queue: Aircraft.federation
 		BuildPaletteOrder: 50
-		Prerequisites: Research Module
 		Description: Experimental aircraft armed with a triple fast-firing ion cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
 		BuildDurationModifier: 5
 		IconPalette: Federation.Icon
@@ -171,4 +170,96 @@ t1_mosquito.Husk:
 		Speed: 186
 	RenderSprites:
 		Image: t1_mosquito
-		
+
+t3_trasportfed:
+    Inherits: ^Helicoptershape
+	Buildable:
+		Queue: Aircraft.federation
+		BuildPaletteOrder: 90
+		BuildDurationModifier: 20
+		Description: Unarmed transport aircraft\nCan transport all types of units\n> Strong vs None\n> Weak vs Everything
+		IconPalette: Federation.Icon
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: Armadillo
+	Health:
+		HP: 2800
+	Aircraft:
+		CruiseAltitude: 2500
+		InitialFacing: 192
+		TurnSpeed: 35
+		Speed: 180
+		RepulsionSpeed: 40
+		MaximumPitch: 110
+		LandableTerrainTypes: Clear,Rough,Road,Beach,tree
+		IdleBehavior: Land
+	-AutoTarget:
+	-AttackMove:
+	Cargo:
+		Types: Infantry, vehicle
+		MaxWeight: 30
+		PipCount: 10
+	Selectable:
+		Bounds: 36,28
+	SpawnActorOnDeath:
+		Actor: t3_trasportfed.husk
+        
+t3_trasportfed.Husk:
+	Inherits: ^AircraftHuskShape
+	Tooltip:
+		Name: Armadillo
+	Aircraft:
+		TurnSpeed: 0
+		Speed: 186
+	RenderSprites:
+		Image: t3_trasportfed
+
+t3_bombardfed:
+ 	Inherits: ^Aircraftshape
+	Inherits@Target: ^AutoTargetGround
+	Buildable:
+		Queue: Aircraft.federation
+		BuildPaletteOrder: 50
+		Description: Experimental aircraft armed with a triple fast-firing ion cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 5
+		IconPalette: Federation.Icon
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Venom
+	Health:
+		HP: 3200
+	Armament@turret01:
+		Weapon: fedbomber.fire
+		LocalOffset: -20,-720,40
+		LocalYaw: -40, -24
+		MuzzleSequence: muzzle
+	Armament@turret02:
+		Weapon: fedbomber.fire
+		LocalOffset: -20,720,40
+		LocalYaw: -40, -24
+		MuzzleSequence: muzzle
+	AttackAircraft:
+		FacingTolerance: 20
+	WithMuzzleOverlay:
+	Aircraft:
+		CruiseAltitude: 3400
+		InitialFacing: 192
+		TurnSpeed: 8
+		Speed: 220
+		Repulsable: true
+		RepulsionSpeed: 40
+		MaximumPitch: 56
+	AutoTarget:
+		EnableStances: false
+		InitialStance: HoldFire
+	RenderSprites:
+		Scale: 0.65
+	Selectable:
+		Bounds: 36,28
+	SmokeTrailWhenDamaged:
+		Offset: -853,0,171
+		Interval: 2
+	SpawnActorOnDeath:
+		Actor: t3_thor.Husk

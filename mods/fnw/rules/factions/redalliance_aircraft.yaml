@@ -51,6 +51,7 @@ t0_transportship:
 t2_wyvern:
 	Inherits: ^Aircraftshape
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetAir
     # / Doctrines /
 	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
@@ -118,7 +119,9 @@ t2_wyvern.husk:
 t2_chimera:
 	Inherits: ^Helicoptershape
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+    Inherits@SoundMove: ^Rotor.aircraft.move
     # / Doctrines /
 	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
 	Buildable:
@@ -138,7 +141,6 @@ t2_chimera:
 		Weapon: AP_chimera
 		LocalOffset: 290,-213,-85, 290,213,-85
 		MuzzleSequence: muzzle
-		RequiresCondition: !Active.Doctrines.AirView
 	WithMuzzleOverlay:
 	AttackAircraft:
 		FacingTolerance: 20
@@ -174,6 +176,7 @@ t2_chimera.husk:
 t3_archdemon:
 	Inherits: ^Aircraftshape
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
     # / Doctrines /
 	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
@@ -186,11 +189,11 @@ t3_archdemon:
 		Description: Tactical bomber armed with nuclear bombs\nDoes not appear on the minimap\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
 		IconPalette: RedAlliance.Icon
 	Valued:
-		Cost: 3000
+		Cost: 2800
 	Tooltip:
 		Name: Archdemon
 	Health:
-		HP: 1000
+		HP: 500
 	AppearsOnRadar:
 		UseLocation: False
 	Armament@LEFT:
@@ -201,7 +204,7 @@ t3_archdemon:
 	AttackAircraft:
 		FacingTolerance: 20
 	Aircraft:
-		CruiseAltitude: 2560
+		CruiseAltitude: 1850
 		InitialFacing: 192
 		TurnSpeed: 5
 		Speed: 190
@@ -251,7 +254,7 @@ t2_command_relais:
 		BuildPaletteOrder: 90
 		Prerequisites: artech
 		Description: Unlocks tier 3 units, upgrades, structures and the Astro-Cruiser epic unit
-		BuildDurationModifier: 50
+		BuildDurationModifier: 55
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 2000
@@ -273,6 +276,8 @@ t2_command_relais:
 		Speed: 60
 		RepulsionSpeed: 40
 		MaximumPitch: 56
+	Voiced:
+		VoiceSet: CommandCenterVoice
 	ProvidesPrerequisite@buildingame:
 		Prerequisite: t2_command_relais
 	Selectable:
@@ -308,7 +313,9 @@ t2_command_relais.husk:
 t4_cruiser:
 	Inherits: ^Helicoptershape
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
+    Inherits@SoundMove: ^Rotor.aircraft.move
     # / Doctrines /
 	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
 	Buildable:
@@ -389,8 +396,39 @@ t4_cruiser:
 		Palette: light
 		RequiresCondition: !SmokeCamoActivate
 	HitShape:
-	SpawnActorOnDeath:
-		Actor: t4_cruiser.Husk
+    GrantConditionOnDamageState@Damage01:
+        Condition: heavy.damage
+        ValidDamageStates: Heavy
+    GrantConditionOnDamageState@Damage02:
+        Condition: Critical.damage
+        ValidDamageStates: Critical
+    LeavesTrails@01:
+        Image: damage_smoke.min
+        TrailWhileStationary: true
+        Sequences: smoke_damage01, smoke_damage02, smoke_damage03, smoke_damage04
+        Palette: flameeffect60
+        Type: CenterPosition
+        MovingInterval: 5
+        Offsets: 650,445,580
+        RequiresCondition: heavy.damage || Critical.damage
+    LeavesTrails@02:
+        Image: damage_smoke.min
+        TrailWhileStationary: true
+        Sequences: smoke_damage01, smoke_damage02, smoke_damage03, smoke_damage04
+        Palette: flameeffect60
+        Type: CenterPosition
+        MovingInterval: 4
+        Offsets: -380,-405,670
+        RequiresCondition: Critical.damage
+    LeavesTrails@03:
+        Image: damage_smoke.min
+        TrailWhileStationary: true
+        Sequences: smoke_damage01, smoke_damage02, smoke_damage03, smoke_damage04
+        Palette: flameeffect60
+        Type: CenterPosition
+        MovingInterval: 4
+        Offsets: -80,505,670
+        RequiresCondition: Critical.damage
 	NukePower@NukeAllianceMissile:
 		OrderName: NukeAllianceMissile
 		PauseOnCondition: disabled
@@ -400,6 +438,7 @@ t4_cruiser:
 		ChargeInterval: 7000
 		Description: Wrath of God
 		LongDesc: Please select the section of the map you want to obliterate
+        DisplayTimerStances: Ally, Neutral, Enemy
 		BeginChargeSpeechNotification:
 		EndChargeSpeechNotification:
 		SelectTargetSpeechNotification:
@@ -408,11 +447,12 @@ t4_cruiser:
 		MissileWeapon: nuke.alliance.missile
 		MissileDelay: 1
 		SpawnOffset: 1c0,427,0
-		DisplayTimerStances: Ally, Neutral, Enemy
 		DisplayBeacon: false
 		DisplayRadarPing: True
 		BeaconPoster: atomicon
 		CameraRange: 10c0
+	SpawnActorOnDeath:
+		Actor: t4_cruiser.Husk
 
 t4_cruiser.husk:
 	Inherits: ^PlaneHusk
@@ -423,3 +463,17 @@ t4_cruiser.husk:
 		Speed: 186
 	RenderSprites:
 		Image: t4_cruiser
+    SmokeTrailWhenDamaged@2:
+        Offset: 25, 80, -95
+        Sprite: explosion
+        Interval: 4
+        Sequence: trail_smoke02
+        Palette: flameeffect60
+        MinDamage: Undamaged
+    SmokeTrailWhenDamaged@3:
+        Offset: -60, -40, 25
+        Sprite: explosion
+        Interval: 6
+        Sequence: trail_smoke02
+        Palette: flameeffect60
+        MinDamage: Undamaged

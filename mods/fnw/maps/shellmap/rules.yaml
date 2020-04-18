@@ -1,0 +1,18 @@
+Player:
+	-ConquestVictoryConditions:
+
+World:
+	-SpawnMPUnits:
+	-MPStartLocations:
+	ResourceType@ore:
+		ValuePerUnit: 0
+	LuaScript:
+		Scripts: shellmap.lua
+	-StartGameNotification:
+
+^Palettes:
+	IndexedPlayerPalette:
+		PlayerIndex:
+			RedAlliance: 229, 230, 231, 232, 233, 234, 235, 8, 236, 237, 238, 239, 221, 222, 223, 223
+			Order: 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175
+			conclave: 60, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175

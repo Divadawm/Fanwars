@@ -21,3 +21,106 @@ rock_olitrax3:
 		Dimensions: 2,1
 	HitShape:
 		UseTargetableCellsOffsets: true
+    
+toxinegg01:
+	Inherits: ^Rock
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	WithIdleOverlay@effet:
+		Sequence: spore
+		Palette: toxintree
+	HitShape:
+		UseTargetableCellsOffsets: true
+    
+toxinegg02:
+	Inherits: ^Rock
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	WithIdleOverlay@effet:
+		Sequence: spore
+		Palette: toxintree
+	HitShape:
+		UseTargetableCellsOffsets: true
+    
+toxinegg03:
+	Inherits: ^Rock
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	WithIdleOverlay@effet:
+		Sequence: spore
+		Palette: toxintree
+	HitShape:
+		UseTargetableCellsOffsets: true
+    
+toxinegg04:
+	Inherits: ^Rock
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	WithIdleOverlay@effet:
+		Sequence: spore
+		Palette: toxintree
+	HitShape:
+		UseTargetableCellsOffsets: true
+    
+toxinegg05:
+	Inherits: ^Rock
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	WithIdleOverlay@effet:
+		Sequence: spore
+		Palette: toxintree
+	HitShape:
+		UseTargetableCellsOffsets: true
+    
+skulldecoy01:
+	Inherits: ^Rock
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	HitShape:
+		UseTargetableCellsOffsets: true
+    
+skulldecoy02:
+	Inherits: ^Rock
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	HitShape:
+		UseTargetableCellsOffsets: true
+    
+skulldecoy03:
+	Inherits: ^Rock
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	HitShape:
+		UseTargetableCellsOffsets: true

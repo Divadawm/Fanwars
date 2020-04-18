@@ -1,5 +1,7 @@
 Gatling.tower:
-	Inherits@default.weapons: ^Gatling.Defense.Weapons.default
+	Inherits@Animation.weapons: ^Minigun.medium.Comon.Animation
+	Inherits@StatBase.weapons: ^Minigun.Comon.Stat
+	Inherits@Range: ^Range.Vehicle.Base
 	ReloadDelay: 2
 	Range: 8c256
 	Report: gatlinggun.aud
@@ -12,18 +14,19 @@ Gatling.tower:
 			Concrete: 50
 			
 fortress.targetpri:
-	Inherits@default.weapons: ^Fortressdefense.Target.default
+	Inherits@default.weapons: ^null.Comon.Animation
 	Report: chargingdef.aud
 	ReloadDelay: 85
 	Range: 14c256
 
 fortress.target:
-	Inherits@default.weapons: ^Fortressdefense.Target.default
+	Inherits@default.weapons: ^null.Comon.Animation
 	ReloadDelay: 6
 	Range: 14c256
 
 fortress.laser:
-	Inherits@default.weapons: ^Fortressdefense.default
+	Inherits@default.weapons: ^Laser.Fire.Comon.Animation
+	Inherits@StatBase.weapons: ^Laser.Comon.Stat
 	ReloadDelay: 16
 	Range: 14c256
 	Report: fortresslasergun.aud
@@ -243,6 +246,48 @@ uniteanimexplode:
 	Warhead@Smu: LeaveSmudge
 		SmudgeType: Crater
 		InvalidTargets: Wall, Trees
+        
+tank.explode:
+	Warhead@2bisEffGround: CreateEffect
+		Explosions: ring_pulse
+		ExplosionPalette: effectalpha30
+		ValidTargets: Ground, Water
+	Warhead@4EffGround: CreateEffect
+		Explosions: expl_tank01, expl_tank02, expl_tank03
+		ExplosionPalette: flameeffect
+		ImpactSounds: vehdfie_expl01.aud, vehdfie_expl02.aud, vehdfie_expl03.aud, vehdfie_expl04.aud
+		ValidTargets: Ground, Water
+        
+tank.blue.explode:
+	Warhead@2bisEffGround: CreateEffect
+		Explosions: ring_pulse
+		ExplosionPalette: effectalpha30
+		ValidTargets: Ground, Water
+	Warhead@4EffGround: CreateEffect
+		Explosions: expl_tank01, expl_tank02, expl_tank03
+		ExplosionPalette: flammeeffectblue
+		ImpactSounds: vehdfie_expl01.aud, vehdfie_expl02.aud, vehdfie_expl03.aud, vehdfie_expl04.aud
+		ValidTargets: Ground, Water
+
+odin.explode:
+	Warhead@1Dam: SpreadDamage
+		Damage: 750
+		Spread: 2048		
+        Versus:
+			Infantry: 75
+			LightVehicle: 75
+			ArmorTank: 75
+			Concrete: 50
+		DamageTypes: TriggerProne, Crater
+	Warhead@2bisEffGround: CreateEffect
+		Explosions: ring_pulse
+		ExplosionPalette: effectalpha30
+		ValidTargets: Ground, Water
+	Warhead@4EffGround: CreateEffect
+		Explosions: railbomb_expl01, railbomb_expl02, railbomb_expl03
+		ExplosionPalette: powereffect
+		ImpactSounds: odin_expl.aud
+		ValidTargets: Ground, Water
 
 plasma_pulsar:
 	ReloadDelay: 135
@@ -307,14 +352,9 @@ psyblast:
 
 SmallBuildingExplode:
 	Warhead@2Eff: CreateEffect
-		Explosions: explbuilding01, explbuilding02, explbuilding03, explbuilding04, explbuilding05
-		ExplosionPalette: flameeffect70
-		ImpactSounds: buildsongexpl01.aud, buildsongexpl02.aud, buildsongexpl03.aud
-		ValidTargets: Ground, Water, Air
-	Warhead@3Eff: CreateEffect
-		Explosions: bomb_expl01,  bomb_expl02, bomb_expl03
-		ExplosionPalette: effect
-		ImpactSounds: buildsongexpl01.aud, buildsongexpl02.aud, buildsongexpl03.aud
+		Explosions: explbuilding01, explbuilding02, explbuilding03, explbuilding04, explbuilding05, builddestruc01, builddestruc02, builddestruc03
+		ExplosionPalette: flameeffect50
+		ImpactSounds: buildsongexpl01.aud, buildsongexpl02.aud, buildsongexpl03.aud, buildsongexpl04.aud
 		ValidTargets: Ground, Water, Air
 	Warhead@Smu: LeaveSmudge
 		SmudgeType: Crater

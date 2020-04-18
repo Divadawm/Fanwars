@@ -12,6 +12,15 @@ t1_heidrun:
 		Length: *
 		BlendMode: Additive
 	icon: artemisicon
+    
+t1_utgard:
+	Inherits@Stat: ^StatVehicleEffect	
+    idle:
+        Facings: 64
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+	icon: utgardicon
 
 t2_dwarf:
 	Inherits@Stat: ^StatVehicleEffect
@@ -52,6 +61,7 @@ t2_garm:
 		Facings: 64
 	turret: t2_garmtur
 		Facings: 64
+        Offset: 0,10
 	icon: minauticon
 
 t2_warg:
@@ -79,9 +89,12 @@ t2_yggdrasil:
 
 t2_lindwyrm:
 	Inherits@Stat: ^StatVehicleEffect
+	idle:
+		Facings: 64
+	turret: t2_lindwyrmtur
+		Facings: 64
 	muzzle: muzzle_190mm
 		Length: *
-	idle:
 	icon: lindwyrnicon
 
 t2_lindwyrm.husk:
@@ -109,6 +122,15 @@ t3_loki:
 	Inherits@Stat: ^StatVehicleEffect
 	idle:
 		Facings: 64
+	idle-deployed: null
+	muzzle: muzzle_autogun_small
+		Length: *
+		BlendMode: Additive
+    turret: t3_lokideployed
+        Facings: 64
+	make: t3_lokimake
+		Length: *
+		Tick: 30
 	icon: lokiicon
 
 t3_heimdall:
@@ -118,6 +140,12 @@ t3_heimdall:
 		BlendMode: Additive
 	idle:
 		Facings: 64
+    idle-deployed: t3_heimdall_deploy
+	turret: t3_heimdall_deploytur
+		Facings: 64
+	make: t3_heimdall_deploymk
+		Length: 17
+		Tick: 30
 	icon: heimicon
 
 t4_odin:

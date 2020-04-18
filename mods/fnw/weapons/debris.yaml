@@ -56,7 +56,56 @@ SmallDebris3:
 		Explosion: debrisexplode
 		ImpactSound: debrisexplode.aud
 		ValidTargets: Ground, Water, Air
+        
 
+SmallDebris1.bluetrail:
+	Inherits: SmallDebris
+	Projectile: Bullet
+		TrailImage: trail_smokemin03
+		TrailPalette: flammeeffectblue
+	Warhead@3Eff: CreateEffect
+		Explosion: debrisexplode
+		ExplosionPalette: effect
+		ValidTargets: Ground, Water, Air
+        
+SmallDebris2.bluetrail:
+	Inherits: SmallDebris2
+	Projectile: Bullet
+		TrailImage: trail_smokemin03
+		TrailPalette: flammeeffectblue
+	Warhead@3Eff: CreateEffect
+		Explosion: debrisexplode
+		ExplosionPalette: effect
+		ValidTargets: Ground, Water, Air
+ 
+SmallDebris3.bluetrail:
+	Inherits: SmallDebris3
+	Projectile: Bullet
+		TrailImage: trail_smokemin03
+		TrailPalette: flammeeffectblue
+	Warhead@3Eff: CreateEffect
+		Explosion: debrisexplode
+		ExplosionPalette: effect
+		ValidTargets: Ground, Water, Air
+        
+body1:
+	Inherits: ^Debris
+	Projectile: Bullet
+		TrailImage: corps01
+		Image: medium_debris
+        
+body2:
+	Inherits: ^Debris
+	Projectile: Bullet
+		TrailImage: corps02
+		Image: medium_debris
+        
+body3:
+	Inherits: ^Debris
+	Projectile: Bullet
+		TrailImage: corps03
+		Image: medium_debris
+     
 Debris:
 	ReloadDelay: 60
 	Range: 2c768
@@ -191,22 +240,35 @@ AircraftExplode:
 		ValidTargets: Ground, Water, Air
 
 ^gibs:
-	Range: 2c0
-	Warhead@1Dam: SpreadDamage
-		Spread: 512
-		Damage: 1
-		Versus:
-			Infantry: 20
-			LightVehicle: 20
-			ArmorTank: 20
-			Concrete: 20
-		DamageTypes: Gibs
+	Range: 1c0
+	Projectile: Bullet
+		Speed: 64, 128
+		LaunchAngle: 85, 142
+		Image: gibs01
+		High: true
+		Inaccuracy: 256
+		TrailImage: gibs_smoke
+        TrailInterval: 1
+        TrailPalette: effectalpha55
+        BounceCount: 1
+		Shadow: true
+		Blockable: false
 	Warhead@4Smu: LeaveSmudge
 		SmudgeType: Gibs
 	Warhead@2Eff: CreateEffect
-		Explosions: expl_gibs01
-		ExplosionPalette: effectalpha75
-		ValidTargets: Ground, Road, Water, Air
+		Explosions: expl_gibsmin
+		ExplosionPalette: effect
+		ValidTargets: Ground, Road
 
 gibs_plok:
 	Inherits@gibs: ^gibs
+
+gibs_plok2:
+	Inherits@gibs: ^gibs
+    Projectile: Bullet
+
+gibs_plok3:
+	Inherits@gibs: ^gibs
+    Projectile: Bullet
+		Image: gibsproj01
+        Pallette: powereffect

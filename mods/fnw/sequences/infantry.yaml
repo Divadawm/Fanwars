@@ -152,11 +152,10 @@ t3_navigator:
 		Facings: 8
     Shield: shiel_pilgrim
         Length: *
-        Offset: 0, 0
 		BlendMode: Additive
     robe_navigator: robe_navigator
         Length: *
-        Offset: 0, 0
+        ZOffset: -5
 	muzzle: redbeam_small_muzzle
 		Start: 0
 		Length: *
@@ -207,6 +206,9 @@ t1_aesir:
 	stand:
 		Start: 0
 		Facings: 8
+    idle1:
+		Start: 0
+        Length: 8
 	run:
 		Start: 8
 		Length: 6
@@ -236,7 +238,7 @@ t2_tesla:
 		Length: 6
 		Facings: 8
 		Tick: 90
-	idle:
+	idle1:
 		Start: 103
 		Length: 6
 		Tick: 90
@@ -329,7 +331,7 @@ saboteur:
 		Length: 6
 		Facings: 8
 		Tick: 80
-	idle:
+	idle1:
 		Start: 56
 		Length: 15
 		Tick: 80
@@ -369,7 +371,7 @@ e1:
 		Length: 6
 		Facings: 8
 		Tick: 80
-	idle:
+	idle1:
 		Start: 56
 		Length: 15
 		Tick: 80
@@ -399,7 +401,7 @@ ardisciple:
 		Length: 6
 		Facings: 8
 		Tick: 80
-	idle:
+	idle1:
 		Start: 56
 		Length: 15
 		Tick: 80
@@ -435,10 +437,10 @@ soldierop:
 		Start: 8
 		Length: 6
 		Facings: 8
-	idle:
+	idle1:
 		Start: 104
 		Length: 12
-	die:
+	die1:
 		Start: 116
 		Length: 11
 		Tick: 80
@@ -470,6 +472,9 @@ roquetteorderinf:
 		Length: 6
 		Facings: 8
 		Tick: 80
+	idle1:
+		Start: 0
+		Length: 8
 	die1:
 		Start: 104
 		Length: 15
@@ -523,7 +528,7 @@ jotun:
 		Start: 8
 		Length: 6
 		Facings: 8
-	idle:
+	idle1:
 		Start: 56
 		Length: 5
 	die1:
@@ -573,10 +578,10 @@ gardian:
 		Start: 8
 		Length: 6
 		Facings: 8
-	idle:
+	idle1:
 		Start: 104
 		Length: 12
-	die:
+	die1:
 		Start: 116
 		Length: 11
 		Tick: 80
@@ -609,10 +614,10 @@ statis:
 		Start: 8
 		Length: 6
 		Facings: 8
-	idle:
+	idle1:
 		Start: 4
 		Length: 0
-	die:
+	die1:
 		Start: 104
 		Length: 6
 		Tick: 60
@@ -633,6 +638,36 @@ statis:
 	icon: statisicon
 		Start: 0
         
+t4_consniper:
+	Inherits@Stat: ^StatInfantryEffect
+    Inherits@Dead: ^DeadInfantryGlobal
+	stand:
+		Start: 0
+		Facings: 8
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+	idle1:
+		Start: 104
+		Length: 15
+	die1:
+		Start: 119
+		Length: 15
+		Tick: 80
+	shoot:
+		Start: 56
+		Length: 6
+		Facings: 8
+	muzzle: muzzle_autogun_small
+		Start: 0
+		Length: *
+	garrison-muzzle: muzzle_autogun_small
+		Start: 0
+		Length: *
+	icon: consnipericon
+		Start: 0
+        
 t1_guardmen:
 	Inherits@Stat: ^StatInfantryEffect
     Inherits@Dead: ^DeadInfantryGlobal
@@ -643,6 +678,9 @@ t1_guardmen:
 		Start: 8
 		Length: 6
 		Facings: 8
+	idle1:
+		Start: 112
+		Length: 6
 	die1:
 		Start: 105
 		Length: 6

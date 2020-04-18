@@ -6,7 +6,7 @@ armcv:
 		Queue: Vehicle.redalliance
 		BuildPaletteOrder: 80
 		Description: Mobile construction vehicle
-		BuildDurationModifier: 20
+		BuildDurationModifier: 55
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 2500
@@ -18,18 +18,20 @@ armcv:
 	Health:
 		HP: 5000
 	Mobile:
-		Speed: 60
+		Speed: 65
 		TurnSpeed: 6
 		Crushes: gibs, infantry, husk
 		TerrainSpeeds:
 			wall: 65
+	Voiced:
+		VoiceSet: CrawlerVoice
 	MustBeDestroyed:
 		RequiredForShortGame: true
 	Transforms:
 		Facing: 96
 		IntoActor: aracnst
 		Offset: -1,-1
-		TransformSounds: makebuild.wav
+		TransformSounds: builmakeAR.aud
 		NoTransformNotification: CannotDeploy
 	SelectionDecorations:
 		VisualBounds: 42,42
@@ -37,18 +39,26 @@ armcv:
 	BaseBuilding:
 	RenderSprites:
 		Scale: 0.75
+    # // Icone mobile Building Categorie //
+	WithDecoration@IconBuilding:
+		Image: icon_mobile_building
+		Sequence: Building
+		Palette: effectalpha55
+		ReferencePoint: Center, Top
+		ValidStances: Ally, Enemy, Neutral
+		ZOffset: 64
 
 refinery:
 	Inherits: ^VoxelVehicleMedium
 	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
 	Valued:
-		Cost: 2000
+		Cost: 1800
 	Buildable:
 		Queue: Building.redalliance
 		Prerequisites: aracnst
 		BuildPaletteOrder: 30
 		Description: Refines Diastim into credits
-		BuildDurationModifier: 38
+		BuildDurationModifier: 30
 		IconPalette: RedAlliance.Icon
 	Tooltip:
 		Name: Mobile Refinery
@@ -58,11 +68,13 @@ refinery:
 	Health:
 		HP: 3000
 	Mobile:
-		Speed: 60
+		Speed: 70
 		TurnSpeed: 6
 		Crushes: gibs, infantry, husk
 		TerrainSpeeds:
 			wall: 65
+	Voiced:
+		VoiceSet: CrawlerVoice
 	StoresResources:
 		PipCount: 0
 		Capacity: 2000000
@@ -70,7 +82,7 @@ refinery:
 		IntoActor: arproc
 		Offset: -1,-1
 		Facing: 32
-		TransformSounds: makebuild.wav
+		TransformSounds: builmakeAR.aud
 		NoTransformNotification: CannotDeploy
 	ProvidesPrerequisite:
 		Prerequisite: Mobile.Refinery
@@ -82,18 +94,26 @@ refinery:
 	RenderVoxels:
 		Scale: 0.75
 	BaseBuilding:
+    # // Icone mobile Building Categorie //
+	WithDecoration@IconBuilding:
+		Image: icon_mobile_building
+		Sequence: Proc
+		Palette: effectalpha55
+		ReferencePoint: Center, Top
+		ValidStances: Ally, Enemy, Neutral
+		ZOffset: 256
 
 refinery.seconddeploy:
 	Inherits: ^VoxelVehicleMedium
 	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
 	Valued:
-		Cost: 2000
+		Cost: 1800
 	Buildable:
 		Queue: nope.redalliance
 		Prerequisites: BuildOrderBase.redalliance
 		BuildPaletteOrder: 38
 		Description: Refines Diastim into credits
-		BuildDurationModifier: 38
+		BuildDurationModifier: 30
 		IconPalette: RedAlliance.Icon
 	Tooltip:
 		Name: Mobile Refinery (no harvester)
@@ -103,11 +123,13 @@ refinery.seconddeploy:
 	Health:
 		HP: 3000
 	Mobile:
-		Speed: 60
+		Speed: 70
 		TurnSpeed: 6
 		Crushes: gibs, infantry, husk
 		TerrainSpeeds:
 			wall: 65
+	Voiced:
+		VoiceSet: CrawlerVoice
 	StoresResources:
 		PipCount: 0
 		Capacity: 2000000
@@ -115,7 +137,7 @@ refinery.seconddeploy:
 		IntoActor: arproc.seconddeploy
 		Offset: -1,-1
 		Facing: 32
-		TransformSounds: makebuild.wav
+		TransformSounds: builmakeAR.aud
 		NoTransformNotification: CannotDeploy
 	ProvidesPrerequisite:
 		Prerequisite: Mobile.Refinery
@@ -130,6 +152,14 @@ refinery.seconddeploy:
 	BaseBuilding:
 	RenderSprites:
 		Image: refinery
+    # // Icone mobile Building Categorie //
+	WithDecoration@IconBuilding:
+		Image: icon_mobile_building
+		Sequence: Proc
+		Palette: effectalpha55
+		ReferencePoint: Center, Top
+		ValidStances: Ally, Enemy, Neutral
+		ZOffset: 256
 
 arnahand:
 	Inherits: ^VoxelVehicleHeavyWalker
@@ -139,9 +169,9 @@ arnahand:
 	Buildable:
 		Queue: Building.redalliance
 		Prerequisites: aracnst
-		BuildPaletteOrder: 20
+		BuildPaletteOrder: 12
 		Description: Produces infantry units
-		BuildDurationModifier: 18
+		BuildDurationModifier: 8
 		IconPalette: RedAlliance.Icon
 	Tooltip:
 		Name: Mobile Barracks
@@ -151,16 +181,18 @@ arnahand:
 	Health:
 		HP: 3000
 	Mobile:
-		Speed: 40
+		Speed: 55
 		TurnSpeed: 6
 		Crushes: gibs, infantry, husk
 		TerrainSpeeds:
 			wall: 65
+	Voiced:
+		VoiceSet: CrawlerVoice
 	Transforms:
 		IntoActor: arbarr
 		Offset: -1,-1
 		Facing: 96
-		TransformSounds: makebuild.wav
+		TransformSounds: builmakeAR.aud
 		NoTransformNotification: CannotDeploy
 	ProvidesPrerequisite:
 		Prerequisite: Mobile.Barracks
@@ -173,6 +205,14 @@ arnahand:
 	RenderVoxels:
 		Scale: 1.1
 	BaseBuilding:
+    # // Icone mobile Building Categorie //
+	WithDecoration@IconBuilding:
+		Image: icon_mobile_building
+		Sequence: Infantry
+		Palette: effectalpha55
+		ReferencePoint: Center, Top
+		ValidStances: Ally, Enemy, Neutral
+		ZOffset: 256
 
 arnaweap:
 	Inherits: ^VoxelVehicleHeavyWalker
@@ -184,7 +224,7 @@ arnaweap:
 		Prerequisites: aracnst, arproc
 		BuildPaletteOrder: 42
 		Description: Produces vehicles
-		BuildDurationModifier: 50
+		BuildDurationModifier: 40
 		IconPalette: RedAlliance.Icon
 	Tooltip:
 		Name: Mobile War Factory
@@ -194,16 +234,18 @@ arnaweap:
 	Health:
 		HP: 3000
 	Mobile:
-		Speed: 40
+		Speed: 55
 		TurnSpeed: 6
 		Crushes: gibs, infantry, husk
 		TerrainSpeeds:
 			wall: 65
+	Voiced:
+		VoiceSet: CrawlerVoice
 	Transforms:
 		IntoActor: arweap
 		Offset: -2,-1
 		Facing: 164
-		TransformSounds: makebuild.wav
+		TransformSounds: builmakeAR.aud
 		NoTransformNotification: CannotDeploy
 	ProvidesPrerequisite@buildingame:
 		Prerequisite: arweap
@@ -214,6 +256,14 @@ arnaweap:
 	RenderVoxels:
 		Scale: 0.75
 	BaseBuilding:
+    # // Icone mobile Building Categorie //
+	WithDecoration@IconBuilding:
+		Image: icon_mobile_building
+		Sequence: Weap
+		Palette: effectalpha55
+		ReferencePoint: Center, Top
+		ValidStances: Ally, Enemy, Neutral
+		ZOffset: 256
 
 mobilerelay:
 	Inherits: ^VoxelVehicleHeavy
@@ -226,11 +276,11 @@ mobilerelay:
 		Priority: 4
 		Bounds: 42,42
 	Buildable:
-		Queue: Building.redalliance
+		Queue: none.redalliance
 		BuildPaletteOrder: 50
 		Prerequisites: arweap
-		BuildDurationModifier: 42
-		Description: Unlocks tier 2 units, upgrades and structures
+		BuildDurationModifier: 35
+		Description: Unlock tier 2 units/structures and research/upgrades.
 		IconPalette: RedAlliance.Icon
 	Health:
 		HP: 3000
@@ -242,6 +292,8 @@ mobilerelay:
 		Crushes: gibs, infantry, husk
 		TerrainSpeeds:
 			wall: 65
+	Voiced:
+		VoiceSet: CrawlerVoice
 	StoresResources:
 		PipCount: 0
 		Capacity: 2000000
@@ -249,7 +301,7 @@ mobilerelay:
 		IntoActor: artech
 		Offset: -1,-1
 		Facing: 164
-		TransformSounds: makebuild.wav
+		TransformSounds: builmakeAR.aud
 		NoTransformNotification: CannotDeploy
 	ProvidesPrerequisite@buildingame:
 		Prerequisite: artech
@@ -260,6 +312,14 @@ mobilerelay:
 	RenderVoxels:
 		Scale: 0.75
 	BaseBuilding:
+    # // Icone mobile Building Categorie //
+	WithDecoration@IconBuilding:
+		Image: icon_mobile_building
+		Sequence: T2
+		Palette: effectalpha55
+		ReferencePoint: Center, Top
+		ValidStances: Ally, Enemy, Neutral
+		ZOffset: 256
 
 t1_defence_hq:
 	Inherits: ^VoxelVehicleHeavy
@@ -274,8 +334,8 @@ t1_defence_hq:
 	Buildable:
 		Queue: Building.redalliance
 		BuildPaletteOrder: 60
-		BuildDurationModifier: 15
-		Description: Unlocks the Alliance's defensive structures and support powers
+		BuildDurationModifier: 35
+		Description: Unlock tier 2 units/structures and research/upgrades/n- unlocks the "fusion missile" capacity
 		IconPalette: RedAlliance.Icon
 	Health:
 		HP: 3000
@@ -287,11 +347,13 @@ t1_defence_hq:
 		Crushes: gibs, infantry, husk
 		TerrainSpeeds:
 			wall: 65
+	Voiced:
+		VoiceSet: CrawlerVoice
 	Transforms:
 		IntoActor: ardeftech
 		Offset: -1,-1
 		Facing: 98
-		TransformSounds: makebuild.wav
+		TransformSounds: builmakeAR.aud
 		NoTransformNotification: CannotDeploy
 	MustBeDestroyed:
 		RequiredForShortGame: true
@@ -300,18 +362,26 @@ t1_defence_hq:
 	RenderVoxels:
 		Scale: 1.0
 	BaseBuilding:
+    # // Icone mobile Building Categorie //
+	WithDecoration@IconBuilding:
+		Image: icon_mobile_building
+		Sequence: T2
+		Palette: effectalpha55
+		ReferencePoint: Center, Top
+		ValidStances: Ally, Enemy, Neutral
+		ZOffset: 256
 
 t2_airfield:
 	Inherits: ^VoxelVehicleHeavyHover
 	Inherits@Doctrines01: ^Aspect.Speed.Doctrines.Walker
 	Valued:
-		Cost: 1500
+		Cost: 800
 	Buildable:
 		Queue: Building.redalliance
 		Prerequisites: aracnst, artech
 		BuildPaletteOrder: 80
 		Description: Produces and repairs aircraft
-		BuildDurationModifier: 35
+		BuildDurationModifier: 25
 		IconPalette: RedAlliance.Icon
 	Tooltip:
 		Name: Mobile Airfield
@@ -326,11 +396,13 @@ t2_airfield:
 		Crushes: gibs, infantry, husk
 		TerrainSpeeds:
 			wall: 65
+	Voiced:
+		VoiceSet: CrawlerVoice
 	Transforms:
 		IntoActor: arheli
 		Offset: -1,-1
 		Facing: 164
-		TransformSounds: makebuild.wav
+		TransformSounds: builmakeAR.aud
 		NoTransformNotification: CannotDeploy
 	MustBeDestroyed:
 		RequiredForShortGame: true
@@ -339,6 +411,14 @@ t2_airfield:
 	RenderVoxels:
 		Scale: 1.15
 	BaseBuilding:
+    # // Icone mobile Building Categorie //
+	WithDecoration@IconBuilding:
+		Image: icon_mobile_building
+		Sequence: Aircraft
+		Palette: effectalpha55
+		ReferencePoint: Center, Top
+		ValidStances: Ally, Enemy, Neutral
+		ZOffset: 256
 
 t3_doomtower_mobile:
 	Inherits: ^VoxelVehicleHeavy
@@ -362,7 +442,7 @@ t3_doomtower_mobile:
 		IntoActor: t3_doomtowerbuild
 		Offset: 0,0
 		Facing: 164
-		TransformSounds: makebuild.wav
+		TransformSounds: builmakeAR.aud
 		NoTransformNotification: CannotDeploy
 	MustBeDestroyed:
 	-AutoTarget:

@@ -1,6 +1,7 @@
 t1_comrade:
 	Inherits@1: ^Infantry
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
     # / Upgrade Faction /
 	Inherits@3: ^Infantry.Upgrade.Redalliance
@@ -12,10 +13,10 @@ t1_comrade:
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 10
 		Description: Resilient and well trained infantry unit armed with a laser rifle\n> Strong vs Infantry, Light Vehicles\n> Weak vs Heavy Vehicles, Aircraft
-		BuildDurationModifier: 6
+		BuildDurationModifier: 4
 		IconPalette: RedAlliance.Icon
 	Valued:
-		Cost: 180
+		Cost: 130
 	Tooltip:
 		Name: Comrade
 	Health:
@@ -49,6 +50,7 @@ t1_comrade:
 t1_disciple:
 	Inherits@1: ^Infantry
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetAllAssaultMove
     # / Upgrade Faction /
 	Inherits@3: ^Infantry.Upgrade.Redalliance
@@ -58,8 +60,8 @@ t1_disciple:
 	Buildable:
 		Queue: Infantry.redalliance
 		BuildPaletteOrder: 20
-		Description: Specialist infantryman equipped with a dual-purpose anti-air/anti-vehicle heavy rifle\n> Strong vs Vehicles, Aircraft\n> Weak vs Infantry
-		BuildDurationModifier: 9
+		Description: Specialist infantryman equipped with a heavy autocannon anti-air/anti-vehicle heavy rifle\n> Strong vs Vehicles, Aircraft\n> Weak vs Infantry
+		BuildDurationModifier: 5
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 300
@@ -74,19 +76,6 @@ t1_disciple:
 		LocalOffset: 300,0,550
 		MuzzleSequence: muzzle
 		RequiresCondition: !Balistique.Doctrines.Redalliance
-	Armament@PRIMARY.Doctrine:
-		Weapon: AP_Sentient.Doctrine
-		LocalOffset: 300,0,550
-		MuzzleSequence: muzzle
-		RequiresCondition: Balistique.Doctrines.Redalliance
-	Armament@SECONDARY:
-		Weapon: AP_SentientAA
-		LocalOffset: 300,0,550
-		MuzzleSequence: muzzle
-	# Upgrade Doctrines
-	GrantConditionOnPrerequisite@Flammer.Doctrines.Redalliance:
-		Prerequisites: Doctrine.Balistique.RedAlliance
-		Condition: Balistique.Doctrines.Redalliance
 	WithInfantryBody:
 		IdleSequences: idle1
 		StandSequences: stand
@@ -100,6 +89,7 @@ t1_disciple:
 t2_tesla:
 	Inherits@1: ^Infantry
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Inherits@CaptureRules: ^Unite.CaptureRules
     # / Upgrade Faction /
@@ -110,7 +100,7 @@ t2_tesla:
 		Queue: Infantry.redalliance
 		BuildPaletteOrder: 30
 		Description: Multifunctional support infantry\n Can repair vehicles \n> Can captured structures \n> Weak vs all
-		BuildDurationModifier: 12
+		BuildDurationModifier: 10
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 500
@@ -148,6 +138,7 @@ t2_tesla:
 t1_stealhar:
 	Inherits@1: ^Infantry
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
     # / Upgrade Faction /
 	Inherits@3: ^Infantry.Upgrade.Redalliance
@@ -159,7 +150,7 @@ t1_stealhar:
 		BuildPaletteOrder: 40
 		Prerequisites: artech
 		Description: Infantry unit with a stealth combination \n> Strong against infantry\n> Weak vs light or heavy vehicles, planes
-		BuildDurationModifier: 20
+		BuildDurationModifier: 15
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 500
@@ -187,6 +178,7 @@ t1_stealhar:
 t2_devastator:
 	Inherits@1: ^Infantry
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
     # / Upgrade Faction /
 	Inherits@3: ^Infantry.Upgrade.Redalliance
@@ -198,7 +190,7 @@ t2_devastator:
 		BuildPaletteOrder: 50
 		Prerequisites: artech
 		Description: Heavy infantry equipped with a Radiation cannon\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
-		BuildDurationModifier: 22
+		BuildDurationModifier: 15
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 650
@@ -227,6 +219,7 @@ t2_devastator:
 t3_eradicator:
 	Inherits@1: ^InfantryHeavy
     # / Inherit Stat Unite /
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
     # / Upgrade Faction /
 	Inherits@3: ^Infantry.Upgrade.Redalliance
@@ -238,7 +231,7 @@ t3_eradicator:
 		BuildPaletteOrder: 60
 		Prerequisites: t2_command_relais
 		Description: Super heavy infantry unit armed with a powerful autocannon and a Fusion Canon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
-		BuildDurationModifier: 30
+		BuildDurationModifier: 20
 		IconPalette: RedAlliance.Icon
 	Valued:
 		Cost: 1300

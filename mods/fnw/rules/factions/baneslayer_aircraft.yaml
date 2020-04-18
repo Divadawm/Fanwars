@@ -36,12 +36,14 @@ baneslayerattackaircraft:
 
 t2_nidhogg:
 	Inherits: ^Helicoptershape
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^NidhoggAutoTargetAllAssaultMove
 	Inherits@Upgrade: ^Aircraft.Upgrade.baneslayer
+    Inherits@SoundMove: ^Rotor.aircraft.move
 	Buildable:
 		Queue: Aircraft.baneslayer
 		BuildPaletteOrder: 40
-		Description: Multipurpose VTOL equipped with 2 autocannons and an EMP cannon\n> Strong vs Vehicles, Aircraft\n> Weak vs Infantry
+		Description: Multipurpose VTOL equipped with 2 automatic cannons and can switch weapons for an EMP gun \n> Strong against vehicles, airplanes \n> Weak against infantry
 		BuildDurationModifier: 10
 	Valued:
 		Cost: 1300
@@ -120,6 +122,7 @@ t2_nidhogg.Husk:
 
 t3_thor:
 	Inherits: ^Aircraftshape
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGround
 	Inherits@Upgrade: ^Aircraft.Upgrade.baneslayer
 	Buildable:
@@ -129,64 +132,24 @@ t3_thor:
 		Description: Experimental aircraft armed with a triple fast-firing ion cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
 		BuildDurationModifier: 20
 	Valued:
-		Cost: 2000
+		Cost: 1800
 	Tooltip:
 		Name: Thor
 	Health:
-		HP: 1300
-	GrantConditionOnDeploy:
-		DeployedCondition: mode2
-		DeploySounds: deploy_vehicle_mode.aud
-		UndeploySounds: deploy_vehicle_mode.aud
-		PauseOnCondition: !upgrade.Thor.baneslayer
-	GrantConditionOnPrerequisite@research.Thor.baneslayer:
-		Prerequisites: research.Thor.baneslayer
-		Condition: upgrade.Thor.baneslayer
+		HP: 1200
 	Armament:
 		Weapon: Thor.TwinRailgun
-		LocalOffset: -110,-420,-40, -110,420,-80
+		LocalOffset: -110,420,-80
 		LocalYaw: -40, -24
 		RequiresCondition: !mode2 && !upgrade.Thor.baneslayer
 		MuzzleSequence: muzzle
 	Armament@Base:
 		Weapon: Thor.TwinRailgun
-		LocalOffset: -110,-420,-10, -110,420,-10
+		LocalOffset: -110,-420,-10
 		LocalYaw: -40, -24
 		RequiresCondition: mode2 && !upgrade.Thor.baneslayer
 		MuzzleSequence: muzzle
-	Armament@BaseMode:
-		Weapon: Thor.TwinRailgun
-		LocalOffset: -110,-420,-10, -110,420,-10
-		LocalYaw: -40, -24
-		RequiresCondition: !mode2 && upgrade.Thor.baneslayer
-		MuzzleSequence: muzzle
-	Armament@SecondMode:
-		Weapon: Thor.TwinRailgunMode2
-		LocalOffset: -110,-420,-10
-		LocalYaw: -40, -24
-		RequiresCondition: mode2 && upgrade.Thor.baneslayer
-		MuzzleSequence: muzzle
-	Armament@SecondMode1:
-		Weapon: Thor.TwinRailgunMode2
-		LocalOffset: -110,420,-10
-		LocalYaw: -40, -24
-		RequiresCondition: mode2 && upgrade.Thor.baneslayer
-		MuzzleSequence: muzzle
 	WithMuzzleOverlay:
-	WithDecoration@MOD1:
-		Image: stat-effect
-		Sequence: Level21
-		Palette: effect
-		ReferencePoint: bottom, center
-		ZOffset: 100
-		RequiresCondition: !mode2 && upgrade.Thor.baneslayer
-	WithDecoration@MOD2:
-		Image: stat-effect
-		Sequence: Level22
-		Palette: effect
-		ReferencePoint: bottom, center
-		ZOffset: 100
-		RequiresCondition: mode2 && upgrade.Thor.baneslayer
 	AttackAircraft:
 		FacingTolerance: 25
 	Aircraft:
@@ -220,8 +183,10 @@ t3_thor.Husk:
 
 t3_valkyrie:
 	Inherits: ^Helicoptershape
+    Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGround
 	Inherits@Upgrade: ^Aircraft.Upgrade.baneslayer
+    Inherits@SoundMove: ^Rotor.aircraft.move
 	Buildable:
 		Queue: Aircraft.baneslayer
 		BuildPaletteOrder: 40
@@ -229,11 +194,11 @@ t3_valkyrie:
 		Description: Heavy repair platform capable of healing all mechanical units within its range\n> Strong vs None\n> Weak vs Everything
 		BuildDurationModifier: 15
 	Valued:
-		Cost: 1800
+		Cost: 2000
 	Tooltip:
 		Name: Valkyrie
 	Health:
-		HP: 1400
+		HP: 1500
 	Aircraft:
 		CruiseAltitude: 2500
 		InitialFacing: 192

@@ -18,6 +18,12 @@ t1_scarab:
 		Facings: 8
 		Length: 8
 		Tick: 50
+    make: t1_scarabmk
+		Length: *
+        Offset: 0,-10
+	idle-deployed: t1_scarabmk
+        Start: 7
+        Offset: 0,-10
 	muzzle: muzzle_autogun_small
 		Length: *
 		BlendMode: Additive
@@ -55,12 +61,15 @@ t2_airfield:
 
 t1_harvester:
 	Inherits@Stat: ^StatVehicleEffect
-	idle: null
+    idle: t1_arharv
+        Facings: 64
+	turret: t2_salamandertur
+		Facings: 64
 	harvest: harvest_anim
 		Length: *
 		BlendMode: Additive
-	dock: null
-	dock-loop: null
+	dock: t1_arharv
+	dock-loop: t1_arharv
 	icon: arharvicon
 
 t1_bike:
@@ -80,17 +89,22 @@ t1_raider:
 t2_basilisk:
 	Inherits@Stat: ^StatVehicleEffect
 	Inherits@1: ^HeavySmokeEffect
-	muzzle: firegunmuzzle
-		Facings: -16
-		Length: 14
+    muzzle_charge: railguncharge
+		Length: *
 		BlendMode: Additive
-	muzzle.secondary: firegunmuzzle
+	muzzle: railfire01
+		Length: *
+		BlendMode: Additive
+	muzzle: muzzle_railgun
 		Facings: 16
-		Length: 14
+		Length: 25
+		Tick: 20
 		BlendMode: Additive
 	idle:
 		Facings: 64
 	turret: t2_basilisktur
+		Facings: 64
+	turret.up: t2_basiliskturup
 		Facings: 64
 	icon: artnkicon
 
@@ -105,12 +119,19 @@ t2_manticore:
 		BlendMode: Additive
 	idle:
 		Facings: 64
+	turret: t2_manticoretur
+		Facings: 64
+	turret.up: t2_manticoreturup
+		Facings: 64
 	icon: manticoreicon
 
 t2_salamander:
 	Inherits@Stat: ^StatVehicleEffect
 	Inherits@1: ^HeavySmokeEffect
 	idle:
+		Facings: 64
+	turret: t2_salamandertur
+		Facings: 64
 	icon: salamandericon
 
 t2_hydra:
@@ -123,12 +144,19 @@ t2_hydra:
 		Facings: 64
 	turret: t2_hydratur
 		Facings: 64
+	turretup: t2_hydraturup
+		Facings: 64
+	turretdeploy: t2_hydraturupdeploy
+		Facings: 64
 	icon: hydraicon
 
 t3_apocalypse:
 	Inherits@Stat: ^StatVehicleEffect
 	Inherits@1: ^HeavySmokeEffect
-	muzzle: muzzle_balist_medium
+    muzzle_charge: railguncharge
+		Length: *
+		BlendMode: Additive
+	muzzle: railgunapocmuzzle
 		Length: *
 		BlendMode: Additive
 	idle:
@@ -150,8 +178,10 @@ t3_annihilator:
 		Tick: 80
 	turret: t3_annihilatortur
 		Facings: 64
-	muzzle: muzzle_autogun_small
-		Length: *
+	muzzle: firegunmuzzle
+		Facings: -16
+		Length: 14
+		Tick: 16
 		BlendMode: Additive
 	icon: annicon
 

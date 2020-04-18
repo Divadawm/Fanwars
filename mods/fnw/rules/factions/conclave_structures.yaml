@@ -2,6 +2,7 @@ tccacnst:
 	Inherits: ^Building
 	Inherits@2: ^3x2Shape
 	Inherits@Power: ^BuildingGivePower.Conclave
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Valued:
 		Cost: 2000
 	Tooltip:
@@ -65,6 +66,14 @@ tccacnst:
 		Amount: 40
 	HitShape:
 	ConditionManager:
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: tccacnst.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealtccacnst
+        Condition: tccacnst.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealtccacnst
 	GrantExternalConditionToProduced:
 		Condition: RemoveAspect
 		Duration: 20
@@ -102,6 +111,7 @@ tcpodrelais:
 tciontrap:
 	Inherits: ^Building
 	Inherits@2: ^2x2Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Buildable:
 		Queue: Building.conclave
 		BuildPaletteOrder: 10
@@ -113,6 +123,8 @@ tciontrap:
 	Tooltip:
 		Name: Ion Trap
 	Selectable:
+	Voiced:
+		VoiceSet: tcpowr_voice
 	ProvidesPrerequisite@TCtech.LVL1:
 		Prerequisite: Ion Trap X1
 	ProvidesPrerequisite@TCtech.LVL2:
@@ -155,12 +167,28 @@ tciontrap:
 		Offset: 0,0,0
 		Sequence: lightingrelais
 		Palette: powereffect
-		RequiresCondition: !build-incomplete
+		RequiresCondition: !build-incomplete && buildOverlay-active
 	Pluggable:
 		Conditions:
 			plug.eyeplug: plug.eyeplug
 			plug.repairmodule: plug.repairmodule
 			plug.relaisdef: plug.relaisdef
+    #Needle Plugable Module
+	WithIdleOverlay@Needle:
+		Offset: 0,0,0
+		Sequence: plug.relaisdef
+		RequiresCondition: plug.relaisdef
+	AttackTurreted:
+		PauseOnCondition: build-incomplete || empdisable || disabled
+        RequiresCondition: plug.relaisdef
+	Turreted:
+		TurnSpeed: 255
+		Offset: 128,128,384
+	Armament@gun:
+		Weapon: electro_defence
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: 0,0,1250
 	#Eye Plugable Module
 	WithIdleOverlay@EyeI:
 		Offset: 0,0,0
@@ -198,6 +226,14 @@ tciontrap:
 		Range: 5c0
 		AffectsParent: true
 		RequiresCondition: plug.repairmodule
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: tciontrap.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealtciontrap
+        Condition: tciontrap.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealtciontrap
 	RenderSprites:
 		Image: tcpowr
 
@@ -211,7 +247,7 @@ relaisaiguille:
 		Queue: Defence.conclave
 		BuildPaletteOrder: 10
 		Prerequisites: Ion Trap X1
-		Description: Must be placed on an ion trap\nElectrocutes nearby enemy units
+		Description: Must be placed on an ion trap\nElectrocutes nearby enemy ground and air units
 		BuildDurationModifier: 10
 		IconPalette: Conclave.Icon
 	Plug:
@@ -261,17 +297,18 @@ repairplug:
 tcproc:
 	Inherits: ^Building
 	Inherits@2: ^3x3Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Tooltip:
 		Name: Diastim Refinery
 	Buildable:
 		BuildPaletteOrder: 30
 		Queue: Building.conclave
 		Prerequisites: Ion Trap X1
-		BuildDurationModifier: 35
+		BuildDurationModifier: 30
 		Description: Refines Diastim into credits
 		IconPalette: Conclave.Icon
 	Valued:
-		Cost: 2000
+		Cost: 1600
 	Building:
 		Footprint: xxx xxx ===
 		Dimensions: 3,3
@@ -312,6 +349,14 @@ tcproc:
 	Explodes:
 		Delay: 1
 	ProvidesPrerequisite@buildingname:
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: tcproc.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealttcproc
+        Condition: tcproc.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealttcproc
 	HitShape:
 
 ^tcholotech:
@@ -333,6 +378,8 @@ tcproc:
 		HP: 7000
 	Armor:
 		Type: Concrete
+	Voiced:
+		VoiceSet: tcholotech_voice
 	Power:
 		Amount: -50
 	InfiltrateForPowerOutage:
@@ -342,68 +389,104 @@ tcproc:
 
 tcholotech.rodeur:
 	Inherits: ^tcholotech
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Tooltip:
 		Name: Holo-Tech: Prowler
 	Buildable:
 		Queue: Building.conclave
 		BuildPaletteOrder: 50
-		Prerequisites: Ion Trap X3, tcweap
+		Prerequisites: Ion Trap X3, tcweap.first
 		BuildDurationModifier: 20
 		Description: Unlocks the Prowler tank and its upgrades
 		IconPalette: Conclave.Icon
 	ProvidesPrerequisite:
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: tcholotech.rodeur.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealttcholotech.rodeur
+        Condition: tcholotech.rodeur.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealttcholotech.rodeur
 	WithIdleOverlay:
 		Offset: 0,0,0
 		Sequence: Holo.Anim
 
 tcholotech.pelerin:
 	Inherits: ^tcholotech
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Tooltip:
 		Name: Holo-Tech: Pilgrim
 	Buildable:
 		Queue: Building.conclave
 		BuildPaletteOrder: 60
-		Prerequisites: Ion Trap X3, tcweap
+		Prerequisites: Ion Trap X3, tcweap.first
 		BuildDurationModifier: 20
 		Description: Unlocks the Pilgrim missile launcher and its upgrades
 		IconPalette: Conclave.Icon
 	Valued:
 		Cost: 1000
 	ProvidesPrerequisite:
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: tcholotech.pelerin.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealttcholotech.pelerin
+        Condition: tcholotech.pelerin.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealttcholotech.pelerin
 	WithIdleOverlay:
 		Offset: 0,0,0
 		Sequence: Holo.Anim
 
 tcholotech.arpenteur:
 	Inherits: ^tcholotech
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Tooltip:
 		Name: Holo-Tech: Surveyor
 	Buildable:
 		Queue: Building.conclave
 		BuildPaletteOrder: 110
-		Prerequisites: Ion Trap X6, tcweap
+		Prerequisites: Ion Trap X6, tcweap.first
 		BuildDurationModifier: 25
 		Description: Unlocks the Surveyor heavy walker and its upgrades
 		IconPalette: Conclave.Icon
 	Valued:
 		Cost: 1400
 	ProvidesPrerequisite:
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: tcholotech.arpenteur.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealttcholotech.arpenteur
+        Condition: tcholotech.arpenteur.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealttcholotech.arpenteur
 	WithIdleOverlay:
 		Offset: 0,0,0
 		Sequence: Holo.Anim
 
 tcholotech.comete:
 	Inherits: ^tcholotech
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Tooltip:
 		Name: Holo-Tech: Comet
 	Buildable:
 		Queue: Building.conclave
 		BuildPaletteOrder: 70
-		Prerequisites: Ion Trap X3, tcweap
+		Prerequisites: Ion Trap X3, tcweap.first
 		BuildDurationModifier: 25
 		Description: Unlocks the Comet aircraft and its upgrades
 		IconPalette: Conclave.Icon
 	ProvidesPrerequisite:
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: tcholotech.comete.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealttcholotech.comete
+        Condition: tcholotech.comete.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealttcholotech.comete
 	Valued:
 		Cost: 1000
 	WithIdleOverlay:
@@ -412,55 +495,82 @@ tcholotech.comete:
 
 tcholotech.zenith:
 	Inherits: ^tcholotech
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Tooltip:
 		Name: Holo-Tech: Zenith
 		Description: ...
 	Buildable:
 		Queue: Building.conclave
 		BuildPaletteOrder: 80
-		Prerequisites: Ion Trap X3, tcweap
+		Prerequisites: Ion Trap X3, tcweap.first
 		BuildDurationModifier: 25
 		Description: Unlocks the Zenith transport and its upgrades
 		IconPalette: Conclave.Icon
 	ProvidesPrerequisite:
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: tcholotech.zenith.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealttcholotech.zenith
+        Condition: tcholotech.zenith.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealttcholotech.zenith
 	WithIdleOverlay:
 		Offset: 0,0,0
 		Sequence: Holo.Anim
 
 tcholotech.quasar:
 	Inherits: ^tcholotech
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Tooltip:
 		Name: Holo-Tech: Quasar
 		Description: ...
 	Buildable:
 		Queue: Building.conclave
 		BuildPaletteOrder: 110
-		Prerequisites: Ion Trap X6, tcweap
+		Prerequisites: Ion Trap X6, tcweap.first
 		BuildDurationModifier: 30
 		Description: Unlocks the Quasar spaceship and its upgrades
 		IconPalette: Conclave.Icon
 	Valued:
 		Cost: 1000
 	ProvidesPrerequisite:
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: tcholotech.quasar.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealttcholotech.quasar
+        Condition: tcholotech.quasar.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealttcholotech.quasar
 	WithIdleOverlay:
 		Offset: 0,0,0
 		Sequence: Holo.Anim
 		
 tcholotech.navigator:
 	Inherits: ^tcholotech
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Tooltip:
 		Name: Holo-Tech: Navigator
 		Description: ...
 	Buildable:
-		Queue: null.conclave
+		Queue: Building.conclave
 		BuildPaletteOrder: 90
-		Prerequisites: Ion Trap X6
+		Prerequisites: Ion Trap X6, tcweap.first
 		BuildDurationModifier: 25
 		Description: Unlocks the Navigator advanced infantry unit and its upgrades
 		IconPalette: Conclave.Icon
 	Valued:
 		Cost: 1000
 	ProvidesPrerequisite:
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: tcholotech.navigator.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealttcholotech.navigator
+        Condition: tcholotech.navigator.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealttcholotech.navigator
 	WithIdleOverlay:
 		Offset: 0,0,0
 		Sequence: Holo.Anim
@@ -506,25 +616,27 @@ tcbarr:
 		Prerequisite: tcproc
 	HitShape:
 
-tcweap:
+tcweap.first:
 	Inherits: ^Building
 	Inherits@2: ^3x3Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Buildable:
 		Queue: Building.conclave
-		Prerequisites: Ion Trap X1
+		Prerequisites: Ion Trap X1, ~!tcweap.first
 		BuildPaletteOrder: 20
-		BuildDurationModifier: 28
+		BuildDurationModifier: 10
 		Description: Can produce all Conclave’s units\nRequires Holo-Tech buildings to unlock them
 		IconPalette: Conclave.Icon
 	Valued:
-		Cost: 1500
+		Cost: 500 
 	Selectable:
 		Bounds: 80,80
+        Class: Gate.Selection
 	Tooltip:
 		Name: Arsenal
-	ProvidesPrerequisite:
-		Prerequisite: GateWarp.conclave
 	ProvidesPrerequisite@buildingname:
+	ProvidesPrerequisite@FirstGateWarp:
+		Prerequisite: GateWarp.first
 	Building:
 		Footprint: xxx x=x ===
 		Dimensions: 3,3
@@ -539,9 +651,6 @@ tcweap:
 	Exit:
 		SpawnOffset: -20,-20,0
 		ExitCell: 2,2
-	Production:
-		Produces: Vehicle.conclave
-		PauseOnCondition: empdisable
 	ProximityExternalCondition@BuildingRepair:
 		Condition: RepairVehicle
 		Range: 5c0
@@ -554,7 +663,93 @@ tcweap:
 		Condition: HealInfantry
 		Range: 5c0
 		AffectsParent: true
-	ProductionQueue@Tank:
+	Production@Vehicle:
+		Produces: Vehicle.conclave
+		PauseOnCondition: empdisable
+	ProductionQueue@Vehicle:
+		Type: Vehicle.conclave
+		Factions: conclave
+		Group: Vehicle
+		LowPowerModifier: 200
+	ProductionBar@vehicle:
+		ProductionType: Vehicle.conclave
+	WithProductionOverlay:
+		Sequence: build-top
+		Palette: powereffect
+	Voiced:
+		VoiceSet: tcgate_voice
+	Power:
+		Amount: -30
+	ProximityExternalCondition:
+		Range: 5
+		Condition: RepairVehicle
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: tcweap.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealttcholotech.tcweap
+        Condition: tcweap.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealttcholotech.tcweap
+    RenderSprites:
+        Image: tcweap
+	HitShape:
+      
+tcweap.second:
+	Inherits: ^Building
+	Inherits@2: ^3x3Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
+	Buildable:
+		Queue: Building.conclave
+		Prerequisites: Ion Trap X1, ~tcweap.first
+		BuildPaletteOrder: 20
+		BuildDurationModifier: 35
+		Description: Can produce all Conclave’s units\nRequires Holo-Tech buildings to unlock them
+		IconPalette: Conclave.Icon
+	Valued:
+		Cost: 2000
+	Selectable:
+		Bounds: 80,80
+        Class: Gate.Selection
+	Tooltip:
+		Name: Arsenal
+	ProvidesPrerequisite:
+		Prerequisite: GateWarp.conclave
+	ProvidesPrerequisite@buildingname:
+	ProvidesPrerequisite@FirstGateWarp:
+		Prerequisite: GateWarp.first
+	Building:
+		Footprint: xxx x=x ===
+		Dimensions: 3,3
+		BuildSounds: make_conclave_building.aud
+		Adjacent: 8
+	Health:
+		HP: 8000
+	Armor:
+		Type: Concrete
+	RallyPoint:
+		RallyPoint: 2,2
+	Exit:
+		SpawnOffset: -20,-20,0
+		ExitCell: 2,2
+	ProximityExternalCondition@BuildingRepair:
+		Condition: RepairVehicle
+		Range: 5c0
+		AffectsParent: true
+	ProximityExternalCondition@AircraftRepair:
+		Condition: RepairAircraft
+		Range: 6c0
+		AffectsParent: true
+	ProximityExternalCondition@HealInfantry:
+		Condition: HealInfantry
+		Range: 5c0
+		AffectsParent: true
+	Production@Vehicle:
+		Produces: Vehicle.conclave
+		PauseOnCondition: empdisable
+	ProductionBar@vehicle:
+		ProductionType: Vehicle.conclave
+	ProductionQueue@Vehicle:
 		Type: Vehicle.conclave
 		Factions: conclave
 		Group: Vehicle
@@ -562,56 +757,23 @@ tcweap:
 	WithProductionOverlay:
 		Sequence: build-top
 		Palette: powereffect
-	ProductionBar:
-		ProductionType: Vehicle.conclave
+	Voiced:
+		VoiceSet: tcgate_voice
 	Power:
 		Amount: -30
 	ProximityExternalCondition:
 		Range: 5
 		Condition: RepairVehicle
-	HitShape:
-
-t2_pilgrimdeployed:
-	Inherits@1: ^Building
-	Inherits@2: ^1x1Shape
-	Inherits@AUTOTARGET: ^AutoTargetGround
-	Inherits@3: ^ConditioneffetGeneralsUnit
-	Inherits@4: ^ConditionGeneralBuildDefense
-	Selectable:
-		Bounds: 28,28
-	Tooltip:
-		Name: Pilgrim Deployed
-	Building:
-		Footprint: x
-		Dimensions: 1,1
-		Adjacent: 10
-	Health:
-		HP: 5000
-	Transforms:
-		IntoActor: t2_pilgrim
-		TransformSounds: deploy_vehicle_mode.aud
-		Offset: 0,0
-		Facing: 96
-	Armament@gun:
-		Weapon: Photo_Missile
-		Recoil: 150
-		RecoilRecovery: 15
-		LocalYaw: 100, -100
-		LocalOffset: 150,100,200, 150,-100,200
-	GrantConditionOnPrerequisite@Omega:
-		Prerequisites: research.Omega.Pelerin.Conclave
-		Condition: upgrade.Omega.Pelerin.Conclave
-	Armor:
-		Type: Heavy
-	WithSpriteTurret:
-	AttackTurreted:
-		PauseOnCondition: empdisable
-	Turreted:
-		TurnSpeed: 4
-		RealignDelay: 10
-		Offset: -150,0,220
-	RenderSprites:
-		Scale: 1
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: tcweap.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealttcholotech.tcweap
+        Condition: tcweap.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealttcholotech.tcweap
+    RenderSprites:
+        Image: tcweap
 	HitShape:
 
 tctech:
@@ -652,6 +814,7 @@ tctech:
 tcsuperweap:
 	Inherits: ^Building
 	Inherits@2: ^3x2Shape
+    Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Valued:
 		Cost: 5000
 	Tooltip:
@@ -682,7 +845,7 @@ tcsuperweap:
 		Offset: 0, 0, 0
 		Sequence: tcsuperweapplug
 		Palette: powereffect
-		RequiresCondition: !build-incomplete
+		RequiresCondition: !build-incomplete && buildOverlay-active
 	Power:
 		Amount: -150
 	ProvidesPrerequisite@SuperWeapons:
@@ -698,51 +861,12 @@ tcsuperweap:
 		ChargeInterval: 7500
 		Actor: avatar
 	ProvidesPrerequisite@buildingname:
-	HitShape:
-
-conclave_turret:
-	Inherits@1: ^Defence
-	Inherits@2: ^1x1Shape
-	Inherits@AUTOTARGET: ^AutoTargetGround
-	Buildable:
-		Queue: Defence.conclave
-		BuildPaletteOrder: 10
-		BuildDurationModifier: 10
-		Prerequisites: Research Module
-		Description: Strong vs Vehicles\n> Weak vs Infantry, Aircraft
-	Valued:
-		Cost: 800
-	Selectable:
-		Bounds: 28,28
-	Tooltip:
-		Name: Impulsor Turret
-	Building:
-		Footprint: x
-		Dimensions: 1,1
-		Adjacent: 10
-	Health:
-		HP: 9000
-	Armament@gun:
-		Weapon: Impulsor.LightLaser
-		Recoil: 150
-		RecoilRecovery: 15
-		LocalOffset: 15,650,850
-		MuzzleSequence: muzzle
-	WithMuzzleOverlay:
-	DetectCloaked:
-		Range: 2c0
-		CloakTypes: Cloak
-	Armor:
-		Type: Heavy
-	AttackTurreted:
-		PauseOnCondition: build-incomplete || empdisable || disabled
-	AutoTarget:
-	Turreted:
-		TurnSpeed: 8
-		RealignDelay: 20
-		Offset: 0,0,300
-	Power:
-		Amount: -60
-	WithSpriteTurret:
-		ShowShadow: false
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        RequiresCondition: tcsuperweap.RevealPowerType
+    GrantConditionOnPrerequisite@PowerReveal.Conclave:
+        Prerequisites: revealttcholotech.tcsuperweap
+        Condition: tcsuperweap.RevealPowerType
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        Prerequisite: revealttcholotech.tcsuperweap
 	HitShape:

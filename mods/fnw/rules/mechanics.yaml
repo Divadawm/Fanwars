@@ -3,6 +3,7 @@
 	# Doctrines /
 	Inherits@Doctrine01: ^Doctrines.Inf.constitution.Effet
 	# Mechanics /
+    Inherits@EclipsesShroud:^Eclipse.ShroudEffet
 	Inherits@Healing: ^CoditionHeal
 	Inherits@Cover: ^CoditionCover
 	Inherits@1: ^HammerEradicatorStunInfantry
@@ -17,6 +18,8 @@
 	Inherits@PowerEffect: ^ConditionGeneralComonBase
 	# Doctrines /
 	# Mechanics /
+    Inherits@EclipsesShroud:^Eclipse.ShroudEffet
+    Inherits@Target.blue: ^Target.blue.effet.weapon
 	Inherits@Repair: ^CoditionRepairVehicle
 	Inherits@EMPDisable: ^EmpDisableMobile
 	Inherits@StunSpeed: ^StunSpeedDisturb
@@ -30,13 +33,14 @@
 	Inherits@Shield.Protect: ^Shield.Protect
 	
 ^ConditionGeneralBuilding:
+    Inherits@EclipsesShroud:^Eclipse.ShroudEffet
 	
 ^ConditionGeneralBuildDefense:
 	Inherits@PowerEffect: ^ConditionGeneralComonBase
+    Inherits@EclipsesShroud:^Eclipse.ShroudEffet
 	# Doctrines /
 	# Mechanics /
 	Inherits@EMPDisable: ^EmpDisable
-	Inherits@StunSpeed: ^StunSpeedDisturb
 	Inherits@2: ^StunEmp
 	Inherits@3: ^DisturbsReloadAmmo
 	Inherits@4: ^HammerEradicatorStunVehicle
@@ -47,6 +51,7 @@
 	Inherits@PowerEffect: ^ConditionGeneralComonBase
 	# Doctrines /
 	# Mechanics /
+    Inherits@EclipsesShroud:^Eclipse.ShroudEffet
 	Inherits@1: ^CoditionFlakAreaCruiser
 	Inherits@2: ^CoditionRepairAircraft
 	Inherits@3: ^Anaconda.Modifier
@@ -55,7 +60,6 @@
 	# Doctrines /
 	# Mechanics /
 	Inherits@1: ^PowerSmokeCamo.Baneslayer
-	Inherits@1: ^PowerDistrub.Conclave
 	Inherits@Zenith.Speed.conclave: ^Zenith.Alpha.Speed.Conclave
 	
 	
@@ -313,6 +317,25 @@
 		RequiresCondition: HEDamageDelay
 		DamageTypes: Burned
 		Terrain: Clear, Rough, Tree, Diast
+        
+^Eclipse.ShroudEffet:
+	ExternalCondition@ECLIPSESHROUD:
+		Condition: Eclipse.shroud
+    RevealsShroudMultiplier@ECLIPSESHROUD:
+        Modifier: 40
+        RequiresCondition: Eclipse.shroud
+	SpeedMultiplier@ECLIPSESHROUD:
+		RequiresCondition: Eclipse.shroud
+		Modifier: 40
+        
+^Target.blue.effet.weapon:
+	ExternalCondition@TARGET.BLUE:
+		Condition: target.blue.weapon
+	WithIdleOverlay@TARGET.BLUE:
+		Sequence: target.blue
+		Palette: flammeeffectblue
+		RequiresCondition: target.blue.weapon
+		ZOffset: 512
 
 ^HammerEradicatorStunInfantry:
 	ExternalCondition@HammerEradicatorStunInfantry:
@@ -372,15 +395,9 @@
 		PauseOnCondition: !(!notmobile)
 
 ^StunSpeedDisturb:
-	ExternalCondition@Disturb:
+	ExternalCondition@Effet.Navigator.Conclave:
 		Condition: disturbingspeed
-	InaccuracyMultiplier@Disturb.Conclave:
-		Modifier: 1
-		RequiresCondition: disturbingspeed
-	SpeedMultiplier@Disturb.Conclave:
-		Modifier: 30
-		RequiresCondition: disturbingspeed
-	FirepowerMultiplier@Disturb.Conclave:
+	SpeedMultiplier@Effet.Navigator.Conclave:
 		Modifier: 30
 		RequiresCondition: disturbingspeed
 		

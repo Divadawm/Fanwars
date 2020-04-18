@@ -1,10 +1,14 @@
-^RevisionScaleTreeModel:
+^RevisionScaleTreeModel01:
 	RenderSprites:
 		Scale: 0.55
+        
+^RevisionScaleTreeModel02:
+	RenderSprites:
+		Scale: 0.65
 
 tree01:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -13,7 +17,7 @@ tree01:
 
 tree02:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -22,7 +26,7 @@ tree02:
 
 tree03:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -31,7 +35,7 @@ tree03:
 
 tree04:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -40,7 +44,7 @@ tree04:
 
 tree05:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: x__ xxx xxx
 		Dimensions: 3,3
@@ -49,7 +53,7 @@ tree05:
 
 tree06:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -58,7 +62,7 @@ tree06:
 
 tree07:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: xxx xxx xxx
 		Dimensions: 3,3
@@ -67,7 +71,7 @@ tree07:
 
 tree08:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: x_x _x_ ___
 		Dimensions: 3,3
@@ -76,7 +80,7 @@ tree08:
 
 tree09:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: xxx _x_ x_x
 		Dimensions: 3,3
@@ -85,7 +89,7 @@ tree09:
 
 tree10:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -94,7 +98,7 @@ tree10:
 
 tree11:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -103,7 +107,7 @@ tree11:
 
 tree12:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -112,7 +116,7 @@ tree12:
 
 tree13:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -121,7 +125,7 @@ tree13:
 
 tree14:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -130,7 +134,7 @@ tree14:
 
 tree15:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -139,7 +143,7 @@ tree15:
 
 tree16:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -148,7 +152,7 @@ tree16:
 
 tree17:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -157,7 +161,7 @@ tree17:
 
 tree18:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -166,7 +170,7 @@ tree18:
 
 tree19:
 	Inherits: ^Tree
-	Inherits: ^RevisionScaleTreeModel
+	Inherits: ^RevisionScaleTreeModel01
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -271,6 +275,7 @@ tree31:
 
 tree32:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel02
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -279,6 +284,7 @@ tree32:
 
 tree33:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel02
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -287,6 +293,7 @@ tree33:
 
 tree34:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel02
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -295,6 +302,7 @@ tree34:
 
 tree35:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel02
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -303,6 +311,7 @@ tree35:
 
 tree36:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel02
 	Building:
 		Footprint: x
 		Dimensions: 1,1
@@ -311,6 +320,7 @@ tree36:
 		
 tree37:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel02
 	Building:
 		Footprint: xxx xxx xx_
 		Dimensions: 3,3
@@ -319,6 +329,7 @@ tree37:
 		
 tree38:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel02
 	Building:
 		Footprint: xxx xxx x__
 		Dimensions: 3,3
@@ -327,6 +338,7 @@ tree38:
 		
 tree39:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel02
 	Building:
 		Footprint: xx_ xxx _xx
 		Dimensions: 3,3
@@ -335,6 +347,7 @@ tree39:
 
 tree40:
 	Inherits: ^Tree
+	Inherits: ^RevisionScaleTreeModel02
 	Building:
 		Footprint: xx_ ___ _xx
 		Dimensions: 3,3
@@ -515,6 +528,84 @@ orga_tree10:
 	HitShape:
 		UseTargetableCellsOffsets: true
 
+        
+toxintree01:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+        
+toxintree02:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+
+toxintree03:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+        
+toxintree04:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+        
+toxintree05:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
+        
+toxintree06:
+	Inherits: ^Tree
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	RenderSprites:
+		Palette: toxintree
+		Scale: 1.0
+	WithIdleOverlay:
+		Sequence: treeroot
+	HitShape:
+		UseTargetableCellsOffsets: true
 
 crystal_tree01:
 	Inherits: ^Tree

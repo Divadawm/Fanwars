@@ -42,8 +42,8 @@
 	HitShape:
 		UseTargetableCellsOffsets: true
 		Type: Circle
-			Radius: 340
-			VerticalTopOffset: 512
+			Radius: 256
+			VerticalTopOffset: 256
 
 ^1x1Shape:
 	HitShape:
@@ -100,6 +100,13 @@
 		Type: Rectangle
 			TopLeft: -2048, -1537
 			BottomRight: 2048, 1537
+            
+^5x3Shape:
+	HitShape:
+		UseTargetableCellsOffsets: true
+		Type: Rectangle
+			TopLeft: -2048, -2048
+			BottomRight: 1537, 1537
 
 ^4x3Shape:
 	HitShape:
@@ -141,20 +148,26 @@
 		Range: 6c0
 		RequiresCondition: !empdisable && !disabled
 	RenderDetectionCircle:
+    
+# / Stat View Player /
+^UnitPlayerStat:
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
 	
 # / Harvester Mechanics /
 ^Harvester.rules:
 	Buildable:
 		BuildDurationModifier: 15
 	Mobile:
-		Speed: 95
-		TurnSpeed: 18
+		Speed: 88
+		TurnSpeed: 15
 		Crushes: gibs, infantry, mine, husk
 	Selectable:
 		Priority: 7
 	Harvester:
-		PipCount: 6
+		PipCount: 10
 		Capacity: 28
+        FullyLoadedSpeed: 75
 		Resources: Diast,Diastgems
 		BaleLoadDelay: 10
 		BaleUnloadDelay: 5
@@ -170,7 +183,7 @@
 		CaptureTypes: TechBuilding
 		PlayerExperience: 20
 		CaptureDelay: 375
-		ConsumedByCapture: False
+		ConsumedByCapture: true
 		EnterCursor: ability
 		EnterBlockedCursor: move-blocked
         
@@ -178,6 +191,106 @@
 ^UniteCarryable:
 	Carryable:
 		LockedCondition: carried
+        
+^GainsExperience:
+	GainsExperience:
+		LevelUpNotification: LevelUp
+		Conditions:
+			200: rank-veteran
+			400: rank-veteran
+			800: rank-veteran
+			1600: rank-veteran
+		LevelUpImage: crate-effects
+	GrantCondition@RANK-ELITE:
+		RequiresCondition: rank-veteran >= 4
+		Condition: rank-elite
+	DamageMultiplier@RANK-1:
+		RequiresCondition: rank-veteran == 1
+		Modifier: 95
+	DamageMultiplier@RANK-2:
+		RequiresCondition: rank-veteran == 2
+		Modifier: 90
+	DamageMultiplier@RANK-3:
+		RequiresCondition: rank-veteran == 3
+		Modifier: 85
+	DamageMultiplier@RANK-ELITE:
+		RequiresCondition: rank-elite
+		Modifier: 75
+	FirepowerMultiplier@RANK-1:
+		RequiresCondition: rank-veteran == 1
+		Modifier: 105
+	FirepowerMultiplier@RANK-2:
+		RequiresCondition: rank-veteran == 2
+		Modifier: 110
+	FirepowerMultiplier@RANK-3:
+		RequiresCondition: rank-veteran == 3
+		Modifier: 120
+	FirepowerMultiplier@RANK-ELITE:
+		RequiresCondition: rank-elite
+		Modifier: 130
+	SpeedMultiplier@RANK-1:
+		RequiresCondition: rank-veteran == 1
+		Modifier: 105
+	SpeedMultiplier@RANK-2:
+		RequiresCondition: rank-veteran == 2
+		Modifier: 110
+	SpeedMultiplier@RANK-3:
+		RequiresCondition: rank-veteran == 3
+		Modifier: 120
+	SpeedMultiplier@RANK-ELITE:
+		RequiresCondition: rank-elite
+		Modifier: 140
+	ReloadDelayMultiplier@RANK-1:
+		RequiresCondition: rank-veteran == 1
+		Modifier: 95
+	ReloadDelayMultiplier@RANK-2:
+		RequiresCondition: rank-veteran == 2
+		Modifier: 90
+	ReloadDelayMultiplier@RANK-3:
+		RequiresCondition: rank-veteran == 3
+		Modifier: 85
+	ReloadDelayMultiplier@RANK-ELITE:
+		RequiresCondition: rank-elite
+		Modifier: 75
+	SelfHealing@ELITE:
+		Step: 0
+		PercentageStep: 5
+		Delay: 100
+		HealIfBelow: 100
+		DamageCooldown: 125
+		RequiresCondition: rank-elite
+	WithDecoration@RANK-1:
+		Image: rank
+		Sequence: rank-veteran-1
+		Palette: effect
+		ReferencePoint: Bottom, Right
+		ValidStances: Ally, Enemy, Neutral
+		RequiresCondition: rank-veteran == 1
+		ZOffset: 256
+	WithDecoration@RANK-2:
+		Image: rank
+		Sequence: rank-veteran-2
+		Palette: effect
+		ReferencePoint: Bottom, Right
+		ValidStances: Ally, Enemy, Neutral
+		RequiresCondition: rank-veteran == 2
+		ZOffset: 256
+	WithDecoration@RANK-3:
+		Image: rank
+		Sequence: rank-veteran-3
+		Palette: effect
+		ReferencePoint: Bottom, Right
+		ValidStances: Ally, Enemy, Neutral
+		RequiresCondition: rank-veteran == 3
+		ZOffset: 256
+	WithDecoration@RANK-ELITE:
+		Image: rank
+		Sequence: rank-elite
+		Palette: effect
+		ReferencePoint: Bottom, Right
+		ValidStances: Ally, Enemy, Neutral
+		RequiresCondition: rank-elite
+		ZOffset: 256
 	
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 # ///////////////////////////////////// Global Upgrade Revision //////////////////////////////////////
@@ -268,32 +381,32 @@
 
 ^Building.Range.Base:
 	RevealsShroud:
-		Range: 7c0
+		Range: 8c0
 		Type: GroundPosition
 		
 ^Defense.Range.Base:
 	RevealsShroud:
-		Range: 8c0
+		Range: 10c0
 		Type: GroundPosition
 		
 ^Infantry.Range.Base:
 	RevealsShroud:
-		Range: 5c0
+		Range: 7c0
 		Type: GroundPosition
 		
 ^Scout.Range.Base:
 	RevealsShroud:
-		Range: 9c0
+		Range: 12c0
 		Type: GroundPosition
 		
 ^Vehicle.Range.Base:
 	RevealsShroud:
-		Range: 6c0
+		Range: 10c0
 		Type: GroundPosition
 		
 ^Aircraft.Range.Base:
 	RevealsShroud:
-		Range: 9c0
+		Range: 14c0
 		Type: GroundPosition
 		RevealGeneratedShroud: False
 		
@@ -386,6 +499,16 @@
 	PowerMultiplier@POWERDOWN:
 		RequiresCondition: powerdown
 		Modifier: 0
+
+^PowerReveal.Conclave.Base:
+    # Reveal Power Conclave
+    RevealsShroud@PowerReveal.Conclave:
+        ValidStances: Enemy
+        Range: 2c0
+    ProvidesPrerequisite@PowerReveal.Conclave:
+        RequiresCondition: Conclave.PowerReveal
+    ExternalCondition@PowerReveal.Conclave: 
+        Condition: Conclave.PowerReveal
 		
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 #//////////////////////////////////////    Mine System Rules   ///////////////////////////////////////
@@ -422,6 +545,35 @@
 	HitShape:
 	MapEditorData:
 		Categories: System
+        
+gibs.impact:
+	Inherits: ^SpriteActor
+	Interactable:
+		Bounds: 24,24
+	WithSpriteBody:
+	HiddenUnderFog:
+	RenderSprites:
+		Image: null
+	Tooltip:
+	Armor:
+		Type: Light
+	Mine:
+		CrushClasses: mine
+		DetonateClasses: mine
+		AvoidFriendly: false
+		BlockFriendly: true
+	KillsSelf:
+		Delay: 1
+	ThrowsShrapnel@Gibs:
+		Weapons: gibs_plok, gibs_plok2
+		Pieces: 8, 12
+		Range: 2c0, 3c0
+	Health:
+		HP: 15
+		NotifyAppliedDamage: false
+	Immobile:
+		OccupiesSpace: true
+	HitShape:
 
 ^Capacity.system.active:
 	Inherits: ^SpriteActor
@@ -478,6 +630,73 @@
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
+#//////////////////////////////////////  Sound Effect  Rules  ///////////////////////////////////////
+# ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+^Whell.vehicle.move:
+    AmbientSound@MOVE:
+        SoundFiles: whellveh_move01.aud, whellveh_move02.aud, whellveh_move03.aud
+        Interval: -1
+        RequiresCondition: Sound.Move
+    GrantConditionOnMovement@SoundMove:
+        Condition: Sound.Move
+        ValidMovementTypes: Horizontal, Turn
+
+^Truck.vehicle.move:
+    AmbientSound@MOVE:
+        SoundFiles: whelltruckveh_move01.aud, whelltruckveh_move02.aud, whelltruckveh_move03.aud
+        Interval: -1
+        RequiresCondition: Sound.Move
+    GrantConditionOnMovement@SoundMove:
+        Condition: Sound.Move
+        ValidMovementTypes: Horizontal, Turn
+        
+^Hover.vehicle.move:
+    AmbientSound@MOVE:
+        SoundFiles: hoverveh_move01.aud, hoverveh_move02.aud, hoverveh_move03.aud
+        Interval: -1
+        RequiresCondition: Sound.Move
+    GrantConditionOnMovement@SoundMove:
+        Condition: Sound.Move
+        ValidMovementTypes: Horizontal, Turn
+        
+^HoverTech.vehicle.move:
+    AmbientSound@MOVE:
+        SoundFiles: hovertech_move01.aud, hovertech_move02.aud, hovertech_move03.aud
+        Interval: -1
+        RequiresCondition: Sound.Move
+    GrantConditionOnMovement@SoundMove:
+        Condition: Sound.Move
+        ValidMovementTypes: Horizontal, Turn
+
+^tracked.vehicle.move:
+    AmbientSound@MOVE:
+        SoundFiles: trackedveh_move01.aud, trackedveh_move02.aud, trackedveh_move03.aud
+        Interval: -1
+        RequiresCondition: Sound.Move
+    GrantConditionOnMovement@SoundMove:
+        Condition: Sound.Move
+        ValidMovementTypes: Horizontal, Turn
+        
+^HeavyTracked.vehicle.move:
+    AmbientSound@MOVE:
+        SoundFiles: trackedheavy_move01.aud, trackedheavy_move02.aud, trackedheavy_move03.aud
+        Interval: -1
+        RequiresCondition: Sound.Move
+    GrantConditionOnMovement@SoundMove:
+        Condition: Sound.Move
+        ValidMovementTypes: Horizontal, Turn
+        
+^Rotor.aircraft.move:
+    AmbientSound@MOVE:
+        SoundFiles: reactaircraft_move01.aud, reactaircraft_move02.aud, reactaircraft_move03.aud
+        Interval: -1
+        RequiresCondition: Sound.Move
+    GrantConditionOnMovement@SoundMove:
+        Condition: Sound.Move
+        ValidMovementTypes: Horizontal, Turn
+
+# ////////////////////////////////////////////////////////////////////////////////////////////////////
 #////////////////////////////////////// Infantry Default Rules ///////////////////////////////////////
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -499,6 +718,7 @@
 		Locomotor: foot
 		Speed: 95
 	SelectionDecorations:
+        RenderSelectionBox: false
 	WithTextControlGroupDecoration:
 	Selectable:
 		Bounds: 12,20,0,-4
@@ -509,12 +729,14 @@
 	WithInfantryBody:
 	WithDeathAnimation:
 		DeathTypes:
+			DefaultDeath: 1
 			Gibs: 2
 			Burned: 3
 			NukeDeath: 4
 			IonDeath: 5
 			PlasmaDeath: 6
 		CrushedSequence: die-crushed
+        CrushedSequencePalette: player
 	AutoTarget:
 	AttackMove:
 	DrawLineToTarget:
@@ -530,9 +752,15 @@
 		TerrainModifier:
 			Rough: 80
 	DeathSounds:
-		DeathTypes: Gibs, Burned, NukeDeath, IonDeath, PlasmaDeath
+		DeathTypes: DefaultDeath, Gibs, Burned, NukeDeath, IonDeath, PlasmaDeath
+	SpawnActorOnDeath@Gibs:
+		Actor: gibs.impact
+		DeathType: Gibs
+        Probability: 65
+    Huntable:
 	OwnerLostAction:
 		Action: Kill
+		DeathTypes: DefaultDeath
 	Voiced:
 		VoiceSet: InfantryVoice
 	Guard:
@@ -566,6 +794,9 @@
 	MapEditorData:
 		Categories: Infantry
     RevealOnDeath:
+	WithShadow:
+		Offset: 320,-160, -80
+		ZOffset: -80
 	WithIdleOverlay@Shadow:
 		Offset: 0,0,-1
 		Sequence: shadow.infantry
@@ -650,6 +881,7 @@
 		PipType: Green
 	Mobile:
 		Locomotor: wheeled
+		Crushes: Gibs
 		TurnSpeed: 6
 		PauseOnCondition: !(!empdisable || !notmobile)
 	Crushable:
@@ -681,6 +913,18 @@
 	SmokeTrailWhenDamaged:
 		Offset: -853,0,171
 		Interval: 2
+    GrantConditionOnDamageState@Damage:
+        Condition: heavy.damage
+        ValidDamageStates: Heavy
+    LeavesTrails@03:
+        Image: damage_smoke.min
+        Sequences: smoke_damage01, smoke_damage02, smoke_damage03, smoke_damage04
+        Type: CenterPosition
+        TrailWhileStationary: true
+        Palette: flameeffect50
+        MovingInterval: 4
+        Offsets: -175,0,180
+        RequiresCondition: heavy.damage
 	Explodes:
 		Weapon: uniteanimexplode
 		EmptyWeapon: uniteanimexplode
@@ -719,6 +963,7 @@
 	Selectable:
 		Bounds: 28,28
 	Mobile:
+        Crushes: Gibs
 		Locomotor: wheeled
 		TurnSpeed: 25
 		Speed: 120
@@ -747,7 +992,7 @@
 	Selectable:
 		Bounds: 35,35
 	Mobile:
-		Crushes: infantry, husk
+		Crushes: infantry, husk, Gibs
 		Locomotor: tracked
 		TurnSpeed: 10
 		Speed: 100
@@ -776,7 +1021,7 @@
 	Selectable:
 		Bounds: 42,42
 	Mobile:
-		Crushes: infantry, husk, Vehicle
+		Crushes: infantry, husk, Vehicle, Gibs
 		Locomotor: tracked
 		TurnSpeed: 8
 		Speed: 90
@@ -803,7 +1048,7 @@
 	Inherits: ^VoxelVehicleLight
 	-WithVoxelBody:
 	Mobile:
-		Crushes: infantry, husk
+		Crushes: infantry, husk, Gibs
 		Locomotor: walker
 	Armor:
 		Type: LightVehicle
@@ -814,7 +1059,7 @@
 	Inherits: ^VoxelVehicleMedium
 	-WithVoxelBody:
 	Mobile:
-		Crushes: infantry, husk
+		Crushes: infantry, husk, Gibs
 		Locomotor: walker
 	Armor:
 		Type: LightVehicle
@@ -824,7 +1069,7 @@
 ^VoxelVehicleHeavyWalker:
 	Inherits: ^VoxelVehicleHeavy
 	Mobile:
-		Crushes: infantry, husk, Vehicle
+		Crushes: infantry, husk, Vehicle, Gibs
 		Locomotor: walker
 	-WithVoxelBody:
 	WithVoxelWalkerBody:
@@ -842,11 +1087,10 @@
 		Type: LightVehicle
 	Mobile:
 		Locomotor: hover
-	LeavesTrails@ground:
-		Image: groundsmokehover
-		Palette: effectalpha30
-		TerrainTypes: Beach
-		Offsets: 0,0,-1
+		TurnSpeed: 10
+	WithShadow:
+		Offset: 320,180, -100
+		ZOffset: -300
 
 ^VoxelVehicleMediumHover:
 	Inherits: ^VoxelVehicleMedium
@@ -856,11 +1100,10 @@
 		Type: LightVehicle
 	Mobile:
 		Locomotor: hover
-	LeavesTrails@ground:
-		Image: groundsmokehover
-		Palette: effectalpha30
-		TerrainTypes: Beach
-		Offsets: 0,0,-1
+		TurnSpeed: 10
+	WithShadow:
+		Offset: 320,180, -100
+		ZOffset: -300
 
 ^VoxelVehicleHeavyHover:
 	Inherits: ^VoxelVehicleLight
@@ -870,11 +1113,10 @@
 		Type: ArmorTank
 	Mobile:
 		Locomotor: hover
-	LeavesTrails@ground:
-		Image: groundsmokeheavyhover
-		Palette: effectalpha30
-		TerrainTypes: Clear, Rough, Road
-		Offsets: 0,0,-1
+		TurnSpeed: 10
+	WithShadow:
+		Offset: 320,180, -100
+		ZOffset: -300
 		
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 # //////////////////////////////////// Shape Vehicle Default Rules ///////////////////////////////////
@@ -882,7 +1124,9 @@
 
 ^ShapeVehicleLight:
 	Inherits: ^VehicleBase
+	SelectionDecorations:
 	Mobile:
+		Crushes: Gibs
 		Locomotor: wheeled
 		TurnSpeed: 20
 		Speed: 128
@@ -905,7 +1149,7 @@
 ^ShapeVehicleMedium:
 	Inherits: ^VehicleBase
 	Mobile:
-		Crushes: infantry, husk
+		Crushes: infantry, husk, Gibs
 		Locomotor: tracked
 		TurnSpeed: 8
 		Speed: 85
@@ -927,8 +1171,7 @@
 ^ShapeVehicleHeavy:
 	Inherits: ^VehicleBase
 	Mobile:
-		Crushes: infantry, husk, Vehicle
-		Locomotor: tracked
+		Locomotor: heavy.tracked
 		TurnSpeed: 6
 		Speed: 71
 	Selectable:
@@ -953,7 +1196,7 @@
 ^ShapeWalkerLight:
 	Inherits: ^ShapeVehicleLight
 	Mobile:
-		Crushes: infantry, husk
+		Crushes: infantry, husk, Gibs
 		Locomotor: walker
 	BodyOrientation:
 		QuantizedFacings: 8
@@ -975,7 +1218,7 @@
 ^ShapeWalkerMedium:
 	Inherits: ^ShapeVehicleMedium
 	Mobile:
-		Crushes: infantry, husk
+		Crushes: infantry, husk, Gibs
 		Locomotor: walker
 	BodyOrientation:
 		QuantizedFacings: 8
@@ -997,7 +1240,7 @@
 ^ShapeWalkerHeavy:
 	Inherits: ^ShapeVehicleHeavy
 	Mobile:
-		Crushes: infantry, husk, Vehicle
+		Crushes: infantry, husk, Vehicle, Gibs
 		Locomotor: walker
 	BodyOrientation:
 		QuantizedFacings: 8
@@ -1022,38 +1265,38 @@
 ^ShapeHoverLight:
 	Inherits: ^ShapeVehicleLight
 	Hovers:
-		BobDistance: -65
+		BobDistance: -125
+        InitialHeight: 120
+	WithShadow:
+		Offset: 320,180, -100
+		ZOffset: -300
 	Mobile:
 		Locomotor: hover
 		TurnSpeed: 10
-	WithIdleOverlay@HoverEffet:
-		Offset: 0,0,0
-		Sequence: hover_move
-		Palette: effectalpha45
 
 ^ShapeHoverMedium:
 	Inherits: ^ShapeVehicleMedium
 	Hovers:
-		BobDistance: -65
+		BobDistance: -125
+        InitialHeight: 120
+	WithShadow:
+		Offset: 320,180, -100
+		ZOffset: -300
 	Mobile:
 		Locomotor: hover
 		TurnSpeed: 10
-	WithIdleOverlay@HoverEffet:
-		Offset: 0,0,0
-		Sequence: hover_move
-		Palette: effectalpha30
 
 ^ShapeHoverHeavy:
 	Inherits: ^ShapeVehicleHeavy
 	Hovers:
-		BobDistance: -65
+		BobDistance: -105
+        InitialHeight: 100
+	WithShadow:
+		Offset: 320,180, -100
+		ZOffset: -300
 	Mobile:
 		Locomotor: hover
 		TurnSpeed: 10
-	WithIdleOverlay@HoverEffet:
-		Offset: 0,0,0
-		Sequence: hover_moveLarge
-		Palette: effectalpha10
 
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 # ////////////////////////////////////////// Building Rules //////////////////////////////////////////
@@ -1068,7 +1311,13 @@
 	SelectionDecorations:
 	WithSpriteControlGroupDecoration:
 	ActorPreviewPlaceBuildingPreview:
+		Palette: placefootprint
+		LineBuildSegmentPalette: placelinesegment
 		OverridePalette: placebuilding
+		FootprintUnderPreview: Valid, LineBuild, Invalid
+		FootprintOverPreview: None
+    GrantCondition@BuildingOverlay:
+        Condition: buildOverlay-active
 	Selectable:
 		Priority: 3
 	Targetable:
@@ -1087,13 +1336,9 @@
 	OwnerLostAction:
 		Action: Kill
 	WithSpriteBody:
-	Explodes:
-		Weapon: SmallBuildingExplode
-		EmptyWeapon: SmallBuildingExplode
 	CaptureNotification:
 	ShakeOnDeath:
 	WithDamageOverlay:
-		Image: smoke_building
 	ProximityCaptor:
 		Types: Building
 	Armor:
@@ -1117,9 +1362,26 @@
 	MapEditorData:
 		Categories: Building
 	CommandBarBlacklist:
+	WithDeathAnimation:
+        DeathSequence: dead
     RevealOnDeath:
+    GrantConditionOnDamageState@Damage01:
+        Condition: heavy.damage
+        ValidDamageStates: Heavy
+    GrantConditionOnDamageState@Damage02:
+        Condition: Critical.damage
+        ValidDamageStates: Critical
+    LeavesTrails@01:
+        Image: damage_smoke.min
+        TrailWhileStationary: true
+        Sequences: smoke_damage01, smoke_damage02, smoke_damage03, smoke_damage04
+        Palette: flameeffect60
+        Type: CenterPosition
+        MovingInterval: 5
+        Offsets: -320,-225,200
+        RequiresCondition: heavy.damage || Critical.damage
 	RenderSprites:
-		Scale: 0.75
+		Scale: 0.845
 
 ^Building:
 	Inherits: ^BasicBuilding
@@ -1170,13 +1432,19 @@
 		ReferencePoint: Center
 		Palette: player
 		IsPlayerPalette: True
-
-
+        
 ^BuildingPlugable:
 	AlwaysVisible:
+	Interactable:
 	Building:
 	KillsSelf:
 		RemoveInstead: true
+	SequencePlaceBuildingPreview:
+		Sequence: idle
+		SequencePalette: placebuilding
+		Palette: placefootprint
+	RequiresBuildableArea:
+		AreaTypes: building
 	RenderSprites:
 
 ^TechBuilding:
@@ -1232,7 +1500,12 @@
 		DamagedSounds:
 		DestroyedSounds:
 	Crushable:
-		CrushClasses: wall
+		Crushes: wall
+        CrushSound: wallcrush01.aud
+		CrushedByFriendlies: false
+	WithDeathAnimation:
+		CrushedSequence: die-crushed
+        CrushedSequencePalette: flameeffect
 	LineBuild:
 		Range: 10
 		NodeTypes: wall
@@ -1264,9 +1537,6 @@
 	RequiresBuildableArea:
 		AreaTypes: building
 		Adjacent: 8
-	LaysTerrain:
-		Template: 510
-		TerrainTypes: Clear
 	Tooltip:
 		Name: Concrete
 		GenericName: Structure
@@ -1283,27 +1553,25 @@
 	Inherits@02: ^DisablePowerDown
 	Inherits@Range: ^Defense.Range.Base
 	Inherits@DetectCloaked: ^Defence.DetectCloaked
-	AutoTarget:
-		AttackAnythingCondition: stance-attackanything
-		MinimumScanTimeInterval: 10
-		MaximumScanTimeInterval: 10
 	RenderRangeCircle:
-	GivesBuildableArea:
-		AreaTypes: Defense
-	OwnerLostAction:
-		Action: Kill
-	WithMakeAnimation:
-	WithSpriteBody:
-	WithWallSpriteBody:
+	-GivesBuildableArea:
+	RenderRangeCircle:
+	RenderDetectionCircle:
 	ThrowsShrapnel:
 		Weapons: SmallDebris, SmallDebris2, SmallDebris3
 		Pieces: 2, 2
 		Range: 2c0, 4c0
-	RenderSprites:
-		Scale: 0.8
+	Targetable:
+		TargetTypes: Ground, Building, C4, Defense
+	MapEditorData:
+		Categories: Defense
+	RevealOnFire:
 	MustBeDestroyed:
 		RequiredForShortGame: false
-		
+	-CommandBarBlacklist:
+	RenderSprites:
+		Scale: 1.0
+
 ^Gate:
 	Inherits: ^Building
 	Huntable:
@@ -1338,7 +1606,7 @@
 		ClosingSound:
 		BlocksProjectilesHeight: 768
 	RenderSprites:
-		Scale: 1.0
+		Scale: 0.935
 	Sellable:
 		RequiresCondition: !being-demolished
 		
@@ -1475,8 +1743,8 @@
 	Aircraft:
 		AirborneCondition: airborne
 		IdealSeparation: 853
+        CruiseAltitude: 2c740
         LandAltitude: 0c200
-	HiddenUnderFog:
 	Voiced:
 		VoiceSet: GenericVoice
 	HiddenUnderFog:
@@ -1508,6 +1776,7 @@
 		LandableTerrainTypes: Clear, Rough, Road, Ore, Beach, Gems
 		Crushes: crate, mine, infantry
 		InitialFacing: 224
+        LandAltitude: 0c200
 		CanSlide: True
 	Targetable@AIRBORNE:
 		TargetTypes: Air
@@ -1520,6 +1789,9 @@
 		QuantizedFacings: 0
 		CameraPitch: 90
 	Aircraft:
+		CanHover: True
+		VTOL: true
+		CanSlide: True
 	Health:
 		HP: 28000
 	Armor:
@@ -1531,12 +1803,17 @@
 	Tooltip:
 		GenericName: Destroyed Aircraft
 	FallsToEarth:
-		Spins: true
-		Moves: true
-		Velocity: 86
 		Explosion: uniteanimexplode
 	HitShape:
 	WithFacingSpriteBody:
+    AmbientSound:
+        SoundFiles: aircraftdie01.aud, aircraftdie02.aud
+    SmokeTrailWhenDamaged:
+        Sprite: explosion
+        Interval: 8
+        Sequence: trail_smoke02
+        Palette: flameeffect60
+        MinDamage: Undamaged
 	MapEditorData:
 		Categories: Husk
 	WithShadow:
@@ -1560,11 +1837,19 @@
 	Tooltip:
 		GenericName: Destroyed Aircraft
 	FallsToEarth:
-		Spins: false
-		Moves: true
+		Moves: True
 		Velocity: 86
 		Explosion: uniteanimexplode
+		MaximumSpinSpeed: 0
 	HitShape:
+    AmbientSound:
+        SoundFiles: aircraftdie01.aud, aircraftdie02.aud
+    SmokeTrailWhenDamaged:
+        Sprite: explosion
+        Interval: 8
+        Sequence: trail_smoke02
+        Palette: flameeffect60
+        MinDamage: Undamaged
 	WithFacingSpriteBody:
 	WithShadow:
 		Offset: 43, 128, 0
@@ -1608,7 +1893,6 @@
 	HiddenUnderShroud:
 	ScriptTriggers:
 	RenderSprites:
-		Scale: 0.90
 	HitShape:
 
 ^Rock:
@@ -1619,8 +1903,6 @@
 	Interactable:
 	MapEditorData:
 		Categories: Rock
-	RenderSprites:
-		Palette: isotem
 	WithSpriteBody:
 	Building:
 		Footprint: x
@@ -1636,6 +1918,7 @@
 	ScriptTriggers:
 	RenderSprites:
 		Scale: 0.8
+		Palette: isotem
 	HitShape:
 	
 ^BasicHusk:
@@ -1650,9 +1933,9 @@
 	ScriptTriggers:
 	WithFacingSpriteBody:
 	WithIdleOverlay:
-		Offset: 0, 0, 20
+		Offset: 0, 0, 30
 		Sequence: heat_flame
-		Palette: effect
+		Palette: flameeffect
 	HitShape:
 	MapEditorData:
 		Categories: Husk
@@ -1662,12 +1945,19 @@
 	Husk:
 		AllowedTerrain: Clear, Rough, Road, Ore, Gems, Beach
 	Burns:
-		Damage: 40
-	WithColoredOverlay@IDISABLE:
+		Damage: 100
+	RenderSprites:
 		Palette: disabled
 	Targetable:
 		TargetTypes: Ground, Husk, NoAutoTarget
 		RequiresForceFire: true
+	Explodes:
+		Weapon: tank.explode
+		EmptyWeapon: tank.explode
+	ThrowsShrapnel:
+		Weapons: SmallDebris, SmallDebris2, SmallDebris3
+		Pieces: 3, 5
+		Range: 1c512, 3c0
 	Chronoshiftable:
 	Tooltip:
 		GenericName: Destroyed Vehicle

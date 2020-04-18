@@ -1,34 +1,31 @@
 diastextractor:
-	Inherits: ^Building
+	Inherits: ^TechBuilding
 	Inherits@2: ^2x2Shape
 	Selectable:
 		Bounds: 72,50,0,12
-	Buildable:
-		Queue: Defence.federation
-		BuildPaletteOrder: 10
-		Description: Provides power for other structures
-		BuildDurationModifier: 30
-		Adjacent: 18
-		IconPalette: Federation.Icon
 	Valued:
 		Cost: 1200
+	Capturable:
+		Types: TechBuilding
+	CapturableProgressBar:
+	EngineerRepairable:
+	CashTrickler:
+		Interval: 250
+		Amount: 100
 	Tooltip:
-		Name: Diastime Extractor
-	Building:
-		Footprint: xx xx
-		Dimensions: 2,2
-		Adjacent: 10
-		TerrainTypes: Deposit
-		BuildSounds: deploy_order.aud
+		Name: Derrick
+	GivesCashOnCapture:
+		Amount: 300
+	CapturableProgressBlink:
+	CaptureManager:
 	Health:
 		HP: 5000
 	Armor:
 		Type: Concrete
 	RevealsShroud:
 		Range: 4c0
-	InfiltrateForPowerOutage:
 	WithIdleOverlay@Smoke1:
-		Offset: 0, 0, 800
+		Offset: 0, 0, 950
 		Sequence: smoke
 		Palette: effect
 	AffectedByPowerOutage:
@@ -53,20 +50,9 @@ derrick:
 		HP: 8000
 	RevealsShroud:
 		Range: 3c0
-	Capturable:
-		Types: TechBuilding
-	CapturableProgressBar:
-	EngineerRepairable:
-	CashTrickler:
-		Interval: 250
-		Amount: 100
 	Tooltip:
 		Name: Derrick
-	GivesCashOnCapture:
-		Amount: 300
 	HitShape:
-	CapturableProgressBlink:
-	CaptureManager:
 
 generatciv_01:
 	Inherits: ^TechBuilding
@@ -720,8 +706,8 @@ citern4:
 	HitShape:
 	
 derrick3:
-	Inherits: ^BasicBuilding
-	Inherits@2: ^3x3Shape
+	Inherits: ^TechBuilding
+	Inherits@2: ^2x2Shape
 	Selectable:
 		Priority: 0
 	Building:
@@ -732,7 +718,7 @@ derrick3:
 	RevealsShroud:
 		Range: 3c0
 	Tooltip:
-		Name: Makeshift building
+		Name: Derrick
 	WithIdleOverlay@Effect:
 		Offset: 0, 0, 0
 		Sequence: effect
@@ -809,29 +795,9 @@ opwall:
 		Types: wall
 	WithWallSpriteBody:
 		Type: wall
-        
-concrete_base:
-	Inherits: ^terrain_mat
-	Building:
-		Footprint: xxx xxx xxx
-		Dimensions: 3,3
-	Tooltip:
-		Name: Large Concrete Slab
-	Valued:
-		Cost: 50
-	Buildable:
-		Queue: Defence.redalliance, Defence.baneslayer, Defence.conclave, Defence.federation
-		BuildPaletteOrder: 40
-		BuildDuration: 81
-		BuildDurationModifier: 40
 		
 wallbrik:
 	Inherits: ^Wall
-	Buildable:
-		Queue: Defence.redalliance, Defence.baneslayer, Defence.conclave, Defence.federation
-		BuildPaletteOrder: 30
-		BuildDurationModifier: 4
-		Description: Stop units and blocks enemy fire.
 	Valued:
 		Cost: 200
 	CustomSellValue:
@@ -846,7 +812,7 @@ wallbrik:
 	Armor:
 		Type: Concrete
 	Crushable:
-		CrushClasses: heavywall
+		CrushClasses: wall
 	BlocksProjectiles:
 	LineBuild:
 		NodeTypes: concrete
@@ -859,10 +825,6 @@ wallbrik:
 
 gate_h:
 	Inherits: ^Gate_A
-	Buildable:
-		Queue: Defence.redalliance, Defence.baneslayer, Defence.conclave, Defence.federation
-		BuildPaletteOrder: 40
-		BuildDurationModifier: 8
 	Tooltip:
 		Name: Gate H
 	Replacement:
@@ -870,10 +832,6 @@ gate_h:
 		
 gate_v:
 	Inherits: ^Gate_B
-	Buildable:
-		Queue: Defence.redalliance, Defence.baneslayer, Defence.conclave, Defence.federation
-		BuildPaletteOrder: 40
-		BuildDurationModifier: 8
 	Tooltip:
 		Name: Gate V
 	Replacement:
@@ -881,10 +839,6 @@ gate_v:
 		
 biggate_h:
 	Inherits: ^Gate_A
-	Buildable:
-		Queue: Defence.redalliance, Defence.baneslayer, Defence.conclave, Defence.federation
-		BuildPaletteOrder: 40
-		BuildDurationModifier: 8
 	Building:
 		Dimensions: 5,1
 		Footprint: xxxxx
@@ -893,6 +847,16 @@ biggate_h:
 	Replacement:
 		ReplaceableTypes: Brikgate
 		
+fortwall:
+	Inherits: ^Gate_A
+	Tooltip:
+		Name: Gate
+	Building:
+		Dimensions: 7,1
+		Footprint: xxxxxxx
+	Replacement:
+		ReplaceableTypes: Brikgate
+
 plandefense:
 	Inherits: ^TechBuilding
 	Inherits@2: ^2x2Shape
@@ -1127,6 +1091,106 @@ bunker.husk:
 	HitShape:
 	CaptureManager:
 
+urbanlamp_01:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 1000
+	RevealsShroud:
+		Range: 2c0
+	Tooltip:
+		Name: lamp
+	WithIdleOverlay@SPOT:
+		Offset: 0,0,0
+		Sequence: Neon1
+		Palette: light
+	HitShape:
+    
+megaspot01:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 1000
+	RevealsShroud:
+		Range: 2c0
+	Tooltip:
+		Name: triple spot
+	WithIdleOverlay@SPOT:
+		Offset: 0,0,0
+		Sequence: Neon1
+		Palette: light
+	HitShape:
+    
+megaspot02:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 1000
+	RevealsShroud:
+		Range: 2c0
+	Tooltip:
+		Name: triple spot
+	WithIdleOverlay@SPOT:
+		Offset: 0,0,0
+		Sequence: Neon1
+		Palette: light
+	HitShape:
+    
+megaspot03:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 1000
+	RevealsShroud:
+		Range: 2c0
+	Tooltip:
+		Name: triple spot
+	WithIdleOverlay@SPOT:
+		Offset: 0,0,0
+		Sequence: Neon1
+		Palette: light
+	HitShape:
+    
+megaspot04:
+	Inherits: ^BasicBuilding
+	Inherits@2: ^1x1Shape
+	Selectable:
+		Priority: 0
+	Building:
+		Footprint: x
+		Dimensions: 1,1
+	Health:
+		HP: 1000
+	RevealsShroud:
+		Range: 2c0
+	Tooltip:
+		Name: triple spot
+	WithIdleOverlay@SPOT:
+		Offset: 0,0,0
+		Sequence: Neon1
+		Palette: light
+	HitShape:
+    
 urbandecoy_01:
 	Inherits: ^BasicBuilding
 	Inherits@2: ^1x1Shape

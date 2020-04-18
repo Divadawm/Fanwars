@@ -5,15 +5,38 @@
 	SpeedMultiplier@SWORD:
 		RequiresCondition: doctrine.sword
 		Modifier: 280
-		
+	WithDecoration@Doc:
+		Image: oprankspec
+		Sequence: icon
+		Palette: effect
+		ReferencePoint: Bottom, Center
+		ValidStances: Ally, Enemy, Neutral
+		RequiresCondition: doctrine.actived
+		ZOffset: 256
 
 ^Infantry.Upgrade.baneslayer:
+	GrantConditionOnPrerequisite@Doctrine.infantry:
+		Condition: doctrine.actived
+		Prerequisites: Doctrine.Infantry.Baneslayer
+    FirepowerMultiplier@BonusDoctrine:
+        Modifier: 120
+        RequiresCondition: doctrine.actived
 
 ^Vehicle.Upgrade.baneslayer:
-
-^Tank.Upgrade.baneslayer:
+	GrantConditionOnPrerequisite@Doctrine.vehicle:
+		Condition: doctrine.actived
+		Prerequisites: Doctrine.Vehicle.Baneslayer
+    FirepowerMultiplier@BonusDoctrine:
+        Modifier: 120
+        RequiresCondition: doctrine.actived
 
 ^Aircraft.Upgrade.baneslayer:
+	GrantConditionOnPrerequisite@Doctrine.aircraft:
+		Condition: doctrine.actived
+		Prerequisites: Doctrine.Aircraft.Baneslayer
+    FirepowerMultiplier@BonusDoctrine:
+        Modifier: 120
+        RequiresCondition: doctrine.actived
 
 Unlocked.OrbitalEMP.Baneslayer:
 	Inherits@1: ^Select.Power.Limit
@@ -52,57 +75,6 @@ Power.Smoke.baneslayer:
 		Prerequisite: Select.Power
 	RenderSprites:
 		Image: nukeammo_icon
-		
-activate.doctrine.shield:
-	Inherits@Research: ^ResearchActor
-	AlwaysVisible:
-	Tooltip:
-		Name: Shield Protocol
-	Buildable:
-		BuildPaletteOrder: 60
-		Queue: Doctrine.baneslayer
-		Prerequisites: !activate.doctrine.shield
-		Description: Only one protocol can be chosen\nGrants the authorization to create offensive-oriented units\n> Dwarf (light support vehicle) can be created\n> Heimdall (heavy MLRS) can be created
-	ProvidesPrerequisite:
-		Prerequisite: activate.doctrine.shield
-	KillsSelf:
-		RemoveInstead: true
-		Delay: 0
-		RequiresCondition: doctrine.sword
-	GrantConditionOnPrerequisite@Shield:
-		Condition: doctrine.shield
-		Prerequisites: activate.doctrine.shield
-	GrantConditionOnPrerequisite@Sword:
-		Condition: doctrine.sword
-		Prerequisites: activate.doctrine.sword
-	RenderSprites:
-		Image: upgrade_doctrine_artemienicon
-		
-activate.doctrine.sword:
-	Inherits@Research: ^ResearchActor
-	AlwaysVisible:
-	Tooltip:
-		Name: Sword Protocol
-	Buildable:
-		BuildPaletteOrder: 60
-		Queue: Doctrine.baneslayer
-		Prerequisites: !activate.doctrine.sword
-		Description: Only one protocol can be chosen\nGrants the authorization to create defensive and support-oriented units\n> Troll (self-propelled heavy mortar) can be created\n> Loki (experimental mobile ion cannon) can be created
-	ProvidesPrerequisite:
-		Prerequisite: activate.doctrine.sword
-	KillsSelf:
-		RemoveInstead: true
-		Delay: 0
-		RequiresCondition: doctrine.shield
-	GrantConditionOnPrerequisite@Shield:
-		Condition: doctrine.shield
-		Prerequisites: activate.doctrine.shield
-	GrantConditionOnPrerequisite@Sword:
-		Condition: doctrine.sword
-		Prerequisites: activate.doctrine.sword
-	RenderSprites:
-		Image: upgrade_doctrine_valkyricon
-		
 
 upgrade.Thor.baneslayer:
 	Inherits@Research: ^ResearchActor
@@ -110,7 +82,7 @@ upgrade.Thor.baneslayer:
 	Tooltip:
 		Name: Prism Upgrade
 	Buildable:
-		BuildPaletteOrder: 40
+		BuildPaletteOrder: 10
 		Queue: Research.baneslayer
 		Prerequisites: ~!research.Thor.baneslayer
 		Description: Provides an alternative firing mode for the Thor\nThe Thor’s ion beams can now scatter
@@ -128,7 +100,7 @@ upgrade.roquette.baneslayer:
 	Tooltip:
 		Name: Plasma Warhead
 	Buildable:
-		BuildPaletteOrder: 40
+		BuildPaletteOrder: 20
 		Queue: Research.baneslayer
 		Prerequisites: ~!research.roquette.baneslayer
 		Description: Rockets and missiles now deal increased damage
@@ -146,7 +118,7 @@ upgrade.plasma.engine.baneslayer:
 	Tooltip:
 		Name: Plasma Engine
 	Buildable:
-		BuildPaletteOrder: 40
+		BuildPaletteOrder: 30
 		Queue: Research.baneslayer
 		Prerequisites: ~!research.speed.plasma.engine.baneslayer
 		Description: Enhances vehicles units’ speed by 15%
@@ -164,7 +136,7 @@ upgrade.kevlar.infantry.baneslayer:
 	Tooltip:
 		Name: Ceramic Body Armor
 	Buildable:
-		BuildPaletteOrder: 40
+		BuildPaletteOrder: 70
 		Queue: Research.baneslayer
 		Prerequisites: ~!research.kevlar.infantry.baneslayer
 		Description: Provides increased protection for all infantry units
@@ -183,7 +155,7 @@ upgrade.Repair.Training.Baneslayer:
 	Tooltip:
 		Name: Repair training
 	Buildable:
-		BuildPaletteOrder: 50
+		BuildPaletteOrder: 80
 		Queue: Research.baneslayer
 		Prerequisites: ~!research.Repair.Training.Baneslayer
 		Description: Vehicle units can repair themselves up to 50% of their HP when they’re not fighting or moving
@@ -228,3 +200,156 @@ upgrade.Repair.Training.Baneslayer:
 		QuantizedFacings: 64
 		DeploySound: spyreveal.aud
 		EffectImage: null
+        
+#Aspect Trait Option
+
+^Aspect.Base.Baneslayer:
+	Inherits@Research: ^ResearchActor
+	ConditionManager:
+	AlwaysVisible:
+	Buildable:
+		BuildPaletteOrder: 10
+		Queue: Research.baneslayer
+		BuildDurationModifier: 60
+		BuildLimit: 1
+	ProvidesPrerequisite:
+	Valued:
+		Cost: 0
+	#Condition Recovery
+	ExternalCondition@RemoveOption:
+		Condition: Revoked
+	#receipt condition
+	ProvidesPrerequisite@RemoveOption:
+		Prerequisite: Remove.Option
+		RequiresCondition: RemoveBaseOption
+	ProvidesPrerequisite@RemoveOption2:
+		Prerequisite: Remove.Option2
+		RequiresCondition: RemoveBaseOption2
+	ProvidesPrerequisite@RemoveStat:
+		Prerequisite: Remove.Stat
+		RequiresCondition: RemoveBaseStat
+	GrantConditionOnPrerequisite@RevokedOption:
+		Prerequisites: Remove.Option
+		Condition: RevokedOption
+	GrantConditionOnPrerequisite@RevokedOption2:
+		Prerequisites: Remove.Option2
+		Condition: RevokedOption2
+	GrantConditionOnPrerequisite@RevokedStat:
+		Prerequisites: Remove.Stat
+		Condition: RevokedStat
+	KillsSelf:
+		RemoveInstead: true
+        
+locked.place01:
+	Inherits@Research: ^Blank
+	AlwaysVisible:
+	Buildable:
+		BuildPaletteOrder: 70
+		Queue: Vehicle.baneslayer
+        Prerequisites: ~!Doctrine.Dwarf.unlock.Baneslayer, ~!Doctrine.lindwyrm.unlock.Baneslayer
+	RenderSprites:
+		Image: lockedicon
+        
+locked.place02:
+	Inherits@Research: ^Blank
+	AlwaysVisible:
+	Buildable:
+		BuildPaletteOrder: 100
+		Queue: Vehicle.baneslayer
+        Prerequisites: ~!Doctrine.loki.unlock.Baneslayer, ~!Doctrine.heimdall.unlock.Baneslayer
+	RenderSprites:
+		Image: lockedicon
+        
+unknon.placeOP1:
+	Inherits@Research: ^Blank
+	AlwaysVisible:
+	Buildable:
+		BuildPaletteOrder: 40
+		Queue: Research.baneslayer
+        
+unknon.placeOP3:
+	Inherits@Research: ^Blank
+	AlwaysVisible:
+	Buildable:
+		BuildPaletteOrder: 90
+		Queue: Research.baneslayer
+        
+unknon.placeOP4:
+	Inherits@Research: ^Blank
+	AlwaysVisible:
+	Buildable:
+		BuildPaletteOrder: 100
+		Queue: Research.baneslayer
+        
+Doctrine.Dwarf.unlock.Baneslayer:
+	Inherits@Research: ^Aspect.Base.Baneslayer
+	Buildable:
+		BuildPaletteOrder: 50
+		Description: ...
+		BuildDurationModifier: 50
+	Tooltip:
+		Name: Doctrine Artilerie
+	ProvidesPrerequisite:
+		Prerequisite: Doctrine.Dwarf.unlock.Baneslayer
+	RenderSprites:
+		Image: aspect_op_lockdwarficons
+	#Condition Recovery
+	ExternalCondition@RemoveBase:
+		Condition: RemoveBaseOption
+	KillsSelf:
+		RequiresCondition: !RemoveBaseOption && RevokedOption
+
+Doctrine.lindwyrm.unlock.Baneslayer:
+	Inherits@Research: ^Aspect.Base.Baneslayer
+	Buildable:
+		BuildPaletteOrder: 110
+		Description: ...
+		BuildDurationModifier: 50
+	Tooltip:
+		Name: Doctrine Artilerie
+	ProvidesPrerequisite:
+		Prerequisite: Doctrine.lindwyrm.unlock.Baneslayer
+	RenderSprites:
+		Image: aspect_op_locklidnicons
+	#Condition Recovery
+	ExternalCondition@RemoveBase:
+		Condition: RemoveBaseOption
+	KillsSelf:
+		RequiresCondition: !RemoveBaseOption && RevokedOption
+        
+        
+Doctrine.loki.unlock.Baneslayer:
+	Inherits@Research: ^Aspect.Base.Baneslayer
+	Buildable:
+		BuildPaletteOrder: 60
+		Description: ...
+		BuildDurationModifier: 50
+	Tooltip:
+		Name: Doctrine Artilerie
+	ProvidesPrerequisite:
+		Prerequisite: Doctrine.loki.unlock.Baneslayer
+	RenderSprites:
+		Image: aspect_op_locklokiicons
+	#Condition Recovery
+	ExternalCondition@RemoveBase:
+		Condition: RemoveBaseOption2
+	KillsSelf:
+		RequiresCondition: !RemoveBaseOption2 && RevokedOption2
+        
+Doctrine.heimdall.unlock.Baneslayer:
+	Inherits@Research: ^Aspect.Base.Baneslayer
+	Buildable:
+		BuildPaletteOrder: 120
+		Description: ...
+		BuildDurationModifier: 50
+	Tooltip:
+		Name: Doctrine Artilerie
+	ProvidesPrerequisite:
+		Prerequisite: Doctrine.heimdall.unlock.Baneslayer
+	RenderSprites:
+		Image: aspect_op_lockaheimdalicon
+	#Condition Recovery
+	ExternalCondition@RemoveBase:
+		Condition: RemoveBaseOption2
+	KillsSelf:
+		RequiresCondition: !RemoveBaseOption2 && RevokedOption2
