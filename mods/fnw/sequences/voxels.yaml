@@ -34,8 +34,8 @@ t2_predator_mobile:
     
 t2_predator_deployed:
 	idle:
-	turret: t2_predator_Deployedtur
-	barrel: t2_predator_Deployedbarl
+	turret: t2_predator_deployedtur
+	barrel: t2_predator_deployedbarl
 
 t2_tarantula_mobile: 
 	idle:
