@@ -1,0 +1,517 @@
+^exemple.Unité:
+    # La description de l'unité (les \n pour passer a la prochaine ligne)
+    # BuildDurationModifier = le temps en seconde pour produire l'unité
+	Buildable:
+		Description: Powerful and resistant main battle tank with a railgun cannon \ncan be equipped with a light anti-aircraft automatic cannon with upgrade\n> Strong against vehicles, Structures \n> Weak against infantry, Airplanes
+		BuildDurationModifier: 10
+    # Le prix de l'unité
+	Valued:
+		Cost: 1200
+    # L'armure de l'unité, definie actuellement sur 4 aspect : "Infantry" , "LightVehicle" , "ArmorTank" , "Concrete"
+	Armor:
+		Type: ArmorTank
+    # Les point de vie de l'unité
+	Health:
+		HP: 5500
+    # la rapidité de l'unité
+	Mobile:
+		Speed: 80
+    # La portée visuelle de l'unité
+	RevealsShroud:
+		Range: 9c0
+    # Pour detecter les unites camoufler
+	DetectCloaked:
+		Range: 5c0
+    # affiche le cercle de detection en fonction du Range de "DetectCloaked"
+	RenderDetectionCircle:
+    
+^exemple.Weapon:
+    # Portée de l'armme
+	Range: 8c0
+    # Temps de Rechargement de l'arme
+    ReloadDelay: 45
+    # Nombre de tir que l'unité effectue avant de Recharger
+    Burst: 2
+    # Delais entre chaque tir avant rechargement (si absent= 0 par default)
+    BurstDelay: 1
+    # Determine si l'arme peut tirer au sol ou dans les air (l'absence de ValidTarget donne auto Ground/Water) les 3 aspect = "Ground" , "Water" , "Air" (possible pour "infantry")
+    ValidTargets: Ground
+    # Les degat de l'arme avec "Damage" pour les point de Degat et "spread" pour la zone de degat
+    #Info sur le "Spread": on peut soit determiner des degat par cell et "micro-cell" (ex: 1c512) soit 1 cell + la moitié d'un cell (ça reste encore floue de mon coté)
+	Warhead@1Dam: SpreadDamage
+		Damage: 800
+		Spread: 1c128
+        # le Versus determine le % de degat de l'arme en fonction de l'armure de la cible (ex: 800 degat de base sur une armure "ArmorTank" à 50%, ça fait 400 degat sur la cible )
+		Versus:
+			Infantry: 20
+			LightVehicle: 100
+			ArmorTank: 50
+			Concrete: 60
+        # Determine si ces degat sont actif sur le type de cible (infantry, vehicle ou ground=les deux voir air) car on peut crée different "Warhead" selon la cible )
+        ValidTargets: Ground
+
+# =======================================================================================================================
+# ============================================== | Infantry Conclave |  =================================================
+# =======================================================================================================================   
+# |------------------------------| - GARDIAN - |------------------------------|
+#--Stat Unite--
+^gardian.conclave.stat.unite:
+	Tooltip:
+		Name: Ranger
+	Buildable:
+		Description: Infantry armed with a laser rifle that has a three shots burst\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
+		BuildDurationModifier: 3
+	Valued:
+		Cost: 120
+	Armor:
+		Type: Infantry
+	Health:
+		HP: 500
+	Mobile:
+		Speed: 80
+	RevealsShroud:
+		Range: 9c0
+        
+#--Weapons01--
+^Gardian.Impulsor.stat.weapons:
+	Range: 6c0
+	Burst: 3
+	BurstDelays: 2
+	ReloadDelay: 40
+	Warhead@1Dam: SpreadDamage
+		Damage: 60
+		Versus:
+			Infantry: 100
+			LightVehicle: 80
+			ArmorTank: 50
+			Concrete: 50
+
+
+# |------------------------------| - STATIS - |------------------------------|
+#--Stat Unite--
+^statis.conclave.stat.unite:
+	Tooltip:
+		Name: Statis
+	Buildable:
+		Description: Infantry unit equipped with an impulse lance \n can capture the structure \n> Strong vs vehicles, planes \n> Weak vs infantry
+		BuildDurationModifier: 5
+	Valued:
+		Cost: 500
+	Armor:
+		Type: Infantry
+	Health:
+		HP: 450
+	Mobile:
+		Speed: 80
+	RevealsShroud:
+		Range: 9c0
+        
+#--Weapons01--
+^Statis.Missile.stat.weapons:
+    ValidTargets: Ground, Air, Water
+	Range: 8c0
+	ReloadDelay: 55
+	Warhead@1Dam: SpreadDamage
+		Damage: 380
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Infantry: 25
+			LightVehicle: 95
+			ArmorTank: 100
+			Concrete: 80
+
+# |------------------------------| - NAVIGATOR - |------------------------------|
+#--Stat Unite--
+^t3_navigator.conclave.stat.unite:
+	Tooltip:
+		Name: Navigator
+	Buildable:
+		Description: Infantry unit able to generate an energy ball affecting all enemies in its impact\n> Strong vs Infantry, Vehicles\n> Weak vs Aircraft
+		BuildDurationModifier: 15
+	Valued:
+		Cost: 1000
+	Armor:
+		Type: Infantry
+	Health:
+		HP: 1000
+	Mobile:
+		Speed: 90
+	RevealsShroud:
+		Range: 9c0
+        
+#--Weapons01--
+^Graviton.Missile.conclave.stat.weapons:
+    ReloadDelay: 85
+	Range: 9c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 1500
+		Versus:
+			Infantry: 80
+			LightVehicle: 80
+			ArmorTank: 80
+			Concrete: 100
+
+# |------------------------------| - SNIPER - |------------------------------|
+#--Stat Unite--
+^t4_consniper.conclave.stat.unite:
+	Tooltip:
+		Name: ...
+	Buildable:
+		Description: Infantry unit equip a long range rifle, can designate an orbital strike on enemy buildings and vehicles\n> Strong vs Infantry, Vehicle\n> Weak vs Aircraft
+		BuildDurationModifier: 20
+	Valued:
+		Cost: 2000
+	Armor:
+		Type: Infantry
+	Health:
+		HP: 900
+	Mobile:
+		Speed: 90
+	RevealsShroud:
+		Range: 9c0
+        
+#--Weapons01--
+^Vagabond.snipergun.conclave.stat.weapons:
+	ValidTargets: Infantry
+	InvalidTargets: Vehicle, Building
+	Range: 12c0
+	ReloadDelay: 60
+	Warhead@1Dam: SpreadDamage
+		Damage: 3500
+        Spread: 750
+		ValidTargets: Infantry
+        InvalidTargets: Vehicle, Building
+
+# =======================================================================================================================
+# ============================================== | Vehicle Conclave |  =================================================
+# =======================================================================================================================   
+# |------------------------------| - PROWLER - |------------------------------|
+#--Stat Unite--
+^t2_rodeur.conclave.stat.unite:
+	Tooltip:
+		Name: Prowler
+	Buildable:
+		Description: The lightly armored "main battle tank" equipped with a double rapid-fire laser cannon \ncan receive different armaments with the improvements \n> Strong against vehicles \n> Weak against infantry, airplanes
+		BuildDurationModifier: 16
+	Valued:
+		Cost: 980
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 4600
+	Mobile:
+		Speed: 105
+	RevealsShroud:
+		Range: 9c0
+        
+#--Weapons01--
+^impuls.laser.conclave.stat.weapons:
+	Range: 8c0
+	ReloadDelay: 10
+	Warhead@1Dam: SpreadDamage
+		Damage: 40
+        Spread: 2
+		Versus:
+			Infantry: 40
+			LightVehicle: 100
+			ArmorTank: 80
+			Concrete: 50
+        
+#--Weapons01--
+^impuls.laserPhie.conclave.stat.weapons:
+	Range: 9c0
+    Burst: 20
+	BurstDelays: 1
+	ReloadDelay: 35
+	Warhead@1Dam: SpreadDamage
+		Damage: 20
+		Spread: 256
+		Versus:
+			Infantry: 200
+			LightVehicle: 50
+			ArmorTank: 20
+			Concrete: 35
+        
+#--Weapons01--
+^impuls.laserOmega.conclave.stat.weapons:
+    ValidTargets: Vehicle, Infantry, Structure
+	Range: 8c0
+	ReloadDelay: 30
+	Warhead@1Dam: SpreadDamage
+		Damage: 90
+        Spread: 25
+		Versus:
+			Infantry: 40
+			LightVehicle: 100
+			ArmorTank: 80
+			Concrete: 50
+		DamageTypes: Burned
+        ValidTargets: Vehicle, Infantry, Structure
+
+# |------------------------------| - PILGRIM - |------------------------------|
+#--Stat Unite--
+^t2_pilgrim.conclave.stat.unite:
+	Tooltip:
+		Name: Pilgrim
+		RequiresCondition: !deployed
+	Tooltip@DEPLOYED:
+		Name: Pilgrim (deployed)
+		RequiresCondition: deployed
+	Buildable:
+		Description: Hover anti-aircraft missile launcher \ncan receive different Capacity/armaments with the improvements \nCan be deployed into an artillery\n> Strong vs Vehicles, Aircraft\n> Weak vs Infantry
+		BuildDurationModifier: 24
+	Valued:
+		Cost: 1200
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 2000
+	Mobile:
+		Speed: 85
+	RevealsShroud:
+		Range: 9c0
+        
+#--Weapons01 |missile AA Move|--
+^Photon.MissileAA.conclave.stat.weapons:
+	ValidTargets: Air
+	Range: 10c0
+	MinRange: 2c0
+	Burst: 4
+	ReloadDelay: 95
+	Warhead@1Dam: SpreadDamage
+		Damage: 400
+        Spread: 300
+		Versus:
+			Infantry: 60
+			LightVehicle: 75
+			ArmorTank: 80
+			Concrete: 80
+        ValidTargets: Air
+
+#--Weapons02 |Arty Missile Deploy|--
+^Photon.MissileArty.conclave.stat.weapons:
+	Range: 15c0
+	MinRange: 3c0
+	Burst: 8
+    BurstDelays: 2
+	ReloadDelay: 95
+	Warhead@1Dam: SpreadDamage
+		Damage: 550
+        Spread: 450
+		Versus:
+			Infantry: 60
+			LightVehicle: 75
+			ArmorTank: 80
+			Concrete: 80
+            
+#--Weapons01 ||--
+^Photon.Missile.conclave.stat.weapons:
+	Range: 8c0
+	MinRange: 3c0
+	Burst: 8
+    BurstDelays: 2
+	ReloadDelay: 95
+	Warhead@1Dam: SpreadDamage
+		Damage: 400
+        Spread: 450
+		Versus:
+			Infantry: 60
+			LightVehicle: 75
+			ArmorTank: 80
+			Concrete: 80
+            
+#--Weapons01--
+^Photon.MissileArtyAA.conclave.stat.weapons:
+	ValidTargets: Air
+	Range: 15c0
+	MinRange: 2c0
+	Burst: 8
+	ReloadDelay: 95
+	Warhead@1Dam: SpreadDamage
+		Damage: 400
+        Spread: 300
+		Versus:
+			Infantry: 60
+			LightVehicle: 75
+			ArmorTank: 80
+			Concrete: 80
+        ValidTargets: Air
+
+
+
+# |------------------------------| - SURVEYOR - |------------------------------|
+#--Stat Unite--
+^t3_surveyor.conclave.stat.unite:
+	Tooltip:
+		Name: Surveyor
+	Buildable:
+		Description: Three legged heavy walker\nDeals damage based on HP percentages \ncan receive different capacity with the improvements \n> Strong vs Vehicles, Structures\n> Weak vs Infantry, Aircraft
+		BuildDurationModifier: 28
+	Valued:
+		Cost: 2200
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 6500
+	Mobile:
+		Speed: 85
+	RevealsShroud:
+		Range: 9c0
+        
+#--Weapons01--
+^Surveyor.BeamSpect.stat.weapons:
+	Range: 11c0
+	ReloadDelay: 90
+	Warhead@2Dam: HealthPercentageDamage
+		Damage: 100
+		Versus:
+			Infantry: 15
+			LightVehicle: 15
+			ArmorTank: 15
+			Concrete: 15
+            
+# =======================================================================================================================
+# ============================================== | Defense Conclave |  =================================================
+# =======================================================================================================================   
+# |------------------------------| - Guard Needle - |------------------------------|
+   
+#--Weapons01--
+^IonTrap.TelsaGun.conclave.stat.weapons:
+    ValidTargets: Ground, Air, Water
+	Range: 8c0
+	ReloadDelay: 75
+	Warhead@1Dam: SpreadDamage
+		Damage: 300
+		Spread: 64
+		DeathType: 5
+        ValidTargets: Ground, Air, Water
+		Versus:
+			Infantry: 180
+			LightVehicle: 100
+			ArmorTank: 90
+			Concrete: 150
+		DamageTypes: Burned, TriggerProne
+
+# =======================================================================================================================
+# ============================================== | Aircraft Conclave |  =================================================
+# =======================================================================================================================   
+# |------------------------------| - COMETE - |------------------------------|
+#--Stat Unite--
+^t2_comete.conclave.stat.unite:
+	Tooltip:
+		Name: Comete
+	Buildable:
+		Description: Light aircraft equipped with laser spray guns\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
+		BuildDurationModifier: 18
+	Valued:
+		Cost: 1200
+	Armor:
+		Type: LightVehicle
+	Health:
+		HP: 800
+	Aircraft:
+		Speed: 180
+	RevealsShroud:
+		Range: 9c0
+        
+#--Weapons01--
+^Comete.standardGun.conclave.stat.weapons:
+	ValidTargets: Ground, Air, Water
+	Range: 9c0
+    Burst: 10
+    BurstDelays: 3
+	ReloadDelay: 30
+	Warhead@1Dam: SpreadDamage
+		Damage: 40
+		Versus:
+			Infantry: 70
+			LightVehicle: 80
+			ArmorTank: 65
+			Concrete: 35
+        ValidTargets: Ground, Air, Water
+
+#--Weapons02 |Phie Upgrade|--
+^Comete.standardGun.conclave.stat.weapons:
+	ValidTargets: Ground, Air, Water
+	Range: 9c0
+    Burst: 10
+    BurstDelays: 3
+	ReloadDelay: 30
+	Warhead@1Dam: SpreadDamage
+		Damage: 55
+		Versus:
+			Infantry: 70
+			LightVehicle: 80
+			ArmorTank: 65
+			Concrete: 35
+        ValidTargets: Ground, Air, Water
+
+#--Weapons03 |Omega Upgrade|--
+^Comete.standardGun.conclave.stat.weapons:
+	ValidTargets: Ground, Air, Water
+	Range: 9c0
+    Burst: 10
+    BurstDelays: 3
+	ReloadDelay: 30
+	Warhead@1Dam: SpreadDamage
+		Damage: 55
+		Versus:
+			Infantry: 70
+			LightVehicle: 80
+			ArmorTank: 65
+			Concrete: 35
+        ValidTargets: Ground, Air, Water
+
+# |------------------------------| - ZENITH - |------------------------------|
+#--Stat Unite--
+^t2_zenith.conclave.stat.unite:
+	Tooltip:
+		Name: Zenith
+	Buildable:
+		Description: Unarmed transport aircraft\nCan transport all types of units\n> Strong vs None\n> Weak vs Everything
+		BuildDurationModifier: 18
+	Valued:
+		Cost: 1000
+	Armor:
+		Type: LightVehicle
+	Health:
+		HP: 2500
+	Aircraft:
+		Speed: 180
+	RevealsShroud:
+		Range: 9c0
+        
+#--no weapons--
+
+# |------------------------------| - QUASAR - |------------------------------|
+#--Stat Unite--
+^t3_quasar.conclave.stat.unite:
+	Tooltip:
+		Name: Quasar
+	Buildable:
+		Description: Anti-spaceship artillery\nCan make tactical jump\n> Strong vs Slow Moving Aircraft\n> Weak vs Infantry, Vehicles, Fast Moving Aircraft
+		BuildDurationModifier: 25
+	Valued:
+		Cost: 2000
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 1800
+	Aircraft:
+		Speed: 180
+	RevealsShroud:
+		Range: 9c0
+        
+#--Weapons01--
+^Quasar.RailgunAA.conclave.stat.weapons:
+    ValidTargets: Air
+	Range: 9c0
+	ReloadDelay: 20
+	Warhead@1Dam: SpreadDamage
+		Damage: 2000
+		ValidTargets: Air
+		Versus:
+			Infantry: 50
+			LightVehicle: 100
+			ArmorTank: 100
+			Concrete: 70

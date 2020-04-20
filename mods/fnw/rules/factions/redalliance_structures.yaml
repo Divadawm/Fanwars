@@ -664,38 +664,6 @@ t3_commandbuilding:
 		ActiveSequence: idle
 	HitShape:
 
-droned:
-	Inherits@1: ^Building
-	Inherits@2: ^1x1Shape
-	Valued:
-		Cost: 0
-	Selectable:
-		Bounds: 24,24
-	Tooltip:
-		Name: Arachne Turret
-	Building:
-		Footprint: x
-		Dimensions: 1,1
-	Health:
-		HP: 5000
-	Transforms:
-		IntoActor: ar_scarab
-		Offset: 0,0
-		Facing: 96
-	RevealsShroud:
-		Range: 6c0
-	Cloak:
-		InitialDelay: 2
-		CloakDelay: 2
-		CloakSound:
-		UncloakSound:
-		IsPlayerPalette: true
-		CloakTypes: Cloak
-	Armor:
-		Type: LightVehicle
-	-MustBeDestroyed:
-	HitShape:
-
 t3_annihilator_deployed:
 	Inherits@1: ^Defence
 	Inherits@2: ^1x1Shape
@@ -766,30 +734,22 @@ t3_annihilator_deployed:
 	HitShape:
 
 t2_predator_deployed:
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_predator.stat.unite
 	Inherits@1: ^Defence
 	Inherits@2: ^1x1Shape
 	Inherits@AUTOTARGET: ^AutoTargetGround
 	Buildable:
 		Queue: Defence.redalliance
 		BuildPaletteOrder: 40
-		BuildDurationModifier: 15
 		Prerequisites: arbarr
-		Description: Tier 1 defensive structure armed with a high-caliber autocannon\n> Strong vs Vehicle\n> Weak vs Infantry, Aircraft
 		IconPalette: RedAlliance.Icon
-	Valued:
-		Cost: 800
 	Selectable:
 		Bounds: 28,28
-	Tooltip:
-		Name: Cyclops Turret
 	Building:
 		Footprint: x
 		Dimensions: 1,1
 		Adjacent: 10
-	Armor:
-		Type: Concrete
-	Health:
-		HP: 8000
 	Armament@gun:
 		Weapon: AP_basilic
 		Recoil: 150
@@ -806,6 +766,8 @@ t2_predator_deployed:
 	HitShape:
 
 t2_tarantula_deployed:
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_tarantula.stat.unite
 	Inherits@1: ^Defence
 	Inherits@2: ^1x1Shape
 	Inherits@AUTOTARGET: ^AutoTargetAir
@@ -816,28 +778,17 @@ t2_tarantula_deployed:
 		Prerequisites: arbarr
 		Description: Tier 2 anti-air defensive structure\n> Strong vs Aircraft\n> Weak vs Infantry, Vehicles
 		IconPalette: RedAlliance.Icon
-	Valued:
-		Cost: 800
 	Selectable:
 		Bounds: 28,28
-	Tooltip:
-		Name: Centaur Turret
 	Building:
 		Footprint: x
 		Dimensions: 1,1
 		Adjacent: 10
-	Health:
-		HP: 8000
 	Armament@gun:
 		Weapon: AP_hydra
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 150,250,850, 150,-250,850
-	DetectCloaked:
-		Range: 6c0
-		CloakTypes: Cloak
-	Armor:
-		Type: Concrete
 	AttackTurreted:
 		PauseOnCondition: build-incomplete || empdisable || disabled
 	Turreted:
@@ -849,6 +800,8 @@ t2_tarantula_deployed:
 	HitShape:
 
 t3_doomtowerbuild:
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t3_doomtowerbuild.stat.unite
 	Inherits@1: ^Defence
 	Inherits@2: ^2x2Shape
 	Inherits@AUTOTARGET: ^AutoTargetGround
@@ -857,16 +810,10 @@ t3_doomtowerbuild:
 	Buildable:
 		Queue: Defence.redalliance
 		BuildPaletteOrder: 40
-		BuildDurationModifier: 26
 		Prerequisites: arbarr, t2_command_relais
-		Description: Tier 3 defensive structure fitted with a massive tesla coil \ nDeals damage to all enemy ground units within a large radius \ n> Strong vs Infantry, Vehicles \ n> Weak vs Aircraft
 		IconPalette: RedAlliance.Icon
-	Valued:
-		Cost: 1500
 	Selectable:
 		Bounds: 28,28
-	Tooltip:
-		Name: Doom Tower
 	AttackTurreted:
 		PauseOnCondition: build-incomplete || empdisable || disabled
 	Turreted:
@@ -882,8 +829,6 @@ t3_doomtowerbuild:
 		Facing: 164
 		TransformSounds: makebuild.wav
 		NoTransformNotification: CannotDeploy
-	Health:
-		HP: 3000
 	WithIdleOverlay@Lightning:
 		Offset: 0,0,0
 		Sequence: doomtowerelectro
@@ -893,11 +838,6 @@ t3_doomtowerbuild:
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 0,0,1250
-	DetectCloaked:
-		Range: 6c0
-		CloakTypes: Cloak
-	Armor:
-		Type: Concrete
 	-MustBeDestroyed:
 	HitShape:
 

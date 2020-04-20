@@ -37,6 +37,9 @@ eclipse:
 
 t2_comete:
 	Inherits: ^Helicoptershape
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_comete.conclave.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetAll
     Inherits@SoundMove: ^Rotor.aircraft.move
@@ -44,15 +47,7 @@ t2_comete:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 70
 		Prerequisites: tcholotech.comete
-		BuildDurationModifier: 18
-		Description: Light aircraft equipped with laser spray guns\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
 		IconPalette: Conclave.Icon
-	Valued:
-		Cost: 1200
-	Tooltip:
-		Name: Comete
-	Health:
-		HP: 800
 	WithMuzzleOverlay:
 	Armament@PRIMARY:
 		Weapon: Dual.Impuls.Catapult
@@ -80,7 +75,6 @@ t2_comete:
 		CruiseAltitude: 2500
 		InitialFacing: 192
 		TurnSpeed: 35
-		Speed: 180
 		RepulsionSpeed: 40
 		MaximumPitch: 56
 		LandableTerrainTypes: Clear,Rough,Road,Beach
@@ -131,21 +125,16 @@ comete.husk:
 
 t2_zenith:
 	Inherits: ^Helicoptershape
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_zenith.conclave.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
     Inherits@SoundMove: ^Rotor.aircraft.move
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 90
 		Prerequisites: tcholotech.zenith
-		BuildDurationModifier: 18
-		Description: Unarmed transport aircraft\nCan transport all types of units\n> Strong vs None\n> Weak vs Everything
 		IconPalette: Conclave.Icon
-	Valued:
-		Cost: 1000
-	Tooltip:
-		Name: Zenith
-	Health:
-		HP: 2500
 	GrantConditionOnPrerequisite@Alpha:
 		Prerequisites: research.Alpha.Zenith.Conclave
 		Condition: upgrade.Alpha.Zenith.Conclave
@@ -179,7 +168,6 @@ t2_zenith:
 		CruiseAltitude: 2500
 		InitialFacing: 192
 		TurnSpeed: 35
-		Speed: 180
 		RepulsionSpeed: 40
 		MaximumPitch: 110
 		LandableTerrainTypes: Clear,Rough,Road,Beach,tree
@@ -237,6 +225,9 @@ t2_zenith.husk:
 
 t3_quasar:
 	Inherits: ^Helicoptershape
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t3_quasar.conclave.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetAir
     Inherits@SoundMove: ^Rotor.aircraft.move
@@ -244,15 +235,7 @@ t3_quasar:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 120
 		Prerequisites: tcholotech.quasar
-		BuildDurationModifier: 25
-		Description: Anti-spaceship artillery\nCan make tactical jump\n> Strong vs Slow Moving Aircraft\n> Weak vs Infantry, Vehicles, Fast Moving Aircraft
 		IconPalette: Conclave.Icon
-	Valued:
-		Cost: 2000
-	Tooltip:
-		Name: Quasar
-	Health:
-		HP: 1800
 	GrantConditionOnAttack@TargetRailgun:
 		ArmamentNames: primary
 		RevokeOnNewTarget: true

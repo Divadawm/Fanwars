@@ -36,6 +36,9 @@ baneslayerattackaircraft:
 
 t2_nidhogg:
 	Inherits: ^Helicoptershape
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_nidhogg.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^NidhoggAutoTargetAllAssaultMove
 	Inherits@Upgrade: ^Aircraft.Upgrade.baneslayer
@@ -43,14 +46,6 @@ t2_nidhogg:
 	Buildable:
 		Queue: Aircraft.baneslayer
 		BuildPaletteOrder: 40
-		Description: Multipurpose VTOL equipped with 2 automatic cannons and can switch weapons for an EMP gun \n> Strong against vehicles, airplanes \n> Weak against infantry
-		BuildDurationModifier: 10
-	Valued:
-		Cost: 1300
-	Tooltip:
-		Name: Nidhogg
-	Health:
-		HP: 1100
 	Armament@PRIMARY:
 		Name: secondary
 		Weapon: minigun.Nidhogg
@@ -98,7 +93,6 @@ t2_nidhogg:
 		CruiseAltitude: 2500
 		InitialFacing: 192
 		TurnSpeed: 4
-		Speed: 180
 		RepulsionSpeed: 40
 		MaximumPitch: 56
 		LandableTerrainTypes: Clear,Rough,Road,Beach
@@ -122,6 +116,9 @@ t2_nidhogg.Husk:
 
 t3_thor:
 	Inherits: ^Aircraftshape
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t3_thor.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGround
 	Inherits@Upgrade: ^Aircraft.Upgrade.baneslayer
@@ -129,14 +126,6 @@ t3_thor:
 		Queue: Aircraft.baneslayer
 		BuildPaletteOrder: 50
 		Prerequisites: Research Module
-		Description: Experimental aircraft armed with a triple fast-firing ion cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
-		BuildDurationModifier: 20
-	Valued:
-		Cost: 1800
-	Tooltip:
-		Name: Thor
-	Health:
-		HP: 1200
 	Armament:
 		Weapon: Thor.TwinRailgun
 		LocalOffset: -110,420,-80
@@ -156,7 +145,6 @@ t3_thor:
 		CruiseAltitude: 3400
 		InitialFacing: 192
 		TurnSpeed: 3
-		Speed: 220
 		Repulsable: true
 		RepulsionSpeed: 40
 		MaximumPitch: 56
@@ -183,6 +171,9 @@ t3_thor.Husk:
 
 t3_valkyrie:
 	Inherits: ^Helicoptershape
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t3_valkyrie.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGround
 	Inherits@Upgrade: ^Aircraft.Upgrade.baneslayer
@@ -191,19 +182,10 @@ t3_valkyrie:
 		Queue: Aircraft.baneslayer
 		BuildPaletteOrder: 40
 		Prerequisites: Research Module
-		Description: Heavy repair platform capable of healing all mechanical units within its range\n> Strong vs None\n> Weak vs Everything
-		BuildDurationModifier: 15
-	Valued:
-		Cost: 2000
-	Tooltip:
-		Name: Valkyrie
-	Health:
-		HP: 1500
 	Aircraft:
 		CruiseAltitude: 2500
 		InitialFacing: 192
 		TurnSpeed: 4
-		Speed: 140
 		RepulsionSpeed: 40
 		MaximumPitch: 56
 		LandableTerrainTypes: Clear,Rough,Road,Beach

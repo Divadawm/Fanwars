@@ -48,7 +48,7 @@ t1_stalker:
 t1_suricate:
 	Inherits: ^ShapeVehicleLight
 	Inherits@Target: ^AutoTargetAllAssaultMove
-	Inherits@Range: ^Scout.Range.Base
+	Inherits@Range: ^Default.Range.Base
 	Valued:
 		Cost: 500
 	Tooltip:

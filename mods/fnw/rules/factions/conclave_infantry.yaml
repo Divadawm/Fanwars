@@ -1,5 +1,8 @@
 gardian:
 	Inherits@1: ^Infantry
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^gardian.conclave.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.Conclave
 	Inherits@3: ^Infantry.Upgrade.Conclave
@@ -7,15 +10,7 @@ gardian:
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 20
-		Description: Infantry armed with a laser rifle that has a three shots burst\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
-		BuildDurationModifier: 3
 		IconPalette: Conclave.Icon
-	Valued:
-		Cost: 120
-	Tooltip:
-		Name: Ranger
-	Health:
-		HP: 500
 	AttackFrontal:
 	Armament@PRIMARY:
 		Weapon: Gardian.zap.Laser
@@ -34,6 +29,9 @@ gardian:
 
 statis:
 	Inherits@1: ^Infantry
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^statis.conclave.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.Conclave
 	Inherits@3: ^Infantry.Upgrade.Conclave
@@ -42,15 +40,7 @@ statis:
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 30
-		Description: Infantry unit equipped with an impulse lance \n can capture the structure \n> Strong vs vehicles, planes \n> Weak vs infantry
-		BuildDurationModifier: 5
 		IconPalette: Conclave.Icon
-	Valued:
-		Cost: 500
-	Tooltip:
-		Name: Statis
-	Health:
-		HP: 450
 	AttackFrontal:
 	Armament@Primary:
 		Weapon: Statis.Missile
@@ -71,6 +61,9 @@ statis:
 	
 t3_navigator:
 	Inherits@1: ^Infantry
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t3_navigator.conclave.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.Conclave
 	Inherits@3: ^Infantry.Upgrade.Conclave
@@ -79,17 +72,8 @@ t3_navigator:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 100
 		Prerequisites: tcholotech.navigator
-		Description: Infantry unit able to generate an energy ball affecting all enemies in its impact\n> Strong vs Infantry, Vehicles\n> Weak vs Aircraft
-		BuildDurationModifier: 15
 		IconPalette: Conclave.Icon
-	Valued:
-		Cost: 1000
-	Tooltip:
-		Name: Navigator
-	Health:
-		HP: 1000
 	Mobile:
-		Speed: 90
 		SharesCell: false
 		TerrainSpeeds:
 			Clear: 100
@@ -120,6 +104,9 @@ t3_navigator:
     
 t4_consniper:
 	Inherits@1: ^Infantry
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t4_consniper.conclave.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.Conclave
 	Inherits@3: ^Infantry.Upgrade.Conclave
@@ -128,16 +115,8 @@ t4_consniper:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 20
 		Prerequisites: tcsuperweap
-		Description: Infantry unit equip a long range rifle, can designate an orbital strike on enemy buildings and vehicles\n> Strong vs Infantry, Vehicle\n> Weak vs Aircraft
-		BuildDurationModifier: 20
 		IconPalette: Conclave.Icon
 		BuildLimit: 1
-	Valued:
-		Cost: 2000
-	Tooltip:
-		Name: ...
-	Health:
-		HP: 900
 	AttackFrontal:
 	GrantConditionOnAttack@TargetWeapon:
 		ArmamentNames: primary

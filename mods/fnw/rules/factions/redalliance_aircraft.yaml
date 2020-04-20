@@ -51,28 +51,18 @@ t0_transportship:
 t2_wyvern:
 	Inherits: ^Aircraftshape
     # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_wyvern.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetAir
-    # / Doctrines /
-	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
 	Buildable:
 		Queue: Aircraft.redalliance
 		BuildPaletteOrder: 10
-		Description: Extremely fast air superiority fighter armed with powerful revolver cannons\nDoes not appear on the minimap\nCan detect stealthed units\n> Strong vs Aircraft\n> Weak vs Infantry, Vehicles
-		BuildDurationModifier: 10
 		IconPalette: RedAlliance.Icon
-	Valued:
-		Cost: 1100
-	Tooltip:
-		Name: Wyvern
-	Health:
-		HP: 1000
 	Armament:
 		Weapon: AP_Wyvern
 		LocalOffset: 0,-640,0, 0,640,0
 		LocalYaw: -40, 24
-	DetectCloaked:
-		Range: 6c0
 	AttackAircraft:
 		FacingTolerance: 24
 		AttackTurnDelay: 15
@@ -88,8 +78,6 @@ t2_wyvern:
 	Aircraft:
 		CruiseAltitude: 3400
 		InitialFacing: 192
-		TurnSpeed: 8
-		Speed: 220
 		Repulsable: true
 		RepulsionSpeed: 40
 		MaximumPitch: 56
@@ -119,24 +107,16 @@ t2_wyvern.husk:
 t2_chimera:
 	Inherits: ^Helicoptershape
     # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_chimera.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
     Inherits@SoundMove: ^Rotor.aircraft.move
-    # / Doctrines /
-	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
 	Buildable:
 		Queue: Aircraft.redalliance
 		BuildPaletteOrder: 20
 		Prerequisites: artech
-		BuildDurationModifier: 15
-		Description: Heavily armored gunship equipped with 2 high caliber cannons\n> Strong vs Vehicles, Structures\n> Weak vs Infantry, Aircraft
 		IconPalette: RedAlliance.Icon
-	Valued:
-		Cost: 1500
-	Tooltip:
-		Name: Chimera
-	Health:
-		HP: 1200
 	Armament@PRIMARY:
 		Weapon: AP_chimera
 		LocalOffset: 290,-213,-85, 290,213,-85
@@ -151,9 +131,6 @@ t2_chimera:
 		LocalOffset: 0,0,-317
 		BeforeLoadDelay: 10
 		BeforeUnloadDelay: 10
-	Aircraft:
-		TurnSpeed: 4
-		Speed: 150
 	AutoTarget:
 		InitialStance: Defend
 		InitialStanceAI: Defend
@@ -176,24 +153,16 @@ t2_chimera.husk:
 t3_archdemon:
 	Inherits: ^Aircraftshape
     # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t3_archdemon.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
-    # / Doctrines /
-	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
 	Buildable:
 		Queue: Aircraft.redalliance
 		BuildAtProductionType: Aircraft
 		BuildPaletteOrder: 30
 		Prerequisites: t2_command_relais
-		BuildDurationModifier: 30
-		Description: Tactical bomber armed with nuclear bombs\nDoes not appear on the minimap\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
 		IconPalette: RedAlliance.Icon
-	Valued:
-		Cost: 2800
-	Tooltip:
-		Name: Archdemon
-	Health:
-		HP: 500
 	AppearsOnRadar:
 		UseLocation: False
 	Armament@LEFT:
@@ -206,8 +175,6 @@ t3_archdemon:
 	Aircraft:
 		CruiseAltitude: 1850
 		InitialFacing: 192
-		TurnSpeed: 5
-		Speed: 190
 		Repulsable: true
 		RepulsionSpeed: 40
 		MaximumPitch: 56
@@ -245,10 +212,6 @@ t3_archdemon.husk:
 
 t2_command_relais:
 	Inherits: ^Helicoptershape
-    # / Inherit Stat Unite /
-	Inherits@Range.Scout: ^Scout.Range.Base
-    # / Doctrines /
-	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
 	Buildable:
 		Queue: Building.redalliance
 		BuildPaletteOrder: 90
@@ -313,25 +276,17 @@ t2_command_relais.husk:
 t4_cruiser:
 	Inherits: ^Helicoptershape
     # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t4_cruiser.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
     Inherits@SoundMove: ^Rotor.aircraft.move
-    # / Doctrines /
-	Inherits@Doctrines02: ^Aspect.Air.Doctrines.Upgrade.View
 	Buildable:
 		Queue: Defence.redalliance
 		BuildPaletteOrder: 120
 		Prerequisites: t2_command_relais
-		BuildDurationModifier: 60
-		Description: Aerial super-unit with an impressive array of weaponry\nAutomatically damage enemy aircrafts within a certain radius\nCan launch a tactical nuke every 5 minutes\nCan detect stealthed units\n> Strong vs Everything\n> Weak vs None
 		BuildLimit: 1
 		IconPalette: RedAlliance.Icon
-	Valued:
-		Cost: 5000
-	Tooltip:
-		Name: Astro-Cruiser
-	Health:
-		HP: 13000
 	Armament@primary:
 		Turret: borde01
 		Weapon: cannon_cruiser
@@ -350,8 +305,6 @@ t4_cruiser:
 		MuzzleSequence: muzzle
 		MuzzleSplitFacings: 8
 		LocalOffset: 950,200,700, 950,-200,700
-	DetectCloaked:
-		Range: 6c0
 	AttackTurreted:
 		Turrets: borde01, borde02, laser_des
 	Turreted:
@@ -368,8 +321,6 @@ t4_cruiser:
 	Aircraft:
 		CruiseAltitude: 2500
 		InitialFacing: 192
-		TurnSpeed: 2
-		Speed: 60
 		RepulsionSpeed: 40
 		MaximumPitch: 56
 	ProximityExternalCondition@FlakBATTERY:

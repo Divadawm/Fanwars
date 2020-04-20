@@ -8,6 +8,9 @@
 
 soldierop:
 	Inherits@1: ^Infantry
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^soldierop.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.baneslayer
 	Inherits@3: ^Infantry.Upgrade.baneslayer
@@ -19,14 +22,6 @@ soldierop:
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 10
 		Prerequisites: ~opbarr, ~techlevel.infonly
-		Description: Basic infantryman armed with an assault rifle\nCan capture neutral structures\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
-		BuildDurationModifier: 3
-	Valued:
-		Cost: 100
-	Tooltip:
-		Name: Draugr
-	Health:
-		HP: 400
 	AttackFrontal:
 	Armament@PRIMARY:
 		Weapon: M1Carbine
@@ -46,6 +41,9 @@ soldierop:
 
 roquetteorderinf:
 	Inherits@1: ^Infantry
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^roquetteorderinf.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.baneslayer
 	Inherits@3: ^Infantry.Upgrade.baneslayer
@@ -56,15 +54,7 @@ roquetteorderinf:
 		Queue: Infantry.baneslayer
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 20
-		BuildDurationModifier: 5
-		Description: Infantryman armed with a missile-launcher\n> Strong vs Light Vehicles, Aircraft\n> Weak vs Infantry, Heavy Vehicles
 		Prerequisites: ~opbarr, ~techlevel.infonly
-	Valued:
-		Cost: 300
-	Tooltip:
-		Name: Einherjar
-	Health:
-		HP: 500
 	AttackFrontal:
 	GrantConditionOnPrerequisite@research.roquette.baneslayer:
 		Prerequisites: research.roquette.baneslayer
@@ -92,6 +82,9 @@ roquetteorderinf:
 	
 t1_opengineer:
 	Inherits@1: ^Infantry
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t1_opengineer.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.baneslayer
 	Inherits@3: ^Infantry.Upgrade.baneslayer
@@ -101,21 +94,16 @@ t1_opengineer:
 		Queue: Infantry.baneslayer
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 20
-		BuildDurationModifier: 10
-		Description: Unarmed Infantry \n Can Capture Structures\n> Weak vs all
 		Prerequisites: ~opbarr, ~techlevel.infonly
-	Valued:
-		Cost: 500
-	Tooltip:
-		Name: engineer
-	Health:
-		HP: 500
 	WithInfantryBody:
 	-AutoTarget:
 	-AttackMove:
 
 vanir:
 	Inherits@1: ^Helicoptershape
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^vanir.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.baneslayer
 	Inherits@3: ^Infantry.Upgrade.baneslayer
@@ -126,22 +114,13 @@ vanir:
 		Queue: Infantry.baneslayer
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 40
-		BuildDurationModifier: 15
-		Description: Jumpjet infantry armed with grenade launchers\n> Strong vs Infantry, Light Vehicles\n> Weak vs Heavy Vehicles, Aircraft
 		Prerequisites: optech
-	Valued:
-		Cost: 600
-	Tooltip:
-		Name: Vanir
-	Health:
-		HP: 450
 	AttackAircraft:
 		FacingTolerance: 20
 	Aircraft:
 		CruiseAltitude: 2200
 		InitialFacing: 192
 		TurnSpeed: 4
-		Speed: 150
 		RepulsionSpeed: 20
 		MaximumPitch: 45
 	Armament@PRIMARY:
@@ -162,6 +141,9 @@ vanir:
 
 jotun:
 	Inherits@1: ^Infantry
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^jotun.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.baneslayer
 	Inherits@3: ^Infantry.Upgrade.baneslayer
@@ -172,15 +154,7 @@ jotun:
 		Queue: Infantry.baneslayer
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 30
-		BuildDurationModifier: 12
-		Description: Heavy infantry equipped with a plasma gun\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
 		Prerequisites: optech
-	Valued:
-		Cost: 600
-	Tooltip:
-		Name: Jötunn
-	Health:
-		HP: 850
 	AttackFrontal:
 	WithMuzzleOverlay:
 	Armament@PRIMARY:
@@ -201,6 +175,9 @@ jotun:
 
 t1_aesir:
 	Inherits@1: ^Infantry
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t1_aesir.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@2: ^Global.Upgrade.baneslayer
 	Inherits@3: ^Infantry.Upgrade.baneslayer
@@ -211,15 +188,7 @@ t1_aesir:
 		Queue: Infantry.baneslayer
 		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 50
-		BuildDurationModifier: 20
-		Description: Sharpshooter equipped with an experimental sniper rifle firing antimatter rounds\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
 		Prerequisites: Research Module
-	Valued:
-		Cost: 1000
-	Tooltip:
-		Name: Aesir
-	Health:
-		HP: 300
 	AttackFrontal:
 	Armament@PRIMARY:
 		Weapon: Aesir.Mattergun

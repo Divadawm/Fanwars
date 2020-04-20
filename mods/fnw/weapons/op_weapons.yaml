@@ -1,41 +1,20 @@
 Midgard.gun:
 	Inherits@weapons: ^Autocanon.Comon.Animation
+    Inherits@StatBase.weapons: ^Midgard.defense.baneslayer.stat.weapons
 	Report: midgard_gun.aud
-	Warhead@1Dam: SpreadDamage
-		Spread: 128
-		Damage: 220
-		Versus:
-			Infantry: 70
-			LightVehicle: 70
-			ArmorTank: 70
-			Concrete: 30
+
 
 Niflheim.gun:
 	Inherits@default.weapons: ^Autocanon.Comon.Animation
-	ReloadDelay: 10
-	Range: 12c0
-	MinRange: 4c0
+    Inherits@StatBase.weapons: ^Niflheim.defense.baneslayer.stat.weapons
 	Report: mantis_fire.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 150
-		Versus:
-			Infantry: 40
-			LightVehicle: 100
-			ArmorTank: 100
-			Concrete: 100
+
 
 Helgun:
 	Inherits@weapons: ^SonicGun.Baneslayer.Animation
-	ReloadDelay: 75
-	Range: 10c0
+    Inherits@StatBase.weapons: ^Helgun.defense.baneslayer.stat.weapons
 	Report: helgun.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 1200
-		Versus:
-			Infantry: 70
-			LightVehicle: 75
-			ArmorTank: 60
-			Concrete: 35
+
 
 Helgun.Aircraft:
 	Inherits@weapons: ^SonicGun.Baneslayer.Animation
@@ -93,14 +72,8 @@ RagnarokCanonPlasma:
 M1Carbine:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
     Inherits@default.weapons: ^Minigun.Comon.Animation
-    Inherits@StatBase.weapons: ^Minigun.Baneslayer.Stat
-	Inherits@Range: ^Range.Infantry.Base
-	ValidTargets: Ground, Water
-	ReloadDelay: 25
-    Buirst: 3
+    Inherits@StatBase.weapons: ^Minigun.infantry.Baneslayer.Stat.weapons
 	Report: riflegun_01.aud, riflegun_02.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 60
 
 M1Carbine.fafnir:
 	Inherits@default.weapons: M1Carbine
@@ -112,16 +85,10 @@ M1Carbine.fafnir:
 Einherjar.missile:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
     Inherits@default.weapons: ^Missile.Comon.Animation
-    Inherits@StatBase.weapons: ^Missile.Comon.Stat
-	Inherits@Range: ^Range.Infantry.Base
-    ValidTargets: Ground, Air, Water
-	ReloadDelay: 75
+    Inherits@StatBase.weapons: ^Einherjar.missile.stat.weapons
 	Report: rocketweaponfire01.aud, rocketweaponfire02.aud, rocketweaponfire03.aud
 	Projectile: Missile
 		Speed: 480
-	Warhead@1Dam: SpreadDamage
-        ValidTargets: Ground, Air, Water
-		Damage: 300
 
 Einherjar.missile.upgrade:
 	Inherits@default.weapons: ^Missile.Comon.Animation
@@ -148,14 +115,8 @@ Einherjar.missile.upgrade:
 plasmamode2.jotuun:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@Animation.weapons: ^Plasma.Baneslayer.Animation
-	Inherits@StatBase.weapons: ^Plasmagun.Baneslayer.Stat
-	Inherits@Range: ^Range.Infantry.Base
-	ReloadDelay: 65
-	Burst: 2
-	BurstDelay: 5
+    Inherits@StatBase.weapons: ^Jutuun.plasma.stat.weapons
 	Report: jotuungun.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 120
         
 plasma.jotuun.fafnir:
 	Inherits@default.weapons: plasmamode2.jotuun
@@ -166,59 +127,21 @@ plasma.jotuun.fafnir:
 
 grenade.vanir:
 	Inherits@default.weapons: ^SonicGrenade.Baneslayer.Animation
-	Inherits@Range: ^Range.Infantry.Base
-    ValidTargets: Ground, Water
-	ReloadDelay: 25
+    Inherits@StatBase.weapons: ^vanir.grenade.stat.weapons
 	Report: vanir_mortar.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 120
-		Versus:
-			Infantry: 100
-			LightVehicle: 85
-			ArmorTank: 60
-			Concrete: 30
 
 Aesir.Mattergun:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@default.weapons: ^MatterMin.Baneslayer.Animation
-	Inherits@StatBase.weapons: ^Matter.Baneslayer.Stat
-	Inherits@Range: ^Range.InfantrySniper.Base
-	ReloadDelay: 120
+	Inherits@StatBase.weapons: ^Aesir.Mattergun.stat.weapons
 	Report: aesirfire.aud
-	Warhead@1Dam: SpreadDamage
-        Spread: 786
-		Damage: 750
-	Warhead@MatterDam2: SpreadDamage
-        Delay: 10
-		Damage: 150
-	Warhead@MatterDam3: SpreadDamage
-        Delay: 20
-		Damage: 100
-	Warhead@MatterDam4: SpreadDamage
-        Delay: 30
-		Damage: 60
-	Warhead@MatterDam5: SpreadDamage
-        Delay: 40
-		Damage: 30
-	Warhead@MatterDam6: SpreadDamage
-        Delay: 50
-		Damage: 20
-	Warhead@MatterDam6: SpreadDamage
-        Delay: 60
-		Damage: 20
 
 Minigun.matrice:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
     Inherits@default.weapons: ^Minigunorder.Baneslayer.Animation
-    Inherits@StatBase.weapons: ^Minigun.Baneslayer.Stat
-	Inherits@Range: ^Range.Vehicle.Base
-	ReloadDelay: 55
-	Burst: 4
-	BurstDelays: 5
+    Inherits@StatBase.weapons: ^Minigun.heidrun.stat.weapons
 	Report: rigleheavygun_01.aud, rigleheavygun_02.aud, rigleheavygun_03.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 60
-			
+
 Supergun.matrice:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
     Inherits@default.weapons: ^Minigunorder.Baneslayer.Animation
@@ -226,35 +149,19 @@ Supergun.matrice:
 	Inherits@Range: ^Range.Vehicle.Base
 	FirstBurstTargetOffset: -1400,-1400,0
 	FollowingBurstTargetOffset: 400,400,0
-	ReloadDelay: 55
-	Burst: 8
-	BurstDelays: 4
 	Report: heidrungun.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 55
 
 Missile.matrice:
 	Inherits@default.weapons: ^Missile.Comon.Animation
 	Inherits@Range: ^Range.Vehicle.Base
-    ValidTargets: Air
-	ReloadDelay: 100
-	Burst: 2
 	Report: misl1.aud
 	Projectile: Missile
 		Speed: 380
-	Warhead@1Dam: SpreadDamage
-        ValidTargets: Air
-		Damage: 220
-		Versus:
-			Infantry: 40
-			LightVehicle: 100
-			ArmorTank: 80
-			Concrete: 55
 
 Garm.Railgun:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
     Inherits@default.weapons: ^ionCanon.Baneslayer.Animation
-    Inherits@StatBase.weapons: ^IonCanon.Baneslayer.Stat
+    Inherits@StatBase.weapons: ^Garm.ioncanon.stat.weapons
 	Inherits@Range: ^Range.Vehicle.Base
 	ReloadDelay: 85
 	Report: garm_gun01.aud, garm_gun02.aud, garm_gun03.aud
@@ -264,50 +171,18 @@ Garm.Railgun:
 			
 doom.deploy.gun:
 	Inherits@default.weapons: ^PlamsaBlast.Baneslayer.Animation
-	Inherits@Range: ^Range.VehicleAA.Base
-	ReloadDelay: 75
+    Inherits@StatBase.weapons: ^Troll.PlasmaCanon.stat.weapons
 	Report: trollgun01.aud, trollgun02.aud, trollgun03.aud
-	Warhead@1Dam: SpreadDamage
-		Spread: 0c780
-		Damage: 1250
-		DeathType: 4
-		Versus:
-			Infantry: 40
-			LightVehicle: 55
-			ArmorTank: 85
-			Concrete: 120
 
 Warg_AA:
 	Inherits@default.weapons: ^InstantHit.Comon.Animation
-	Inherits@Range: ^Range.VehicleAA.Base
-    ValidTargets: Air
-	ReloadDelay: 30
-	Range: 7c512
-	BurstDelays: 6
-	Burst: 2
+    Inherits@StatBase.weapons: ^Warg.AutogunAA.stat.weapons
 	Report: Flak_canonfire01.aud, Flak_canonfire02.aud, Flak_canonfire03.aud
-	Warhead@1Dam: SpreadDamage
-        ValidTargets: Air
-		Damage: 120
-		Versus:
-			Infantry: 80
-			LightVehicle: 100
-			ArmorTank: 80
-			Concrete: 80
 
 Sharest.Railgun:
 	Inherits@default.weapons: ^SonicGun.Baneslayer.Animation
-	Inherits@Range: ^Range.VehicleAA.Base
-	ReloadDelay: 75
-	Range: 8c512
+    Inherits@StatBase.weapons: ^Loki.SonicGun.stat.weapons
 	Report: lokifire01.aud, lokifire02.aud, lokifire03.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 750
-		Versus:
-			Infantry: 10
-			LightVehicle: 110
-			ArmorTank: 100
-			Concrete: 150
     Warhead@Cluster01: FireCluster
         Delay: 8
         Weapon: Sharest.Railgun.Cluster
@@ -329,10 +204,8 @@ Sharest.Railgun:
             
 Sharest.Railgun.Cluster:
 	Inherits@default.weapons: ^Cluster.Loki.animation
-	Inherits@Stat: ^Ballistique.Missile.Baneslayer.Stat
-	Warhead@1Dam: SpreadDamage
-		Damage: 50
-            
+    Inherits@StatBase.weapons: ^Loki.SonicCluster.stat.weapons
+
 Sharest.Railgun.AA:
 	Inherits@default.weapons: ^SonicGun.Baneslayer.Animation
 	Inherits@Range: ^Range.VehicleAA.Base
@@ -351,34 +224,16 @@ Sharest.Railgun.AA:
 
 120mm.lindwyrm:
 	Inherits@default.weapons: ^PlasmaArty.Baneslayer.Animation
-	Inherits@Range: ^Range.ArtyHigh.Base
-	ReloadDelay: 65
-	MinRange: 4c0
+    Inherits@StatBase.weapons: ^Lindwyrm.plasmaArty.stat.weapons
 	Report: lindwyrmfire01.aud, lindwyrmfire02.aud, lindwyrmfire03.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 750
-		Versus:
-			Infantry: 50
-			LightVehicle: 100
-			ArmorTank: 100
-			Concrete: 100
-			
+
 120mm.lindwyrm.secondfire:
 	Inherits@default.weapons: ^PlasmaArty.Baneslayer.Animation
-	Inherits@Range: ^Range.ArtyHigh.Base
-	ReloadDelay: 15
-	MinRange: 4c0
+    Inherits@StatBase.weapons: ^Lindwyrm.plasmaArty.mode2.stat.weapons
 	Report: lindwyrmfire01.aud, lindwyrmfire02.aud, lindwyrmfire03.aud
 	Projectile: Bullet
 		Image: 120mmplasma
 		Inaccuracy: 125
-	Warhead@1Dam: SpreadDamage
-		Damage: 180
-		Versus:
-			Infantry: 85
-			LightVehicle: 80
-			ArmorTank: 80
-			Concrete: 110
 	Warhead@3EffGround: CreateEffect
 		Explosions: plasma_pulseminex2
 		ExplosionPalette: powereffect
@@ -386,95 +241,35 @@ Sharest.Railgun.AA:
 Heimdall.Missile:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@default.weapons: ^BallistiqueMissile.Baneslayer.Animation
-	Inherits@StatBase.weapons: ^Ballistique.Missile.Baneslayer.Stat
-	Inherits@Range: ^Range.ArtyVeryHigh.Base
+	Inherits@StatBase.weapons: ^Heimdall.Rocket.stat.weapons
 	FirstBurstTargetOffset: -500,-650,0
 	FollowingBurstTargetOffset: 100,200,0
-	ReloadDelay: 180
-	Burst: 3
-	BurstDelays: 20
-	Range: 18c0
-	MinRange: 4c0
 	Report: hemdail_rocket.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 850
-		
+
 OdinWeapon.target:
 	Inherits@default.weapons: ^null.Comon.Animation
-	Inherits@Range: ^Range.Vehicle.Base
+	Inherits@Range: ^Odin.ChargingVortex.baneslayer.stat.weapons
 	Burst: 2
 	BurstDelay: 25
 	ReloadDelay: 120
     Report: charginmatter01.aud, charginmatter02.aud
-	Range: 9c512
-	MinRange: 2c0
 
 Dark.Matter:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@default.weapons: ^Mattermax.Weapons.Animation
-	Inherits@StatBase.weapons: ^Matter.Baneslayer.Stat
-	Inherits@Range: ^Range.ArtyHigh.Base
-	ReloadDelay: 120
-	Range: 9c512
-	Burst: 2
-	BurstDelay: 25
+	Inherits@StatBase.weapons: ^Odin.VortexCanon.baneslayer.stat.weapons
 	Report: matterlargefire01.aud, matterlargefire02.aud
-	Warhead@1Dam: SpreadDamage
-        Spread: 1c786
-		Damage: 1300
-	Warhead@MatterDam2: SpreadDamage
-        Delay: 10
-        Spread: 1c786
-		Damage: 200
-	Warhead@MatterDam3: SpreadDamage
-        Delay: 20
-        Spread: 1c786
-		Damage: 100
-	Warhead@MatterDam4: SpreadDamage
-        Delay: 30
-        Spread: 1c786
-		Damage: 70
-	Warhead@MatterDam5: SpreadDamage
-        Delay: 40
-        Spread: 1c786
-		Damage: 60
-	Warhead@MatterDam6: SpreadDamage
-        Delay: 50
-        Spread: 1c786
-		Damage: 40
-	Warhead@MatterDam7: SpreadDamage
-        Delay: 60
-        Spread: 1c786
-		Damage: 25
-			
+
 Dark.Matter02:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Inherits@default.weapons: ^Mattermax.Weapons.Animation
-	Inherits@StatBase.weapons: ^Matter.Baneslayer.Stat
-	Inherits@Range: ^Range.ArtyHigh.Base
-	ReloadDelay: 120
-	Range: 9c512
-	Burst: 2
-	BurstDelay: 25
-	Report: matterlargefire01.aud, matterlargefire02.aud
+	Inherits@conditionweapons: Dark.Matter
 	Projectile: Bullet
 		Image: matter_bullet02
 		Palette: powereffect
-	Warhead@1Dam: SpreadDamage
-		Damage: 1300
 
 Ion.Matter:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
     Inherits@default.weapons: ^ionCanon.Baneslayer.Animation
-    Inherits@StatBase.weapons: ^IonCanon.Baneslayer.Stat
-	Inherits@Range: ^Range.Vehicle.Base
-	Burst: 4
-	Range: 8c512
-	BurstDelay: 6
-	ReloadDelay: 45
-	Report: garm_gun01.aud, garm_gun02.aud, garm_gun03.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 800
+    Inherits@StatBase.weapons: ^Odin.IonCanon.Baneslayer.stat.weapons
 
 Iem.Target:
 	Inherits@default.weapons: ^Laser.Target.Animation
@@ -501,20 +296,10 @@ Nidhogg.StunCannon:
 minigun.Nidhogg:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
     Inherits@default.weapons: ^Minigun.Comon.Animation
-    Inherits@StatBase.weapons: ^Minigun.Baneslayer.Stat
-    ValidTargets: Ground, Air, Water
-	Inherits@Range: ^Range.Vehicle.Base
+    Inherits@StatBase.weapons: ^Nidhogg.minigun.stat.weapons
 	FirstBurstTargetOffset: 0,-950,0
 	FollowingBurstTargetOffset: 0,250,0
-	ReloadDelay: 70
-	Burst: 10
-	BurstDelays: 3
-	ValidTargets: Ground, Air
     Report: rigleheavygun_01.aud, rigleheavygun_02.aud, rigleheavygun_03.aud
-	Warhead@1Dam: SpreadDamage
-        ValidTargets: Ground, Air, Water
-		Spread: 0c512
-		Damage: 75
 	Warhead@3EffGround: CreateEffect
 		Explosions: autogun_expl
 		ExplosionPalette: effectalpha75
@@ -523,29 +308,13 @@ minigun.Nidhogg:
 Valkyrie.StunCannon:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
     Inherits@default.weapons: ^ionCanon.Baneslayer.Animation
-    Inherits@StatBase.weapons: ^IonCanon.Baneslayer.Stat
-	Inherits@Range: ^Range.Vehicle.Base
-	ReloadDelay: 120
+    Inherits@StatBase.weapons: ^t3_valkyrie.Ionturret.stat.weapons
 	Report: garm_gun01.aud, garm_gun02.aud, garm_gun03.aud
-	Warhead@1Dam: SpreadDamage
-		Spread: 0c150
-		Damage: 500
 
 Thor.TwinRailgun:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
     Inherits@default.weapons: ^ionCanon.Baneslayer.Animation
-    Inherits@StatBase.weapons: ^IonCanon.Baneslayer.Stat
-	Inherits@Range: ^Range.Aircraft.Base
-	Burst: 7
-	BurstDelays: 1
+    Inherits@StatBase.weapons: ^Thor.IonTracer.stat.weapons
 	FirstBurstTargetOffset: 0,0,0
 	FollowingBurstTargetOffset: 780,0,0
-	ReloadDelay: 25
 	Report: thordulutgun.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 250
-		Versus:
-			Infantry: 100
-			LightVehicle: 80
-			ArmorTank: 80
-			Concrete: 75

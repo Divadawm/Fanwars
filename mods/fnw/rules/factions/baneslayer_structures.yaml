@@ -653,36 +653,26 @@ opheli:
 
 t1_midgard:
 	Inherits@1: ^Defence
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t1_midgard.stat.unite
+    # / Inherit Option Unite /
 	Inherits@2: ^1x1Shape
 	Inherits@AUTOTARGET: ^AutoTargetAll
 	Buildable:
 		Queue: Defence.baneslayer
 		BuildPaletteOrder: 10
-		BuildDurationModifier: 10
 		Prerequisites: opbarr
-		Description: Tier 1 defensive structure armed with autocannons\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
-	Valued:
-		Cost: 800
 	Selectable:
 		Bounds: 28,28
-	Tooltip:
-		Name: Midgard
 	Building:
 		Footprint: x
 		Dimensions: 1,1
 		Adjacent: 10
-	Health:
-		HP: 8000
 	Armament@gun:
 		Weapon: Warg_AA
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 15,650,850
-	DetectCloaked:
-		Range: 2c0
-		CloakTypes: Cloak
-	Armor:
-		Type: Heavy
 	AttackTurreted:
 		PauseOnCondition: build-incomplete || empdisable || disabled
 	AutoTarget:
@@ -697,36 +687,26 @@ t1_midgard:
 
 t2_niflheim:
 	Inherits@1: ^Defence
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_niflheim.stat.unite
+    # / Inherit Option Unite /
 	Inherits@2: ^1x1Shape
 	Inherits@AUTOTARGET: ^AutoTargetGround
 	Buildable:
 		Queue: Defence.baneslayer
 		BuildPaletteOrder: 20
-		BuildDurationModifier: 10
 		Prerequisites: opbarr
-		Description: Tier 2 defensive structure fitted with an autocannon\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
-	Valued:
-		Cost: 1200
 	Selectable:
 		Bounds: 28,28
-	Tooltip:
-		Name: Niflheim
 	Building:
 		Footprint: x
 		Dimensions: 1,1
 		Adjacent: 10
-	Health:
-		HP: 8000
 	Armament@gun:
 		Weapon: Niflheim.gun
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 150,0,200
-	DetectCloaked:
-		Range: 2c0
-		CloakTypes: Cloak
-	Armor:
-		Type: Heavy
 	AutoTarget:
 	AttackTurreted:
 		PauseOnCondition: build-incomplete || empdisable || disabled
@@ -741,36 +721,26 @@ t2_niflheim:
 
 t3_hel:
 	Inherits@1: ^Defence
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t3_hel.stat.unite
+    # / Inherit Option Unite /
 	Inherits@2: ^1x1Shape
 	Inherits@AUTOTARGET: ^AutoTargetGround
 	Buildable:
 		Queue: Defence.baneslayer
 		BuildPaletteOrder: 30
-		BuildDurationModifier: 15
 		Prerequisites: Research Module
-		Description: Tier 3 defensive structure capable of launching hypersonic ATGM\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
-	Valued:
-		Cost: 1400
 	Selectable:
 		Bounds: 28,28
-	Tooltip:
-		Name: Hel Turret
 	Building:
 		Footprint: x
 		Dimensions: 1,1
 		Adjacent: 10
-	Health:
-		HP: 9000
 	Armament@gun:
 		Weapon: Sharest.Railgun
 		Recoil: 150
 		RecoilRecovery: 15
 		LocalOffset: 15,650,850
-	DetectCloaked:
-		Range: 2c0
-		CloakTypes: Cloak
-	Armor:
-		Type: Heavy
 	AttackTurreted:
 		PauseOnCondition: build-incomplete || empdisable || disabled
 	AutoTarget:
@@ -806,7 +776,7 @@ t4_executioner:
 		HP: 9000
 	Armament@gun01:
 		Weapon: RagnarokCanonPlasma.target
-		LocalOffset: 2450,0,1350
+		LocalOffset: 3450,0,2650
 		MuzzleSequence: muzzle
 		MuzzlePalette: greeneffect
 	Armament@gun02:
@@ -814,13 +784,12 @@ t4_executioner:
 		Weapon: RagnarokCanonPlasma
 		Recoil: 150
 		RecoilRecovery: 15
-		LocalOffset: 2450,0,1350
+		LocalOffset: 3450,0,2650
 	WithMuzzleOverlay:
 	Armor:
 		Type: Heavy
 	AttackTurreted:
 		RequiresCondition: !build-incomplete && !empdisable && !disabled
-        AttackRequiresEnteringCell: true
 	Turreted:
 		TurnSpeed: 3
 		InitialFacing: 224

@@ -379,90 +379,9 @@
 #////////////////////////////////////////// Range Stat Base //////////////////////////////////////////
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-^Building.Range.Base:
-	RevealsShroud:
-		Range: 8c0
-		Type: GroundPosition
-		
-^Defense.Range.Base:
-	RevealsShroud:
-		Range: 10c0
-		Type: GroundPosition
-		
-^Infantry.Range.Base:
-	RevealsShroud:
-		Range: 7c0
-		Type: GroundPosition
-		
-^Scout.Range.Base:
-	RevealsShroud:
-		Range: 12c0
-		Type: GroundPosition
-		
-^Vehicle.Range.Base:
-	RevealsShroud:
-		Range: 10c0
-		Type: GroundPosition
-		
-^Aircraft.Range.Base:
-	RevealsShroud:
-		Range: 14c0
-		Type: GroundPosition
-		RevealGeneratedShroud: False
-		
-^4cells.Range.base:
-	RevealsShroud:
-		Range: 4c0
-		Type: GroundPosition
-		
-^5cells.Range.base:
-	RevealsShroud:
-		Range: 5c0
-		Type: GroundPosition
-		
-^6cells.Range.base:
+^Default.Range.Base:
 	RevealsShroud:
 		Range: 6c0
-		Type: GroundPosition
-		
-^7cells.Range.base:
-	RevealsShroud:
-		Range: 7c0
-		Type: GroundPosition
-		
-^8cells.Range.base:
-	RevealsShroud:
-		Range: 8c0
-		Type: GroundPosition
-		
-^9cells.Range.base:
-	RevealsShroud:
-		Range: 9c0
-		Type: GroundPosition
-		
-^10cells.Range.base:
-	RevealsShroud:
-		Range: 10c0
-		Type: GroundPosition
-		
-^11cells.Range.base:
-	RevealsShroud:
-		Range: 11c0
-		Type: GroundPosition
-		
-^12cells.Range.base:
-	RevealsShroud:
-		Range: 12c0
-		Type: GroundPosition
-		
-^13cells.Range.base:
-	RevealsShroud:
-		Range: 13c0
-		Type: GroundPosition
-		
-^14cells.Range.base:
-	RevealsShroud:
-		Range: 14c0
 		Type: GroundPosition
 
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -707,7 +626,7 @@ gibs.impact:
 	Inherits@4: ^ConditioneffetGeneralsUnit
 	Inherits@5: ^ConditionGeneralInfantryBase
 	Inherits@DetectCloaked: ^Infantry.DetectCloaked
-	Inherits@Range: ^Infantry.Range.Base
+	Inherits@Range: ^Default.Range.Base
 	Health:
 		Radius: 96
 	Armor:
@@ -863,7 +782,7 @@ gibs.impact:
 	Inherits@3: ^VehicleShape
 	Inherits@4: ^ConditioneffetGeneralsUnit
 	Inherits@5: ^ConditionGeneralVehicleBase
-	Inherits@Range: ^Vehicle.Range.Base
+	Inherits@Range: ^Default.Range.Base
 	Inherits@Revision: ^Globalrevision
 	UpdatesPlayerStatistics:
 	Selectable:
@@ -1306,7 +1225,7 @@ gibs.impact:
 	Inherits@1: ^ExistsInWorld
 	Inherits@2: ^BuilableSpriteActor
 	Inherits@stat: ^ConditionGeneralBuilding
-	Inherits@Range: ^Building.Range.Base
+	Inherits@Range: ^Default.Range.Base
 	Inherits@Revision: ^Globalrevision
 	SelectionDecorations:
 	WithSpriteControlGroupDecoration:
@@ -1551,7 +1470,7 @@ gibs.impact:
 ^Defence:
 	Inherits@01: ^Building
 	Inherits@02: ^DisablePowerDown
-	Inherits@Range: ^Defense.Range.Base
+	Inherits@Range: ^Default.Range.Base
 	Inherits@DetectCloaked: ^Defence.DetectCloaked
 	RenderRangeCircle:
 	-GivesBuildableArea:
@@ -1717,7 +1636,7 @@ gibs.impact:
 	Inherits@1: ^ExistsInWorld
 	Inherits@4: ^BuilableSpriteActor
 	Inherits@4: ^ConditionGeneralAircraftBase
-	Inherits@Range: ^Aircraft.Range.Base
+	Inherits@Range: ^Default.Range.Base
 	Huntable:
 	DrawLineToTarget:
 	UpdatesPlayerStatistics:

@@ -1,0 +1,859 @@
+^exemple.Unité:
+    # La description de l'unité (les \n pour passer a la prochaine ligne)
+    # BuildDurationModifier = le temps en seconde pour produire l'unité
+	Buildable:
+		Description: Powerful and resistant main battle tank with a railgun cannon \ncan be equipped with a light anti-aircraft automatic cannon with upgrade\n> Strong against vehicles, Structures \n> Weak against infantry, Airplanes
+		BuildDurationModifier: 10
+    # Le prix de l'unité
+	Valued:
+		Cost: 1200
+    # L'armure de l'unité, definie actuellement sur 4 aspect : "Infantry" , "LightVehicle" , "ArmorTank" , "Concrete"
+	Armor:
+		Type: ArmorTank
+    # Les point de vie de l'unité
+	Health:
+		HP: 5500
+    # la rapidité de l'unité
+	Mobile:
+		Speed: 80
+    # La portée visuelle de l'unité
+	RevealsShroud:
+		Range: 9c0
+    # Pour detecter les unites camoufler
+	DetectCloaked:
+		Range: 5c0
+    # affiche le cercle de detection en fonction du Range de "DetectCloaked"
+	RenderDetectionCircle:
+    
+^exemple.Weapon:
+    # Portée de l'armme
+	Range: 8c0
+    # Temps de Rechargement de l'arme
+    ReloadDelay: 45
+    # Nombre de tir que l'unité effectue avant de Recharger
+    Burst: 2
+    # Delais entre chaque tir avant rechargement (si absent= 0 par default)
+    BurstDelay: 1
+    # Determine si l'arme peut tirer au sol ou dans les air (l'absence de ValidTarget donne auto Ground/Water) les 3 aspect = "Ground" , "Water" , "Air" (possible pour "infantry")
+    ValidTargets: Ground
+    # Les degat de l'arme avec "Damage" pour les point de Degat et "spread" pour la zone de degat
+    #Info sur le "Spread": on peut soit determiner des degat par cell et "micro-cell" (ex: 1c512) soit 1 cell + la moitié d'un cell (ça reste encore floue de mon coté)
+	Warhead@1Dam: SpreadDamage
+		Damage: 800
+		Spread: 1c128
+        # le Versus determine le % de degat de l'arme en fonction de l'armure de la cible (ex: 800 degat de base sur une armure "ArmorTank" à 50%, ça fait 400 degat sur la cible )
+		Versus:
+			Infantry: 20
+			LightVehicle: 100
+			ArmorTank: 50
+			Concrete: 60
+        # Determine si ces degat sont actif sur le type de cible (infantry, vehicle ou ground=les deux voir air) car on peut crée different "Warhead" selon la cible )
+        ValidTargets: Ground
+
+# =======================================================================================================================
+# ============================================== | Infantry Order of the Baneslayer |  ==============================================
+# =======================================================================================================================   
+# |------------------------------| - DRAUGR - |------------------------------|
+#--Stat Unite--
+^soldierop.stat.unite:
+	Tooltip:
+		Name: Draugr
+	Buildable:
+		Description: Basic infantryman armed with an assault rifle\nCan capture neutral structures\n> Strong vs Infantry\n> Weak vs Vehicles, Aircraft
+		BuildDurationModifier: 3
+	Valued:
+		Cost: 100
+	Armor:
+		Type: Infantry
+	Health:
+		HP: 400
+	Mobile:
+		Speed: 80
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+^Minigun.infantry.Baneslayer.Stat.weapons:
+    Range: 7c0
+	ReloadDelay: 25
+    Buirst: 3
+	Warhead@1Dam: SpreadDamage
+		Damage: 60
+
+# |------------------------------| - EINHERJAR - |------------------------------|
+#--Stat Unite--
+^roquetteorderinf.stat.unite:
+	Tooltip:
+		Name: Einherjar
+	Buildable:
+		Description: Infantryman armed with a missile-launcher\n> Strong vs Light Vehicles, Aircraft\n> Weak vs Infantry, Heavy Vehicles
+		BuildDurationModifier: 5
+	Valued:
+		Cost: 300
+	Armor:
+		Type: Infantry
+	Health:
+		HP: 500
+	Mobile:
+		Speed: 80
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+^Einherjar.missile.stat.weapons:
+    ValidTargets: Ground, Air, Water
+    Range: 7c0
+	ReloadDelay: 75
+    Warhead@1Dam: SpreadDamage
+		Damage: 300
+		Versus:
+			Infantry: 20
+			LightVehicle: 100
+			ArmorTank: 90
+			Concrete: 45
+        ValidTargets: Ground, Air, Water
+
+# |------------------------------| - ENGINEER - |------------------------------|
+#--Stat Unite--
+^t1_opengineer.stat.unite:
+	Tooltip:
+		Name: engineer
+	Buildable:
+		Description: Unarmed Infantry \n Can Capture Structures\n> Weak vs all
+		BuildDurationModifier: 10
+	Valued:
+		Cost: 500
+	Armor:
+		Type: Infantry
+	Health:
+		HP: 500
+	Mobile:
+		Speed: 80
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+
+# |------------------------------| - VANIR - |------------------------------|
+#--Stat Unite--
+^vanir.stat.unite:
+	Tooltip:
+		Name: Vanir
+	Buildable:
+		Description: Jumpjet infantry armed with grenade launchers\n> Strong vs Infantry, Light Vehicles\n> Weak vs Heavy Vehicles, Aircraft
+		BuildDurationModifier: 15
+	Valued:
+		Cost: 600
+	Armor:
+		Type: Infantry
+	Health:
+		HP: 450
+	Aircraft:
+		Speed: 150
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+^vanir.grenade.stat.weapons:
+    ValidTargets: Ground, Water
+    Range: 8c0
+	ReloadDelay: 25
+	Warhead@1Dam: SpreadDamage
+		Damage: 120
+		Versus:
+			Infantry: 100
+			LightVehicle: 85
+			ArmorTank: 60
+			Concrete: 30
+
+# |------------------------------| - JOTUNN - |------------------------------|
+#--Stat Unite--
+^jotun.stat.unite:
+	Tooltip:
+		Name: Jötunn
+	Buildable:
+		Description: Heavy infantry equipped with a plasma gun\n> Strong vs Infantry, Structures\n> Weak vs Vehicles, Aircraft
+		BuildDurationModifier: 12
+	Valued:
+		Cost: 600
+	Armor:
+		Type: Infantry
+	Health:
+		HP: 850
+	Mobile:
+		Speed: 80
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+^Jutuun.plasma.stat.weapons:
+	Range: 7c0
+    Burst: 2
+	BurstDelay: 5
+	ReloadDelay: 65
+	Warhead@1Dam: SpreadDamage
+		Damage: 120
+		Versus:
+			Infantry: 100
+			LightVehicle: 70
+			ArmorTank: 60
+			Concrete: 30
+
+# |------------------------------| - AESIR - |------------------------------|
+#--Stat Unite--
+^t1_aesir.stat.unite:
+	Tooltip:
+		Name: Aesir
+	Buildable:
+		Description: Sharpshooter equipped with an experimental sniper rifle firing antimatter rounds\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 20
+	Valued:
+		Cost: 1000
+	Armor:
+		Type: Infantry
+	Health:
+		HP: 300
+	Mobile:
+		Speed: 80
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+^Aesir.Mattergun.stat.weapons:
+	Range: 12c0
+	ReloadDelay: 120
+	Warhead@1Dam: SpreadDamage
+        Spread: 786
+		Damage: 750
+		Versus:
+			Infantry: 50
+			LightVehicle: 90
+			ArmorTank: 110
+			Concrete: 110
+	Warhead@MatterDam2: SpreadDamage
+        Delay: 10
+		Damage: 150
+	Warhead@MatterDam3: SpreadDamage
+        Delay: 20
+		Damage: 100
+	Warhead@MatterDam4: SpreadDamage
+        Delay: 30
+		Damage: 60
+	Warhead@MatterDam5: SpreadDamage
+        Delay: 40
+		Damage: 30
+	Warhead@MatterDam6: SpreadDamage
+        Delay: 50
+		Damage: 20
+	Warhead@MatterDam6: SpreadDamage
+        Delay: 60
+		Damage: 20
+
+# =======================================================================================================================
+# ============================================== | Vehicle Order of the Baneslayer |  ==============================================
+# =======================================================================================================================   
+# |------------------------------| - HEIDRUN - |------------------------------|
+#--Stat Unite--
+^t1_heidrun.stat.unite:
+	Tooltip:
+		Name: Heidrun
+	Buildable:
+		Description: Light recon units equiped a machine gun and an AA missile launcher\n can detect stealth units\n can be equipped with a secondary turret depending on the loaded infantry\n> strong against infantry and airplanes\n> Weak against vehicles.
+		BuildDurationModifier: 8
+	Valued:
+		Cost: 500
+	Armor:
+		Type: LightVehicle
+	Health:
+		HP: 2400
+	Mobile:
+		Speed: 120
+	RevealsShroud:
+		Range: 7c0
+	DetectCloaked:
+		Range: 5c0
+        
+#--Weapons01--
+^Minigun.heidrun.stat.weapons:
+	Range 8c0
+	Burst: 4
+	BurstDelays: 5
+	ReloadDelay: 55
+	Warhead@1Dam: SpreadDamage
+		Damage: 60
+		Versus:
+			Infantry: 100
+			LightVehicle: 45
+			ArmorTank: 20
+			Concrete: 20
+            
+#--Weapons02--
+^MissileAA.heidrun.stat.weapons:
+    Range: 8c0
+	Burst: 2
+	ReloadDelay: 100
+	Warhead@1Dam: SpreadDamage
+		Damage: 220
+		Versus:
+			Infantry: 40
+			LightVehicle: 100
+			ArmorTank: 80
+			Concrete: 55
+        ValidTargets: Air
+            
+#--Weapons03 |Draurg garrisoned|--
+^Minigun.gar.heidrun.stat.weapons:
+	Range 8c0
+	Burst: 8
+	BurstDelays: 4
+	ReloadDelay: 55
+	Warhead@1Dam: SpreadDamage
+		Damage: 55
+		Versus:
+			Infantry: 100
+			LightVehicle: 45
+			ArmorTank: 20
+			Concrete: 20
+
+
+# |------------------------------| - GARM TANK - |------------------------------|
+#--Stat Unite--
+^t2_garm.stat.unite:
+	Tooltip:
+		Name: Garm
+	Buildable:
+		Description: Main anti-gravity tank with medium armor protection equipped with a powerful ion cannon \n> Strong against infantry, vehicles, structures \n> Weak against planes
+		BuildDurationModifier: 16
+	Valued:
+		Cost: 1000
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 4800
+	Mobile:
+		Speed: 98
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+^Garm.ioncanon.stat.weapons:
+	Range: 9c0
+	ReloadDelay: 85
+	Warhead@1Dam: SpreadDamage
+		Damage: 940
+		Spread: 0c150
+		Versus:
+			Infantry: 30
+			LightVehicle: 80
+			ArmorTank: 100
+			Concrete: 50
+
+# |------------------------------| - DWARF SUPPORT - |------------------------------|
+#--Stat Unite--
+^t2_troll.stat.unite:
+	Tooltip:
+		Name: Dwarf
+	Buildable:
+		Description: Medium armor, deployable into a devastating support unit\n> Strong vs Vehicle, Building, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 18
+	Valued:
+		Cost: 1000
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 2500
+	Mobile:
+		Speed: 98
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+^Troll.PlasmaCanon.stat.weapons:
+	Range 11c0
+	ReloadDelay: 75
+	Warhead@1Dam: SpreadDamage
+		Damage: 1250
+		Spread: 0c780
+		DeathType: 4
+		Versus:
+			Infantry: 40
+			LightVehicle: 55
+			ArmorTank: 85
+			Concrete: 120
+
+# |------------------------------| - DWARF SUPPORT - |------------------------------|
+#--Stat Unite--
+^t2_warg.stat.unite:
+	Tooltip:
+		Name: Warg
+	Buildable:
+		Description: Infantry transport vehicle outfitted with an effective dual AA autocannon\n> Strong vs Aircraft\n> Weak vs Infantry, Vehicles
+		BuildDurationModifier: 18
+	Valued:
+		Cost: 800
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 2500
+	Mobile:
+		Speed: 98
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+^Warg.AutogunAA.stat.weapons:
+    ValidTargets: Air
+	Range: 10c0
+	Burst: 2
+	BurstDelays: 6
+	ReloadDelay: 30
+	Warhead@1Dam: SpreadDamage
+		Damage: 120
+		Versus:
+			Infantry: 80
+			LightVehicle: 100
+			ArmorTank: 80
+			Concrete: 80
+        ValidTargets: Air
+
+# |------------------------------| - LINDWYRM ARTY - |------------------------------|
+#--Stat Unite--
+^t2_lindwyrm.stat.unite:
+	Tooltip:
+		Name: Lindwyrm
+	Buildable:
+		Description: Lightly armored and relatively fast self-propelled gun equipped with a plasma gun \ncan discharge a plasma shooting salvo in second firing mode \n> Strong vs Vehicles, Structures \ n> Weak vs Infantry, Airplanes
+		BuildDurationModifier: 24
+	Valued:
+		Cost: 1000
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 1800
+	Mobile:
+		Speed: 98
+	RevealsShroud:
+		Range: 7c0
+
+#--Weapons01--
+^Lindwyrm.plasmaArty.stat.weapons:
+	Range: 14c0
+	MinRange: 4c0
+	ReloadDelay: 65
+	Report: lindwyrmfire01.aud, lindwyrmfire02.aud, lindwyrmfire03.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 750
+		Versus:
+			Infantry: 50
+			LightVehicle: 100
+			ArmorTank: 100
+			Concrete: 100
+
+#--Weapons02 |mode 2|--
+^Lindwyrm.plasmaArty.mode2.stat.weapons:
+	Range: 14c0
+	MinRange: 4c0
+	ReloadDelay: 15
+	Report: lindwyrmfire01.aud, lindwyrmfire02.aud, lindwyrmfire03.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 180
+		Versus:
+			Infantry: 85
+			LightVehicle: 80
+			ArmorTank: 80
+			Concrete: 110
+
+# |------------------------------| - RATATOSKR - |------------------------------|
+#--Stat Unite--
+^t1_ratatoskr.stat.unite:
+	Tooltip:
+		Name: ratatoskr
+	Buildable:
+		Description: Main battle tank with average armor protection outfitted with a powerful ion cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 14
+	Valued:
+		Cost: 500
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 800
+	Mobile:
+		Speed: 98
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+
+# |------------------------------| - FAFNIR - |------------------------------|
+#--Stat Unite--
+^t3_fafnir.stat.unite:
+	Tooltip:
+		Name: Fafnir
+	Buildable:
+		Description: Super heavy transport anti-grav vehicle fitted with a pillbox \nInfantry units can fire from the inside \n> Strong vs N / A \n> Weak vs N / A
+		BuildDurationModifier: 20
+	Valued:
+		Cost: 1700
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 7500
+	Mobile:
+		Speed: 85
+	RevealsShroud:
+		Range: 7c0
+        
+#--No Weapons--
+
+# |------------------------------| - LOKI - |------------------------------|
+#--Stat Unite--
+^t3_loki.stat.unite:
+	Tooltip:
+		Name: Loki
+	Buildable:
+		Description: Light anti-grav support vehicle armed with an experimental demolition cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 20
+	Valued:
+		Cost: 1500
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 2800
+	Mobile:
+		Speed: 85
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01 |Primary|--
+^Loki.SonicGun.stat.weapons:
+	Range: 8c512
+	ReloadDelay: 75
+	Warhead@1Dam: SpreadDamage
+		Damage: 750
+		Versus:
+			Infantry: 10
+			LightVehicle: 110
+			ArmorTank: 100
+			Concrete: 150
+
+#--Weapons02 |Cluster Impact|--
+^Loki.SonicCluster.stat.weapons:
+	Warhead@1Dam: SpreadDamage
+		Damage: 50
+		Versus:
+			Infantry: 110
+			LightVehicle: 95
+			ArmorTank: 80
+			Concrete: 100
+
+# |------------------------------| - HEIMDALL - |------------------------------|
+#--Stat Unite--
+^t3_heimdall.stat.unite:
+	Tooltip:
+		Name: Heimdall
+		RequiresCondition: !deployed
+	Tooltip@DEPLOYED:
+		Name: Heimdall (deployed)
+		RequiresCondition: deployed
+	Buildable:
+		Description: MLRS carrying 3 long-range rockets that release submunitions before impact\n> Strong vs Infantry, Light Vehicles, Structures\n> Weak vs Heavy Vehicles, Aircraft
+		BuildDurationModifier: 26
+	Valued:
+		Cost: 2200
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 2000
+	Mobile:
+		Speed: 85
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+^Heimdall.Rocket.stat.weapons:
+	MinRange: 4c0
+	Range: 20c0
+	Burst: 3
+	BurstDelays: 20
+	ReloadDelay: 180
+	Warhead@1Dam: SpreadDamage
+		Damage: 850
+		Versus:
+			Infantry: 110
+			LightVehicle: 95
+			ArmorTank: 80
+			Concrete: 100
+
+# |------------------------------| - HEIMDALL - |------------------------------|
+#--Stat Unite--
+^t4_odin.stat.unite:
+	Tooltip:
+		Name: Odin
+	Buildable:
+		Description: Experimental super-unit armed with 2 antimatter heavy cannons and 4 high-powered ion cannons\nCan switch between two modes\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 50
+	Valued:
+		Cost: 5000
+	Armor:
+		Type: ArmorTank
+	Health:
+		HP: 18000
+	Mobile:
+		Speed: 85
+	RevealsShroud:
+		Range: 7c0
+#--Weapons01 *target* !!!Doit avoir la porté identique au l'arme principale du Odin--
+^Odin.ChargingVortex.baneslayer.stat.weapons:
+	Range: 9c0
+    
+#--Weapons01 |arme principale|--
+^Odin.VortexCanon.baneslayer.stat.weapons:
+	Range: 9c0
+	Burst: 2
+	BurstDelay: 25
+	ReloadDelay: 120
+	Warhead@1Dam: SpreadDamage
+        Spread: 1c786
+		Damage: 1300
+		Versus:
+			Infantry: 50
+			LightVehicle: 90
+			ArmorTank: 110
+			Concrete: 110
+	Warhead@MatterDam2: SpreadDamage
+        Delay: 10
+        Spread: 1c786
+		Damage: 200
+	Warhead@MatterDam3: SpreadDamage
+        Delay: 20
+        Spread: 1c786
+		Damage: 100
+	Warhead@MatterDam4: SpreadDamage
+        Delay: 30
+        Spread: 1c786
+		Damage: 70
+	Warhead@MatterDam5: SpreadDamage
+        Delay: 40
+        Spread: 1c786
+		Damage: 60
+	Warhead@MatterDam6: SpreadDamage
+        Delay: 50
+        Spread: 1c786
+		Damage: 40
+	Warhead@MatterDam7: SpreadDamage
+        Delay: 60
+        Spread: 1c786
+		Damage: 25
+
+#--Weapons02 |Quadruple tube à ions|--
+^Odin.IonCanon.Baneslayer.stat.weapons:
+	Range: 9c0
+	Burst: 4
+	BurstDelay: 6
+	ReloadDelay: 45
+	Warhead@1Dam: SpreadDamage
+		Damage: 800
+		Versus:
+			Infantry: 30
+			LightVehicle: 80
+			ArmorTank: 100
+			Concrete: 50
+            
+# =======================================================================================================================
+# ============================================== | Defense Order of the Baneslayer |  ==============================================
+# =======================================================================================================================   
+# |------------------------------| - MIDGARD - |------------------------------|
+#--Stat Unite--
+^t1_midgard.stat.unite:
+	Tooltip:
+		Name: Midgard
+	Buildable:
+		Description: Tier 1 defensive structure armed with autocannons\n> Strong vs Infantry, Aircraft\n> Weak vs Vehicles
+		BuildDurationModifier: 10
+	Valued:
+		Cost: 800
+	Armor:
+		Type: Concrete
+	Health:
+		HP: 8000
+	RevealsShroud:
+		Range: 7c0
+	DetectCloaked:
+		Range: 5c0
+        
+#--Weapons01--
+^Midgard.defense.baneslayer.stat.weapons:
+	Range: 12c0
+	ReloadDelay: 10
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 220
+		Versus:
+			Infantry: 70
+			LightVehicle: 70
+			ArmorTank: 70
+			Concrete: 30
+
+# |------------------------------| - NIFKHEIM - |------------------------------|
+#--Stat Unite--
+^t2_niflheim.stat.unite:
+	Tooltip:
+		Name: Niflheim
+	Buildable:
+		Description: Tier 2 defensive structure fitted with an autocannon\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
+		BuildDurationModifier: 10
+	Valued:
+		Cost: 1200
+	Armor:
+		Type: Concrete
+	Health:
+		HP: 8000
+	RevealsShroud:
+		Range: 7c0
+  
+#--Weapons01--
+^Niflheim.defense.baneslayer.stat.weapons:
+	Range: 10c0
+	ReloadDelay: 10
+	Warhead@1Dam: SpreadDamage
+		Damage: 150
+		Versus:
+			Infantry: 40
+			LightVehicle: 100
+			ArmorTank: 100
+			Concrete: 100
+
+# |------------------------------| - HEL TURRET - |------------------------------|
+#--Stat Unite--
+^t3_hel.stat.unite:
+	Tooltip:
+		Name: Hel Turret
+	Buildable:
+		Description: Tier 3 defensive structure capable of launching hypersonic ATGM\n> Strong vs Vehicles\n> Weak vs Infantry, Aircraft
+		BuildDurationModifier: 18
+	Valued:
+		Cost: 1400
+	Armor:
+		Type: Concrete
+	Health:
+		HP: 9000
+	RevealsShroud:
+		Range: 7c0
+	DetectCloaked:
+		Range: 5c0
+        
+#--Weapons01--
+^Helgun.defense.baneslayer.stat.weapons:
+	Range: 10c0
+	ReloadDelay: 75
+	Warhead@1Dam: SpreadDamage
+		Damage: 1200
+		Versus:
+			Infantry: 70
+			LightVehicle: 75
+			ArmorTank: 60
+			Concrete: 35
+
+# =======================================================================================================================
+# ============================================== | Aircraft Order of the Baneslayer |  ==================================
+# =======================================================================================================================   
+# |------------------------------| - NIDHOGG - |------------------------------|
+#--Stat Unite--
+^t2_nidhogg.stat.unite:
+	Tooltip:
+		Name: Nidhogg
+	Buildable:
+		Description: Multipurpose VTOL equipped with 2 automatic cannons and can switch weapons for an EMP gun \n> Strong against vehicles, airplanes \n> Weak against infantry
+		BuildDurationModifier: 10
+	Valued:
+		Cost: 1300
+	Armor:
+		Type: LightVehicle
+	Health:
+		HP: 1100
+	Aircraft:
+		Speed: 180
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+^Nidhogg.minigun.stat.weapons:
+    ValidTargets: Ground, Air, Water
+	Range 7c0
+	ReloadDelay: 70
+	Burst: 10
+	BurstDelays: 3
+	Warhead@1Dam: SpreadDamage
+		Damage: 75
+		Spread: 0c512
+		Versus:
+			Infantry: 100
+			LightVehicle: 45
+			ArmorTank: 20
+			Concrete: 20
+        ValidTargets: Ground, Air, Water
+
+# |------------------------------| - THOR - |------------------------------|
+#--Stat Unite--
+^t3_thor.stat.unite:
+	Tooltip:
+		Name: Thor
+	Buildable:
+		Description: Experimental aircraft armed with a triple fast-firing ion cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
+		BuildDurationModifier: 20
+	Valued:
+		Cost: 1800
+	Armor:
+		Type: LightVehicle
+	Health:
+		HP: 1200
+	Aircraft:
+		Speed: 220
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+^Thor.IonTracer.stat.weapons:
+	Range 9c0
+	Burst: 7
+	BurstDelays: 1
+	ReloadDelay: 25
+	Warhead@1Dam: SpreadDamage
+		Damage: 250
+		Versus:
+			Infantry: 100
+			LightVehicle: 80
+			ArmorTank: 80
+			Concrete: 75
+
+# |------------------------------| - VALKYRIE - |------------------------------|
+#--Stat Unite--
+^t3_valkyrie.stat.unite:
+	Tooltip:
+		Name: Valkyrie
+	Buildable:
+		Description: Heavy repair platform capable of healing all mechanical units within its range\n> Strong vs None\n> Weak vs Everything
+		BuildDurationModifier: 15
+	Valued:
+		Cost: 2000
+	Armor:
+		Type: LightVehicle
+	Health:
+		HP: 1800
+	Aircraft:
+		Speed: 140
+	RevealsShroud:
+		Range: 7c0
+        
+#--Weapons01--
+^t3_valkyrie.Ionturret.stat.weapons:
+    Range: 10c0
+	ReloadDelay: 120
+	Warhead@1Dam: SpreadDamage
+		Damage: 500
+		Spread: 1c150
+		Versus:
+			Infantry: 100
+			LightVehicle: 80
+			ArmorTank: 80
+			Concrete: 75

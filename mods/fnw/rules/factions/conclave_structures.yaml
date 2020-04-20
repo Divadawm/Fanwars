@@ -111,6 +111,7 @@ tcpodrelais:
 tciontrap:
 	Inherits: ^Building
 	Inherits@2: ^2x2Shape
+	Inherits@AUTOTARGET: ^AutoTargetAll
     Inherits@Power.ConbclaveReveal: ^PowerReveal.Conclave.Base
 	Buildable:
 		Queue: Building.conclave

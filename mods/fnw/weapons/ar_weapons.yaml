@@ -8,14 +8,9 @@
 Laser_cf:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@Animation.weapons: ^Lasergun.Redalliance.Animation
-	Inherits@StatBase.weapons: ^LaserMinigun.RedAlliance.Stat
-	Inherits@Range: ^Range.Infantry.Base
-	ReloadDelay: 30
+	Inherits@StatBase.weapons: ^ComradeLaser.RedAlliance.Stat.weapons
 	Report: comrade_gun01.aud, comrade_gun02.aud, comrade_gun03.aud
-	ValidTargets: Ground
-	Warhead@1Dam: SpreadDamage
-		Damage: 65
-			
+
 Laser_cf.Doctrine:
 	Inherits@default.weapons: Laser_cf
 	Inherits@doctrines.supplement: ^Doctrines.LaserSup
@@ -23,9 +18,7 @@ Laser_cf.Doctrine:
 AP_Sentient:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@Animation.weapons: ^80mm.RedAlliance.Animation
-	Inherits@StatBase.weapons: ^80mm.RedAlliance.Stat
-	Inherits@Range: ^Range.Infantry.Base
-	ReloadDelay: 75
+	Inherits@StatBase.weapons: ^SentinelGun.RedAlliance.Stat.weapons
 	Report: ar_autogun_01.aud, ar_autogun_02.aud, ar_autogun_03.aud
     ValidTargets: Ground, Air, Water
 	Warhead@1Dam: SpreadDamage
@@ -36,17 +29,8 @@ AP_Sentient:
 Saberweapon:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@default.weapons: ^Melee.Comon.Animation
-	ReloadDelay: 80
-	Range: 1c0
+	Inherits@StatBase.weapons: ^MelleSaber.RedAlliance.Stat.weapons
 	Report: cruise_biglaser.aud
-	ValidTargets: Ground
-	Warhead@1Dam: SpreadDamage
-		Damage: 600
-		Versus:
-			Infantry: 100
-			LightVehicle: 20
-			ArmorTank: 20
-			Concrete: 20
 
 Volkit_repair:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -67,15 +51,7 @@ Volkit_repair:
 Nukegun:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@Animation.weapons: ^Flamme.RedAlliance.Animation
-	Inherits@StatBase.weapons: ^Flamme.RedAlliance.Stat
-	Inherits@Range: ^Range.Vehicle.Base
-	Burst: 6
-	BurstDelay: 6
-	ReloadDelay: 60
-	ValidTargets: Ground
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Ground
-		Damage: 50
+	Inherits@StatBase.weapons: ^NukeGun.RedAlliance.Stat.weapons
 	Warhead@Radiant: GrantExternalCondition
 		Range: 0c512
 		Duration: 80
@@ -84,55 +60,28 @@ Nukegun:
 AP_Gatling_Era:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@Animation.weapons: ^Lasergun.Redalliance.Animation
-	Inherits@StatBase.weapons: ^LaserMinigun.RedAlliance.Stat
-	Inherits@Range: ^Range.Vehicle.Base
-	ReloadDelay: 6
+	Inherits@StatBase.weapons: ^Eradicator.Gatling.RedAlliance.Stat.weapons
 	Report: eradicator_apcanon01.aud, eradicator_apcanon02.aud, eradicator_apcanon03.aud
-	ValidTargets: Ground
-	Warhead@1Dam: SpreadDamage
-		Damage: 65
 	
 Beam_Gatling_Era:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@Animation.weapons: ^Railgun.RedAlliance.Animation
-	Inherits@StatBase.weapons: ^Railgun.RedAlliance.Stat
-	Inherits@Range: ^Range.Vehicle.Base
-	ReloadDelay: 70
-	Report: eradicator_hecanon01.aud, eradicator_hecanon02.aud
-	ValidTargets: Ground
-	Warhead@1Dam: SpreadDamage
-		Damage: 650
-		
-Beam_Gatling_Era.Doctrine:
-	Inherits@default.weapons: Beam_Gatling_Era
+	Inherits@StatBase.weapons: ^Eradicator.FusionGun.RedAlliance.Stat.weapons
 	Inherits@doctrines;supplement: ^Doctrines.LaserSup
+	Report: eradicator_hecanon01.aud, eradicator_hecanon02.aud
 
 		
 # /////// Vehicle Weapons ///////
 BikeMissile:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@default.weapons: ^Missile.Comon.Animation
-    Inherits@StatBase.weapons: ^Missile.Comon.Stat
-	Inherits@Range: ^Range.Vehicle.Base
-	ValidTargets: Ground, Air, Water
-	ReloadDelay: 95
-	Burst: 2
-	BurstDelay: 8
+	Inherits@StatBase.weapons: ^MissileSweep.RedAlliance.Stat.weapons
 	Report: rocketweaponfire01.aud, rocketweaponfire02.aud, rocketweaponfire03.aud
-	Warhead@1Dam: SpreadDamage
-		Spread: 128
-		Damage: 300
-        ValidTargets: Ground, Air, Water
-
+        
 FlamerDrone:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@Animation.weapons: ^Flamme.RedAlliance.Animation
-	Inherits@StatBase.weapons: ^Flamme.RedAlliance.Stat
-	Inherits@Range: ^Range.Vehicle.Base
-	ValidTargets: Ground
-	ReloadDelay: 50
-	Burst: 2
-	BurstDelay: 8
+	Inherits@StatBase.weapons: ^FlammerDrone.RedAlliance.Stat.weapons
 	Projectile: Bullet
 		TrailImage: minburningspeed
 		TrailInterval: 0
@@ -140,9 +89,6 @@ FlamerDrone:
 		DamageInterval: 5
 		Inaccuracy: 300
         Speed: 400
-	Warhead@1Dam: SpreadDamage
-		Spread: 256
-		Damage: 200
 
 FlamerDroneUP:
 	Inherits@default.weapons: FlamerDrone
@@ -179,84 +125,30 @@ AP_Harvesterturret:
 	ValidTargets: Ground
 	Warhead@1Dam: SpreadDamage
 		Damage: 35
-        
-AP_basilic.target:
-	Inherits@default.weapons: ^null.Comon.Animation
-	Inherits@Range: ^Range.Vehicle.Base
-	ReloadDelay: 36
-    Report: chargerailgunmin01.aud, chargerailgunmin02.aud
-	ValidTargets: Ground
-    
-AP_basilic02:
-	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
-	Inherits@Animation.weapons: ^Railgun.RedAlliance.Animation
-	Inherits@StatBase.weapons: ^Railgun.RedAlliance.Stat
-	Inherits@Range: ^Range.Vehicle.Base
-	ReloadDelay: 26
-	Report: basilisk_railgunfire01.aud, basilisk_railgunfire02.aud
-	ValidTargets: Ground
-	Warhead@1Dam: SpreadDamage
-		Damage: 950
 
 AP_basilic:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@Animation.weapons: ^Railgun.RedAlliance.Animation
-	Inherits@StatBase.weapons: ^Railgun.RedAlliance.Stat
-	Inherits@Range: ^Range.Vehicle.Base
-	ReloadDelay: 45
+	Inherits@StatBase.weapons: ^Railgun.Basilisk.Stat.weapons
 	Report: basilisk_railgunfire01.aud, basilisk_railgunfire02.aud
-	ValidTargets: Ground
-	Warhead@1Dam: SpreadDamage
-		Damage: 840
         
 basilic_AACanon:
 	Inherits@default.weapons: ^InstantHit.Comon.Animation
-	Inherits@Range: ^Range.VehicleAA.Base
-    ValidTargets: Air
-	ReloadDelay: 60
-	Range: 7c512
-	BurstDelays: 8
-	Burst: 2
+	Inherits@StatBase.weapons: ^AAgun.upgrade.Basilisk.Stat.weapons
 	Report: flak_canonfire01.aud, flak_canonfire02.aud, flak_canonfire03.aud
-	Warhead@1Dam: SpreadDamage
-        ValidTargets: Air
-		Damage: 100
-		Versus:
-			Infantry: 80
-			LightVehicle: 100
-			ArmorTank: 80
-			Concrete: 80
 
 AP_hydra:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@Animation.weapons: ^Lasergun.Redalliance.Animation
-	Inherits@StatBase.weapons: ^LaserTank.RedAlliance.Stat
-	Inherits@Range: ^Range.VehicleAA.Base
-	ReloadDelay: 15
-	Burst: 2
-	BurstDelays: 4
+	Inherits@StatBase.weapons: ^AAgun.Hydra.Stat.weapons
 	Report: comrade_gun01.aud, comrade_gun02.aud, comrade_gun03.aud
-	ValidTargets: Ground, Air, Water
-	Warhead@1Dam: SpreadDamage
-		Damage: 120
-        ValidTargets: Ground, Air, Water
         
 hydra.Inferno.rocket:
 	Inherits@default.weapons: ^Inferno.rocket.RedAlliance.Animation
 	Inherits@Flamme: ^Doctrines.FlammerSup
 	Inherits@Range: ^Range.VehicleAA.Base
-	ReloadDelay: 4
+	Inherits@StatBase.weapons: ^Rocket.Hydra.Stat.weapons
 	Report: infernomissfire01.aud, infernomissfire02.aud, infernomissfire03.aud
-	ValidTargets: Ground
-	Warhead@1Dam: SpreadDamage
-		Spread: 656
-		ValidTargets: Ground
-		Damage: 100
-		Versus:
-			Infantry: 250
-			LightVehicle: 60
-			ArmorTank: 90
-			Concrete: 120
 	Warhead@disturb: GrantExternalCondition
 		ValidTargets: Ground, Rough, Tree
 		Range: 3c0
@@ -266,19 +158,9 @@ hydra.Inferno.rocket:
 
 120mm_mantis:
 	Inherits@Animation.weapons: ^Manticore.Railgun.RedAlliance.Animation
-	Inherits@StatBase.weapons: ^Railgun,Anhiliator.Stat
+	Inherits@StatBase.weapons: ^manticoreGun.Stat.weapons
 	Inherits@Range: ^Range.ArtyHigh.Base
-	ReloadDelay: 100
-	MinRange: 4c0
 	Report: mantis_fire.aud
-	Warhead@1Dam: SpreadDamage
-		Spread: 1c128
-		Damage: 2200
-		Versus:
-			Infantry: 45
-			LightVehicle: 75
-			ArmorTank: 85
-			Concrete: 130
         
 
 120mm_mantis_HE_UP:
@@ -288,7 +170,7 @@ hydra.Inferno.rocket:
 rocket.mantis:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
     Inherits@default.weapons: ^Missile.Comon.Animation
-    Inherits@StatBase.weapons: ^Missile.Comon.Stat
+    Inherits@StatBase.weapons: ^Rocket.Manticore.Stat.weapons
 	Inherits@Range: ^Range.Vehicle.Base
     ValidTargets: Ground
 	ReloadDelay: 100
@@ -340,17 +222,11 @@ inferno_flamer_salamander_UP.Doctrines:
 AP_Apocalypse:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@Animation.weapons: ^Railgun.RedAlliance.Animation
-	Inherits@StatBase.weapons: ^Railgun.RedAlliance.Stat
-	Inherits@Range: ^Range.Vehicle.Base  
-	ReloadDelay: 70
-    Burst: 2
-	BurstDelays: 8
+	Inherits@StatBase.weapons: ^RailgunApocalypse.RedAlliance.Stat.weapons
 	Report: apocrailgunfire01.aud, apocrailgunfire02.aud, apocrailgunfire03.aud
 	ValidTargets: Ground
 	Projectile: Railgun
 		BeamWidth: 50
-	Warhead@1Dam: SpreadDamage
-		Damage: 1400
 	Warhead@3EffGround: CreateEffect
 		Explosions: apo_expl01, apo_expl02, apo_expl03
 		ExplosionPalette: effect
@@ -358,32 +234,16 @@ AP_Apocalypse:
 fragMissile:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@default.weapons: ^Missile.Comon.Animation
-    Inherits@StatBase.weapons: ^Missile.Comon.Stat
+    Inherits@StatBase.weapons: ^MissileApocalpyse.Redalliance.Stat.weapons
 	Inherits@Range: ^Range.Vehicle.Base
-	ValidTargets: Air
-	ReloadDelay: 95
-	Burst: 2
-	BurstDelay: 8
 	Report: rocketweaponfire01.aud, rocketweaponfire02.aud, rocketweaponfire03.aud
-	Warhead@1Dam: SpreadDamage
-		Spread: 128
-		Damage: 150
-        ValidTargets: Air
 
 FlamerPurifier:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@Animation.weapons: ^Flamme.RedAlliance.Animation
-	Inherits@StatBase.weapons: ^Flamme.RedAlliance.Stat
-	Inherits@Range: ^Range.Vehicle.Base
-	ReloadDelay: 60
-	Range: 7c0
-	Burst: 40
-	BurstDelays: 0
+	Inherits@StatBase.weapons: ^FlamerPurifier.RedAlliance.Stat.weapons
 	Report: firepurifier.aud
-	ValidTargets: Ground
-	Warhead@1Dam: SpreadDamage
-		Damage: 50
-			
+
 FlamerPurifierUP:
 	Inherits@default.weapons: FlamerPurifier
 	Inherits@default.Upgrade: ^FlamerUgrade
@@ -419,49 +279,25 @@ Ann.TargetBeam:
 
 RailgunAnn:
 	Inherits@default.weapons: ^Anhilihator.Railgun.default
-	Inherits@StatBase.weapons: ^Railgun,Anhiliator.Stat
-	Inherits@Range: ^Range.ArtyHigh.Base
-	ReloadDelay: 20
-	MinRange: 4c0
+	Inherits@StatBase.weapons: ^Anhilihator.Raigun.Stat.weapons
 	Report: ann_gun.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 5000
 
 AP_Gatling_ann:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@default.weapons: ^Autocanon.Comon.Animation
-	Inherits@Range: ^Range.Vehicle.Base
-	ReloadDelay: 3
+	Inherits@StatBase.weapons: ^Anhilihator.Gatling.Stat.weapons
 	Report: anhgatlingfire01.aud, anhgatlingfire02.aud, anhgatlingfire03.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 60
-		DeathType: 4
 
 AP_chimera:
 	Inherits@default.weapons: ^Autocanon.Comon.Animation
-	Inherits@StatBase.weapons: ^80mm.RedAlliance.Stat
-	Inherits@Range: ^Range.Aircraft.Base
-	ReloadDelay: 10
+	Inherits@StatBase.weapons: ^chimeraGun.RedAlliance.Stat.weapons
 	Report: chimeregun01.aud, chimeregun02.aud, chimeregun03.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 140
-		DeathType: 4
 
 AP_Wyvern:
 	Inherits@default.weapons: ^InstantHit.Comon.Animation
-	Inherits@StatBase.weapons: ^80mm.RedAlliance.Stat
-	Inherits@Range: ^Range.Aircraft.Base
-    ValidTargets: Air
-	ReloadDelay: 60
-	Burst: 6
-	BurstDelays: 3
+	Inherits@StatBase.weapons: ^AP_Wyvern.RedAlliance.Stat.weapons
 	Report: autocannon.aud
-	Warhead@1Dam: SpreadDamage
-		ValidTargets: Air
-		Spread: 65
-		Damage: 120
-		DeathType: 4
-			
+
 CommandMissile:
 	Inherits@default.weapons: ^Missile.Comon.Animation
 	Inherits@Range: ^Range.Aircraft.Base
@@ -477,44 +313,20 @@ CommandMissile:
 			ArmorTank: 90
 			Concrete: 45
 
-
 therombomb:
 	Inherits@default.weapons: ^GravityBomb.Comon.Animation
-	ReloadDelay: 500
-	Range: 1c256
-	Warhead@1Dam: SpreadDamage
-		Damage: 3800
-		Versus:
-			Infantry: 120
-			LightVehicle: 100
-			ArmorTank: 90
-			Concrete: 130
-			
+	Inherits@StatBase.weapons: ^Archdemon.RedAlliance.Stat.weapons
+
 cannon_cruiser:
 	Inherits@default.weapons: ^Autocanon.Comon.Animation
-	ReloadDelay: 60
-	Burst: 5
-	BurstDelays: 8
-	Range: 8c0
+	Inherits@StatBase.weapons: ^CruiserGun.RedAlliance.Stat.weapons
 	Report: cruis_gun.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 450
-		Versus:
-			Infantry: 60
-			LightVehicle: 85
-			ArmorTank: 70
-			Concrete: 60
 
 laserdefence:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@Animation.weapons: ^Lasergun.Redalliance.Animation
-	Inherits@StatBase.weapons: ^LaserMinigun.RedAlliance.Stat
-	Inherits@Range: ^Range.Vehicle.Base
-	ReloadDelay: 160
-	Burst: 2
-	BurstDelays: 20
+	Inherits@StatBase.weapons: ^LaserCruiser.RedAlliance.Stat.weapons
     Report: cruise_biglaser.aud
-	ValidTargets: Ground
 	Projectile: LaserZap
 		Duration: 25
 		Width: 100
@@ -522,8 +334,6 @@ laserdefence:
 		SecondaryBeam: true
 		SecondaryBeamWidth: 25
 		SecondaryBeamZOffset: 2047
-	Warhead@1Dam: SpreadDamage
-		Damage: 1800
 	Warhead@3EffGround: CreateEffect
 		Falloff: 100, 68, 35
 		Explosions: apo_expl
@@ -534,7 +344,7 @@ laserdefence:
 		ExplosionPalette: light
 		ValidTargets: Ground, Water, Air
 		Palette: Upgrade_blue_effect
-			
+
 # ///// Defense Weapons ///////
 Predator.gun:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
@@ -547,7 +357,7 @@ Predator.gun:
 	Warhead@1Dam: SpreadDamage
 		Spread: 50
 		Damage: 320
-            
+
 AP_Tarantula:
 	Inherits@conditionweapons: ^Weapons.Effect.Condition.Generale
 	Inherits@Animation.weapons: ^Lasergun.Redalliance.Animation
@@ -565,21 +375,12 @@ AP_Tarantula:
 
 DoomTower.Gun:
 	Inherits@default.weapons: ^TeslaGun.RedAlliance.Animation
-	ReloadDelay: 120
-	Range: 11c0
+	Inherits@StatBase.weapons: ^DoomGun.RedAlliance.Stat.weapons
 	Report: doom_blast.aud
-	Warhead@1Dam: SpreadDamage
-		Damage: 2400
-		Versus:
-			Infantry: 70
-			LightVehicle: 100
-			ArmorTank: 90
-			Concrete: 120
 
 #  //////////////////////////////////////////////////////////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  #
 # /////////////////////////////////////////////////////////////// Doctrines Weapons Supplement \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ #
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ /////////////////////////////////////////////////////////////////////////////////////// #
-
 ^Doctrines.LaserSup:
 	Projectile: LaserZap
 		Color: f2bae6
@@ -599,7 +400,7 @@ DoomTower.Gun:
 		Explosions: laser_spark01, laser_spark02, laser_spark03
 		ExplosionPalette: powereffect2
 		ValidTargets: Ground
-		
+
 ^Doctrines.FlammerSup:
 	Warhead@2Dam.Doctrine: SpreadDamage
 		Damage: 50
@@ -637,7 +438,7 @@ DoomTower.Gun:
 		Explosions: flamezoneres01, flamezoneres02, flamezoneres03
 		ExplosionPalette: flameeffect20
 		ValidTargets: Ground
-		
+
 ^Doctrines.RailgunSup:
 	Warhead@2Dam.Doctrine: SpreadDamage
 		Damage: 50
@@ -651,7 +452,7 @@ DoomTower.Gun:
 		Explosions: expl_railgun01, expl_railgun01, expl_railgun01
 		ExplosionPalette: powereffect
 		ValidTargets: Ground
-		
+
 ^Doctrines.BalistSup:
 	Warhead@2Dam.Doctrine: SpreadDamage
 		Damage: 50
@@ -669,7 +470,6 @@ DoomTower.Gun:
 #  //////////////////////////////////////////////////////////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  #
 # /////////////////////////////////////////////////////////////////// Upgrade Weapons Base \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ #
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ /////////////////////////////////////////////////////////////////////////////////////// #
-
 ^FlamerUgrade:
 	Projectile: Bullet
 		Palette: flammeeffectblue
@@ -686,7 +486,6 @@ DoomTower.Gun:
 #  //////////////////////////////////////////////////////////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  #
 # ////////////////////////////////////////////////////////////////////// Super Weapons \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ #
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ /////////////////////////////////////////////////////////////////////////////////////// # 
-
 fusion.missile:
 	Inherits@weapons: ^FusionMissile.RedAlliance.Animation
 	ReloadDelay: 70

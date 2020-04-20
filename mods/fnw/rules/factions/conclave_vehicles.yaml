@@ -73,25 +73,17 @@ prospecteur:
 
 t2_rodeur:
 	Inherits: ^ShapeWalkerMedium
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_rodeur.conclave.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Inherits@DetectCloaked: ^Vehicles.DetectCloaked
-	Inherits@RevealCells: ^9cells.Range.base
-	Tooltip:
-		Name: Prowler
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 40
 		Prerequisites: tcholotech.rodeur
-		BuildDurationModifier: 16
-		Description: The lightly armored "main battle tank" equipped with a double rapid-fire laser cannon \ncan receive different armaments with the improvements \n> Strong against vehicles \n> Weak against infantry, airplanes
 		IconPalette: Conclave.Icon
-	Health:
-		HP: 4200
-	Mobile:
-		Speed: 105
-	Valued:
-		Cost: 980
 	Armament@gun:
 		Weapon: Rodeur.Dual.LightLaser
 		MuzzleSequence: muzzle
@@ -165,24 +157,18 @@ t2_rodeur:
 
 t3_surveyor:
 	Inherits: ^ShapeWalkerMedium
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t3_surveyor.conclave.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
-	Inherits@RevealCells: ^10cells.Range.base
-	Valued:
-		Cost: 2200
-	Tooltip:
-		Name: Surveyor
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 110
 		Prerequisites: tcholotech.arpenteur
-		BuildDurationModifier: 28
-		Description: Three legged heavy walker\nDeals damage based on HP percentages \ncan receive different capacity with the improvements \n> Strong vs Vehicles, Structures\n> Weak vs Infantry, Aircraft
 		IconPalette: Conclave.Icon
 	Mobile:
 		PauseOnCondition: !(!empdisable || upgrade.Omega.Arpenteur.Conclave)
-	Health:
-		HP: 6000
 	Armament@left:
 		Weapon: ExconvectorGun.lateral
 		Recoil: 150
@@ -284,28 +270,18 @@ activate.Shield:
 
 t2_pilgrim:
 	Inherits: ^ShapeHoverMedium
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_pilgrim.conclave.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
     Inherits@SoundMove: ^HoverTech.vehicle.move
 	Inherits@Target: ^AutoTargetAllAssaultMove
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
-	Inherits@RevealCells: ^9cells.Range.base
-	Valued:
-		Cost: 1200
-	Tooltip:
-		Name: Pilgrim
-		RequiresCondition: !deployed
-	Tooltip@DEPLOYED:
-		Name: Pilgrim (deployed)
-		RequiresCondition: deployed
 	Buildable:
 		Queue: Vehicle.conclave
 		BuildPaletteOrder: 60
 		Prerequisites: tcholotech.pelerin
-		BuildDurationModifier: 25
-		Description: Hover anti-aircraft missile launcher \ncan receive different Capacity/armaments with the improvements \nCan be deployed into an artillery\n> Strong vs Vehicles, Aircraft\n> Weak vs Infantry
 		IconPalette: Conclave.Icon
-	Health:
-		HP: 2000
 	Passenger:
 		RequireForceMoveCondition: !undeployed
 	GrantConditionOnDeploy:

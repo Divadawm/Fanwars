@@ -69,6 +69,9 @@ t1_dainn:
 
 t1_heidrun:
 	Inherits: ^ShapeVehicleLight
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t1_heidrun.stat.unite
+    # / Inherit Option Unite /
     Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
     Inherits@UnitePlayStat:^UnitPlayerStat
     Inherits@SoundMove: ^Whell.vehicle.move
@@ -76,24 +79,9 @@ t1_heidrun:
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^10cells.Range.base
-	Valued:
-		Cost: 500
-	Tooltip:
-		Name: Heidrun
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 20
-		Description: Light recon units equiped a machine gun and an AA missile launcher\n can detect stealth units\n can be equipped with a secondary turret depending on the loaded infantry\n> strong against infantry and airplanes\n> Weak against vehicles.
-		BuildDurationModifier: 8
-	Health:
-		HP: 2400
-	DetectCloaked:
-		Range: 5c0
-		CloakTypes: Cloak
-	Mobile:
-		TurnSpeed: 20
-		Speed: 120
 	Cargo:
 		Types: Infantry
 		MaxWeight: 1
@@ -177,6 +165,9 @@ t1_heidrun:
 
 t2_garm:
 	Inherits: ^ShapeHoverMedium
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_garm.stat.unite
+    # / Inherit Option Unite /
     Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
     Inherits@UnitePlayStat:^UnitPlayerStat
     Inherits@SoundMove: ^Hover.vehicle.move
@@ -184,21 +175,10 @@ t2_garm:
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^9cells.Range.base
-	Tooltip:
-		Name: Garm
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 40
 		Prerequisites: opweap
-		Description: Main anti-gravity tank with medium armor protection equipped with a powerful ion cannon \n> Strong against infantry, vehicles, structures \n> Weak against planes
-		BuildDurationModifier: 16
-	Health:
-		HP: 4500
-	Mobile:
-		Speed: 98
-	Valued:
-		Cost: 1000
 	Armament@PRIMARYDEFAULT:
 		Weapon: Garm.Railgun
 		Recoil: 400
@@ -237,23 +217,17 @@ t2_garm:
 
 t2_troll:
 	Inherits: ^ShapeVehicleMedium
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_troll.stat.unite
+    # / Inherit Option Unite /
     Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
-	Inherits@RevealCells: ^10cells.Range.base
-	Valued:
-		Cost: 1000
-	Tooltip:
-		Name: Dwarf
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 50
 		Prerequisites: optech, ~Doctrine.Dwarf.unlock.Baneslayer
-		Description: Medium armor, deployable into a devastating support unit\n> Strong vs Vehicle, Building, Structures\n> Weak vs Aircraft
-		BuildDurationModifier: 20
-	Health:
-		HP: 2500
 	-AutoTarget:
 	Transforms:
 		IntoActor: t2_troll_deployed
@@ -283,6 +257,9 @@ t2_troll:
 
 t2_warg:
 	Inherits: ^ShapeVehicleMedium
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_warg.stat.unite
+    # / Inherit Option Unite /
     Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
     Inherits@UnitePlayStat:^UnitPlayerStat
     Inherits@SoundMove: ^Whell.vehicle.move
@@ -290,21 +267,12 @@ t2_warg:
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^9cells.Range.base
-	Valued:
-		Cost: 800
-	Tooltip:
-		Name: Warg
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 60
 		Prerequisites: optech
-		Description: Infantry transport vehicle outfitted with an effective dual AA autocannon\n> Strong vs Aircraft\n> Weak vs Infantry, Vehicles
-		BuildDurationModifier: 18
 	Mobile:
 		Locomotor: amphibious
-	Health:
-		HP: 2500
 	Armament@PRIMARY:
 		Weapon: Warg_AA
 		Recoil: 400
@@ -401,6 +369,9 @@ t2_yggdrasil:
 
 t2_lindwyrm:
 	Inherits: ^ShapeVehicleMedium
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t2_lindwyrm.stat.unite
+    # / Inherit Option Unite /
     Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
     Inherits@UnitePlayStat:^UnitPlayerStat
     Inherits@SoundMove: ^Truck.vehicle.move
@@ -408,17 +379,10 @@ t2_lindwyrm:
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^9cells.Range.base
-	Valued:
-		Cost: 1000
-	Tooltip:
-		Name: Lindwyrm
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 70
 		Prerequisites: optech, ~Doctrine.lindwyrm.unlock.Baneslayer
-		Description: Lightly armored and relatively fast self-propelled gun equipped with a plasma gun \ncan discharge a plasma shooting salvo in second firing mode \n> Strong vs Vehicles, Structures \ n> Weak vs Infantry, Airplanes
-		BuildDurationModifier: 24
 	GrantConditionOnPrerequisite@research.roquette.baneslayer:
 		Prerequisites: research.roquette.baneslayer
 		Condition: upgrade.roquette.baneslayer
@@ -452,8 +416,6 @@ t2_lindwyrm:
     GrantConditionOnDeploy:
         DeployedCondition: SwitchFireMode
 	WithMuzzleOverlay:
-	Health:
-		HP: 1800
 	RenderSprites:
 		Scale: 0.75
 	WithSpriteTurret:
@@ -480,27 +442,19 @@ t2_lindwyrm:
 
 t1_ratatoskr:
 	Inherits: ^ShapeHoverLight
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t1_ratatoskr.stat.unite
+    # / Inherit Option Unite /
     Inherits@UnitePlayStat:^UnitPlayerStat
 	Inherits@Target: ^AutoTargetGroundAssaultMove
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
     Inherits@SoundMove: ^Whell.vehicle.move
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^8cells.Range.base
-	Tooltip:
-		Name: ratatoskr
 	Buildable:
 		Queue: none.baneslayer
 		BuildPaletteOrder: 40
 		Prerequisites: opproc
-		Description: Main battle tank with average armor protection outfitted with a powerful ion cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
-		BuildDurationModifier: 12
-	Health:
-		HP: 800
-	Mobile:
-		Speed: 95
-	Valued:
-		Cost: 500
 	AttackFrontal:
 	WithMuzzleOverlay:
     LeavesTrails@01:
@@ -522,6 +476,9 @@ t1_ratatoskr:
 
 t3_fafnir:
 	Inherits: ^ShapeHoverHeavy
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t3_fafnir.stat.unite
+    # / Inherit Option Unite /
     Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
     Inherits@UnitePlayStat:^UnitPlayerStat
     Inherits@SoundMove: ^Hover.vehicle.move
@@ -529,21 +486,10 @@ t3_fafnir:
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^9cells.Range.base
-	Valued:
-		Cost: 1700
-	Tooltip:
-		Name: Fafnir
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 90
 		Prerequisites: Research Module
-		Description: Super heavy transport anti-grav vehicle fitted with a pillbox \nInfantry units can fire from the inside \n> Strong vs N / A \n> Weak vs N / A
-		BuildDurationModifier: 20
-	Health:
-		HP: 7500
-	Mobile:
-		Speed: 85
 	Cargo:
 		Types: Infantry
 		MaxWeight: 15
@@ -588,6 +534,9 @@ t3_fafnir:
 
 t3_loki:
 	Inherits: ^ShapeHoverMedium
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t3_loki.stat.unite
+    # / Inherit Option Unite /
     Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
     Inherits@UnitePlayStat:^UnitPlayerStat
     Inherits@SoundMove: ^Hover.vehicle.move
@@ -595,18 +544,10 @@ t3_loki:
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^8cells.Range.base
-	Valued:
-		Cost: 1500
-	Tooltip:
-		Name: Loki
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 100
 		Prerequisites: Research Module, ~Doctrine.loki.unlock.Baneslayer
-		Description: Light anti-grav support vehicle armed with an experimental demolition cannon\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
-		BuildDurationModifier: 20
-	Health:
 		HP: 2800
 	RenderSprites:
 		Scale: 0.90
@@ -644,29 +585,19 @@ t3_loki:
 
 t3_heimdall:
 	Inherits: ^ShapeVehicleHeavy
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t3_heimdall.stat.unite
+    # / Inherit Option Unite /
     Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
     Inherits@UnitePlayStat:^UnitPlayerStat
     Inherits@SoundMove: ^tracked.vehicle.move
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
-	Inherits@RevealCells: ^10cells.Range.base
-	Valued:
-		Cost: 2200
-	Tooltip:
-		Name: Heimdall
-		RequiresCondition: !deployed
-	Tooltip@DEPLOYED:
-		Name: Heimdall (deployed)
-		RequiresCondition: deployed
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 100
 		Prerequisites: Research Module, ~Doctrine.heimdall.unlock.Baneslayer
-		Description: MLRS carrying 3 long-range rockets that release submunitions before impact\n> Strong vs Infantry, Light Vehicles, Structures\n> Weak vs Heavy Vehicles, Aircraft
-		BuildDurationModifier: 26
-	Health:
-		HP: 2000
 	Passenger:
 		RequireForceMoveCondition: !undeployed
 	GrantConditionOnDeploy:
@@ -733,6 +664,9 @@ t3_heimdall:
 
 t4_odin:
 	Inherits: ^ShapeVehicleHeavy
+    # / Inherit Stat Unite /
+    Inherits@StatUnite: ^t4_odin.stat.unite
+    # / Inherit Option Unite /
     Inherits@doctrine: ^Vehicle.Upgrade.baneslayer
     Inherits@UnitePlayStat:^UnitPlayerStat
     Inherits@SoundMove: ^HeavyTracked.vehicle.move
@@ -740,20 +674,11 @@ t4_odin:
 	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@Upgrade01: ^Upgrade.Speed.Plasma.Engine.Baneslayer
 	Inherits@Upgrade02: ^Upgrade.Repair.Training.Baneslayer
-	Inherits@RevealCells: ^10cells.Range.base
-	Valued:
-		Cost: 5000
-	Tooltip:
-		Name: Odin
 	Buildable:
 		Queue: Vehicle.baneslayer
 		BuildPaletteOrder: 120
 		Prerequisites: Research Module
-		Description: Experimental super-unit armed with 2 antimatter heavy cannons and 4 high-powered ion cannons\nCan switch between two modes\n> Strong vs Infantry, Vehicles, Structures\n> Weak vs Aircraft
-		BuildDurationModifier: 50
 		BuildLimit: 1
-	Health:
-		HP: 18000
 	Armament@MATTER:
 		Weapon: OdinWeapon.target
 		Recoil: 400
