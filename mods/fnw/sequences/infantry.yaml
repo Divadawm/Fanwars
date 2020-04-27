@@ -117,7 +117,7 @@ avatar:
 		Length: 6
 		Facings: 8
 		Tick: 80
-	AuraAvatar: AuraAvatar
+	AuraAvatar: auraavatar
 		Length: *
 		Tick: 28
 		ZOffset: 1
