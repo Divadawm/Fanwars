@@ -75,6 +75,7 @@
 #--Weapons01--
 ^ComradeLaser.RedAlliance.Stat.weapons:
 	ReloadDelay: 30
+	Range: 7c0
 	Warhead@1Dam: SpreadDamage
 		Damage: 65
 		Spread: 3
@@ -605,7 +606,6 @@
 ^Anhilihator.Raigun.Stat.weapons:
 	ReloadDelay: 20
 	MinRange: 4c0
-    Range: 14c0   
 	Warhead@1Dam: SpreadDamage
 		Damage: 5000
 		Versus:

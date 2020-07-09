@@ -279,6 +279,7 @@ Ann.TargetBeam:
 
 RailgunAnn:
 	Inherits@default.weapons: ^Anhilihator.Railgun.default
+	Inherits@Range: ^Range.ArtyHigh.Base
 	Inherits@StatBase.weapons: ^Anhilihator.Raigun.Stat.weapons
 	Report: ann_gun.aud
 

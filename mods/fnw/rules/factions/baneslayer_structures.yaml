@@ -669,10 +669,15 @@ t1_midgard:
 		Dimensions: 1,1
 		Adjacent: 10
 	Armament@gun:
+		Weapon: Midgard.gun
+		Recoil: 150
+		RecoilRecovery: 15
+		LocalOffset: -800, 0, 400
+	Armament@aa:
 		Weapon: Warg_AA
 		Recoil: 150
 		RecoilRecovery: 15
-		LocalOffset: 15,650,850
+		LocalOffset: -800, 0, 400
 	AttackTurreted:
 		PauseOnCondition: build-incomplete || empdisable || disabled
 	AutoTarget:
