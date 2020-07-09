@@ -177,7 +177,7 @@ doom.deploy.gun:
 Warg_AA:
 	Inherits@default.weapons: ^InstantHit.Comon.Animation
     Inherits@StatBase.weapons: ^Warg.AutogunAA.stat.weapons
-	Report: Flak_canonfire01.aud, Flak_canonfire02.aud, Flak_canonfire03.aud
+	Report: flak_canonfire01.aud, flak_canonfire02.aud, flak_canonfire03.aud
 
 Sharest.Railgun:
 	Inherits@default.weapons: ^SonicGun.Baneslayer.Animation

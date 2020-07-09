@@ -275,7 +275,7 @@
         
 #--Weapons01--
 ^Minigun.heidrun.stat.weapons:
-	Range 8c0
+	Range: 8c0
 	Burst: 4
 	BurstDelays: 5
 	ReloadDelay: 55
@@ -303,7 +303,7 @@
             
 #--Weapons03 |Draurg garrisoned|--
 ^Minigun.gar.heidrun.stat.weapons:
-	Range 8c0
+	Range: 8c0
 	Burst: 8
 	BurstDelays: 4
 	ReloadDelay: 55
@@ -369,7 +369,7 @@
         
 #--Weapons01--
 ^Troll.PlasmaCanon.stat.weapons:
-	Range 11c0
+	Range: 11c0
 	ReloadDelay: 75
 	Warhead@1Dam: SpreadDamage
 		Damage: 1250
@@ -779,7 +779,7 @@
 #--Weapons01--
 ^Nidhogg.minigun.stat.weapons:
     ValidTargets: Ground, Air, Water
-	Range 7c0
+	Range: 7c0
 	ReloadDelay: 70
 	Burst: 10
 	BurstDelays: 3
@@ -814,7 +814,7 @@
         
 #--Weapons01--
 ^Thor.IonTracer.stat.weapons:
-	Range 9c0
+	Range: 9c0
 	Burst: 7
 	BurstDelays: 1
 	ReloadDelay: 25
